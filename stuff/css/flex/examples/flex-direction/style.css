@@ -1,0 +1,26 @@
+.flex__container{
+  /* ----- flexbox init ----- */
+  display: flex;
+  /* flex-direction: row; */
+  /* flex-direction: row-reverse; */
+  /* flex-direction: column; */
+  /* flex-direction: column-reverse; */
+  
+  /* ----- flexbox end ----- */
+  border-radius: 6px;
+  padding: 10px;
+  background: #e74c3c;
+  color: #2c3e50;
+}
+
+.flex__item {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  width: 20%;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #ff7979;
+  color: white;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .alert {
+            width: 50vw;
+            border: 0.2rem solid turquoise;
+            border-radius: 1rem;
+            padding: 1rem;
+            background-color: rgb(216, 240, 253);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 1rem;
+        }
+
+        .alert__title {
+            color: dodgerblue;
+        }
+
+        .alert__body {
+            font-size: 1.2rem;
+        }
+
+        .alert--danger {
+            border-color: red;
+            background-color: rgb(252, 215, 197);
+        }
+
+        .alert--danger>.alert__title {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="alert">
+        <h1 class="alert__title">Hey, there!</h1>
+        <p class="alert__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit temporibus assumenda,
+            facere amet ab maiores numquam consequatur doloremque, nostrum at omnis voluptatum odio, illum fugiat
+            accusamus fuga. Ratione, excepturi assumenda!</p>
+    </section>
+
+    <section class="alert alert--danger">
+        <h1 class="alert__title">Hey, there!</h1>
+        <p class="alert__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit temporibus assumenda,
+            facere amet ab maiores numquam consequatur doloremque, nostrum at omnis voluptatum odio, illum fugiat
+            accusamus fuga. Ratione, excepturi assumenda!</p>
+    </section>
+</body>
+
+</html>

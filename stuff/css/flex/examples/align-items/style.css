@@ -1,0 +1,30 @@
+.flex__container{
+  /* ----- flexbox init ----- */
+  display: flex;
+  justify-content: space-around;
+  /* align-items: stretch;*/
+  /*align-items: flex-start;*/
+  /*align-items: flex-end;*/
+  align-items: center;
+  /* align-items: baseline; */
+  
+  /* ----- flexbox end ----- */
+  height: 500px;
+  border-radius: 6px;
+  padding: 10px;
+  background: #f0932b;
+  color: #2c3e50;
+}
+
+.flex__item {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  width: 10%;
+  height: 50px;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #ffbe76;
+  color: white;
+}
