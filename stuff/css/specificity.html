@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav.navigation#navigation { /* specificity 111 */
+            background-color: fuchsia;
+        }
+
+        .navigation#navigation { /* specificity 110 */
+            background-color: yellow;
+        }
+
+        nav.navigation { /* specificity 11 */
+            background-color: red;
+        }
+
+        .navigation { /* specificity 10000 */
+            background-color: skyblue!important;
+        }
+
+        .navigation { /* specificity 10 */
+            background-color: skyblue;
+        }
+
+        .navigation { /* specificity 10 */
+            background-color: orange;
+        }
+
+        nav { /* specificity 1 */
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <nav id=navigation class="navigation" style="background-color: greenyellow;">navigation</nav>
+</body>
+</html>

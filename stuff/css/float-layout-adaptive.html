@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+        }
+
+        header,
+        footer {
+            height: 10vh;
+        }
+
+        nav,
+        aside {
+            height: 15vh;
+        }
+
+        main {
+            height: 50vh;
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            aside {
+                width: 25%;
+                float: left;
+            }
+
+            main {
+                width: 75%;
+                float: left;
+            }
+
+            main,
+            aside {
+                height: 65vh;
+            }
+
+            footer {
+                clear: left;
+            }
+        }
+
+        @media only screen and (min-width: 1200px) {
+            nav {
+                float: left;
+                width: 25%;
+            }
+
+            nav, main, aside {
+                height: 80vh;
+            }
+
+            main {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>header</header>
+    <nav>nav</nav>
+    <main>main</main>
+    <aside>aside</aside>
+    <footer>footer</footer>
+</body>
+
+</html>
