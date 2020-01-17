@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-size: 1rem;
+}
+
+body{
+    background-color: #f3f3f3;
+}
+
+header{
+    background-color: white;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #80808080;
+}
+
+.instagram{
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.iconos{
+    display: flex;
+    margin: 1rem;
+}
+
+.icono{
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.stories {
+    background-color: white;
+    display: flex;
+    align-items: space-evenly ;
+    justify-content: flex-start;
+    border-bottom: 1px solid #80808080;
+}
+
+.story{
+    border: 1px solid red;
+    border-radius: 50%;
+    height: 70px;
+    text-align: center;
+    line-height: 4rem;
+    margin: 1rem 0.5rem;
+    cursor: pointer;
+}
+
+.storyB{
+    min-width: 70px;
+    max-width: 70px;
+}
+
+.content{
+    background-color: white;
+}
+
+.headerpost{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.headerpost > div{
+    margin: 1rem .5rem;
+    cursor: pointer;
+}
+
+/* .headerpost > div:nth-child(2) {
+    margin: 0 1rem 0 0;
+} */
+
+.headerpost > div:last-of-type{
+    font-size: 2rem;
+    margin: 0 .5rem 0;
+    line-height: 1.6rem;
+}
