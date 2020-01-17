@@ -1,0 +1,31 @@
+@import utils
+@import panel
+@import button
+
+.confirm
+    @extend %panel
+
+    +border($border-size, solid, $confirm-border, $border-radius)
+    background-color: $confirm
+    
+    &__title
+        color: $confirm-title
+
+    &__body
+        font-size: 1.2rem
+    
+    &__accept
+        @extend %button
+
+        &:hover
+            cursor: pointer
+            background-color: $confirm-accept-hover
+    
+    &__cancel
+        @extend %button
+        
+        background-color: $confirm-cancel
+
+        &:hover
+            cursor: pointer
+            background-color: $confirm-accept-hover

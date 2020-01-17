@@ -1,0 +1,27 @@
+.flex__container{
+  /* ----- flexbox init ----- */
+  display: flex;
+  /*justify-content: flex-start;*/
+  /* justify-content: flex-end; */
+  justify-content: center; */
+  /* justify-content: space-around; */
+  /* justify-content: space-between; */
+  
+  /* ----- flexbox end ----- */
+  border-radius: 6px;
+  padding: 10px;
+  background: #f9ca24;
+  color: #2c3e50;
+}
+
+.flex__item {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  width: 10%;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #f6e58d;
+  color: #2c3e50;
+}

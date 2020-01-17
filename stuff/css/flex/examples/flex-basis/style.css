@@ -1,0 +1,35 @@
+.flex__container{
+  /* ----- flexbox init ----- */
+  display: flex;
+  justify-content: space-around;
+
+  /* ----- flexbox end ----- */
+  height: 500px;
+  border-radius: 6px;
+  padding: 10px;
+  background: #be2edd;
+  color: #2c3e50;
+}
+
+.flex__item {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  width: 10%;
+  height: 40px;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #e056fd;
+  color: white;
+}
+
+/* ----- flexbox init ----- */
+.flex__item-one {
+  flex-basis: 100px;
+}
+
+.flex__item-three {
+  flex-basis: 100px;
+}
+/* ----- flexbox end ----- */
