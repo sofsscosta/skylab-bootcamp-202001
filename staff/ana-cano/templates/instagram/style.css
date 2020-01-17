@@ -1,0 +1,15 @@
+* {
+    height: 100 vh;
+    width: 100%;
+    border: 1px solid black;
+}
+}
+
+img {
+    width: 33%;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+header {
+    
