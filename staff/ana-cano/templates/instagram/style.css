@@ -1,15 +1,6 @@
-* {
-    height: 100 vh;
-    width: 100%;
-    border: 1px solid black;
-}
-}
+.historias{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
 
-img {
-    width: 33%;
-    border: 1px solid black;
-    border-radius: 50%;
 }
-
-header {
-    
