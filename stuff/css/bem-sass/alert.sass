@@ -1,0 +1,33 @@
+@import config
+@import utils
+@import panel
+@import button
+
+.alert
+    @extend %panel
+    
+    +border($border-size, solid, $alert-border, $border-radius)
+    background-color: $alert
+
+    &__title
+        color: $alert-title
+
+    &__body
+        font-size: 1.2rem
+    
+    &__accept
+        @extend %button
+
+        &:hover
+            cursor: pointer
+            background-color: $alert-accept-hover
+
+    &--danger
+        border-color: $alert-danger-border
+        background-color: $alert-danger
+
+    &--danger>&__title
+        color: $alert-danger-title
+    
+    &--danger>&__accept
+        border-color: $alert-danger-accept-border

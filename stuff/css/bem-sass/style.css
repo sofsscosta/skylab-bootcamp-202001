@@ -1,0 +1,104 @@
+.login, .confirm, .alert {
+  min-width: 50vw;
+  max-width: 75vw;
+  padding: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 1rem;
+}
+
+.login__submit, .confirm__cancel, .confirm__accept, .alert__accept {
+  border: 0.3rem dotted silver;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.alert {
+  border: 0.6rem solid turquoise;
+  border-radius: 2rem;
+  background-color: #d8f0fd;
+}
+.alert__title {
+  color: dodgerblue;
+}
+.alert__body {
+  font-size: 1.2rem;
+}
+.alert__accept:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+.alert--danger {
+  border-color: red;
+  background-color: #fcd7c5;
+}
+.alert--danger > .alert__title {
+  color: red;
+}
+.alert--danger > .alert__accept {
+  border-color: red;
+}
+
+.login, .confirm, .alert {
+  min-width: 50vw;
+  max-width: 75vw;
+  padding: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 1rem;
+}
+
+.login__submit, .confirm__cancel, .confirm__accept, .alert__accept {
+  border: 0.3rem dotted silver;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.confirm {
+  border: 0.6rem solid turquoise;
+  border-radius: 2rem;
+  background-color: #d8f0fd;
+}
+.confirm__title {
+  color: dodgerblue;
+}
+.confirm__body {
+  font-size: 1.2rem;
+}
+.confirm__accept:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+.confirm__cancel {
+  background-color: #aaa;
+}
+.confirm__cancel:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.login, .alert, .confirm {
+  min-width: 50vw;
+  max-width: 75vw;
+  padding: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 1rem;
+}
+
+.login__submit, .alert__accept, .confirm__accept, .confirm__cancel {
+  border: 0.3rem dotted silver;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.login {
+  border: 0.6rem solid gray;
+  border-radius: 2rem;
+  background-color: lightgray;
+}
+.login__field {
+  border: 0.2rem solid gray;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  font-size: 1.1rem;
+}
+
+/*# sourceMappingURL=style.css.map */
