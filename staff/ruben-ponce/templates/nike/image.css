@@ -1,0 +1,10 @@
+.image {
+  max-width: 1024px;
+  max-height: 1024px;
+  margin: 0;
+}
+
+.image__content {
+  width: 100%;
+}
+/*# sourceMappingURL=image.css.map */

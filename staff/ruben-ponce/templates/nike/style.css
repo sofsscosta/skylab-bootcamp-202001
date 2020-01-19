@@ -1,0 +1,137 @@
+.header {
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid gray;
+}
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+}
+.header__logo {
+  text-decoration: none;
+  margin: 0 0 0 1rem;
+}
+.header__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.header__item {
+  list-style: none;
+  margin: 0 1rem;
+}
+.header__link {
+  text-decoration: none;
+}
+.header__link--first {
+  color: black;
+}
+
+.aside {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.aside__content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+.aside__price {
+  font-size: 2rem;
+  margin: 0 1rem;
+}
+
+.image {
+  max-width: 1024px;
+  max-height: 1024px;
+  margin: 0;
+}
+.image__content {
+  width: 100%;
+}
+
+.main {
+  margin: 1rem;
+}
+.main__sizes {
+  display: flex;
+  justify-content: space-between;
+}
+.main__sizes--light {
+  color: gray;
+}
+.main__select {
+  display: grid;
+  grid-template-areas: repeat(3, 1fr)/repeat(3, 1fr);
+  gap: 0.5rem;
+}
+.main__select--one {
+  grid-area: 1/1/span 1/span 1;
+}
+.main__select--two {
+  grid-area: 1/2/span 1/span 1;
+}
+.main__select--three {
+  grid-area: 1/3/span 1/span 1;
+}
+.main__select--four {
+  grid-area: 2/1/span 1/span 1;
+}
+.main__select--five {
+  grid-area: 2/2/span 1/span 1;
+}
+.main__select--six {
+  grid-area: 2/3/span 1/span 1;
+}
+.main__select--seven {
+  grid-area: 3/1/span 1/span 1;
+}
+.main__select > div {
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 1vh;
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+.main__button {
+  margin: 1rem 0;
+  width: 90%;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  border-radius: 1rem;
+  border: 1px solid gray;
+}
+.main__button--dark {
+  background-color: black;
+  color: white;
+}
+.main__moreinfo {
+  color: black;
+}
+.main__info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.main__info--option {
+  border-top: 1px solid gray;
+  width: 100%;
+}
+.main__info--option > a {
+  text-decoration: none;
+  color: black;
+  line-height: 4rem;
+}
+.main__info--option:last-child {
+  border-bottom: 1px solid gray;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
