@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            border: 2px solid black;
+        }
+        body {
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container__item {
+            
+            flex-grow: 1;
+
+        }
+        @media only screen and (min-width: 798px) {
+           .container{
+            flex-direction: row;
+           } 
+           .container > :nth-child(2) {
+               flex-grow: 4;
+           }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container__item"></div>
+        <div class="container__item"></div>
+        <div class="container__item"></div>
+    </div>
+    
+</body>
+</html>
