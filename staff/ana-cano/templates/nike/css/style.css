@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ccc;
+}
+.header__wrapper {
+  width: 100vh;
+  display: flex;
+}
+.header__wrapper > * {
+  padding: 0 0.5rem;
+}
+.header__logo {
+  flex: 1;
+}
+
+.selectedfilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+.selectedfilter__classmodel {
+  display: block;
+}
+.selectedfilter__model {
+  width: 100vw;
+  flex: 1;
+}
+.selectedfilter__filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+.searched {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
