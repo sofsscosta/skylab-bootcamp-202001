@@ -7,10 +7,44 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  margin-top: 1vh;
-  padding: 1vh;
-  height: 7vh;
+  padding: 1rem;
+  height: 5%;
   border-bottom: 1px solid #AEB6BF;
+}
+
+.show-results {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 5%;
+}
+.show-results__icon {
+  margin-top: 2rem;
+}
+
+.products {
+  display: flex;
+  width: 100vw;
+  height: 60vh;
+  flex-wrap: wrap;
+}
+.products__article {
+  width: 45%;
+  height: 50%;
+  border: 1px solid #AEB6BF;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+}
+.products__image {
+  width: 100%;
+  height: 50%;
+  margin: 0;
+}
+.products__description {
+  width: 100%;
+  height: 50%;
+  margin: 0;
+  background-color: #AEB6BF;
 }
 
 /*# sourceMappingURL=style.css.map */
