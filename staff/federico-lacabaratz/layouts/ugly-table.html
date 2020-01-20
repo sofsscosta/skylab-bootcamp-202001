@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ugly Table</title>
+    <style>
+
+        table, tr, td{
+            border: 1px solid black;
+            width: 100%;
+            height: auto;
+            text-align: left;
+            margin: 0;
+        }
+
+        .nnav {
+            height: 80vh;
+            width: 20%;
+        }
+
+        .mmain {
+            height: 80vh;
+            width: 80%
+        }
+
+        .aaside {
+            height: 80vh;
+            width: 20%;
+        }
+
+        .head {
+            height: 25%;
+        }
+
+        .body {
+            height: 50%;
+        }
+
+        .foot {
+            height: 25%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="head">
+            <td colspan="4">Header</td>      
+        </tr>
+        <tr class="body">
+            <td class="nnav">Nav</td>
+            <td class="mmain">Main</td>
+            <td class="aaside">Aside</td>
+        </tr>
+        <tr class="foot">
+            <td colspan="4">Footer</td>
+        </tr>
+    </table>
+</body>
+</html>

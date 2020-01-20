@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .center {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .head {
+            border: 1px solid black;
+            height: 10vh;
+            padding: 3vh 0;
+        }
+
+        .nav,
+        .aside {
+            border: 1px solid black;
+            width: 100%;
+            height: 20vh;
+            padding: 8vh 0;
+        }
+
+        .main {
+            border: 1px solid black;
+            width: 100%;
+            height: 80vh;
+            padding: 35vh 0;
+        }
+
+        .footer {
+            border: 1px solid black;
+            height: 10vh;
+            padding: 3vh 0;
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            .tablet {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+            .main{
+                width: 75%;
+                height: 60vh;
+                padding: 25vh 0;
+            }
+            .aside{
+                width: 25%;
+                height: 60vh;
+                padding: 25vh 0;
+            }
+            .nav {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .center {
+                display: flex;
+                flex-direction: row;
+            }
+            .nav, .aside {
+                width: 35%;
+                height: 80vh;
+                padding: 35vh 0;
+            }
+            .tab{
+                height: 80vh;
+            }
+
+            .main {
+                width: 70%;
+                height: 80vh 0;
+                padding: 35vh 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="head">HEADER</header>
+    <div class="center">
+        <nav class="nav tab">NAV</nav>
+        <div class="tablet">
+            <main class="main tab">MAIN</main>
+            <aside class="aside tab">ASIDE</aside>
+        </div>
+    </div>
+    <footer class="footer">FOOTER</footer>
+    
+</body>
+
+</html>

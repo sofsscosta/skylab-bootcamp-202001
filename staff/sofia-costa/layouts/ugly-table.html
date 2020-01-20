@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <style>
+
+* {
+    height: 100%;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    box-sizing:border-box;
+    text-align: center;
+    height: 100vh;
+}
+
+.body {
+    height: 60%;
+    width: 100%;
+}
+
+.header, .footer {
+    background-color: blue;
+    height: 20vh;
+}
+
+.body td {
+    display: inline-block;
+    box-sizing:border-box;
+}
+
+.nav, .aside {
+    width:25%;
+    background-color: yellow;
+    color: black;
+}
+
+.main {
+    width:50%;
+    color: black;
+    height: 60vh;
+}
+
+td {
+    color: white;
+    box-sizing:border-box;
+    border: 2px solid black;
+}
+
+        </style>
+
+        <table>
+            <thead>
+                <tr class=head>
+                    <td class=header>header</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class=body>
+                    <td class=nav>nav</td>
+                    <td class=main>main</td>
+                    <td class=aside>aside</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class=foot>
+                    <td class=footer>footer</td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>

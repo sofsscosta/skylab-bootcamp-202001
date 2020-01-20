@@ -1,0 +1,85 @@
+<html>
+<head>
+    <style>
+        *{
+            margin: 0;
+        }
+        header {
+            height: 20%;
+            background-color: red;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 60%;
+        }
+        .container>* {
+            width: 100%;
+            flex-grow: 1;
+        }
+        .container>nav {
+            background-color: blue;
+        }
+        .container>main {
+            background-color: green;
+            flex-grow: 2;
+        }
+        .container>aside {
+            background-color: yellow;
+        }
+        footer {
+            height: 20%;
+            background-color: purple;
+        }
+        @media screen and (min-width: 760px) and (max-width: 1023px) {
+            .container {
+                display: initial;
+                font-size: 0;
+            }
+            .container>* {
+                font-size: initial;
+            }
+            .container>nav {
+                height: 15%;
+            }
+            .container>main {
+                display: inline-block;
+                width: 65%;
+                height: 45%;
+            }
+            .container>aside {
+                display: inline-block;
+                width: 35%;
+                height: 45%;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            .container {
+                flex-direction: row;
+            }
+            .container>* {
+                flex-grow: initial;
+            }
+            .container>nav {
+            width: 25%;
+            }
+            .container>main {
+            width: 50%;
+
+            }
+            .container>aside {
+            width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <div class="container">
+        <nav>Nav</nav>
+        <main>Main</main>
+        <aside>Aside</aside>
+    </div>
+    <footer>Footer</footer>
+</body>
+</html>

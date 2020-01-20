@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>With ugly table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            height: auto;
+        }
+
+        th, td {
+            
+            border: 3px solid black;
+        }
+
+        .header {
+            height: 10%;
+            background-color: red;
+        }
+
+
+        .main {
+            height: 80%;
+            width: 50%;
+            background-color: green;
+        }
+
+        .nav, .aside {
+            width: 25%;
+            background-color: blue;
+        }
+
+        .footer {
+            
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th class="header" colspan="3">header</th>
+        </tr>
+        <tr class="row">
+            <td class="nav">nav</td class="header">
+            <td class="main">main</td class="header">
+            <td class="aside">aside</td class="header">
+        </tr>
+        <tr>
+            <th class="footer" colspan="3">footer</th class="header">
+        </tr>
+
+    </table>
+</body>
+</html>

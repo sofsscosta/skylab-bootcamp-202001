@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function hello(name) {
+            console.log('Hello, ' + name + '!');
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Hello, World!</h1>
+    <!-- <iframe id=frame-demo src="https://skylabcoders.com" frameborder="0" width="1024px" height="768px"></iframe> -->
+
+    <!-- <frameset cols="20%, 80%">
+        <frame src="https://skylabcoders.com">
+        <frame src="https://skylabcoders.com">
+    </frameset> -->
+
+    <iframe id=frame-demo src="frame.html" frameborder="0" width="1024px" height="768px"></iframe>
+
+    <script>
+        setTimeout(function () {
+            const child = document.getElementById('frame-demo');
+
+            console.log(child.contentWindow.salute('Fulanito'));
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

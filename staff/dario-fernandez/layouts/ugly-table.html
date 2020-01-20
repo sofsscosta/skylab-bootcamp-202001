@@ -1,0 +1,52 @@
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            height: 100vh;
+            border-spacing: 0;
+        }
+        td {
+            border: 1px solid black;
+        }
+        tr:only-child {
+            width: 100%;
+            background-color: #red;
+        }
+        td[colspan] {
+            height: 20%;
+        }
+        .side {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="3" style="background-color: red;">
+                <header>Header</header>
+            </td>
+        </tr>
+        <tr>
+            <td class="side" style="background-color: blue;">
+                <nav>Nav</nav>
+            </td>
+            <td style="background-color: green;">
+                <main>Main</main>
+            </tdcolspan="2">
+            <td class="side" style="background-color: yellow;">
+                <aside>Aside</aside>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="background-color: purple;">
+                <footer>Footer</footer>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

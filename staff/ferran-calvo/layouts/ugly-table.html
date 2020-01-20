@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td class="header" colspan="3">HEADER</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="body">
+                <td class="nav">NAV</td>
+                <td class="main">MAIN</td>
+                <td class="aside">ASIDE</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="footer" colspan="3">FOOTER</td>
+            </tr>
+        </tfoot>
+    </table>
+    <style>
+        .header, .nav, .main, .aside, .footer{
+            border: 3px solid;
+        }
+        table{
+            width: 100%;
+            text-align: center;
+        }
+        .header, .footer{
+            height: 20vh;
+        }
+        .body{
+            height: 60vh;  
+        }
+        .nav, .aside{
+            width: 25%;
+        }
+        .main{
+            width: 50%;
+        }
+
+    </style>
+</body>
+</html>

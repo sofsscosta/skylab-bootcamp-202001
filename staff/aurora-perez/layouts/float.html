@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>Header</header>
+    <div>
+        <nav class="middle">Nav</nav>
+        <main class="middle">Main</main>
+        <aside class="middle">Aside</aside>
+        <div class="clear"></div>
+    </div>
+    <footer>Footer</footer>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background-color: rgb(106, 226, 116);
+            height: 10vh;
+        }
+
+        nav{
+            background-color: rgb(192, 255, 197);
+            height: 5vh;
+        }
+
+        main{
+            background-color: rgb(43, 184, 78);
+            height: 70vh;
+        }
+        
+        aside{
+            background-color: rgb(67, 143, 96);
+            height: 5vh;
+        }
+
+        footer{
+            background-color: rgb(73, 107, 79);
+            height: 10vh;
+        }
+
+       
+ 
+        @media only screen and (min-width: 768px){
+            
+            footer{
+                display: block;
+
+            }
+
+            main{
+                height: 70vh;
+                width: 80%; 
+                float: left;
+            }
+
+            aside{
+                height: 70vh;
+                float: left;
+                width: 20%;
+            }
+
+            nav{
+                height: 10vh;
+            }
+            
+
+        }
+ 
+        @media only screen and (min-width: 1200px){
+
+            nav, aside, main {
+                float:left;
+            }
+
+            header, footer{
+            height: 15vh;
+            width: 100%;
+            }
+
+            nav, aside{
+                height: 70vh;
+                width: 15%;
+                
+            }
+
+            main{
+                height: 70vh;
+                width: 70%;
+                    
+            }
+  
+ 
+        } 
+    </style>
+
+</body>
+</html>
+
+
+ 

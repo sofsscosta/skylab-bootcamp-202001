@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            * {
+                margin:0;
+            }
+
+            .container {
+                display: grid;
+                grid-template-areas: "h"
+                                    "n"
+                                    "m"
+                                    "a"
+                                    "f";
+                grid-template-rows: 20vh 15vh 80vh 15vh 20vh;
+                grid-template-columns: 100%;
+                text-align: center;
+            }
+
+            .header {
+                grid-area: h;
+                padding: 8vh 0;
+            }
+
+            .nav {
+                grid-area: n;
+                padding: 6vh 0;
+            }
+
+            .main {
+                grid-area: m;
+                padding: 37vh 0;
+            }
+
+            .aside {
+                grid-area: a;
+                padding: 6vh 0;
+            }
+
+            .footer {
+                grid-area: f;
+                padding: 8vh 0;
+            }
+
+            .area {
+                border: 1px solid black;
+            }
+            
+            @media only screen and (min-width: 768px) {
+
+                .container {
+                display: grid;
+                grid-template-areas: "h h"
+                                    "n n"
+                                    "m a"
+                                    "f f";
+                grid-template-rows: 20vh 15vh 80vh 20vh;
+                grid-template-columns: 80% 20%;
+                text-align: center;
+                }
+
+                .aside {
+                    padding: 37vh 0;
+                }
+
+            }
+
+            @media only screen and (min-width: 1200px) {
+
+                .container {
+                    display: grid;
+                    grid-template-areas: "h h h h"
+                                        "n m m a"
+                                        "f f f f";
+                    grid-template-rows: 20vh 60vh 20vh;
+                    grid-template-columns: 20% 30% 30% 20%;
+                    text-align: center;
+                }
+
+                .nav, .main, .aside {
+                    padding: 27vh 0;
+                }
+
+            }
+
+            
+                    </style>
+    </head>
+    <body>
+        <div class=container>
+            <header class='header area'>HEADER</header>
+            <nav class='nav area'>NAV</nav>
+            <main class='main area'>MAIN</main>
+            <aside class='aside area'>ASIDE</aside>
+            <footer class='footer area'>FOOTER</footer>
+        </div>
+        
+    </body>
+</html>

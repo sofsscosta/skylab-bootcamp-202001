@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				text-align: center;
+			}
+
+			.header,
+			.nav,
+			.aside,
+			.main,
+			.footer {
+				border: 1px solid black;
+			}
+
+			.header {
+				grid-area: header;
+			}
+
+			.nav {
+				grid-area: nav;
+			}
+
+			.main {
+				grid-area: main;
+			}
+
+			.aside {
+				grid-area: aside;
+			}
+
+			.footer {
+				grid-area: footer;
+			}
+
+			.grid-container {
+				border: 1px solid black;
+				height: 100vh;
+				width: 100vw;
+				display: grid;
+				grid-template-columns: auto;
+				grid-template-rows: 10% 10% 60% 10% 10%;
+				grid-template-areas:
+					'header'
+					'nav'
+					'main'
+					'aside'
+					'footer';
+			}
+
+			@media only screen and (min-width: 768px) {
+				.grid-container {
+					grid-template-rows: 10% 10% 70% 10%;
+					grid-template-areas:
+						'header header header header'
+						'nav nav nav nav'
+						'main main main aside'
+						'footer footer footer footer';
+				}
+			}
+
+			@media only screen and (min-width: 1024px) {
+				.grid-container {
+					grid-template-columns: 25% 25% 25% 25%;
+					grid-template-rows: 15% 70% 15%;
+					grid-template-areas:
+						'header header header header'
+						'nav main main aside'
+						'footer footer footer footer';
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grid-container">
+			<div class="header">head</div>
+			<div class="nav">nav</div>
+			<div class="main">main</div>
+			<div class="aside">aside</div>
+			<div class="footer">footer</div>
+		</div>
+	</body>
+</html>

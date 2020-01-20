@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Float layout</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body *{
+            background-color: transparent;
+        }
+
+        header{
+            height: 20vh;
+            background-color: darkgreen;
+        }
+        .content-height{height: 65vh;}
+
+        .clearfix{clear: both;}
+
+        nav{
+            width: 15vw;
+            background-color: cadetblue;
+        }
+        main{
+            width: 70vw;
+            background-color: cornflowerblue;
+        }
+        aside{
+            width: 15vw;
+            background-color: darkcyan;
+        }
+
+        .pull-left{
+            float: left;
+        }
+
+        footer{height: 15vh; background-color: darksalmon;}
+    </style>
+</head>
+<body>
+    <header>HEADER</header>
+    <content>
+        <nav class="pull-left content-height">NAV</nav>
+        <main class="pull-left content-height">MAIN</main>
+        <aside class="pull-left content-height">ASIDE</aside>
+        <div class="clearfix"></div>
+    </content>
+    <footer>footer</footer>
+</body>
+</html>

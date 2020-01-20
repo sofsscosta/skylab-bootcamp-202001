@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body *{
+            background-color: transparent;
+        }
+
+        header{
+            height: 15vh;
+            background-color: darkgreen;
+        }
+
+        nav{
+            background-color: cadetblue;
+            height: 12.5vh;
+        }
+
+        main{
+            background-color: cornflowerblue;
+            height: 50vh;
+        }
+        
+        aside{
+            background-color: darkcyan;
+            height: 12.5vh;
+        }
+
+        footer{
+            height: 15vh; 
+            background-color: darksalmon;
+        }
+
+        section{
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            content{
+                display: flex;
+            }
+
+            nav, aside{
+                flex: 1 1 auto;
+                height: 70vh;
+            }
+
+            main{
+                flex-grow: 4;
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>HEADER</header>
+        <content>
+            <nav>NAV</nav>
+            <main>MAIN</main>
+            <aside>ASIDE</aside>
+        </content>
+        <footer>footer</footer>
+    </section>
+</body>
+</html>

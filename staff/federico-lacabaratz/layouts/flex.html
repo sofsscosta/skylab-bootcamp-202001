@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Float table</title>
+    <style>
+    *{
+        margin: 0;
+    }
+
+    @media only screen and(min-width:480px) {
+
+        .container1, .container3{
+            display: flex;
+        }
+
+        .container2{
+            display: flex;
+        }
+
+    }
+        div.container1, div.container3{
+            border: 2px solid black;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            height: 20vh;
+            flex-basis: 100%;
+        }
+
+        div.container2{
+            border: 2px solid black;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            height: 60vh;
+            flex-basis: 100%;
+        }
+
+    .head {
+        border: 1px solid black;
+        flex-grow: 4;
+        align-self: flex-start;
+        height: 100%;
+        width: 100%;
+    }
+
+    .nav {
+        border: 1px solid black;
+        flex-grow: 1;
+        align-self: center;
+        height: 100%;
+        width: 25%;
+    }
+    .main {
+        border: 1px solid black;
+        flex-grow: 2;
+        align-self: center;
+        height: 100%;
+        width: 50%;
+    }
+    .aside {
+        border: 1px solid black;
+        flex-grow: 1;
+        align-self: center;
+        height: 100%;
+        width: 25%;
+    }
+
+    .footer {
+        border: 1px solid black;
+        flex-grow: 4;
+        align-self: flex-end;
+        height: 100%;
+        width: 100%;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="head">Heading</div>
+    </div>
+    <div class="container2">
+        <div class="nav">Nav</div>
+        <div class="main">Main</div>
+        <div class="aside">Aside</div>
+    </div>
+    <div class="container3">
+        <div class="footer">Footer</div>
+    </div>
+</body>
+</html>

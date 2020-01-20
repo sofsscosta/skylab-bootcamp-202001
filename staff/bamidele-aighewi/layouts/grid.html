@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body *{
+            background-color: transparent;
+        }
+
+        header{
+            height: 15vh;
+            background-color: darkgreen;
+        }
+
+        nav{
+            background-color: cadetblue;
+            height: 12.5vh;
+        }
+
+        main{
+            background-color: cornflowerblue;
+            height: 50vh;
+        }
+        
+        aside{
+            background-color: darkcyan;
+            height: 12.5vh;
+        }
+
+        footer{
+            height: 15vh; 
+            background-color: darksalmon;
+        }
+
+        section{
+            display: grid;
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            .item1 { grid-area: nav; }
+            .item2 { grid-area: main; }
+            .item3 { grid-area: aside; }
+
+            content{
+                display: grid;
+                grid-template-areas: 
+                'header header header header header header'
+                'nav main main main main aside'
+                'footer footer footer footer footer footer';
+            }
+
+            nav, aside{
+                height: 70vh;
+            }
+
+            main{
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>HEADER</header>
+        <content>
+            <nav class="item1">NAV</nav>
+            <main class="item2">MAIN</main>
+            <aside class="item3">ASIDE</aside>
+        </content>
+        <footer>footer</footer>
+    </section>
+</body>
+</html>

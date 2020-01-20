@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            * {
+                margin: 0;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            body {
+                height: 100vh;
+                border: 2px solid black;
+            }
+
+            .area {
+                text-align: center;
+                border: 2px solid black;
+            }
+            
+            .header, .footer {
+                height: 20vh;
+                padding: 8vh 0;
+            }
+            
+            .nav, .aside {
+                float: left; 
+                width: 20%  
+            }
+
+            .nav, .main, .aside {
+                height: 60vh;
+                padding: 28vh 0;
+            }
+            
+            .main {
+                width: 60%;
+                float: left;
+            }
+
+            .footer {
+                clear: left;
+            }
+            
+                    </style>
+    </head>
+    <body>
+        <div class=container>
+            <header class='header area'>HEADER</header>
+            <div class=center>
+                <nav class='nav area'>NAV</nav>
+                <main class='main area'>MAIN</main>
+                <aside class='aside area'>ASIDE</aside>
+            </div>
+            <footer class='footer area'>FOOTER</footer>
+        </div>
+        
+    </body>
+</html>

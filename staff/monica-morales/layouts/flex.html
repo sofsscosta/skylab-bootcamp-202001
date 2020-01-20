@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .header {
+        height: 10vh;
+        width: 100%;
+        border: 2px solid black;
+    }
+
+    .nav {
+        height: 100%;
+        width: 100%;
+        border: 2px solid black;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        border: 2px solid black;
+        padding-left: 5px;
+    }
+
+    .aside {
+        height: 100%;
+        width: 100%;
+        border: 2px solid black;
+    }
+
+    .footer {
+        height: 10vh;
+        width: 100%;
+        border: 2px solid black;
+        flex-direction: column;
+    }
+
+    .container >* {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container > div {
+        display: flex;
+        height: 80vh;
+        flex-direction: column;
+    }
+
+    .nav, .main, .aside {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    @media only screen and (min-width: 992px) {
+        .container > div {
+            flex-direction: row;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <header class="header">HEADER</header>
+        <div>
+            <nav class="nav">NAV</nav>
+            <main class="main">MAIN</main>
+            <aside class="aside">ASIDE</aside>
+        </div>
+        <footer class="footer">FOOTER</footer>
+    </div>
+</body>
+
+</html>

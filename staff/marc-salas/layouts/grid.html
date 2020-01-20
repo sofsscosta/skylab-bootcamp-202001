@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .head {
+        grid-area: item1;
+        border: 1px solid black;
+    }
+
+    .navegation {
+        grid-area: item2;
+        border: 1px solid black;
+    }
+
+    .section {
+        grid-area: item3;
+        border: 1px solid black;
+    }
+
+    .as {
+        grid-area: item4;
+        border: 1px solid black;
+    }
+
+    .bottom {
+        grid-area: item5;
+        border: 1px solid black;
+    }
+
+    .container {
+        height: 100vh;
+        border: 1px solid black;
+        display: grid;
+        grid-template-rows: 20% 60% 20%;
+        grid-template-areas:
+            'item1 item1 item1'
+            'item2 item3 item4'
+            'item5 item5 item5';
+    }
+    @media only screen and (max-width: 768px) {
+        .container {
+            grid-template-rows: 20% 30% 30% 20%;
+            grid-template-areas:
+            'item1 item1 item1'
+            'item2 item2 item4'
+            'item3 item3 item4'
+            'item5 item5 item5';
+        }
+    }
+    @media only screen and (max-width: 480px) {
+        .container {
+            grid-template-rows: 20% 20% 20% 20% 20%;
+            grid-template-areas:
+            'item1'
+            'item2'
+            'item3'
+            'item4'
+            'item5';
+        }
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="head">header</div>
+        <div class="navegation">nav</div>
+        <div class="section">main</div>
+        <div class="as">aside</div>
+        <div class="bottom">footer</div>
+    </div>
+</body>
+
+</html>

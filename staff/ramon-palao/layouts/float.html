@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Float</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .bord{
+            border: 1px solid black;
+            text-align: center;
+        }
+        .nav, .aside{
+            width: 20%;
+            height: 80vh;
+            float: left;
+            padding: 30vh 0;
+        }
+        .footer{
+            clear: both;
+            width: 100%;
+            height: 10vh;
+            padding: 3vh 0;
+        }
+        .head{
+            width: 100%;
+            height: 10vh;
+            padding: 3vh 0;
+        }
+        .main{
+            width: 60%;
+            height: 80vh;
+            padding: 30vh;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="head bord">HEADER</header>
+    <nav class="nav bord">NAV</nav>
+    <main class="main bord">MAIN</main>
+    <aside class="aside bord">ASIDE</aside>
+    <footer class="footer bord">FOOTER</footer>
+    
+</body>
+</html>

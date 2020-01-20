@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout with float</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+ 
+    }
+
+    body {
+        margin: 0;
+        box-sizing: border-box;
+        height: 100vh;
+    }
+
+    header {
+        background-color: red;
+    }
+
+    .maincontent {
+        height: 80%;
+    }
+
+    nav {
+        background-color: yellow;
+    }
+
+    footer {
+        background-color: violet;
+        height: 10%;
+    }
+
+    header, nav, aside {
+        height: 10%;
+    }
+
+    main {
+        background-color: blue;
+        height: 80%;
+    }
+
+    aside {
+        background-color: orange;
+    }
+
+    @media only screen and (min-width: 600px) {
+        main {
+            float: left;
+            width: 80%;
+        }
+
+        aside {
+            float: left;
+            width: 20%;
+        }
+
+        main, aside {
+            height: 90%;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        header {
+            text-align: left;
+            height: 10%;
+
+        }
+        
+        main {
+            width: 70%;
+            float:left;
+
+        }
+
+        nav {
+            float: left;
+            width: 15%;
+
+        }
+
+        aside {
+            float: left;
+            width: 15%;
+        }
+
+        nav, main, aside {
+            height: 100%;
+        }
+
+        footer {
+            height: 10%;
+
+        }
+    }
+
+    
+</style>
+<body>
+    <header>header</header>
+    <div class="maincontent">
+        <nav>nav</nav>
+        <main>main</main>
+        <aside>aside</aside>
+    </div>
+    <footer>footer</footer>
+</body>
+</html>

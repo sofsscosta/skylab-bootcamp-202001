@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    body > :first-child {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: 10vh 20vh 40vh 20vh 10vh;
+    }
+
+    div > div {
+      border: 1px solid blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media only screen and (min-width: 500px) {
+
+      body > :first-child {
+        display: grid;
+        grid-template-columns: auto 50vw auto;
+        grid-template-rows: 15vh 70vh 15vh;
+      }
+
+      div > div:nth-child(4n+1) {
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div>header</div>
+    <div>nav</div>
+    <div>main</div>
+    <div>aside</div>
+    <div>bottom</div>
+  </div>
+</body>
+
+</html>

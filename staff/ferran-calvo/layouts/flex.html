@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        .center{
+            display: flex;
+            flex-direction: column
+        }
+        .together{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        nav{
+            height:  20vh;
+            width: 100%;
+        }
+        aside{
+            width: 100%;
+            height: 20vh;
+        }
+        main{
+            height: 80vh;
+            width: 100%;
+        }
+        header{
+            height: 10vh;
+        }
+        footer{
+            height: 10vh;
+        }
+        .border{
+            border: 3px solid black;
+        }
+        div, header, footer, nav, main, aside{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media only screen and (min-width: 768px){
+            .center{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .together{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+            nav{
+                width: 100%;
+                height: 20vh;
+            }
+            aside{
+                width: 20%;
+                height: 80vh;
+            }
+            main{
+                width: 80%;
+                height: 80vh;
+            }
+        }
+        @media only screen and (min-width: 1024px){
+            .center{
+                width: 100%;
+                display: flex;
+                flex-direction: row
+            }
+            .together{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+            nav, aside{
+                width: 20%;
+                height: 80vh;
+            }
+            main{
+                width: 80%;
+                height: 80vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="border">HEADER</header>
+    <div class="center">
+        <nav class="border">NAV</nav>
+        <div class="together">
+            <main class="border">MAIN</main>
+            <aside class="border">ASIDE</aside>
+        </div>
+    </div>
+    <footer class="border">FOOTER</footer>
+</body>
+</html>

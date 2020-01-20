@@ -1,0 +1,73 @@
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+        }
+        header {
+            height: 15%;
+            background-color: red;
+        }
+        nav {
+            height: 15%;
+            background-color: blue;
+        }
+        main {
+            height: 40%;
+            background-color: green;
+        }
+        aside {
+            height: 15%;
+            background-color: yellow;
+        }
+        footer {
+            height: 15%;
+            background-color: purple;
+        }
+        @media screen and (min-width: 760px){
+            header {
+                height: 20%;
+            }
+            nav {
+                height: 15%;
+            }
+            main {
+                display: inline-block;
+                width: 70%;
+                height: 45%;
+
+            }
+            aside {
+                float: right;
+                width: 30%;
+                height: 45%;
+            }
+            footer {
+                height: 20%;
+            }
+        }    
+        @media screen and (min-width: 1024px) {
+            nav {
+                float: left;
+                width: 25%;
+                height: 60%;
+            }
+            main {
+                width: 50%;
+                height: 60%;
+            }
+            aside {
+                width: 25%;
+                height: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <nav>Nav</nav>
+    <main>Main</main>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flex</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body *:not(div) {
+      border: 1px solid blue;
+    }
+
+    body>*:not(div) {
+      height: 20vh;
+    }
+
+    body>div {
+      display: flex;
+      height: 60vh;
+      flex-direction: column;
+    }
+
+    div>* {
+      flex-grow: 1;
+    }
+
+    @media only screen and (min-width: 500px) {
+      body>div {
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>header</header>
+
+  <div>
+    <nav>nav</nav>
+    <main>main</main>
+    <aside>aside</aside>
+  </div>
+
+  <footer>footer</footer>
+</body>
+
+</html>

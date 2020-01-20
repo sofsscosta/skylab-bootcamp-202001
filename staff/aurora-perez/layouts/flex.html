@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <header>Header</header>
+    <div class="flex-container">
+        <nav>Nav</nav>
+        <main>Main</main>
+        <aside>Aside</aside>
+    </div>
+    <footer>Footer</footer>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    
+        header{
+            height: 10vh;
+            background-color: rgb(73, 73, 184);
+        }
+
+        nav{
+            background-color: rgb(43, 144, 226);
+            height: 5vh;
+        }
+
+        main{
+            height: 70vh;
+            background-color: rgb(170, 177, 207);
+        }
+
+        aside{
+            background-color: rgb(80, 135, 238);
+            height: 5vh;
+        }
+
+        footer{
+            background-color: rgb(53, 78, 219);
+            height: 10vh;
+        }
+
+        @media only screen and (min-width: 768px){
+            .flex-container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            header, nav, footer{
+                width: 100%;
+            }
+
+            nav {
+                height: 10vh;
+            }
+
+            main{
+                width: 80%;
+            }
+
+            aside{
+                width: 20%;
+            }
+            
+            main, aside {
+                height: 70vh;
+            }
+        }
+        @media only screen and (min-width: 1200px){
+
+           
+            nav, aside{
+                width: 15%;   
+            }
+
+            nav, aside, main{
+                height: 70vh;
+            }
+
+        
+            header{
+                background-color: rgb(73, 73, 184);
+                height: 15vh;
+            }
+
+            nav{
+                background-color: rgb(43, 144, 226);
+            }
+
+            main{
+                width: 70%;
+                background-color: rgb(170, 177, 207);
+            }
+
+            aside{
+                background-color: rgb(80, 135, 238);
+            }
+
+            footer{
+                background-color: rgb(53, 78, 219);
+                height: 15vh;
+            }
+    }
+
+        
+        </style>
+
+</body>
+</html>
