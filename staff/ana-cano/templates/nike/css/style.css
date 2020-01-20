@@ -27,22 +27,25 @@
 .articles {
   display: flex;
   flex-wrap: wrap;
-  height: 60vh;
-  margin: 0.3rem;
+  width: 100%;
 }
 .articles__items {
-  width: 48%;
-  heigth: 48%;
-  margin: 0 0.2rem;
+  width: calc(90%/2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
 }
 .articles__picture {
-  width: 90%;
-  height: 90%;
-  background: #DCDCDC;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 .articles__description {
-  width: 10%;
-  height: 10%;
+  height: auto;
+  align-items: center;
+  justify-items: center;
+  margin: 0 auto;
 }
 
 .selectedfilter {
@@ -68,7 +71,7 @@
 }
 
 .footer {
-  width: 100vw;
+  width: 100%;
   background-color: #000000;
 }
 
