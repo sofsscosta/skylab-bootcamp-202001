@@ -135,10 +135,9 @@
 }
 .results__contentimg {
   width: auto;
-  min-width: 200px;
 }
 .results__contentimg--img {
-  width: auto;
+  width: 100%;
 }
 .results__new {
   color: orange;
@@ -158,6 +157,48 @@
 }
 .results__price {
   margin-left: 1rem;
+}
+
+.footer {
+  background-color: black;
+}
+.footer__list {
+  list-style: none;
+  padding: 1rem;
+}
+.footer__option {
+  color: white;
+}
+.footer__help {
+  color: white;
+  padding: 1rem;
+}
+.footer__about {
+  color: white;
+  padding: 1rem;
+}
+.footer__social {
+  display: flex;
+  padding: 1rem;
+}
+.footer__social > div {
+  color: white;
+  margin-right: 1rem;
+}
+.footer__location {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.footer__location-icon {
+  color: white;
+}
+.footer__location-copyright {
+  color: white;
+}
+.footer__foot > div {
+  color: white;
+  padding: 1rem;
 }
 
 body {
