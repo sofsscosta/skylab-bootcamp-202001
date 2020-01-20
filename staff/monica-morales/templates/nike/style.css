@@ -16,6 +16,9 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 1.75rem;
+  position: sticky;
+  top: 0;
+  background-color: #FDFEFE;
 }
 .show-results__icon {
   margin-top: 2rem;
@@ -27,15 +30,14 @@ body {
   flex-wrap: wrap;
 }
 .products__article {
-  width: 45%;
+  width: calc(90%/2);
   height: 50%;
-  border: 1px solid #AEB6BF;
   flex-wrap: wrap;
   margin: 0.25rem;
 }
 .products__image {
   width: 100%;
-  height: 20vh;
+  height: 20%;
   margin: 0;
   background-color: #F8F9F9;
 }
