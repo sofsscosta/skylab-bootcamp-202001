@@ -1,4 +1,5 @@
-// 'use strict'
+'use strict'
+
 var a = [1, 2, 3, 4];
 var b = [5, 6, 7, 8];
 
@@ -10,4 +11,4 @@ function concat(arr1, arr2) {
     return arr1;
 }
 
-//arguments.length-2
+concat(a,b);
