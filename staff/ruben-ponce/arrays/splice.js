@@ -5,7 +5,6 @@ function splice() {
     var b = [];
     var count = 0;
     var step = 0
-    console.log(arguments);
     // debugger
     for (var i = 0; i < a.length+arguments.length-2; i++) {
         
