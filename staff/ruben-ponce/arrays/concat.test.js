@@ -1,14 +1,8 @@
 'use strict'
+var a = [1, 2, 3, 4];
+var b = [5, 6, 7, 8];
 
-// console.log('*-*-*-*- Original Array b: ' + b +' -*-*-*-*');
-// console.log('----------');
-// console.log("DEMO concat(a, b)");
-// console.log('it ' + concat(a, b));
-// console.log('----------');
+var c = concat(a,b);
 
-// var c = a;
-// var d = concat(a,b)
-// console.log(a.length);
-// console.log(c.length+b.length)
-
-// console.assert(d.length === (a.length+b.length), 'c length should be a a+b length');
+console.log('TEST concat(a)');
+console.assert(c === a,'The original array length should be +b.length');
