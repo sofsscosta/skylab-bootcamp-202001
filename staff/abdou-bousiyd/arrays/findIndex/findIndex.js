@@ -1,6 +1,9 @@
 
-function findIndex(arr, collback) {
-    for(var i = 0; i < arr.length; i++) {
-        if(callback(array[i])) return array[i]
+function findIndex(nums, callback) {
+
+
+    for(var i = 0; i < nums.length; i++) {
+        if (callback(nums[i])) return i;
     }
+    return -1
 }
