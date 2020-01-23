@@ -12,6 +12,9 @@ pass the test implemented by the provided function.
 */
 
 function filter(array, callback) {
+    if(!(array instanceof Array)) throw new TypeError(array + ' is not an Array, ' + (typeof array) + ' given');
+    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function, ' + (typeof callback) + ' given');
+
     var response = [];
 
     for (var x = 0; x < array.length; x++) {
@@ -19,6 +22,6 @@ function filter(array, callback) {
             response[response.length] = array[x];
         }
     }
-
+    
     return response;
 }
