@@ -1,0 +1,177 @@
+head{
+    display: inline-block;
+}
+#timer{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: aqua;
+    text-align: center;
+    position: relative;
+    bottom: 85px;
+    left: 40px;
+    padding:10px;
+}
+#content{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+.letter{
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    border: 2px solid rgb(4, 103, 231);
+    text-align: center;
+    height: 22px;
+    width: 22px;
+    padding: 18px;
+    margin: 10px;
+    text-transform: uppercase;
+}
+.white{
+    color: white;
+}
+.rightBackground{
+    background-color: rgb(10, 182, 10);
+}
+.wrongBackground{
+    background-color: rgb(235, 11, 11);
+}
+.definicion{
+    width: 100%;
+    height: 85px;
+    padding: 30px;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+.mayus{
+    text-transform: uppercase;
+}
+.currentQuestion{
+    border: 5px solid rgb(4, 103, 231);
+}
+.blueBackground{
+    background-color: rgb(48, 48, 250);
+    border: 3px solid rgb(17, 17, 204);
+}
+.redBackground{
+    background-color:  rgb(250, 57, 57);
+    border: 3px solid firebrick;
+}
+.lightBlueBackground{
+    background-color: #04c9fa;
+    border: 3px solid rgb(1, 106, 155);
+}
+.yellowBackground{
+    background-color: rgb(243, 230, 45);
+}
+.pasapalabra{
+    border: 3px solid rgb(156, 156, 3);
+    margin: 0px 3px;
+    height: 28px;
+    right: 200px;
+}
+#barraRespuesta{
+    position: relative;
+    width: 150px;
+    border: 3px solid blue;
+    height: 20px;
+    margin-left: 50px;
+}
+#nameBar{
+    position: relative;
+    width: 150px;
+    border: 3px solid blue;
+    height: 20px;
+}
+.respuesta{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top:50px;
+    left: 150px;
+}
+.jugar{
+    font-size: 25px;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    top: -5px;
+}
+.stop{
+    height: 28px;
+}
+.ok{
+    height: 28px;
+    position: relative;
+}
+.hide{
+    display: none;
+}
+.points{
+    position: relative;
+    bottom: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 160px;
+    width: 300px;
+    font-size: 14px;
+}
+.goodGame{
+    background-color: rgb(10, 182, 10);
+    border: 3px solid rgb(0, 58, 0);
+    color: white;
+}
+.poorGame{
+    background-color:  rgb(250, 57, 57);
+    border: 3px solid firebrick;
+    color: white;
+}
+.regularGame{
+    background-color: rgb(243, 230, 45);
+    border: 3px solid rgb(150, 150, 2);
+}
+.perfectGame{
+    background-color: rgb(132, 3, 207);
+    border: 3px solid rgb(47, 1, 78);
+}
+#numberPoints{
+    font-weight: bold;
+    font-size: 25px;
+}
+#theForm{
+    display: flex;
+    flex-direction: row;
+    right: 200px;
+    margin-right: 100px;
+}
+#theFormPlayer{
+    display: flex;
+    flex-direction: row;
+}
+.botones{
+    display: flex;
+    flex-direction: column;
+}
+#ranking{
+    top: 10px;
+}
+.rankTable{
+    position: relative;
+    bottom: 15px;
+    box-sizing: border-box;
+    height: 160px;
+    width: 200px;
+    font-size: 18px;
+    margin-left: 50px;
+}

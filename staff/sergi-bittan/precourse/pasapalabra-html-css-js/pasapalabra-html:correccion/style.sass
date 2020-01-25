@@ -1,0 +1,409 @@
+//variables
+$bx-shadow: 6px 6px 0px black
+$bd-color: 2px solid white
+
+
+    
+body 
+    background: linear-gradient( #317c4a 10%,#249ae4 100%)
+
+
+.title 
+    width: 100%
+    text-align: center
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    font-size: 70px 
+    -webkit-text-stroke:  2px white
+      
+h1
+    text-shadow: 10px 10px 0px black
+
+
+
+//pantalla1
+.pantalla-pedirNombre
+    background: (#2b2e30 10%,#61859c 100%)
+    height: 500px
+    p 
+        color:  #e431cc
+        font-size: 40px
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        text-align: center
+        -webkit-text-stroke:  2px black
+    .nombre
+        position: relative
+        left: 650px
+        height: 35px
+        width: 150px
+        font-size : 25px
+        background-color:  #e58fda
+        padding: 0px 00px 0px 20px
+        border: 3px solid black
+        box-shadow: $bx-shadow
+    .boton-nombre
+        position: relative
+        left: 700px
+        width: 45px
+        height: 35px
+        background-color: #741f68 
+        text-decoration: underline
+        font-weight: 600
+        color: white
+        border-radius: 10%
+        border:  3px solid black
+        box-shadow: $bx-shadow
+    .boton-nombre:hover
+        color: #2e383d
+        background-color: #d36c6c 
+
+
+//pantalla2
+.pantalla-bienvenida
+    background: (#2b2e30 10%,#61859c 100%)
+    width: 90%
+    h3, h4
+        color: #fb0612
+        font-size: 40px
+        margin: 20px 40px
+        -webkit-text-stroke:  1px white
+    h1 
+        position: relative
+        top: 100px
+        color: #fb0612
+        font-size: 40px
+        margin: 20px 40px
+        -webkit-text-stroke:  1px white
+
+
+    .bienvenida 
+        position: relative
+        left: 200px
+        font-size: 50px
+
+    .username 
+        position: relative
+        left: 500px
+        top: 0px
+        color: #fffb02
+        font-size: 70px
+        margin: 20px 40px
+        -webkit-text-stroke:  1px white
+
+
+    p 
+        color: black// #e256cf
+        font-size: 30px
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        margin: 20px 40px
+        width: 50%
+
+    .instrucciones  
+        border: 4px solid black
+        border-radius: 10px
+        padding: 20px
+        color: white
+        -webkit-text-stroke:  1px black
+        background-color: #6e3a67
+
+    .boton-nombre2
+        position: relative
+        left: 650px
+        height: 35px
+        width: 150px
+        bottom: 70px
+        font-size : 25px
+        color: white
+        background-color:   #741f68
+        border: 3px solid black
+        box-shadow: $bx-shadow
+        border-radius: 20px
+        
+    .boton-nombre2:hover
+        color: #2e383d
+        background-color: #d36c6c 
+
+
+//pantalla3
+.pantalla-juego
+    background: (#2b2e30 10%,#61859c 100%)
+    width: 50%
+
+    
+    .start-timer
+        position: absolute
+        list-style-type: none
+        left: 40%
+        top: 35%
+
+    .contador
+        p
+            background: black
+            float: left
+            color: white
+            font-size: 50px
+            
+
+    .fecha-reloj
+        position: relative
+        bottom: 100px
+        height: 80px
+        .fecha  
+            position: relative
+            left: 1050px      
+            width: 50%
+            height: 30px
+            color: black
+            font-size: 15px
+        p
+            float: left
+            margin: 5px 0px
+        .reloj
+            position: relative
+            left: 1255px
+            width: 20%
+            height: 30px
+            color: black
+            margin: 5px 5px
+        p
+            float: left
+            margin: 1px 5px
+            font-size: 20px
+        .segundos
+            font-size: 12px
+
+    .caja-padre
+        width: 600px
+        height: 600px
+        background-color: #2e3235 #4f738a
+        border-radius: 300px
+        position: relative
+        left: 150px
+        margin-bottom: 50px
+
+    %cercle-shared
+        width: 60px
+        height: 60px
+        background-color: white
+        border: 1.5px solid black
+        box-shadow: 3px 3px 0px black
+        border-radius: 30px
+        text-align: center
+        color: black
+        font-size: verdana
+        list-style-type: none
+        line-height: 60px
+        position: absolute
+
+    //variables
+    $bx-shadow: 6px 6px 0px black
+    $bd-color: 2px solid white
+
+
+    .a 
+        @extend %cercle-shared
+        left: 260px
+
+    .b
+        @extend %cercle-shared
+        left: 260px + 61px
+        top: 5px
+    .c 
+        @extend %cercle-shared
+        left: 381px
+        top: 23px
+    .d 
+        @extend %cercle-shared
+        left: 435px
+        top: 56px
+    .e 
+        @extend %cercle-shared
+        left: 480px
+        top: 100px
+            
+    .f 
+        @extend %cercle-shared
+        left: 513px
+        top: 154px
+    .g 
+        @extend %cercle-shared
+        left: 532px
+        top: 213px
+    .h 
+        @extend %cercle-shared
+        left: 538px
+        top: 275px
+    .i 
+        @extend %cercle-shared
+        left: 530px
+        top: 337px
+    .j 
+        @extend %cercle-shared
+        left: 508px 
+        top: 396px
+    .k 
+        @extend %cercle-shared
+        left: 471px 
+        top: 446px
+    .l 
+        @extend %cercle-shared
+        left: 424px 
+        top: 488px
+    .m 
+        @extend %cercle-shared
+        left: 369px
+        top: 518px
+    .n 
+        @extend %cercle-shared
+        left: 309px
+        top: 536px
+    .ñ 
+        @extend %cercle-shared
+        left: 247px 
+        top: 538px
+    .o 
+        @extend %cercle-shared
+        left: 186px 
+        top: 527px
+    .p 
+        @extend %cercle-shared
+        left: 130px 
+        top: 500px
+    .q 
+        @extend %cercle-shared
+        left: 81px 
+        top: 462px
+    .r 
+        @extend %cercle-shared
+        left: 40px 
+        top: 415px
+    .s 
+        @extend %cercle-shared  
+        left: 15px 
+        top: 358px
+    .t 
+        @extend %cercle-shared  
+        left: 2px 
+        top: 297px                                                                   
+    .u 
+        @extend %cercle-shared
+        left: 2px 
+        top: 234px
+    .v 
+        @extend %cercle-shared 
+        left: 18px 
+        top: 172px
+    .w 
+        @extend %cercle-shared
+        left: 48px 
+        top: 117px
+    .x 
+        @extend %cercle-shared
+        left: 89px
+        top: 70px
+    .y 
+        @extend %cercle-shared 
+        left: 141px 
+        top:  35px
+        
+    .z 
+        @extend %cercle-shared 
+        left: 198px
+        top: 9px
+
+        
+
+    .pregunta
+        position: absolute
+        right: 40px
+        top: 370px
+        width: 500px
+        height: 100px
+        background-color: black
+        color: #ffffff
+        font-family: Verdana, Geneva, Tahoma, sans-serif
+        font-size: 20px
+        border: $bd-color
+        box-shadow: $bx-shadow
+        padding: 20px 20px 10px 20px
+        text-align: center
+        
+    .respuesta
+        position: absolute
+        width: 250px
+        height: 40px
+        right: 325px
+        top: 560px
+        border: $bd-color
+        background-color:  #d8d661
+        border: 3px solid black
+        font-size: 35px
+        text-align: center
+        color: black
+        box-shadow: $bx-shadow
+
+.pantalla-final
+    background: (#2b2e30 10%,#61859c 100%)
+    height: 600px
+    .ranking-final
+        color: red
+        font-size: 60px
+        font-family: Verdana, Geneva, Tahoma, sans-serif
+        text-align: center
+        background-color:  yellow
+        -webkit-text-stroke:  1px black
+    .puntuacion-final
+        color: black
+        font-size: 30px
+        font-family: Verdana, Geneva, Tahoma, sans-serif
+        text-align: center
+    .volver
+        color: red
+        font-size : 30px
+        font-family: verdana
+        text-align: center
+         
+
+    .botonvolver 
+        position: relative
+        left: 640px
+        height: 30px
+        width: 50px
+        background-color: #741f68 
+        text-decoration: underline
+        font-weight: 600
+        color: white
+        border-radius: 10%
+        border:  3px solid black
+        box-shadow: $bx-shadow
+    .botonvolver:hover
+        color: #2e383d
+        background-color: #d36c6c 
+
+    .botonvolver2
+        position: relative
+        left: 660px
+        height: 30px
+        width: 50px
+        background-color: #741f68 
+        text-decoration: underline
+        font-weight: 600
+        color: white
+        border-radius: 10%
+        border:  3px solid black
+        box-shadow: $bx-shadow
+    .botonvolver2:hover
+        color: #2e383d
+        background-color: #d36c6c 
+
+
+
+
+
+
+
+
+
+    
+
+    
+        

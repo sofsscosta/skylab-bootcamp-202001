@@ -1,0 +1,45 @@
+.container{
+    display:grid;
+    margin: auto;
+    width: 30%;
+    height: 600px;
+    grid-template: repeat(7, 1fr) / repeat(4, 1fr);
+    text-align: center;
+    font-family: Helvetica;
+}
+
+.box{
+    border: 1px solid black;
+    background-color: #EFF7FC;
+    font-size: 35px;
+}
+
+.screen{
+    grid-area: 1 / 1 / span 2 / span 4;
+    background-color: #1E3340;
+    color: white;
+    font-size: 60px;
+    text-align: right;
+}
+
+.ac{
+    grid-area: 3 / 1 / 4 / span 2;
+    font-size: 35px;
+}
+
+.cero{
+    grid-area: 7 / 1 / 8 / span 2;
+}
+
+.ac:hover, .delete:hover, .siete:hover, .ocho:hover, .nueve:hover, .cuatro:hover, .cinco:hover, .seis:hover, .siete:hover, .uno:hover, .dos:hover, .tres:hover, .cero:hover, .coma:hover{
+    background-color: #8ABFBC;
+}
+
+.division, .multiplicar, .resta, .suma, .igual{
+    background-color: #FF8F19;
+    color: white;
+}
+
+.division:hover, .multiplicar:hover, .resta:hover, .suma:hover, .igual:hover{
+    background-color: #F9AA57;
+}

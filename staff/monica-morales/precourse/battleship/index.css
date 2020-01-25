@@ -1,0 +1,93 @@
+body {
+    /*display: grid;*/
+    text-align: center;
+    margin: 0;
+}
+
+/*.grid {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;~
+    grid-gap: 1rem 1rem;
+    grid-template-areas: 
+    ". title . "
+    ". tablero score"
+    ". barcos score";
+    height: 900px;
+    max-width: 1920px; 
+}*/
+.screen {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    z-index: -1;
+}
+.ship_1 {
+    width: 60px;
+    height: 60px;
+    margin-right: 845px;
+    position: relative;
+    margin-top: 36px;
+}
+
+h1 {
+    color: rgb(239, 248, 248);
+    font-size: 80px;
+    font-weight: bolder;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    margin-top: 20px;
+    text-shadow: 5px 4px rgb(8, 95, 209);
+    position: relative;
+    z-index: 1;
+    
+}
+.number {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255,0,0,0);
+    color:  rgb(26, 25, 25);
+    width: 30px;
+    height: 10px;
+    line-height:0;
+    display: inline-block;
+}
+
+.letter {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255,0,0,0);
+    color:  rgb(26, 25, 25);
+    width: 20px;
+    display: inline-block;
+    vertical-align: super;    
+}
+.row {
+    margin: 0px, 0px, 0px, 0px;
+    font-size: 20px;
+    position: relative;
+}
+.cell {
+    margin: 0px, 0px, 0px, 0px;
+    height: 30px;
+    width: 30px;
+    border-color: rgb(239, 248, 248);
+    background-color: rgb(130, 192, 243);
+    border-width: 1px;
+    border-style: solid;
+    display: inline-block;
+    position: relative;
+}
+.jugador1 {
+    display: inline-block;
+    margin-right: 90px;
+    margin-left: 40px;
+}
+.jugador2 {
+    display: inline-block;
+    margin-right: 90px;
+    margin-right: 90px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <h1 class="title blueBackground white">PASAPALABRA</h1>
+        <h2 id="timer"></h2>
+        <link rel="stylesheet" type="text/css" href="./index.css">
+    </head>
+    <script  src="./index.js"></script>
+    <body>
+        <div id="content">
+            <div id="letters">
+                <b class="letter yellowBackground">A</b>
+                <b class="letter yellowBackground">B</b>
+                <b class="letter yellowBackground">C</b>
+                <b class="letter yellowBackground">D</b>
+                <b class="letter yellowBackground">E</b>
+                <b class="letter yellowBackground">F</b>
+                <b class="letter yellowBackground">G</b>
+                <b class="letter yellowBackground">H</b>
+                <b class="letter yellowBackground">I</b>
+                <b class="letter yellowBackground">J</b>
+                <b class="letter yellowBackground">K</b>
+                <b class="letter yellowBackground">L</b>
+                <b class="letter yellowBackground">M</b>
+                <b class="letter yellowBackground">N</b>
+                <b class="letter yellowBackground">Ñ</b>
+                <b class="letter yellowBackground">O</b>
+                <b class="letter yellowBackground">P</b>
+                <b class="letter yellowBackground">Q</b>
+                <b class="letter yellowBackground">R</b>
+                <b class="letter yellowBackground">S</b>
+                <b class="letter yellowBackground">T</b>
+                <b class="letter yellowBackground">u</b>
+                <b class="letter yellowBackground">V</b>
+                <b class="letter yellowBackground">W</b>
+                <b class="letter yellowBackground">X</b>
+                <b class="letter yellowBackground">Y</b>
+                <b class="letter yellowBackground">Z</b>
+            </div>
+            <div class="definicion blueBackground white">
+                <p id="def"></p>
+            </div>
+            <div class="respuesta">
+                <div class="botones">
+                    <button id="playGame" class="jugar white lightBlueBackground hide mayus"  onclick="startGame()">&#x25b6 JUGAR</button>
+                    <button id="stop" class="jugar white hide redBackground mayus"  onclick="stopGame()">&#x23f9 STOP</button>
+                    <button id="ranking" class="jugar white hide lightBlueBackground mayus"  onclick="showRanking()">RANKING</button>
+                    </div>
+                <form id="theForm">
+                    <input id="barraRespuesta" class="hide" type="text" name="answer" placeholder="Respuesta..." required>
+                    <input id ="okAnswer" class="ok blueBackground white mayus hide" type="submit" value="Ok" onclick="checkAnswer(event, theForm.answer.value)">
+                    <button id="pasapalabra" class="pasapalabra yellowBackground mayus hide"  value="pasapalabra" onclick="checkAnswer(event, this.value)">Pasapalabra</button>
+                </form>
+                <form id="theFormPlayer">
+                    <input id="nameBar" type="text" name="answer" placeholder="Nombre del jugador..." required>
+                    <input id="okName" class="ok blueBackground white mayus" type="submit" value="Ok" onclick="playerGame(event, theFormPlayer.answer.value)">
+                </form>
+                <div id="scoreTable" class="points">
+                    <p id="numberRight"></p>
+                    <p id="numberWrong"></p>
+                    <p id="numberUnanswered"></p>
+                    <p id="numberPoints"></p>
+                </div>
+                <div id="rank" class="rankTable hide blueBackground white">
+                    <ol>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+        </div>
+        </div>
+    </body>
+</html>

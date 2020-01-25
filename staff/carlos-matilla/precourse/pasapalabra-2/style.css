@@ -1,0 +1,324 @@
+@font-face {
+    font-family: "KeedySansReg";
+    src: url("KeedySansReg.woff");
+}
+  
+@keyframes aparecer {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: radial-gradient(circle, white 60%, rgb(164, 226, 247));
+}
+
+.pasapalabra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vh;
+    min-height: 100vh;
+}
+
+.rosco{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letras{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: whitesmoke;
+    background-color: rgb(0, 174, 255);
+    animation-name: aparecer;
+    animation-duration: 2s
+    
+}
+
+.contenido{
+    width: 500px;
+    height: 500px;
+    /*width: 350px;
+    height: 350px;*/
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #848484;
+}
+
+.preguntas{
+    display: none;
+}
+
+.bienvenido{
+    margin:110px 0 0 0;
+    animation-name: aparecer;
+    animation-duration: 4s
+}
+
+.titulo{
+    margin: 0;
+    font-family: 'KeedySansReg', 'Molle';
+    font-size: 75px;
+    color: #005780;
+    animation-name: aparecer;
+    animation-duration: 4s
+}
+
+.cajaNombre{
+    width: 190px;
+    border-radius: 10px;
+    outline: none;
+    padding: 5px 20px;
+    margin: 60px 60px 30px 60px;
+    border: 1px solid #848484;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #848484; 
+    animation-name: aparecer;
+    animation-duration: 8s
+}
+
+.btnEmpezar{
+    color: rgb(0, 174, 255);;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    width: 130px;
+    border:1px solid rgb(0, 174, 255);
+    animation-name: aparecer;
+    animation-duration: 8s
+}
+
+.btnEmpezar:hover {
+    background-color: rgb(0, 174, 255);;
+    color: white;
+}
+   
+.enunciado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 150px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #848484;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.p-enunciado{
+    margin: 0;
+}
+
+.respuesta{
+    width: 190px;
+    border-radius: 10px;
+    outline: none;
+    padding: 5px 20px;
+    margin: 40px 60px 20px 60px;
+    border: 1px solid #848484;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #848484;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.btn1{
+    display: inline-flex;
+    justify-content: center;
+    width: 350px;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.btn2{
+    display: inline-flex;
+    justify-content: center;
+    width: 350px;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.btn1Comprobar, .btn1Pasapalabra{
+    color: #848484;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+.btn1Comprobar{
+    width: 130px;
+    margin-right: 5px;
+    border:1px solid #848484;
+}
+
+.btn1Pasapalabra{
+    width: 130px;
+    margin-left: 5px;
+    border:1px solid rgb(0, 174, 255);;
+}
+
+.btn1Comprobar:hover {
+    background-color: #848484;
+    color: white;
+}
+
+.btn1Pasapalabra:hover {
+    background-color: rgb(0, 174, 255);;
+    color: white;
+}
+
+.btn2Replay, .btn2Ranking{
+    color: #848484;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+
+}
+
+.btn2Replay{
+    width: 130px;
+    margin-right: 5px;
+    border:1px solid #848484;
+}
+
+
+
+.btn2Ranking{
+    width: 130px;
+    margin-left: 5px;
+    border:1px solid rgb(0, 174, 255);
+}
+
+.btn2Ranking:hover {
+    background-color: rgb(0, 174, 255);;
+    color: white;
+}
+
+.btn2Replay:hover {
+    background-color: #848484;
+    color: white;
+}
+
+.fin{
+    display: none;
+}
+
+.finjuego{
+    margin-top: 100px;
+    margin-bottom: 30px;
+    font-family: 'KeedySansReg', 'Molle';
+    font-size: 65px;
+    color: #005780;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.puntuacion{
+    font-size: 30px;
+    margin-left: -25px;
+    margin-bottom: 50px;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.puntuacion p{
+    margin: 15px;
+}
+
+.ranking{
+    display: none;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.ranking p{
+    margin-top: 100px;
+    margin-bottom: 30px;
+    font-family: 'KeedySansReg', 'Molle';
+    font-size: 65px;
+    color: #005780;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+.rank{
+    font-size: 30px;
+    margin-bottom: 50px;
+    animation-name: aparecer;
+    animation-duration: 2s
+}
+
+
+.contadores{
+    position: absolute;
+    bottom: 70px;
+    left: 70px;
+    width: 150px;
+    height: 150px;
+}
+
+.tiempo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    color: whitesmoke;
+    background-color: rgb(0, 174, 255);;
+    /*box-shadow: 0 0 20px #848484;*/
+    border: 1px solid white;
+}
+
+.aciertos{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top:0;
+    right: 20px;
+    border-radius: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: whitesmoke;
+    background-color: rgb(0, 174, 255);;
+   /* box-shadow: 0 0 20px #848484;*/
+    border: 1px solid white;
+}

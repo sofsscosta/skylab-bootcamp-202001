@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./Index.css" type="text/css" rel="stylesheet">
+    <script src="Index.js" type="text/javascript"></script>
+    <title>Pasapalabra</title>
+</head>
+<body>
+    <div class="grid">
+
+      <section class="score_container">
+        <div>       
+            <input type="button" class="fallos" id="fallos" value="">
+            <input type="button" class="aciertos" id="aciertos" value="">
+            <input type="button" class="segundos" id="segundos" value="150">
+        </div>
+      </section>
+
+      <section class="title" id="title">
+        <p>Pasapalabra</p>
+      </section>
+
+      <section class="rosco_container">
+        <div class="rosco" id="rosco">
+            <button class="letter" id="0">A</button>
+            <button class="letter" id="1">B</button> 
+            <button class="letter" id="2">C</button>
+            <button class="letter" id="3">D</button>
+            <button class="letter" id="4">E</button>
+            <button class="letter" id="5">F</button>
+            <button class="letter" id="6">G</button>
+            <button class="letter" id="7">H</button>
+            <button class="letter" id="8">I</button>
+            <button class="letter" id="9">J</button> 
+            <button class="letter" id="10">K</button> 
+            <button class="letter" id="11">L</button>
+            <button class="letter" id="12">M</button>
+            <button class="letter" id="13">N</button>
+            <button class="letter" id="14">Ñ</button>
+            <button class="letter" id="15">O</button>
+            <button class="letter" id="16">P</button>
+            <button class="letter" id="17">Q</button>
+            <button class="letter" id="18">R</button> 
+            <button class="letter" id="19">S</button>
+            <button class="letter" id="20">T</button>
+            <button class="letter" id="21">U</button>
+            <button class="letter" id="22">V</button>
+            <button class="letter" id="23">W</button>
+            <button class="letter" id="24">X</button>
+            <button class="letter" id="25">Y</button> 
+            <button class="letter" id="26">Z</button> 
+        </div>
+      </section>
+
+      <section class="welcome_container">
+        <div class="reglas" id="reglas">
+            <h2>BIENVENIDO AL PASAPALABRA DE SKYLAB CODERS ACADEMY!<br></h2>
+            <p>Las bases del juego son muy sencillas:<br><br>Apareceran unas definiciones en pantalla,
+            deberas escribir la respuesta correcta y pulsar la opcion de Enviar, si no sabes la respuesta puedes pulsar en la opción de Pasapalabra
+            y dejar esa definción para la siguiente ronda de preguntas.<br><br>Tienes que acertar todas las respuestas antes de que se acabe el tiempo.        
+            </p>
+        </div>
+      </section>
+
+      <section class="usuario">
+        <div>
+            <form id="usuario">
+                    Usuario:<br>
+            <input type="text" id="user" autocomplete="off" placeholder="Introduce nombre de usuario">
+            </form>
+        </div>
+    </section>
+
+    <section class="jugar" id="go">
+      <div>
+          <input class="visible" type="submit" id="jugar" value="Jugar">
+      </div>
+    </section>
+
+    <section class="pregunta_container">
+      <div>
+          <form class="pregunta" id="pregunta">
+              <textarea class="enunciado" name="enunciado" id="enunciado" cols="30" rows="10" readonly="readonly"></textarea>
+              <input type="text" class="respuesta" name="respuesta" id="respuesta" autocomplete="off" placeholder="Introduce tu respuesta" value="">
+              <input type="button" class="enviar" name="enviar" id="enviar" value="Enviar">
+              <input type="button" class="pasapalabra" name="pasapalabra" id="pasapalabra" value="Pasapalabra">
+          </form>
+      </div>
+    </section>
+        
+      <div id="modal">
+          <div  class="modal-content"> 
+              <p id="texto">""</p>
+          </div>
+      </div>
+
+      <!--RANKING-->
+      <div class=ranking_container>
+        <div class="ranking" id="resultado">
+            <span class="heading">Ranking jugadores</span>
+            <p class="centrar">¿Estas entre los 5 mejores???</p>
+            <hr>
+            <br>
+        
+        <div class="side">
+            <div id="jugador1">Jugador 1</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div>
+                <span class="fa fa-star estrella"></span>
+                <span class="fa fa-star estrella"></span>
+                <span class="fa fa-star estrella"></span>
+                <span class="fa fa-star estrella"></span>
+                <span class="fa fa-star estrella"></span>
+              </div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="puntuacion1"></div>
+          </div>
+          <div class="side">
+            <div id="jugador2">Jugador 2</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div>
+                  <span class="fa fa-star estrella"></span>
+                  <span class="fa fa-star estrella"></span>
+                  <span class="fa fa-star estrella"></span>
+                  <span class="fa fa-star estrella"></span>
+              </div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="puntuacion2"></div>
+          </div>
+          <div class="side">
+            <div id="jugador3">Jugador 3</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div>
+                  <span class="fa fa-star estrella"></span>
+                  <span class="fa fa-star estrella"></span>
+                  <span class="fa fa-star estrella"></span>
+              </div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="puntuacion3"></div>
+          </div>
+          <div class="side">
+            <div id="jugador4">Jugador 4</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div>
+                  <span class="fa fa-star estrella"></span>
+                  <span class="fa fa-star estrella"></span>
+              </div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="puntuacion4"></div>
+          </div>
+          <div class="side">
+            <div id="jugador5">Jugador 5</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div>
+                  <span class="fa fa-star estrella"></span>
+              </div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="puntuacion5"></div>
+          </div>
+        </div>
+        </div>
+
+        <!--SIN TIEMPO-->  
+        <div class="finPartida" id="gameOver">
+            <h1>GAME OVER</h1>
+            <p>Se ha acabado el tiempo</p>
+            <img src="gameOver.png" width="300" height="300">
+        </div>
+        
+        <!--BOTE-->
+        <div class="finPartida" id="win">
+          <h1>ENHORABUENA!!!</h1>
+          <p>Has ganado el bote!!!</p>
+          <img src="copaGanador.png" width="300" height="300">
+        </div>
+
+       <!--SONIDOS--> 
+      <div> 
+        <audio src="sonido_fallo.wav" id="sound_fallo"></audio>
+        <audio src="sonido_acierto.wav" id="sound_acierto"></audio>
+      </div>
+   </div>
+</body> 
+</html>

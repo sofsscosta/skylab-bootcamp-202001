@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    
+<div class="calculator">
+    <div class="grid">
+        <div id="pantalla" class="pantalla">
+            <div id="arriba" class="arriba"></div>
+            <div id="abajo" class="abajo"></div>
+        </div>
+        <button id="AC" class="doble AC" onclick="reiniciar()">AC</button>
+        <button id="DEL" onclick="del()">DEL</button>
+        <button id="/" onclick="calc('/')">÷</button>
+        <button id="7" onclick="num('7')">7</button>
+        <button id="8" onclick="num('8')">8</button>
+        <button id="9" onclick="num('9')">9</button>
+        <button id="*" onclick="calc('*')">*</button>
+        <button id="4" onclick="num('4')">4</button>
+        <button id="5" onclick="num('5')">5</button>
+        <button id="6" onclick="num('6')">6</button>
+        <button id="+" onclick="calc('+')">+</button>
+        <button id="1" onclick="num('1')">1</button>
+        <button id="2" onclick="num('2')">2</button>
+        <button id="3" onclick="num('3')">3</button>
+        <button id="-" onclick="calc('-')">-</button>
+        <button id="0" class="doble" onclick="num('0')">0</button>
+        <button id="," onclick="num('.')">,</button>
+        <button id="=" onclick="igual()">=</button>
+    </div>
+</div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

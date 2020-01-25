@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculadora html</title>
+    <link rel="stylesheet" href="calcCSS.css">
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" class="calculadora_viewer" id="display2"> <!--display para ver todos los numeros i operaciones-->
+        <input type="text" class="calculadora_viewer" id="display"/>  <!--pantalla donde se visualizaran los numeros introducidos i resultado-->
+        <div class="botones">
+            <!--definimos todos los botones i los repartimos en classes para poder atacar desde css-->                    
+            <button type="button" class="clear" id="reset" value="AC">AC</button>   
+            <button type="button" class="operadores_delete" id="borrar" value="del">&#8592</button>   
+            <button type="button" class="operadores" id="dividir" value="/">&divide</button>   
+            
+            <button type="button"class="numeros" id="nueve" value="9">9</button>
+            <button type="button"class="numeros" id="ocho" value="8">8</button>   
+            <button type="button"class="numeros" id="siete" value="7">7</button>   
+            <button type="button" class="operadores" id="multiplicar" value="*">&times</button>   
+            
+            <button type="button"class="numeros" id="seis" value="6">6</button>   
+            <button type="button"class="numeros" id="cinco" value="5">5</button>   
+            <button type="button"class="numeros" id="cuatro" value="4">4</button>   
+            <button type="button" class="operadores" id="restar" value="-">-</button>   
+            
+            <button type="button"class="numeros" id="tres" value="3">3</button>   
+            <button type="button"class="numeros" id="dos" value="2">2</button>   
+            <button type="button"class="numeros" id="uno" value="1">1</button>   
+            <button type="button" class="operadores" id="sumar" value="+">+</button>   
+            
+            <button type="button"class="numero0" id="zero" value="0">0</button>   
+            <button type="button"class="numeros" id="decimal" value=".">.</button>   
+            <button type="button" class="equal" id="resultado" value="=">=</button>   
+            
+        </div>
+        
+    </div>
+    <script src="calcJS.js"></script>
+</body>
+</html>

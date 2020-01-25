@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container{
+    display: flex;
+    background-color: #0099fe;
+    margin: 15px auto;
+    flex-direction: column;
+    width: 650px;
+    height: 600px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.titulo{
+    width: 100%;
+}
+
+.titulo h1,h3{
+    font-weight: 200;
+    text-align: center;
+    margin: 10px;
+}
+
+.casilla{
+    border: 1px solid black;
+    border-radius: 50%;
+    
+}
+
+.reset{
+    text-align: center;
+}
+.btn-reset{
+    padding: 10px;
+    width: 200px;
+    margin: 15px;
+    background-color: transparent;
+    border: 1px solid rgb(255, 101, 101);
+    font-size: 16px;
+    color:rgb(255, 101, 101);
+}
+.btn-reset:hover{
+    background-color: rgb(255, 101, 101);
+    color: white;
+} 
+

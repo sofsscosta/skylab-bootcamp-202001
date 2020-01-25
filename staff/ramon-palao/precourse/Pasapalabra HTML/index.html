@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>PASAPALABRA</title>
+</head>
+<body>
+    <section class="main">
+        <section class="rosco">
+            <h1>PASAPALABRA</h1>
+            <div class="a" id="0">A</div>
+            <div class="b" id="1">B</div>
+            <div class="c" id="2">C</div>
+            <div class="d" id="3">D</div>
+            <div class="e" id="4">E</div>
+            <div class="f" id="5">F</div>
+            <div class="g" id="6">G</div>
+            <div class="h" id="7">H</div>
+            <div class="i" id="8">I</div>
+            <div class="j" id="9">J</div>
+            <div class="k" id="10">K</div>
+            <div class="l" id="11">L</div>
+            <div class="m" id="12">M</div>
+            <div class="n" id="13">N</div>
+            <div class="ñ" id="14">Ñ</div>
+            <div class="o" id="15">O</div>
+            <div class="p" id="16">P</div>
+            <div class="q" id="17">Q</div>
+            <div class="r" id="18">R</div>
+            <div class="s" id="19">S</div>
+            <div class="t" id="20">T</div>
+            <div class="u" id="21">U</div>
+            <div class="v" id="22">V</div>
+            <div class="w" id="23">W</div>
+            <div class="x" id="24">X</div>
+            <div class="y" id="25">Y</div>
+            <div class="z" id="26">Z</div>
+            <div class="time" id="time">240</div>
+            <div class="contador" id="contador">0</div> 
+        </section>
+        <section class="juego">
+            <div class="initial" id="initial">
+                <h2>BIENVENIDO AL JUEGO DE PASAPALABRA DE SKYLAB</h2><br/>
+                <form method="post" name="inicioJuego">
+                    <label for="username" class="enteruser">Introduce tu nombre:</label></br><br/>
+                    <input type="text" name="username" class="username" id="username" placeholder="Escribe tu nombre..." required></br><br/>
+                    <input type="button" class="botonEmpezar" id="botonEmpezar" value="EMPEZAR">
+                </form>
+            </div>
+            <div class="instructions" id="instructions">
+                <h3>INSTRUCCIONES <br/><br/>El juego consiste en responder todas las palabras del rosco intentando conseguir el máximo de aciertos posibles. <br/><br/>Es IMPORTANTE tener en cuenta que las palabras que escribas NO deben llevar tilde (aunque originalmente la palabra se acentue). <br/><br/>Si no estás seguro de alguna respuesta y prefieres pasar a la siguiente pregunta tan sólo debes escribir 'PASAPALABRA'. <br/><br/>Una vez finalices la primera ronda de preguntas se te preguntarán todas aquellas en las que hayas escrito 'PASAPALABRA'. <br/><br/>Puedes pasar palabra tantas veces como quieras. <br/><br/>Puedes terminar la partida en cualquier momento escribiendo 'END'. <br/><br/>Si el cronómetro llega a cero la partida se dará por finalizada. Intenta acabar antes de que el tiempo se agote. <br/><br/>Al finalizar cada partida se te mostrará el RANKING global de puntos.</h3>
+                <input type="button" class="botonStart" id="start" value="JUGAR">
+            </div>
+            <div class="game" id="game">
+                <form method="post" name="roscogame">
+                    <label for="question" class="questionText" id="questionText"></label><br/><br/>
+                    <input type="text" name = "question" class="answerText" id="answerText" placeholder="Escribe aquí tu respuesta"><br/><br/>
+                    <input type="button" class="botonVerify" id="botonVerify" value="OK">
+                </form>
+            </div>
+            <div class="end" id="end">
+                <h2 class="fin" id="fin">FIN DE LA PARTIDA</h2><br/><br/>
+                <h3 class="results">Enhorabuena <strong class="playername" id="playername"></strong><br/>Has completado el rosco con <strong id="playeraciertos"></strong> aciertos y <strong id="playerfallos"></strong> fallos.</h3><br/><br/>
+                <input type="button" class="botonFin" id="botonFin" value="VER RANKING">
+            </div>
+            <div class="ranking" id="ranking">
+                <h3 class="rankingtitle">RANKING:</h3><br/>
+                <h4 class="posicion" id="posicion"></h4>
+                <input type="button" class="botonReset" id="botonReset" value="JUGAR DE NUEVO">
+            </div>
+        </section>
+    </section>
+    
+    <footer>
+        <h6>Made with ♥ by R.Palao</h6>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

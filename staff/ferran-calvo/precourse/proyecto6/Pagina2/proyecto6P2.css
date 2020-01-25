@@ -1,0 +1,97 @@
+body, html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+#cabecera{
+    width: 100%;
+    background-color: black;
+    height: 4%;
+    display:block;
+    margin: 0;
+}
+.menu{
+    display: inline-block;
+    text-align:center;
+    margin:0;
+    width: 3.5%;
+    font-size: 10px;
+}
+.menu:hover{
+    background-color: dimgray;
+}
+.white{
+    color: white;
+}
+.gray{
+    background-color: rgb(223, 217, 217);
+}
+.sideBar{
+    width: 12%;
+    height: 100vh;
+    margin: 0;
+}
+.titulo{
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+    position: relative;
+    top: 3%;
+    left: 8%;
+}
+.link{
+    font-weight: 100;
+    font-size: 15px;
+    position: relative;
+    top: 3%;
+    left: 8%;
+}
+.content{
+    display: inline-block;
+    width: 1600px;
+}
+.heading{
+    display:flex;
+}
+.text{
+    display: inline-block;
+    width: 65%;
+    margin-left: 2%;
+}
+.ad{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 20px;
+    width: 25%;
+}
+.ad1{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 45%;
+    border: 1px solid black;
+    text-align: center;
+}
+.ad2{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 30%;
+    border: 1px solid black;
+    text-align: center;
+}
+.green{
+    color: rgb(6, 192, 146)
+}
+
+.upperContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

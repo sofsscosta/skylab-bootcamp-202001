@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pasapalabra</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+</head>
+
+<body>
+
+  <div class="pasapalabra">
+
+    <div class="rosco">
+      <div id="a" class="letras">A</div>
+      <div id="b" class="letras">B</div>
+      <div id="c" class="letras">C</div>
+      <div id="d" class="letras">D</div>
+      <div id="e" class="letras">E</div>
+      <div id="f" class="letras">F</div>
+      <div id="g" class="letras">G</div>
+      <div id="h" class="letras">H</div>
+      <div id="i" class="letras">I</div>
+      <div id="j" class="letras">J</div>
+      <div id="k" class="letras">K</div>
+      <div id="l" class="letras">L</div>
+      <div id="m" class="letras">M</div>
+      <div id="n" class="letras">N</div>
+      <div id="ñ" class="letras">Ñ</div>
+      <div id="o" class="letras">O</div>
+      <div id="p" class="letras">P</div>
+      <div id="q" class="letras">Q</div>
+      <div id="r" class="letras">R</div>
+      <div id="s" class="letras">S</div>
+      <div id="t" class="letras">T</div>
+      <div id="u" class="letras">U</div>
+      <div id="v" class="letras">V</div>
+      <div id="w" class="letras">W</div>
+      <div id="x" class="letras">X</div>
+      <div id="y" class="letras">Y</div>
+      <div id="z" class="letras">Z</div>
+
+      <div id="contenido" class="contenido" action="">
+
+        <div id="inicio" class="inicio">
+          <p class="bienvenido">Bienvenido al juego</p>
+          <h1 id="titulo" class="titulo">Pasapalabra</h1>
+          <input id="cajaNombre" class="cajaNombre"  type="text" name="nombre" autocomplete="off" placeholder="Introduzca su nombre" onclick="limpiar();"><br/>
+          <input class="btnEmpezar" type="button" value="Empezar" onclick="inicio();">
+        </div>
+
+      
+        <div id="preguntas" class="preguntas">
+          <div id="enunciado" class="enunciado">
+            <p id="p-enunciado" class="p-enunciado">eooo</p>
+          </div>
+          <input id="respuesta" class="respuesta" type="text" name="nombre" autocomplete="off" onkeypress="presIntro();"><br/>
+          <div id="btn1" class="btn1">
+            <input class="btn1Comprobar" type="button" value="Comprobar" onclick="tenerRespuesta()">
+            <input class="btn1Pasapalabra"  type="button" value="Pasapalabra" onclick="chequearRespuesta('p')">
+          </div>
+          <div id="btn2" class="btn2">
+            <input class="btn2Replay" type="button" value="Reiniciar" onclick="reiniciar()">
+            <input class="btn2Ranking"  type="button" value="Ranking" onclick="ranking()">
+          </div>
+        </div>
+
+
+        <div id="fin" class="fin" >
+          <p id="finjuego" class="finjuego"></p>
+          <div id="puntuacion" class="puntuacion">
+            <p id="acertadas"><i class="fas fa-check" style="color: #89BB07; font-size: 35px;"></i></p>
+            <p id="falladas"><i class="far fa-times-circle" style="color: #D90202; font-size: 35px;"></i></p>
+          </div>
+          <div id="btn2" class="btn2">
+              <input class="btn2Replay" type="button" value="Reiniciar" onclick="reiniciar()">
+              <input id="btn2Ranking" class="btn2Ranking"  type="button" value="Ranking" onclick="ranking()">
+          </div>
+        </div>
+
+
+        <div id="ranking" class="ranking" >
+            <p>Ranking</p>
+            <div id="rank" class="rank">
+              
+            </div>
+            <div id="btn2" class="btn2">
+                <input class="btn2Replay" type="button" value="Reiniciar" onclick="reiniciar()">
+            </div>
+          </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div id="contadores" class="contadores">
+        <div id="tiempo" class="tiempo"><p id="cronometro">180</p></div>
+        <div class="aciertos"><p id="acierto">0</p></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@keyframes example {
+  0%   {left:-2000px; top:0vh;}
+  100% {left:0vw; top:0vh;}
+}
+
+.container-calculator {
+  /* border: 1px solid blue; */
+  position: relative;
+  width: 240px;
+  animation-name: example;
+  animation-duration: 0.8s;
+}
+
+#panel-grow {
+  width: 240px;
+  height: 90px;
+}
+
+#ac-grow {
+  width: 51%
+}
+
+#zero-grow {
+  width: 122px;
+}
+
+.row {
+  width: 240px;
+  height: 50px;
+  display: flex;
+  background-color: rgb(214, 214, 214);
+}
+
+.row .key:last-child {
+  background-color: rgb(247, 146, 49);
+  color: white;
+  
+}
+
+.key {
+  width: 60px;
+  border: 1px solid grey;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.key span {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.panel-input {
+  width: 230px;
+  font-size: 42px;
+  background-color: rgb(76, 76, 76);
+  border: rgb(42, 55, 56);
+  color: white;
+  text-align: right;
+  padding-right: 10px;
+  overflow: auto;
+}
+
+
+

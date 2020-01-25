@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pasapalabra - Skylab</title>
+    <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <div id="title-container">
+            <div id="title-support"></div>
+            <div id="title">Pasapalabra</div>
+
+            <div id="player-ranking">
+                <div id="player-ranking-header" class="text-center">Player Ranking</div>
+                <div id="player-ranking-list-container"></div>
+            </div>
+        </div>
+        <div id="container" class="flex-centric-items">
+            <div id="initial-page" class="flex-centric-items">
+                <div id="intro-text">Please, fill the form below to continue</div>
+                <div id="player-form">
+                    <div class="flex-centric-items">
+                        <input type="text" id="playerName" name="playerName" value="" maxlength="20" placeholder="Your name" autofocus />
+                        <div class="flex-centric-items">
+                            <div class="note">The language of which you want the questions</div>
+                            <div>
+                                <label>Español <input type="radio" name="language" value="1"></label>
+                                <label>English <input type="radio" name="language" value="2" checked></label>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="button button-info margin-top-20 togglePlayerRankingBtns">Toggle player ranking</button>
+                            <button id="validatePlayerFormBtn" type="button" class="button button-primary margin-top-20">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="confirm-readiness-page" class="hide flex-centric-items">
+                <div id="confirm-text">The game is about to start!<br/>Are you ready?</div>
+                <div>
+                    <button id="playerNotReady" type="button" class="button button-default">No</button>
+                    <button id="playIsReady" type="button" class="button button-primary" autofocus>Yes</button>
+                </div>
+            </div>
+
+            <div id="gameplay-page" class="hide">
+                <div id="alphabet-soup-container"></div>
+                <div id="current-question-container"></div>
+                <div id="progress-info">Correct answers <span id="ok-answers-count">0</span> | Incorrect answers <span id="ko-answers-count">0</span></div>
+                <div id="interaction-panel" class="flex-centric-items">
+                    <div id="answer-input-container">
+                        <input type="text" id="player-response" value="" placeholder="" autofocus />
+                    </div>
+                    <div>
+                        <button id="confirmResponse" type="button" class="button button-success">Confirm</button>
+                        <button id="skipQuestion" type="button" class="button button-primary">Pasapalabra</button>
+                        <button id="stopGame" type="button" class="button button-danger">Stop Game</button>
+                        <button id="inGameRankBtn" type="button" class="button button-info hide togglePlayerRankingBtns">Toggle player ranking</button>
+                        <button id="restartGameBtn" type="button" class="button button-success hide">Play again</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="timer-container" class="flex-justify-content-center hide">
+                <div id="timer" class="flex-centric-items">0</div>
+            </div>
+
+            <div id="audio-ctrl-container" class="flex-justify-content-center">
+                <div id="unmute-song" class="flex-centric-items" title="Unmute audio">🔊</div>
+                <div id="mute-song" class="flex-centric-items hide" title="Mute audio">🔇</div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+        TODO::
+            - Generate alphabet soup from Javascript
+            - Reset game play in (player readiness confirmation - NO) event listener
+    -->
+</body>
+</html>

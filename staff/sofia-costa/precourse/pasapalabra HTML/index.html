@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href=" https://fonts.googleapis.com/css?family=Cuprum&display=swap" rel="stylesheet">
+    <title>Pasapalabra!</title>
+</head>
+<body>
+
+<div id="all">
+    
+    <header>
+        <h1>PASAPALABRA</h1>
+        <div id="timer" class="timer second"><p><b id="time">200</b></p></div>
+    </header>
+    <section class="main" id="main">
+    
+        <div class= "container" id="letters">
+            <div class="letter a" id="a">A</div>
+            <div class="letter b"id="b">B</div>
+            <div class="letter c"id="c">C</div>
+            <div class="letter d"id="d">D</div>
+            <div class="letter e"id="e">E</div>
+            <div class="letter f"id="f">F</div>
+            <div class="letter g"id="g">G</div>
+            <div class="letter h"id="h">H</div>
+            <div class="letter i"id="i">I</div>
+            <div class="letter j"id="j">J</div>
+            <div class="letter k"id="k">K</div>
+            <div class="letter l"id="l">L</div>
+            <div class="letter m"id="m">M</div>
+            <div class="letter n"id="n">N</div>
+            <div class="letter ñ"id="ñ">Ñ</div>
+            <div class="letter o"id="o">O</div>
+            <div class="letter p"id="p">P</div>
+            <div class="letter q"id="q">Q</div>
+            <div class="letter r"id="r">R</div>
+            <div class="letter s"id="s">S</div>
+            <div class="letter t"id="t">T</div>
+            <div class="letter u"id="u">U</div>
+            <div class="letter v"id="v">V</div>
+            <div class="letter w"id="w">W</div>
+            <div class="letter x"id="x">X</div>
+            <div class="letter y"id="y">Y</div>
+            <div class="letter z"id="z">Z</div> <!--Son 27 letras-->
+        </div>
+        <div id="empezar" class="first">
+            <form>
+                <p class="instructions">Bienvenido!
+                    <br><br>
+                Para empezar, introduz tu nombre:</p> 
+                    <br>
+                    <input id="newUser" type="text" value="" maxlength="15" required>
+                <br><br>
+                <h2><b id="start">Venga, vamonos!</b></h2>
+
+            </form>
+                
+        </div>
+
+        <div class ="second" id="form">
+            <h4 id="username" name="username" >SOFIA</h4>
+            <h3 id="whichLetter" >Con la <span id="letter">A</span></h3>
+            <div id="question"><p id="errado">ERRADO!</p><p id="cierto">CIERTO!</p><p id="questionParagraph">Inserir pregunta acá.</p></div>
+            <input id="input" value="" type="text" class="notanswer" autofocus required>
+
+            <div id="buttons">
+                <input id="submit" class="button notanswer" type="button" value="OK">
+                <input id="pasapalabra" class="button notanswer" type="button" value="PASAPALABRA!">
+                <input id="finish" class="button notanswer" type="button" value="FIN">
+                <input id="goBack" class="button" type="button" value="OK">
+            </div>
+        </div>
+
+        <div id="final" class="third">
+            <div class="show">
+                <h3 id="giveup">Hemos llegado al final!</h3>
+                <p id="info" >Tuviste <span class="answers word" id="rightCounter2">0</span> respuestas correctas y <span class="answers word" id="wrongCounter2">0</span> erradas.</p>
+                <div id="buttonsEnd" class="finalButtons">
+                    <div id="rankingHide">
+                        <input type="button" class="button pasapalabra" id="rankingButton2" value="RANKING">
+                        <p id="hide">Como has desistido no podrás entrar en el ranking :(</p>
+                    </div>
+                    <input type="button" class="button pasapalabra" id="rankingButton" value="RANKING">
+                    <input type="button" class="button" id="replayButton" value="REPLAY"><br>
+                    
+                </div>
+            </div>
+
+            <div id="ranking" class="ranking">
+                <div id="results">
+                    <ol id="rankingOrder"><p id="top">TOP 3</p>
+                        <li id="firstPlace"><span id="winner">YOU WISH</span> con <span id="winnerPoints">27</span> puntos</li>
+                        <li id="secondPlace"><span id="runnerUp">WONDERWOMAN</span> con <span id="secondPoints">20</span> puntos</li>
+                        <li id="thirdPlace"><span id="third">MR INCREDIBLE</span> con <span id="thirdPoints">18</span> puntos</li>
+                    </ol>
+                </div>
+                <div id="buttonsEnd2" class="finalButtons" >
+                    <input type="button" id="replayButton2" value="REPLAY" class="button final">
+                    <input type="button" id="backButton" value="VOLVER" class="button">
+                </div>
+            </div>  
+        </div>
+        
+    </section>   
+    <section id="textSection">
+        <h3 id="rules" class="rules first">REGLAS!</h3>
+        <h3 id="rules2" class="rules first">REGLAS!</h3>
+        <div class="answers word second" id="right">
+            <p><b>Ciertas</b></p>
+            <div class="right"><b id="rightCounter">0</b></div>
+        </div>
+        <p id="help" class="instructions second">Clica ENTER para submeter respuesta <br> o SPACE para pasar palabra.</p>
+        <div class="answers word second" id="wrong">
+            <p><b>Erradas</b></p>
+            <div class="wrong"><b id="wrongCounter">0</b></div>
+        </div>
+            
+        <p class="instructions first" id="text2">
+            Para submeter tu respuesta clica en OK o en la clave ENTER. <br>
+            Si no sabes la respuesta, puedes clicar en PASAPALABRA! o en la clave SPACE. <br>
+            En el final de todas las letras, repetiremos las preguntas que no has respondido.<br>
+            Puedes desistir a cualquier momento. <b id="bold">Tienes 200 segundos!</b> <br>
+            Después de terminar (sin desistir), entrarás en el ranking! <br><br><br>
+        </p>
+        <p id="ending" class="instructions third">Gracias por jugar!<br>Esperamos verte pronto!</p>
+    </section>
+
+    <footer>
+        
+    </footer>
+</div>
+
+</body>
+<script src="index.js"></script>
+</html>

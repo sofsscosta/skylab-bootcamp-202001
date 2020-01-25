@@ -1,0 +1,208 @@
+body {
+  background-color: rgb(65, 105, 153);
+}
+
+.container-game {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#parentdiv {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 150px;
+}
+
+.circle {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background-color: #21568D;
+  border-radius: 100px;
+  border: 1px solid white;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+  text-align: center;
+}
+
+h1 {
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: #21568D;
+}
+
+h3 {
+  color: white;;
+}
+
+h4 {
+  color: white;
+}
+
+.timer {
+  font-size: 50px;
+  color: white;
+  position: absolute;
+  top: 45px;
+  right: 50px;
+  display: none;
+}
+
+.container-startgame {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-questions {
+  display: none;
+}
+
+.container-result {
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  display: none;
+}
+
+.container-endgame {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+
+.backgroundGreen {
+  background-color: green;
+}
+
+.backgroundRed {
+  background-color: red;
+}
+
+.txt-buttons {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.current-letter {
+  font-weight: bold;
+  font-size: 26px;
+  border: 1px solid;
+  padding: 2px 5px;
+  text-transform: uppercase;
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: -5px;
+  text-align: center;
+  color: white;
+}
+
+.answer {
+  text-align: center;
+  color: white;
+}
+
+.answer input {
+  width: 150px;
+  height: 25px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* Buttons */
+
+.container-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  color: white;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+#start {
+  margin: 0px 0px 20px 0px;
+  height: 70px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: green;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+#end {
+  margin: 0px 0px 20px 0px;
+  height: 70px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: red;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border: 3px solid white;
+}
+
+#principal {
+  margin: 0px 0px 20px 0px;
+  height: 80px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: blue;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border-width: 3px;
+}
+
+.ok {
+  margin: 20px 0px;
+  height: 35px;
+  width: 80px;
+  background-color: green;
+  font-size: 16px;
+}
+
+.pasapalabra {
+  margin: 20px 0px 0px 10px;
+  height: 35px;
+  width: 150px;
+  background-color: navy;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 900px) {
+  .container-game {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
