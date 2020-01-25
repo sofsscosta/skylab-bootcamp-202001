@@ -1,0 +1,427 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.juegopasapalabra {
+    font-family: Geneva, sans-serif;
+    background-color: black;
+    margin: auto;
+}
+
+.instrucciones {
+    text-align: center;
+    color: lightsteelblue;
+}
+
+h1 {
+    color: deepskyblue;
+}
+
+.container {
+    font-size: 15px;
+}
+
+.letras {
+    width: 650px;
+    height: 650px;
+    margin: auto;
+    border: none;
+    font-size: 40px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.letra {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    color: black;
+    text-align: center;
+    background-color: lightcyan;
+    border: steelblue 4px solid;
+}
+
+
+#a {
+    top: 2.5px;
+    left: 300px;
+}
+
+#b {
+    top: 11px;
+    left: 367px;
+}
+
+#c {
+    top: 35px;
+    left: 430px;
+}
+
+#d {
+    top: 73px;
+    left: 486px;
+}
+
+#e {
+    top: 124px;
+    left: 532px;
+}
+
+#f {
+    top: 184px;
+    left: 565px;
+}
+
+#g {
+    top: 250px;
+    left: 583px;
+}
+
+#h {
+    top: 318px;
+    left: 585px;
+}
+
+#i {
+    top: 385px;
+    left: 572px;
+}
+
+#j {
+    top: 447px;
+    left: 543px;
+}
+
+#k {
+    top: 501px;
+    left: 500px;
+}
+
+#l {
+    top: 544px;
+    left: 445px;
+}
+
+#m {
+    top: 573px;
+    left: 383px;
+}
+
+#n {
+    top: 585px;
+    left: 316px;
+}
+
+#ñ {
+    top: 583px;
+    right: 340px;
+}
+
+#o {
+    top: 565px;
+    right: 405px;
+}
+
+#p {
+    top: 532px;
+    right: 463px;
+}
+
+#q {
+    top: 487px;
+    right: 513px;
+}
+
+#r {
+    top: 432px;
+    right: 552px;
+}
+
+#s {
+    top: 370px;
+    right: 577px;
+}
+
+#t {
+    top: 305px;
+    right: 586px;
+}
+
+#u {
+    top: 238px;
+    right: 581px;
+}
+
+#v {
+    top: 174px;
+    right: 560px;
+}
+
+#w {
+    top: 115px;
+    right: 525px;
+}
+
+#x {
+    top: 66px;
+    right: 477px;
+}
+
+#y {
+    top: 30px;
+    right: 419px;
+}
+
+#z {
+    top: 8px;
+    right: 355px;
+}
+
+.preguntas {
+    margin: auto;
+    position: relative;
+    height: 160px;
+    width: 390px;
+    bottom: 810px;
+    left: 103px;
+}
+
+.displayPreg {
+    background-color: lightgray;
+    border: darkcyan 2px solid;
+    position: absolute;
+    padding: 10px 15px;
+    line-height: 20px;
+    text-align: center;
+    word-wrap: normal;
+    resize: none;
+    border-radius: 10px;
+    height: 160px;
+    width: 390px;
+    top: 270px;
+    right: 98px;
+    font-size: 15px;
+}
+
+.nameuser {
+    color: white;
+    font-weight: bold;
+    margin: auto;
+    position: relative;
+    height: 30px;
+    width: 100px;
+    bottom: 335px;
+    right: 4px;
+    font-size: 12px;
+}
+
+.user {
+    background-color: lightgray;
+    border: darkcyan 2px solid;
+    color: black;
+    font-weight: normal;
+    position: absolute;
+    text-align: center;
+    border-radius: 10px;
+    height: 20px;
+    width: 80px;
+    bottom: 13px;
+    left: 35px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.respuestas {
+    margin: auto;
+    position: relative;
+    height: 30px;
+    width: 200px;
+    top: 264px;
+    right: 0px;
+}
+
+.displayResp {
+    background-color: lightgray;
+    border: darkcyan 2px solid;
+    position: absolute;
+    text-align: center;
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    bottom: 718px;
+    right: 16px;
+    font-size: 15px;
+}
+
+.play {
+    margin: auto;
+    position: relative;
+    height: 30px;
+    width: 80px;
+    top: 444px;
+    right: 241px;
+}
+
+#jugar {
+    background-color: lightgreen;
+    border: darkseagreen 2px solid;
+    color: darkslategray;
+    position: absolute;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    height: 30px;
+    width: 80px;
+    bottom: 970px;
+    left: 105px;
+}
+.pasap {
+    margin: auto;
+    position: relative;
+    height: 30px;
+    width: 80px;
+    top: 414px;
+    right: 120px;
+}
+
+#pasapalabra {
+    background-color: lightskyblue;
+    border: darkcyan 2px solid;
+    color: darkslategray;
+    position: absolute;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 15px;
+    height: 30px;
+    width: 120px;
+    bottom: 970px;
+    left: 103px;
+}
+
+.stop {
+    margin: auto;
+    position: relative;
+    height: 30px;
+    width: 80px;
+    top: 384px;
+    left: 40px;
+}
+
+#parar {
+    background-color: crimson;
+    border: darkred 2px solid;
+    color: white;
+    position: absolute;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 30px;
+    width: 80px;
+    bottom: 970px;
+    left: 103px;
+}
+
+.cronometro {
+    margin: auto;
+    position: relative;
+    height: 50px;
+    width: 80px;
+    bottom: 883px;
+    left: 0px;
+}
+
+#timer {
+    background-color: lightsteelblue;
+    border: orangered 4px solid;
+    border-radius: 60px;
+    color: blue;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    height: 50px;
+    width: 90px;
+}
+
+.contadores {
+    margin: auto;
+    position: relative;
+    height: 30px;
+    width: 50px;
+    bottom: 300px;
+    left: 0px;
+}
+
+#aciertos {
+    background-color: lightseagreen;
+    border: green 2px solid;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    width: 50px;
+    bottom: 324px;
+    right: 165px;
+}
+
+#errores {
+    background-color: red;
+    border: brown 2px solid;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    width: 50px;
+    bottom: 324px;
+    left: 175px;
+}
+
+
+.resultados {
+    margin: auto;
+    position: relative;
+    height: 95px;
+    width: 340px;
+    bottom: 490px;
+    left: 0px;
+}
+
+.results {
+    background-color: lightgray;
+    border: rgb(40, 185, 185) 2px solid;
+    position: absolute;
+    padding: 10px 10px;
+    line-height: 20px;
+    text-align: center;
+    word-wrap: normal;
+    resize: none;
+    overflow-y: scroll;
+    border-radius: 10px;
+    height: 127px;
+    width: 250px;
+    bottom: 89px;
+    right: 50px;
+    font-size: 10px;
+}
+
+#ok {
+    background-color: lightgoldenrodyellow;
+    border: darkgoldenrod 2px solid;
+    color: darkslategray;
+    position: absolute;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    height: 30px;
+    width: 40px;
+    bottom: 718px;
+    left: 186px;
+}

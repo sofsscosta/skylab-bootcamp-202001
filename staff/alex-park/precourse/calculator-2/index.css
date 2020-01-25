@@ -1,0 +1,57 @@
+table {
+    background-color: rgb(146, 146, 146);
+    table-layout: fixed;
+    padding: 0px 0px 5px 0px;
+    width: 300px;
+    margin: 0px;
+    border: 1px solid black;
+    box-shadow: 3px 3px rgb(58, 58, 58);
+}
+
+td {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0px;
+    font-size: 20px;
+    color: black;
+    border: 1px solid black;
+    width: 300px;
+    margin: 0px;
+    background-color: rgb(226, 226, 226);
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 3px rgb(58, 58, 58);
+}
+
+.op {
+    background-color: rgb(190, 147, 67); 
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    margin: 0px;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 3px rgb(58, 58, 58);
+}
+
+.result {
+    width: 300px;
+    padding: 15px 10px 15px 0px;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 34px;
+    background-color: rgb(33, 33, 75); 
+    color: white; 
+    text-align: right;
+}
+
+
+.op:hover, td:hover {
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+td:active, .op:active {
+    background-color: #333333;
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+}

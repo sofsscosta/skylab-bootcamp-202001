@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "index.css" />
+        <title>Calculator</title>
+    </head>
+    <body>
+        <table id="myTable">
+            <tr>
+                <th class="result" id="result" colspan="4;">-</th>
+            </tr>
+
+            <tr>
+                <td id="ac" colspan="2;" onclick="restartCounter()">AC</td>
+                <td><div id="restart" onclick="cancel()">⟲</div></td>
+                <td><div id="divide" class="op" onclick="divOperator()">÷</div></td>
+            </tr>
+
+            <tr>
+                <td><div id="seven" onclick="seven()">7</div></td>
+                <td><div id="eight" onclick="eight()">8</div></td>
+                <td><div id="nine" onclick="nine()">9</div></td>
+                <td><div id="multiply" class="op" onclick="multOperator()">X</div></td>
+            </tr>
+
+            <tr>
+                <td><div id="four" onclick="four()">4</div></td>
+                <td><div id="five" onclick="five()">5</div></td>
+                <td><div id="six" onclick="six()">6</div></td>
+                <td><div id="minus" class="op" onclick="minusOperator()">-</div></td>
+            </tr>
+
+            <tr>
+                <td><div id="one" onclick="one()">1</div></td>
+                <td><div id="two" onclick="two()">2</div></td>
+                <td><div id="three" onclick="three()" >3</div></td>
+                <td><div id="plus" class="op" onclick="sumOperator()">+</div></td>
+            </tr>
+
+            <tr>
+                <td colspan="2;"><div id="zero" onclick="zero()">0</div></td>
+                <td id="comma" onclick="point()">.</td>
+                <td><div id="equal" class="op" onclick="calculator()">=</div></td>
+            </tr>
+            
+        </table>
+    </body>
+    <script type="text/javascript" src="index.js"></script>
+</html>
