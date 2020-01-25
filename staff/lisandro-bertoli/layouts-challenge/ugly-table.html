@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			table {
+				border: 1px solid black;
+				width: 100vw;
+				height: 100vh;
+			}
+
+			tr {
+				border-bottom: 1px solid black;
+			}
+
+			td {
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			#head,
+			#footer {
+				height: 15%;
+			}
+
+			.side {
+				width: 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td id="head" colspan="3">HEAD</td>
+			</tr>
+			<tr>
+				<td class="side">NAV</td>
+				<td class="small">MAIN</td>
+				<td class="side">ASIDE</td>
+			</tr>
+			<tr>
+				<td id="footer" colspan="3">FOOTER</td>
+			</tr>
+		</table>
+	</body>
+</html>

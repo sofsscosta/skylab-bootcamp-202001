@@ -1,0 +1,78 @@
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+#turn {
+  display: none;
+  background-color: rgb(37, 37, 133);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+#player {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: -5px;
+}
+
+.button-play {
+  margin-bottom: 30px;
+  background-color: green;
+  color: white;
+  font-size: 22px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#exit {
+  background-color: red;
+  display: none;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+table {
+  background-color: rgb(37, 37, 133);
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.cell {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+
+@media screen and (min-width: 1000px) {
+  table {
+    border-spacing: 20px;
+  }
+
+  .cell {
+    width: 70px;
+    height: 70px;
+  }
+
+}

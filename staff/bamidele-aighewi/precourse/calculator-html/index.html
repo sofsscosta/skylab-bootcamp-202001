@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora - Skylab</title>
+    <script src="index.js"></script>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+
+    <div style="position: relative;height: 100vh;">
+        <div class="flex-box justify-content-center">
+            <div id="message" class="alert alert-warning hide" onclick="hideMessageBox()">&nbsp;</div>
+        </div>
+        <div id="calculator">
+            <div id="result-container">
+                <!--<input type="text" id="user_input" value="0" readonly />-->
+                <div id="input-buffers">&nbsp;</div>
+                <div id="current-buffer">0</div>
+            </div>
+            <div id="calculator-btns-container" class="noselect">
+                <div class="flex-box">
+                    <div onclick="doButtonAction(STRING_ACTIONS.reset)" class="calc-btn-box colspan-2 border--grayr border--grayb flex-centric-items">AC</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.backspace)" id="redo-btn" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">&nbsp;</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.division)" class="calc-btn-box txt-center orange-bg border--grayb flex-centric-items">÷</div>
+                </div>
+                <div class="flex-box">
+                    <div onclick="doButtonAction(7)" class="calc-btn-box txt-center border--l1 border--grayr border--grayb flex-centric-items">7</div>
+                    <div onclick="doButtonAction(8)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">8</div>
+                    <div onclick="doButtonAction(9)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">9</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.multiplication)" class="calc-btn-box txt-center orange-bg border--grayb flex-centric-items">x</div>
+                </div>
+                <div class="flex-box">
+                    <div onclick="doButtonAction(4)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">4</div>
+                    <div onclick="doButtonAction(5)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">5</div>
+                    <div onclick="doButtonAction(6)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">6</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.subtraction)" class="calc-btn-box txt-center orange-bg border--grayb flex-centric-items">-</div>
+                </div>
+                <div class="flex-box">
+                    <div onclick="doButtonAction(1)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">1</div>
+                    <div onclick="doButtonAction(2)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">2</div>
+                    <div onclick="doButtonAction(3)" class="calc-btn-box txt-center border--grayr border--grayb flex-centric-items">3</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.addition)" class="calc-btn-box txt-center orange-bg border--grayb flex-centric-items">+</div>
+                </div>
+                <div class="flex-box">
+                    <div onclick="doButtonAction(0)" class="calc-btn-box colspan-2 border--l1 border--grayr flex-centric-items">0</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.comma)" class="calc-btn-box txt-center border--grayr flex-centric-items">,</div>
+                    <div onclick="doButtonAction(STRING_ACTIONS.equal)" class="calc-btn-box txt-center orange-bg flex-centric-items">=</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

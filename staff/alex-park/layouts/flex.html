@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout with flex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .flex-container {
+            box-sizing: border-box;
+            height: 100vh;
+        }
+
+
+        header {
+            background-color: green;
+            height: 10%;
+        }
+
+        nav, aside {
+            height: 10%;
+        }
+
+        nav {
+            background-color: rgb(59, 59, 59);
+        }
+
+        aside {
+            background-color: rgb(145, 145, 145);
+        }
+
+        main {
+            background-color: yellow;
+            height: 65%;
+        }
+
+        footer {
+            background-color: red;
+            height: 5%;
+        }
+
+        @media only screen and (min-width: 600px) {
+            .flex-container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            header, nav, footer {
+                width: 100%;
+            }
+
+            main, aside {
+                height: 75%;
+            }
+
+            main {
+                width: 80%;
+            }
+
+            aside {
+                width: 20%;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            header, footer {
+                width: 100%;
+            }
+
+            nav, aside {
+                width: 15%;
+            }
+
+            main {
+                width: 70%;
+            }
+
+            main, nav, aside {
+                height: 85%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <header>header</header>
+        <nav>nav</nav>
+        <main>main</main>
+        <aside>aside</aside>
+        <footer>footer</footer>
+    </div>
+</body>
+</html>

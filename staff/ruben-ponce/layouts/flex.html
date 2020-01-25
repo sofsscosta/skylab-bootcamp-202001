@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+</head>
+<body>
+    
+    <div class="content">
+        <div class="head">Header</div>
+        <div class="content2">
+            <div class="nav">Nav</div>
+            <div class="main">Main</div>
+            <div class="aside">Aside</div>
+        </div>
+        <div class="footer">Footer</div>
+    </div>
+
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .content{
+            width: 100%;
+            height: 100vh;
+            background-color: bisque;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content2{
+            display: flex;
+        }
+
+        .head{
+            width: 100%;
+            height: 33.3vh;
+            background-color: red;
+        }
+
+        .nav{
+            width: 20%;
+            height: 33.3vh;
+            background-color: blue; 
+        }
+
+        .main{
+            width: 60%;
+            height: 33.3vh;
+            background-color: pink; 
+        }
+
+        .aside{
+            width: 20%;
+            height: 33.3vh;
+            background-color: orange; 
+        }
+
+        .footer{
+            width: 100%;
+            height: 33.3vh;
+            background-color: yellow;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .head, .nav, .main, .aside, .footer {
+                width: 100%;
+                height: 20vh;
+            }
+            .content2 {
+                width: 100%;
+                height: 60vh;
+                flex-direction: column;
+            }
+        }
+    
+    </style>
+</body>
+</html>

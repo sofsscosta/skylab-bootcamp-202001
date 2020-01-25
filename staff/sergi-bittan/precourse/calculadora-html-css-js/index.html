@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculadora basica internet</title>
+        <meta charset="uft-8">
+        <link rel="stylesheet" href="index.css" type="text/css">
+    </head>
+    <body>
+        <table class="calculator">
+            <tr>
+                <td colspan="4"><button id="resultado" type="text">0</button></td>
+            </tr>
+            <tr>
+                <td><button id="but" onclick="view.onClick('AC')" class="clear">AC</button></td>
+                <td><button id="but" onclick="view.onClick('C')" class="clear">C</button></td>
+                <td></td>
+                <td><button id="but" onclick="view.onClick('/')" class="simbol">/</button></td>
+            </tr>
+            <tr>
+                <td><button id="but" onclick="view.onClick('7')">7</button></td>
+                <td><button id="but" onclick="view.onClick('8')">8</button></td>
+                <td><button id="but" onclick="view.onClick('9')">9</button></td>
+                <td><button id="but" onclick="view.onClick('*')" class="simbol">x</button></td>
+            </tr>
+            <tr>
+                <td><button id="but" onclick="view.onClick('4')">4</button></td>
+                <td><button id="but" onclick="view.onClick('5')">5</button></td>
+                <td><button id="but" onclick="view.onClick('6')">6</button></td>
+                <td><button id="but" onclick="view.onClick('-')" class="simbol">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="but" onclick="view.onClick('1')">1</button></td>
+                <td><button id="but" onclick="view.onClick('2')">2</button></td>
+                <td><button id="but" onclick="view.onClick('3')">3</button></td>
+                <td><button id="but" onclick="view.onClick('+')" class="simbol">+</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button id="but" onclick="view.onClick('0')" class="cero">0</button></td>
+                <td><button id="but" onclick="view.onClick('.')" class="simbol">,</button></td>
+                <td><button id="but" onclick="view.onClick('=')" class="simbol2">=</button></td>
+            </tr>
+        </table>
+        
+    </body>
+    
+    <script src="index.js"></script>
+    <script src="view.js"></script>
+
+</html>

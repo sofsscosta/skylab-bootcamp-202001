@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .flex-container {
+            /* border: 1px solid black; */
+            display: flex;
+            flex-wrap: wrap;
+            height: calc(100vh/3);
+            border: 1px solid black;
+
+        }
+
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid black;
+            height: calc(100vh/3);
+            width: 100%;
+        }
+
+        nav {
+            border: 1px solid black;
+            flex-grow: 1;
+        }
+
+        main {
+            border: 1px solid black;
+            flex-grow: 2;
+        }
+
+        aside {
+            border: 1px solid black;
+            flex-grow: 1;
+        }
+
+        footer {
+            border: 1px solid black;
+            width: 100%;
+            border: 1px solid black;
+            height: calc(100vh/3);
+
+        }
+
+        header {
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+            border: 1px solid black;
+        }
+
+        @media only screen and (max-width:640px) {
+            nav {width: 100%;}
+            main {width: 100%;}
+            aside {width: 100%;}
+        }
+        @media only screen and (min-width:640px) {
+            nav {width: 20%;}
+            main {width: 80%;}
+            aside {width: 100%;}
+        }
+        @media only screen and (min-width:850px) {
+            nav {width: 20%;}
+            main {width: 60%;}
+            aside {width: 20%;}
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <header>header</header>
+    </div>
+    <div class="main-container">
+        <nav>navigator</nav>
+        <main>main</main>
+        <aside>aside</aside>
+    </div>
+    <footer>footer</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout with a grid </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .item1 { 
+            grid-area: header; 
+            background-color: red;
+            height: 10vh;
+        }
+
+        .item2 { 
+            grid-area: nav; 
+            background-color: blue;
+            height: 10vh;
+        }
+
+        .item3 { 
+            grid-area: main; 
+            background-color: yellow;
+            height: 60vh;
+        }
+
+        .item4 { 
+            grid-area: aside; 
+            background-color: yellowgreen;
+            height: 10vh;
+        }
+
+        .item5 { 
+            grid-area: footer; 
+            background-color: violet;
+            height: 10vh;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas: 
+            'header'
+            'nav'
+            'main'
+            'aside'
+            'footer';
+            height: 100vh;
+        }
+
+        @media only screen and (min-width: 600px) {
+            .grid-container {
+                grid-template-columns: auto;
+                grid-template-areas: 
+                'header header header'
+                'nav nav nav'
+                'main main aside'
+                'footer footer footer';
+            }
+
+            .item3, .item4 {
+                height: 70vh;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            
+            .grid-container {
+                grid-template-columns: auto;
+                grid-template-areas: 
+                'header header header header header'
+                'nav main main main aside'
+                'footer footer footer footer footer';
+            }
+
+            .item2, .item3, .item4 {
+                height: 80vh;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item1">header</div>
+        <div class="item2">nav</div>
+        <div class="item3">main</div>
+        <div class="item4">aside</div>
+        <div class="item5">footer</div>
+    </div>
+</body>
+</html>

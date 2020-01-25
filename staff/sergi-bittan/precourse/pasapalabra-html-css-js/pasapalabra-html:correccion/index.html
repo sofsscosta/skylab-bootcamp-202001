@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Pasapabra Game</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+
+    </head>
+    <body>
+        <div class="visual" id="pasapalabra-game">
+            <article class="title">
+                    <h1 class="pasapalabra">EL ROSCO DE PASAPALABRA</h1>
+            </article>
+        </div>
+
+
+
+        <div id="pantalla1" class="pantalla-pedirNombre" style="display: block">
+            <p>Esta usted a punto de enfrentarse al <b>Rosco de Pasapalabra</b>.<br>Antes de continuar nos gustaria conocer su nombre</p>
+            <p class="name">Introduzca su nombre:</p>
+            <input id="name" type="text" class="nombre" placeholder="name" autofocus>
+            <button id="nombre" class="boton-nombre">ok</button>
+        </div>
+
+
+
+        <div id="pantalla2" class="pantalla-bienvenida" style="display: none">
+            <h1 class="bienvenida">Welcome</h1>
+            <p id="username" class="username"></p>
+            <p>A continuación podrá ver las características del juego. Este muy atento a sus respuestas, cada error cuenta y el tiempo nunca estará a su favor.</b><br>Le deseo buena suerte.</p>
+            <br>
+            <h4>Instrucciones</h4>
+            <p class="instrucciones">Se le van a efectuar una serie de preguntas siguiendo en orden alfabético. Por cada acierto el rosco se irá completando de color verde y por cada error de color rojo.<br>
+            En caso de no conocer o no estar seguro de la respuesta puede escribir <b>PASAPALABRA</b> y dejaría la pregunta para la siguiente ronda, en caso de llegar a ella.<br>
+            Dispone de un tiempo máximo de 5 min para completar el rosco. El número mayor de aciertos conseguidos antes de agotar el tiempo será la puntuación obtenida.</p>  
+            <div class="texto-botton">
+                <h3>Esta dispuesto a probar sus habilidades?</h3>
+                <p>Pulse el boton para empezar el juego</p>
+                <p>Buena suerte!!!</p>
+            <button id="nombre2" class="boton-nombre2">ok</button>
+            </div>      
+        </div>
+
+
+
+        <div id="pantalla3" class="pantalla-juego" style="display: none">
+            <div class="panel">
+                <p name="pregunta" id="pregunta" class="pregunta"></p>
+                <input type="text" id="respuesta" class="respuesta" placeholder="respuesta" autofocus>
+            </div>  
+        
+            <div class="caja-padre">    
+                
+                <ul class="hijos">
+                    <li class="a">A</li>
+                    <li class="b">B</li>
+                    <li class="c">C</li>
+                    <li class="d">D</li>
+                    <li class="e">E</li>
+                    <li class="f">F</li>
+                    <li class="g">G</li>
+                    <li class="h">H</li>
+                    <li class="i">I</li>
+                    <li class="j">J</li>
+                    <li class="k">K</li>
+                    <li class="l">L</li>
+                    <li class="m">M</li>
+                    <li class="n">N</li>
+                    <li class="ñ">Ñ</li>
+                    <li class="o">O</li>
+                    <li class="p">P</li>
+                    <li class="q">Q</li>
+                    <li class="r">R</li>
+                    <li class="s">S</li>
+                    <li class="t">T</li>
+                    <li class="u">U</li>
+                    <li class="v">V</li>
+                    <li class="w">W</li>
+                    <li class="x">X</li>
+                    <li class="y">Y</li>
+                    <li class="z">Z</li>
+                    <li class="start-timer">
+                        <div class="temporizador">
+                            <div class="contador">
+                                <p id="crM" class="crM">05</p>
+                                <p class="punt">:</p>
+                                <p id="crS" class="crS">00</p>
+                            </div>
+                        </div>
+                    </li>
+                        
+                </ul>
+            </div>
+
+
+            <div class="fecha-reloj">
+                <div id="fecha" class="fecha">
+                    <p id="diaS" class="diaS">martes</p>
+                    <p id="diaN" class="diaN">6</p>
+                    <p class="letra">de</p>
+                    <p id="mes" class="mes">diciembre </p>
+                    <p class="letra">del</p>
+                    <p id="year" class="year">2019</p>
+                </div>
+
+                <div id="reloj" class="reloj">
+                    <p id="horas" class="horas"></p>
+                    <p  class="puntuacion">:</p>
+                    <p id="minutos" class="minutos"></p>
+                    <p  class="puntuacion">:</p>
+                    <p id="segundos" class="segundos"></p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="pantalla4" class="pantalla-final" style="display:none">
+            <p id="ranking" class="ranking-final">Puntuación Obtenida!!</p>
+            <br>
+            <p id="puntuacion" class="puntuacion-final">dddd</p>
+            <br>
+            <p id="volver" class="volver">Desea volver a jugar?</p>
+            <button id="boton-volver" class="botonvolver">Si</button>
+            <button id="boton-volver2" class="botonvolver2">No</button>
+        </div>
+
+        
+    </body>
+    <script src="main.js"></script>
+   
+
+</html>

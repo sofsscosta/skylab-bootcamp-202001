@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Table</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+
+    td {
+      border: 1px solid blue;
+      height: 20vh;
+    }
+
+    tr:nth-child(2) td {
+      height: 20vh;
+      display: table;
+      width: 100vw;
+    }
+
+    @media only screen and (min-width: 500px) {
+
+      tr:nth-child(2) td {
+        width: calc(100vw / 3);
+        height: 60vh;
+        display: table-cell;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <table>
+    <tr>
+      <td colspan="3">header</td>
+    </tr>
+
+    <tr>
+      <td>nav</td>
+      <td>main</td>
+      <td>aside</td>
+    </tr>
+
+    <tr>
+      <td colspan="3">footer</td>
+    </tr>
+
+  </table>
+
+</body>
+
+</html>

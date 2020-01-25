@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="./calculator.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="calculator.js"></script>
+    <title>Calculator</html></title>
+</head>
+<body>
+    <div>
+        <h1>Skylator</h1>
+        <form name="calculator"> 
+            <input class="resultado2" type="textfield" name="resultado2" id="txtresultado2" value=''><br>
+            <input class="resultado1" type="textfield" name="resultado" id="txtresultado" value=''><br>
+            <input class="pulsar" type="reset" value="AC" id="AC" onclick="restaurar()">
+            <input class="boton" type="button" value='÷' id="division" onclick="add();addValue('/'); operatorDividir();"><br>
+            <input class="boton" type="button" value="7" id="7" onclick="resultado2.value+='7';">
+            <input class="boton" type="button" value="8" id="8" onclick="resultado2.value+='8';">
+            <input class="boton" type="button" value="9" id="9" onclick="resultado2.value+='9';">
+            <input class="boton" type="button" value="x" id="multiplicacion" onclick="add(); addValue('x'); operatorMultiplicar();"><br>
+            <input class="boton" type="button" value="4" id="4" onclick="resultado2.value+='4';">
+            <input class="boton" type="button" value="5" id="5" onclick="resultado2.value+='5';">
+            <input class="boton" type="button" value="6" id="6" onclick="resultado2.value+='6';">
+            <input class="boton" type="button" value="-" id="resta" onclick="add(); addValue('-'); operatorRestar();"><br>
+            <input class="boton" type="button" value="1" id="1" onclick="resultado2.value+='1';">
+            <input class="boton" type="button" value="2" id="2" onclick="resultado2.value+='2';">
+            <input class="boton" type="button" value="3" id="3" onclick="resultado2.value+='3';">
+            <input class="boton" type="button" value="+" id="suma" onclick="add(); addValue('+'); operatorSumar();"><br>
+            <input class="cero" type="button" value="0" id="0" onclick="resultado2.value+='0';">
+            <input class="boton" type="button" value="," id="," onclick="resultado2.value+='.'; addValue('.')">
+            <input class="boton" type="button" value="=" id="=" onclick="add();resultado.value+='='; result(); operatorIgual();">
+        </form>
+    </div>  
+</body>
+</html>

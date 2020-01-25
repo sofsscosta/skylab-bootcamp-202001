@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Pasapalabra</title>
+</head>
+<body>
+
+  <div class="container-game">
+
+    <!-- Create circle inside of parentdiv -->
+    <div id="parentdiv" >
+      <div class="timer" ></div>
+    </div>
+
+    
+    <div class="container-result">
+      <h1>Resultados</h1>
+      <h3>Aciertos: <span id="rightsResult" >0</span></h3>
+      <h3>Fallos: <span id="wrongsResult" >0</span></h3>
+      <br />
+      <button id="principal">Pantalla Principal</button>
+    </div>
+
+
+    <div class="txt-buttons">
+
+      <div class="container-startgame" >
+        <h1>Pasapalabra</h1>
+        <button id="start">Jugar</button>
+      </div>
+
+      <div class="container-questions" >
+        <h3><span id="clue" ></span><span class="current-letter"></span></h3>
+        <p class="question">Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien.</p>
+        <br />
+        <div class="answer">
+          <input id="currentAnswer" type="text" placeholder="Respuesta" />
+        </div>
+        
+        <div class="container-buttons">
+          <button class="button ok">OK</button>
+          <button class="button pasapalabra">Pasapalabra</button>
+        </div>
+
+        <h3>Resultados</h3>
+        <h4>Aciertos: <span id="rights" >0</span></h4>
+        <h4>Fallos: <span id="wrongs" >0</span></h4>
+      </div>
+
+      <div class="container-endgame" >
+        <button id="end">Salir</button>
+      </div>
+      
+    </div>
+
+  </div>
+  
+  <script src="app.js"></script>
+  
+</body>
+</html>

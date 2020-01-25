@@ -101,3 +101,21 @@ $ git tag 1.1.0
 ```sh
 $ git tag --list
 ```
+
+### stashing
+
+```sh
+$ git stash
+```
+
+### recovering a stashed stash
+
+```sh
+$ git stash pop
+```
+
+### fetch current branch from forked upstream
+
+```sh
+$ git fetch upstream
+```

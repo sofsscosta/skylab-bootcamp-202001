@@ -1,0 +1,57 @@
+body{
+    text-align: center;
+}
+
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    text-shadow: 2px 5px 2px rgb(156, 76, 156);
+    color: rgb(49, 42, 49);
+}
+
+.pulsar{
+    width: 386px;
+    height: 55px;
+    font-size: 20px; 
+}
+
+.cero{
+    width: 258px;
+    height: 55px;
+    font-size: 20px; 
+}
+
+.boton{
+    width: 126px;
+    height: 55px;
+    font-size: 20px;
+}
+
+.resultado1{
+    visibility: visible;
+    width: 502px;
+    height: 55px;
+    font-size: 20px;
+    text-align: right;
+    font-size: 40px;
+    color:rgb(156, 76, 156);    
+}
+
+.resultado2{
+    width: 502px;
+    height: 55px;
+    font-size: 20px;
+    text-align: right;
+    font-size: 40px;
+    color:rgb(156, 76, 156);                    
+} 
+
+.boton:hover {
+    background-color: rgb(156, 76, 156);
+    color: white;
+}
+
+.cero:hover {
+    background-color: rgb(156, 76, 156);
+    color: white;
+}

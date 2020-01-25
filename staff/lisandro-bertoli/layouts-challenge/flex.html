@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+                text-align: center;
+			}
+
+            .main-container {
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid black;
+                height: 100vh;
+                width: 100vw;
+            }
+
+
+            .mid-container{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+        
+            }
+
+            .main {
+                border: 1px solid black;
+                height: 100%;                
+            }
+
+            .main {
+                width: 100%;
+                height: 80%;
+            }
+
+            .header, .footer, .nav, .aside {
+                height: 10%;
+                width: 100%;
+                border: solid 1px black;
+            }
+
+            @media only screen and (min-width: 768px) {
+
+                .mid-container {
+                    height: 80%;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+
+                .main {
+                    width: 70%;
+                    height: 88.5%;
+                }
+
+                .nav {
+                    width: 100%;
+                    height: 11%;
+                }
+
+                .aside{
+                    height: 88.5%;
+                    width: 29%;
+                }
+
+                .header, .footer {
+                    height: 10%;
+                }
+
+            }
+
+            @media only screen and (min-width: 1024px) {
+                .main-container {
+                    margin: 0 auto;
+                    flex-direction: column;
+                    border: 1px solid black;
+                    height: 100vh;
+                    width: 100vw;
+                }
+
+                .mid-container{
+                    flex-direction: column;
+                    height: 70%;
+                }
+
+                .nav, .main, .aside {
+                    border: 1px solid black;
+                    height: 100%;                
+                }
+
+                .nav, .aside {
+                    width: 20%;
+                }
+
+                .header {
+                    height: 15%;
+                }
+
+                .main {
+                   width: 60%;
+                }   
+
+                .footer {
+                    height: 15%;
+                }
+
+            }
+
+		</style>
+	</head>
+        <div class="main-container">
+            <div class="header">header</div>
+            <div class="mid-container">
+                <div class="nav">nav</div>
+                <div class="main">main</div>
+                <div class="aside">aside</div>
+            </div>
+            <div class="footer">footer</div>    
+        </div>
+	</body>
+</html>

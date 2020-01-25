@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">HEADER</div>
+        <div class="nav">NAV</div>
+        <div class="main">MAIN</div>
+        <div class="aside">ASIDE</div>
+        <div class="footer">FOOTER</div>
+    </div>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .container{
+            display: grid;
+            grid-template-areas: "h h h h"
+                                "n m m a"
+                                "f f f f";
+        }
+        .header{
+            grid-area: h;
+            height: 10vh;
+            padding: 3vh 0;
+        }
+        .nav{
+            grid-area: n;
+            height: 80vh;
+            padding: 35vh 0;
+        }
+        .main{
+            grid-area: m;
+            height: 80vh;
+            padding: 35vh 0;
+        }
+        .aside{
+            grid-area: a;
+            height: 80vh;
+            padding: 35vh 0;
+        }
+        .footer{
+            grid-area: f;
+            height: 10vh;
+            padding: 3vh 0;
+        }
+        div{
+            text-align: center;
+            border: 1px solid black;
+        }
+
+    </style>
+</body>
+</html>

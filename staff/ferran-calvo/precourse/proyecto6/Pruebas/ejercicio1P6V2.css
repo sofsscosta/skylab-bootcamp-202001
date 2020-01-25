@@ -1,0 +1,83 @@
+.cabecera{
+    font-size: 7px;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+    height: 10px;
+}
+.gray{
+    color: gray;
+}
+#banner{
+    position: relative;
+    top: -60px;
+    background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_tahoe.jpeg");
+    background-size: cover;
+    background-position: bottom center;
+    height: 300px;
+    width: 100%;
+}
+#banner .content{
+    color: white;
+    position: relative;
+    top: 130px;
+    text-align: center;
+    font-size: 40px;
+}
+.rate{
+    margin: 0px 5px;
+    text-align: center;
+    border: 1px solid #808080;
+    color: white;
+    width: 150px;
+    padding: 20px;
+}
+h7{
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+h8{
+    font-size: 50px;
+}
+h9{
+    font-size: 12px;
+}
+.green{
+    background-color: rgb(39, 187, 101);
+}
+.blue{
+    background-color: royalblue;
+}
+.black{
+    background-color: black
+}
+.description{
+    margin: 0px 5px;
+    background-color: rgb(240, 238, 238);
+    color: black;
+    font-size: 8px;
+    text-align: center;
+    border: 1px solid #808080;
+    width: 150px;
+    height: 9px;
+    display: block;
+    padding: 8px 20px;
+}
+.bloque{
+    display: inline-block
+}
+.chooseButton{
+    background-color: white;
+    width: 150px;
+    padding: 12px 20px;
+    border: 1px solid #808080;
+    text-align: center;
+    position: relative;
+    left: 5px;
+}
+.oferta{
+    display: inline-block;
+    position: relative;
+    left: 27%;
+    top: -30px;
+}

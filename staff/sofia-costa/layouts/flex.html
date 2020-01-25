@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        body {
+            border: 2px solid black;
+        }
+
+        .center {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .area {
+            text-align: center;
+            border: 2px solid black;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .header, .nav, .aside, .footer {
+            height: 20vh;
+        }
+
+        .main {
+            height: 80vh;
+        }
+
+
+        @media only screen and (min-width: 768px) {
+
+            .tablet {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .main {
+                width: 70%;
+                height: 60vh;
+            }
+
+            .aside {
+                width: 30%;
+                height: 60vh;
+            }
+
+            .header, .nav,
+            .footer {
+                height: 20vh;
+                width: 100%;
+            }
+
+        }
+
+        @media only screen and (min-width: 1200px) {
+
+            body {
+                height:100vh;
+            }
+
+            .center {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .header,
+            .footer {
+                height: 20vh;
+            }
+
+            .nav,
+            .main,
+            .aside {
+                height: 60vh;
+            }
+
+            .nav,
+            .aside {
+                width: 20vw;
+            }
+
+            .main {
+                width: 60vw;
+            }
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class=container>
+        <header class='header area'>HEADER</header>
+        <div class=center>
+            <nav class='nav area'>NAV</nav>
+            <div class=tablet>
+                <main class='main area'>MAIN</main>
+                <aside class='aside area'>ASIDE</aside>
+            </div>
+        </div>
+        <footer class='footer area'>FOOTER</footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="pasapalabra.css"/>
+</head>
+<body>
+    <div class="arriba">
+        <p class="titulo">PASAPALABRA SKYLAB</p>
+    </div>
+    <div class="rosco" id="rosco">
+        <ul class="lista" id="lista">
+            <li class="letra base" id ="0">A</li>
+            <li class="letra base" id ="1">B</li>
+            <li class="letra base" id ="2">C</li>
+            <li class="letra base" id ="3">D</li>
+            <li class="letra base" id ="4">E</li>
+            <li class="letra base" id ="5">F</li>
+            <li class="letra base" id ="6">G</li>
+            <li class="letra base" id ="7">H</li>
+            <li class="letra base" id ="8">I</li>
+            <li class="letra base" id ="9">J</li>
+            <li class="letra base" id ="10">K</li>
+            <li class="letra base" id ="11">L</li>
+            <li class="letra base" id ="12">M</li>
+            <li class="letra base" id ="13">N</li>
+            <li class="letra base" id ="14">Ñ</li>
+            <li class="letra base" id ="15">O</li>
+            <li class="letra base" id ="16">P</li>
+            <li class="letra base" id ="17">Q</li>
+            <li class="letra base" id ="18">R</li>
+            <li class="letra base" id ="19">S</li>
+            <li class="letra base" id ="20">T</li>
+            <li class="letra base" id ="21">U</li>
+            <li class="letra base" id ="22">V</li>
+            <li class="letra base" id ="23">W</li>
+            <li class="letra base" id ="24">X</li>
+            <li class="letra base" id ="25">Y</li>
+            <li class="letra base" id ="26">Z</li>
+        </ul>
+
+    </div>
+
+
+    <div class="bloque" id="bloque">
+        <div>
+            <a class ="aciertoofallo" id="aciertoofallo">¡Buena suerte!</a>
+            <hr>
+        </div>
+        
+        <div class="preguntas" id="preguntas">
+            <p>Bienvenido al Pasapalabra Skylab edition. Funciona como el exitoso programa de televisión Pasapalabra</p>
+            <p>Debes responder palabras asociadas a las letra bases del abecedario y a las definiciones del diccionario,</p>
+            <p>si aciertas ganas 1 punto o puedes escribir "pasapalabra" para responderla más adelante.</p>
+            <p>La partida comenzará una vez escribas tu nombre. Tienes 200 segundos, buena suerte! :)</p>
+        </div>
+    </div>
+
+
+    <div class="botones1" id="botones1">
+        <form class="respuesta" id="respuesta">
+            <input type="text" class="textarea" id="enviar" placeholder="Escribe aquí"></input>
+            <button class="enviar">Enviar</button>
+        </form>
+
+        <button class="pasapalabra" id="pasapalabra">PASAPALABRA</button>
+    </div>
+
+    <div class="botones2" id ="botones2">
+        <a class="tiempo" id="tiempo">200</a>
+        <a class="puntos" id="puntos">0 puntos</a>
+        <button class="reset" id="reset">Reset</button>
+    </div>
+    
+</body>
+<script src="pasapalabra.js"></script>
+</html>

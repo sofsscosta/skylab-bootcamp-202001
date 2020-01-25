@@ -1,0 +1,75 @@
+body, html{
+    height: 100%;
+    margin: 0;
+}
+.barraSuperior{
+    width: 100%;
+    height: 20px;
+    background-color: black;
+}
+.opciones{
+    display: inline-block;
+    font-size: 9px;
+    color: #ffffff;
+    position: relative;
+    bottom: 3px;
+    height: 14px;
+    width: 30px;
+    padding: 3px 6px;
+    text-align: center;
+    margin: 0;
+}
+.opciones:hover{
+    background-color: dimgray;
+}
+.barraLateral{
+    position: relative;
+    bottom: 21px;
+    height:100%;
+    width:11%;
+    background-color: lightgrey;
+}
+h2{
+    position: relative;
+    top: 20px;
+    left: 20px;
+    font-size: 25px;
+    font-weight: 400;
+}
+h3{
+    position: relative;
+    top: 20px;
+    left: 20px;
+    font-size: 15px;
+    font-weight: 100;
+}
+.green{
+    color: green;
+    font-weight: 150;
+}
+.heading{
+    font-size: 35px;
+    position: relative;
+    bottom: 666px;
+    left: 170px;
+    display: inline-block
+}
+p{
+    font-size: 15px;
+    position: relative;
+    bottom: 700px;
+    left: 170px;
+    width: 50%;
+}
+.peque{
+    padding: 25px 50px;
+    text-align: center;
+    margin: 5px;
+    border: 0.5px solid grey
+}
+.grande{
+    padding: 50px;
+    text-align: center;
+    margin: 5px;
+    border: 0.5px solid grey
+}

@@ -1,0 +1,192 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+}
+
+/* ESTILOS DEL PREJUEGO */
+
+
+.prejuego-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+}
+
+.prejuego-container--visible{
+    display: flex;
+}
+
+.prejuego-container--oculto {
+    display: none;
+}
+
+.prejuego__titulo {
+    font-size: 48px;
+    margin-top: 40px;
+    font-weight: 700;
+}
+
+.prejuego__formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prejuego__texto {
+    text-align: center;
+}
+
+.prejuego__nombre {
+    width: 50%;
+    height: 32px;
+    font-size: 1em;
+    border-radius: 10px;
+    outline: none;
+}
+
+.prejuego__boton {
+    width: 40%;
+    height: 48px;
+    border-radius: 10px;
+    font-size: 32px;
+    outline: none;
+}
+
+.prejuego__boton:hover {
+    cursor: pointer;
+}
+
+
+/* ESTILOS DEL JUEGO */
+
+.juego-container {
+    margin: 40px;
+    grid-template-columns: 1000px;
+    grid-template-rows: 2fr 3fr 3fr;
+    height: calc(100vh - 80px);
+    text-align: center;
+}
+
+.juego-container--visible {
+    display: grid;
+}
+
+.juego-container--oculto {
+    display: none;
+}
+
+
+
+
+.rosco {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+}
+
+.rosco__letra {
+    background-color: lightskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    border-radius: 10%;
+}
+
+.pregunta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.respuesta-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.respuesta {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: repeat(2, 1fr);
+    height: 50%;
+    gap: 10px;
+}
+
+.respuesta__texto {
+    grid-column: 1 / 3;
+    font-size: 2em;
+    border-radius: 15px;
+    border: 4px solid blue;
+}
+
+.respuesta__boton {
+    font-size: 2em;
+    border-radius: 15px;
+}
+
+.respuesta__boton:hover {
+    cursor: pointer;
+    border: 3px solid white;
+}
+
+.respuesta__boton--aceptar {
+    background-color: lightgreen;
+}
+
+.respuesta__boton--pasapalabra {
+    background-color: lightskyblue;
+}
+
+.rosco__letra--acertada {
+    background-color: lightgreen;
+}
+
+.rosco__letra--fallada {
+    background-color: palevioletred;
+}
+
+.rosco__letra--focus {
+    border: 5px solid green;
+    background-color: aqua;
+}
+
+
+/* ESTILOS DEL POSTJUEGO */
+
+.postjuego-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 350px;
+}
+
+.postjuego-container--visible {
+    display: flex;
+}
+
+.postjuego-container--oculto {
+    display: none;
+}
+
+.postjuego__puntuacion {
+    line-height: 2em;
+}
+
+.postjuego__boton {
+    display: block;
+    width: 200px;
+    height: 40px;
+    font-size: 24px;
+}

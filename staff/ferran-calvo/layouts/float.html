@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">HEADER</div>
+    <div class="nav">NAV</div>
+    <div class="main">MAIN</div>
+    <div class="aside">ASIDE</div>
+    <div class="footer">FOOTER</div> 
+    <style>
+        div{
+            box-sizing: border-box;
+            border: 3px solid black;
+            text-align: center;
+        }
+        .header, .footer{
+            height: 25vh;
+            padding: 12vh 0;
+        }
+        .nav, .aside{
+            height: 50vh;
+            width: 20%;
+            float: left;
+            padding: 24vh 0;
+        }
+        .main{
+            width: 60%;
+            height: 50vh;
+            float: left;
+            padding: 24vh 0;
+        }
+        .footer, .header{
+            width: 100%;
+            clear: both;
+        }
+
+    </style>
+</body>
+</html>

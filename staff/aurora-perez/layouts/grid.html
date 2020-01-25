@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item1">Header</div>
+        <div class="item2">Nav</div>
+        <div class="item3">Main</div>  
+        <div class="item4">Aside</div>
+        <div class="item5">Footer</div>
+    </div>
+    
+
+    <style>
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .grid-container{
+            display: grid;
+            grid-template-areas: 'header'
+            'nav'
+            'main'
+            'aside'
+            'footer' ;
+    }
+    .item1 { grid-area: header;}
+    .item2 { grid-area: nav; }
+
+    .item3 { grid-area: main;}
+
+    .item4 { grid-area: aside;}
+
+    .item5 { grid-area: footer;}
+
+    
+
+    .item1{
+        height: 10vh;
+        background-color: rgb(73, 73, 184);
+    }
+
+    .item2{
+        background-color: rgb(43, 144, 226);
+        height: 5vh;
+    }
+
+    .item3{
+        height: 70vh;
+        background-color: rgb(170, 177, 207);
+    }
+
+    .item4{
+        background-color: rgb(80, 135, 238);
+        height: 5vh;
+    }
+
+    .item5{
+        background-color: rgb(53, 78, 219);
+        height: 10vh;
+    }
+
+    @media only screen and (min-width: 768px){
+        .grid-container{
+            display: grid;
+            grid-template-areas: 'header header header header header'
+            'nav nav nav nav nav'
+            'main main main main aside'
+            'footer footer footer footer footer' ;
+        }
+        .item5 {height: 15vh; }
+
+        .item3, .item4 {height: 70vh;}
+    }
+
+
+
+    @media only screen and (min-width: 1200px){
+        .grid-container{
+            display: grid;
+            grid-template-areas: 'header header header header header'
+            'nav main main main aside'
+            'footer footer footer footer footer' ;
+        }
+
+        .item1 { grid-area: header;
+            background-color: rgb(73, 73, 184);
+            height: 15vh; }
+
+
+        .item2 { grid-area: nav; 
+            background-color: rgb(43, 144, 226);}
+
+        .item3 { grid-area: main; 
+            background-color: rgb(170, 177, 207);}
+
+        .item4 { grid-area: aside; 
+            background-color: rgb(80, 135, 238);}
+
+        .item5 { grid-area: footer; 
+            background-color: rgb(53, 78, 219);
+            height: 15vh; }
+
+        .item2, .item3, .item4 {
+            height: 70vh;
+        }
+    }
+    
+    
+    
+    </style>
+</body>
+</html>

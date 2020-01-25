@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            display: grid;
+            grid-template-areas: "h h h h"
+                                "n n n n"
+                                "m m m m"
+                                "a a a a"
+                                "f f f f";
+        }
+        .head{
+            grid-area: h;
+            height: 10vh;
+            padding: 3vh 0;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .nav{
+            grid-area: n;
+            height: 20vh;
+            padding: 8vh 0;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .main{
+            grid-area: m;
+            height: 80vh;
+            padding: 35vh 0;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .aside{
+            grid-area: a;
+            height: 20vh;
+            padding: 8vh 0;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .footer{
+            grid-area: f;
+            height: 10vh;
+            padding: 3vh 0;
+            border: 1px solid black;
+            text-align: center;
+        }
+        @media only screen and (min-width: 768px){
+            .container{
+                display: grid;
+                grid-template-areas: "h h h h"
+                                    "n n n n"
+                                    "m m m a"
+                                    "f f f f";
+            }
+            .head{
+                grid-area: h;
+                height: 10vh;
+                padding: 3vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .nav{
+                grid-area: n;
+                height: 20vh;
+                padding: 8vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .main{
+                grid-area: m;
+                height: 60vh;
+                padding: 25vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .aside{
+                grid-area: a;
+                height: 60vh;
+                padding: 25vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .footer{
+                grid-area: f;
+                height: 10vh;
+                padding: 3vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+        }
+        @media only screen and (min-width: 1024px){
+            .container{
+                display: grid;
+                grid-template-areas: "h h h h"
+                                    "n m m a"
+                                    "f f f f";
+            }
+            .head{
+                grid-area: h;
+                height: 10vh;
+                padding: 3vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .nav{
+                grid-area: n;
+                height: 80vh;
+                padding: 35vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .main{
+                grid-area: m;
+                height: 80vh;
+                padding: 35vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .aside{
+                grid-area: a;
+                height: 80vh;
+                padding: 35vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .footer{
+                grid-area: f;
+                height: 10vh;
+                padding: 3vh 0;
+                border: 1px solid black;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="head">HEADER</header>
+        <nav class="nav">NAV</nav>
+        <main class="main">MAIN</main>
+        <aside class="aside">ASIDE</aside>
+        <footer class="footer">FOOTER</footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,211 @@
+/*COLORES
+verde: #3be8b0
+azul-flojo: #1aafd0
+azul-fuerte: #1769ff
+lila: #6a67ce
+amarillo: #ffb900
+rojo: #fc636b
+gris: #f4f7f9
+gris2: #8996a0
+*/
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container-instrucciones,.login-form{
+    display: flex;
+    font-size: 1.6em;
+    font-weight: 200;
+    text-align: center;
+    line-height: 1.4em;
+    background-color: #f4f7f9;
+    padding-bottom: 20px;
+}
+
+.texto-instrucciones{
+    margin: 50px 0;
+}
+
+#player{
+    display: none;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+
+}
+
+.login-form{
+    display: none;
+    padding: 10px;
+}
+
+.resaltar-one{
+    color: #fc636b;
+}
+.resaltar-two{
+    color: #1769ff;
+}
+
+.contenido-juego{
+    /*visibility: hidden;*/
+    display: none;
+}
+
+.title{
+    margin: 20px;
+    width: 100%;
+    font-weight: 200;
+}
+.subrayar{
+    border-bottom: 3px solid #1769ff;
+}
+
+.container-letras{
+    background-color: #f4f7f9;
+}
+
+ul.letras{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 50px;
+}
+
+li{
+    margin: 10px;
+    font-size: 1.6em;
+}
+
+.letra-acierto{
+    color: #3be8b0;
+}
+
+.letra-error{
+    color: #fc636b;
+}
+
+.letra-foco{
+    color: #1769ff;
+    font-size: 2em;
+}
+
+.container-pregunta{   
+    background-color: #1aafd0;
+}
+p#question{
+    font-size: 1.5em;
+    padding: 50px;
+    color: white;
+}
+
+.container-respuesta{
+    background-color: #f4f7f9;
+}
+.formulario{
+    padding: 50px;
+}
+input{
+    width: 500px;
+    height: 30px;
+    font-size: 1.2em;
+    margin: 10px;
+}
+
+#respuesta{
+    border: 0;
+    height: 50px;
+    text-align: center;
+}
+
+.submit,.btn-login{
+    background: transparent;
+    color:#ffb900;
+    border: 2px solid #ffb900;
+    height: 40px;
+}
+.submit:hover, .btn-login:hover{
+    background-color: #ffb900;
+    color: white;
+}
+#pasapalabra{
+    background: transparent;
+    color:#1769ff;
+    border: 2px solid #1769ff;
+    height: 40px;
+}
+#pasapalabra:hover{
+    background-color: #1769ff;
+    color: white;
+}
+
+.container-scores{
+    display: none;
+    flex-direction: column;
+    font-size: 1.6em;
+    font-weight: 200;
+    text-align: center;
+    line-height: 1.4em;
+    background-color: #f4f7f9;
+    padding-bottom: 20px;    
+}
+
+.scores-aciertos,.scores-errores{
+    margin: 20px 10px 20px 20px;
+}
+.scores-aciertos{
+    color: #3be8b0;
+}
+
+.scores-errores{
+    color: #fc636b;
+}
+
+.n-aciertos,.n-errores{
+    margin-left: 20px;
+}
+
+.div-time{
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+h3{
+    font-weight: 200;
+}
+
+.time{
+    margin-top: 10px;
+}
+
+.volver{
+    background: transparent;
+    color:#ffb900;
+    border: 2px solid #ffb900;
+    margin: 20px auto;
+    width: 150px;
+    height: 50px;
+    font-size: .8em;
+    
+}
+.volver:hover{
+    background-color: #ffb900;
+    color: white;
+}
+
+
