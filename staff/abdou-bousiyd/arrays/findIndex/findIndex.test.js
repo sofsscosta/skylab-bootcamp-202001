@@ -4,7 +4,6 @@ console.log('test findIndex');
 (function() {
     'use strict';
 
-    console.log('TEST includes');
     console.log('should succeed on searching inside an array and returning the index of the element that satisfies the condition, if exists');
 
     function assert(assertion, message) {
