@@ -47,4 +47,53 @@ Murray.prototype.reverse = function() {
         a[a.length] = this[i];
     }
     return a;
+};
+
+Murray.prototype.concat = function () {
+    var concated = this;
+    for (var i = 0; i < arguments.length; i++) {
+        for (var j = 0; j < arguments[i].length; j++) {
+                concated[concated.length] = arguments[i][j];
+                ++concated.length;
+        }
+    }
+    return concated;
+};
+
+Murray.prototype.join = function (value) {
+    var separator = '';
+    if (value) {
+        separator = value
+    } else {
+        separator = ","
+    }
+    var result = "";
+    for (var i = 0; i < this.length; i++) {
+        if (i < this.length-1) result += this[i] + separator;
+        else result += this[i];
+    }
+    return result;
+};
+
+Murray.prototype.shift = function () {
+    var substracted = this[0];
+    delete this[0];
+    --this.length
+    return substracted;
+};
+
+Murray.prototype.unshift = function () {
+    debugger
+    var oldArray = [];
+    oldArray = this;
+    var newArray = [];
+    this.length = oldArray.length+arguments.length;
+    for (var i = 0; i < arguments.length; i++) {
+        this[i] = arguments[i];
+    }
+    for (var j = 0; j < this.length; j++) {
+        this[j+i] = oldArray[j];
+    }
+    return newArray;
 }
+
