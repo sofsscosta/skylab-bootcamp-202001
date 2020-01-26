@@ -83,17 +83,26 @@ Murray.prototype.shift = function () {
 };
 
 Murray.prototype.unshift = function () {
-    debugger
-    var oldArray = [];
-    oldArray = this;
     var newArray = [];
-    this.length = oldArray.length+arguments.length;
     for (var i = 0; i < arguments.length; i++) {
-        this[i] = arguments[i];
+        newArray[i] = arguments[i];
     }
     for (var j = 0; j < this.length; j++) {
-        this[j+i] = oldArray[j];
+        newArray[j+i] = this[j];
     }
+    for (var k = 0; k < this.length+i; k++) {
+        this[k] = newArray[k]; 
+    }
+    this.length = this.length+i;
     return newArray;
-}
+};
+
+Murray.prototype.tostring = function (value) {
+    debugger
+    var string = "";
+    for (var i = 0; i < value.length; i++) {
+        string += value[i];
+    }
+    return string;
+};
 
