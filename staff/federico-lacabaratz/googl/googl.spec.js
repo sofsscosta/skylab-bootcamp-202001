@@ -4,6 +4,6 @@
 
 console.log('------------------------ TEST Googl ------------------------');
 
-console.assert(result.title, 'each item should have at least a title');
-console.assert(result.title && result.description, 'each item should have at least a title and a description');
-console.assert(result.title && result.description && result.rating, 'each item should have at least a title, a description and a rating');
+console.assert(!(result === undefined), 'Should fail if there is not a result');
+console.assert(result.title, 'Should fail, because each item should have at least a title');
+console.assert(result.title && result.description, 'Should fail, because each item should have at least a title and a description');
