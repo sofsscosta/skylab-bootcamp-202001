@@ -45,22 +45,8 @@ Murray.prototype.splice = function (start, deleteCount, value) {
         for (var i = start + 1; i < this.length; i++)
             delete this[i];
 
-        this.length -= deleteCount - (arguments.length - 2);
+        this.length -= deleteCount - 1;
 
-        for (var i = 2; i < arguments.length; i++)
-            this[start + i - 2] = arguments[i];
+        this[start] = value;
     }
-};
-
-Murray.prototype.toString = function () {
-    // Murray({ 0: 'Jan', 1: 'March', 2: 'Feb', 3: 'Oct', length: 4 })
-
-    return Murray.name + ' { ' + (function () {
-        var string = '';
-
-        for (var i = 0; i < this.length; i++)
-            string += i + ': ' + this[i] + (i < this.length - 1? ', ' : '');
-
-        return string;
-    }.bind(this))() + ' }';
 };

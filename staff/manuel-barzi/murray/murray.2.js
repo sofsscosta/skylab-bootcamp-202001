@@ -47,20 +47,20 @@ Murray.prototype.splice = function (start, deleteCount, value) {
 
         this.length -= deleteCount - (arguments.length - 2);
 
-        for (var i = 2; i < arguments.length; i++)
+        for (var i = 2; i < arguments.length; i++) 
             this[start + i - 2] = arguments[i];
     }
 };
 
-Murray.prototype.toString = function () {
+Murray.prototype.toString = function() {
     // Murray({ 0: 'Jan', 1: 'March', 2: 'Feb', 3: 'Oct', length: 4 })
 
-    return Murray.name + ' { ' + (function () {
+    return Murray.name + ' { ' + (function() {
         var string = '';
 
         for (var i = 0; i < this.length; i++)
-            string += i + ': ' + this[i] + (i < this.length - 1? ', ' : '');
+            string += i + ': ' + this[i];
 
         return string;
-    }.bind(this))() + ' }';
+    })() + ' }';
 };
