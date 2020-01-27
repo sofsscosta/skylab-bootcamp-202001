@@ -1,4 +1,6 @@
 function sort(arr) {
+    if (!Array.isArray(arr)) throw Error('array is not valid');
+    if (arr.length <= 0) throw Error('array is empty');
 
     var result = []
     var temp;
@@ -11,9 +13,7 @@ function sort(arr) {
             if(arr[i] < arr[i-1]){
                 temp = arr[i];
                 arr[i] = arr[i-1];
-                arr[i-1] = temp;
-                
-                
+                arr[i-1] = temp;      
             }
         }
     }

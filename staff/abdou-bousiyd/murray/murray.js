@@ -48,15 +48,22 @@ Murray.prototype.find = function (callback) {
     return -1
 }
 
-Murray.prototype.includes = function (element, position = 0) {
+//--------------------------------------------
+Murray.prototype.isArray = function(obj) {
+   return obj instanceof Array
+   //return obj.__proto__.constructor.name === 'Murray'
+}
 
+
+
+Murray.prototype.includes = function () {
     if (!(array instanceof Array)) throw new TypeError(array + ' is not an Array');    
-    // if(!arguments.length) throw new TypeError(arguments + 'function must contain arguments')
-    // if (!array.length) throw new TypeError(array + ' array cannot be empty'); 
 
     for(var i = position; i < this.length; i++) {
         if(this[i] === element) return true
     }
     return false
 }
+
+
 
