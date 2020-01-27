@@ -55,12 +55,12 @@ Murray.prototype.splice = function (start, deleteCount, value) {
 Murray.prototype.toString = function () {
     // Murray({ 0: 'Jan', 1: 'March', 2: 'Feb', 3: 'Oct', length: 4 })
 
-    return Murray.name + ' { ' + (function () {
+    return Murray.name + ' { ' + (function (self) {
         var string = '';
 
-        for (var i = 0; i < this.length; i++)
-            string += i + ': ' + this[i] + (i < this.length - 1? ', ' : '');
+        for (var i = 0; i < self.length; i++)
+            string += i + ': ' + self[i] + (i < self.length - 1? ', ' : '');
 
         return string;
-    }.bind(this))() + ' }';
+    })(this) + ' }';
 };

@@ -10,6 +10,16 @@ beforeEach(function () {
           };
         }
       };
+    },
+
+    toHaveLength: function () {
+      return {
+        compare: function (target, expected) {
+          return {
+            pass: target.length === expected
+          };
+        }
+      };
     }
   });
 });
