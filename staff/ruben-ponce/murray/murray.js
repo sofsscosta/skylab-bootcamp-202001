@@ -98,7 +98,6 @@ Murray.prototype.unshift = function () {
 };
 
 Murray.prototype.tostring = function (value) {
-    debugger
     var string = "";
     for (var i = 0; i < value.length; i++) {
         string += value[i];
@@ -106,3 +105,18 @@ Murray.prototype.tostring = function (value) {
     return string;
 };
 
+Murray.prototype.sort = function () {
+var b = [];
+var c = [];
+var count = 0;
+    for (var i = 0; i < this.length; i++) {
+        b[this[i].charCodeAt(0)-97] = this[i];
+    }
+    for (var j = 0; j < b.length; j++) {
+        if (b[j] != undefined) {
+            c[c.length] = b[count];
+        }
+        count++;
+    }
+    return c
+};
