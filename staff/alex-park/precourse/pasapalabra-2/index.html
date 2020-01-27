@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "index.css" />
+        <title>Pasapalabra</title>
+    </head>
+    <body>
+        <div class="ranking" id="ranking">
+            <div class="ranking--content" id="rankingcontent">
+                <span class="close" id="close">&times;</span>
+                <p class="finishline">¡SE ACABÓ LA PARTIDA!</p>
+                <p class="scoretext" id="scoretext"> Puntuación final: </p>
+                <p class="rankinglist" id="rankinglist">Ránking final:</p>
+                <br>
+                <br>
+                <p class="topone" id="topone">1) </p>
+                <p class="toptwo" id="toptwo">2) </p>
+                <p class="topthree" id="topthree">3) </p>
+
+            </div>
+
+        </div>
+
+        <div class="bg">
+            <div class="maintitle" id="mainbutton"><b>EMPEZAR PASAPALABRA</b></div>
+            <div><hr></div>
+            <div class="mainbuttons">
+                <div class="textblock" id="textblock">
+                    <div class="answercheck" id="answercheck">
+                        <p>¡Buena suerte!</p>
+                    </div>
+                    <hr>
+                    <div class="definitions" id="definitions">
+                        <p>Basado en el exitoso concurso de televisión Pasapalabra de Telecinco, las normas son muy sencillas:</p>
+                        <p>Se mostraran unas definiciones por pantalla y el usuario deberá responder con la palabra a la que corresponden. El usuario tiene la opción de decir Pasapalabra y dejar esa definición para más adelante.</p>
+                        <p>El programa es sensible a la acentuación, así que debe introducir la palabra con tilde. Dicho esto, ¡que comience el juego!</p>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <form id='submit'>
+                        <input type="text" class="answer" id="answer" name="answer" placeholder="Respuesta"></input>
+                        <button class="sendbutton" id="sendbutton">Enviar</button>
+                    </form>
+                    
+                    <a class="passtheword" id="passtheword">PASAPALABRA</a>
+                </div>
+                <br>
+                <br>
+                <div class="score">
+                    <a class="timer" value="150" id="timer">200</a>
+                    <a class="points" id="points">0</a>
+                </div>
+            </div>
+            
+            <div id="rosco">
+                <ul id="letters">
+                    <li class="letter default" id="1">A</li>
+                    <li class="letter default" id="2">B</li>
+                    <li class="letter default" id="3">C</li>
+                    <li class="letter default" id="4">D</li>
+                    <li class="letter default" id="5">E</li>
+                    <li class="letter default" id="6">F</li>
+                    <li class="letter default" id="7">G</li>
+                    <li class="letter default" id="8">H</li>
+                    <li class="letter default" id="9">I</li>
+                    <li class="letter default" id="10">J</li>
+                    <li class="letter default" id="11">K</li>
+                    <li class="letter default" id="12">L</li>
+                    <li class="letter default" id="13">M</li>
+                    <li class="letter default" id="14">N</li>
+                    <li class="letter default" id="15">Ñ</li>
+                    <li class="letter default" id="16">O</li>
+                    <li class="letter default" id="17">P</li>
+                    <li class="letter default" id="18">Q</li>
+                    <li class="letter default" id="19">R</li>
+                    <li class="letter default" id="20">S</li>
+                    <li class="letter default" id="21">T</li>
+                    <li class="letter default" id="22">U</li>
+                    <li class="letter default" id="23">V</li>
+                    <li class="letter default" id="24">W</li>
+                    <li class="letter default" id="25">X</li>
+                    <li class="letter default" id="26">Y</li>
+                    <li class="letter default" id="27">Z</li>
+                </ul>
+            </div>
+            <div>
+                <hr>
+                <div class="foot">Made by Àlex Park for Skylab Coders Academy</div>
+            </div>
+            
+        </div>
+        <audio id="audiosuccess" src="success.ogg"></audio>
+        <audio id="audiofailure" src="failure.ogg"></audio>
+    </body>
+    <script type="text/javascript" src="index.js"></script>
+</html>

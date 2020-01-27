@@ -1,0 +1,418 @@
+body{
+    background-color: #3547ec;
+}
+
+.grid {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 10% 4fr 4fr;
+    grid-template-rows: 10% 45% 10% 35%;
+    grid-gap: 1rem 1rem;
+    grid-template-areas: 
+    "score rosco welcome"
+    ". rosco welcome"
+    ". rosco usuario"
+    ". pregunta jugar";
+    height: 900px;
+    max-width: 1920px; 
+}
+
+/*contenedor score*/
+.score_container{
+    grid-area: score;
+    justify-self: end;
+}
+
+/*cuando la letra se ha fallado y el contador de fallos*/
+.fallos {
+    width: 54px;
+    height: 54px;
+    background-color: #fa2f0b;
+    border-radius: 50px;
+    font-size: 21px;
+    color: #111111;
+    border: 2px solid #d0d0d0;
+ }
+ 
+/*cuando la letra se ha acertado y el contador de aciertos*/
+.aciertos {
+    width: 54px;
+    height: 54px;
+    background-color: #37c90a;
+    border-radius: 50px;
+    font-size: 21px;
+    color: #111111;
+    border: 2px solid #d0d0d0;
+    
+}
+
+/*el boton que indica los segundos que quedan de juego*/
+.segundos {
+    width: 67px;
+    height: 65px;
+    background-color: #0515ac;
+    border-radius: 36px;
+    font-size: 21px;
+    color: #d0d0d0;
+    border: 2px dotted #d0d0d0;
+    
+}
+
+/*contenedor rosco*/
+.rosco_container{
+    grid-area: rosco;
+    justify-self: center;
+    align-self: center;
+    position: relative;
+}
+
+.rosco{
+    justify-self: center;
+    align-self:center;
+    margin-right: 32px;
+}
+
+/* PASAPALABRA dentro del rosco*/
+.title {
+    grid-area: rosco;
+    justify-self: center;
+    align-self:center;
+    color: #d0d0d0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+}
+
+/*formato para las letras del rosco*/
+.letter {
+    position: absolute;
+    width:50px;
+    height:50px;
+    background-color:#071ee6;
+    border-radius: 50px;
+    font-size:16px;
+    color:#d0d0d0;
+    border: 2px solid #d0d0d0;
+    text-align: center;
+}
+
+/*POSICIONES para cada uno de los botones del rosco*/
+#rosco button:nth-of-type(1) {
+    transform: rotate(-92deg) translate(226px) rotate(92deg);
+}
+#rosco button:nth-of-type(2) {
+    transform: rotate(-79deg) translate(226px) rotate(79deg);
+}
+#rosco button:nth-of-type(3) {
+    transform: rotate(-65deg) translate(226px) rotate(65deg);
+}
+#rosco button:nth-of-type(4) {
+    transform: rotate(-51deg) translate(226px) rotate(51deg);
+} 
+#rosco button:nth-of-type(5) {
+    transform: rotate(-37deg) translate(226px) rotate(37deg);
+}
+#rosco button:nth-of-type(6) {
+    transform: rotate(-23deg) translate(226px) rotate(23deg);
+}
+#rosco button:nth-of-type(7) {
+    transform: rotate(-9deg) translate(226px) rotate(9deg);
+}
+#rosco button:nth-of-type(8) {
+    transform: rotate(5deg) translate(226px) rotate(-5deg);
+}
+#rosco button:nth-of-type(9) {
+    transform: rotate(19deg) translate(226px) rotate(-19deg);
+}
+#rosco button:nth-of-type(10) {
+    transform: rotate(33deg) translate(226px) rotate(-33deg);
+}
+#rosco button:nth-of-type(11) {
+    transform: rotate(47deg) translate(226px) rotate(-47deg);
+}
+#rosco button:nth-of-type(12) {
+    transform: rotate(61deg) translate(226px) rotate(-61deg);
+}
+#rosco button:nth-of-type(13) {
+    transform: rotate(75deg) translate(226px) rotate(-75deg);
+}
+#rosco button:nth-of-type(14) {
+    transform: rotate(88deg) translate(226px) rotate(-88deg);
+}
+#rosco button:nth-of-type(15) {
+    transform: rotate(102deg) translate(226px) rotate(-102deg);
+}
+#rosco button:nth-of-type(16) {
+    transform: rotate(117deg) translate(226px) rotate(-117deg);
+}
+#rosco button:nth-of-type(17) {
+    transform: rotate(131deg) translate(226px) rotate(-131deg);
+}
+#rosco button:nth-of-type(18) {
+    transform: rotate(145deg) translate(226px) rotate(-145deg);
+}
+#rosco button:nth-of-type(19) {
+    transform: rotate(145deg) translate(226px) rotate(-145deg);
+}
+#rosco button:nth-of-type(20) {
+    transform: rotate(159deg) translate(226px) rotate(-159deg);
+}
+#rosco button:nth-of-type(21) {
+    transform: rotate(173deg) translate(226px) rotate(-173deg);
+}
+#rosco button:nth-of-type(22) {
+    transform: rotate(187deg) translate(226px) rotate(-187deg);
+}
+#rosco button:nth-of-type(23) {
+    transform: rotate(201deg) translate(226px) rotate(-201deg);
+}
+#rosco button:nth-of-type(24) {
+    transform: rotate(215deg) translate(226px) rotate(-215deg);
+}
+#rosco button:nth-of-type(25) {
+    transform: rotate(229deg) translate(226px) rotate(-229deg);
+}
+#rosco button:nth-of-type(26) {
+    transform: rotate(243deg) translate(226px) rotate(-243deg);
+}
+#rosco button:nth-of-type(27) {
+    transform: rotate(256deg) translate(226px) rotate(-256deg);
+}
+#rosco button:nth-of-type(28) {
+    transform: rotate(268deg) translate(226px) rotate(-268deg);
+}
+
+/*contenedor WELCOME"*/
+.welcome_container{
+    grid-area: 1 /3 /3 / 4;
+    align-self: end;
+}
+
+/*enunciado reglas del juego*/
+.reglas {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    color: #d0d0d0;
+    text-align: justify;
+    padding: 30px 20px 0px 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+/*form para solicitar el nombre del jugador*/
+.usuario {
+    grid-area: usuario;
+    text-align: left;
+    padding: 20px 20px 0px 20px;
+    color:#d0d0d0; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    visibility: visible;
+}
+
+/*boton JUGAR*/
+.jugar {
+    grid-area:jugar;
+    justify-self: center;
+    align-self: start;
+    width: 216px;
+    height: 68px;
+    line-height: 50px;
+    background-color:#4093f1;
+    color: #d0d0d0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 29px;
+    font-weight: bold;
+    border: 2px solid #d0d0d0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/*cuando pasa el puntero por encima del boton JUGAR*/   
+#jugar:hover {
+    background-color: #0515ac;
+    color: #d0d0d0;;
+}
+
+/*cuando se clicka el boton JUGAR*/    
+#jugar:active {
+    background-color: #a8f392;
+    color: #0515ac;
+}
+
+/*contenedor para el contenido de pregunta*/
+.pregunta_container{
+    grid-area:pregunta;
+    justify-items: center;
+    align-items: center;
+}
+
+/*todo el continente del enunciado de la pregunta, ENVIAR y PASAPALABRA*/
+.pregunta { 
+    position: absolute;
+    width: 611px;
+    height: 117px;
+    padding: 180px 0px 0px 109px;
+    border: none;
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+/*enunciado de la pregunta*/
+.enunciado {
+    position: absolute;
+    border: none;
+    width: 591px;
+    height: 115px;
+    top: 41px;
+    margin-left: 60px;
+    background-color: #3547ec ;
+    color: #d0d0d0;
+    font-size: 22px;
+    scrollbar-color: #0515ac #686668;/*color barra scroll*/
+}
+
+/*el espacio donde el jugador introduce su respuesta*/
+.respuesta {   
+    border: none;
+    text-align: center;
+    width: 278px;
+    height: 55px;
+    font-size: 23px;
+    border-radius: 10px;
+}
+
+/*boton ENVIAR dentro del continente "pregunta"*/
+.enviar { 
+    background-color: #33b80a;
+    border: 10px;
+    text-align: center;
+    width: 143px;
+    height: 55px;
+    font-size: 23px;
+    border: 3px solid #f6f8f6ec;
+    color: #f6f8f6ec;
+    font-weight: 200;
+}
+
+/*boton PASAPALABRA dentro del continente "pregunta"*/
+.pasapalabra {
+    background-color:#0515ac;
+    border: 10px;
+    text-align: center;
+    width: 165px;
+    height: 55px;
+    font-size: 23px;
+    border: 3px solid #f6f8f6ec;
+    color: #f6f8f6ec;
+    font-weight: 200;  
+}
+
+/* Modal Content */
+.modal-content {
+    grid-area: pregunta;
+    width: 582px;
+    height: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f6f8f6ec;
+    border: none;
+    border-radius: 10px;
+}
+
+/* El modal que aparece cuando el jugador falla, en él se indica la respuesta correcta*/
+#modal {
+    grid-area: pregunta;
+    justify-self: center;
+    display: none; /* Hidden by default */
+    z-index: 1; /* Sit on top */
+}
+
+/*RANKING*/
+.ranking_container{
+    grid-area:rosco;
+    justify-self: end;
+    align-self: center;
+}
+
+.ranking {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 500px; 
+    height: 320px;
+    padding: 40px;
+    background-color: #b6ebf1ec;
+    border: rgba(56, 185, 224, 0.4) 5px solid; 
+    visibility: hidden;
+}
+
+.heading {
+    font-size: 25px;
+    text-align: center;
+    color:#e01cd7ec;
+}
+   
+.estrella {
+    color: orange;
+}
+    
+/* las tres columnas del ranking */
+.side {
+    float: left;
+    width: 30%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 40%;
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    text-align: left;
+    color: #f6f8f6ec;
+}
+
+/*mensaje de que se ha acabado el tiempo o se ha ganado el bote*/
+.finPartida {
+    grid-area:1 / 1 / 5 / 4;
+    justify-self: center;
+    align-self: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 49px;
+    text-align: center;
+    background-color: #3547ec;
+    color: #f6f8f6ec;
+    visibility: hidden;
+}
+
+.centrar {
+    text-align: center;
+}
+
+.visible{
+    visibility: visible;
+}
+
+/*para resoluciones como máximo de 1024px y como mínimo de 640px*/
+@media all and(max-width: 1024px) and (min-width: 640px){
+    .grid{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 10% 50% 40%;
+        grid-template-areas: 
+        "score . "
+        "rosco welcome"
+        "pregunta usuario"
+        "pregunta jugar";
+    }
+}

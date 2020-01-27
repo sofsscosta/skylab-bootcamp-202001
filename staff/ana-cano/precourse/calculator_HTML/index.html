@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    
+    <title>Calculator</title>
+</head>
+<body>
+<form id="calculatorRules">
+<table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="4">
+            <div class="display" id="lcd" value="0"></div>
+    </tr>
+    </td>
+    <div id="buttons">
+        <tr>
+            <td colspan="2">
+                <button type=number class="eliminar" id="clearlcd"  >AC</button>
+            </td>
+            <td>
+                <button type= button class="eliminar" id="undo"><img src="./redo.png"></button>
+            </td>
+            <td>
+                <button type= button class="operation" id="division">/</button>
+            </td>
+
+        <tr>
+            <td>
+                <button type=button class="number" id="seven">7</button>
+            </td>
+            <td>
+                <button type=button class="number" id="eight">8</button>
+            </td>
+            <td>
+                <button type=button class="number" id="nine">9</button>
+            </td>
+            <td>
+                <button type=button class="operation" id="multiplication">*</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type= button class="number" id="four">4</button>
+            </td>
+            <td>
+                <button type= button class="number" id="five">5</button>
+            </td>
+            <td>
+                <button type=button class="number" id="six">6</button>
+            </td>
+            <td>
+                <button type=button class="operation" id="deduct">-</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type=button class="number" id="one">1</button>
+            </td>
+            <td>
+                <button type= button class="number" id="two">2</button>
+            </td>
+            <td>
+                <button type= button class="number" id="three">3</button>
+            </td>
+            <td>
+                <button type= button class="operation" id="add">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type= button class="number" id="zero">0</button>
+            </td>
+            <td>
+                <button type= button class="coma" id="coma">.</button>
+            </td>
+            <td>
+                <button type= button class="operation" id="equal">=</button>
+            </td>
+        </tr>
+    </div>
+    <script src="index.js"></script>
+</table>
+</form>
+</body>
+</html>

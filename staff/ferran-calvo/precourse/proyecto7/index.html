@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./index.css">
+    </head>
+    <script  src="./index.js"></script>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <td id="barraOperaciones" colspan="4">0</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="AC" colspan="2"><button class="number0" onclick="clean()">AC</button></td>
+                    <td><button onclick="back()">&#8635</button></td>
+                    <td class="operatorSign"><button class="operatorSign" onclick="decideOperation('/')">&#247</button></td>
+                </tr>
+                <tr>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">7</button></td>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">8</button></td>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">9</button></td>
+                    <td class="operatorSign"><button class="operatorSign" onclick="decideOperation('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">4</button></td>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">5</button></td>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">6</button></td>
+                    <td class="operatorSign"><button class="operatorSign" onclick="decideOperation(this.innerHTML)">-</button></td>
+                </tr>
+                <tr>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">1</button></td>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">2</button></td>
+                    <td class="number"><button onclick="displayNumber(this.innerHTML)">3</button></td>
+                    <td class="operatorSign"><button class="operatorSign" onclick="decideOperation(this.innerHTML)">+</button></td>
+                </tr>
+                <tr>
+                    <td class="number" colspan="2"><button class="number0" onclick="displayNumber(this.innerHTML)">0</button></td>
+                    <td><button onclick="displayNumber(this.innerHTML)">.</button></td>
+                    <td class="operatorSign"><button class="operatorSign" onclick="showResult()">=</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
+

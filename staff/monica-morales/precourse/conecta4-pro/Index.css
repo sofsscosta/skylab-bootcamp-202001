@@ -1,0 +1,268 @@
+
+.grid {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% 1fr;
+    
+    grid-template-areas: 
+    "pulsador  . "
+    "tablero controles";
+    height: 1080px;
+    max-width: 1920px; 
+}
+body {
+    background-color: rgb(213, 214, 218);
+}
+/*instrucciones del juego*/
+.welcome {
+    grid-area: controles;
+    grid-row: 2 / 3;
+    justify-self: center;
+    align-self: start;
+    background-color: rgb(213, 214, 218);
+    font-size: 20px;
+    z-index: 1;
+}
+/*form para solicitar el nombre del jugador*/
+.usuario {
+    grid-area: controles;
+    text-align: left;
+    color:#d0d0d0; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 60%;
+    width: 20%;
+    height: 2%;
+    font-weight: bold;
+    visibility: visible;
+    color: rgb(44, 22, 241);
+    border-radius: 10px;
+    
+}
+.container_jugar {
+    grid-area: fin_partida;
+}
+.jugar {
+    grid-area: controles;
+    margin-left: 400px;
+    margin-top: 30px;
+    height: 80px;
+    width: 207px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+/*la estructura del tablero*/
+.board {
+    grid-area: tablero;
+    grid-row: 2 / 3;
+    height: 771px;
+    width: 900px;
+    justify-self: center;
+    align-self: start;
+    background-color: rgb(25, 25, 253);
+    border-radius: 2%;
+}
+table, th, td {
+    text-align: center;
+}
+.container_ficha {
+    grid-area: pulsador;
+    justify-content: start;
+    align-content: center;
+}
+.ficha {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    text-align: center;
+    margin-left: 23px;
+    color: rgb(25, 25, 253);
+    font-size: 18px;
+    border-color: rgb(25, 25, 253);
+}
+
+/*ficha vacía*/ 
+.token_jugador0 {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    background-color: rgb(213, 214, 218);
+    border-radius: 50%;
+    display: inline-block;
+}
+/*ficha jugador1(rojo)*/
+.token_jugador1 {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    background-color: rgb(212, 34, 28);
+    border-radius: 50%;
+    display: inline-block;
+}
+/*ficha jugador2(amarillo)*/
+.token_skylab {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    background-color: rgb(240, 194, 45);
+    border-radius: 50%;
+    display: inline-block;
+}
+/*contenedor de botones para tiradas, turno jugador1 y turno jugador2*/
+.controles {
+    grid-area: controles;
+    margin-top: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 35px;
+    
+} 
+/*boton control tiradas*/
+.tiradas {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    border: "none";
+    margin-left: 10px;
+    background-color:rgb(213, 214, 218);
+}
+/*boton para activar turno jugador1*/
+.turno_jugador1 {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    background-color: rgb(212, 34, 28);
+    margin-left: 10px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
+}
+/*boton para activar turno jugador2*/
+.turno_jugador2 {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    background-color: rgb(240, 194, 45);
+    margin-left: 10px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
+}
+/*boton jugador en espera*/
+.jugador_espera {
+    height: 40px;
+    width: 40px;
+    position: relative;
+    background-color: rgb(213, 214, 218);;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
+}
+/*contenedor de botones reiniciar y salir*/
+.reset {
+    grid-area: controles;
+    justify-self: center;
+    margin-top: 388px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 35px;
+    visibility: hidden;
+}
+
+.reiniciar_salir {
+    height: 80px;
+    width: 207px;
+    margin-right: 35px;
+    font-size: 25px;
+    visibility: hidden;
+    border-radius: 10px;
+}
+
+/* para informar de que un jugador ha hecho conecta4'*/
+#conecta{
+    grid-area: controles;
+}
+.ganador {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    position: relative;
+    color: #137bf1ec;
+}
+.return {
+    height: 80px;
+    width: 207px;
+    font-size: 25px;
+    margin-left: 443px;
+    margin-top: 30px;
+    border-radius: 10px;
+    position: relative;
+    visibility: hidden;
+}
+.justificar_texto {
+    text-align: justify;
+}
+
+.texto_centrado {
+    text-align: center;
+}
+
+/*adaptar a pantalla desktop de hasta 13"*/
+@media screen and (max-width: 1280px) and (min-width: 768px) {
+    .grid {
+        grid-template-columns: 45% 55%;
+        grid-template-rows: 10% 1fr;
+        height: 700px;
+    }
+    .board {
+        justify-self: start;
+        height: 470px;
+        width: 100%;
+    }
+    .ficha {
+        width: 60px;
+        height: 60px;
+        margin-left: 12px;
+        font-size: 10px;
+    }
+    .token_jugador0, .token_jugador1, .token_skylab {
+        height: 60px;
+        width: 60px; 
+    }
+    .welcome {
+        justify-self: end;
+        font-size: 12px;
+        width: 99%;
+    }
+    .jugar {
+        margin-left: 40%;
+        margin-top: 30px;
+        height: 40px;
+        width: 20%;
+        font-size: 15px;
+    }
+    .tiradas {
+        font-size: 30px;
+    }
+    .reset {
+        margin-top: 25%;
+    }
+    .reiniciar_salir {
+        height: 40px;
+        width: 40%;
+        font-size: 15px;
+    }
+    span {
+        font-size: 25px;
+    }
+    .ganador {
+        font-size: 40px;
+    }
+    .return {
+        height: 60px;
+        width: 25%;
+        font-size: 15px;
+        margin-left: 38%;
+        margin-top: 30px;
+    }
+}
+    

@@ -1,0 +1,142 @@
+body {
+  margin: auto;
+  width: 230px;
+  height: 320px;
+  text-align: center;
+}
+
+.container form {
+  border: 1px black solid;
+  border-radius: 1%;
+  display: grid;
+  background-color: #584646;
+  grid-template: repeat(6, 1fr)/repeat(4, 1fr);
+  grid-template-areas: "i i i i" "ac c pol div" "sev eig nin mul" "fou fiv six sub" "one two thr add" "zer zer point equal";
+  margin: 0;
+}
+
+.input{
+  grid-area: i;
+  height: 97%;
+  width: 99.5%;
+  margin: 0;
+  text-align: right;
+  padding: 0;
+  font-size: 2em;
+  font-family: 'Courier New', Courier, monospace, sans-serif;
+  line-height: 50px;
+  border: 0;
+  border: 1px #353535 solid;
+  border-radius: 1%;
+  color: white;
+  background-color: dimgrey;
+}
+
+.ac {
+  grid-area: ac;
+}
+
+.c {
+  grid-area: c;
+}
+
+.moreLess {
+  grid-area: pol;
+}
+
+.seven {
+  grid-area: sev;
+}
+
+.eight {
+  grid-area: eig;
+}
+
+.nine {
+  grid-area: nin;
+}
+
+.divide {
+  grid-area: div;
+}
+
+.multiply {
+  grid-area: mul;
+}
+
+.four {
+  grid-area: fou;
+}
+
+.five {
+  grid-area: fiv;
+}
+
+.six {
+  grid-area: six;
+}
+
+.multiply {
+  grid-area: mul;
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: thr;
+}
+
+.subtract {
+  grid-area: sub;
+}
+
+.add {
+  grid-area: add;
+}
+
+.zero {
+  grid-area: zer;
+}
+
+.point {
+  grid-area: point;
+}
+
+.equal {
+  grid-area: equal;
+}
+
+.container form .button {
+  position: relative;
+  background-color: #b9b9b9;
+  color: black;
+  border: 1px #353535 solid;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 50px;
+  font-size: 1.5em;
+  font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+.container form .button:hover {
+  background-color: rgb(156, 76, 156);
+  color: white;
+}
+
+.container form .or {
+  background-color: orange;
+}
+
+.container form .or:hover {
+  background-color: rgb(76, 81, 156);
+  color: white;
+}
+
+/*# sourceMappingURL=style2.css.map */

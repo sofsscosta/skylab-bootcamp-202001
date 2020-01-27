@@ -1,0 +1,93 @@
+.topBar{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+}
+.elementBar{
+    text-align: center;
+    padding: 0px 5px;
+    font-size: 10px;
+}
+.elementBar:hover{
+    background-color: dimgrey;
+}
+.white{
+    color: white;
+}
+.greyBackground{
+    background-color: rgb(202, 199, 199);
+}
+.content{
+    display: flex;
+    flex-direction: row;
+}
+.sideBar{
+    display:flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100vh;
+}
+.menu{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+.link{
+    font-size: 15px;
+    font-weight: 100;
+    margin-left: 15px;
+}
+.heading{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.heading1{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+.text{
+    width: 70%;
+}
+.green{
+    color: rgb(43, 199, 121)
+}
+.head{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.lorem{
+    font-size: 15px;
+}
+.ad{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 7px;
+}
+.ad1{
+    box-sizing: border-box;
+    width: 100%;
+    height: 50%;
+    border: 0.5px solid rgb(201, 198, 198);
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 4px;
+    margin-top: 10px;
+}
+.ad2{
+    box-sizing: border-box;
+    width: 100%;
+    height: 70%;
+    border: 0.5px solid rgb(201, 198, 198);
+    text-align: center;
+    padding: 33px;
+    margin-top: 4px;
+}
+h3{
+    margin-top: 10px;
+}

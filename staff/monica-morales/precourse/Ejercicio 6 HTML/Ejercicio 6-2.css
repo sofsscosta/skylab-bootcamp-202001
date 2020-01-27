@@ -1,0 +1,23 @@
+
+body{
+    font-size: 10px;
+}
+
+.title{
+    width: 130px;
+    height: 147px;
+    background-color: green;
+    color: azure;
+    font-size: 21px;
+    border-width: 20px;
+    border-top-width: 20px;
+}
+
+table tr{
+    border-collapse: collapse;
+    text-align: center;
+    width: 30px;
+    border-bottom-color: black;
+    
+}
+

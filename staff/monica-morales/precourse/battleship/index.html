@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <script src="index.js" type="text/javascript"></script>
+    <title>Battleship</title>
+</head>
+
+<body class="grid">
+    <div>
+        <img src="./img/screen.jpg" class="screen">
+    </div>
+    <h1>Battleship Skylab</h1> 
+    <section>
+        <div class="jugador1">
+            <div class = "row">
+                <div class = "letter">&nbsp;</div>
+                <div class = "number">1</div>
+                <div class = "number">2</div>
+                <div class = "number">3</div>
+                <div class = "number">4</div>
+                <div class = "number">5</div>
+                <div class = "number">6</div>
+                <div class = "number">7</div>
+                <div class = "number">8</div>
+                <div class = "number">9</div>
+                <div class = "number">10</div>
+            </div>
+            <div class ="row">
+                <div id = "0A1" class = "letter">A</div>
+                <div id = "1A1" class = "cell"></div>
+                <div id = "2A1" class = "cell"></div>
+                <div id = "3A1" class = "cell"></div>
+                <div id = "4A1" class = "cell"></div>
+                <div id = "5A1" class = "cell"></div>
+                <div id = "6A1" class = "cell"></div>
+                <div id = "7A1" class = "cell"></div>
+                <div id = "8A1" class = "cell"></div>
+                <div id = "9A1" class = "cell"></div>
+                <div id = "10A1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0B1" class = "letter">B</div>
+                <div id = "1B1" class = "cell"></div>
+                <div id = "2B1" class = "cell"></div>
+                <div id = "3B1" class = "cell"></div>
+                <div id = "4B1" class = "cell"></div>
+                <div id = "5B1" class = "cell"></div>
+                <div id = "6B1" class = "cell"></div>
+                <div id = "7B1" class = "cell"></div>
+                <div id = "8B1" class = "cell"></div>
+                <div id = "9B1" class = "cell"></div>
+                <div id = "10B1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0C1" class = "letter">C</div>
+                <div id = "1C1" class = "cell"></div>
+                <div id = "2C1" class = "cell"></div>
+                <div id = "3C1" class = "cell"></div>
+                <div id = "4C1" class = "cell"></div>
+                <div id = "5C1" class = "cell"></div>
+                <div id = "6C1" class = "cell"></div>
+                <div id = "7C1" class = "cell"></div>
+                <div id = "8C1" class = "cell"></div>
+                <div id = "9C1" class = "cell"></div>
+                <div id = "10C1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0D1" class = "letter">D</div>
+                <div id = "1D1" class = "cell"></div>
+                <div id = "2D1" class = "cell"></div>
+                <div id = "3D1" class = "cell"></div>
+                <div id = "4D1" class = "cell"></div>
+                <div id = "5D1" class = "cell"></div>
+                <div id = "6D1" class = "cell"></div>
+                <div id = "7D1" class = "cell"></div>
+                <div id = "8D1" class = "cell"></div>
+                <div id = "9D1" class = "cell"></div>
+                <div id = "10D1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0E1" class = "letter">E</div>
+                <div id = "1E1" class = "cell"></div>
+                <div id = "2E1" class = "cell"></div>
+                <div id = "3E1" class = "cell"></div>
+                <div id = "4E1" class = "cell"></div>
+                <div id = "5E1" class = "cell"></div>
+                <div id = "6E1" class = "cell"></div>
+                <div id = "7E1" class = "cell"></div>
+                <div id = "8E1" class = "cell"></div>
+                <div id = "9E1" class = "cell"></div>
+                <div id = "10E1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0F1" class = "letter">F</div>
+                <div id = "1F1" class = "cell"></div>
+                <div id = "2F1" class = "cell"></div>
+                <div id = "3F1" class = "cell"></div>
+                <div id = "4F1" class = "cell"></div>
+                <div id = "5F1" class = "cell"></div>
+                <div id = "6F1" class = "cell"></div>
+                <div id = "7F1" class = "cell"></div>
+                <div id = "8F1" class = "cell"></div>
+                <div id = "9F1" class = "cell"></div>
+                <div id = "10F1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0G1" class = "letter">G</div>
+                <div id = "1G1" class = "cell"></div>
+                <div id = "2G1" class = "cell"></div>
+                <div id = "3G1" class = "cell"></div>
+                <div id = "4G1" class = "cell"></div>
+                <div id = "5G1" class = "cell"></div>
+                <div id = "6G1" class = "cell"></div>
+                <div id = "7G1" class = "cell"></div>
+                <div id = "8G1" class = "cell"></div>
+                <div id = "9G1" class = "cell"></div>
+                <div id = "10G1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0H1" class = "letter">H</div>
+                <div id = "1H1" class = "cell"></div>
+                <div id = "2H1" class = "cell"></div>
+                <div id = "3H1" class = "cell"></div>
+                <div id = "4H1" class = "cell"></div>
+                <div id = "5H1" class = "cell"></div>
+                <div id = "6H1" class = "cell"></div>
+                <div id = "7H1" class = "cell"></div>
+                <div id = "8H1" class = "cell"></div>
+                <div id = "9H1" class = "cell"></div>
+                <div id = "10H1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0I1" class = "letter">I</div>
+                <div id = "1I1" class = "cell"></div>
+                <div id = "2I1" class = "cell"></div>
+                <div id = "3I1" class = "cell"></div>
+                <div id = "4I1" class = "cell"></div>
+                <div id = "5I1" class = "cell"></div>
+                <div id = "6I1" class = "cell"></div>
+                <div id = "7I1" class = "cell"></div>
+                <div id = "8I1" class = "cell"></div>
+                <div id = "9I1" class = "cell"></div>
+                <div id = "10I1" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0J1" class = "letter">J</div>
+                <div id = "1J1" class = "cell"></div>
+                <div id = "2J1" class = "cell"></div>
+                <div id = "3J1" class = "cell"></div>
+                <div id = "4J1" class = "cell"></div>
+                <div id = "5J1" class = "cell"></div>
+                <div id = "6J1" class = "cell"></div>
+                <div id = "7J1" class = "cell"></div>
+                <div id = "8J1" class = "cell"></div>
+                <div id = "9J1" class = "cell"></div>
+                <div id = "10J1" class = "cell"></div>
+            </div>
+            </div>
+            <div class="jugador2">
+            <div class = "row">
+                <div class = "letter">&nbsp;</div>
+                <div class = "number">1</div>
+                <div class = "number">2</div>
+                <div class = "number">3</div>
+                <div class = "number">4</div>
+                <div class = "number">5</div>
+                <div class = "number">6</div>
+                <div class = "number">7</div>
+                <div class = "number">8</div>
+                <div class = "number">9</div>
+                <div class = "number">10</div>
+            </div>
+            <div class ="row">
+                <div id = "0A2" class = "letter">A</div>
+                <div id = "1A2" class = "cell"></div>
+                <div id = "2A2" class = "cell"></div>
+                <div id = "3A2" class = "cell"></div>
+                <div id = "4A2" class = "cell"></div>
+                <div id = "5A2" class = "cell"></div>
+                <div id = "6A2" class = "cell"></div>
+                <div id = "7A2" class = "cell"></div>
+                <div id = "8A2" class = "cell"></div>
+                <div id = "9A2" class = "cell"></div>
+                <div id = "10A2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0B2" class = "letter">B</div>
+                <div id = "1B2" class = "cell"></div>
+                <div id = "2B2" class = "cell"></div>
+                <div id = "3B2" class = "cell"></div>
+                <div id = "4B2" class = "cell"></div>
+                <div id = "5B2" class = "cell"></div>
+                <div id = "6B2" class = "cell"></div>
+                <div id = "7B2" class = "cell"></div>
+                <div id = "8B2" class = "cell"></div>
+                <div id = "9B2" class = "cell"></div>
+                <div id = "10B2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0C2" class = "letter">C</div>
+                <div id = "1C2" class = "cell"></div>
+                <div id = "2C2" class = "cell"></div>
+                <div id = "3C2" class = "cell"></div>
+                <div id = "4C2" class = "cell"></div>
+                <div id = "5C2" class = "cell"></div>
+                <div id = "6C2" class = "cell"></div>
+                <div id = "7C2" class = "cell"></div>
+                <div id = "8C2" class = "cell"></div>
+                <div id = "9C2" class = "cell"></div>
+                <div id = "10C2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0D2" class = "letter">D</div>
+                <div id = "1D2" class = "cell"></div>
+                <div id = "2D2" class = "cell"></div>
+                <div id = "3D2" class = "cell"></div>
+                <div id = "4D2" class = "cell"></div>
+                <div id = "5D2" class = "cell"></div>
+                <div id = "6D2" class = "cell"></div>
+                <div id = "7D2" class = "cell"></div>
+                <div id = "8D2" class = "cell"></div>
+                <div id = "9D2" class = "cell"></div>
+                <div id = "10D2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0E2" class = "letter">E</div>
+                <div id = "1E2" class = "cell"></div>
+                <div id = "2E2" class = "cell"></div>
+                <div id = "3E2" class = "cell"></div>
+                <div id = "4E2" class = "cell"></div>
+                <div id = "5E2" class = "cell"></div>
+                <div id = "6E2" class = "cell"></div>
+                <div id = "7E2" class = "cell"></div>
+                <div id = "8E2" class = "cell"></div>
+                <div id = "9E2" class = "cell"></div>
+                <div id = "10E2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0F2" class = "letter">F</div>
+                <div id = "1F2" class = "cell"></div>
+                <div id = "2F2" class = "cell"></div>
+                <div id = "3F2" class = "cell"></div>
+                <div id = "4F2" class = "cell"></div>
+                <div id = "5F2" class = "cell"></div>
+                <div id = "6F2" class = "cell"></div>
+                <div id = "7F2" class = "cell"></div>
+                <div id = "8F2" class = "cell"></div>
+                <div id = "9F2" class = "cell"></div>
+                <div id = "10F2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0G2" class = "letter">G</div>
+                <div id = "1G2" class = "cell"></div>
+                <div id = "2G2" class = "cell"></div>
+                <div id = "3G2" class = "cell"></div>
+                <div id = "4G2" class = "cell"></div>
+                <div id = "5G2" class = "cell"></div>
+                <div id = "6G2" class = "cell"></div>
+                <div id = "7G2" class = "cell"></div>
+                <div id = "8G2" class = "cell"></div>
+                <div id = "9G2" class = "cell"></div>
+                <div id = "10G2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0H2" class = "letter">H</div>
+                <div id = "1H2" class = "cell"></div>
+                <div id = "2H2" class = "cell"></div>
+                <div id = "3H2" class = "cell"></div>
+                <div id = "4H2" class = "cell"></div>
+                <div id = "5H2" class = "cell"></div>
+                <div id = "6H2" class = "cell"></div>
+                <div id = "7H2" class = "cell"></div>
+                <div id = "8H2" class = "cell"></div>
+                <div id = "9H2" class = "cell"></div>
+                <div id = "10H2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0I2" class = "letter">I</div>
+                <div id = "1I2" class = "cell"></div>
+                <div id = "2I2" class = "cell"></div>
+                <div id = "3I2" class = "cell"></div>
+                <div id = "4I2" class = "cell"></div>
+                <div id = "5I2" class = "cell"></div>
+                <div id = "6I2" class = "cell"></div>
+                <div id = "7I2" class = "cell"></div>
+                <div id = "8I2" class = "cell"></div>
+                <div id = "9I2" class = "cell"></div>
+                <div id = "10I2" class = "cell"></div>
+            </div>
+            <div class ="row">
+                <div id = "0J2" class = "letter">J</div>
+                <div id = "1J2" class = "cell"></div>
+                <div id = "2J2" class = "cell"></div>
+                <div id = "3J2" class = "cell"></div>
+                <div id = "4J2" class = "cell"></div>
+                <div id = "5J2" class = "cell"></div>
+                <div id = "6J2" class = "cell"></div>
+                <div id = "7J2" class = "cell"></div>
+                <div id = "8J2" class = "cell"></div>
+                <div id = "9J2" class = "cell"></div>
+                <div id = "10J2" class = "cell"></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div>
+            <img src="./img/ship_3.png" class="ship_1">
+        </div>
+    </section>
+     
+<body>
+<html>

@@ -1,0 +1,49 @@
+html{
+    font-family: sans-serif;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+}
+
+.calculadora{
+    margin-top: 50px;
+    background-color: #999999;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.pantalla{
+    background-color: black;
+    color: white;
+    width: 300px;
+    height: 50px;
+    font-size: 42px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.num-pantalla{
+    padding: 3px;
+    margin-right: 10px;
+}
+
+input{
+    width: 70px;
+    height: 50px;
+    font-size: 22px;
+}
+
+.operacion{
+    background-color: orange;
+    color: white;
+}
+
+#ac{
+    width: 145px;
+}
+
+#igual{
+    width: 218px;
+}

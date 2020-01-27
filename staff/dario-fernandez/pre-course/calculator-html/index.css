@@ -1,0 +1,84 @@
+/* Tabla que dibula la Calculadora */
+
+.grid {
+    display: grid;
+    grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+    width: 520px;
+    grid-gap: 0px;
+}
+
+.AC {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+}
+
+.flecha {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.suma {
+    grid-area: 2 / 4 / 3 / 5;
+}
+
+.resta {
+    grid-area: 3 / 4 / 4 / 5;
+}
+
+.mult {
+    grid-area: 4 / 4 / 5 / 5;
+}
+
+.div {
+    grid-area: 5 / 4 / 6 / 5;
+}
+
+.igual {
+    grid-area: 6 / 4 / 7 / 5;
+}
+
+.n0 {
+    grid-area: 6 / 1 / span 1 / span 2;
+}
+
+.item {
+    border: 1px solid grey;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.pantalla {
+    grid-column: 1 / span 4;
+    justify-content: flex-end;
+    padding: 0 20px;
+}
+
+/* Dando formato */
+
+button {
+    border: none;
+}
+
+body {
+    font-family: monospace;
+}
+
+.item {
+    font-size: 3.5em;
+}
+
+.pantalla {
+    background-color: rgb(62, 70, 90);
+    color: #FFFFFF;
+    font-size: 6em
+}
+
+.n {
+    background-color: #ECECEC;
+}
+
+.o {
+    background-color: #F08E33;
+}

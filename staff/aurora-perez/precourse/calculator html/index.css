@@ -1,0 +1,51 @@
+.table, td, th{
+    border: 1px solid grey;
+    border-collapse: collapse;
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.5em;
+    table-layout:fixed;
+}
+.table .result {
+    text-align: right;
+    background-color: rgb(42, 43, 48);
+    color: white;
+    padding-right: 20px;
+    font-size: 1.7em;
+    table-layout:fixed;
+}
+
+.table{
+    width: 350px;
+    height: 500px;
+}
+
+.table1{
+    background-color: rgb(189, 185, 185);
+    color: rgb(51, 50, 50);
+}
+
+.table2{
+    background-color: rgb(228, 132, 42);
+    color: white;
+}
+
+.table3{
+    background-color: rgb(189, 185, 185);
+    color: rgb(32, 32, 32);
+    text-align: left;
+    padding-left: 5px;
+    table-layout:fixed;
+}
+
+.table1:hover, .table2:hover, .table3:hover {
+    background-color:rgba(0,0,0,0.4);
+}
+
+.table1, .table2, .table3{
+    cursor: pointer;    
+}
+
+.table1:active, .table2:active, .table3:active{
+    background-color:rgba(0,0,0,0.8) ;
+}

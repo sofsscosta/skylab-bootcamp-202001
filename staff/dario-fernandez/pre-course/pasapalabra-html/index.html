@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pasapalabra</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="prejuego-container prejuego-container--visible" id="prejuego">
+        <span class="prejuego__titulo">BIENVENIDO A PASAPALABRA</span>
+        <form class="prejuego__formulario" id="formulario-prejuego" onsubmit="return false">
+            <input class="prejuego__nombre" id="input-nombre" type="text" placeholder="Tu nombre" required autocomplete="off">
+            <p class="prejuego__texto">En esta versión de Pasapalabra no importan las mayúsculas y minúscilas, pero debes escribir sin tildes.<br />¡Buena Suerte!</p>
+            <button class="prejuego__boton">Comenzar</button>
+        </form>
+    </div>
+    <div class="juego-container juego-container--oculto" id="juego">
+        <div class="rosco">
+            <div class="rosco__letra rosco__letra--A" id="a">A</div>
+            <div class="rosco__letra rosco__letra--B" id="b">B</div>
+            <div class="rosco__letra rosco__letra--C" id="c">C</div>
+            <div class="rosco__letra rosco__letra--D" id="d">D</div>
+            <div class="rosco__letra rosco__letra--E" id="e">E</div>
+            <div class="rosco__letra rosco__letra--F" id="f">F</div>
+            <div class="rosco__letra rosco__letra--G" id="g">G</div>
+            <div class="rosco__letra rosco__letra--H" id="h">H</div>
+            <div class="rosco__letra rosco__letra--I" id="i">I</div>
+            <div class="rosco__letra rosco__letra--J" id="j">J</div>
+            <div class="rosco__letra rosco__letra--K" id="k">K</div>
+            <div class="rosco__letra rosco__letra--L" id="l">L</div>
+            <div class="rosco__letra rosco__letra--M" id="m">M</div>
+            <div class="rosco__letra rosco__letra--N" id="n">N</div>
+            <div class="rosco__letra rosco__letra--Ñ" id="ñ">Ñ</div>
+            <div class="rosco__letra rosco__letra--O" id="o">O</div>
+            <div class="rosco__letra rosco__letra--P" id="p">P</div>
+            <div class="rosco__letra rosco__letra--Q" id="q">Q</div>
+            <div class="rosco__letra rosco__letra--R" id="r">R</div>
+            <div class="rosco__letra rosco__letra--S" id="s">S</div>
+            <div class="rosco__letra rosco__letra--T" id="t">T</div>
+            <div class="rosco__letra rosco__letra--U" id="u">U</div>
+            <div class="rosco__letra rosco__letra--V" id="v">V</div>
+            <div class="rosco__letra rosco__letra--W" id="w">W</div>
+            <div class="rosco__letra rosco__letra--X" id="x">X</div>
+            <div class="rosco__letra rosco__letra--Y" id="y">Y</div>
+            <div class="rosco__letra rosco__letra--Z" id="z">Z</div>
+        </div>
+        <div class="respuesta-container">
+            <form action="" class="respuesta" id="respuesta" onsubmit="return false">
+                    <input type="text" class="respuesta__texto" id="respuesta_texto" placeholder="Escribe aquí tu respuesta" autocomplete="off" required>
+                    <button type="submit" class="respuesta__boton respuesta__boton--aceptar" id="boton_aceptar">Aceptar</button>
+                    <button type="button" class="respuesta__boton respuesta__boton--pasapalabra" id="boton_pasapalabra">Pasapalabra</button>
+                </form>
+            </div>
+        <div class="pregunta" id="pregunta">¿Preparado?</div>
+        <div class="temporizador" id="temporizador"></div>
+    </div>
+    <div class="postjuego-container postjuego-container--oculto" id="postjuego">
+        <h1 class="puntuacion-titulo">¡HAS TERMINADO!</h1>
+        <p class="puntuacion-texto">Tu puntuación es:</p>
+        <p id="puntuacion" class="postjuego__puntuacion"></p>
+        <button id="nueva-partida" class="postjuego__boton">¿Volver a jugar?</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

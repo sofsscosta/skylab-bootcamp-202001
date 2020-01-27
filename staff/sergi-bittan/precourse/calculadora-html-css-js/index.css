@@ -1,0 +1,62 @@
+.calculator {
+    display: block; /*para capas en vertical. Esta por defecto*/
+    background-color: black;
+    width: 500px;
+    height: 700px;
+    margin: 0 auto;
+    border-radius: 25px;
+    border: 4px solid red;
+    padding: 40px;
+    
+}
+
+.calculator td button {
+    display: block;
+    background-color: red;
+    width: 120px;
+    height: 100px;
+    color: white;
+    font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 15px;
+    border: 2px solid whitesmoke;
+    padding: 2px;
+    cursor: pointer;
+}
+
+#but:hover {
+    background-color:grey;
+}
+
+.calculator .simbol  {
+    background-color: orange;
+}
+
+.calculator .simbol2 {
+    background: orange;
+    color: black;
+}
+
+
+.calculator .clear {
+    background-color:purple;
+    border: 1px solid red
+}
+
+
+
+#resultado {
+    display:block;
+    background-color: black;
+    width: 490px;
+    height: 140px;
+    overflow-x: scroll; 
+    margin-bottom: 40px;
+    margin-top: 0px;
+    text-align: right;
+    line-height: 140px;
+    font-size: 90px;
+}
+#cero {
+    width: 244px;
+}

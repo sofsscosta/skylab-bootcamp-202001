@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pasapalabra HTML</title>
+    <link rel='stylesheet' type='text/css' href='index.css'>
+</head>
+<body class="juegopasapalabra">
+    <div class="instrucciones">
+        <h1 id="maintitle">Bienvenido/a al Pasapalabra de Skylab</h1>
+        <br>
+        <p id="text"> Como concursante, deberás acertar en un tiempo de 250 segundos, 27 palabras del Diccionario de la RAE, cada una con una letra del alfabeto, leyendo de cada una de ellas una definición corta que leerás en un panel dentro del rosco de letras y teniendo como pista, que empieza o contiene la letra en la que te encuentres en ese momento. Como concursante, contestarás definiciones mientras no falles o pidas pausa haciendo click en el boton “Pasapalabra”, moviendo de esa forma el turno a la siguiente letra/pregunta. Los turnos se intercambian hasta que se termina el tiempo que tenías asignado, o se contestan todas las preguntas. Si aciertas todas las palabras, conseguirás el mayor puntaje (27 puntos), de lo contrario y por cada error, no sumaras ese punto (este se mostrara en un recuadro rojo de forma figurativa). El ganador es quien menos fallos haya cometido y por consiguiente, mas puntos haya obtenido.<br><br><p style="color: deepskyblue;">Escribe tu nombre de user y da click en "Jugar" para comenzar...</p>
+        <br>
+    </div>
+    <div class="container">
+        <div id="rosco" class="letras">
+            <div id="a" class="letra">A</div>
+            <div id="b" class="letra">B</div>
+            <div id="c" class="letra">C</div>
+            <div id="d" class="letra">D</div>
+            <div id="e" class="letra">E</div>
+            <div id="f" class="letra">F</div>
+            <div id="g" class="letra">G</div>
+            <div id="h" class="letra">H</div>
+            <div id="i" class="letra">I</div>
+            <div id="j" class="letra">J</div>
+            <div id="k" class="letra">K</div>
+            <div id="l" class="letra">L</div>
+            <div id="m" class="letra">M</div>
+            <div id="n" class="letra">N</div>
+            <div id="ñ" class="letra">Ñ</div>
+            <div id="o" class="letra">O</div>
+            <div id="p" class="letra">P</div>
+            <div id="q" class="letra">Q</div>
+            <div id="r" class="letra">R</div>
+            <div id="s" class="letra">S</div>
+            <div id="t" class="letra">T</div>
+            <div id="u" class="letra">U</div>
+            <div id="v" class="letra">V</div>
+            <div id="w" class="letra">W</div>
+            <div id="x" class="letra">X</div>
+            <div id="y" class="letra">Y</div>
+            <div id="z" class="letra">Z</div>
+        </div>
+        <form class="nameuser">
+            <p>USER:</p><input type="text" class="user" id="user" name="nomuser" value="" placeholder="Tu user?">
+        </form>
+        <form class="preguntas">
+            <p type="text" class="displayPreg" name="displayPreg" id="displayPreg"></p>
+        </form>
+        <form class="respuestas">
+            <input id="displayResp" type="text" class="displayResp" placeholder="Tu respuesta aquí" value="">
+            <button id="ok">Ok</button>
+        </form>
+        <div class="play">
+            <button id="jugar">Jugar</button>
+        </div>
+        <div class="pasap">
+            <button id="pasapalabra">Pasapalabra</button>
+        </div>
+        <div class="stop">
+            <button id="parar">Parar</button>
+        </div>
+        <form class="cronometro">
+            <input type="button" id="timer" class="timer" name="timer" value="250">
+        </form>
+        <form class="contadores">    
+            <p id="aciertos" name="aciertos" class="aciertos"></p>
+            <p id="errores" name="errores" class="errores"></p>
+        </form>
+        <form class="resultados">
+            <p type="text" class="results" name="results" id="results"></p>
+        </form>
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+* { /* reset de inicio para quitar margenes*/
+  margin: 0;
+  padding: 0;  
+  box-sizing: border-box; /*con ésto le decimos que si le ponemos paddings no sobrepase nunca el 100% de la caja*/
+}
+
+.calculadora {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 250px;
+    border: 1px solid black;
+}
+.calculadora_viewer{
+    background-color: black;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    width: 100%;
+    height: 60px;
+    font-size: 3rem;
+}
+.botones {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 5px;
+}
+.clear {
+    grid-column: span 2;
+    background-color: tomato;
+}
+.operadores {
+    background-color: rgb(0, 174, 255);
+}
+.operadores_delete {
+    background-color: burlywood;
+}
+.equal {
+    background-color: greenyellow;
+}
+.numero0 {
+    grid-column: span 2;
+}
