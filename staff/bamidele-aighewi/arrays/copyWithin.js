@@ -12,6 +12,11 @@ to another location in the same array and returns it without modifying its lengt
 */
 
 function copyWithin(array, index, start, end) {
+    if (!(array instanceof Array)) throw new TypeError(array + ' is not an array. ' + (typeof array) + ' given');
+    if (typeof index !== 'undefined' && typeof index !== 'number') throw new TypeError(index + ' is not a number. ' + (typeof index) + ' given');
+    if (typeof start !== 'undefined' && typeof start !== 'number') throw new TypeError(start + ' is not a number. ' + (typeof start) + ' given');
+    if (typeof end !== 'undefined' && typeof end !== 'number') throw new TypeError(end + ' is not a number. ' + (typeof end) + ' given');
+
     var rangeValues = [];
     start = typeof start === 'undefined' ? 0 : start;
     end = typeof end === 'undefined' ? array.length : end;
