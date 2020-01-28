@@ -1,0 +1,28 @@
+.deploy-menu__list {
+  list-style: none;
+  padding: 0;
+}
+
+.deploy-menu__title {
+  font-size: 1.5rem;
+}
+
+.deploy-menu__title {
+  display: flex;
+  justify-content: space-between;
+}
+.deploy-menu__list {
+  display: none;
+  align-self: flex-end;
+}
+
+@media screen and (min-width: 1024px) {
+  .deploy-menu__show-more-icon {
+    display: none;
+  }
+  .deploy-menu__list {
+    display: initial;
+  }
+}
+
+/*# sourceMappingURL=deploy-menu.css.map */

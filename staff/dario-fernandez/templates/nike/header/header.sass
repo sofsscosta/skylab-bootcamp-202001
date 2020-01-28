@@ -1,0 +1,92 @@
+@import ../search/search
+@import ./button
+@import ../footer/utils
+
+*
+    margin: 0
+    padding: 0
+
+.pre-header
+    display: none
+    font-size: .8rem
+    justify-content: space-between
+    border-bottom: 1px solid #888
+    position: sticky
+    top: 0
+    background-color: #fff
+    &__brands-list, &__menu-list
+        @extend %reset-list
+        display: flex
+        height: 100%
+        padding-bottom: 1px
+
+    &__brand-link
+        border-right: 1px solid #888
+        padding: .7rem 2rem
+        color: #747474
+        &:hover
+            color: #CF3E4F
+            cursor: pointer
+    &__menu-link
+        margin: 0 .5rem
+        padding: .7rem
+        color: #747474
+        &:hover
+            color: #000
+            cursor: pointer
+.header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-top: 1rem
+    padding:  1rem
+    height: 3rem
+    width: 100%
+    box-sizing: border-box
+    background-color: #fff
+    &__logo-container
+        width: 17%
+        max-width: 3.7rem
+        justify-self: center
+    &__logo
+        width: 100%
+    &__functions
+        display: flex
+        align-items: center
+    &__search
+        height: 2rem
+        &>input
+            display: none       
+    &__cart
+        @extend %button
+    &__burger-menu
+        @extend %button
+    &__menu-list
+        @extend %reset-list
+        display: none
+@media screen and ( min-width: 1024px )
+    .pre-header
+        display: flex
+    .header
+        position: sticky
+        top: 38px
+        padding: 2rem 1rem
+        &__cart
+            display: none
+        &__burger-menu
+            display: none
+        &__search
+            order: 2
+            &>input
+                display: initial
+                width: 10rem
+        &__menu
+            order: 1
+        &__menu-list
+            display: flex
+            justify-content: space-between
+        &__menu-link
+            font-size: .9rem
+            margin: 0 .8rem
+            font-weight: bold
+        
