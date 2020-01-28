@@ -1,0 +1,53 @@
+@media only screen and (min-width: 768px)
+    .footer
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        &__site-map
+            display: flex
+            flex-direction: row
+
+            margin: 2rem 0
+
+        &__sub-footer
+            display: flex
+            justify-content: space-between
+
+            height: 10rem
+            align-items: center
+            border-top: 0.1px solid grey
+
+            & > small
+                display: flex
+                align-items: baseline
+
+        &__legal-menu
+            width: 61%
+            margin-top: 0
+            & > ul
+                display: flex
+                justify-content: space-around
+                font-size: 1.2rem
+
+    .site-map
+        &__about-menu
+            flex-grow: 3
+        &__help-menu
+            padding-left: 5rem
+        &__suggestions-menu
+            width: 35%
+
+            & > ul > li
+                line-height: 3
+                font-size: 1.3rem
+        &__help-menu, &__about-menu
+            width: 35%
+            & > ul > li
+                line-height: 3
+                font-size: 1.3rem
+                color: grey
+
+@media only screen and (min-width: 1200px)
+    .footer__sub-footer, .footer__site-map
+        width: 75%

@@ -1,0 +1,63 @@
+.head
+    display: flex
+    flex-wrap: wrap
+    border-bottom: 0.2px solid grey
+    &__body
+        display: flex
+        width: 100vw
+        justify-content: space-between
+    &__logo-nike
+        padding: 20px
+    &__menu-small
+        padding: 20px
+        width: 10rem
+        display: flex
+        justify-content: space-between
+    
+    &__menu-nav
+        display: inline-flex
+    &__extra
+        display: flex
+        justify-content: space-between
+        border-bottom: 1px solid grey
+        width: 100vw
+        height: 6vh
+        &-corporative > ul, &-user > ul
+            display: flex
+            height: 100%
+        &-corporative > ul > li, &-user > ul > li
+            font-size: 1.5rem
+            padding: 8px 28px  
+        &-corporative > ul > li
+            border-right: 1px solid grey
+    &__menu-big
+        margin-right: 20vw
+    &__menu-big > ul
+        display: flex
+        margin: 25px 20px
+        margin-top: 33px
+        & > li
+            font-size: 2rem
+            margin-right: 20px
+            & > input
+                height: 30px
+                width: 200px
+    &__footer
+        border-top: 1px solid grey
+        border-bottom: 1px solid grey        
+        width: 100vw
+        height: 8vh
+    &__footer-content
+        width: 75%
+        display: flex
+        justify-content: space-around
+        margin-left: 12.5%
+        &-promotion
+            font-size: 2rem
+            margin-top: 2vh
+        &-arrow-left, &-arrow-right
+            margin-top: 10px
+.fas 
+    font-size: 2rem
+
+
