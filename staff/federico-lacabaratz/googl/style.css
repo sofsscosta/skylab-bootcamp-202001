@@ -1,0 +1,26 @@
+.search {
+    border: 1px solid black;
+    border-radius: 1rem;
+  }
+  .search--hide {
+    display: none;
+  }
+  .search input {
+    border: 1px solid black;
+    border-radius: 1rem;
+  }
+  .search button {
+    border: 1px solid black;
+    border-radius: 1rem;
+  }
+  
+  .login {
+    border: 1px solid black;
+    border-radius: 1rem;
+  }
+  .login--hide {
+    display: none;
+  }
+  
+  /*# sourceMappingURL=style.css.map */
+  

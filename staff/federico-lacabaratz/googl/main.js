@@ -1,28 +1,14 @@
-var form = document.querySelector('form')
+var users = []; // ej: user => { name, surname, username, password }
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    document.querySelector('ul').innerHTML = ''
-
-    var query = this.query.value;
-    
-    googl(query, function(results) {
-        
-        results.forEach(function(result) {
-            
-            var item = document.createElement('li');
-            var title = document.createElement('h3');
-            var description = document.createElement('p');
-            
-            title.innerText = result.title;
-            description.innerText = result.description;
-            
-            document.querySelector('ul').appendChild(item);
-            
-            item.appendChild(title);
-            item.appendChild(description);
-        })
-        console.log(results);
+var search = createSearch('.search', function (query) {
+    googl(query, function (results) {
+        createResults('.results', results);
     });
+});
+
+var login = createLogin('.login', function(username, password) {
+    if (username === 'pepito' && password === '123') {
+        search.classList.toggle('search--hide');
+        login.classList.toggle('login--hide');
+    } else alert('you cannot get in :P');
 });
