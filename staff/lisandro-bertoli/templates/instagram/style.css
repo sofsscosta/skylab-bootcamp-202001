@@ -1,0 +1,176 @@
+* {
+	margin: 0;
+}
+
+ul,
+li {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+body {
+	height: 100vh;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid black;
+	width: 100vw;
+	height: 8%;
+	align-content: center;
+}
+
+.header__logo-container {
+	margin: 5px 0 5px 5px;
+	border: 1px solid black;
+	padding: 0;
+	width: 30%;
+}
+
+.header__nav > ul {
+	height: 60%;
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	margin: 8px 5px 0 5px;
+}
+
+.header__nav > ul > li {
+	border: 1px solid black;
+}
+
+.feed {
+	height: 75%;
+}
+
+.profile {
+	height: 100%;
+}
+
+.stories {
+	height: 15%;
+	border: 1px solid black;
+}
+
+.stories > ul {
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.feed__post-section {
+	height: 100%;
+}
+
+.profile__followers {
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid black;
+}
+
+.profile__followers > div {
+	line-height: 2.5;
+	border: 1px solid black;
+	margin-top: 2px;
+}
+
+.profile-posts__header {
+	display: flex;
+	justify-content: space-around;
+}
+
+.profile-posts__header > div {
+	line-height: 3;
+	border: 1px solid black;
+	width: 15%;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.profile-posts__ .post {
+	border: 1px solid black;
+	height: 100%;
+	width: 100vw;
+}
+
+.post__header {
+	display: flex;
+	justify-content: space-between;
+
+	height: 10%;
+}
+
+.post__author {
+	height: 50%;
+	align-self: center;
+}
+
+.post__author > p {
+	display: inline-block;
+	border: 1px solid black;
+}
+
+.post__image {
+	background: white;
+	height: 50%;
+	text-align: center;
+}
+
+.profile-posts__grid {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	height: 50vh;
+}
+
+.posts__img {
+	border: 1px solid black;
+}
+
+.post__comments-area {
+	height: 40%;
+}
+
+.post__comments-area > :nth-child(1) {
+	border: 1px solid black;
+}
+
+.post__actions {
+	display: flex;
+	height: 20%;
+}
+
+.heart--liked:hover {
+	background-color: red;
+}
+
+.post__actions > div {
+	margin: 5px;
+	border: 1px solid black;
+}
+
+.post__actions > :nth-child(3) {
+	margin-left: auto;
+}
+
+.post__likes {
+	height: 15%;
+	display: flex;
+	border: 1px solid black;
+	margin: 0.5px;
+}
+
+.post__likes > div {
+	margin: 0 5px;
+}
+
+.post__comments {
+	border: 1px solid black;
+	height: 60%;
+}
+
+.post__footer {
+	height: 3%;
+}

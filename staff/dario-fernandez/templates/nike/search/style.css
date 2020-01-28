@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+.search__query {
+  width: 100%;
+  border-right-style: none;
+  border-top-style: none;
+  border-left-style: none;
+  border-bottom: 1px solid black;
+  margin: 1rem;
+  outline: none;
+}
+.search__submit {
+  padding: 0;
+}
+.search__submit-icon {
+  font-size: 1.3rem;
+}
+.search--reverse {
+  flex-direction: row-reverse;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,131 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+h2{
+    margin: 0;
+}
+.header{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.header__nav > ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+.header__nav > ul > li{
+    border: 1px solid black;
+    margin: 16px;
+    justify-content: space-between;
+}
+
+aside > ul{
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-content: center; 
+}
+.page{
+    height: 85vh;
+    width: 100vw;
+}
+.page__historis--people > li{
+    height: 100%;
+    margin: 16px;
+}
+.post{
+    height: 85vh;
+    width: 100vw;
+}
+.post-head{
+    display: flex;
+    justify-content: space-between;  
+}
+.post-head__logo{
+    text-align: center;
+    margin: 16px;
+}
+.post-head__user{
+    display: flex;
+    left: 3px;
+}
+.post-head__menu{
+    margin: 10px;
+}
+.post-image{
+    border: 1px solid black;
+    height: 50%;
+    width: 100%;
+}
+.coment-nav{
+    display: flex;
+    justify-content: space-between;
+}
+.coment-nav__nav > ul{
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: start;
+}
+.coment-nav__nav > ul > li{
+    border: 1px solid black;
+    margin: 10px;
+}
+.coment-nav__save{
+    border: 1px solid black;
+    margin: 20px;
+}
+.profile__info{
+    display: flex;
+    border: 1px solid black;
+}
+.profile__info > div {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+
+}
+.profile__aditional-info{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+
+}
+.profile__aditional-info > p{
+    margin: 20px;
+}
+.profile__posts-info{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+
+}
+.profile__posts-info > p{
+    margin: 20px;
+}
+.profile__posts{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    border: 1px solid black;
+    height: 50vh;
+}
+.profile__posts > div {
+    text-align: center;
+    border: 1px solid black;
+}
+.end-page__info{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+.end-page__info > li{
+    margin: 15px;
+}

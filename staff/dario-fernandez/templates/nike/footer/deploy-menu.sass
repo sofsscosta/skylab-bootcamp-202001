@@ -1,0 +1,21 @@
+@import utils.sass
+.deploy-menu
+    &__title
+        @extend %main-link
+        display: flex
+        justify-content: space-between
+    &__list
+        @extend %reset-list
+        color: #888
+        display: none
+        align-self: flex-end
+    &__link
+        margin-top: 1.2rem
+
+
+@media screen and ( min-width: 600px )
+    .deploy-menu
+        &__show-more-icon
+            display: none !important // Cambiar este !important por una solución que especifique más en la cascada
+        &__list
+            display: initial
