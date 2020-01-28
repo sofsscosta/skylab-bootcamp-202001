@@ -1,0 +1,95 @@
+@import colors
+@import search-bar
+
+.header.header-xs
+    height: 50px
+    border-bottom: 1px solid #cccccc
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-left: 10px
+    padding-right: 10px
+    
+    .header__userInteractions
+        display: flex
+
+        .header__userInteractionIcon
+            font-size: 16px
+            flex: 1 1 auto
+            cursor: pointer
+            &:not(:last-of-type)
+                margin-right: 20px
+
+.header__primary
+    height: 50px
+    border-top: 1px solid #cccccc
+    border-bottom: 1px solid #cccccc
+    display: flex
+    justify-content: space-between
+    align-items: stretch
+    padding-left: 10px
+    padding-right: 10px
+
+    .header__brands,
+    .header__accountNavs
+        display: flex
+        flex-direction: row
+        & > *
+            // margin-right: 20px
+            color: $mute-color
+            cursor: pointer
+            font-size: 12px
+
+            &:hover
+                color: #111111
+    
+    .header__brands
+        .header__brand
+            border-right: 1px solid #cccccc
+            display: flex
+            align-items: center
+            padding-left: 20px
+            padding-right: 20px
+            box-sizing: content-box
+    
+    .header__accountNavs
+        .header__accountNav
+            display: flex
+            align-items: center
+            &:not(:last-child)
+                margin-right: 20px
+
+
+.header__secondary
+    padding: 15px
+    border-bottom: 1px solid #cccccc
+    display: flex
+    justify-content: space-between
+
+    .header__secondaryNavs,
+    .header__secondaryLogo
+        display: flex
+        align-items: center
+
+    .header__secondaryNavs
+        display: flex
+        justify-content: space-around
+        
+        .header__secondaryNav
+            cursor: pointer
+            text-transform: uppercase
+            &:not(:last-child)
+                margin-right: 30px
+
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up)*/
+@media (max-width: 991.98px)
+    .header.header-lg
+        display: none
+    
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px)
+    .header.header-xs
+        display: none
