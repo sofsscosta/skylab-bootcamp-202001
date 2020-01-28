@@ -1,0 +1,60 @@
+.product
+    width: 45%
+    font-size: 14px
+    font-family: Arial, Helvetica, sans-serif
+    font-weight: 100
+
+    .product__media
+        background-image: url('images/fake-img_smiley.png')
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        height: 200px
+    
+    .product__details
+        padding: 5px
+
+        & *:not(:first-child)
+            margin-top: 5px
+
+        .product__notAvailable
+            color: #ff6666
+            display: none
+
+            &.product__notAvailable-visible
+                display: block
+        
+        .product__subDescription-secondary,
+        .product__colors-secondary,
+        .product__oldPrice
+            color: #999
+        
+        .product__oldPrice
+            text-decoration: line-through
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up)*/
+@media (max-width: 991.98px)
+    .product
+        width: 49%
+
+        &:not(:nth-child(even))
+            margin-right: 2%
+
+        &:not(:first-child),
+        &:not(:nth-child(2))
+            margin-top: 20px
+    
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px)
+    .product
+        width: 32.5%
+
+        &:not(:nth-child(3))
+            margin-right: 1.25%
+        
+        &:not(:first-child),
+        &:not(:nth-child(2)),
+        &:not(:nth-child(3))
+            margin-top: 50px
