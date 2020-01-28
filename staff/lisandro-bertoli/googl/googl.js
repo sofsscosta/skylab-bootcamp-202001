@@ -1,4 +1,6 @@
 function googl(query, callback) {
+    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
+
     var xhr = new XMLHttpRequest
 
     xhr.open('GET', 'https://www.google.com/search?q=' + query)
@@ -38,8 +40,11 @@ function googl(query, callback) {
 
                 results.push(result)
             }
+
             callback(results)
+
         }
+
     }
     xhr.send()
 
