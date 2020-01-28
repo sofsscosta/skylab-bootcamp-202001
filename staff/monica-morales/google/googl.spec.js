@@ -1,10 +1,14 @@
-// TODO create tests with just console.assert (check that each item has at least a title and a description)
-googl('pepito', function(results) { 
-    results.forEach(function(result) { 
-       console.log(result) 
+'use strict';
+
+describe('googl', function()  {
+    it ('Should return an array with objects', function(done){
+        googl('pepito', function(results){
+            expect(results instanceof Array).toBe(true);
+            results.forEach(result => {
+                expect(result instanceof Object).toBe(true);
+            });
+
+            done();
+        })
     })
 });
-
-console.assert(!(result === undefined),'Should fail if there is no result');
-console.assert((result.title),'Should fail if there is no title');
-console.assert((result.description),'Should fail if there is no description');
