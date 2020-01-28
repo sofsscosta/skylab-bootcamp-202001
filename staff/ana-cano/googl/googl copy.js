@@ -1,11 +1,9 @@
 function googl(query, callback) {
-    if (typeof query !== "string") throw new TypeError(query + " is not a string")
-    if (typeof callback !== "function") throw new TypeError(callback + " is not a function")
     var xhr = new XMLHttpRequest
 
     xhr.open('GET', 'https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query)
 
-    xhr.onreadystatechange = function(res) {
+    xhr.onreadystatechange = function (res) {
         //debugger
         if (this.readyState === 4 && this.status === 200) {
             //console.log(this.responseText)
@@ -16,7 +14,6 @@ function googl(query, callback) {
 
             var results = []
 
-            console.log(results)
             for (var i = 0; i < items.length; i++) {
                 var item = items[i]
 
@@ -33,15 +30,10 @@ function googl(query, callback) {
                         result.rating = rating.innerText
                     }
 
-                    var description = item.querySelector('.st')
-
-                    if (description) {
-                        result.description = description.innerText
-                    }
-
-                    results.push(result)
+                    // TODO description
                 }
 
+                results.push(result)
             }
 
             callback(results)
