@@ -1,8 +1,37 @@
-googl('pepito', function(results) { 
-    results.forEach(function(result) { 
-        console.log(result);
-        console.assert(result.title, 'each post should have a title');
-        console.assert(result.description, 'each post should have a small description');
-        if (result.rating) { console.assert(typeof (parseInt(result.rating[13]) === 'number', 'the rating should be a number')) }
+'use strict';
+
+describe('Googl through proxy', function () {
+    it('should return an Array', function (done) {
+        googl('pepito', function(results) {
+            expect(results instanceof Array).toBe(true);
+
+            done();
+        });
+    });
+
+    it('should show objects inside the main array', function (done) {
+        googl('pepito', function(results) {
+            results.forEach(function(result) {
+                expect(result instanceof Object).toBe(true);
+            })
+            
+            done();
+        });
+    });
+
+    it('should throw a TypeError if the callback is not defined', function (done) {
+        expect(function() {
+            googl('pepito');
+        }).toThrowError(TypeError, 'undefined is not a function');
+
+        done();
     })
-})
+
+    it('should throw a TypeError if the callback is not a function', function (done) {
+        expect(function() {
+            googl('pepito', 'a');
+        }).toThrowError(TypeError, 'a is not a function');
+
+        done();
+    })
+});
