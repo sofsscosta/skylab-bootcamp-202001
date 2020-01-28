@@ -1,4 +1,5 @@
 function googl(query, callback) {
+    if( !(callback instanceof Function)) {throw new TypeError('Error')}
     var xhr = new XMLHttpRequest
 
     xhr.open('GET', 'https://www.google.com/search?q=' + query)
@@ -15,7 +16,7 @@ function googl(query, callback) {
             var items = doc.querySelectorAll('div.g')
 
             var results = []
-            for (var i = 0; i < items.length; i++) {
+            for (var i = 0; i < items.length-2; i++) {
                 var item = items[i]
 
                 var title = item.querySelector('h3.LC20lb')
