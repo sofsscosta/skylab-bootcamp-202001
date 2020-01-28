@@ -25,7 +25,7 @@ function googl(query, callback) {
                     result.title = title.innerText;
 
                     var rating = item.querySelector('.slp.f');
-                    var description = item.querySelector('.st');
+                    var description = item.querySelector('span.st');
 
                     if (rating) {
                         result.rating = rating.innerText;
