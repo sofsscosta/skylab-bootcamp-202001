@@ -1,41 +1,61 @@
-var form = document.querySelector('form');
+var users = []; // ej: user => { name, surname, username, password }
 
-form.addEventListener('submit', function(event){
-    event.preventDefault();
+var search = createSearch('.search', function (query) {
+    googl(query, function (results) {
+        createResults('.results', results);
+    });
+});
 
-    var query = this.query.value;
+// createSearch('.search-2', function (query) {
+//     googl(query, function (results) {
+//         createResults('.results-2', results);
+//     });
+// });
 
-    googl(query, function(results) {
-        console.log(results)
-        
-        var ul = document.createElement('ul');
+// createSearch('.search-3', function (query) {
+//     googl(query, function (results) {
+//         createResults('.results-3', results);
+//     });
+// });
 
-        for (var i = 0; i < results.length; i++) {
-            var result = results[i];
+var login = createLogin('.login', function(username, password) { 
+    if (users.length > 0) {
+        if (username === users[0].username && password === users[0].password) {
+            search.classList.toggle('search--hide');
+            login.classList.toggle('login--hide');
+        } else alert('you cannot get in :P');
 
-            var li = document.createElement('li');
-            var h3 = document.createElement('h3');
-            var resultTitle = document.createTextNode(result.title);
-            h3.appendChild(resultTitle);
-            li.appendChild(h3);
-            
-            if(result.rating) {
-                var p = document.createElement('p');
-                var rating = document.createTextNode(result.rating);
-                p.appendChild(rating);
-                li.appendChild(p);
-            }
-            
-            var p = document.createElement('p');
-            var description = document.createTextNode(result.description);
-            p.appendChild(description);
-            li.appendChild(p);
-            ul.appendChild(li);
-        }
+    } else {
+        alert('please register first')
+    }
+});
 
-        // var body = document.getElementsByTagName('body');
-        // body.appendChild(ul);
-        var div1 = document.getElementById("div1");
-        div1.appendChild(ul);
-    })
+var buttonContent = document.querySelector('div.buttonContent');
+var buttonLogin = document.querySelector('.buttonContent__login');
+var buttonSignin = document.querySelector('.buttonContent__signin');
+var registerTemplate = document.querySelector('.registerTemplate');
+
+buttonLogin.addEventListener('click', function () {
+    buttonContent.classList.toggle('buttonContent--hide');
+    document.getElementsByClassName("login")[0].classList.remove('login--hide');
+})
+
+buttonSignin.addEventListener('click', function () {
+    buttonContent.classList.toggle('buttonContent--hide');
+    document.getElementsByClassName("registerTemplate")[0].classList.remove('registerTemplate--hide');
+})
+
+var finishRegister = registerUser('.registerTemplate', function(user) {
+    if (user.name && user.surname && user.username && user.password) {
+        document.querySelector('.registerTemplate').classList.toggle('registerTemplate--hide');
+        document.querySelector('.login').classList.remove('login--hide');
+    } else {
+        alert("Alerta: eres subnormal");
+    }
+})
+
+var home = document.querySelector('h1');
+
+home.addEventListener('click', function () {
+    location.reload();
 })

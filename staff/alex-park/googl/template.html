@@ -17,13 +17,36 @@
             <p class="p5">l</p>
         </h1>
     
-        <form id="searcher">
+        <div class="buttonContent">
+            <button class="buttonContent__login">Log In</button>
+            <button class="buttonContent__signin">Sign In </button>
+        </div>
+
+        <form class="login login--hide">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button>Login</button>
+        </form>
+
+        <form class="search search--hide">
             <input type="text" name="query" id="text" placeholder="Type here to search on Googl">
             <button type="submit">Search</button>
         </form>
-        <script src="googl.js"></script>
-        <script src="main.js"></script>
-        
+
+        <ul class="results"></ul>
+
+        <form class="registerTemplate registerTemplate--hide">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="surname" placeholder="Surname">
+            <input type="text" name="username" placeholder="User name">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Submit</button>
+        </form>
+
     </div>
+
+        <script src="googl.js"></script>
+        <script src="components.js"></script>
+        <script src="main.js"></script>
 </body>
 </html>
