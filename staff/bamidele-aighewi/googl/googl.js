@@ -5,8 +5,6 @@ function googl(query, callback) {
 
     var xhr = new XMLHttpRequest;
 
-    xhr.open('GET', 'https://www.google.com/search?q=' + query);
-
     xhr.onreadystatechange = function (res) {
         //debugger
         if (this.readyState === 4 && this.status === 200) {
@@ -51,5 +49,6 @@ function googl(query, callback) {
         }
     }
 
-    xhr.send()
+    xhr.open('GET', 'https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query);
+    xhr.send();
 }

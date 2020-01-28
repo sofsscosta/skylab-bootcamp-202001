@@ -1,44 +1,55 @@
 'use strict';
 
-// Test 1: 1st param as a non-primitive value
+describe('googl', function () {
+    it('should fail on non-primitive first parameter', function () {
+        var query = function () { };
+        var callback = function () { };
 
-(function () {
-    var query = function () { };
-    var callback = function () { };
+        try {
+            googl(query, callback);
+        } catch (error) {
+            expect(error instanceof TypeError).toBe(true);
+            var expectedMessage = 'Expects query to be a primitive value. ' + (typeof query) + ' given';
+            expect(error.message === expectedMessage).toBe(true);
+        }
+    });
 
-    try {
-        googl(query, callback);
-    } catch (error) {
-        console.assert(error instanceof TypeError, 'should error be instace of TypeError. "' + error.constructor.name + '" received');
-        var expectedMessage = 'Expects query to be a primitive value. ' + (typeof query) + ' given';
-        console.assert(error.message === expectedMessage, 'should message be: ' + expectedMessage + ' >>> but received: "' + error.message);
-    }
-})();
+    it('should fail on empty first parameter', function () {
+        var query = "";
+        var callback = function () { };
 
-// Test 2: 1st param as empty string
-(function () {
-    var query = "";
-    var callback = function () { };
+        try {
+            googl(query, callback);
+        } catch (error) {
+            expect(error instanceof RangeError).toBe(true);
+            var expectedMessage = 'Expects length of query value to be at least 1. None given';
+            expect(error.message === expectedMessage).toBe(true)
+        }
+    });
 
-    try {
-        googl(query, callback);
-    } catch (error) {
-        console.assert(error instanceof RangeError, 'should error be instace of RangeError. "' + error.constructor.name + '" received');
-        var expectedMessage = 'Expects length of query value to be at least 1. None given';
-        console.assert(error.message === expectedMessage, 'should message be: ' + expectedMessage + ' >>> but received: "' + error.message);
-    }
-})();
+    it('should fail on non-function second parameter', function () {
+        var query = "skylab academy";
+        var callback = undefined;
 
-// Test 3: 2nd param as function
-(function () {
-    var query = "skylab academy";
-    var callback = undefined;
+        try {
+            googl(query, callback);
+        } catch (error) {
+            expect(error instanceof TypeError).toBe(true);
+            var expectedMessage = 'callback is not a function. "' + (typeof callback) + '" given';
+            expect(error.message === expectedMessage).toBe(true);
+        }
+    });
 
-    try {
-        googl(query, callback);
-    } catch (error) {
-        console.assert(error instanceof TypeError, 'should error be instace of TypeError. "' + error.constructor.name + '" received');
-        var expectedMessage = 'callback is not a function. "' + (typeof callback) + '" given';
-        console.assert(error.message === expectedMessage, 'should message be: ' + expectedMessage + ' >>> but received: "' + error.message);
-    }
-})();
+    it('should every item in results have title key', function (done) {
+        googl('pepito', function (results) {
+            for(var x = 0; x < results.length; x++) {
+                var item = results[x];
+
+                expect(item['title']).not.toBeUndefined();
+                expect(item.title.length > 0).toBe(true);
+            }
+
+            done();
+        })
+    })
+});
