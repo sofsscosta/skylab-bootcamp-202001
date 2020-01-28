@@ -1,5 +1,7 @@
 function googl(query, callback) {
-    if( !(callback instanceof Function)) {throw new TypeError('Error')}
+    if( typeof query === 'function' || typeof query === 'object' || query === undefined) {throw new TypeError('query should be a primitive value')}
+    if( query === "") {throw new TypeError('query should have some string')}
+    if( !(callback instanceof Function)) {throw new TypeError('TypeError callback should be a function')}
     var xhr = new XMLHttpRequest
 
     xhr.open('GET', 'https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query)
