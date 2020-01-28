@@ -6,17 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Googl</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>GOOGL</h1>
+    <h1>Googl</h1>
 
-    <form>
-        <input type="text" name="query">
-        <button type="submit"> submit </button>
+
+
+    <form class="register">
+        <input name="name" type="text" placeholder="Name">
+        <input name="surname" type="text" placeholder="Surname">
+        <input name="username" type="text" placeholder="Username">
+        <input name="password" type="password" placeholder="Password">
+        <button class="button button__register">Register</button>
+        <a class="link login__link" href="#">Ya eres usuario? Accede</a>
     </form>
 
+    <form class="login login--hide">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button class="button button__login">Login</button>
+        <a class="link register__link" href="#">Aun no eres usuario? Crea una cuenta</a>
+    </form>
+
+    <form class="search search--hide">
+        <input type="text" name="query">
+        <button class="button" type="submit">Search</button>
+        <button class="button logout__link">Logout</button>
+    </form>
+
+    <ul class="results"></ul>
+
+    <!-- <form class="search-2">
+        <input type="text" name="query">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="results-2"></ul>
+
+    <form class="search-3">
+        <input type="text" name="query">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="results-3"></ul> -->
+
     <script src="googl.js"></script>
+    <script src="components.js"></script>
     <script src="main.js"></script>
 </body>
 
