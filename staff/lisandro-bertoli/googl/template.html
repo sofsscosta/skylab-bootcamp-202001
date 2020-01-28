@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Googl</title>
 </head>
 
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <nav class="header__nav">
             <ul class="nav">
                 <li class="nav__item"></li>
@@ -18,14 +19,29 @@
                 <li class="nav__item"></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
     <main class="main">
-        <h1 class="main__title">GOOGLE</h1>
-        <form class="query">
-            <input class="query__field" type="text" name="query">
-            <button class="query__button" type="submit">Googl Search</button>
-            <button class="query__button" type="submit">I'm Feeling Lucky</button>
+        <h1 class="main__title">GOOGL</h1>
+        <form class="form register">
+            <input class="register__input" name="name" type="text" placeholder="Name">
+            <input class="register__input" name="surname" type="text" placeholder="Surname">
+            <input class="register__input" name="username" type="text" placeholder="Username">
+            <input class="register__input" name="password" type="password" placeholder="Password">
+            <button class="button button--register">Register</button>
+            <a class="link link__login" href="#">Ya eres usuario? Accede</a>
         </form>
+        <form class="form login login--hide">
+            <input class="login__input" type="text" name="username">
+            <input class="login__input" type="password" name="password">
+            <button class="button button--login">Login</button>
+            <a class="link link__register" href="#">Aun no eres usuario? Crea una cuenta</a>
+        </form>
+        <form class="form search search--hide">
+            <input class="search__input" type="text" name="query">
+            <button class="button" type="submit">Search</button>
+            <button class="button button--logout link__logout">Logout</button>
+        </form>
+
         <section class="main__results">
             <ul class="results">
 
@@ -33,6 +49,7 @@
         </section>
     </main>
     <script src="googl.js"></script>
+    <script src="components.js"></script>
     <script src="main.js"></script>
 </body>
 

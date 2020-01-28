@@ -1,34 +1,75 @@
-.search {
-  border: 1px solid black;
-  border-radius: 1rem;
-}
-.search--hide {
-  display: none;
-}
-.search input {
-  border: 1px solid black;
-  border-radius: 1rem;
-}
-.search button {
-  border: 1px solid black;
-  border-radius: 1rem;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: garamond;
 }
 
-.login {
-  border: 1px solid black;
-  border-radius: 1rem;
+ul {
+  list-style: none;
 }
+
+.button {
+  background-color: lightgrey;
+  width: 40%;
+  height: 10%;
+  border-radius: 0.5rem;
+  border: solid 0.5px grey;
+  color: black;
+  margin: 1rem auto;
+}
+.button--login, .button--register {
+  background-color: green;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 80%;
+  border-radius: 1rem;
+  margin: 0 auto;
+}
+
+.register--hide {
+  display: none;
+}
+.register__input {
+  height: 8%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
 .login--hide {
   display: none;
 }
-
-.register {
-  display: flex;
-  border: 1px solid black;
-  border-radius: 1rem;
+.login__input {
+  height: 8%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
 }
-.register--hide {
+
+.search--hide {
   display: none;
+}
+.search__input {
+  height: 8%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.link {
+  margin-top: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
