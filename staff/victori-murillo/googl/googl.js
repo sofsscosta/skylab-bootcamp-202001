@@ -43,6 +43,13 @@ function googl(query, callback) {
             result.description = description.innerText
           }
 
+          var link = item.querySelector('.rc>.r>a');
+
+          if (link)
+            result.link = link.href;
+
+          results.push(result);
+
         }
 
         results.push(result)
