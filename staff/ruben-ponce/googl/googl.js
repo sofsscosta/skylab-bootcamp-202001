@@ -1,7 +1,7 @@
 function googl(query, callback) {
     var xhr = new XMLHttpRequest
 
-    xhr.open('GET', 'https://www.google.com/search?q=' + query)
+    xhr.open('GET', 'https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query)
 
     xhr.onreadystatechange = function (res) {
         //debugger
@@ -11,9 +11,7 @@ function googl(query, callback) {
             var doc = new DOMParser().parseFromString(this.responseText, 'text/html')
 
             var items = doc.querySelectorAll('div.g')
-            var descriptionNodes = document.querySelectorAll('span.st');
             var results = []
-            var descriptionText = [];
             for (var i = 0; i < items.length; i++) {
                 var item = items[i]
 
@@ -23,7 +21,8 @@ function googl(query, callback) {
                     var result = {}
 
                     result.title = title.innerText
-                    result.description = descriptionNodes[i].innerText;
+                    
+                    result.description = item.querySelector('span.st').innerText;
                     
                     var rating = item.querySelector('.slp.f')
 
