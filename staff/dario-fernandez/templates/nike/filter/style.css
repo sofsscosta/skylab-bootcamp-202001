@@ -1,0 +1,13 @@
+.filter__title {
+  color: #111;
+  font-weight: normal;
+}
+.filter__list {
+  list-style: none;
+  padding: 0;
+}
+.filter__feature {
+  color: #555;
+}
+
+/*# sourceMappingURL=style.css.map */
