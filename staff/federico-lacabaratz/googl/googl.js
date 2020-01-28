@@ -1,7 +1,9 @@
 function googl(query, callback) {
+    if (callback instanceof Array) throw new TypeError(callback.constructor.name + ' is not a function');
+    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
     var xhr = new XMLHttpRequest;
 
-    xhr.open('GET', 'https://www.google.com/search?q=' + query);
+    xhr.open('GET', 'https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query);
 
     xhr.onreadystatechange = function (res) {
         //debugger
