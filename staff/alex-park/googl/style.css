@@ -4,12 +4,13 @@
 }
 
 h1 {
-  height: 20vh;
+  max-height: 10%;
+  width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Cambria";
-  font-size: 5.5rem;
+  font-size: 10vw;
   margin: 3% auto 3% auto;
   cursor: pointer;
 }
@@ -97,7 +98,7 @@ ul > li {
   margin-bottom: 5%;
 }
 ul > li > h3 {
-  color: red;
+  color: blue;
   cursor: pointer;
 }
 ul > li > p {

@@ -20,13 +20,20 @@ var search = createSearch('.search', function (query) {
 
 var login = createLogin('.login', function(username, password) { 
     if (users.length > 0) {
-        if (username === users[0].username && password === users[0].password) {
-            search.classList.toggle('search--hide');
-            login.classList.toggle('login--hide');
-        } else alert('you cannot get in :P');
+        for ( var i = 0; i < users.length; i++) {
+            var user = users[i];
+            if(user.username.includes(username) && password === user.password) {
+                document.querySelector('.search').classList.remove('search--hide');
+                login.classList.toggle('login--hide');
+                return;
+            } else {
+                alert("incorrect username/pass, TONTOLABA");
+            }
+        }
 
     } else {
         alert('please register first')
+        // location.reload();
     }
 });
 
@@ -48,7 +55,7 @@ buttonSignin.addEventListener('click', function () {
 var finishRegister = registerUser('.registerTemplate', function(user) {
     if (user.name && user.surname && user.username && user.password) {
         document.querySelector('.registerTemplate').classList.toggle('registerTemplate--hide');
-        document.querySelector('.login').classList.remove('login--hide');
+        document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
     } else {
         alert("Alerta: eres subnormal");
     }
@@ -57,5 +64,5 @@ var finishRegister = registerUser('.registerTemplate', function(user) {
 var home = document.querySelector('h1');
 
 home.addEventListener('click', function () {
-    location.reload();
+    // location.reload();
 })
