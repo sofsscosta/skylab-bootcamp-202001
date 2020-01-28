@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+}
+
+.product {
+  width: 100%;
+}
+.product__photo {
+  width: 100%;
+}
+.product__details {
+  margin-left: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+.product__details > * {
+  margin: 0.1rem 0;
+}
+.product__description, .product__colors {
+  color: #555;
+}
+
+/*# sourceMappingURL=product.css.map */
