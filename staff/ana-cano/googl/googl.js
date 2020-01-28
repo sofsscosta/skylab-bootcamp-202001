@@ -13,7 +13,8 @@ function googl(query, callback) {
             var items = doc.querySelectorAll('div.g')
 
             var results = []
-
+            debugger;
+            console.log(results)
             for (var i = 0; i < items.length; i++) {
                 var item = items[i]
 
