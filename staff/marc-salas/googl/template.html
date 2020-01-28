@@ -11,13 +11,31 @@
 </head>
 
 <body>
+
     <head class="head">
-    <p class="head__g">G</p><p class="head__or">o</p> <p class="head__oy">o</p> <p class="head__g">g</p> <p class="head__l">l</p>
-    </head> 
-    <form>
+        <h1 class="logo">GOOGLE</h1>
+    </head>
+    <form class="main main--hide">
+        <button type="submit">Login</button>
+        <button type="submit">register</button>
+    </form>
+    <form class="register register--hide">
+        <input type="text" name="name">
+        <input type="text" name="surName">
+        <input type="text" name="userName">
+        <input type="password" name="password">
+        <button type="submit"></button>
+    </form>
+    <form class="login login--hide">
+        <input type="text" name="UserName">
+        <input type="password" name="password">
+        <button type="submit"></button>
+    </form>
+    <form class="search search--hide">
         <input type="text" name="query">
         <button type="submit"></button>
     </form>
+
     <div id="main"></div>
     <script src="googl.js"></script>
     <script src="main.js"></script>
