@@ -1,0 +1,70 @@
+@import colors
+
+.footer
+    background-color: #111111
+    padding: 20px
+    font-size: 12px
+    margin-top: 30px
+
+    .footer__accordion
+        ul
+            list-style-type: none
+            padding: 0
+            margin: 0
+            li
+                margin: 0 0 10px 0
+    
+    .footer__link
+        text-decoration: none
+        color: #ffffff
+        text-transform: uppercase
+
+        &.footer__link-mute
+            color: $mute-color
+    
+    .footer-bottom-separator
+        border-bottom: 1px solid #222222
+    
+    .footer__social
+        display: flex
+        margin-top: 20px
+        margin-bottom: 20px
+        .footer__socialIcon
+            height: 30px
+            width: 30px
+            border-radius: 50%
+            background-color: $mute-color
+            display: flex
+            justify-content: center
+            align-items: center
+            font-size: 14px
+            &:not(:last-child)
+                margin-right: 20px
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up)*/
+@media (max-width: 991.98px)
+    .footer__accordion:not(:last-child)
+        border-bottom: 1px solid #222222
+        margin-bottom: 20px
+    
+    .footer-bottom-separator
+        border-bottom: 0
+
+    
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px)
+    .footer__accordionGroup
+        display: flex
+        justify-content: space-between
+    
+    .footer__accordionContainer
+        display: flex
+
+        .footer__accordionGroup
+            flex-grow: 2
+            margin-right: 30px
+
+        .footer__social
+            flex-grow: 1

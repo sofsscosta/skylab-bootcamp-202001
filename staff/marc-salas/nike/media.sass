@@ -1,0 +1,70 @@
+@media only screen and ( min-width: 1024px )
+    .head__extra, .head__menu-big
+        display: flex       
+    .head__menu-small
+        display: none
+    .head__logo-nike
+        margin-top: 13px
+    .head__footer
+        display: flex
+    .product       
+        width: 30%
+    .results
+        display: grid
+        grid-template-columns: repeat( 5, auto)
+        &__header
+            grid-column: 1 / span 5
+        &__filter
+            grid-column: 1/ span 1
+        &__products
+            grid-column: 2/ span 4
+    .footer
+        flex-wrap: wrap
+        display: flex
+        justify-content: space-between
+    .footer__list 
+        display: flex
+        width: 75vw
+
+    .footer__faqs > ul
+        margin-top: 9px
+        display: flex
+        justify-content: space-between
+        & > li
+            width: 150px
+            margin-right: 10vw
+            margin-top: 0
+
+    .footer__map
+        width: 20vw
+    .footer__social      
+        width: 20vw
+    .footer__extra
+        border-top: 1px solid grey 
+        display: flex
+        justify-content: space-between
+        width: 100vw
+    .footer__legal 
+        width: 25vw
+        & > ul
+            display: flex
+            flex-wrap: wrap 
+            & > li
+                margin-right: 20px
+
+
+@media only screen and ( max-width: 1024px )
+    .head__extra, .head__menu-big
+        display: none
+    .head__menu-small
+        display: flex
+    .head__logo-nike
+        margin-top: 0
+    .head__footer
+        display: none
+    .results__filter
+        display: none
+    .footer__list, .footer__social      
+        width: 100vw
+    .footer__extra
+        width: 100vw
