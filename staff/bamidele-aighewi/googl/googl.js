@@ -32,11 +32,15 @@ function googl(query, callback) {
 
                     if (rating) {
                         result.rating = rating.innerText
+                    }else{
+                        result.rating = '';
                     }
 
                     var description = item.querySelector('span.st').innerText;
                     if (description) {
                         result.description = description;
+                    }else{
+                        result.description = '';
                     }
                 }
 
