@@ -1,6 +1,6 @@
 function createRegister(selector, callback) {
     var register = document.querySelector(selector)
-
+    
     register.addEventListener('submit', function(event) {
         event.preventDefault();
 

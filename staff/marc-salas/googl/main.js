@@ -1,6 +1,6 @@
 var user = [];
 
-var reg = createRegister('.register', function(name,surName,userName,password){
+var register = createRegister('.register', function(name,surName,userName,password){
     var person = {}
     person.name = name;
     person.userName = userName;
