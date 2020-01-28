@@ -1,19 +1,37 @@
-describe('Googl', function () {
-    it('should always return title', function (done) {
-        googl('dario', function (results) {
-            results.forEach(function(result) {
-                expect(typeof result.title).toBe('string');
-            })
-            done();
-        });
-    });
-    it('should always return description', function (done) {
-        googl('dario', function (results) {
-            results.forEach(function(result) {
-                expect(typeof result.description).toBe('string');
-            })
+'use strict';
+
+describe('Googl through proxy', function () {
+    it('should return an Array', function (done) {
+        googl('pepito', function(results) {
+            expect(results instanceof Array).toBe(true);
+
             done();
         });
     });
 
+    it('should show objects inside the main array', function (done) {
+        googl('pepito', function(results) {
+            results.forEach(function(result) {
+                expect(result instanceof Object).toBe(true);
+            })
+            
+            done();
+        });
+    });
+
+    it('should throw a TypeError if the callback is not defined', function (done) {
+        expect(function() {
+            googl('pepito');
+        }).toThrowError(TypeError, 'undefined is not a function');
+
+        done();
+    })
+
+    it('should throw a TypeError if the callback is not a function', function (done) {
+        expect(function() {
+            googl('pepito', 'a');
+        }).toThrowError(TypeError, 'a is not a function');
+
+        done();
+    })
 });

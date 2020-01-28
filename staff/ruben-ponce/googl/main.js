@@ -1,23 +1,54 @@
-var form = document.querySelector('form');
-var ul = document.querySelector('ul');
+var users = [];
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    var query = this.query.value;
-
-    googl(query, function(results) {
-        ul.innerHTML = '';
-        results.forEach(function (result) {
-            var h3 = result.title;
-            var p = result.description
-            var span = result.rating
-            
-            if (span) {
-                ul.innerHTML += '<li><h3>'+h3+'</h3><span>'+span+'</span><p>'+p+'</p></li>';
-            } else {
-                ul.innerHTML += '<li><h3>'+h3+'</h3><p>'+p+'</p></li>';
-            }
-        });
+var search = createSearch('.search', function (query) {
+    googl(query, function (results) {
+        createResults('.results', results);
     });
+});
+
+var login = createLogin('.login', function(username, password) { 
+    if (users.length > 0) {
+        for ( var i = 0; i < users.length; i++) {
+            var user = users[i];
+            if(user.username.includes(username) && password === user.password) {
+                document.querySelector('.search').classList.remove('search--hide');
+                login.classList.toggle('login--hide');
+                return;
+            } else {
+                alert("incorrect username/pass");
+            }
+        }
+    } else {
+        alert('please register first');
+    }
+});
+
+var buttonContent = document.querySelector('div.buttonContent');
+var buttonLogin = document.querySelector('.buttonContent__login');
+var buttonSignin = document.querySelector('.buttonContent__signin');
+var registerTemplate = document.querySelector('.registerTemplate');
+
+buttonLogin.addEventListener('click', function () {
+    buttonContent.classList.toggle('buttonContent--hide');
+    document.getElementsByClassName("login")[0].classList.remove('login--hide');
+});
+
+buttonSignin.addEventListener('click', function () {
+    buttonContent.classList.toggle('buttonContent--hide');
+    document.getElementsByClassName("registerTemplate")[0].classList.remove('registerTemplate--hide');
+});
+
+var finishRegister = registerUser('.registerTemplate', function(user) {
+    if (user.name && user.surname && user.username && user.password) {
+        document.querySelector('.registerTemplate').classList.toggle('registerTemplate--hide');
+        document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
+    } else {
+        alert("DYou have to fill all shields");
+    }
+});
+
+var home = document.querySelector('h1');
+
+home.addEventListener('click', function () {
+    window.location.href = 'template.html'
 });
