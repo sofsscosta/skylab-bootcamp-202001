@@ -25,9 +25,21 @@
 .register {
   border: 1px solid black;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  padding: 20rem;
 }
 .register--hidden {
   display: none;
+}
+
+button {
+  background-color: #e7e7e7;
+  color: black;
 }
 
 /*# sourceMappingURL=style.css.map */
