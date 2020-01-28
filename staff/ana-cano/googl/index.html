@@ -5,73 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <title>Google</title>
+    <title>Googl</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.sass">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div>
-                <ul>
-                    <li>Sobre Google</li>
-                    <li>Tienda</li>
-                </ul>
-            </div>
-            <div>
-                <ul>
-                    <li>Gmail</li>
-                    <li>Imagenes</li>
-                    <li>Logo</li>
-                    <li>Photo</li>
-                </ul>
-            </div>
-        </nav>
+    <h1>Googl</h1>
 
-    </header>
-    <figure>
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google">
-    </figure>
-    <div>
-        <form>
+    <form class="login">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>Login</button>
+    </form>
 
-            <h1>Búsqueda <input type="text" name="query"></h1>
-            <button type="submit">Buscar con Google</button>
-            <button type="submit">Voy a tener suerte</button>
+    <!-- <form class="search search--hide">
+        <input type="text" name="query">
+        <button type="submit">Search</button>
+    </form>
 
-        </form>
-    </div>
-    <div>
-        <p> Hoy es el Día de la Privacidad de Datos. Haz una Revisión de Privacidad de tu cuenta </p>
-    </div>
-    <div>
-        <p>Ofrecido por Google en:</p>
-        <ul>
-            <li>català</li>
-            <li>galego</li>
-            <li>esuskara</li>
-        </ul>
-    </div>
+    <ul class="results"></ul> -->
 
-    <footer>
-        <div>
-            <p>España</p>
-        </div>
-        <div>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+    <!-- <form class="search-2">
+        <input type="text" name="query">
+        <button type="submit">Search</button>
+    </form>
 
-        </div>
+    <ul class="results-2"></ul>
 
+    <form class="search-3">
+        <input type="text" name="query">
+        <button type="submit">Search</button>
+    </form>
 
+    <ul class="results-3"></ul> -->
 
-    </footer>
     <script src="googl.js"></script>
+    <script src="components.js"></script>
     <script src="main.js"></script>
-
 </body>
 
 </html>

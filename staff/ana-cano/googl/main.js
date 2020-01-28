@@ -1,29 +1,44 @@
-var form = document.querySelector('form');
+var users = []; // ej: user => { name, surname, username, password }
 
-form.addEventListener('submit', function(event) {
-    //evitar comportamiento que tiene por defecto un formulario
-    event.preventDefault();
-    //this.querySelector("input").value;
-    document.querySelector("ul").innerText = "";
-    var query = this.query.value;
-
+var search = createSearch('.search', function(query) {
     googl(query, function(results) {
-        results.forEach(function(element) {
 
-            var item = document.createElement("li")
-            var title = document.createElement("h3")
-            var description = document.createElement("p")
+        createResults('.results', results);
+    });
+});
 
-            title.innerText = element.title
-            description.innerText = element.description
-            item.appendChild(title)
-            item.appendChild(description)
-
-            document.querySelector("ul").appendChild(item)
-        })
-
-
+var login = createLogin('.login', function(username, password) {
+    var arrayUser = users.filter(function(user) {
+        return user.username === username && user.password === password;
 
     })
+    if (arrayUser.length === 1) {
+        search.classList.toggle('search--hidden');
+        login.classList.toggle('login--hidden');
+    } else {
+        alert('you cannot get in :P');
+    }
+});
 
+function User(nombre, surname, username, password) {
+    if (nombre && surname && username && password) {
+        this.nombre = nombre;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
+    } else {
+        return false;
+    }
+}
+
+var register = createRegister(".register", function(nombre, surname, username, password) {
+    var user = new User(nombre, surname, username, password)
+    if (user) {
+        users.push(user);
+        register.classList.toggle('register--hidden');
+        login.classList.toggle('login--hidden');
+
+    } else {
+        alert("Please complete the form");
+    }
 })
