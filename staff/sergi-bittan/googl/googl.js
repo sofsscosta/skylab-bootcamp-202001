@@ -4,19 +4,19 @@ function googl(query, callback) {
     xhr.open('GET', 'https://www.google.com/search?q=' + query);
 
     xhr.onreadystatechange = function (res) {
-        //debugger
+        
         if (this.readyState === 4 && this.status === 200) {
             //console.log(this.responseText)
 
             var doc = new DOMParser().parseFromString(this.responseText, 'text/html');
 
-            var items = doc.querySelectorAll('div.g');
+            var items = doc.querySelectorAll('div.g ');
 
             var results = [];
-
+            
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
-
+                debugger
                 var title = item.querySelector('h3.LC20lb');
 
                 if (title) {
