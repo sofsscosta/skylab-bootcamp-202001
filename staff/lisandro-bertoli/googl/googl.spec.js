@@ -21,3 +21,13 @@ googl('pepito', function (results) {
 
     });
 })
+
+describe('google', function () {
+    it('should a results array be returned', function () {
+        googl('pepito', function (results) {
+            results.forEach(function (result) {
+                return result
+            })
+        })
+    })
+});
