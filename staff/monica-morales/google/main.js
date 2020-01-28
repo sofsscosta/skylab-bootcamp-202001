@@ -1,59 +1,25 @@
-var form = document.querySelector('form');
-
-form.addEventListener('submit', function(event){
-
-    event.preventDefault();
-
-    var query = this.query.value;
-
-    googl(query, function(results){
-
-        function makeUL(array) {
-        
-            var list = document.createElement('ul');
-            for (var i = 0; i < array.length; i++) {
-            
-                var resultado = document.createElement('li');
-                var titulo = document.createElement('h3');
-                var description =document.createElement('p');
-                
-                titulo.appendChild(document.createTextNode(array[i].title));
-                description.appendChild(document.createTextNode(array[i].description));
-                
-                list.appendChild(resultado);
-                resultado.appendChild(titulo);
-                resultado.appendChild(description);
-            }
-    
-        return list;
-        }
-
-        form.appendChild(makeUL(results));
+var users = []; // ej: user => { name, surname, username, password }
+var search = createSearch('.search', function (query) {
+    googl(query, function (results) {
+        createResults('.results', results);
     });
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
+var login = createLogin('.login', function(username, password) {
+    var user = users.filter(function(element){
+        return element.username === username && element.password === password;
+    });
+    if (user.length === 1) {
+        search.classList.toggle('search--hide');
+        login.classList.toggle('login--hide');
+    } else alert('you cannot get in :P');
+});
+var register = createRegiter('.register', function(name,surname,username,password){
+    var user = {};
+    user.name = name;
+    user.surname = surname;
+    user.username = username;
+    user.password = password;
+    users.push(user);
+    register.classList.toggle('register--hide');
+    login.classList.toggle('login--hide');
+});

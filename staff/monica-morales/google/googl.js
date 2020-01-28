@@ -33,11 +33,18 @@ function googl(query, callback) {
                     var description = item.querySelector('.st');
                     if (description) {
                         result.description= description.innerText
-                    }
+                    }                    
                 }
+
+                var url = item.querySelector('link');
+                if (!url){
+                    url=item.querySelector('a');
+                }
+                result.link = url.href;
 
                 results.push(result)
             }
+                       
 
             callback(results)
         }

@@ -8,20 +8,30 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <div>User</div>
-        <div>Option</div>
-        <div>Images</div>
-        <div>Gmail</div>
-    </header>
-    <main></main>
+    <h1>Googl</h1>
+    <form class='register'>
+        <label for=''>Register:</label><br><br>
+        <input type='text' name='name' placeholder="name"><br><br>
+        <input type='text' name='surname' placeholder="surname"><br><br>
+        <input type='text' name='username' placeholder="username"><br><br>
+        <input type='text' name='password' placeholder="password"><br><br>
+        <button type='submit'>register</button>
+        <button class='login-btn'>go login</button><br>
+    </form>
+    <form class='login login--hide'>
+        <input type='text' name='username'>
+        <input type='password' name='password'>
+        <button>Login</button>
+    </form>
+    <form class='search search--hide'>
+        <input type='text' name='query'>
+        <button type='submit'>Search</button>
+    </form>
     
-    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Italian Trulli">
-    <form >
-        <input type="text" placeholder="Search.." name="query">
-        <button type="submit">Search</button>
-      </form>
-      <script src="googl.js"></script>
-      <script src="main.js"></script>
+    <ul class='results'></ul>
+
+    <script src='googl.js'></script>
+    <script src='components.js'></script>
+    <script src='main.js'></script>
 </body>
 </html>
