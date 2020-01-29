@@ -5,56 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Googl</title>
     <link rel="stylesheet" href="style.css">
+    <title>Googl</title>
 </head>
 
 <body>
-    <h1>Googl</h1>
+    <main class="main">
+        <h1 class="main__title">GOOGL</h1>
+        <form class="form register">
+            <input class="register__input" name="name" type="text" placeholder="Name">
+            <input class="register__input" name="surname" type="text" placeholder="Surname">
+            <input class="register__input" name="username" type="text" placeholder="Username">
+            <input class="register__input" name="password" type="password" placeholder="Password">
+            <button class="button button--correct">Register</button>
+            <a class="link link__login" href="#">Ya eres usuario? Accede.</a>
+        </form>
+        <form class="form login login--hide">
+            <input class="login__input" type="text" name="username" placeholder="Username">
+            <input class="login__input" type="password" name="password" placeholder="Password">
+            <button class="button button--correct">Login</button>
+            <a class="link link__register" href="#">Aun no eres usuario? Crea una cuenta.</a>
+        </form>
+        <form class="form search search--hide">
+            <input class="search__input" type="text" name="query">
+            <button class="button" type="submit">Search</button>
+            <button class="button button__logout button--danger">Logout</button>
 
+        </form>
 
+        <section class="main__results">
+            <ul class="results">
 
-    <form class="register">
-        <input name="name" type="text" placeholder="Name">
-        <input name="surname" type="text" placeholder="Surname">
-        <input name="username" type="text" placeholder="Username">
-        <input name="password" type="password" placeholder="Password">
-        <button class="button button__register">Register</button>
-        <a class="link login__link" href="#">Ya eres usuario? Accede</a>
-    </form>
+            </ul>
+        </section>
+    </main>
 
-    <form class="login login--hide">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <button class="button button__login">Login</button>
-        <a class="link register__link" href="#">Aun no eres usuario? Crea una cuenta</a>
-    </form>
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
 
-    <form class="search search--hide">
-        <input type="text" name="query">
-        <button class="button" type="submit">Search</button>
-        <button class="button logout__link">Logout</button>
-    </form>
+    <script src="components/register.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/results.js"></script>
+    <script src="components/search.js"></script>
 
-    <ul class="results"></ul>
+    <script src="logic/googl.js"></script>
+    <script src="logic/register.js"></script>
 
-    <!-- <form class="search-2">
-        <input type="text" name="query">
-        <button type="submit">Search</button>
-    </form>
+    <script src="data.js"></script>
 
-    <ul class="results-2"></ul>
-
-    <form class="search-3">
-        <input type="text" name="query">
-        <button type="submit">Search</button>
-    </form>
-
-    <ul class="results-3"></ul> -->
-    <script src="call.js"></script>
-    <script src="search.js"></script>
-    <script src="googl.js"></script>
-    <script src="components.js"></script>
     <script src="main.js"></script>
 </body>
 

@@ -1,54 +1,55 @@
-var users = []; // ej: user => { name, surname, username, password }
+'use strict';
 
-var _search = createSearch('.search', function (query) {
+var login = createLogin('login', function (username, password) {
+
+    // var user = users.filter(function (user) {
+    //     return user.username === username && user.password === password;
+    // });
+
+    var user = users.find(function (user) { return user.username === username });
+
+    // if (user.length === 1) {
+    //     login.classList.toggle('login--hide');
+    //     _google.classList.toggle('search--hide');
+
+    if (user && user.password === password) {
+        login.classList.toggle('login--hide');
+        login.reset();
+        _google.classList.toggle('search--hide');
+
+    } else alert('Wrong credentials, you cannot get in :P');
+}, function () {
+    login.toggle();
+    _register.toggle();
+});
+
+
+
+var _register = createRegister('register', function (name, surname, username, password) {
+
+    try {
+        register(name, surname, username, password);
+
+        _register.toggle();
+        login.toggle();
+    } catch (error) {
+        alert(error.message);
+    }
+
+    _register.reset()
+
+}, function () {
+
+    _register.toggle();
+    login.toggle();
+});
+
+
+var _google = createSearch('search', function (query) {
     googl(query, function (results) {
         createResults('.results', results);
     });
+}, function () {
+    _google.toggle();
+    login.toggle();
 });
-
-
-
-
-var login = createLogin('.login', function (username, password) {
-
-    var user = users.filter(function (user) {
-        return user.username === username && user.password === password;
-    })
-
-    if (user.length === 1) {
-        _search.classList.toggle('search--hide');
-        login.classList.toggle('login--hide');
-    } else alert('you cannot get in :P');
-});
-
-function createUser(name, surname, username, password) {
-    if (name && surname && username && password) {
-        var newUser = {
-            name: name,
-            surname: surname,
-            username: username,
-            password: password
-        }
-        users.push(newUser);
-        return newUser;
-    }
-    alert('You must complete all the fields');
-
-    return false;
-}
-
-
-var register = createRegister('.register', function (name, surname, username, password) {
-
-    var newUser = createUser(name, surname, username, password);
-    if (newUser) {
-        register.classList.toggle('register--hide');
-        login.classList.toggle('login--hide');
-
-    }
-
-});
-
-toggleForm('.link__login', '.register', '.login');
-toggleForm('.link__register', '.register', '.login');
-toggleForm('.link__logout', '.search', '.login')
