@@ -15,6 +15,7 @@ describe('googl', function () {
                 if (result.rating)
                     expect(typeof result.rating).toBe('string');
             });
+
             done();
         });
     });

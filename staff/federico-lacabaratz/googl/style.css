@@ -1,126 +1,87 @@
+body {
+  text-align: center;
+}
+
 .search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 .search--hide {
   display: none;
 }
 .search input {
+  display: block;
   border: 1px solid black;
   border-radius: 1rem;
-  height: 20px;
-  width: 120px;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
-
-.search2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.search2--hide {
-  display: none;
-}
-.search2 input {
+.search button {
+  display: block;
   border: 1px solid black;
   border-radius: 1rem;
-  height: 20px;
-  width: 120px;
-}
-
-.search3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.search3--hide {
-  display: none;
-}
-.search3 input {
-  border: 1px solid black;
-  border-radius: 1rem;
-  height: 20px;
-  width: 120px;
-}
-
-.search4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.search4--hide {
-  display: none;
-}
-.search4 input {
-  border: 1px solid black;
-  border-radius: 1rem;
-  height: 20px;
-  width: 120px;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 .login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.login input {
-  margin-bottom: 15px;
-  height: 25px;
-  width: 200px;
-  border: 1px solid grey;
-  border-radius: 20px;
-  padding-left: 10px;
-  font-size: 20px;
-}
-.login button {
+  display: inline-block;
   border: 1px solid black;
   border-radius: 1rem;
-  height: 25px;
-  width: 80px;
-  font-size: 16px;
+  padding: 0.5rem;
 }
 .login--hide {
   display: none;
 }
-
-.register {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.register input {
-  margin-bottom: 15px;
-  height: 25px;
-  width: 200px;
-  border: 1px solid grey;
-  border-radius: 20px;
-  padding-left: 10px;
-  font-size: 18px;
-}
-.register button {
+.login input {
+  display: block;
   border: 1px solid black;
   border-radius: 1rem;
-  height: 25px;
-  width: 80px;
-  font-size: 16px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 .register--hide {
   display: none;
 }
-
-h1 {
-  text-align: center;
+.register input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
-
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.register button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
-.nav--hide {
-  display: none;
+.register a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

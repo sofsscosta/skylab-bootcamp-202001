@@ -14,7 +14,6 @@ function call(url, callback) {
                 content: this.responseText,
                 status: this.status
             });
-    }
-
+    };
     xhr.send();
-}
+};

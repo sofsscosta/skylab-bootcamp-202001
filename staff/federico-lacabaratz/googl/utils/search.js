@@ -41,4 +41,4 @@ function search(url, resultsSelector, titleSelector, linkSelector, contentSelect
             callback(results);
         }
     });
-}
+};
