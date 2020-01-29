@@ -8,7 +8,7 @@ function call(url, callback) {
 
     xhr.open('GET', url);
     
-    xhr.setRequestHeader('User-Agent', '*');
+    //xhr.setRequestHeader('User-Agent', '*'); // CANNOT do this! navigator disallows changing the user-agent in AJAX calls.
 
     xhr.onreadystatechange = function () {
         if (this.readyState === 4)

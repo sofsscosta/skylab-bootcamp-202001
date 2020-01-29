@@ -1,9 +1,18 @@
+'use strict';
+
+// LET's spy to see what's going on in stack...
+// call = spy(call);
+// search = spy(search);
+// googl = spy(googl);
+
+// main code here...
+
 var users = []; // ej: user => { name, surname, username, password }
 
-var search = createSearch('.search', function (query) {
-    googl(query, function (results) {
+var _search = createSearch('.search', function (query) {
+    googl(query, spy(function (results) {
         createResults('.results', results);
-    });
+    }));
 });
 
 createSearch('.search-2', function (query) {
@@ -20,7 +29,7 @@ createSearch('.search-3', function (query) {
 
 var login = createLogin('.login', function(username, password) {
     if (username === 'pepito' && password === '123') {
-        search.classList.toggle('search--hide');
+        _search.classList.toggle('search--hide');
         login.classList.toggle('login--hide');
     } else alert('you cannot get in :P');
 });

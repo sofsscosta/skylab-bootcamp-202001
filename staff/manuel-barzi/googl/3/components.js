@@ -1,3 +1,5 @@
+'use strict';
+
 function createSearch(selector, callback) {
     var search = document.querySelector(selector);
 
