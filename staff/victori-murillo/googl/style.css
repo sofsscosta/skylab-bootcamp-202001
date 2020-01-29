@@ -1,4 +1,43 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+body {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  margin-top: 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+}
+.title h1 {
+  color: red;
+}
+.title--blue {
+  color: #4285f4;
+}
+.title--red {
+  color: #ea4335;
+}
+.title--yellow {
+  color: #fbbc04;
+}
+.title--green {
+  color: #34a853;
+}
+.title span {
+  margin: 0;
+  padding: 0;
+  font-size: 100px;
+  font-family: arial;
+  margin: -5px;
+}
+
 .login {
   display: flex;
   justify-content: center;
@@ -22,15 +61,6 @@
   font-size: 16px;
 }
 .login--hide {
-  display: none;
-}
-
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.nav--hide {
   display: none;
 }
 
@@ -73,27 +103,6 @@
   border-radius: 1rem;
   height: 20px;
   width: 120px;
-}
-
-.title {
-  text-align: center;
-  font-size: 60px;
-  font-family: araia, sans-serif;
-}
-.title--blue {
-  color: #4285f4;
-}
-.title--red {
-  color: #ea4335;
-}
-.title--yellow {
-  color: #fbbc04;
-}
-.title--green {
-  color: #34a853;
-}
-.title span {
-  margin: -5px;
 }
 
 /*# sourceMappingURL=style.css.map */

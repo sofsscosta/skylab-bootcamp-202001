@@ -6,7 +6,6 @@ function call(url, callback) {
 
   if(callback instanceof Array) throw new TypeError(callback.constructor.name + " is not a function")
   if(!(typeof callback === 'function')) throw new TypeError(callback + " is not a function")
-
   
   var xhr = new XMLHttpRequest
   xhr.open('GET', url)

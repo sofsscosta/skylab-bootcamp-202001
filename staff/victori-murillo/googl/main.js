@@ -1,37 +1,62 @@
+"use strict"
 
-var searchComp = createSearch('.search', function(query) {
+var _login = createLogin('.login', function(username, password) {
 
+  if( login(username, password) ) {
+    
+    _login.toggle();
+    _googl.toggle()
+    _ecosia.toggle()
+    _bing.toggle()
+    _yahoo.toggle()
+
+  } else {
+    alert('Wrong credentials, you cannot get in')
+  }
+
+},function () {
+    _login.toggle();
+    _register.toggle();
+  });
+
+var _register = createRegister('register', function(user) {
+
+  try {
+    register(user);
+
+    _register.toggle();
+    _login.toggle();
+
+  } catch (error) {
+    alert(error.message)
+  }
+
+}, function() {
+  _register.toggle();
+  _login.toggle();
+});
+
+
+var _googl = createSearch('search', function(query) {
   googl(query, function(results) {
     createResults('.results', results)
   })
-
 }) 
 
-var login = createLogin('.login', function(username, password) {
-  
-  var userFound = users.filter(function(user) {
-    return username === user.username && password === user.password
-  })
-
-  if (userFound.length > 0) {
-    searchComp.classList.toggle('search--hide');
-    login.classList.toggle('login--hide');
-
-    var nav = document.querySelector('.nav');
-    nav.classList.toggle("nav--hide")
-
-  } else alert('you cannot get in :P');
+var _ecosia = createSearch('search-2', function (query) {
+  ecosia(query, function (results) {
+      createResults('.results-2', results);
+  });
 });
 
-
-createRegister('.register', function() {
-  login.classList.toggle('login--hide');
-  
-  var register = document.querySelector('.register')
-  register.classList.toggle('register--hide');
-
-
+var _bing = createSearch('search-3', function (query) {
+  bing(query, function (results) {
+      createResults('.results-3', results);
+  });
 });
 
-
-createNavbar()
+var _yahoo = createSearch('search-4', function (query) {
+  bing(query, function (results) {
+      createResults('.results-4', results);
+  });
+});

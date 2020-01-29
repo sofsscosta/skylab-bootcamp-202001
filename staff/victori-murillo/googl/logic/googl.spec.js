@@ -1,14 +1,14 @@
 describe("goggl", function() {
-  it("should always return a title", function(done) {
+  // it("should always return a title", function(done) {
 
-    googl("pepito", function(result) {
+  //   googl("pepito", function(result) {
 
-      result.forEach(function(element) {
-        expect(typeof element.title).toBe("string")
-      })
-      done()
-    })
-  })
+  //     result.forEach(function(element) {
+  //       expect(typeof element.title).toBe("string")
+  //     })
+  //     done()
+  //   })
+  // })
 
   it("should fail on none string query", function() {
     expect(function() {
