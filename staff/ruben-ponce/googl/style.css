@@ -56,16 +56,16 @@ h1 {
   width: 100%;
 }
 
-.search {
+.search, .search2, .search3, .search4 {
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.search--hide {
+.search--hide, .search2--hide, .search3--hide, .search4--hide {
   display: none;
 }
-.search > input {
+.search > input, .search2 > input, .search3 > input, .search4 > input {
   border-radius: 1em;
   width: 45%;
   height: 60%;
@@ -74,7 +74,7 @@ h1 {
   font-size: 1.3em;
   background-color: #f5f4f4;
 }
-.search > button {
+.search > button, .search2 > button, .search3 > button, .search4 > button {
   height: 2rem;
   width: 5rem;
   border-radius: 1em;
@@ -85,10 +85,10 @@ h1 {
   margin-left: 3%;
   cursor: pointer;
 }
-.search > button:hover {
+.search > button:hover, .search2 > button:hover, .search3 > button:hover, .search4 > button:hover {
   background-color: #148824;
 }
-.search > button:active {
+.search > button:active, .search2 > button:active, .search3 > button:active, .search4 > button:active {
   background-color: #0f661a;
 }
 

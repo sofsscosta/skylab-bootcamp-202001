@@ -1,8 +1,26 @@
 var users = [];
 
-var search = createSearch('.search', function (query) {
+createSearch('.search', function (query) {
     googl(query, function (results) {
         createResults('.results', results);
+    });
+});
+
+createSearch('.search2', function (query) {
+    yahoo(query, function (results) {
+        createResults('.results2', results);
+    });
+});
+
+createSearch('.search3', function (query) {
+    bing(query, function (results) {
+        createResults('.results3', results);
+    });
+});
+
+createSearch('.search4', function (query) {
+    ecosia(query, function (results) {
+        createResults('.results4', results);
     });
 });
 
