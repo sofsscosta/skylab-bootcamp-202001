@@ -10,6 +10,42 @@
     height: 20px;
     width: 120px; }
 
+.search2 {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .search2--hide {
+    display: none; }
+  .search2 input {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 20px;
+    width: 120px; }
+
+.search3 {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .search3--hide {
+    display: none; }
+  .search3 input {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 20px;
+    width: 120px; }
+
+.search4 {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .search4--hide {
+    display: none; }
+  .search4 input {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 20px;
+    width: 120px; }
+
 .login {
   display: flex;
   justify-content: center;
@@ -51,8 +87,8 @@
     height: 25px;
     width: 80px;
     font-size: 16px; }
-    .register button--hide {
-      display: none; }
+  .register--hide {
+    display: none; }
 
 h1 {
   text-align: center; }

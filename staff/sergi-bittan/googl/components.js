@@ -1,6 +1,6 @@
-
 function createSearch(selector, callback) {
   var search = document.querySelector(selector);
+  
   search.addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -59,9 +59,7 @@ function createLogin(selector, callback) {
     callback(username, password);
   });
   return login;
-}
-
-var users = []
+};
   
 function createRegister(selector, callback) {
   var register = document.querySelector(selector);
@@ -76,12 +74,10 @@ function createRegister(selector, callback) {
     user.username = this.username.value;
     user.password = this.password.value;
 
-    if(!users.some(function(userSaved){ return userSaved.username === user.username})) {
-      users.push(user)
-    }
-    callback()
+    callback(user);
   });
-}
+
+};
   
 function createNavbar() {
   var nav_register = document.querySelector('.nav-register')
