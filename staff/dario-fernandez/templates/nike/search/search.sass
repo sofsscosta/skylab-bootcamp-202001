@@ -1,0 +1,36 @@
+@import ../footer/utils
+*
+    margin: 0
+.search
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: .3rem
+    &__query
+        width: 100%
+        border-right-style: none
+        border-top-style: none
+        border-left-style: none
+        border-bottom: 1px solid black
+        margin-right: 1rem
+        margin-bottom: .1rem
+        &:focus
+            outline: none
+    &__submit
+        @extend %reset-button
+        padding: 0
+    &__submit-icon
+        font-size: 1.3rem
+    &--reverse
+        flex-direction: row-reverse
+        &__query
+            margin-right: 0
+            margin-left: 1rem
+@media screen and ( min-width: 1024px )
+    .search
+        border: 1px solid #888
+        padding: .5rem 1rem
+        &__query
+            border: 0
+            margin: 0 .7rem
+            

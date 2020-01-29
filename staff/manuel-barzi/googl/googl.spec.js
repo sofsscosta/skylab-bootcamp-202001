@@ -1,1 +1,0 @@
-// TODO create tests with just console.assert (check that each item has at least a title and a description)

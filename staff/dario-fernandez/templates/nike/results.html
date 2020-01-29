@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>Nike Store</title>
+</head>
+<body>
+    <div class="sticky-container">
+        <div class="pre-header">
+            <nav class="pre-header__brands">
+                <ul class="pre-header__brands-list">
+                    <li class="pre-header__brand-link">NikePlus</li>
+                    <li class="pre-header__brand-link">Air</li>
+                    <li class="pre-header__brand-link">Hurley</li>
+                    <li class="pre-header__brand-link">Converse</li>
+                </ul>
+            </nav>
+            <nav class="pre-header__menu">
+                <ul class="pre-header__menu-list">
+                    <li class="pre-header__menu-link">Regístrate / Inicia sesión</li> 
+                    <li class="pre-header__menu-link">Ayuda</li> 
+                    <li class="pre-header__menu-link"><i class="fas fa-shopping-cart header__cart-icon"></i></li> 
+                    <li class="pre-header__menu-link"><i class="fas fa-map-marker-alt header__ubication-icon"></i> España</li> 
+                </ul>
+            </nav>
+        </div>
+        <header class="header">
+            <figure class="header__logo-container">
+                <img src="https://walashop.a.ssl.fastly.net/media/brands/image/nike.png" alt="logo" class="header__logo">
+            </figure>
+            <nav class="header_menu">
+                <ul class="header__menu-list">
+                    <li class="header__menu-link">NOVEDADES</li>
+                    <li class="header__menu-link">HOMBRE</li>
+                    <li class="header__menu-link">MUJER</li>
+                    <li class="header__menu-link">Niño/a</li>
+                    <li class="header__menu-link">PERSONALIZAR</li>
+                    <li class="header__menu-link">COLECCIONES</li>
+                </ul>
+            </nav>
+            <div class="header__functions">
+                <form class="header__search search">
+                    <button class="search__submit"><i class="fas fa-search search__submit-icon"></i></button>
+                    <input type="text" placeholder="Buscar" class="search__query">
+                </form>
+                <button class="header__cart"><i class="fas fa-shopping-cart header__cart-icon"></i></button>
+                <button class="header__burger-menu"><i class="fas fa-bars header__burger-menu-icon"></i></button>
+            </div>
+        </header>
+        <section class="results">
+            <aside class="results__banner">
+                <span class="resuts__ad-navigator"><i class="fas fa-chevron-left results__ad-navigator-icon"></i></span>
+                <span class="results__ad">Córtate las venas aprendiendo a usar SASS</span>
+                <span class="results__ad-navigator"><i class="fas fa-chevron-right results__ad-navigator.icon"></i></span>
+            </aside>
+            <header class="results__header">
+                <h2 class="results__title">Zapatillas para hombre</h2>
+                <div class="results__actions">
+                    <span class="results__show-filters-label">Filtro </span><span class="results__show-filters-buton"><i class="fas fa-filter results__show-filters-icon"></i></span>
+                    <span class="results__sort">Ordenar por <i class="fas fa-chevron-down results__sort-icon"></i></span>
+                </div>
+            </header>  
+            <main class="results__main">
+                <aside class="results__filters">
+                    <section class="results__categories">
+                        <ul class="results__categories-list">
+                            <li class="results__category">Lifestyle</li>
+                            <li class="results__category">Jordan</li>
+                            <li class="results__category">Running</li>
+                        </ul>
+                    </section>
+                    <div class="results__filter filter">
+                        <h3 class="filter__title">Sexo <span class="filter__collapse"><i class="fas fa-chevron-up filter__collapse-icon"></i></span></h3>
+                        <ul class="filter__list">
+                            <li class="filter__feature">Hombre</li>
+                            <li class="filter__feature">Mujer</li>
+                        </ul>
+                    </div>
+                    <div class="results__filter filter">
+                        <h3 class="filter__title">Color <span class="filter__collapse"><i class="fas fa-chevron-up filter__collapse-icon"></i></span></h3>
+                        <ul class="filter__list">
+                            <li class="filter__feature">Rojo</li>
+                            <li class="filter__feature">Verde</li>
+                            <li class="filter__feature">Azul</li>
+                            <li class="filter__feature">Negro</li>
+                            <li class="filter__feature">Blanco</li>
+                        </ul>
+                    </div>
+                    <div class="results__filter filter">
+                        <h3 class="filter__title">Marca <span class="filter__collapse"><i class="fas fa-chevron-up filter__collapse-icon"></i></span></h3>
+                        <ul class="filter__list">
+                            <li class="filter__feature">Nike</li>
+                            <li class="filter__feature">Jordan</li>
+                            <li class="filter__feature">Nike Sportwear</li>
+                            <li class="filter__feature">NikeBy You</li>
+                        </ul>
+                    </div>
+                    <div class="results__filter filter">
+                        <h3 class="filter__title">Material <span class="filter__collapse"><i class="fas fa-chevron-up filter__collapse-icon"></i></span></h3>
+                        <ul class="filter__list">
+                            <li class="filter__feature">Lona</li>
+                            <li class="filter__feature">Sintético</li>
+                            <li class="filter__feature">Algodón</li>
+                        </ul>
+                    </div>
+                </aside>
+                <section class="results__list">
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5870774f-c7b7-49b7-b374-89735455f6a9/air-zoom-superrep-zapatillas-las-clases-de-hiit-gSWSxQ.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/v4tjxe6v0qrn6hokf8za/air-max-plus-iii-zapatillas-h7LQb7.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/9b18073c-c7bf-4bdc-80cf-b2110cd9dab7/air-max-90-zapatillas-dlXJdc.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/971c29e4-747f-4cdb-9da0-95aa7b0033a6/zoom-gravity-zapatillas-de-running-8vSJGH.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d7a8d127-3a67-411a-8fb0-0ec2d84d736d/mx-720-818-zapatillas-gNPl9k.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d97b6a9f-e594-44e9-b053-7048b377957b/jordan-aerospace-720-zapatillas-L8gLhH.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/136bb5de-b102-4c5a-af87-3fad78a39e7d/renew-run-zapatillas-de-running-SPjMg8.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/assn0ncqpnlsbyvfkhvu/air-max-270-react-zapatillas-7jGGhz.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>        
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/89c13d53-20c5-4ffa-a433-ae0a8b8ce62f/jordan-mars-270-zapatillas-fx9tR8.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>        
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bogphlerlahr1vpcc5wp/jordan-max-aura-zapatillas-de-baloncesto-7K9BJw.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>        
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a0d65101-3d1c-4312-b2a6-cccd45e4e278/air-max-plus-iii-zapatillas-jNDGRs.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>        
+                    <article class="results__product product">
+                        <figure class="product__photo-container">
+                            <img src="https://c.static-nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/gr99yv8vjycrx8h49hnp/air-zoom-pegasus-36-shield-zapatillas-de-running-rsCcK6.jpg" alt="lorem" class="product__photo">
+                        </figure>
+                        <div class="product__details">
+                            <h3 class="product__title">Lorem Ipsum</h3>
+                            <p class="product__description">dolor sit amet</p>
+                            <span class="product__colors">2 Colores</span>
+                            <strong class="product__price">1G$</strong>
+                        </div>
+                    </article>        
+                </section>
+            </main>         
+        </section>
+    </div>
+    <footer class="footer">
+        <section class="footer__main-section">
+            <div class="footer__menus-container">
+                <nav class="footer__menu">
+                    <ul class="footer__menu-list">
+                        <li class="footer__link">TARJETA DE REGALO</li>
+                        <li class="footer__link">TIENDAS MÁS CERCANAS</li>
+                        <li class="footer__link">REGÍSTRARSE PARA RECIBIR CORREOS ELECTÓNICOS</li>
+                        <li class="footer__link">HAZTE MIEMBRO</li>
+                        <li class="footer__link">DESCUENTO PARA ESTUDIANTES</li>
+                        <li class="footer__link">COMENTARIOS SOBRE LA WEB</li>
+                    </ul>
+                </nav>
+                <nav class="footer__deploy-menu deploy-menu">
+                    <span class="deploy-menu__title">OBTENER AYUDA<i class="fas fa-plus deploy-menu__show-more-icon"></i></span>
+                    <ul class="deploy-menu__list">
+                        <li class="deploy-menu__link">Estado del pedido</li>
+                        <li class="deploy-menu__link">Envío y entrega</li>
+                        <li class="deploy-menu__link">Devoluciones</li>
+                        <li class="deploy-menu__link">Opciones de pago</li>
+                        <li class="deploy-menu__link">Contacta con nosotros</li>
+                    </ul>
+                </nav>
+                <nav class="footer__deploy-menu deploy-menu">
+                    <span class="deploy-menu__title">ACERCA DE NIKE<i class="fas fa-plus deploy-menu__show-more-icon"></i></span>
+                    <ul class="deploy-menu__list">
+                        <li class="deploy-menu__link">Noticias</li>
+                        <li class="deploy-menu__link">Empleo</li>
+                        <li class="deploy-menu__link">Inversores</li>
+                        <li class="deploy-menu__link">Sostenibilidad</li>
+                    </ul>
+                </nav>
+            </div>
+            <nav class="footer__social">
+                <ul class="footer__social-list">
+                    <li class="footer__social-link"><i class="fab fa-twitter-square footer__social-icon"></i></li>
+                    <li class="footer__social-link"><i class="fab fa-facebook-square footer__social-icon"></i></li>
+                    <li class="footer__social-link"><i class="fab fa-youtube-square footer__social-icon"></i></li>
+                    <li class="footer__social-link"><i class="fab fa-instagram footer__social-icon"></i></li>
+                </ul>
+            </nav>
+        </section>
+        <footer class="footer__footer">
+            <div class="footer__legal-info">
+                <div class="footer__ubication">
+                    <i class="fas fa-map-marker-alt footer__ubication-icon"></i>
+                    <span class="footer__text">España</span>
+                </div>
+                <span class="footer__copyright">© 2020 Nike, Inc. Todos los derechos reservados</span>
+            </div>
+            <nav class="footer__legal-menu">
+                <ul class="footer__legal-list">
+                    <li class="footer__legal-link">Guías</li>
+                    <li class="footer__legal-link">Condiciones de uso</li>
+                    <li class="footer__legal-link">Condiciones de venta</li>
+                    <li class="footer__legal-link">Políticas de privacidad y cookies</li>
+                    <li class="footer__legal-link">Aviso legal</li>
+                    <li class="footer__legal-link">Configuración de cookies</li>
+                </ul>
+            </nav>
+        </footer>
+    </footer>
+</body>
+</html>
