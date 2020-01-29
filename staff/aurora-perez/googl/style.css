@@ -102,8 +102,25 @@
     display: none;
   }
 }
-h1 {
+.title {
   text-align: center;
+  font-size: 60px;
+  font-family: aria, sans-serif;
+}
+.title--blue {
+  color: #4285f4;
+}
+.title--red {
+  color: #ea4335;
+}
+.title--yellow {
+  color: #fbbc04;
+}
+.title--green {
+  color: #34a853;
+}
+.title span {
+  margin: -5px;
 }
 
 /*# sourceMappingURL=style.css.map */

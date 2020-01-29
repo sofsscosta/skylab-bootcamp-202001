@@ -1,7 +1,8 @@
+
 function createSearch(selector, callback) { 
   var search = document.querySelector(selector);
 
-  search.addEventListener("submit", function(event) { debugger
+  search.addEventListener("submit", function(event) { 
     event.preventDefault();
 
     var query = this.query.value;
@@ -87,7 +88,7 @@ function createRegister(selector, callback) {
   });
 }
 
-function createNavbar() {
+function createNavbar() { 
   var nav_register = document.querySelector('.nav__register')
   var nav_login = document.querySelector('.nav__login')
 
