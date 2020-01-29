@@ -41,9 +41,9 @@ function googl(query, callback) {
                     if (link)
                         result.link = link.href;
 
-                    results.push(result);
                 }
 
+                results.push(result);
             }
 
             callback(results);

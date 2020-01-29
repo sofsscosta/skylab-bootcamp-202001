@@ -1,4 +1,5 @@
 function createSearch(selector, callback) {
+
     var search = document.querySelector(selector);
 
     // search.onsubmit = function (event) {
@@ -74,6 +75,7 @@ function createRegister(selector, callback) {
         var surname = this.surname.value;
         var username = this.username.value;
         var password = this.password.value;
+
 
         callback(nombre, surname, username, password);
     });

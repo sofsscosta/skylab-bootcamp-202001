@@ -1,6 +1,7 @@
 var users = []; // ej: user => { name, surname, username, password }
 
-var search = createSearch('.search', function(query) {
+var _search = createSearch('.search', function(query) {
+
     googl(query, function(results) {
 
         createResults('.results', results);
@@ -8,16 +9,17 @@ var search = createSearch('.search', function(query) {
 });
 
 var login = createLogin('.login', function(username, password) {
+
     var arrayUser = users.filter(function(user) {
-        return user.username === username && user.password === password;
+        if (user.username === username && user.password === password) {
+            _search.classList.toggle('search--hidden');
+            login.classList.toggle('login--hidden');
+        } else {
+            alert('you cannot get in :P');
+        }
 
     })
-    if (arrayUser.length === 1) {
-        search.classList.toggle('search--hidden');
-        login.classList.toggle('login--hidden');
-    } else {
-        alert('you cannot get in :P');
-    }
+
 });
 
 function User(nombre, surname, username, password) {
