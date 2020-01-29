@@ -1,6 +1,7 @@
 
 function createSearch(selector, callback) {
   var search = document.querySelector(selector);
+  
   search.addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -59,7 +60,7 @@ function createLogin(selector, callback) {
     callback(username, password);
   });
   return login;
-}
+};
 
 var users = []
   
@@ -81,7 +82,7 @@ function createRegister(selector, callback) {
     }
     callback()
   });
-}
+};
   
 function createNavbar() {
   var nav_register = document.querySelector('.nav-register')
