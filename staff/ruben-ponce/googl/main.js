@@ -35,10 +35,9 @@ var login = createLogin('.login', function(username, password) {
                 document.querySelector('.search4').classList.remove('search--hide');
                 login.classList.toggle('login--hide');
                 return;
-            } else {
-                alert("incorrect username/pass");
             }
         }
+        alert("incorrect username/pass");
     } else {
         alert('please register first');
     }
