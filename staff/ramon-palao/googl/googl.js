@@ -39,9 +39,9 @@ function googl(query, callback) {
                     if(description) {
                         result.description = description.innerText
                     }
+                    results.push(result)
                 }
 
-                results.push(result)
             }
 
             callback(results)
