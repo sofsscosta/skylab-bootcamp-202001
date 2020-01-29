@@ -7,7 +7,11 @@ body {
 }
 
 ul {
-  list-style: none;
+  list-style: non;
+}
+
+input[type=text], input[type=password] {
+  padding-left: 0.5rem;
 }
 
 .button {
@@ -22,6 +26,12 @@ ul {
 .button--login, .button--register {
   background-color: green;
   color: white;
+}
+.button--logut {
+  background-color: red;
+  color: white;
+  height: 5%;
+  width: 20%;
 }
 
 .form {
@@ -53,6 +63,9 @@ ul {
   margin: 1rem auto;
 }
 
+.search {
+  border-radius: 50%;
+}
 .search--hide {
   display: none;
 }

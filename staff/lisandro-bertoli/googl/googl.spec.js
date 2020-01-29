@@ -1,59 +1,68 @@
-describe('Googl', function () {
-    it('should a results array be created', function (done) {
-        googl('pepito', function (results) {
-            expect(results instanceof Array).toBe(true);
-            expect(results.length).toBe(11);
-            done();
-        });
+'use strict';
 
-    });
-
-    it('should a result object be created for each result of the query', function (done) {
+describe('googl', function () {
+    it('should succeed on matching query', function (done) {
         googl('pepito', function (results) {
-            results.forEach(function (result) {
-                expect(result instanceof Object).toBe(true);
+            expect(results).toBeDefined();
+            //expect(results).toHaveLength(8);
+            expect(results.length).toBeGreaterThan(0);
+
+            results.forEach(result => {
+                expect(typeof result.title).toBe('string');
+                expect(typeof result.description).toBe('string');
+                expect(typeof result.link).toBe('string');
+
+                if (result.rating)
+                    expect(typeof result.rating).toBe('string');
             });
+
             done();
         });
     });
 
-    it('should each result have a title and description', function (done) {
-        googl('pepito', function (results) {
-            results.forEach(function (result) {
-                expect(result.title).toBeDefined()
-                expect(result.description).toBeDefined();
-            });
+    it('should succeed on non-matching query returning an empty array', function (done) {
+        googl('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
+            expect(results).toBeDefined();
+            expect(results).toHaveLength(0);
+
             done();
         });
     });
 
-    it('should fail when non-function callback is given as second parameter', function () {
+    it('should fail on non-string query', function () {
         expect(function () {
-            googl('pepito', 1).toThrowError(TypeError, '1 is not a function');
-        });
+            googl(undefined, function () { });
+        }).toThrowError(TypeError, 'undefined is not a string');
 
+        expect(function () {
+            googl(1, function () { });
+        }).toThrowError(TypeError, '1 is not a string');
 
-    })
+        expect(function () {
+            googl(true, function () { });
+        }).toThrowError(TypeError, 'true is not a string');
+
+        expect(function () {
+            googl({}, function () { });
+        }).toThrowError(TypeError, '[object Object] is not a string');
+    });
+
+    it('should fail on non-function callback', function () {
+
+        expect(function () {
+            googl('', undefined);
+        }).toThrowError(TypeError, 'undefined is not a function');
+
+        expect(function () {
+            googl('', 1);
+        }).toThrowError(TypeError, '1 is not a function');
+
+        expect(function () {
+            googl('', true);
+        }).toThrowError(TypeError, 'true is not a function');
+
+        expect(function () {
+            googl('', {});
+        }).toThrowError(TypeError, '[object Object] is not a function');
+    });
 });
-
-
-
-// googl('pepito', function (results) {
-//     results.forEach(function (result) {
-//         console.log(result)
-//         console.assert(result, 'should the query have a result');
-//         console.assert(result.title, 'should the result have a title');
-//         console.assert(result.description, 'should the result have a description');
-
-//     });
-// })
-
-// describe('google', function () {
-//     it('should a results array be returned', function () {
-//         googl('pepito', function (results) {
-//             results.forEach(function (result) {
-//                 return result
-//             })
-//         })
-//     })
-// });

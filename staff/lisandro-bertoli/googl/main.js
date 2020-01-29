@@ -1,11 +1,12 @@
 var users = []; // ej: user => { name, surname, username, password }
 
-var search = createSearch('.search', function (query) {
-    debugger
+var _search = createSearch('.search', function (query) {
     googl(query, function (results) {
         createResults('.results', results);
     });
 });
+
+
 
 
 var login = createLogin('.login', function (username, password) {
@@ -15,7 +16,7 @@ var login = createLogin('.login', function (username, password) {
     })
 
     if (user.length === 1) {
-        search.classList.toggle('search--hide');
+        _search.classList.toggle('search--hide');
         login.classList.toggle('login--hide');
     } else alert('you cannot get in :P');
 });
