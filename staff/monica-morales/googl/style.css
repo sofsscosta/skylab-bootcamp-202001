@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.header > * {
+  margin-left: 3%;
+}
+
+.log {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+.log__name {
+  height: 9vh;
+  width: 30vw;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+.register--hide {
+  display: none;
+}
+.register__title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.search {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+.search--hide {
+  display: none;
+}
+.search input {
+  border: 1px solid black;
+}
+.search button {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.login {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+.login--hide {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */
