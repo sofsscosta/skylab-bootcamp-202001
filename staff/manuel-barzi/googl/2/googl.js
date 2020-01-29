@@ -4,13 +4,9 @@ function googl(query, callback) {
     if (typeof query !== 'string') throw new TypeError(query + ' is not a string');
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
-    var xhr = new XMLHttpRequest;
-
-    xhr.open('GET', 'https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query);
-
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var doc = new DOMParser().parseFromString(this.responseText, 'text/html');
+    call('https://skylabcoders.herokuapp.com/proxy?url=https://www.google.com/search?q=' + query, function (response) {
+        if (response.status === 200) {
+            var doc = new DOMParser().parseFromString(response.content, 'text/html');
 
             var items = doc.querySelectorAll('div.g');
 
@@ -24,12 +20,12 @@ function googl(query, callback) {
                 if (title) {
                     var result = {};
 
-                    result.title = title.innerText;
+                    result.title = title.innerText.trim();
 
                     var rating = item.querySelector('.slp.f');
 
                     if (rating)
-                        result.rating = rating.innerText;                    
+                        result.rating = rating.innerText.trim();
 
                     var description = item.querySelector('span.st');
 
@@ -39,16 +35,14 @@ function googl(query, callback) {
                     var link = item.querySelector('.rc>.r>a');
 
                     if (link)
-                        result.link = link.href;
+                        result.link = link.href.trim();
 
                     results.push(result);
                 }
-                
+
             }
 
             callback(results);
         }
-    }
-
-    xhr.send();
+    });
 }
