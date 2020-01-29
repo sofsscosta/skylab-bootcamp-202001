@@ -123,4 +123,9 @@
   margin: -5px;
 }
 
+.results {
+  list-style: none;
+  font-family: arial, sans-serif;
+}
+
 /*# sourceMappingURL=style.css.map */

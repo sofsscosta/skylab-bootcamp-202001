@@ -7,8 +7,6 @@ function call(url, callback) {
     var xhr = new XMLHttpRequest;
 
     xhr.open('GET', url);
-    
-    xhr.setRequestHeader('User-Agent', '*');
 
     xhr.onreadystatechange = function () {
         if (this.readyState === 4)

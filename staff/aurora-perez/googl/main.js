@@ -6,6 +6,7 @@ var find = createSearch ('.search', function(query) {
 }) 
 
 var login = createLogin('.login', function(username, password) {
+
   var userFound = users.filter(function(user) {
     return username === user.username && password === user.password
   })
@@ -20,9 +21,12 @@ var login = createLogin('.login', function(username, password) {
   } else alert('you cannot get in :P');
 });
 
+
 createRegister('.register', function() {
+
   login.classList.toggle('login--hide');
   var register = document.querySelector('.register')
   register.classList.toggle('register--hide');
 });
+
 createNavbar()

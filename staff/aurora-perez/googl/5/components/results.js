@@ -1,18 +1,4 @@
-function createSearch(selector, callback) {
-    var search = document.querySelector(selector);
-
-    // search.onsubmit = function (event) {
-    search.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        var query = this.query.value;
-
-        callback(query);
-        // };
-    });
-
-    return search;
-}
+'use strict';
 
 function createResults(selector, results) {
     var list = document.querySelector(selector);
@@ -47,19 +33,4 @@ function createResults(selector, results) {
 
         list.append(item);
     });
-}
-
-function createLogin(selector, callback) {
-    var login = document.querySelector(selector);
-
-    login.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var username = this.username.value;
-        var password = this.password.value;
-
-        callback(username, password);
-    });
-
-    return login;
 }
