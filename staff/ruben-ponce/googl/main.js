@@ -30,6 +30,9 @@ var login = createLogin('.login', function(username, password) {
             var user = users[i];
             if (user.username.includes(username) && password === user.password) {
                 document.querySelector('.search').classList.remove('search--hide');
+                document.querySelector('.search2').classList.remove('search--hide');
+                document.querySelector('.search3').classList.remove('search--hide');
+                document.querySelector('.search4').classList.remove('search--hide');
                 login.classList.toggle('login--hide');
                 return;
             } else {
@@ -46,12 +49,14 @@ var buttonLogin = document.querySelector('.buttonContent__login');
 var buttonSignin = document.querySelector('.buttonContent__signin');
 var registerTemplate = document.querySelector('.registerTemplate');
 
-buttonLogin.addEventListener('click', function () {
+buttonLogin.addEventListener('click', function (event) {
+    event.preventDefault();
     buttonContent.classList.toggle('buttonContent--hide');
     document.getElementsByClassName("login")[0].classList.remove('login--hide');
 });
 
-buttonSignin.addEventListener('click', function () {
+buttonSignin.addEventListener('click', function (event) {
+    event.preventDefault();
     buttonContent.classList.toggle('buttonContent--hide');
     document.getElementsByClassName("registerTemplate")[0].classList.remove('registerTemplate--hide');
 });
@@ -68,5 +73,5 @@ var finishRegister = registerUser('.registerTemplate', function(user) {
 var home = document.querySelector('h1');
 
 home.addEventListener('click', function () {
-    window.location.href = 'template.html'
+    window.location.href = 'index.html'
 });

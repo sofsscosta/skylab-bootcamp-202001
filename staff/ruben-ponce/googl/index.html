@@ -4,24 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        ul {
-            list-style-type: none;
-        }
-    </style>
+    <title>Googl - The best web searcher in the world!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="div1">
-        <h1>Googl</h1>
-    
-        <form id="searcher">
-            <input type="text" name="query" id="text" placeholder="Type here...">
+        <div class="content">
+
+            <ul class="content__left">
+                <li><a href="https://about.google/?fg=1&utm_source=google-ES&utm_medium=referral&utm_campaign=hp-header">About</a></li>
+                <li><a href="https://store.google.com/ES/?utm_source=hp_header&utm_medium=google_ooo&utm_campaign=GS100042&hl=es-ES">Shop</a></li>
+            </ul>
+
+            <ul class="content__nav content__right">
+                <li class="content__nav__li"><a href="https://www.gmail.es">Gmail</a></li>
+                <li class="content__nav__li"><a href="https://www.google.es/imghp?hl=es&tab=ri&ogbl">Imagenes</a></li>
+                <li class="content__nav__li"><a href="#">APPS</a></li>
+                <li class="content__nav__li"><a class="content__nav__li__count" href="#">COUNT</a></li>
+                <div class="buttonContent">
+                    <li class="content__nav__li buttonContent__login"><a href="">Login</a></li>
+                    <li class="content__nav__li buttonContent__signin"><a href="">Signin</a></li> 
+                </div>
+            </ul> 
+
+        </div>
+        
+        <h1>
+            <p class="p1">G</p>
+            <p class="p2">o</p>
+            <p class="p3">o</p>
+            <p class="p4">g</p>
+            <p class="p5">l</p>
+        </h1>
+
+        <form class="login login--hide">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button>Login</button>
+        </form>
+
+        <form class="search search--hide">
+            <input type="text" name="query" placeholder="Search on Googl">
             <button type="submit">Search</button>
         </form>
-        <script src="googl.js"></script>
-        <script src="main.js"></script>
-        
+        <ul class="results"></ul>
+
+        <form class="search2 search--hide">
+            <input type="text" name="query" placeholder="Search on yahoo">
+            <button type="submit">Search</button>
+        </form>
+        <ul class="results2"></ul>
+
+        <form class="search3 search--hide">
+            <input type="text" name="query" placeholder="Search on bing">
+            <button type="submit">Search</button>
+        </form>
+        <ul class="results3"></ul>
+
+
+        <form class="search4 search--hide">
+            <input type="text" name="query" placeholder="Search on ecosia">
+            <button type="submit">Search</button>
+        </form>
+        <ul class="results4"></ul>
+
+
+        <form class="registerTemplate registerTemplate--hide">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="surname" placeholder="Surname">
+            <input type="text" name="username" placeholder="User name">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Submit</button>
+        </form>
+
+        <footer class="footer-content">
+            <div>Country</div>
+            <div>
+                <div>
+                    <div>Advertising</div>
+                    <div>Company</div>
+                    <div>How found the search</div>
+                </div>
+                <div>
+                    <div>Privacy</div>
+                    <div>Conditions</div>
+                    <div>Config</div>
+                </div>
+            </div>
+        </footer>
+
     </div>
+
+    <script src="components.js"></script>
+    <script src="main.js"></script>
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+    <script src="logic/googl.js"></script>
+    <script src="logic/yahoo.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="data.js"></script>
 </body>
 </html>
