@@ -22,9 +22,12 @@
   display: none;
 }
 
-.main {
+.landing {
   display: flex;
   flex-direction: row;
+}
+.landing--hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

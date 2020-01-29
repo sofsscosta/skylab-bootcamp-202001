@@ -15,19 +15,19 @@
     <head class="head">
         <h1 class="logo">GOOGLE</h1>
     </head>
-    <form class="landing">
-        <button type="submit">Login</button>
-        <button type="submit">register</button>
-    </form>
+    <div class="landing">
+        <button class="toLogin">Login</button>
+        <button class="toRegister">Register</button>
+    </div>  
     <form class="register register--hide">
         <input type="text" name="name">
-        <input type="text" name="surName">
-        <input type="text" name="userName">
+        <input type="text" name="surname">
+        <input type="text" name="username">
         <input type="password" name="password">
         <button type="submit"></button>
     </form>
     <form class="login login--hide">
-        <input type="text" name="UserName">
+        <input type="text" name="username">
         <input type="password" name="password">
         <button type="submit"></button>
     </form>
@@ -36,8 +36,11 @@
         <button type="submit"></button>
     </form>
 
-    <div id="main"></div>
+    <div class="main">
+        <ul class="list"></ul>
+    </div>
     <script src="googl.js"></script>
+    <script src="components.js"></script>
     <script src="main.js"></script>
 </body>
 

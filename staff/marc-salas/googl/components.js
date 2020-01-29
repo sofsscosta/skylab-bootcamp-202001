@@ -5,8 +5,8 @@ function createRegister(selector, callback) {
         event.preventDefault();
 
         var name = this.name.value;
-        var surName = this.surName.value;
-        var userName = this.userName.value;
+        var surName = this.surname.value;
+        var userName = this.username.value;
         var password = this.password.value;
 
         callback(name, surName, userName, password);
@@ -16,7 +16,6 @@ function createRegister(selector, callback) {
 }
 function createLogin(selector, callback) {
     var login = document.querySelector(selector);
-
     login.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -29,55 +28,69 @@ function createLogin(selector, callback) {
     return login;
 }
 
+function showSelection(selector, buttonSelector, destinationSelector){
+    var button = document.querySelector(buttonSelector);
+    var origin = document.querySelector(selector);
+    var destination = document.querySelector(destinationSelector);
+    //var targetSelector = document.querySelector(selector);
+
+    button.addEventListener('click', function(event){
+        event.preventDefault();
+        
+        origin.classList.toggle(selector.substring(1)+ "--hide");
+        destination.classList.toggle(destinationSelector.substring(1)+"--hide");
 
 
-// function createSearch(selector, callback) {
-//     var search = document.querySelector(selector);
+    });
+}
 
-//     // search.onsubmit = function (event) {
-//     search.addEventListener('submit', function (event) {
-//         event.preventDefault();
+function createSearch(selector, callback) {
+    var search = document.querySelector(selector);
 
-//         var query = this.query.value;
+    // search.onsubmit = function (event) {
+    search.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-//         callback(query);
-//         // };
-//     });
+        var query = this.query.value;
 
-//     return search;
-// }
+        callback(query);
+        // };
+    });
 
-// function createResults(selector, results) {
-//     var list = document.querySelector(selector);
+    return search;
+}
 
-//     list.innerHTML = '';
+function createResults(selector, results) {
+    var list = document.querySelector(selector);
 
-//     results.forEach(function (result) {
-//         var item = document.createElement('li');
+    list.innerHTML = '';
 
-//         var title = document.createElement('h3');
-//         title.innerText = result.title;
+    results.forEach(function (result) {
+        var item = document.createElement('li');
 
-//         var link = document.createElement('a');
-//         link.target = '_blank';
-//         link.href = result.link;
+        var title = document.createElement('h3');
+        title.innerText = result.title;
 
-//         link.append(title);
+        var link = document.createElement('a');
+        link.target = '_blank';
+        link.href = result.link;
 
-//         item.append(link);
+        link.append(title);
 
-//         if (result.rating) {
-//             var rating = document.createElement('span');
-//             rating.innerText = result.rating;
+        item.append(link);
 
-//             item.append(rating);
-//         }
+        if (result.rating) {
+            var rating = document.createElement('span');
+            rating.innerText = result.rating;
 
-//         var description = document.createElement('p');
-//         description.innerText = result.description;
+            item.append(rating);
+        }
 
-//         item.append(description);
+        var description = document.createElement('p');
+        description.innerText = result.description;
 
-//         list.append(item);
-//     });
-// }
+        item.append(description);
+
+        list.append(item);
+    });
+}
