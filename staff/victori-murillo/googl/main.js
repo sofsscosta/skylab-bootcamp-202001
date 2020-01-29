@@ -1,8 +1,10 @@
+debugger
 var search = createSearch('.search', function(query) {
 
   googl(query, function(results) {
     createResults('.results', results)
   })
+
 }) 
 
 var login = createLogin('.login', function(username, password) {
@@ -28,7 +30,7 @@ createRegister('.register', function() {
   var register = document.querySelector('.register')
   register.classList.toggle('register--hide');
 
-  
+
 });
 
 

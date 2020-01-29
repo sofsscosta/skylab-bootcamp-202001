@@ -1,8 +1,10 @@
 function createSearch(selector, callback) {
-  var search = document.querySelector(selector);
-  search.addEventListener("submit", function(event) {
-    event.preventDefault();
 
+  var search = document.querySelector(selector);
+
+  search.addEventListener("submit", function(event) {
+
+    event.preventDefault();
     var query = this.query.value;
     callback(query);
   });
@@ -61,25 +63,24 @@ function createLogin(selector, callback) {
     return login;
 }
 
-
 function createRegister(selector, callback) {
   var register = document.querySelector(selector);
 
   register.addEventListener('submit', function(event) {
       event.preventDefault();
 
-      var user = {}
+      var user = {};
 
-      user.name = this.name.value
-      user.surname = this.surname.value
+      user.name = this.name.value;
+      user.surname = this.surname.value;
       user.username = this.username.value;
       user.password = this.password.value;
 
-      if(!users.some(u => u.username === user.username)) {
-        users.push(user)
+      if(!users.some(function(userSaved){return userSaved.username === user.username} )) {
+        users.push(user);
       }
 
-      callback()
+      callback();
   });
 }
 

@@ -1,18 +1,4 @@
-.search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.search--hide {
-  display: none;
-}
-.search input {
-  border: 1px solid black;
-  border-radius: 1rem;
-  height: 20px;
-  width: 120px;
-}
-
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .login {
   display: flex;
   justify-content: center;
@@ -36,6 +22,15 @@
   font-size: 16px;
 }
 .login--hide {
+  display: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nav--hide {
   display: none;
 }
 
@@ -65,17 +60,40 @@
   display: none;
 }
 
-h1 {
-  text-align: center;
-}
-
-.nav {
+.search {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
-.nav--hide {
+.search--hide {
   display: none;
+}
+.search input {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 20px;
+  width: 120px;
+}
+
+.title {
+  text-align: center;
+  font-size: 60px;
+  font-family: araia, sans-serif;
+}
+.title--blue {
+  color: #4285f4;
+}
+.title--red {
+  color: #ea4335;
+}
+.title--yellow {
+  color: #fbbc04;
+}
+.title--green {
+  color: #34a853;
+}
+.title span {
+  margin: -5px;
 }
 
 /*# sourceMappingURL=style.css.map */
