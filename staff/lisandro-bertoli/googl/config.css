@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Robot, sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type=text], input[type=password] {
+  padding-left: 0.5rem;
+}
+
+/*# sourceMappingURL=config.css.map */

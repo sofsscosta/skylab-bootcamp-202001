@@ -1,0 +1,24 @@
+.button {
+  background-color: lightgrey;
+  width: 40%;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: solid 0.5px grey;
+  color: black;
+  margin: 0.5rem auto;
+  background-color: blue;
+}
+.button__logout {
+  height: 1.5rem;
+  width: 20%;
+}
+.button--correct {
+  background-color: green;
+  color: white;
+}
+.button--danger {
+  background-color: red;
+  color: white;
+}
+
+/*# sourceMappingURL=button.css.map */

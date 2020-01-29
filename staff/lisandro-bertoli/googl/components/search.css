@@ -1,0 +1,20 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  width: 80%;
+  border-radius: 1rem;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+.search--hide {
+  display: none;
+}
+.search__input {
+  height: 25%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
+/*# sourceMappingURL=search.css.map */
