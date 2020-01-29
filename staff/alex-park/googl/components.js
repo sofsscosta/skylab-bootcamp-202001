@@ -84,3 +84,17 @@ function registerUser(selector, callback) {
 
     return register;
 }
+
+
+
+
+// function home () {
+//     document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
+//     document.querySelector('.login').setAttribute('class', 'login--hide');
+//     document.querySelector('.registerTemplate').setAttribute('class', 'registerTemplate--hide');
+//     document.querySelector('.search').setAttribute('class', 'search--hide');
+// }
+
+// function gohome() {
+//     window.location.href="../googl/template.html"
+// }

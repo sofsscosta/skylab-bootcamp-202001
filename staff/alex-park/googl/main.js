@@ -27,13 +27,17 @@ var login = createLogin('.login', function(username, password) {
                 login.classList.toggle('login--hide');
                 return;
             } else {
-                alert("incorrect username/pass, TONTOLABA");
+                alert("Error: incorrect user/pass, please try again.");
+                document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
+                document.querySelector('.login').classList.toggle('login--hide');
+
             }
         }
 
     } else {
-        alert('please register first')
-        // location.reload();
+        alert('ERROR: Please register first.')
+        document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
+        document.querySelector('.login').classList.toggle('login--hide');
     }
 });
 
@@ -56,13 +60,11 @@ var finishRegister = registerUser('.registerTemplate', function(user) {
     if (user.name && user.surname && user.username && user.password) {
         document.querySelector('.registerTemplate').classList.toggle('registerTemplate--hide');
         document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
-    } else {
-        alert("Alerta: eres subnormal");
     }
 })
 
-var home = document.querySelector('h1');
+document.querySelector('h1').addEventListener('click',function(){
+    location.reload();
+});
 
-home.addEventListener('click', function () {
-    // location.reload();
-})
+// document.querySelector('h1').addEventListener('click',gohome());

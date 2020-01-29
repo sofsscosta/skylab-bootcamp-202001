@@ -4,15 +4,25 @@
     width: 30%
     margin-left: 35%
     display: flex
-    flex-wrap: wrap
-    background-color: green
+    flex-direction: column
+    background-color: #d6d6d6
     border-radius: 1em
-    padding: 1%
+    padding: 1em
     justify-content: space-between
 
     &--hide
         display: none
 
+    & > *
+        @extend %item-border
+
     & > input
-        width: 98%
-        margin-left: 1%
+        
+        width: 95%
+        margin-left: 2.5%
+        
+    & > button
+        width: 95%
+        background-color: #108600
+        color: white
+        margin-left: 2.5%

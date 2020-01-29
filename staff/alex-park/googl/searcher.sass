@@ -1,33 +1,30 @@
 @import config
 
 .search
-    height: 10vh
+    width: 80%
+    margin-left: 10%
     display: flex
     justify-content: center
     align-items: center
+    flex-direction: column
 
     &--hide
         display: none
 
+    & > *
+        @extend %item-border
+
     & > input
-        border-radius: 1em
-        width: 45%
-        height: 60%
-        padding-left: 2.5%
-        font-family: 'Arial'
-        font-size: 1.3em
-        background-color: #f5f4f4
+        padding-left: 2%
+        width: 90%
+        text-align: left
 
     & > button
-        height: 70%
-        width: 12.5%
-        border-radius: 1em
+        width: 40%
         background-color: #1bb12f
         color: white
-        font-family: 'Arial'
-        font-size: 1.3em
-        margin-left: 3%
         cursor: pointer
+
 
         &:hover
             background-color: #148824   

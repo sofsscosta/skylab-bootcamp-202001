@@ -23,25 +23,26 @@
         </div>
 
         <form class="login login--hide">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
+            <input type="text" autocomplete="off" name="username" placeholder="Username" required>
+            <input type="password" autocomplete="off" name="password" placeholder="Password" required>
             <button>Login</button>
         </form>
 
+        <form class="registerTemplate registerTemplate--hide">
+            <input type="text" autocomplete="off" name="name" placeholder="Name" required>
+            <input type="text" autocomplete="off" name="surname" placeholder="Surname" required>
+            <input type="text" autocomplete="off" name="username" placeholder="User name" required>
+            <input type="password" autocomplete="off" name="password" placeholder="Password" required>
+            <button type="submit">Submit</button>
+        </form>
+
         <form class="search search--hide">
-            <input type="text" name="query" id="text" placeholder="Type here to search on Googl">
+            <input type="text" autocomplete="off" name="query" id="text" placeholder="Type here to search on Googl">
             <button type="submit">Search</button>
         </form>
 
         <ul class="results"></ul>
 
-        <form class="registerTemplate registerTemplate--hide">
-            <input type="text" name="name" placeholder="Name">
-            <input type="text" name="surname" placeholder="Surname">
-            <input type="text" name="username" placeholder="User name">
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit">Submit</button>
-        </form>
 
     </div>
 
