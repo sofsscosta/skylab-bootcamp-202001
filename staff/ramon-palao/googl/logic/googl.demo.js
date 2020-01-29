@@ -1,4 +1,4 @@
-googl(document.getElementById("text").value, function(results) { 
+googl('pepito', function(results) { 
     results.forEach(function(result) { 
         console.log(result) 
     })

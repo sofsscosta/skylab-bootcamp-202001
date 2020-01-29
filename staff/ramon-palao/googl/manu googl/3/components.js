@@ -1,36 +1,4 @@
-function createRegister(selector, callback) {
-    var register = document.querySelector(selector);
-
-    register.addEventListener("submit", function(event){
-        event.preventDefault();
-
-        user = {};
-
-        user.name = this.name.value;
-        user.surname = this.surname.value;
-        user.username = this.username.value;
-        user.password = this.password.value;
-        
-        callback(user.name, user.surname, user.username, user.password);
-    })
-    
-    return register;
-}
-
-function createLogin(selector, callback) {
-    var login = document.querySelector(selector);
-
-    login.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var username = this.username.value;
-        var password = this.password.value;
-
-        callback(username, password);
-    });
-
-    return login;
-}
+'use strict';
 
 function createSearch(selector, callback) {
     var search = document.querySelector(selector);
@@ -81,4 +49,52 @@ function createResults(selector, results) {
 
         list.append(item);
     });
+}
+
+function createLogin(selector, onSubmit, onToRegister) {
+    var login = document.querySelector(selector);
+
+    login.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var username = this.username.value;
+        var password = this.password.value;
+
+        onSubmit(username, password);
+    });
+
+    var register = login.querySelector('a');
+
+    register.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        onToRegister();
+    });
+
+    return login;
+}
+
+function createRegister(selector, onSubmit, onToLogin) {
+    var register = document.querySelector(selector);
+
+    register.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var name = this.name.value;
+        var surname = this.surname.value;
+        var username = this.username.value;
+        var password = this.password.value;
+
+        onSubmit(name, surname, username, password);
+    });
+
+    var login = register.querySelector('a');
+
+    login.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        onToLogin();
+    });
+
+    return register;
 }

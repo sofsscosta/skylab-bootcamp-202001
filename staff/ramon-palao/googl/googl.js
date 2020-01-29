@@ -24,9 +24,10 @@ function googl(query, callback) {
 
                     result.title = title.innerText
 
-                    var link = item.querySelector('.iUh30')
+                    var link = item.querySelector('.rc>.r>a');
 
-                    result.link = link.innerText
+                    if (link)
+                        result.link = link.href.trim();
 
                     var rating = item.querySelector('.slp.f')
 
