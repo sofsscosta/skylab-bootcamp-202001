@@ -1,17 +1,19 @@
 'use strict';
 
-function createSearch(selector, callback) {
-    var search = document.querySelector(selector);
+function createSearch(idClass, callback) {
+    var search = document.querySelector('.' + idClass);
 
-    // search.onsubmit = function (event) {
     search.addEventListener('submit', function (event) {
         event.preventDefault();
 
         var query = this.query.value;
 
         callback(query);
-        // };
     });
+
+    search.toggle = function() {
+        this.classList.toggle('search--hide');
+    };
 
     return search;
 }
@@ -51,8 +53,8 @@ function createResults(selector, results) {
     });
 }
 
-function createLogin(selector, onSubmit, onToRegister) {
-    var login = document.querySelector(selector);
+function createLogin(idClass, onSubmit, onToRegister) {
+    var login = document.querySelector('.' + idClass);
 
     login.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -62,6 +64,10 @@ function createLogin(selector, onSubmit, onToRegister) {
 
         onSubmit(username, password);
     });
+
+    login.toggle = function() {
+        this.classList.toggle('login--hide');
+    };
 
     var register = login.querySelector('a');
 
@@ -74,8 +80,8 @@ function createLogin(selector, onSubmit, onToRegister) {
     return login;
 }
 
-function createRegister(selector, onSubmit, onToLogin) {
-    var register = document.querySelector(selector);
+function createRegister(idClass, onSubmit, onToLogin) {
+    var register = document.querySelector('.' + idClass);
 
     register.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -87,6 +93,10 @@ function createRegister(selector, onSubmit, onToLogin) {
 
         onSubmit(name, surname, username, password);
     });
+
+    register.toggle = function() {
+        this.classList.toggle('register--hide');
+    };
 
     var login = register.querySelector('a');
 
