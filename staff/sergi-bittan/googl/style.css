@@ -1,0 +1,67 @@
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .search--hide {
+    display: none; }
+  .search input {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 20px;
+    width: 120px; }
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .login input {
+    margin-bottom: 15px;
+    height: 25px;
+    width: 200px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 20px; }
+  .login button {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 25px;
+    width: 80px;
+    font-size: 16px; }
+  .login--hide {
+    display: none; }
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .register input {
+    margin-bottom: 15px;
+    height: 25px;
+    width: 200px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 18px; }
+  .register button {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 25px;
+    width: 80px;
+    font-size: 16px; }
+    .register button--hide {
+      display: none; }
+
+h1 {
+  text-align: center; }
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+  .nav--hide {
+    display: none; }
+
+/*# sourceMappingURL=style.css.map */

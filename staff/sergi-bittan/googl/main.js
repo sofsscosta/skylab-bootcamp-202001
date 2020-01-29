@@ -1,30 +1,33 @@
-var submit = document.querySelector("form");
+var search = createSearch('.search', function(query) {
 
-
-submit.addEventListener("submit",function(event){
-    var query = this.query.value;
-    event.preventDefault();
-    var ul = document.createElement("ul");
-    googl(query, function(results){
-        for (var i = 0;i < results.length; i ++)
-        {
-
-            var result = results[i];
-            var li = document.createElement("li");
-
-            var h3 = document.createElement("h3");
-            h3.innerHTML = result.title;
-            
-            var p = document.createElement("p");
-            
-            p.innerHTML = result.description;
-            console.log(result);
-            li.append(h3,p)
-            ul.append(li)
-        }
-        var div = document.getElementById("main");
-        div.innerText = "";
-        div.append(ul)
+    googl(query, function(results) {
+      createResults('.results', results)
     })
-
-  })
+  }) 
+    
+  var login = createLogin('.login', function(username, password) {
+    
+    var userFound = users.filter(function(user) {
+        return username === user.username && password === user.password
+    })
+  
+    if (userFound.length > 0) {
+        search.classList.toggle('search--hide');
+        login.classList.toggle('login--hide');
+        
+        var nav = document.querySelector('.nav');
+        nav.classList.toggle("nav--hide")
+        
+    } else alert('you cannot get in :P');
+  });
+  
+  
+  createRegister('.register', function() {
+      
+    var register = document.querySelector('.register')
+    register.classList.add('register--hide');
+    login.classList.toggle('login--hide')  
+    
+  });
+    
+  createNavbar()
