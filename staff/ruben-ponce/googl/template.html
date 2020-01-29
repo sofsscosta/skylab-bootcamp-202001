@@ -9,12 +9,26 @@
 </head>
 <body>
     <div id="div1">
-        <ul class="content__nav">
-            <li class="content__nav__li"><a href="https://www.gmail.es">Gmail</a></li>
-            <li class="content__nav__li"><a href="https://www.google.es/imghp?hl=es&tab=ri&ogbl">Imagenes</a></li>
-            <li class="content__nav__li"><a href="#">APPS</a></li>
-            <li class="content__nav__li"><a class="content__nav__li__count" href="#">COUNT</a></li>
-        </ul>
+        <div class="content">
+
+            <ul class="content__left">
+                <li><a href="https://about.google/?fg=1&utm_source=google-ES&utm_medium=referral&utm_campaign=hp-header">About</a></li>
+                <li><a href="https://store.google.com/ES/?utm_source=hp_header&utm_medium=google_ooo&utm_campaign=GS100042&hl=es-ES">Shop</a></li>
+            </ul>
+
+            <ul class="content__nav content__right">
+                <li class="content__nav__li"><a href="https://www.gmail.es">Gmail</a></li>
+                <li class="content__nav__li"><a href="https://www.google.es/imghp?hl=es&tab=ri&ogbl">Imagenes</a></li>
+                <li class="content__nav__li"><a href="#">APPS</a></li>
+                <li class="content__nav__li"><a class="content__nav__li__count" href="#">COUNT</a></li>
+                <div class="buttonContent">
+                    <li class="content__nav__li buttonContent__login">Login</li>
+                    <li class="content__nav__li buttonContent__signin">Signin</li> 
+                </div>
+            </ul> 
+
+        </div>
+        
         <h1>
             <p class="p1">G</p>
             <p class="p2">o</p>
@@ -22,11 +36,6 @@
             <p class="p4">g</p>
             <p class="p5">l</p>
         </h1>
-    
-        <div class="buttonContent">
-            <button class="buttonContent__login">Log In</button>
-            <button class="buttonContent__signin">Sign In </button>
-        </div>
 
         <form class="login login--hide">
             <input type="text" name="username" placeholder="Username">

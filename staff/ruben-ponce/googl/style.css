@@ -75,7 +75,7 @@ h1 {
   background-color: #f5f4f4;
 }
 .search > button {
-  height: 70%;
+  height: 2rem;
   width: 5rem;
   border-radius: 1em;
   background-color: #1bb12f;
@@ -136,7 +136,7 @@ ul > li > p {
   height: 60%;
   padding-left: 1%;
   font-family: "Arial";
-  font-size: 1.3em;
+  font-size: 2vw;
   background-color: #f5f4f4;
 }
 .login--hide {
@@ -200,10 +200,29 @@ ul > li > p {
   margin-left: 1%;
 }
 
+.content {
+  display: flex;
+}
+.content__left {
+  display: flex;
+}
+.content__left li {
+  margin: 0 1rem;
+}
+.content__left li > a {
+  text-decoration: none;
+  color: black;
+}
+.content__left li > a:hover {
+  color: gray;
+}
 .content__nav {
   list-style: none;
   display: flex;
   justify-content: flex-end;
+}
+.content__nav__li {
+  margin-left: 0.5rem;
 }
 .content__nav__li > a {
   margin: 0 0.5rem;
@@ -212,6 +231,14 @@ ul > li > p {
 }
 .content__nav__li > a:hover {
   color: gray;
+}
+.content .buttonContent {
+  display: flex;
+  margin-top: 0.3rem;
+}
+.content .buttonContent li:hover {
+  color: gray;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -10,7 +10,7 @@ var login = createLogin('.login', function(username, password) {
     if (users.length > 0) {
         for ( var i = 0; i < users.length; i++) {
             var user = users[i];
-            if(user.username.includes(username) && password === user.password) {
+            if (user.username.includes(username) && password === user.password) {
                 document.querySelector('.search').classList.remove('search--hide');
                 login.classList.toggle('login--hide');
                 return;
@@ -43,7 +43,7 @@ var finishRegister = registerUser('.registerTemplate', function(user) {
         document.querySelector('.registerTemplate').classList.toggle('registerTemplate--hide');
         document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
     } else {
-        alert("DYou have to fill all shields");
+        alert("You have to fill all shields");
     }
 });
 

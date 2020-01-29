@@ -1,8 +1,21 @@
 .content
+    display: flex
+    &__left
+        display: flex
+        & li
+            margin: 0 1rem
+        & li > a
+            text-decoration: none
+            color: black
+            &:hover
+                color: gray
     &__nav
         list-style: none
         display: flex
         justify-content: flex-end
+
+        &__li
+            margin-left: .5rem
 
         &__li > a
             margin: 0 .5rem
@@ -11,3 +24,10 @@
         
             &:hover
                 color: gray
+
+    .buttonContent
+        display: flex
+        margin-top: .3rem
+        & li:hover
+            color: gray
+            cursor: pointer
