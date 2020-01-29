@@ -1,15 +1,16 @@
 function createSearch(selector, callback) {
 
-  var search = document.querySelector(selector);
+  var searchForm = document.querySelector(selector);
 
-  search.addEventListener("submit", function(event) {
+  searchForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
+    debugger
     var query = this.query.value;
     callback(query);
   });
 
-  return search;
+  return searchForm;
 }
 
 function createResults(selector, results) {

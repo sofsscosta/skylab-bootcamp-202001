@@ -1,5 +1,5 @@
-debugger
-var search = createSearch('.search', function(query) {
+
+var searchComp = createSearch('.search', function(query) {
 
   googl(query, function(results) {
     createResults('.results', results)
@@ -14,7 +14,7 @@ var login = createLogin('.login', function(username, password) {
   })
 
   if (userFound.length > 0) {
-    search.classList.toggle('search--hide');
+    searchComp.classList.toggle('search--hide');
     login.classList.toggle('login--hide');
 
     var nav = document.querySelector('.nav');
