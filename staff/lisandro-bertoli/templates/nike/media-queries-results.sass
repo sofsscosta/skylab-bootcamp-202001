@@ -1,0 +1,60 @@
+
+@media only screen and (min-width: 1024px)
+
+    .main-results
+        display: grid
+        grid-template-columns: repeat(4, auto)
+        justify-content: space-around
+        &__header
+            grid-column: 1 / span 4
+            padding: 0.6rem 4.8rem 0.1rem 4.8rem
+
+        &__filter-actions
+            display: flex
+
+            & > nav
+                display: flex
+                padding: 1rem
+
+                & > .fas
+                    padding-top: 2.1rem
+                & > p
+                    padding: 1.5rem 1rem 0 0
+
+        &__filters-menu
+            display: block
+            grid-column: 1 / span 1
+            width: 20rem
+            padding: 0 0 0 4.8rem
+
+            & .filter
+                padding: 0 00.5rem 0
+                border-bottom: 0.08rem solid lightgrey
+                &__header
+                    padding: 1.2rem 0
+                    display: flex
+                    justify-content: space-between
+                &__options
+                    padding-bottom: 2rem
+
+                &__color > .filter__options
+                    display: flex
+                    flex-wrap: wrap
+                    width: 100%
+
+                    & >  li
+                        height: 2.5rem
+                        width: 2.5rem
+                        background-color: red
+                        border-radius: 1.25rem
+                        margin: 1.5rem
+
+        &__products
+            grid-column: 2 / span 3
+            justify-content: space-around
+            padding: 0 4.8rem 0 4rem
+
+    .product
+        width: 31%
+        &__title, &__info, &__price
+            font-size: 1.4rem
