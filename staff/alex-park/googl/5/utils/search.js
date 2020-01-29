@@ -1,9 +1,12 @@
+'use strict';
+
 function search(url, resultsSelector, titleSelector, linkSelector, contentSelector, callback) {
     if (typeof url !== 'string') throw new TypeError(url + ' is not a string');
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
-    call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function(response) {
-        if(response.status === 200) {
+    call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function (response) {
+    // call('https://api.codetabs.com/v1/proxy?quest=' + url, function (response) { // DOESNT work with this proxy :/
+        if (response.status === 200) {
             var doc = new DOMParser().parseFromString(response.content, 'text/html');
 
             var items = doc.querySelectorAll(resultsSelector);
@@ -37,5 +40,5 @@ function search(url, resultsSelector, titleSelector, linkSelector, contentSelect
 
             callback(results);
         }
-    })
+    });
 }
