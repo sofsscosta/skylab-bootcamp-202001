@@ -61,4 +61,14 @@ body {
   font-size: 1.5rem;
 }
 
+.log {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+.log__name {
+  height: 13vh;
+  width: 30vw;
+}
+
 /*# sourceMappingURL=style.css.map */

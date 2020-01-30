@@ -1,7 +1,11 @@
 'use strict';
 
-function createSearch(selector, props) {
-    var search = document.querySelector(selector);
+function Search(props) {
+    var search = document.createElement('form');
+    search.classList.add('search');
+
+    search.innerHTML = ' <input type="text" name="query">'
+        .concat(' <button type="submit">Search</button>')
 
     search.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -10,10 +14,6 @@ function createSearch(selector, props) {
 
         props.onSubmit(query);
     });
-
-    search.toggle = function() {
-        this.classList.toggle('search--hide');
-    };
 
     return search;
 }
