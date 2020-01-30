@@ -1,11 +1,12 @@
 'use strict'
 
-function createRegister(idClass, props) {
+function createRegister(props) {
     var register = document.createElement('form');
 
     register.classList.add('register');
 
-    register.innerHTML = '<input type="text" name="name">'
+    register.innerHTML = '<h2>' + props.title + '</h2>'
+    .concat('<input type="text" name="name">')
     .concat('<input type="text" name="surname">')
     .concat('<input type="text" name="username">')
     .concat('<input type="password" name="password">')
@@ -23,8 +24,9 @@ function createRegister(idClass, props) {
         props.onSubmit(name, surName, userName, password);
     });
 
-    var link = document.querySelector('.tologin');
-    link.addEventListener('click', function(event){
+    var logeon = register.querySelector('a');
+
+    logeon.addEventListener('click', function(event){
         event.preventDefault(); 
 
         props.onToLogin();

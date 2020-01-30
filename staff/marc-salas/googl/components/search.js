@@ -1,7 +1,14 @@
 'use strict'
 
-function createSearch(prop) {
-    var search = document.querySelector(selector);
+function createSearch(props) {
+    var search = document.createElement('form');
+
+    search.classList.add('selector');
+
+    search.innerHTML += '<h2>' + props.title + '</h2>'
+    .concat('<input type="text" name="query">')
+    .concat('<button type="submit"></button>');
+
 
     // search.onsubmit = function (event) {
     search.addEventListener('submit', function (event) {
@@ -9,7 +16,7 @@ function createSearch(prop) {
 
         var query = this.query.value;
 
-        prop.onSubmit(query);
+        props.onSubmit(query);
         // };
     });
 

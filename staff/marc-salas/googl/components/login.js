@@ -1,16 +1,18 @@
 'use strict'
 
-function createLogin(props) {   
+function createLogin(props) {
     var login = document.createElement('form');
+    debugger
 
     login.classList.add('login');
-    
-     login.innerHTML = '<input type="text" name="username">'
-     .concat('<input type="password" name="password">')
-     .concat('<button type="submit"></button>')
-     .concat('<a class="toregister" href="#">Registrate</a>')        
-    
-    login.addEventListener('submit', function(event) {
+
+    login.innerHTML = '<h2>' + props.title + '</h2>'
+        .concat('<input type="text" name="username">')
+        .concat('<input type="password" name="password">')
+        .concat('<button type="submit"></button>')
+        .concat('<a class="toregister" href="#">Registrate</a>')
+
+    login.addEventListener('submit', function (event) {
         event.preventDefault();
 
         var username = this.username.value;
@@ -19,8 +21,9 @@ function createLogin(props) {
         props.onSubmit(username, password);
     });
 
-    var link = document.querySelector('.toregister')
-    link.addEventListener('click', function(event){
+    var register = login.querySelector('a');
+
+    register.addEventListener('click', function (event) {
         event.preventDefault();
 
         props.onToRegister();

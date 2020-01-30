@@ -8,6 +8,7 @@ function _app(props) {
     app.innerHTML = '<h1>' + props.title + '</h1>';
     
     var _login = createLogin({
+        title: 'login',
         onSubmit: function (username, password) {
             var user = users.find(function (user) {
                 return username === user.username;
@@ -25,6 +26,7 @@ function _app(props) {
         }
     });
     var _register = createRegister({
+        title: 'register',
         onSubmit: function (name, surName, userName, password) {
             var person = {
                 name: name,
@@ -48,7 +50,7 @@ function _app(props) {
     });
 
     var _search = createSearch({
-        title: google,
+        title: 'google',
         onSubmit: function (query) {
             googl(query, function (results) {
                 if (results instanceof Error) {
