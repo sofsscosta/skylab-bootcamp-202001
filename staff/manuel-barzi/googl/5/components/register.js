@@ -1,6 +1,6 @@
 'use strict';
 
-function createRegister(idClass, onSubmit, onToLogin) {
+function createRegister(idClass, props) {
     var register = document.querySelector('.' + idClass);
 
     register.addEventListener('submit', function(event) {
@@ -11,7 +11,7 @@ function createRegister(idClass, onSubmit, onToLogin) {
         var username = this.username.value;
         var password = this.password.value;
 
-        onSubmit(name, surname, username, password);
+        props.onSubmit(name, surname, username, password);
     });
 
     register.toggle = function() {
@@ -23,7 +23,7 @@ function createRegister(idClass, onSubmit, onToLogin) {
     login.addEventListener('click', function(event) {
         event.preventDefault();
 
-        onToLogin();
+        props.onToLogin();
     });
 
     return register;

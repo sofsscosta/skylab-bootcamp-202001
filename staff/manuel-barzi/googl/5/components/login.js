@@ -1,6 +1,6 @@
 'use strict';
 
-function createLogin(idClass, onSubmit, onToRegister) {
+function createLogin(idClass, props) {
     var login = document.querySelector('.' + idClass);
 
     login.addEventListener('submit', function(event) {
@@ -9,7 +9,7 @@ function createLogin(idClass, onSubmit, onToRegister) {
         var username = this.username.value;
         var password = this.password.value;
 
-        onSubmit(username, password);
+        props.onSubmit(username, password);
     });
 
     login.toggle = function() {
@@ -21,7 +21,7 @@ function createLogin(idClass, onSubmit, onToRegister) {
     register.addEventListener('click', function(event) {
         event.preventDefault();
 
-        onToRegister();
+        props.onToRegister();
     });
 
     return login;
