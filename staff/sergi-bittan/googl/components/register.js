@@ -1,7 +1,16 @@
 'use strict';
 
-function createRegister(idClass, props) {
-    var register = document.querySelector('.' + idClass);
+function Register(props) {
+    var register = document.createElement("form");
+    register.classList.add("register");
+
+    register.innerHTML = "<h2>Sign-up</h2>"
+    .concat('<input type="text" name="name" placeholder="name" required autocomplete="off">')
+    .concat('<input type="text" name="surname" placeholder="surname" required autocomplete="off">')
+    .concat('<input type="text" name="username" placeholder="username" required autocomplete="off">')
+    .concat('<input type="password" name="password" placeholder="password" required autocomplete="off">')
+    .concat('<button>Register</button>')
+    .concat('<a href="">Login</a>');
 
     register.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -13,10 +22,6 @@ function createRegister(idClass, props) {
 
         props.onSubmit(name, surname, username, password);
     });
-
-    register.toggle = function() {
-        this.classList.toggle('register--hide');
-    };
 
     var login = register.querySelector('a');
 
