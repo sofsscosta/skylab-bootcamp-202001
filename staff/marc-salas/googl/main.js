@@ -6,7 +6,8 @@ var _search = createSearch('.search', function(query){
     });
 });
 
-var _register = createRegister('register', function(name,surName,userName,password){
+var _register = createRegister('register', {
+    onSubmit: function(name,surName,userName,password){
     var person = {
         name : name,
         userName : userName,
@@ -21,12 +22,14 @@ var _register = createRegister('register', function(name,surName,userName,passwo
         alert('Completa todos los campos!')
     };
 
-}, function(){
+}, 
+onToLogin: function(){
     _register.toggle();
     login.toggle();
-});
+}});
 
-var login = createLogin('login', function(username, password) {
+var login = createLogin('login', {
+    onSubmit: function(username, password) {
     var user = users.find(function(user){
         return username === user.username;
     });
@@ -36,11 +39,12 @@ var login = createLogin('login', function(username, password) {
         return 0;
     } 
     
-}, function(){
+}, 
+onToRegister: function(){
     login.toggle();
     _register.toggle();
 
-});
+}});
 
 
 
