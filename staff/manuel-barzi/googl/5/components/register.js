@@ -1,7 +1,7 @@
 'use strict';
 
-function createRegister(idClass, props) {
-    var register = document.querySelector('.' + idClass);
+function createRegister(selector, props) {
+    var register = document.querySelector(selector);
 
     register.addEventListener('submit', function(event) {
         event.preventDefault();
