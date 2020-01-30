@@ -7,7 +7,7 @@ describe('yahoo', function () {
             //expect(results).toHaveLength(8);
             expect(results.length).toBeGreaterThan(0);
 
-            results.forEach(result => {
+            results.forEach(function(result) {
                 expect(typeof result.title).toBe('string');
                 expect(typeof result.description).toBe('string');
                 expect(typeof result.link).toBe('string');

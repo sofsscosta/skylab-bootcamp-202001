@@ -5,7 +5,7 @@ var IT = '🎈🤡🪓💀💩';
 var _login = createLogin('login', function (username, password) {
 
   try {
-        login(username, password)
+        authenticate(username, password)
         _login.toggle();
         _googl.toggle();
         _ecosia.toggle();
@@ -34,26 +34,30 @@ var _register = createRegister('register', function (name, surname, username, pa
     _login.toggle();
 });
 
-var _googl = createSearch('search', function (query) {
-    googl(query, spy(function (results) {
+var _googl = createSearch('search', {
+    onSubmit: function (query) {
+    googl(query, function (results) {
         createResults('.results', results);
-    }));
-});
+    });
+}});
 
-var _ecosia = createSearch('search-2', function (query) {
+var _ecosia = createSearch('search-2', {
+    onSubmit: function (query) {
     ecosia(query, function (results) {
         createResults('.results-2', results);
     });
-});
+}});
 
-var _bing = createSearch('search-3', function (query) {
+var _bing = createSearch('search-3', {
+    onSubmit: function (query) {
     bing(query, function (results) {
         createResults('.results-3', results);
     });
-});
+}});
 
-var _yahoo = createSearch('search-4', function (query) {
+var _yahoo = createSearch('search-4', {
+    onSubmit: function (query) {
     bing(query, function (results) {
         createResults('.results-4', results);
     });
-});
+}});
