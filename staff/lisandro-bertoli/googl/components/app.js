@@ -48,7 +48,15 @@ function App(props) {
 
         onSubmit: function (query) {
             googl(query, function (results) {
-                createResults('.results', results);
+                var _results = Results({ results: results });
+
+                if (!_googleResults)
+                    app.append(_googResults = _results);
+                else {
+                    _googleResults.replaceWith(_results);
+                    _googleResults = _results;
+                }
+
             });
         },
 
