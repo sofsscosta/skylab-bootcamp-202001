@@ -1,28 +1,29 @@
 'use strict';
 
-function createSearch(idClass, onSubmit, onLogout) {
-    var search = document.querySelector('.' + idClass);
+function Search(props) {
+    var search = document.createElement('form');
+    search.classList.add('search');
 
+    search.innerHTML = '<h2>' + props.title + '</h2>'
+        .concat(' <input class="search__input" type="text" name="query">')
+        .concat('<button class="button" type="submit">Search</button>')
+        .concat('<button class="button button__logout button--danger">Logout</button>');
 
     search.addEventListener('submit', function (event) {
         event.preventDefault();
 
         var query = this.query.value;
 
-        onSubmit(query);
+        props.onSubmit(query);
 
     });
 
-    search.toggle = function () {
-        this.classList.toggle('search--hide');
-    }
-
-    var logoutButton = document.querySelector('.button.button__logout');
+    var logoutButton = search.querySelector('.button.button__logout');
 
     logoutButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-        onLogout();
+        props.onLogout();
     });
 
     return search;

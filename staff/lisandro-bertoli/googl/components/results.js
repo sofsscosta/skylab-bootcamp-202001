@@ -1,11 +1,12 @@
 'use strict';
 
-function createResults(selector, results) {
-    var list = document.querySelector(selector);
+function Results(props) {
+    var list = document.createElement('ul');
+    list.classList.add('results');
 
     list.innerHTML = '';
 
-    results.forEach(function (result) {
+    props.results.forEach(function (result) {
         var item = document.createElement('li');
 
         var title = document.createElement('h3');
@@ -33,4 +34,6 @@ function createResults(selector, results) {
 
         list.append(item);
     });
+
+    return list;
 }
