@@ -1,13 +1,10 @@
 "use strict";
 
 function Results(props) {
-  
     var list = document.createElement("ul");
     list.classList.add("results");
   
-    list.innerHTML = '';
-  
-    props.forEach(function (result) {
+    props.results.forEach(function (result) {
         var item = document.createElement('li');
   
         var title = document.createElement('h3');

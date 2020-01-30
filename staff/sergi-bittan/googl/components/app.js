@@ -1,12 +1,5 @@
 'use strict';
 
-// LET's spy to see what's going on in stack...
-// call = spy(call);
-// search = spy(search);
-// googl = spy(googl);
-
-// main code here...
-
 var IT = "🎈🤡";
 
 function App(props){
@@ -18,20 +11,19 @@ function App(props){
 
   var _login = Login({
      onSubmit: function(username, password){
-    
         try{
             authentication(username, password);
 
-          _login.replaceWith(_googl);
+            _login.replaceWith(_googl);
         }catch(error){
           if(error instanceof TypeError){
-          return alert("Sorry, something wrong")
+            return alert("Sorry, something wrong")
           }
-          alert( error.message + ", you cannot get in " + IT);
+            alert( error.message + ", you cannot get in " + IT);
         }
      },
      onToRegister: function(){
-       _login.replaceWith(_register);
+        _login.replaceWith(_register);
      }
   });
 
@@ -39,9 +31,9 @@ function App(props){
   var _register = Register({
       onSubmit: function(name, surname, username, password){
         try{
-          register(name, surname, username, password);
+            register(name, surname, username, password);
 
-          _register.replaceWith(_login);
+            _register.replaceWith(_login);
         } catch(error){
             alert(error.message + " " + IT);
         }
@@ -67,6 +59,7 @@ function App(props){
                 app.append(_googlResults = _results);
               else {
                 _googlResults.replaceWith(_results);
+                
                 _googlResults = _results;
               }
           });
