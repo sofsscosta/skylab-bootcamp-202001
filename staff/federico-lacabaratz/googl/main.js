@@ -2,15 +2,15 @@
 
 var IT = '🎈🤡🪓💀💩';
 
-var _login = createLogin('login', {
+var _login = createLogin('form.login', {
     onSubmit: function (username, password) {
-    try {
-        authenticate(username, password);
-        _login.toggle();
-        _googl.toggle();
-        _ecosia.toggle();
-        _bing.toggle();
-        _yahoo.toggle();
+        try {
+            authenticate(username, password);
+            _login.toggle();
+            _googl.toggle();
+            _ecosia.toggle();
+            _bing.toggle();
+            _yahoo.toggle();
         } catch (error) {
             alert(error.message + ' ' + IT);
         }
@@ -21,13 +21,13 @@ var _login = createLogin('login', {
     }
 });
 
-var _register = createRegister('register', {
+var _register = createRegister('form.register', {
     onSubmit: function (name, surname, username, password) {
-    try {
-        register(name, surname, username, password);
+        try {
+            register(name, surname, username, password);
 
-        _register.toggle();
-        _login.toggle();
+            _register.toggle();
+            _login.toggle();
         } catch (error) {
             alert(error.message + ' ' + IT);
         }
@@ -38,34 +38,42 @@ var _register = createRegister('register', {
     }
 });
 
-var _googl = createSearch('search', {
+var _googl = createSearch('form.googl', {
     onSubmit: function (query) {
-    googl(query, function (results) {
-        createResults('.results', results);
+        googl(query, function (results) {
+            if (results instanceof Error) return alert(results.message + ' ' + IT);
+            
+            createResults('ul.googl', results);
         });
     }
 });
 
-var _ecosia = createSearch('search-2', {
+var _ecosia = createSearch('form.ecosia', {
     onSubmit: function (query) {
-    ecosia(query, function (results) {
-        createResults('.results-2', results);
+        ecosia(query, function (results) {
+            if (results instanceof Error) return alert(results.message + ' ' + IT);
+
+            createResults('ul.ecosia', results);
         });
     }
 });
 
-var _bing = createSearch('search-3', {
+var _bing = createSearch('form.bing', {
     onSubmit: function (query) {
-    bing(query, function (results) {
-        createResults('.results-3', results);
+        bing(query, function (results) {
+            if (results instanceof Error) return alert(results.message + ' ' + IT);
+
+            createResults('ul.bing', results);
         });
     }
 });
 
-var _yahoo = createSearch('search-4', {
+var _yahoo = createSearch('form.yahoo', {
     onSubmit: function (query) {
-    bing(query, function (results) {
-        createResults('.results-4', results);
+        bing(query, function (results) {
+            if (results instanceof Error) return alert(results.message + ' ' + IT);
+
+            createResults('ul.yahoo', results);
         });
     }
 });
