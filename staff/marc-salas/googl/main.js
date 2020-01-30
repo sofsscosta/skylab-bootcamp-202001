@@ -2,7 +2,11 @@
 var _search = createSearch('.search', function(query){
     //debugger
     googl(query,function(results){
-        createResults('.list', results );
+        if (results instanceof Error) {
+            alert('network Error')
+        }else{
+            createResults('.list', results );
+        }
     });
 });
 

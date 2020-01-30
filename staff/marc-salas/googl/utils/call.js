@@ -6,12 +6,15 @@ function call(url, callback){
     
     xhr.open('GET', url);
 
-    xhr.onreadystatechange = function(){
-        if (this.readyState === 4)
+    xhr.addEventListener('load', function(){
         callback({
             content: this.responseText,
             status: this.status
         });
-    }
+    });
+    xhr.addEventListener('error', function(){
+        callback(new Error('network error'))
+    });
+
     xhr.send();
 }

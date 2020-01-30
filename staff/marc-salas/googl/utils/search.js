@@ -1,42 +1,42 @@
-function search(url , resultsSelector, titleSelector, linkSelector, contentSelector, callback){
+function search(url, resultsSelector, titleSelector, linkSelector, contentSelector, callback) {
     if (typeof url !== 'string') throw new TypeError(url + ' is not a string');
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
-    call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function (response){
-        if(response.status === 200){
-            var doc = new DOMParser().parseFromString(response.content, 'text/html')
+    call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function (response) {
+        if (response instanceof Error) return callback(response) 
 
-            var items = doc.querySelectorAll(resultsSelector)
+        var doc = new DOMParser().parseFromString(response.content, 'text/html')
 
-            var results = []
+        var items = doc.querySelectorAll(resultsSelector)
 
-            for (var i = 0; i < items.length-2; i++) {
-                var item = items[i]
+        var results = []
 
-                var title = item.querySelector(titleSelector)
+        for (var i = 0; i < items.length - 2; i++) {
+            var item = items[i]
 
-                if (title) {
-                    var result = {}
+            var title = item.querySelector(titleSelector)
 
-                    result.title = title.innerText
+            if (title) {
+                var result = {}
 
-                    var rating = item.querySelector(linkSelector)
+                result.title = title.innerText
 
-                    if (rating) {
-                        result.rating = rating.innerText
-                    }
+                var rating = item.querySelector(linkSelector)
 
-                    var description = item.querySelector(contentSelector);
-                    if (description){
-                        result.description = description.innerText;
-                    }
+                if (rating) {
+                    result.rating = rating.innerText
                 }
 
-                results.push(result)
+                var description = item.querySelector(contentSelector);
+                if (description) {
+                    result.description = description.innerText;
+                }
             }
 
-            callback(results)
+            results.push(result)
         }
+
+        callback(results)
     })
 }
 
