@@ -1,6 +1,7 @@
+'use strict';
 
-function createSearch(idClass, props) {
-    var search = document.querySelector('.' + idClass);
+function createSearch(selector, props) {
+    var search = document.querySelector(selector);
 
     search.addEventListener('submit', function (event) {
         event.preventDefault();

@@ -22,20 +22,27 @@ describe('call', function () {
         });
     });
 
-    it("Should fail on invalid url,", function(){
-        var url= "pepito los palotes anoche no fumo";
+    it('should fail on invalid url', function() {
+        var url = 'invalid-url';
 
-        expect(function(){
-            call
-        })
-    })
+        expect(function() {
+            call(url)
+        }).toThrowError(SyntaxError, url + ' is not an url');
+    });
 
+    it('should fail on valid non-existing url', function(done) {
+        var url = 'https://non-existing.url';
+        
+        call(url, function(error) {
+            expect(error).toBeInstanceOf(Error);
+            expect(error.message).toBe('Network error');
 
-
-
-
-
-
-
-
+            done();
+        });
+    });
 });
+
+
+
+
+

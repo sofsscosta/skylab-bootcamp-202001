@@ -2,13 +2,16 @@
 
 var IT = '🎈🤡';
 
-var _login = createLogin('login', {
+var _login = createLogin('form.login', {
     onSubmit: function (username, password) {
         try {
             authenticate(username, password);
 
             _login.toggle();
             _googl.toggle();
+            _ecosia.toggle();
+            _bing.toggle();
+            _yahoo.toggle();
         } catch (error) {
             alert(error.message + ' ' + IT);
         }
@@ -19,7 +22,7 @@ var _login = createLogin('login', {
     }
 });
 
-var _register = createRegister('register', {
+var _register = createRegister('form.register', {
     onSubmit: function (name, surname, username, password) {
         try {
             register(name, surname, username, password);
@@ -36,12 +39,12 @@ var _register = createRegister('register', {
     }
 });
 
-var _googl = createSearch('search', {
+var _googl = createSearch('form.googl', {
     onSubmit: function (query) {
         googl(query, function (results) {
             if (results instanceof Error) return alert(results.message + ' ' + IT);
             
-            createResults('.results', results);
+            createResults('ul.googl', results);
         });
     }
 });
