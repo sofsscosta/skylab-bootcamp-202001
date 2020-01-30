@@ -1,6 +1,6 @@
 'use strict'
 
-function createSearch(selector, callback) {
+function createSearch(prop) {
     var search = document.querySelector(selector);
 
     // search.onsubmit = function (event) {
@@ -9,7 +9,7 @@ function createSearch(selector, callback) {
 
         var query = this.query.value;
 
-        callback(query);
+        prop.onSubmit(query);
         // };
     });
 

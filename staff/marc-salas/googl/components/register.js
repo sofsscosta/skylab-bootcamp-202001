@@ -1,7 +1,16 @@
 'use strict'
 
 function createRegister(idClass, props) {
-    var register = document.querySelector("." + idClass)
+    var register = document.createElement('form');
+
+    register.classList.add('register');
+
+    register.innerHTML = '<input type="text" name="name">'
+    .concat('<input type="text" name="surname">')
+    .concat('<input type="text" name="username">')
+    .concat('<input type="password" name="password">')
+    .concat('<button type="submit"></button>')
+    .concat('<a class="tologin" href="#">Logeate si ya estas registrado</a>');    
     
     register.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -13,9 +22,6 @@ function createRegister(idClass, props) {
 
         props.onSubmit(name, surName, userName, password);
     });
-    register.toggle = function(){
-        this.classList.toggle('register--hide')
-    }
 
     var link = document.querySelector('.tologin');
     link.addEventListener('click', function(event){

@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>googl</title>
 </head>
+
 <body>
-    <h1 class="title"> GOOGLE </h1>
-    <form>
-        <input type="text" name="query">
-        <button type="submit" ></button>
+    <main id="root"></main>
+
+
+
+
+
+    <!-- <head class="head">
+        <h1 class="logo">GOOGLE</h1>
+    </head>
+    <form class="register">
+        <input type="text" name="name">
+        <input type="text" name="surname">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit"></button>
+        <a class="tologin" href="#">Logeate si ya estas registrado</a>
     </form>
-    <div id="main"></div>
-    <script src="googl.js"></script>
+    <form class="login login--hide">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit"></button>
+        <a class="toregister" href="#">Registrate</a>
+    </form>
+    <form class="search search--hide">
+        <input type="text" name="query">
+        <button type="submit"></button>
+    </form>
+
+    <div class="main">
+        <ul class="list"></ul>
+    </div> -->
+    <script src="data.js"></script>
+    
+    <script src="logic/googl.js"></script>
+
+    <script src="components/app.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/results.js"></script>
+    <script src="components/search.js"></script>
+
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
