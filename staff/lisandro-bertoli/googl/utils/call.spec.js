@@ -1,29 +1,35 @@
 'use strict';
 
 describe('call function', function () {
-    it('should the returned title be a match with the title asociated to that url', function () {
+    it('should the given text be found on the provided url', function (done) {
         var urls = [
             {
-                url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object',
-                title: 'Object'
+                url: 'https://www.lavanguardia.com/',
+                text: 'vanguardia'
             },
             {
-                url: 'https://developer.mozilla.org/en-US/docs/Glossary/array', title: 'Array'
+                url: 'https://www.elpais.com/', text: 'elpais'
             },
             {
-                url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', title: 'JavaScript'
+                url: 'https://www.expansion.com/', text: 'expansion'
             },
             {
-                url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random',
-                title: 'Math.random()'
+                url: 'https://www.marca.com/',
+                text: 'marca'
             }
         ];
 
 
-        var index = Math.floor(Math.random() * 4);
+        var target = urls.random();
 
 
+        call('https://skylabcoders.herokuapp.com/proxy?url=' + target.url, function (response) {
 
+            expect(response.status).toBe(200);
+            expect(response.content.toLowerCase()).toContain(target.text);
+
+            done();
+        });
 
     });
 });

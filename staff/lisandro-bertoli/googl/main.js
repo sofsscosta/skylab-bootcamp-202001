@@ -1,23 +1,20 @@
 'use strict';
 
 var login = createLogin('login', function (username, password) {
+    try {
 
-    // var user = users.filter(function (user) {
-    //     return user.username === username && user.password === password;
-    // });
+        authenticate(username, password);
 
-    var user = users.find(function (user) { return user.username === username });
-
-    // if (user.length === 1) {
-    //     login.classList.toggle('login--hide');
-    //     _google.classList.toggle('search--hide');
-
-    if (user && user.password === password) {
         login.classList.toggle('login--hide');
         login.reset();
         _google.classList.toggle('search--hide');
 
-    } else alert('Wrong credentials, you cannot get in :P');
+    } catch (error) {
+        if (error instanceof TypeError) return alert('Something went wrong, try again later');
+
+        alert('Wrong credentials, you cannot get in :P');
+    }
+
 }, function () {
     login.toggle();
     _register.toggle();
