@@ -1,23 +1,26 @@
-function createRegister(selector, callback) {
-  var register = document.querySelector(selector);
+'use strict'
 
-  register.addEventListener('submit', function(event) {
-      event.preventDefault();
 
-      var user = {}
+function createRegister(idClass, onSubmit) {
+    var register = document.querySelector('.'+idClass);
 
-      user.name = this.name.value
-      user.surname = this.surname.value
-      user.username = this.username.value;
-      user.password = this.password.value;
+    register.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var name = this.name.value;
+        var surname = this.surname.value;
+        var username = this.username.value;
+        var password = this.password.value;
 
-      if(!users.some(u => u.username === user.username)) {
-        users.push(user)
+        onSubmit(name, surname, username, password);
 
-        callback()
+    });
 
-      }else {
-          alert ('Username is already taken');
-      }
-  });
+    register.toggle = function () {
+      this.classList.toggle('register--hide');
+    };
+
+    return register;
+
 }
+ 

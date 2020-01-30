@@ -38,6 +38,9 @@ var _register = createRegister('register', function (name, surname, username, pa
     login.toggle();
 });
 
+
+
+
 var _googl = createSearch('search', function (query) {
     googl(query, spy(function (results) {
         createResults('.results', results);

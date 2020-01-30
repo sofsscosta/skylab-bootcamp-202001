@@ -1,3 +1,4 @@
+'use strict'
 
 function createResults(selector, results) {
   var list = document.querySelector(selector);

@@ -1,6 +1,6 @@
 
-function createSearch(selector, callback) { 
-  var search = document.querySelector(selector);
+function createSearch(idClass, callback) { 
+  var search = document.querySelector('.' + idClass);
 
   search.addEventListener("submit", function(event) { 
     event.preventDefault();
@@ -9,6 +9,10 @@ function createSearch(selector, callback) {
     
     callback(query);
   });
+
+  search.toggle = function() {
+        this.classList.toggle('search--hide');
+    };
 
   return search;
 }

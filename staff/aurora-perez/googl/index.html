@@ -21,13 +21,13 @@
     <span class="title--green">l</span>
   </h1>
 
-  <form class="login login--hide">
+  <form class="login _login--hide">
     <input type="text" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
     <button>Login</button>
   </form>
 
-  <form class="register">
+  <form class="register register--hide">
     <input type="text" name="name" placeholder="name" required autocomplete="off">
     <input type="text" name="surname" placeholder="surname" required autocomplete="off">
     <input type="text" name="username" placeholder="username" required autocomplete="off">
@@ -36,13 +36,16 @@
   </form>
 
   <form class="search search--hide" >
+    <h2>Google</h2>
     <input type="text" name="query" autocomplete="off" >
     <button type="submit" >Search</button>
   </form>
   
   <ul class="results"></ul>
 
-  <form class="search2 search search--hide" >
+
+  <form class="search-2 search search--hide" >
+    <h2>Ecosia</h2>
     <input type="text" name="query" autocomplete="off" >
     <button type="submit" >Search</button>
   </form>
@@ -51,6 +54,7 @@
 
 
   <form class="search-3 search search--hide" >
+    <h2>Bing</h2>
     <input type="text" name="query" autocomplete="off" >
     <button type="submit" >Search</button>
   </form>
@@ -59,6 +63,7 @@
 
 
   <form class="search-4 search search--hide" >
+    <h2>Yahoo</h2>
     <input type="text" name="query" autocomplete="off" >
     <button type="submit" >Search</button>
   </form>
@@ -75,14 +80,16 @@
   <script src="components/register.js"></script>
   <script src="components/search.js"></script>
   <script src="components/results.js"></script>
-
   <script src="components/nav.js"></script>
 
   <script src="data.js"></script>
  
   <script src="logic/googl.js"></script>
+  <script src="logic/register.js"></script>
   <script src="logic/reset.js"></script>
-  
+  <script src="logic/ecosia.js"></script>
+  <script src="logic/bing.js"></script>
+  <script src="logic/yahoo.js"></script>
 
   <script src="main.js"></script>
 
