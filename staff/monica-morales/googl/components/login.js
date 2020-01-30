@@ -1,7 +1,7 @@
 'use strict';
 
 function createLogin(idClass, onSubmit, onToRegister) {
-    var login = document.querySelector(idClass);
+    var login = document.querySelector('.' + idClass);
 
     login.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -18,11 +18,11 @@ function createLogin(idClass, onSubmit, onToRegister) {
 
     var register = login.querySelector('a');
 
-    // register.addEventListener('click', function(event) {
-    //     event.preventDefault();
+    register.addEventListener('click', function(event) {
+        event.preventDefault();
 
-    //     onToRegister();
-    // });
+        onToRegister();
+    });
 
     return login;
 }
