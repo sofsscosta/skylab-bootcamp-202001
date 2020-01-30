@@ -5,6 +5,9 @@ function search(url, resultsSelector, titleSelector, linkSelector, contentSelect
     // if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
     call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function (response) {
+
+        if (response instanceof Error) return callback(response);
+
         if (response.status === 200) {
             var doc = new DOMParser().parseFromString(response.content, 'text/html');
 

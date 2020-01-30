@@ -1,6 +1,6 @@
 'use strict';
 
-function createSearch(idClass, callback) {
+function createSearch(idClass, props) {
     var search = document.querySelector('.' + idClass);
 
     search.addEventListener('submit', function (event) {
@@ -8,7 +8,7 @@ function createSearch(idClass, callback) {
 
         var query = this.query.value;
 
-        callback(query);
+        props.onSubmit(query);
     });
 
     search.toggle = function() {

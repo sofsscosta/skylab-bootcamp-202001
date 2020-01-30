@@ -4,6 +4,7 @@ function createResults(selector, results) {
   var list = document.querySelector(selector);
 
   list.innerHTML = '';
+  
   results.forEach(function (result) {
       var item = document.createElement('li');
 
