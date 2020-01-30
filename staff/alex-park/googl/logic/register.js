@@ -1,6 +1,7 @@
 'use strict';
 
 function register(name, surname, username, password) {
+    if (name instanceof Array) throw new TypeError('name ' + name.constructor.name + ' is not a string');
     if (typeof name !== 'string') throw new TypeError('name ' + name + ' is not a string');
     if (typeof surname !== 'string') throw new TypeError('surname ' + surname + ' is not a string');
     if (typeof username !== 'string') throw new TypeError('username ' + username + ' is not a string');
