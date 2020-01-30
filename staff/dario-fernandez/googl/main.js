@@ -1,3 +1,5 @@
+'use strict'
+
 var _search = createSearch('.search', function(query) {
     googl(query, function(results) {
         if(results instanceof Error) {
@@ -9,46 +11,38 @@ var _search = createSearch('.search', function(query) {
     })
 })
 
-var login = createLogin('.login', {
+var _login = createLogin('.login', {
     onSubmit: function(username, password) {
-    var access = users.some(function(element) {
-            return element.username === username && element.password === password
-        })
-        
-    if(access) {
-        login.classList.toggle('login--hide')
-        _search.classList.toggle('search--hide')
-        } else {
-        alert('Incorrect username or password. Please try again or sign up')
+        try {
+            authenticate(username, password)
+
+            _login.toggle()
+            _search.toggle()
+        } catch {
+            alert('Wrong username or password. Please try again or register.')
         }
     },
     
     onToRegister: function() {
-    login.classList.toggle('login--hide')
-    register.classList.toggle('register--hide')
+        _login.toggle()
+        _register.toggle()
     }
 })
 
-var register = createRegister('.register', {
+var _register = createRegister('.register', {
     onSubmit: function(user) {
-    var userExist = users.some(function(element) {
-        return user.username === element.username
-    })
+        try {
+            register(user)
 
-    if(userExist) {
-        alert('Username already in use. Please use other username or login.')
-    } else {
-        users.push(user)
-        
-        var loginFailMessage = login.querySelector('span')
-
-        register.classList.toggle('register--hide')
-        login.classList.toggle('login--hide')
-    }
+            _register.toggle()
+            _login.toggle()
+        } catch {
+            alert('Username already in use. Please a new one or login')
+        }
     },  
     
     onToLogin: function() {
-    register.classList.toggle('register--hide')
-    login.classList.toggle('login--hide')
+        _register.toggle()
+        _login.toggle()
     }
 })
