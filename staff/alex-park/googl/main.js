@@ -1,56 +1,88 @@
 'use strict';
 
-var login = createLogin('login', function (username, password) {
-    var user = users.find(function (user) { return user.username === username; });
+var _login = createLogin('form.login', {
+    onSubmit: function (username, password) {
+        try {
+            authenticate(username, password);
+    
+            _login.toggle();
+            _googl.toggle();
+            _ecosia.toggle();
+            _bing.toggle();
+            _yahoo.toggle();
 
-    if (user && user.password === password) {
-        login.toggle();
-        _googl.toggle();
-        _ecosia.toggle();
-        _bing.toggle();
-        _yahoo.toggle();
-    } else alert('Incorrect username/password, please try again.');
-}, function () {
-    login.toggle();
-    _register.toggle();
-});
+        } catch (error) {
+            alert(error.message);
+        }
 
-var _register = createRegister('register', function (name, surname, username, password) {
+    },
+
+    onToRegister: function () {
+        _login.toggle();
+        _register.toggle();
+}});
+
+var _register = createRegister('form.register', {
+    
+    onSubmit: function (name, surname, username, password) {
     try {
         register(name, surname, username, password);
         _register.toggle();
-        login.toggle();
+        _login.toggle();
     } catch (error) {
         alert(error.message);
     }
-}, function (){
+}, 
+    onToLogin: function (){
     _register.toggle();
-    login.toggle();
+    _login.toggle();
+}});
+
+var _googl = createSearch('form.googl', {
+    
+    onSubmit: function(query) {
+        googl(query, function(results) {
+            if (results instanceof Error) return alert(results.message);
+
+            createResults('ul.googl', results);
+        });
+    }
 });
 
-var _googl = createSearch('search', function(query) {
-    googl(query, function(results) {
-        createResults('.results', results);
-    });
+var _ecosia = createSearch('form.ecosia', {
+    
+    onSubmit: function(query) {
+        ecosia(query, function(results) {
+            if (results instanceof Error) return alert(results.message);
+
+            createResults('ul.ecosia', results);
+        });
+    }
 });
 
-var _ecosia = createSearch('search-2', function (query) {
-    ecosia(query, function(results) {
-        createResults('.results-2', results);
-    });
+var _bing = createSearch('form.bing', {
+    
+    onSubmit: function(query) {
+        bing(query, function(results) {
+            if (results instanceof Error) return alert(results.message);
+
+            createResults('ul.bing', results);
+        });
+    }
 });
 
-var _bing = createSearch('search-3', function(query) {
-    bing(query, function(results) {
-        createResults('.results-3', results);
-    });
+var _yahoo = createSearch('form.yahoo', {
+    
+    onSubmit: function(query) {
+        yahoo(query, function(results) {
+            if (results instanceof Error) return alert(results.message);
+
+            createResults('ul.yahoo', results);
+        });
+    }
 });
 
-var _yahoo = createSearch('search-4', function(query) {
-    yahoo(query, function(results) {
-        createResults('.results-4', results);
-    });
-});
+
 // var search = createSearch('.search', function (query) {
 //     googl(query, function (results) {
 //         createResults('.results', results);

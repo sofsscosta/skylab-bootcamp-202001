@@ -1,7 +1,7 @@
 'use strict';
 
-function createSearch(idClass, callback) {
-    var search = document.querySelector('.' + idClass);
+function createSearch(selector, callback) {
+    var search = document.querySelector(selector);
 
     search.addEventListener('submit', function (event) {
         event.preventDefault();
