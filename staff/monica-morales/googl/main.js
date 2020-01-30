@@ -1,27 +1,47 @@
-// var users = []; // ej: user => { name, surname, username, password }
+'use strict';
 
-var _googl = createSearch('.search', function (query) {
-    googl(query, function (results) {
-        createResults('.results', results);
-    });
+var IT = '🎈🤡';
+
+var _login = createLogin('login', {
+    onSubmit: function (username, password) {
+        try {
+            authenticate(username, password);
+
+            _login.toggle();
+            _googl.toggle();
+        } catch (error) {
+            alert(error.message + ' ' + IT);
+        }
+    },
+    onToRegister: function () {
+        _login.toggle();
+        _register.toggle();
+    }
 });
-var login = createLogin('.login', function(username, password) {
-    var user = users.filter(function(element){
-        return element.username === username && element.password === password;
-    });
-    if (user.length === 1) {
-        _googl.classList.toggle('search--hide');
-        login.classList.toggle('login--hide');
-    } else alert('you cannot get in :P');
+
+var _register = createRegister('register', {
+    onSubmit: function (name, surname, username, password) {
+        try {
+            register(name, surname, username, password);
+
+            _register.toggle();
+            _login.toggle();
+        } catch (error) {
+            alert(error.message + ' ' + IT);
+        }
+    },
+    onToLogin: function () {
+        _register.toggle();
+        _login.toggle();
+    }
 });
-var register = createRegister('.register', function(name,surname,username,password){
-    var user = {};
-    user.name = name;
-    user.surname = surname;
-    user.username = username;
-    user.password = password;
-    
-    users.push(user);
-    register.classList.toggle('register--hide');
-    login.classList.toggle('login--hide');
+
+var _googl = createSearch('search', {
+    onSubmit: function (query) {
+        googl(query, function (results) {
+            if (results instanceof Error) return alert(results.message + ' ' + IT);
+            
+            createResults('.results', results);
+        });
+    }
 });
