@@ -4,21 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Googl</title>
 </head>
 <body>
-    <h1>Googl</h1>
-    <form>
-        <input type="text" name="query" id="">
-        <button type="submit">Go!</button>
+    <form class="login">
+        <h1 class="register__title">Googl</h1>
+        <input type="text" class="login__username" name="username">
+        <input type="password" class="login__password" name="password">
+        <button type="submit" class="login__submit">Login</button>
+        <a href="" class="login__register">Sign up</a>
     </form>
 
-    <ul>
+    <form class="register register--hide">
+        <h1 class="register__title">Googl</h1>
+        <input type="text" name="name" class="register__name">
+        <input type="text" name="surname" class="register__surname">
+        <input type="text" name="username" class="register__username">
+        <input type="password" name="password" class="register__password">
+        <button class="register__submit" type="submit">Sign up</button>
+        <a href="" class="register__login">Login</a>
+    </form>
+
+
+
+    <form class="search search--hide">
+        <h1 class="search__title">Googl</h1>
+        <input class="search__query" type="text" name="query" placeholder="Search...">
+        <button class="search__submit" type="submit">Search</button>
+    </form>
+    
+
+
+
+    <ul class="results">
         
     </ul>
 
 
     <script src="googl.js"></script>
+    <script src="call.js"></script>
+    <script src="search.js"></script>
+    <script src="components.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
