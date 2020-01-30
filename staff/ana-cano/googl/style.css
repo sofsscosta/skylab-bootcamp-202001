@@ -1,15 +1,11 @@
 .register {
+  display: inline-block;
   border: 1px solid black;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-  box-shadow: 5px 10px #D5DBDB;
+  padding: 0.5rem;
+  border: 1px solid black;
 }
-.register--hidden {
+.register--hide {
   display: none;
 }
 .register__name {
@@ -33,6 +29,28 @@
   margin: 1rem;
 }
 
+input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
 .results {
   display: flex;
   flex-direction: column;
@@ -41,7 +59,7 @@
   align-content: center;
   padding: 10rem;
 }
-.results--hidden {
+.results--hide {
   display: none;
 }
 
@@ -65,7 +83,7 @@
   align-items: center;
   justify-content: center;
 }
-.login--hidden {
+.login--hide {
   display: none;
 }
 .login__username {
@@ -77,6 +95,18 @@
   height: 3rem;
   widht: 20rem;
   margin: 1rem;
+}
+.login button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 .search {
@@ -90,7 +120,7 @@
   align-content: center;
   padding: 10rem;
 }
-.search--hidden {
+.search--hide {
   display: none;
 }
 .search input {
@@ -102,7 +132,7 @@
   border: 1px solid black;
   border-radius: 1rem;
 }
-.login--hidden {
+.login--hide {
   display: none;
 }
 

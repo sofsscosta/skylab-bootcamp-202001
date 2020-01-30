@@ -1,46 +1,63 @@
-var users = []; // ej: user => { name, surname, username, password }
+'use strict';
 
-var _search = createSearch('.search', function(query) {
+// LET's spy to see what's going on in stack...
+// call = spy(call);
+// search = spy(search);
+// googl = spy(googl);
 
+// main code here...
+
+var IT = '🎈🤡';
+
+var login = createLogin('login', function(username, password) {
+    var user = users.find(function(user) { return user.username === username; });
+
+    if (user && user.password === password) {
+        login.toggle();
+        _googl.toggle();
+        _ecosia.toggle();
+        _bing.toggle();
+        _yahoo.toggle();
+    } else alert('Wrong credentials, you cannot get in ' + IT);
+}, function() {
+    login.toggle();
+    _register.toggle();
+});
+
+var _register = createRegister('register', function(name, surname, username, password) {
+    try {
+        register(name, surname, username, password);
+
+        _register.toggle();
+        login.toggle();
+    } catch (error) {
+        alert(error.message + ' ' + IT);
+    }
+}, function() {
+    _register.toggle();
+    login.toggle();
+});
+
+var _googl = createSearch('search', function(query) {
     googl(query, function(results) {
-
         createResults('.results', results);
     });
 });
 
-var login = createLogin('.login', function(username, password) {
-
-    var arrayUser = users.filter(function(user) {
-        if (user.username === username && user.password === password) {
-            _search.classList.toggle('search--hidden');
-            login.classList.toggle('login--hidden');
-        } else {
-            alert('you cannot get in :P');
-        }
-
-    })
-
+var _ecosia = createSearch('search-2', function(query) {
+    ecosia(query, function(results) {
+        createResults('.results-2', results);
+    });
 });
 
-function User(nombre, surname, username, password) {
-    if (nombre && surname && username && password) {
-        this.nombre = nombre;
-        this.surname = surname;
-        this.username = username;
-        this.password = password;
-    } else {
-        return false;
-    }
-}
+var _bing = createSearch('search-3', function(query) {
+    bing(query, function(results) {
+        createResults('.results-3', results);
+    });
+});
 
-var register = createRegister(".register", function(nombre, surname, username, password) {
-    var user = new User(nombre, surname, username, password)
-    if (user) {
-        users.push(user);
-        register.classList.toggle('register--hidden');
-        login.classList.toggle('login--hidden');
-
-    } else {
-        alert("Please complete the form");
-    }
-})
+var _yahoo = createSearch('search-4', function(query) {
+    bing(query, function(results) {
+        createResults('.results-4', results);
+    });
+});
