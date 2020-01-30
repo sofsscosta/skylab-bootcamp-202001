@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        ul {
-            list-style-type: none;
-        }
-    </style>
+    <title>The Ultimate Web-Browser</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="div1">
-        <h1>Googl</h1>
+    <main id="root"></main>
+
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/app.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
+
+    <script src="data.js"></script>
+
+    <script src="logic/googl.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/yahoo.js"></script>
+    <script src="logic/register.js"></script>
+    <script src="logic/authenticate.js"></script>
     
-        <form id="searcher">
-            <input type="text" name="query" id="text" placeholder="Type here...">
-            <button type="submit">Search</button>
-        </form>
-        <script src="googl.js"></script>
-        <script src="main.js"></script>
-        
-    </div>
+    <script src="main.js"></script>
 </body>
 </html>

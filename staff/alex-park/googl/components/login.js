@@ -1,7 +1,15 @@
 'use strict';
 
-function createLogin(selector, props) {
-    var login = document.querySelector(selector);
+function Login(props) {
+    var login = document.createElement('form');
+    login.classList.add('login');
+
+    login.innerHTML = '<h2>Sign-in</h2>'
+        .concat('<input type="text" name="username" placeholder="username">')
+        .concat('<input type="password" name="password" placeholder="password">')
+        .concat('<button>Login</button>')
+        .concat('<a href="">Register</a>');
+
 
     login.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -11,10 +19,6 @@ function createLogin(selector, props) {
 
         props.onSubmit(username, password);
     });
-
-    login.toggle = function() {
-        this.classList.toggle('login--hide');
-    };
 
     var register = login.querySelector('a');
 
