@@ -6,6 +6,9 @@ function search(url, resultsSelector, titleSelector, linkSelector, contentSelect
 
     call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function (response) {
     // call('https://api.codetabs.com/v1/proxy?quest=' + url, function (response) { // DOESNT work with this proxy :/
+        
+        if(response instanceof Error) return callback(response);    
+        
         if (response.status === 200) {
             var doc = new DOMParser().parseFromString(response.content, 'text/html');
 

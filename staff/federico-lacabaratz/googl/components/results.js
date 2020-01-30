@@ -33,4 +33,4 @@ function createResults(selector, results) {
 
         list.append(item);
     });
-}
+};
