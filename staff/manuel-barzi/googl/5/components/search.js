@@ -1,14 +1,14 @@
 'use strict';
 
-function createSearch(idClass, callback) {
-    var search = document.querySelector('.' + idClass);
+function createSearch(selector, props) {
+    var search = document.querySelector(selector);
 
     search.addEventListener('submit', function (event) {
         event.preventDefault();
 
         var query = this.query.value;
 
-        callback(query);
+        props.onSubmit(query);
     });
 
     search.toggle = function() {
