@@ -5,16 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Googl</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Googl</h1>
-
-    <form >
-        <input type="text" placeholder="Search.." name="query">
-        <button type="submit">Search</button>
+    <header>
+        <div>Gmail</div>
+        <div>Iniciar sesion</div>
+        <div></div>
+    </header>
+    <main class = 'log'>
+        <img class = log__name src = 'https://www.google.es/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'>
+    </main>
+    <form class='register register--hide'>
+        <label class='register__title'>Register:</label><br><br>
+        <input type='text' name='name' placeholder="name" required><br><br>
+        <input type='text' name='surname' placeholder="surname" required><br><br>
+        <input type='text' name='username' placeholder="username" required><br><br>
+        <input type='text' name='password' placeholder="password" required><br><br>
+        <button type='submit'>Register</button><br>
+        <button class='login-btn'>Go login</button><br>
     </form>
+    <form class='login'>
+        <input type='text' name='username'>
+        <input type='password' name='password'>
+        <button>Login</button>
+    </form>
+    <form class='search search--hide'>
+        <input type='text' name='query'>
+        <button type='submit'>Search</button>
+    </form>
+    
+    <ul class='results'></ul>
 
-    <script src="googl.js"></script>
+    <script src="utils/spy.js"></script>
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
+
+    <script src="data.js"></script>
+
+    <script src="logic/googl.js"></script>
+
     <script src="main.js"></script>
+
 </body>
 </html>
