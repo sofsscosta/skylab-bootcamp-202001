@@ -9,5 +9,8 @@ function createSearch(selector, callback) {
     var query = this.query.value;
     callback(query);
     });
+    search.toggle = function(){
+      this.classList.toggle("search--hide");
+    }
     return search;
   };

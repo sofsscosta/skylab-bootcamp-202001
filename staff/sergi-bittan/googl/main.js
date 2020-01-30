@@ -11,15 +11,21 @@ var IT = "";
 
 var login = createLogin("login", {
   onSubmit: function(username, password){
-  var user = users.find(function(user){return user.username === username;});
+  
+    try{
+        authentication(username, password)
 
-  if(user && user.password === password) {
-    login.toggle();
-    _googl.toggle();
-    _ecosia.toggle();
-    _bing.toggle();
-    _yahoo.toggle();
-  }else alert("Wrong credentials, you cannot get in " + IT);
+      login.toggle();
+      _googl.toggle();
+      _ecosia.toggle();
+      _bing.toggle();
+      _yahoo.toggle();
+    }catch(error){
+      if(error instanceof TypeError){
+       return alert("Sorry, something wrong")
+      }
+      alert( error.message + ", you cannot get in " + IT);
+    }
 },
   onToRegister: function(){
     login.toggle();
