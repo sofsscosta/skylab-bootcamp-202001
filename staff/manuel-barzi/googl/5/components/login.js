@@ -1,7 +1,7 @@
 'use strict';
 
-function createLogin(idClass, props) {
-    var login = document.querySelector('.' + idClass);
+function createLogin(selector, props) {
+    var login = document.querySelector(selector);
 
     login.addEventListener('submit', function(event) {
         event.preventDefault();
