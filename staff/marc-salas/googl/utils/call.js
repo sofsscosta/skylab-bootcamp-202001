@@ -13,4 +13,5 @@ function call(url, callback){
             status: this.status
         });
     }
+    xhr.send();
 }

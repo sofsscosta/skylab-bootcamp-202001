@@ -1,12 +1,12 @@
-var user = [];
 
-var search = createSearch('.search', function(query){
+var _search = createSearch('.search', function(query){
+    //debugger
     googl(query,function(results){
         createResults('.list', results );
     });
 });
 
-var register = createRegister('.register', function(name,surName,userName,password){
+var _register = createRegister('register', function(name,surName,userName,password){
     var person = {
         name : name,
         userName : userName,
@@ -15,26 +15,32 @@ var register = createRegister('.register', function(name,surName,userName,passwo
     }
     if (person.name.length > 0 && person.surName.length > 0 && person.userName.length > 0 && person.password.length > 0 ){
         user.push(person);
-        register.classList.toggle('register--hide');
-        login.classList.toggle('login--hide');
+        _register.toggle();
+        login.toggle();
     }else {
         alert('Completa todos los campos!')
     };
 
+}, function(){
+    _register.toggle();
+    login.toggle();
 });
 
-var login = createLogin('.login', function(username, password) {
-    for (var i = 0; i < user.length; i++){
-        if(user[i].userName === username && user[i].password === password ){
-            search.classList.toggle('search--hide');
-            login.classList.toggle('login--hide');
-            return 0;
-        } 
-    }
+var login = createLogin('login', function(username, password) {
+    var user = users.find(function(user){
+        return username === user.username;
+    });
+    if (user && user.password === password){
+        login.toggle();
+        _search.classList.toggle('search--hide');
+        return 0;
+    } 
+    
+}, function(){
+    login.toggle();
+    _register.toggle();
 
 });
-showSelection('.landing', '.toLogin', '.login');
-showSelection('.landing', '.toRegister', '.register');
 
 
 
