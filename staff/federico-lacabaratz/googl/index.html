@@ -1,91 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>Googl</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Googl</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 class="google-logo"><span class="google-G">G</span><span class="google-o1">o</span><span class="google-o2">o</span><span class="google-g">g</span><span class="google-l">l</span><span class="google-a"> A</span><span class="google-p1">p</span><span class="google-p2">p</span></h1>
+    <main id="root"></main>
 
-  <form class="login _login--hide">
-      <h2>Sign-in</h2>
+    <script src="utils/spy.js"></script>
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
 
-      <input type="text" name="username" placeholder="username" autocomplete="off">
-      <input type="password" name="password" placeholder="password" autocomplete="off">
-      <button>Login</button>
+    <script src="components/app.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
 
-      <a href="">Register</a>
-  </form>
+    <script src="data.js"></script>
 
-  <form class="register register--hide">
-      <h2>Sign-up</h2>
-
-      <input type="text" name="name" placeholder="name" autocomplete="off">
-      <input type="text" name="surname" placeholder="surname" autocomplete="off">
-      <input type="text" name="username" placeholder="username" autocomplete="off">
-      <input type="password" name="password" placeholder="password" autocomplete="off">
-      <button>Register</button>
-
-      <a href="">Login</a>
-  </form>
-  
-  <form class="googl search search--hide">
-      <h2>Googl</h2>
-
-      <input type="text" name="query" placeholder="criteria">
-      <button type="submit">Search</button>
-  </form>
-
-  <ul class="googl results"></ul>
-
-  <form class="ecosia search search--hide">
-      <h2>Ecosia</h2>
-
-      <input type="text" name="query" placeholder="criteria">
-      <button type="submit">Search</button>
-  </form>
-
-  <ul class="ecosia results"></ul>
-
-  <form class="bing search search--hide">
-      <h2>Bing</h2>
-
-      <input type="text" name="query" placeholder="criteria">
-      <button type="submit">Search</button>
-  </form>
-
-  <ul class="bing results"></ul>
-
-  <form class="yahoo search search--hide">
-      <h2>Yahoo</h2>
-
-      <input type="text" name="query" placeholder="criteria">
-      <button type="submit">Search</button>
-  </form>
-
-  <ul class="yahoo results"></ul>
-
-  <script src="utils/spy.js"></script>
-  <script src="utils/call.js"></script>
-  <script src="utils/search.js"></script>
-
-  <script src="components/login.js"></script>
-  <script src="components/register.js"></script>
-  <script src="components/search.js"></script>
-  <script src="components/results.js"></script>
-
-  <script src="data.js"></script>
-
-  <script src="logic/googl.js"></script>
-  <script src="logic/ecosia.js"></script>
-  <script src="logic/bing.js"></script>
-  <script src="logic/yahoo.js"></script>
-  <script src="logic/register.js"></script>
-  <script src="logic/authenticate.js"></script>
-  
-  <script src="main.js"></script>
+    <script src="logic/googl.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/yahoo.js"></script>
+    <script src="logic/register.js"></script>
+    <script src="logic/authenticate.js"></script>
+    
+    <script src="main.js"></script>
 </body>
 </html>
