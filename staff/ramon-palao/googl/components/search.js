@@ -1,6 +1,7 @@
 "use strict";
 
-function createSearch(selector, callback) {
+function createSearch(selector, callback) { debugger
+
     var search = document.querySelector(selector);
 
     search.addEventListener('submit', function (event) {

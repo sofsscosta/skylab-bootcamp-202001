@@ -2,6 +2,7 @@
 
 function createRegister(idClass, onSubmit, onToLogin) {
     var register = document.querySelector("." + idClass);
+    
 
     register.addEventListener("submit", function(event){
         event.preventDefault();

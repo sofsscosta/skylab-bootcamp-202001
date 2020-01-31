@@ -1,32 +1,68 @@
-var form = document.querySelector("form")
+'use strict';
 
-form.addEventListener("submit", function(event){
-    event.preventDefault();
+// LET's spy to see what's going on in stack...
+// call = spy(call);
+// search = spy(search);
+// googl = spy(googl);
 
-    var query = this.query.value;
-    var ul = document.createElement("ul");
-    googl(query, function(results){
-        //console.log(results);
-        for(var i = 0; i < results.length; i++){
-            var result = results[i];
+// main code here...
 
-            var li = document.createElement("li");
-            var h3 = document.createElement("h3");
-            var p = document.createElement("p");
+var IT = '🎈🤡';
 
-            h3.innerHTML = result.title;
-            p.innerHTML = result.description;
+var login = createLogin('login', function (username, password) {
+    var user = users.find(function (user) { return user.username === username; });
 
-            li.append(h3, p);
-            ul.append(li);
-        }
-        var div = document.getElementById("div");
-        div.innerHTML = "";
-        div.append(ul);
+    if (user && user.password === password) {
+        login.toggle();
+        _googl.toggle();
+        // _ecosia.toggle();
+        // _bing.toggle();
+        // _yahoo.toggle();
+    } else alert('Wrong credentials, you cannot get in ' + IT);
+}, function () {
+    login.toggle();
+    _register.toggle();
+});
+
+var _register = createRegister('register', function (name, surname, username, password) {
+
+    try {
+        register(name, surname, username, password);
+
+        _register.toggle();
+        login.toggle();
+    } catch (error) {
+        alert(error.message + ' ' + IT);
+    }
+}, function () {
+    _register.toggle();
+    login.toggle();
+});
+
+var _googl = createSearch('.search', function (query) {debugger
+    googl(query, function (results) {
+        createResults('.results', results);
     });
 });
 
-var users=[];
+// var _ecosia = createSearch('search-2', function (query) {
+//     ecosia(query, function (results) {
+//         createResults('.results-2', results);
+//     });
+// });
+
+// var _bing = createSearch('search-3', function (query) {
+//     bing(query, function (results) {
+//         createResults('.results-3', results);
+//     });
+// });
+
+// var _yahoo = createSearch('search-4', function (query) {
+//     bing(query, function (results) {
+//         createResults('.results-4', results);
+//     });
+// });
+
 
 var enterPage = document.querySelector(".enter");
 var registerEnter = document.querySelector(".enter__register");
@@ -43,63 +79,3 @@ registerEnter.addEventListener("click", function(){
     enterPage.classList.add("enter--hide");
     registerPage.classList.remove("register--hide");
 });
-
-function createRegister(selector, callback) {
-    var register = document.querySelector(selector);
-
-    register.addEventListener("submit", function(event){
-        event.preventDefault();
-
-        user = {};
-
-        user.name = this.name.value;
-        user.surname = this.surname.value;
-        user.username = this.username.value;
-        user.password = this.password.value;
-        
-        callback(user.name, user.surname, user.username, user.password);
-    })
-    
-    return register;
-}
-
-createRegister(".register", function(name, surname, username, password){
-    
-    var user = {
-        
-        name: name,
-        surname: surname,
-        username: username,
-        password: password,
-    }
-
-    users.push(user);
-    registerPage.classList.add("register--hide");
-    loginPage.classList.remove("login--hide");
-
-})
-
-var search = document.querySelector(".header__results");
-
-createLogin(".login", function(username, password){
-
-    var filtered = users.filter(function(user){
-
-        return user.username === username && user.password === password;
-    })
-
-    if(filtered.length === 1) {
-        search.classList.toggle("header__results--hide");
-        loginPage.classList.toggle("login--hide");
-    } else {
-        alert("You cannot get in");
-    }
-})
-
-createSearch(".search__form", function(query){
-    googl(query, function(results){
-        console.log(results);
-        createResults(".results__list", results)
-    });
-});
-    

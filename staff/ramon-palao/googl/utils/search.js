@@ -35,7 +35,7 @@ function search(url, resultsSelector, titleSelector, linkSelector, contentSelect
 
                     results.push(result);
                 }
-
+                
             }
 
             callback(results);

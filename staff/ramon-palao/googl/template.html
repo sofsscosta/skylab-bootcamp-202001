@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gugal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Googl</title>
+    <link href="./style.css" rel="stylesheet">
 </head>
 <body>
 ​
 ​
     <header class="header__start">
-​
         <div>
-​
-            <h1>Google</h1>
+            <section class="logo">
+                <div class="logo-g">G</div>
+                <div class="logo-o">O</div>
+                <div class="logo-oo">O</div>
+                <div class="logo-gg">G</div>
+                <div class="logo-l">L</div>
+            </section>
+​        
             <form class="search search--hide">
                 <input type="text" name="query" class="search__query">
-                <button class="search__microphone"></button>
+                <button class="search__button">SEARCH</button>
             </form>
 ​
             <div class="enter _enter--hide">
@@ -113,8 +118,20 @@
             </ul>
         </div>
     </footer>
-    <script src="components.js"></script>
-    <script src="googl.js"></script>
+
+    <script src="utils/call.js"></script>
+    <script src="utils/data.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/results.js"></script>
+    <script src="components/search.js"></script>
+
+    <script src="logic/googl.js"></script>
+    <script src="logic/register.js"></script>
+
     <script src="main.js"></script>
+
 </body>
 </html>
