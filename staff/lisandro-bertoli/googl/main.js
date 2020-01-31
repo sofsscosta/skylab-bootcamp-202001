@@ -1,4 +1,4 @@
 'use strict';
 
 
-document.getElementById('root').replaceWith(App({ title: 'GOOGL-APP' }));
+document.getElementById('root').replaceWith(new App({ title: 'Googl-App' }).container);

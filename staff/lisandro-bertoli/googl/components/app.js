@@ -2,49 +2,53 @@
 
 function App(props) {
     var app = document.createElement('main');
+
+    Component.call(this, app);
+
     app.classList.add('main')
+
 
     app.innerHTML = '<h1>' + props.title + '</h1>';
 
-    var _login = Login({
+    var _login = new Login({
 
 
         onSubmit: function (username, password) {
             try {
                 authenticate(username, password);
-                _login.reset();
-                _login.replaceWith(_google);
-                app.append(_ecosia);
+                _login.container.reset();
+                _login.container.replaceWith(_google);
 
             } catch (error) {
                 if (error instanceof TypeError) return alert('Something went wrong, try again later');
 
-                alert('Wrong credentials, you cannot get in :P');
+                _login.showError(error.message);
             }
         },
         onToRegister: function () {
-            _login.reset();
-            _login.replaceWith(_register);
+            _login.container.reset();
+            _login.container.replaceWith(_register.container);
         }
 
     });
 
+    app.append(_login.container);
 
-    var _register = Register({
+    var _register = new Register({
         onSubmit: function (name, surname, username, password) {
             try {
                 register(name, surname, username, password);
-                _register.reset();
-                _register.replaceWith(_login);
+                _register.container.reset();
+                _register.container.replaceWith(_login.container);
 
             } catch (error) {
-                alert(error.message);
+                _register.showError(error.message);
             }
         },
 
         onToLogin: function () {
-            _register.reset();
-            _register.replaceWith(_login);
+            _register.container.reset();
+            _register.container.replaceWith(_login.container);
         }
     });
 
@@ -70,92 +74,94 @@ function App(props) {
 
         onLogout: function () {
             document.querySelector('.results').remove();
-            _google.replaceWith(_login);
+            _google.replaceWith(_login.container);
 
         }
 
     });
 
-    var _ecosia = Search({
+    // var _ecosia = Search({
 
-        title: 'Ecosia',
+    //     title: 'Ecosia',
 
-        onSubmit: function (query) {
+    //     onSubmit: function (query) {
 
-            ecosia(query, function (results) {
-                var _results = Results({ results: results });
+    //         ecosia(query, function (results) {
+    //             var _results = Results({ results: results });
 
-                if (!_previousResults) {
-                    _previousResults = _results;
-                    app.append(_results);
-                }
-                else {
-                    _previousResults.replaceWith(_results);
+    //             if (!_previousResults) {
+    //                 _previousResults = _results;
+    //                 app.append(_results);
+    //             }
+    //             else {
+    //                 _previousResults.replaceWith(_results);
 
-                    _previousResults = _results;
-                }
-            });
-        },
+    //                 _previousResults = _results;
+    //             }
+    //         });
+    //     },
 
-        onLogout: function () {
-            document.querySelector('.results').remove();
-            _ecosia.replaceWith(_login);
-        }
-    });
+    //     onLogout: function () {
+    //         document.querySelector('.results').remove();
+    //         _ecosia.replaceWith(_login);
+    //     }
+    // });
 
-    var _yahoo = Search({
-        title: 'Yahoo',
+    // var _yahoo = Search({
+    //     title: 'Yahoo',
 
-        onSubmit: function (query) {
-            yahoo(query, function (results) {
-                var _results = Results({ results: results });
+    //     onSubmit: function (query) {
+    //         yahoo(query, function (results) {
+    //             var _results = Results({ results: results });
 
-                if (!_previousResults) {
-                    _previousResults = _results;
-                    app.append(_results);
-                }
-                else {
-                    _previousResults.replaceWith(_results);
+    //             if (!_previousResults) {
+    //                 _previousResults = _results;
+    //                 app.append(_results);
+    //             }
+    //             else {
+    //                 _previousResults.replaceWith(_results);
 
-                    _previousResults = _results;
-                }
-            });
-        },
+    //                 _previousResults = _results;
+    //             }
+    //         });
+    //     },
 
-        onLogout: function () {
-            document.querySelector('.results').remove();
-            _yahoo.replaceWith(_login);
-        }
-    });
+    //     onLogout: function () {
+    //         document.querySelector('.results').remove();
+    //         _yahoo.replaceWith(_login);
+    //     }
+    // });
 
-    var _bing = Search({
-        title: 'Bing',
+    // var _bing = Search({
+    //     title: 'Bing',
 
-        onSubmit: function (query) {
-            bing(query, function (results) {
-                var _results = Results({ results: results });
+    //     onSubmit: function (query) {
+    //         bing(query, function (results) {
+    //             var _results = Results({ results: results });
 
-                if (!_previousResults) {
-                    _previousResults = _results;
-                    app.append(_results);
-                }
-                else {
-                    _previousResults.replaceWith(_results);
-                    _previousResults = _results;
-                }
-            });
-        },
+    //             if (!_previousResults) {
+    //                 _previousResults = _results;
+    //                 app.append(_results);
+    //             }
+    //             else {
+    //                 _previousResults.replaceWith(_results);
+    //                 _previousResults = _results;
+    //             }
+    //         });
+    //     },
 
-        onLogout: function () {
-            document.querySelector('.results').remove();
-            _bing.replaceWith(_login);
-        }
-    });
+    //     onLogout: function () {
+    //         document.querySelector('.results').remove();
+    //         _bing.replaceWith(_login);
+    //     }
+    // });
 
     var _previousResults;
 
 
-    app.append(_login);
 
-    return app;
+
 }
+
+App.prototype = Object.create(Component.prototype);
+App.prototype.constructor = App;
