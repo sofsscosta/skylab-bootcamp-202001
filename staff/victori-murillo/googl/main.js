@@ -23,6 +23,7 @@ var _register = createRegister('register', function(user) {
 
   try {
     register(user);
+    // document.querySelector(".register")
 
     _register.toggle();
     _login.toggle();

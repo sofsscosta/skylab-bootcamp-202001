@@ -1,3 +1,5 @@
+"use strict";
+
 function createRegister(idClass, onSubmit, onToLogin) {
 
   var register = document.querySelector("." + idClass);
@@ -24,7 +26,7 @@ function createRegister(idClass, onSubmit, onToLogin) {
   login.addEventListener("click", function(event) {
     event.preventDefault() // This prevent is cause we are inside the form???
 
-    onToLogin()
+    onToLogin();
   })
 
   return register

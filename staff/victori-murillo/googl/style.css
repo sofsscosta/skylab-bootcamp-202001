@@ -4,6 +4,23 @@ body {
 
 ul {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid red;
+  padding: 0px 10%;
+}
+ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+}
+ul li a {
+  text-decoration: none;
+}
+ul li a h3 {
+  color: #1a0dab;
 }
 
 a {
