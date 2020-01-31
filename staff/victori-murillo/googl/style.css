@@ -7,7 +7,6 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid red;
   padding: 0px 10%;
 }
 ul li {
@@ -15,12 +14,10 @@ ul li {
   flex-direction: column;
   justify-content: flex-start;
   align-items: start;
+  margin: 0;
 }
 ul li a {
   text-decoration: none;
-}
-ul li a h3 {
-  color: #1a0dab;
 }
 
 a {
@@ -32,7 +29,7 @@ a {
 .title {
   text-align: center;
 }
-.title h1 {
+.title h2 {
   color: red;
 }
 .title--blue {
@@ -107,19 +104,31 @@ a {
   display: none;
 }
 
+.results a {
+  color: blue;
+}
+.results p {
+  margin-top: 0px;
+  text-align: left;
+}
+
 .search {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-.search--hide {
-  display: none;
+.search h2 {
+  color: blue;
+  font-size: 50px;
 }
 .search input {
   border: 1px solid black;
   border-radius: 1rem;
-  height: 20px;
-  width: 120px;
+  height: 30px;
+  width: 180px;
+  padding-left: 10px;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=style.css.map */

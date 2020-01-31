@@ -1,17 +1,18 @@
-function createSearch(selector, callback) {
+"use strict";
 
-  var search = document.querySelector("."+selector);
+function Search(props) {
+  var search = document.createElement("form");
+  search.classList.add("search");
+
+  search.innerHTML = '<h2>' + props.title + '</h2>'
+    .concat('<input type="text" name="query" placeholder="search">')
 
   search.addEventListener("submit", function(event) {
-
     event.preventDefault();
-    var query = this.query.value;
-    callback(query);
-  });
 
-  search.toggle = function() {
-    this.classList.toggle("search--hide")
-  }
+    var query = this.query.value;
+    props.onSubmit(query);
+  });
 
   return search;
 }

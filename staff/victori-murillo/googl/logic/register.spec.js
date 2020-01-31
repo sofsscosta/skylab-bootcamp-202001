@@ -1,10 +1,10 @@
 describe("register", function() {
 
-  it("should fail on none object as first or second parameter", function() {
-    expect(function() {
-      register({username: "vic"})
-    }).toThrowError(Error, "User " + "vic" + " already exists")
-  })
+  // it("should fail on register user already exists", function() {
+  //   expect(function() {
+  //     register({username: "vic"})
+  //   }).toThrowError(TypeError, "User " + "vic" + " already exists")
+  // })
 
   it("should fail on none object as first or second parameter", function() {
     expect(function() {

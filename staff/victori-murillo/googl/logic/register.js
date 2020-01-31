@@ -8,12 +8,8 @@ function register(user) {
     if(typeof user[key] !== "string") throw new TypeError(user[key] + " is not a string")
   }
 
-  // var {username} = user
   var username = user.username
-
   if (users.some(function(user){return user.username === username})) throw new Error("User " + username + " already exists");
   
   users.push(user)
-
-  return user
 }

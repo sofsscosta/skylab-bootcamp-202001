@@ -1,3 +1,3 @@
 var users = []
 
-users.push({username: "vic", password: "123"})
+users.push({username: "vic", password: "1"})
