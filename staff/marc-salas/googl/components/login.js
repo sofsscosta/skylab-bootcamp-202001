@@ -2,14 +2,12 @@
 
 function createLogin(props) {
     var login = document.createElement('form');
-    debugger
-
     login.classList.add('login');
 
     login.innerHTML = '<h2>' + props.title + '</h2>'
         .concat('<input type="text" name="username">')
         .concat('<input type="password" name="password">')
-        .concat('<button type="submit"></button>')
+        .concat('<button type="submit">Login</button>')
         .concat('<a class="toregister" href="#">Registrate</a>')
 
     login.addEventListener('submit', function (event) {

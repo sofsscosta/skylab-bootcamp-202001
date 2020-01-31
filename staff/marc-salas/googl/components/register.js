@@ -10,7 +10,7 @@ function createRegister(props) {
     .concat('<input type="text" name="surname">')
     .concat('<input type="text" name="username">')
     .concat('<input type="password" name="password">')
-    .concat('<button type="submit"></button>')
+    .concat('<button type="submit">Register</button>')
     .concat('<a class="tologin" href="#">Logeate si ya estas registrado</a>');    
     
     register.addEventListener('submit', function(event) {
