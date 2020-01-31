@@ -5,17 +5,8 @@ var IT = '🎈🤡';
 function App(props){
     var app = document.createElement('main');
 
-    var logo = document.createElement('figure');
-    logo.classList.add('log');
+    app.innerHTML = '<h1>' + props.title + '</h1>';
     
-
-
-    logo.innerHTML = '<img src = "https://www.google.es/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">'
-    
-
-    
-    // img.innerHTML =  "<img src = 'https://www.google.es/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'>"
-
     var _login = Login( {
         onSubmit: function (username, password) {
             try {
@@ -48,13 +39,16 @@ function App(props){
     app.append(_login);
 
     var _googl = Search({
+        title: 'My Googl',
+
         onSubmit: function (query) {
             googl(query, function (results) {
+               
                 if (results instanceof Error) return alert(results.message + ' ' + IT);
-                
-                var_results = Results({results : results});
+                debugger;
+                var _results = Results({results : results});
                 if(!_googlResults)
-                    app.append(_googlResults = results);
+                    app.append(_googlResults = _results);
                 else {
                     _googlResults.replaceWith(_results);
                     _googlResults = _results;
