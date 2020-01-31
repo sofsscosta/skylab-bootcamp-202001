@@ -5,7 +5,7 @@ function Search(props) {
     search.classList.add('search');
 
     search.innerHTML += '<h2>' + props.title + '</h2>'
-        .concat('<input type="text" name="query" placeholder="Type here to search on ' + props.title + '>')
+        .concat('<input type="text" name="query" placeholder="Type here to search on the browser" >')
         .concat('<button type="submit">Search</button>')
 
     search.addEventListener('submit', function (event) {

@@ -2,22 +2,13 @@
 
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
-/* fontawesome */
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-}
+/*# sourceMappingURL=title.css.map */
 
 /* body {
   background: #e6e6d8 url('https://dl.dropboxusercontent.com/s/t0gu051d08sei65/bg-retro-noise.png');
   color: #121212;
 } */
 
-section.text {
-  width: 100%;
-  text-align: center;
-  top: 5%;
-  margin-bottom: 5%;
-}
 
 /* h1, h3 {
   transform: matrix(1, -0.20, 0, 1, 0, 0);
@@ -31,6 +22,10 @@ h1 {
   font-weight: 400;
   font-size: 3em;
   text-shadow: 4px 5px #e6e6d8, 6px 7px #c6a39a;
+  width: 100%;
+  text-align: center;
+  top: 5%;
+  margin-bottom: 1%;
 }
 
 h1 span {
@@ -61,10 +56,9 @@ h3.textt {
   border-bottom: 2px solid #121212;
 } */
 
-/* h3:before {
-  margin: 5px 0 0 -110px;
-}
 
+
+/* 
 h3:after {
   margin: 5px 0 0 10px;
-} */
+} */ 
