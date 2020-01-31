@@ -8,83 +8,22 @@
   <title>My Google</title>
 </head>
 <body>
-  <nav class="nav">
-    <button class="nav__register">Register</button>
-    <button class="nav__login">Login</button>
-  </nav>
-
-  <h1 class="title">
-    <span class="title--blue">G</span>
-    <span class="title--red">o</span>
-    <span class="title--yellow">o</span>
-    <span class="title--blue">g</span>
-    <span class="title--green">l</span>
-  </h1>
-
-  <form class="login _login--hide">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Login</button>
-  </form>
-
-  <form class="register register--hide">
-    <input type="text" name="name" placeholder="name" required autocomplete="off">
-    <input type="text" name="surname" placeholder="surname" required autocomplete="off">
-    <input type="text" name="username" placeholder="username" required autocomplete="off">
-    <input type="password" name="password" placeholder="password" required autocomplete="off">
-    <button>Register</button>
-  </form>
-
-  <form class="search search--hide" >
-    <h2>Google</h2>
-    <input type="text" name="query" autocomplete="off" >
-    <button type="submit" >Search</button>
-  </form>
   
-  <ul class="results"></ul>
-
-
-  <form class="search-2 search search--hide" >
-    <h2>Ecosia</h2>
-    <input type="text" name="query" autocomplete="off" >
-    <button type="submit" >Search</button>
-  </form>
-  
-  <ul class="results-2 results"></ul>
-
-
-  <form class="search-3 search search--hide" >
-    <h2>Bing</h2>
-    <input type="text" name="query" autocomplete="off" >
-    <button type="submit" >Search</button>
-  </form>
-  
-  <ul class="results-3 results"></ul>
-
-
-  <form class="search-4 search search--hide" >
-    <h2>Yahoo</h2>
-    <input type="text" name="query" autocomplete="off" >
-    <button type="submit" >Search</button>
-  </form>
-  
-  <ul class="results-4 results"></ul>
-
-  
+  <main id='root'></main>
 
   <script src="utils/call.js"></script>
   <script src="utils/search.js"></script>
   
-
+  <script src="components/app.js"></script>
   <script src="components/login.js"></script>
   <script src="components/register.js"></script>
   <script src="components/search.js"></script>
   <script src="components/results.js"></script>
-  <script src="components/nav.js"></script>
+  <!-- <script src="components/nav.js"></script> -->
 
   <script src="data.js"></script>
 
-  <script src="logic/autenticate.js"></script>
+  <script src="logic/authenticate.js"></script>
   <script src="logic/googl.js"></script>
   <script src="logic/register.js"></script>
   <script src="logic/reset.js"></script>

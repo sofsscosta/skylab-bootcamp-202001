@@ -1,8 +1,8 @@
 'use strict';
 
-describe('googl', function () {
+describe('yahoo', function () {
     it('should succeed on matching query', function (done) {
-        googl('pepito', function (results) {
+        yahoo('pepito', function (results) {
             expect(results).toBeDefined();
             //expect(results).toHaveLength(8);
             expect(results.length).toBeGreaterThan(0);
@@ -21,7 +21,7 @@ describe('googl', function () {
     });
 
     it('should succeed on non-matching query returning an empty array', function (done) {
-        googl('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
+        yahoo('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
             expect(results).toBeDefined();
             expect(results).toHaveLength(0);
 
@@ -31,37 +31,37 @@ describe('googl', function () {
 
     it('should fail on non-string query', function () {
         expect(function () {
-            googl(undefined, function () { });
+            yahoo(undefined, function () { });
         }).toThrowError(TypeError, 'undefined is not a string');
 
         expect(function () {
-            googl(1, function () { });
+            yahoo(1, function () { });
         }).toThrowError(TypeError, '1 is not a string');
 
         expect(function () {
-            googl(true, function () { });
+            yahoo(true, function () { });
         }).toThrowError(TypeError, 'true is not a string');
 
         expect(function () {
-            googl({}, function () { });
+            yahoo({}, function () { });
         }).toThrowError(TypeError, '[object Object] is not a string');
     });
 
     it('should fail on non-function callback', function () {
         expect(function () {
-            googl('', undefined);
+            yahoo('', undefined);
         }).toThrowError(TypeError, 'undefined is not a function');
 
         expect(function () {
-            googl('', 1);
+            yahoo('', 1);
         }).toThrowError(TypeError, '1 is not a function');
 
         expect(function () {
-            googl('', true);
+            yahoo('', true);
         }).toThrowError(TypeError, 'true is not a function');
 
         expect(function () {
-            googl('', {});
+            yahoo('', {});
         }).toThrowError(TypeError, '[object Object] is not a function');
     });
 });
