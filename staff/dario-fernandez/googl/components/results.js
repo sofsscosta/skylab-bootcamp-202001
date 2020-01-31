@@ -1,10 +1,11 @@
 'use strict'
 
 
-function createResults(selector, results) {
-    var resultsList  = document.querySelector(selector)
-    resultsList.innerHTML = ''
-    results.forEach(function (element) {
+function Results(props) {
+    var list  = document.createElement('ul')
+    list.classList.add('list')
+    
+    props.results.forEach(function (element) {
         var resultItem = document.createElement('li')
         var title = document.createElement('h3')
         var link = document.createElement('a')
@@ -17,7 +18,7 @@ function createResults(selector, results) {
         if(element.rating) {
             rating.innerText = element.rating
         }
-        resultsList.appendChild(resultItem)
+        list.appendChild(resultItem)
         resultItem.appendChild(link)
         if(element.rating) {
             resultItem.appendChild(rating)
@@ -25,9 +26,6 @@ function createResults(selector, results) {
         resultItem.appendChild(description)
         link.appendChild(title)
     })
-
-    resultsList.toggle = function() {
-        this.classList.toggle('results--hide')
-    }
-    return results
+    
+    return list
 }

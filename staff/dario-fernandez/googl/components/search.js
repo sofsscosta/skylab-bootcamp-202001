@@ -1,12 +1,13 @@
 'use strict'
 
-function createSearch(selector, props) {
-    var search = document.querySelector(selector)
+function Search(props) {
+    var search = document.createElement('form')
+    search.classList.add('search')
 
-    search.toggle = function() {
-        this.classList.toggle('search--hide')
-    }
-
+    search.innerHTML = '<h1 class="search__title">Googl</h1>'
+        .concat('<input class="search__query" type="text" name="query" placeholder="Search...">')
+        .concat('<button class="search__submit" type="submit">Search</button>')
+    
     search.addEventListener('submit', function(event) {
         event.preventDefault()
 
@@ -14,5 +15,6 @@ function createSearch(selector, props) {
 
         props.onSubmit(query)
     })
+ 
     return search
 }
