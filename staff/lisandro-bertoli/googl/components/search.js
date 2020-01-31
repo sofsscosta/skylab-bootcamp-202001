@@ -4,7 +4,7 @@ function Search(props) {
     var search = document.createElement('form');
     search.classList.add('search');
 
-    search.innerHTML = '<h2>' + props.title + '</h2>'
+    search.innerHTML = '<h2 class="search__title">' + props.title + '</h2>'
         .concat(' <input class="search__input" type="text" name="query">')
         .concat('<button class="button" type="submit">Search</button>')
         .concat('<button class="button button__logout button--danger">Logout</button>');

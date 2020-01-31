@@ -8,7 +8,7 @@ function Results(props) {
 
     props.results.forEach(function (result) {
         var item = document.createElement('li');
-
+        item.classList.add('results__item')
         var title = document.createElement('h3');
         title.innerText = result.title;
 
