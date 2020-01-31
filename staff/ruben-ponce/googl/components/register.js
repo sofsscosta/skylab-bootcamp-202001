@@ -2,8 +2,8 @@
 
 var IT = '🎈🤡';
 
-function registerUser(idClass, onSubmit, onToLogin) {
-    var register = document.querySelector('.' + idClass);
+function createRegister(selector, props) {
+    var register = document.querySelector(selector);
 
     register.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -15,11 +15,11 @@ function registerUser(idClass, onSubmit, onToLogin) {
 
         // users.push(user);
 
-        onSubmit(name,surname,username,password);
+        props.onSubmit(name,surname,username,password);
     }); 
 
     register.toggle = function () {
-        this.classList.toggle('registerTemplate');
+        this.classList.toggle('register--hide');
     }
 
     var login = register.querySelector('a');
@@ -27,7 +27,7 @@ function registerUser(idClass, onSubmit, onToLogin) {
     login.addEventListener('click', function(event) {
         event.preventDefault();
 
-        onToLogin();
+        props.onToLogin();
     });
 
     return register;

@@ -21,10 +21,6 @@
                 <li class="content__nav__li"><a href="https://www.google.es/imghp?hl=es&tab=ri&ogbl">Imagenes</a></li>
                 <li class="content__nav__li"><a href="#">APPS</a></li>
                 <li class="content__nav__li"><a class="content__nav__li__count" href="#">COUNT</a></li>
-                <div class="buttonContent">
-                    <li class="content__nav__li buttonContent__login"><a href="">Login</a></li>
-                    <li class="content__nav__li buttonContent__signin"><a href="">Signin</a></li> 
-                </div>
             </ul> 
 
         </div>
@@ -69,7 +65,7 @@
         <ul class="results4"></ul>
 
 
-        <form class="registerTemplate registerTemplate--hide">
+        <form class="register register--hide">
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="surname" placeholder="Surname">
             <input type="text" name="username" placeholder="User name">
@@ -95,21 +91,24 @@
 
     </div>
 
-    <script src="components/register.js"></script>
-    <script src="components/login.js"></script>
-    <script src="components/results.js"></script>
-    <script src="components/search.js"></script>
-
-    <script src="main.js"></script>
-
+    <!-- <script src="utils/spy.js"></script> -->
     <script src="utils/call.js"></script>
     <script src="utils/search.js"></script>
-
-    <script src="logic/googl.js"></script>
-    <script src="logic/yahoo.js"></script>
-    <script src="logic/bing.js"></script>
-    <script src="logic/ecosia.js"></script>
-    
+  
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
+  
     <script src="data.js"></script>
+  
+    <script src="logic/googl.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/yahoo.js"></script>
+    <script src="logic/register.js"></script>
+    <script src="logic/authenticate.js"></script>
+    
+    <script src="main.js"></script>
 </body>
 </html>

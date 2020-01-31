@@ -1,14 +1,17 @@
 'use strict'
 
 function createSearch(selector, callback) {
-    var searchForm = document.querySelector(selector);
+    var search = document.querySelector(selector);
 
-    searchForm.addEventListener('submit', function (event) {
+    search.addEventListener('submit', function (event) {
         event.preventDefault();
 
         var query = this.query.value;
 
-        callback(query);
+        props.onSubmit(query);
     });
-    return searchForm;
+    search.toggle = function() {
+        this.classList.toggle('search--hide');
+    };
+    return search;
 }

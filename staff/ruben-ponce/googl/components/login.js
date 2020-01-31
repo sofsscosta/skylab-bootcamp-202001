@@ -1,7 +1,7 @@
 'use strict'
 
-function createLogin(idClass, onSubmit, onToRegister) {
-    var login = document.querySelector('.' + idClass);
+function createLogin(selector, props) {
+    var login = document.querySelector(selector);
 
     login.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -9,21 +9,19 @@ function createLogin(idClass, onSubmit, onToRegister) {
         var username = this.username.value;
         var password = this.password.value;
 
-        onSubmit(username, password);
+        props.onSubmit(username, password);
     });
 
     login.toggle = function () {
         this.classList.toggle('login--hide');
     };
 
-    var buttonLogin = document.querySelector('.buttonContent__login');
+    var register = login.querySelector('a');
 
-    buttonLogin.addEventListener('click', function (event) {
+    register.addEventListener('click', function(event) {
         event.preventDefault();
-        // buttonContent.classList.toggle('buttonContent--hide');
-        // document.getElementsByClassName("login")[0].classList.remove('login--hide');
 
-    onToRegister();
+        props.onToRegister();
 });
     return login;
 }

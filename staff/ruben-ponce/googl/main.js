@@ -1,57 +1,39 @@
 var users = [];
 
-var login = createLogin('login', function(username, password) { 
-    if (users.length > 0) {
-        for ( var i = 0; i < users.length; i++) {
-            var user = users[i];
-            if (user.username.includes(username) && password === user.password) {
-                _googl.toggle();
-                _yahoo.toggle();
-                _bing.toggle()
-                _ecosia.toggle();
-                login.toggle();
-                return;
-            }
+var _login = createLogin('form.login', {
+    onSubmit: function (username, password) {
+        try {
+            authenticate(username, password);
+            _login.toggle();
+            _googl.toggle();
+            _ecosia.toggle();
+            _bing.toggle();
+            _yahoo.toggle();
+        } catch (error) {
+            alert(error.message + ' ' + IT);
         }
-        alert("incorrect username/pass");
-    } else {
-        alert('please register first');
+    }, 
+    onToRegister: function () {
+        _login.toggle();
+        _register.toggle();
     }
-}, function () {
-    login.toggle();
-    finishRegister.toggle();
 });
 
-var buttonContent = document.querySelector('div.buttonContent');
-var buttonSignin = document.querySelector('.buttonContent__signin');
-var registerTemplate = document.querySelector('.registerTemplate');
+var _register = createRegister('form.register', {
+    onSubmit: function (name, surname, username, password) {
+        try {
+            register(name, surname, username, password);
 
-
-
-buttonSignin.addEventListener('click', function (event) {
-    event.preventDefault();
-    buttonContent.classList.toggle('buttonContent--hide');
-    document.getElementsByClassName("registerTemplate")[0].classList.remove('registerTemplate--hide');
-});
-
-var finishRegister = registerUser('registerTemplate', function(name, surname, username, password) {
-    try {
-        register(name, surname, username, password);
-
-        finishRegister.toggle();
-        login.toggle();
-    } catch (error) {
-        alert(error.message + ' ' + IT);
+            _register.toggle();
+            _login.toggle();
+        } catch (error) {
+            alert(error.message + ' ' + IT);
+        }
+    }, 
+    onToLogin: function () {
+        _register.toggle();
+        _login.toggle();
     }
-    // if (user.name && user.surname && user.username && user.password) {
-    //     document.querySelector('.registerTemplate').classList.toggle('registerTemplate--hide');
-    //     document.querySelector('.buttonContent').classList.remove('buttonContent--hide');
-    // } else {
-    //     alert("You have to fill all shields");
-    // }
-}, function () {
-    finishRegister.toggle();
-    login.toggle();
 });
 
 var home = document.querySelector('h1');
