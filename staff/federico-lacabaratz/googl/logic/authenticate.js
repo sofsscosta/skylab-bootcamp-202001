@@ -6,6 +6,6 @@ function authenticate(username, password) {
 
     var user = users.find(function (user) { return user.username === username; });
     
-    if (!user || user.password !== password) throw new Error('Wrong credentials, you cannot get in! ');
+    if (!user || user.password !== password) throw new Error('Wrong credentials ');
 };
 

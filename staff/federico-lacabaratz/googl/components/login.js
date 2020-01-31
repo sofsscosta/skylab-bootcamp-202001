@@ -2,11 +2,14 @@
 
 function Login(props) {
     var login = document.createElement('form');
-    login.classList.add('login')
+
+    Interactive.call(this, login);
+
+    login.classList.add('login');
 
     login.innerHTML = '<h2>Sign-in</h2>'
-        .concat('<input type="text" name="username" placeholder="username" required autocomplete="off">')
-        .concat('<input type="password" name="password" placeholder="password" required autocomplete="off">')
+        .concat('<input type="text" name="username" placeholder="username" autocomplete="off">')
+        .concat('<input type="password" name="password" placeholder="password" autocomplete="off">')
         .concat('<button>Login</button>')
         .concat('<a href="">Register</a>');
 
@@ -26,6 +29,13 @@ function Login(props) {
 
         props.onToRegister();
     });
+};
 
-    return login;
+Login.prototype = Object.create(Interactive.prototype);
+Login.prototype.constructor = Login;
+
+Login.prototype.__locateFeedbackInContainer__ = function(feedback) {
+    var button = this.container.querySelector('button'); //?
+
+    this.container.insertBefore(feedback.container, button);
 };

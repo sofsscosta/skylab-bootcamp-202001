@@ -2,13 +2,16 @@
 
 function Register(props) {
     var register = document.createElement('form');
+
+    Interactive.call(this, register);
+
     register.classList.add('register');
 
     register.innerHTML = '<h2>Sign-up</h2>'
-        .concat('<input type="text" name="name" placeholder="name" required autocomplete="off">')
-        .concat('<input type="text" name="surname" placeholder="surname" required autocomplete="off">')
-        .concat('<input type="text" name="username" placeholder="username" required autocomplete="off">')
-        .concat('<input type="password" name="password" placeholder="password" required autocomplete="off">')
+        .concat('<input type="text" name="name" placeholder="name" autocomplete="off">')
+        .concat('<input type="text" name="surname" placeholder="surname" autocomplete="off">')
+        .concat('<input type="text" name="username" placeholder="username" autocomplete="off">')
+        .concat('<input type="password" name="password" placeholder="password" autocomplete="off">')
         .concat('<button>Register</button>')
         .concat('<a href="">Login</a>');
 
@@ -31,7 +34,13 @@ function Register(props) {
 
         props.onToLogin();
     });
-
-    return register;
 };
 
+Register.prototype = Object.create(Interactive.prototype);
+Register.prototype.constructor = Register;
+
+Register.prototype.__locateFeedbackInContainer__ = function(feedback) {
+    var input = this.container.querySelector('input'); //?
+
+    this.container.insertBefore(feedback.container, input);
+};
