@@ -1,6 +1,6 @@
 'use strict'
 
-function createSearch(selector, callback) {
+function createSearch(selector, props) {
     var search = document.querySelector(selector)
 
     search.toggle = function() {
@@ -12,7 +12,7 @@ function createSearch(selector, callback) {
 
         var query = this.query.value
 
-        callback(query)
+        props.onSubmit(query)
     })
     return search
 }

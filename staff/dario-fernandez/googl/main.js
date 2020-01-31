@@ -1,14 +1,16 @@
 'use strict'
 
-var _search = createSearch('.search', function(query) {
-    googl(query, function(results) {
-        if(results instanceof Error) {
-            alert('Network error')
-        } else {
-            createResults('.results', results)
-        }
-        
-    })
+var _googl = createSearch('.search', {
+    onSubmit: function(query){
+        googl(query, function(results) {
+            if(results instanceof Error) {
+                alert('Network error')
+            } else {
+                createResults('.results', results)
+            }
+            
+        })
+    } 
 })
 
 var _login = createLogin('.login', {
@@ -17,7 +19,7 @@ var _login = createLogin('.login', {
             authenticate(username, password)
 
             _login.toggle()
-            _search.toggle()
+            _googl.toggle()
         } catch {
             alert('Wrong username or password. Please try again or register.')
         }

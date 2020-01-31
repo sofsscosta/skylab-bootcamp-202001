@@ -4,11 +4,6 @@
 function createResults(selector, results) {
     var resultsList  = document.querySelector(selector)
     resultsList.innerHTML = ''
-    var resultItem = document.createElement('li')
-    var title = document.createElement('h3')
-    var link = document.createElement('a')
-    var rating = document.createElement('span')
-    var description = document.createElement('p')
     results.forEach(function (element) {
         var resultItem = document.createElement('li')
         var title = document.createElement('h3')
