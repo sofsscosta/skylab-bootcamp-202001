@@ -1,0 +1,382 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  list-style: none;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+select,
+[type=button] {
+  text-transform: none;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  background-color: transparent;
+}
+
+.fas {
+  font-size: 2rem;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 0.2px solid grey;
+}
+.head__body {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+}
+.head__logo-nike {
+  padding: 20px;
+}
+.head__menu-small {
+  padding: 20px;
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+}
+.head__menu-nav {
+  display: inline-flex;
+}
+.head__extra {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  width: 100vw;
+  height: 6vh;
+}
+.head__extra-corporative > ul, .head__extra-user > ul {
+  display: flex;
+  height: 100%;
+}
+.head__extra-corporative > ul > li, .head__extra-user > ul > li {
+  font-size: 1.5rem;
+  padding: 8px 28px;
+}
+.head__extra-corporative > ul > li {
+  border-right: 1px solid grey;
+}
+.head__menu-big {
+  margin-right: 20vw;
+}
+.head__menu-big > ul {
+  display: flex;
+  margin: 25px 20px;
+  margin-top: 33px;
+}
+.head__menu-big > ul > li {
+  font-size: 2rem;
+  margin-right: 20px;
+}
+.head__menu-big > ul > li > input {
+  height: 30px;
+  width: 200px;
+}
+.head__footer {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  width: 100vw;
+  height: 8vh;
+}
+.head__footer-content {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 12.5%;
+}
+.head__footer-content-promotion {
+  font-size: 2rem;
+  margin-top: 2vh;
+}
+.head__footer-content-arrow-left, .head__footer-content-arrow-right {
+  margin-top: 10px;
+}
+
+.fas {
+  font-size: 2rem;
+}
+
+.results__header {
+  height: 7rem;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.results__header-filter {
+  margin: 10px;
+}
+.results__header-title {
+  margin-left: 25px;
+}
+
+.product {
+  width: 49.5%;
+  margin-bottom: 65px;
+}
+.product__name {
+  font-size: 2.5rem;
+  margin: 5px;
+}
+.product__especification {
+  font-size: 2rem;
+  margin: 5px;
+}
+.product__price {
+  font-size: 2rem;
+  margin: 5px;
+}
+
+.product > img {
+  width: 100%;
+}
+
+.results__products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.filter__list {
+  border-top: 1px solid grey;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+.filter__list-title {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.filter__list-title > p, .filter__list-title > button {
+  font-size: 2rem;
+}
+.filter__list-options {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.filter__list-options > il {
+  margin-bottom: 6px;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.filter__color {
+  border-top: 1px solid grey;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+.filter__color-title {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.filter__color-title > p, .filter__color-title > button {
+  font-size: 2rem;
+}
+.filter__color-options {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20rem;
+}
+.filter__color-options > li {
+  margin: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: blue;
+}
+
+.fas {
+  font-size: 2rem;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  background-color: black;
+  padding: 10px;
+}
+.footer__map, .footer__faqs, .footer__social, .footer__location, .footer__legal {
+  margin: 10px;
+}
+
+.footer__social-media > ul {
+  display: flex;
+  color: grey;
+}
+
+.fab {
+  margin: 5px;
+  font-size: 3rem;
+}
+
+.footer__list {
+  font-size: 100px;
+}
+
+.footer__location {
+  margin: 15px;
+  font-size: 2rem;
+}
+
+.footer__legal > ul > li {
+  margin: 5px;
+  color: grey;
+  font-size: 2rem;
+}
+
+.footer__map > ul > li {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.footer__faqs > ul > li {
+  margin-top: 60px;
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .head__extra, .head__menu-big {
+    display: flex;
+  }
+
+  .head__menu-small {
+    display: none;
+  }
+
+  .head__logo-nike {
+    margin-top: 13px;
+  }
+
+  .head__footer {
+    display: flex;
+  }
+
+  .product {
+    width: 30%;
+  }
+
+  .results {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+  }
+  .results__header {
+    grid-column: 1/span 5;
+  }
+  .results__filter {
+    grid-column: 1/span 1;
+  }
+  .results__products {
+    grid-column: 2/span 4;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer__list {
+    display: flex;
+    width: 75vw;
+  }
+
+  .footer__faqs > ul {
+    margin-top: 9px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__faqs > ul > li {
+    width: 150px;
+    margin-right: 10vw;
+    margin-top: 0;
+  }
+
+  .footer__map {
+    width: 20vw;
+  }
+
+  .footer__social {
+    width: 20vw;
+  }
+
+  .footer__extra {
+    border-top: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+  }
+
+  .footer__legal {
+    width: 25vw;
+  }
+  .footer__legal > ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer__legal > ul > li {
+    margin-right: 20px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .head__extra, .head__menu-big {
+    display: none;
+  }
+
+  .head__menu-small {
+    display: flex;
+  }
+
+  .head__logo-nike {
+    margin-top: 0;
+  }
+
+  .head__footer {
+    display: none;
+  }
+
+  .results__filter {
+    display: none;
+  }
+
+  .footer__list, .footer__social {
+    width: 100vw;
+  }
+
+  .footer__extra {
+    width: 100vw;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
