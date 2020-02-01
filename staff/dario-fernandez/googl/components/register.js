@@ -4,6 +4,8 @@ function Register(props) {
     var register = document.createElement('form')
     register.classList.add('register')
 
+    this.container = register
+
     register.innerHTML = '<h1 class="register__title">Googl</h1>'
         .concat('<input type="text" name="name" class="register__name">')
         .concat('<input type="text" name="surname" class="register__surname">')
@@ -35,7 +37,18 @@ function Register(props) {
     loginLink.addEventListener('click', function(event) {
         event.preventDefault()
 
-        props.onLoginClick()
+        props.onToLogin()
     })
-    return register
+}
+
+Register.prototype.showError = function(error) {
+    var feedback = Feedback({ level: 'error', message: error })
+
+    var button = this.container.querySelector('button')
+
+    this.container.insertBefore(feedback, button)
+
+    setTimeout(function() {
+        this.removeChild(feedback)
+    }.bind(this.container), 3000)
 }
