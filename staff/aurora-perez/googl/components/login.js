@@ -1,6 +1,6 @@
 'use strict'
 
-function Login(props) {
+function Login(props) { 
     var login = document.createElement('form');
 
     Interactive.call(this, login);
@@ -13,7 +13,7 @@ function Login(props) {
         .concat('<button>Login</button>')
         .concat('<a href="">Register</a>');
 
-    login.addEventListener('submit', function(event) {
+    login.addEventListener('submit', function(event) { 
         event.preventDefault();
 
         var username = this.username.value;

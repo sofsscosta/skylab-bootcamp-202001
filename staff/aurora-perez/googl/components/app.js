@@ -1,13 +1,13 @@
 "use strict"
 
-function App (props) {
+function App (props) { 
 	var app = document.createElement('main');
 
     Component.call(this, app);
 	
 	app.innerHTML = props.title;
 
-	var _login = new Login({
+	var _login = new Login({ 
 		onSubmit : function (username, password){
 			try {
 				authenticate (username, password);
@@ -114,7 +114,7 @@ function App (props) {
                     var _results = Results({ results: results });
         
                     if(!_bingResults) {
-                        app.insertBefore(_ecosiaResults = _results, _bing.container);
+                        app.insertBefore(_ecosiaResults = _results, _yahoo.container);
                     } else {
                         _bingResults.replaceWith(_results);
                         _bingResults = _results;
@@ -142,7 +142,7 @@ function App (props) {
                     var _results = Results({ results: results });
         
                     if(!_yahooResults) {
-                        app.insertBefore(_yahooResults = _results, _bing.container);
+                        app.append(_yahooResults = _results);
                     } else {
                         _yahooResults.replaceWith(_results);
                         _yahooResults = _results;
