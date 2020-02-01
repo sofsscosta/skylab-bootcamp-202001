@@ -28,18 +28,18 @@ describe('authenticate', function () {
         it('should fail on incorrect credentials', function () {
             expect(function () {
                 authenticate(user.username, user.password + '-wrong');
-            }).toThrowError(Error, 'Wrong credentials, you cannot get in! ');
+            }).toThrowError(Error, 'Wrong credentials ');
 
             expect(function () {
                 authenticate(user.username + '-wrong', user.password);
-            }).toThrowError(Error, 'Wrong credentials, you cannot get in! ');
+            }).toThrowError(Error, 'Wrong credentials ');
         });
     });
 
     it('should fail when user does not exist', function () {
         expect(function () {
             authenticate(user.username, user.password);
-        }).toThrowError(Error, 'Wrong credentials, you cannot get in! ');
+        }).toThrowError(Error, 'Wrong credentials ');
     });
 
     afterEach(function () {
