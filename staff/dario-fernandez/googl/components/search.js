@@ -4,7 +4,7 @@ function Search(props) {
     var search = document.createElement('form')
     search.classList.add('search')
 
-    this.container = search
+    Interactive.call(this, search)
 
     search.innerHTML = '<h1 class="search__title">Googl</h1>'
         .concat('<input class="search__query" type="text" name="query" placeholder="Search...">')
@@ -19,14 +19,11 @@ function Search(props) {
     })
  }
 
- Search.prototype.showWarning = function(error) {
-     var feedback = Feedback({ level: 'warning', message: error })
+Search.prototype = Object.create(Interactive.prototype)
+Search.prototype.constructor = Search
 
-     var button = this.container.querySelector('button')
+Search.prototype.__locateFeedbackInContainer__ = function(feedback) {
+    var button = this.container.querySelector('button')
 
-     this.container.insertBefore(feedback, button)
-
-     setTimeout(function(){
-        this.removeChild(feedback)
-     }.bind(this.container), 3000)
- }
+    this.container.insertBefore(feedback, button)
+}

@@ -4,7 +4,7 @@ function Register(props) {
     var register = document.createElement('form')
     register.classList.add('register')
 
-    this.container = register
+    Interactive.call(this, register)
 
     register.innerHTML = '<h1 class="register__title">Googl</h1>'
         .concat('<input type="text" name="name" class="register__name">')
@@ -41,14 +41,11 @@ function Register(props) {
     })
 }
 
-Register.prototype.showError = function(error) {
-    var feedback = Feedback({ level: 'error', message: error })
+Register.prototype = Object.create(Interactive.prototype)
+Register.prototype.constructor = Register
 
+Register.prototype.__locateFeedbackInContainer__ = function(feedback) {
     var button = this.container.querySelector('button')
 
     this.container.insertBefore(feedback, button)
-
-    setTimeout(function() {
-        this.removeChild(feedback)
-    }.bind(this.container), 3000)
 }

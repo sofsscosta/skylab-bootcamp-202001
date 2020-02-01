@@ -4,6 +4,8 @@
 function Results(props) {
     var list  = document.createElement('ul')
     list.classList.add('list')
+
+    Component.call(this, list)
     
     props.results.forEach(function (element) {
         var resultItem = document.createElement('li')
@@ -26,6 +28,7 @@ function Results(props) {
         resultItem.appendChild(description)
         link.appendChild(title)
     })
-    
-    return list
 }
+
+Results.prototype = Object.create(Component.prototype)
+Results.prototype.constructor = Results

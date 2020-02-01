@@ -2,8 +2,8 @@
 
 function Login(props) {
     var login = document.createElement('form')
-    
-    this.container = login
+
+    Interactive.call(this, login)
     
     login.classList.add('login')
 
@@ -31,14 +31,11 @@ function Login(props) {
     })
 }
 
-Login.prototype.showError = function(error) {
-    var feedback = Feedback({ level: 'error', message: error })
+Login.prototype = Object.create(Interactive.prototype)
+Login.prototype.constructor = Login
 
+Login.prototype.__locateFeedbackInContainer__ = function(feedback) {
     var button = this.container.querySelector('button')
 
     this.container.insertBefore(feedback, button)
-
-    setTimeout(function() {
-        this.removeChild(feedback);
-    }.bind(this.container), 3000);
 }
