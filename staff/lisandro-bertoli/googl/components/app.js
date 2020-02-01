@@ -17,7 +17,7 @@ function App(props) {
             try {
                 authenticate(username, password);
                 _login.container.reset();
-                _login.container.replaceWith(_google);
+                _login.container.replaceWith(_google.container);
 
             } catch (error) {
                 if (error instanceof TypeError) return alert('Something went wrong, try again later');
@@ -52,11 +52,18 @@ function App(props) {
         }
     });
 
-    var _google = Search({
+    var _google = new Search({
         title: 'Googl',
 
         onSubmit: function (query) {
             googl(query, function (results) {
+                if (results instanceof Error)
+                    //return alert(results.message + ' ' + IT);
+                    return _google.showError(results.message);
+
+                if (!results.length)
+                    return _google.showWarning('No results');
+
                 var _results = Results({ results: results });
 
                 if (!_previousResults) {
@@ -74,7 +81,7 @@ function App(props) {
 
         onLogout: function () {
             document.querySelector('.results').remove();
-            _google.replaceWith(_login.container);
+            _google.container.replaceWith(_login.container);
 
         }
 

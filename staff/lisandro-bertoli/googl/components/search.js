@@ -2,6 +2,9 @@
 
 function Search(props) {
     var search = document.createElement('form');
+
+    Interactive.call(this, search);
+
     search.classList.add('search');
 
     search.innerHTML = '<h2 class="search__title">' + props.title + '</h2>'
@@ -26,5 +29,11 @@ function Search(props) {
         props.onLogout();
     });
 
-    return search;
+}
+
+Search.prototype = Object.create(Interactive.prototype);
+Search.prototype.constructor = Search;
+
+Search.prototype.__locateFeedbackContainer__ = function (feedback) {
+    this.container.insertBefore(feedback.container, null);
 }
