@@ -4,12 +4,10 @@
   font-family: "Arial";
 }
 
-.register > button, .register > input, .login > input, .search > * {
+.register > button, .register > input, .login > input, .search > button, .search > input {
   border-radius: 1em;
-  text-align: center;
   height: 2em;
   margin-bottom: 3%;
-  background-color: #f5f4f4;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -53,12 +51,10 @@ h2 {
   font-family: "Arial";
 }
 
-.register > button, .register > input, .login > input, .search > * {
+.register > button, .register > input, .login > input, .search > button, .search > input {
   border-radius: 1em;
-  text-align: center;
   height: 2em;
   margin-bottom: 3%;
-  background-color: #f5f4f4;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -70,12 +66,10 @@ h2 {
   font-family: "Arial";
 }
 
-.register > button, .register > input, .login > input, .search > * {
+.register > button, .register > input, .login > input, .search > button, .search > input {
   border-radius: 1em;
-  text-align: center;
   height: 2em;
   margin-bottom: 3%;
-  background-color: #f5f4f4;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -91,18 +85,6 @@ h2 {
 }
 .search--hide {
   display: none;
-}
-.search > h2 {
-  font-size: 2em;
-}
-.search > h2.ecosia {
-  color: red;
-}
-.search > h2.bing {
-  color: #116800;
-}
-.search > h2.yahoo {
-  color: #00425c;
 }
 .search > input {
   padding-left: 2%;
@@ -128,12 +110,10 @@ h2 {
   font-family: "Arial";
 }
 
-.register > button, .register > input, .login > input, .search > * {
+.register > button, .register > input, .login > input, .search > input, .search > button {
   border-radius: 1em;
-  text-align: center;
   height: 2em;
   margin-bottom: 3%;
-  background-color: #f5f4f4;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -165,12 +145,10 @@ ul > li > p {
   font-family: "Arial";
 }
 
-.register > button, .register > input, .login > input, .search > * {
+.register > button, .register > input, .login > input, .search > input, .search > button {
   border-radius: 1em;
-  text-align: center;
   height: 2em;
   margin-bottom: 3%;
-  background-color: #f5f4f4;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -188,6 +166,7 @@ ul > li > p {
   width: 55%;
   margin-left: 22.5%;
   margin-bottom: 3%;
+  text-align: center;
 }
 .login > h2 {
   font-size: 3vw;
@@ -228,12 +207,10 @@ ul > li > p {
   font-family: "Arial";
 }
 
-.register > button, .register > input, .search > *, .login > input {
+.register > button, .register > input, .search > input, .search > button, .login > input {
   border-radius: 1em;
-  text-align: center;
   height: 2em;
   margin-bottom: 3%;
-  background-color: #f5f4f4;
   display: flex;
   justify-content: center;
   font-size: 0.9em;
@@ -259,6 +236,7 @@ ul > li > p {
 .register > input {
   width: 95%;
   margin-left: 2.5%;
+  text-align: center;
 }
 .register > button {
   width: 40%;
@@ -276,6 +254,17 @@ ul > li > p {
   align-items: center;
   background-color: #0066ff;
   color: white;
+}
+
+.feedback {
+  font-weight: bolder;
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
 }
 
 /*# sourceMappingURL=style.css.map */

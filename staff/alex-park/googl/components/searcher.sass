@@ -11,32 +11,18 @@
     &--hide
         display: none
 
-    & > *
-        @extend %item-border
-
-    & > h2 
-        font-size: 2em
-
-        &.ecosia
-            color: red
-        
-        &.bing
-            color: #116800
-
-        &.yahoo
-            color: #00425c
-
     & > input
+        @extend %item-border
         padding-left: 2%
         width: 90%
         text-align: left
 
     & > button
+        @extend %item-border
         width: 40%
         background-color: #1bb12f
         color: white
         cursor: pointer
-
 
         &:hover
             background-color: #148824   

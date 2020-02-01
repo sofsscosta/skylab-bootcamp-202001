@@ -2,57 +2,66 @@
 
 function App(props) {
     var app = document.createElement('main');
+    
+    Component.call(this, app);
+
     app.innerHTML = '<h1>' + props.title + '</h1>';
 
-    var _login = Login({
+    var _login = new Login({
         onSubmit: function (username, password) {
             try {
                 authenticate(username, password);
         
-                _login.replaceWith(_googl);
-                app.append(_ecosia);
-                app.append(_bing);
-                app.append(_yahoo);
+                _login.container.replaceWith(_googl.container);
+                app.append(_ecosia.container);
+                app.append(_bing.container);
+                app.append(_yahoo.container);
                 
             } catch (error) {
-                alert(error.message);
+                _login.showError(error.message);
             }
-    
         },
     
         onToRegister: function () {
-            _login.replaceWith(_register);
+            _login.container.replaceWith(_register.container);
         }
     });
+
+    app.append(_login.container);
     
-    var _register = Register({
+    var _register = new Register({
         onSubmit: function (name, surname, username, password) {
         try {
             register(name, surname, username, password);
-            _register.replaceWith(_login);
+            _register.container.replaceWith(_login.container);
     
         } catch (error) {
-            alert(error.message);
+            _register.showError(error.message);
         }
     }, 
         onToLogin: function (){
-            _register.replaceWith(_login);
+            _register.container.replaceWith(_login.container);
         }
     });
     
-    app.append(_login);
     
-    var _googl = Search({
+    var _googl = new Search({
         title: 'Googl',
         
         onSubmit: function(query) {
             googl(query, function(results) {
-                if (results instanceof Error) return alert(results.message);
+                if (results instanceof Error) {
+                    return _googl.showError(results.message);
+                }
+
+                if (!results.length) {
+                    return _googl.showWarning('No results :^(')
+                };
     
                 var _results = Results({ results: results });
     
                 if(!_googlResults) {
-                    app.insertBefore(_googlResults = _results, _ecosia);
+                    app.insertBefore(_googlResults = _results, _ecosia.container);
                 } else {
                     _googlResults.replaceWith(_results);
                     _googlResults = _results;
@@ -63,17 +72,23 @@ function App(props) {
     
     var _googlResults;
     
-    var _ecosia = Search({
+    var _ecosia = new Search({
         title: 'Ecosia',
         
         onSubmit: function(query) {
             ecosia(query, function(results) {
-                if (results instanceof Error) return alert(results.message);
+                if (results instanceof Error) {
+                    return _ecosia.showError(results.message);
+                };
+
+                if (!results.length) {
+                    return _ecosia.showWarning('No results :^(')
+                }
     
                 var _results = Results({ results: results });
     
                 if(!_ecosiaResults) {
-                    app.insertBefore(_ecosiaResults = _results, _bing);
+                    app.insertBefore(_ecosiaResults = _results, _bing.container);
                 } else {
                     _ecosiaResults.replaceWith(_results);
                     _ecosiaResults = _results;
@@ -84,17 +99,23 @@ function App(props) {
     
     var _ecosiaResults;
     
-    var _bing = Search({
+    var _bing = new Search({
         title: 'Bing',
         
         onSubmit: function(query) {
             bing(query, function(results) {
-                if (results instanceof Error) return alert(results.message);
+                if (results instanceof Error) {
+                    return _bing.showError(results.message);
+                };
+
+                if (!results.length) {
+                    return _bing.showWarning('No results :^(');
+                };
     
                 var _results = Results({ results: results });
     
                 if(!_bingResults) {
-                    app.insertBefore(_bingResults = _results, _yahoo);
+                    app.insertBefore(_bingResults = _results, _yahoo.container);
                 } else {
                     _bingResults.replaceWith(_results);
                     _bingResults = _results;
@@ -105,12 +126,18 @@ function App(props) {
     
     var _bingResults;
     
-    var _yahoo = Search({
+    var _yahoo = new Search({
         title: 'Yahoo',
         
         onSubmit: function(query) {
             yahoo(query, function(results) {
-                if (results instanceof Error) return alert(results.message);
+                if (results instanceof Error) {
+                    return _yahoo.showError(results.message);
+                };
+
+                if (!results.length) {
+                    return _yahoo.showWarning('No results :^(');
+                };
     
                 var _results = Results({ results: results });
     
@@ -125,6 +152,7 @@ function App(props) {
     });
     
     var _yahooResults;
-
-    return app;
 };
+
+App.prototype = Object.create(Component.prototype);
+App.prototype.constructor = App;

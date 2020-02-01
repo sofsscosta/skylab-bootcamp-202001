@@ -2,6 +2,9 @@
 
 function Register(props) {
     var register = document.createElement('form');
+
+    Interactive.call(this, register);
+
     register.classList.add('register');
 
     register.innerHTML = "<p>Sign-up</p>" 
@@ -30,6 +33,13 @@ function Register(props) {
 
         props.onToLogin();
     }); 
-
-    return register;
 }
+
+Register.prototype = Object.create(Interactive.prototype);
+Register.prototype.constructor = Register;
+
+Register.prototype.__locateFeedbackInContainer__ = function(feedback) {
+    var input = this.container.querySelector('input');
+
+    this.container.insertBefore(feedback.container, input);
+};
