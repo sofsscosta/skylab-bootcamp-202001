@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Robot, sans-serif;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.link {
+  margin-top: 0.5rem;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type=text], input[type=password] {
+  padding-left: 0.5rem;
+}
+
+.button {
+  background-color: lightgrey;
+  width: 40%;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: solid 0.5px grey;
+  color: black;
+  margin: 0.5rem auto;
+  background-color: blue;
+}
+.button__logout {
+  height: 1.5rem;
+  width: 20%;
+}
+.button--correct {
+  background-color: green;
+  color: white;
+}
+.button--danger {
+  background-color: red;
+  color: white;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 80%;
+  border-radius: 1rem;
+  margin: 0 auto;
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+.register--hide {
+  display: none;
+}
+.register__input {
+  height: 8%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 80%;
+  border-radius: 1rem;
+  margin: 0 auto;
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+.login__input {
+  height: 8%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  width: 80%;
+  border-radius: 1rem;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+.search__input {
+  height: 20%;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+}
+.search__title {
+  margin: 0.5rem auto;
+}
+
+.results {
+  text-align: left;
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--warning {
+  color: orange;
+}
+.feedback--error {
+  color: red;
+}
+
+/*# sourceMappingURL=style.css.map */
