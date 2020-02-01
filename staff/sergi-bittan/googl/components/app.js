@@ -72,22 +72,22 @@ function App(props){
 }
   
 
-var _ecosia = createSearch("search-2", function(query){
-  ecosia(query, function(results){
-    createResults(".results-2", results);
-  });
-});
+// var _ecosia = createSearch("search-2", function(query){
+//   ecosia(query, function(results){
+//     createResults(".results-2", results);
+//   });
+// });
 
-var _bing = createSearch("search-3", function(query){
-  bing(query, function(results){
-    createResults(".results-3", results);
-  });
-});
+// var _bing = createSearch("search-3", function(query){
+//   bing(query, function(results){
+//     createResults(".results-3", results);
+//   });
+// });
 
 
-var _yahoo = createSearch("search-4", function(query){
-  yahoo(query, function(results){
-    createResults(".results-4", results);
-  });
-});
+// var _yahoo = createSearch("search-4", function(query){
+//   yahoo(query, function(results){
+//     createResults(".results-4", results);
+//   });
+// });
 
