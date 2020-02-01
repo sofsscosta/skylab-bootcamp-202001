@@ -54,14 +54,25 @@ function App(props) {
                 if (!vehicles.length)
                     return _search.showWarning('No results ' + IT);
 
-                var __results = Results({ results: vehicles });
+                var __results = new Results({ results: vehicles, onClick: function(id) {
+                    // TODO: CHECK THE CONTAINER, LIST, ETC.
+                    retrieveVehicle(id, function(details) {
+                        var detailedVehicle = new Details(details);
+
+                        __results.container.replaceWith(detailedVehicle.container);
+
+                        detailedVehicle.container.querySelector('button').addEventListener('click', function() {
+                            detailedVehicle.container.replaceWith(__results.container);
+                        })
+                    })
+                } });
 
                 if (!_results)
-                    app.append(_results = __results);
+                    app.append(_results = __results.container);
                 else {
-                    _results.replaceWith(__results);
+                    _results.replaceWith(__results.container);
 
-                    _results = __results;
+                    _results = __results.container;
                 }
             });
         }

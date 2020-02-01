@@ -1,26 +1,22 @@
 'use strict'
 
-function Details (props) {
-    var details = document.createElement ('div');
+function Details (detailInfo) {
+    var detailInfo = document.createElement ('div');
 
-    Component.call(this, details);
+    Component.call(this, detailInfo);
 
-    details.classList.add('details');
+    detailInfo.classList.add('details');
 
-    details.innerHTML = '<h2>' +props.id+': '+props.name+'</h2>'
-        .concat('<img src="' +props.image+ '">')
-        .concat('<p>Year: ' + props.year + '</p>')
-        .concat('<p>Color: ' + props.color + '</p>')
-        .concat('<p>Maker: ' + props.maker + '</p>')
-        .concat('<p>Collection: ' + props.collection + '</p>')
-        .concat('<p>Style: ' + props.style + '</p>')
-        .concat('<p>Description: ' + props.description + '<p>')
-        .concat('<span>Price: ' + props.price + '</span>')
-        .concat('<button href=\"javascript:history.go(-1)\">Back</button>');
-
-    // details.querySelector('button').addEventListener('click', function() {
-        
-    // })
+    detailInfo.innerHTML = '<h2>' +detailInfo.id+': '+detailInfo.name+'</h2>'
+        .concat('<img src="' +detailInfo.image+ '">')
+        .concat('<p>Year: ' + detailInfo.year + '</p>')
+        .concat('<p>Color: ' + detailInfo.color + '</p>')
+        .concat('<p>Maker: ' + detailInfo.maker + '</p>')
+        .concat('<p>Collection: ' + detailInfo.collection + '</p>')
+        .concat('<p>Style: ' + detailInfo.style + '</p>')
+        .concat('<p>Description: ' + detailInfo.description + '<p>')
+        .concat('<span>Price: ' + detailInfo.price + '</span>')
+        .concat('<button>Back</button>');
  //result.onImageClick(id, name, image, year, color, maker, collection, style, description, price);
 }
 

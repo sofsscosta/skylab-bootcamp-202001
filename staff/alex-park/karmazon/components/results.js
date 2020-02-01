@@ -1,19 +1,17 @@
 'use strict';
 
 function Results(props) {
+    Component.call(this, list);
     var list = document.createElement('ul');
     list.classList.add('results');
 
-    props.results.forEach(function (result) {
-        var item = new Item({
-            name: result.name,
-            thumbnail: result.thumbnail,
-            price: result.price,
-            id: result.id
-        });
+    props.results.forEach(function (element) {
+        var item = new Item(element, props.onClick);
 
         list.append(item.container);
     });
 
-    return list;
 }
+
+Results.prototype = Object.create(Component.prototype);
+Results.prototype.constructor = Results;
