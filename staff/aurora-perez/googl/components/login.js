@@ -2,6 +2,9 @@
 
 function Login(props) {
     var login = document.createElement('form');
+
+    Interactive.call(this, login);
+    
     login.classList.add('login');
 
     login.innerHTML = '<h2>Sign-in</h2>'
@@ -26,6 +29,13 @@ function Login(props) {
 
         props.onToRegister();
     });
-
-    return login;
 }
+
+Login.prototype =  Object.create (Interactive.prototype);
+Login.prototype.constructor = Login;
+
+Login.prototype.__locateFeedbackInContainer__ = function(feedback) {
+    var button = this.container.querySelector('button');
+
+    this.container.insertBefore(feedback.container, button);
+};

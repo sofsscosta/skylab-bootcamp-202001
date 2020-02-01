@@ -140,4 +140,16 @@ span {
   font-size: 20px;
 }
 
+.feedback {
+  color: green;
+  font-family: Arial;
+  font-size: 20px;
+}
+.feedback--warning {
+  color: orange;
+}
+.feedback--error {
+  color: red;
+}
+
 /*# sourceMappingURL=style.css.map */
