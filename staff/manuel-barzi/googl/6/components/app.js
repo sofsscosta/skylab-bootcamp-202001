@@ -14,7 +14,8 @@ function App(props) {
 
                 _login.replaceWith(_googl);
             } catch (error) {
-                alert(error.message + ' ' + IT);
+                //alert(error.message + ' ' + IT);
+                _login.showError(error.message + ' ' + IT);
             }
         },
         onToRegister: function () {
@@ -29,7 +30,8 @@ function App(props) {
 
                 _register.replaceWith(_login);
             } catch (error) {
-                alert(error.message + ' ' + IT);
+                //alert(error.message + ' ' + IT);
+                _register.showError(error.message + ' ' + IT);
             }
         },
         onToLogin: function () {
@@ -44,7 +46,12 @@ function App(props) {
 
         onSubmit: function (query) {
             googl(query, function (results) {
-                if (results instanceof Error) return alert(results.message + ' ' + IT);
+                if (results instanceof Error)
+                    //return alert(results.message + ' ' + IT);
+                    return _googl.showError(results.message + ' ' + IT);
+
+                if (!results.length)
+                    return _googl.showWarning('No results ' + IT);
 
                 var _results = Results({ results: results });
 
