@@ -1,12 +1,14 @@
 body {
   text-align: center;
+  background-color: gainsboro;
+  list-style-type: none;
+  font-family: Impact, Charcoal, sans-serif;
 }
 
 .search {
+  border-top: 1px solid black;
   display: inline-block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .search--hide {
   display: none;
@@ -27,13 +29,9 @@ body {
 }
 
 .login {
+  border-top: 1px solid black;
   display: inline-block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-}
-.login--hide {
-  display: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .login input {
   display: block;
@@ -56,10 +54,9 @@ body {
 }
 
 .register {
+  border-top: 1px solid black;
   display: inline-block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .register--hide {
   display: none;
@@ -92,6 +89,80 @@ body {
 }
 .feedback--warning {
   color: orange;
+}
+
+.results {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  list-style-type: none;
+  width: 90vw;
+  margin: 20px;
+}
+.results li {
+  width: 40%;
+}
+
+.item {
+  border: 1px solid black;
+  background-color: darkgrey;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  width: 100%;
+  height: 50vh;
+}
+.item figure {
+  width: 90%;
+  height: 60%;
+  margin-left: 10px;
+}
+.item img {
+  width: 100%;
+  height: 100%;
+}
+.item h3 {
+  font-size: 15px;
+}
+.item span {
+  font-size: 15px;
+}
+
+.detail {
+  width: 90vw;
+  height: 70vh;
+  display: grid;
+  font-family: Arial, Helvetica, sans-serif;
+  grid-template-areas: "i n n n n" "i d d d d" "l y m c s";
+  grid-template-rows: 30% 55% 15%;
+}
+.detail h3 {
+  grid-area: n;
+  font-size: 30px;
+  border-bottom: 2px solid red;
+}
+.detail figure {
+  grid-area: i;
+}
+.detail .year {
+  grid-area: y;
+}
+.detail .maker {
+  grid-area: m;
+}
+.detail .collection {
+  grid-area: c;
+}
+.detail .style {
+  grid-area: s;
+}
+.detail p {
+  grid-area: d;
+  font-size: 30px;
+}
+.detail a {
+  grid-area: l;
 }
 
 /*# sourceMappingURL=style.css.map */

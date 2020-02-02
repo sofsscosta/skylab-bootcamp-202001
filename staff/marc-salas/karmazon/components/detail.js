@@ -4,6 +4,7 @@ function Detail(results) {
     var detail = document.createElement("article");
     Component.call(this, detail);
     detail.classList.add("detail");
+
     var title = document.createElement("h3");
     title.innerText += results.name + ' - Id#' + results.id;
     detail.append(title);
@@ -15,26 +16,32 @@ function Detail(results) {
     detail.append(figure);
     
     var year = document.createElement("span");
-    year.innerText += 'Year: ' + results.year;
+    year.classList.add('year');
+    year.innerText = results.year;
     detail.append(year);
     
     var maker = document.createElement("span");
-    maker.innerText += 'Maker: ' + results.maker;
+    maker.classList.add('maker');
+    maker.innerText = results.maker;
     detail.append(maker);
     
     var collection = document.createElement("span");
-    collection.innerText += 'Collection: ' + results.collection;
+    collection.classList.add('collection');
+    collection.innerText = results.collection;
     detail.append(collection);
     
     var style = document.createElement("span");
-    style.innerText += 'Style: ' + results.style;
+    style.classList.add('style');
+    style.innerText = results.style;
     detail.append(style);
+    
     var description = document.createElement('p');
-    description.innerText += 'Description: ' + results.description;
+    description.innerText = results.description;
     detail.append(description);
+
     var link = document.createElement("a");
     link.href = results.url;
-    link.innerText += 'Link to URL: ' + results.url;
+    link.innerText = results.url;
     detail.append(link);
 
 
