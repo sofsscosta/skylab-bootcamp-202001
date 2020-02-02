@@ -1,22 +1,22 @@
 'use strict'
 
 function Details (detailInfo) {
-    var detailInfo = document.createElement ('div');
+    var details = document.createElement ('div');
 
-    Component.call(this, detailInfo);
+    Component.call(this, details);
 
-    detailInfo.classList.add('details');
+    details.classList.add('details');
 
-    detailInfo.innerHTML = '<h2>' +detailInfo.id+': '+detailInfo.name+'</h2>'
-        .concat('<img src="' +detailInfo.image+ '">')
-        .concat('<p>Year: ' + detailInfo.year + '</p>')
-        .concat('<p>Color: ' + detailInfo.color + '</p>')
-        .concat('<p>Maker: ' + detailInfo.maker + '</p>')
-        .concat('<p>Collection: ' + detailInfo.collection + '</p>')
-        .concat('<p>Style: ' + detailInfo.style + '</p>')
-        .concat('<p>Description: ' + detailInfo.description + '<p>')
-        .concat('<span>Price: ' + detailInfo.price + '</span>')
-        .concat('<button>Back</button>');
+    details.innerHTML = '<h2>' + detailInfo.id +': '+detailInfo.name+'</h2>'
+        .concat('<img src="' + detailInfo.image + '">')
+        .concat('<p>YEAR: ' + detailInfo.year + '</p>')
+        .concat('<p>COLOR: ' + detailInfo.color.toProperCase() + '</p>')
+        .concat('<p>MAKER: ' + detailInfo.maker.toProperCase() + '</p>')
+        .concat('<p>COLLECTION: ' + detailInfo.collection.toProperCase() + '</p>')
+        .concat('<p>STYLE: ' + detailInfo.style.toProperCase() + '</p>')
+        .concat('<p>DESCRIPTION: ' + detailInfo.description + '<p>')
+        .concat('<span>PRICE: ' + detailInfo.price + '$</span>')
+        .concat('<button>BACK</button>');
  //result.onImageClick(id, name, image, year, color, maker, collection, style, description, price);
 }
 

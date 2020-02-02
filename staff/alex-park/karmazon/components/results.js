@@ -1,14 +1,14 @@
 'use strict';
 
 function Results(props) {
-    Component.call(this, list);
     var list = document.createElement('ul');
+    Component.call(this, list);
     list.classList.add('results');
 
     props.results.forEach(function (element) {
         var item = new Item(element, props.onClick);
 
-        list.append(item.container);
+        list.appendChild(item.container);
     });
 
 }
