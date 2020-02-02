@@ -15,6 +15,7 @@ function Detail(id) {
     .concat("<span>Style: " + id.style + "</span><br>")
     .concat("<p>Description: " + id.description + "</p><br>")
     .concat("<span>Price: " + id.price + " € </span><br><br>")
+  
 }
 
 Detail.prototype = Object.create(Component.prototype);

@@ -62,6 +62,12 @@ function App(props) {
                     _results.replaceWith(__results);
 
                     _results = __results;
+
+                    var detailCar = document.querySelector('.detail');
+
+                    if (detailCar !== null) {
+                        detailCar.replaceWith(__results);
+                    }
                 }
             });
         }
