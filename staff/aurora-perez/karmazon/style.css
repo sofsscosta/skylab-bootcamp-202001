@@ -164,10 +164,18 @@ body {
   box-shadow: 10px 10px 5px grey;
   min-width: 300px;
 }
+.item h2 {
+  text-shadow: 0.07em 0.07em black;
+  color: #008eb9;
+  font-weight: bolder;
+}
 .item img {
   cursor: pointer;
   max-width: 350px;
   min-width: 150px;
+}
+.item span {
+  font-size: 1.2em;
 }
 
 .results {
