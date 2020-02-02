@@ -43,9 +43,9 @@ function App(props) {
         }
     });
 
-    var _search = new Search({
+    var _search = new Search({ 
         title: 'Search',
-
+        
         onSubmit: function (query) {
             searchVehicles(query, function (vehicles) {
                 if (vehicles instanceof Error)

@@ -1,6 +1,6 @@
 'use strict';
 
-function Login(props) {
+function Login(props) { 
     var login = document.createElement('form');
 
     Interactive.call(this, login);

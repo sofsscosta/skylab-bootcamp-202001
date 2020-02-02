@@ -8,8 +8,8 @@ function Details (detailInfo) {
     details.classList.add('details');
 
     details.innerHTML = '<button class="details__button">BACK</button>'
-        .concat('<h2>' + detailInfo.id +': '+detailInfo.name+'</h2>')
-        .concat('<img src="' + detailInfo.image + '">')
+        .concat('<div class="details__title-img"><h2>' + detailInfo.id +': '+detailInfo.name+'</h2>')
+        .concat('<img src="' + detailInfo.image + '"></div>')
         .concat('<div class="details__content"><p class ="details__year">YEAR: ' + detailInfo.year + '</p>')
         .concat('<p class ="details__content-color">COLOR: ' + detailInfo.color.toProperCase() + '</p>')
         .concat('<p class ="details__content-cmaker>MAKER: ' + detailInfo.maker.toProperCase() + '</p>')
