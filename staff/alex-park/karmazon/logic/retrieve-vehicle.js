@@ -9,7 +9,7 @@ function retrieveVehicle(id, callback) {
 
         if (response.status === 200) {
             var details = JSON.parse(response.content);
-
+            
             callback(details);
         }
     });
