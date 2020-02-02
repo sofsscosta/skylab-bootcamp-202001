@@ -1,0 +1,133 @@
+body {
+  text-align: center;
+}
+
+.search {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: orange;
+}
+.search--hide {
+  display: none;
+}
+.search input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.search button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.login {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: yellow;
+  font-family: "Molle", cursive;
+}
+.login--hide {
+  display: none;
+}
+.login input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.register--hide {
+  display: none;
+}
+.register input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
+}
+
+.item {
+  list-style: none;
+}
+
+article:nth-child(odd) {
+  background-color: green;
+}
+
+article:nth-child(even) {
+  background-color: gray;
+}
+
+.detail p {
+  font-style: oblique;
+}
+
+.detail span {
+  color: black;
+}
+
+.detail span:last-of-type {
+  color: red;
+}
+
+main {
+  background-color: #00968899;
+}
+
+h1 {
+  font-family: "Sigmar One", cursive;
+  background-color: #ff00d4f2;
+}
+
+/*# sourceMappingURL=style.css.map */
