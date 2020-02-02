@@ -11,7 +11,7 @@ function Results(props) {
 
         var _item = new Item({
             result: result,
-            onClick: function(id) {
+            onClick: function(id) {                
                 props.onClick(id);
             }
         });
