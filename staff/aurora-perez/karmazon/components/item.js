@@ -9,7 +9,7 @@ function Item(results, onClick) {
 
     item.innerHTML = '<h2>' + results.name + '</h2>'
         .concat('<img src="' + results.thumbnail + '">')
-        .concat('<span>Price: ' + results.price + ' pepitos </span>');
+        .concat('<span>Price: $ ' + results.price + '</span>');
 
     item.querySelector('img').addEventListener('click', function() {
         var id = results.id;

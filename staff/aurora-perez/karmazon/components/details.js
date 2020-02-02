@@ -7,17 +7,16 @@ function Details (detailInfo) {
  
     details.classList.add('details');
 
-    details.innerHTML = '<h2>' + detailInfo.id +': '+detailInfo.name+'</h2>'
+    details.innerHTML = '<button class="details__button">BACK</button>'
+        .concat('<h2>' + detailInfo.id +': '+detailInfo.name+'</h2>')
         .concat('<img src="' + detailInfo.image + '">')
-        .concat('<p>YEAR: ' + detailInfo.year + '</p>')
-        .concat('<p>COLOR: ' + detailInfo.color.toProperCase() + '</p>')
-        .concat('<p>MAKER: ' + detailInfo.maker.toProperCase() + '</p>')
-        .concat('<p>COLLECTION: ' + detailInfo.collection.toProperCase() + '</p>')
-        .concat('<p>STYLE: ' + detailInfo.style.toProperCase() + '</p>')
-        .concat('<p>DESCRIPTION: ' + detailInfo.description + '<p>')
-        .concat('<span>PRICE: ' + detailInfo.price + ' pepitos </span>')
-        .concat('<button>BACK</button>');
- //result.onImageClick(id, name, image, year, color, maker, collection, style, description, price);
+        .concat('<div class="details__content"><p class ="details__year">YEAR: ' + detailInfo.year + '</p>')
+        .concat('<p class ="details__content-color">COLOR: ' + detailInfo.color.toProperCase() + '</p>')
+        .concat('<p class ="details__content-cmaker>MAKER: ' + detailInfo.maker.toProperCase() + '</p>')
+        .concat('<p class ="details__content-ccollection>COLLECTION: ' + detailInfo.collection.toProperCase() + '</p>')
+        .concat('<p class ="details__content-cstyle>STYLE: ' + detailInfo.style.toProperCase() + '</p>')
+        .concat('<p class ="details__content-cdescription>DESCRIPTION: ' + detailInfo.description + '<p>')
+        .concat('<span>PRICE: $ ' + detailInfo.price + ' </span></div>');   
 
 }
 
