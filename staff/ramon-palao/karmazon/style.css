@@ -7,6 +7,7 @@ body {
   border: 1px solid black;
   border-radius: 1rem;
   padding: 0.5rem;
+  background-color: white;
 }
 .search--hide {
   display: none;
@@ -31,6 +32,7 @@ body {
   border: 1px solid black;
   border-radius: 1rem;
   padding: 0.5rem;
+  background-color: white;
 }
 .login--hide {
   display: none;
@@ -60,6 +62,7 @@ body {
   border: 1px solid black;
   border-radius: 1rem;
   padding: 0.5rem;
+  background-color: white;
 }
 .register--hide {
   display: none;
@@ -92,6 +95,28 @@ body {
 }
 .feedback--warning {
   color: orange;
+}
+
+body {
+  background-color: lightblue;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.item-list {
+  margin: 0.5rem;
+  width: 30%;
+  background-color: white;
+  border: 3px solid blue;
+  border-radius: 1rem;
+}
+
+.img-photo {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

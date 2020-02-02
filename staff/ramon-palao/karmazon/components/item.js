@@ -9,6 +9,7 @@ function Item(prop, onClick){
     list.classList.add("list");
 
     var itemList = document.createElement("li");
+    itemList.classList.add("item-list")
 
     var name = document.createElement("h3");
     name.innerText = prop.name;
@@ -16,6 +17,7 @@ function Item(prop, onClick){
     var image = document.createElement("figure");
     var imagePhoto = document.createElement("img");
     imagePhoto.src = prop.thumbnail;
+    imagePhoto.classList.add("img-photo");
 
     var price = document.createElement("span");
     price.innerText = prop.price + " €";
@@ -32,16 +34,6 @@ function Item(prop, onClick){
         event.preventDefault();
 
         onClick(id);
-
-        // retrieveVehicle(id, function(results){
-        //     // console.log(itemResult);
-        //     var _detail = new Detail(results);
-
-        //     var ul = document.querySelector("ul");
-
-        //     ul.replaceWith(_detail.container);
-
-        // });
 
     });
     

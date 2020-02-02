@@ -7,7 +7,8 @@ function App(props) {
 
     Component.call(this, app);
 
-    app.innerHTML = '<h1>' + props.title + '</h1>';
+    app.innerHTML = '<h1>' + props.title + '</h1>'
+    // .concat("<img src=http://t1.gstatic.com/images?q=tbn:ANd9GcRXouSbtwQ_SbCCu7vxBCmasxx6Vxs1W5KIcvFy-t7tWUbrDBE4 class=logo-hot>");
 
     var _login = new Login({
         onSubmit: function (username, password) {
