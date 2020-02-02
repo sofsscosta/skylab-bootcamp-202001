@@ -54,21 +54,45 @@ function App(props) {
                 if (!vehicles.length)
                     return _search.showWarning('No results ' + IT);
 
-                var __results = Results({ results: vehicles });
+                var _results = new Results({
+                    results: vehicles,
 
-                if (!_results)
-                    app.append(_results = __results);
+                    onToItem: function (productId) {
+                        retrieveVehicle(productId, function (vehicle) {
+                            if (vehicle instanceof Error)
+                                return console.log(vehicle.message + ' ' + IT);
+
+                            var detail = new Detail({
+                                product: vehicle,
+
+                                backToResults: function () {
+                                    detail.container.replaceWith(_previousResults);
+                                }
+                            });
+
+                            _previousResults.replaceWith(detail.container);
+                        });
+                    }
+                });
+
+                if (!_previousResults) {
+                    _previousResults = _results.container
+                    app.append(_previousResults);
+                }
                 else {
-                    _results.replaceWith(__results);
+                    _previousResults.replaceWith(_results.container);
 
-                    _results = __results;
+                    _previousResults = _results.container;
                 }
             });
         }
     });
 
-    var _results;
+    var _previousResults;
 }
+
+
+
 
 App.prototype = Object.create(Component.prototype);
 App.prototype.constructor = App;
