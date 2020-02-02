@@ -7,7 +7,7 @@ function Login(props) {
 
     login.classList.add('login');
 
-    login.innerHTML = '<h2>Sign-in</h2>'
+    login.innerHTML = '<h2 class = login__title>Sign-in</h2>'
         .concat('<input type="text" name="username" placeholder="username">')
         .concat('<input type="password" name="password" placeholder="password">')
         .concat('<button>Login</button>')

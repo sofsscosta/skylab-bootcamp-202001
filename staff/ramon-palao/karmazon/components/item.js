@@ -13,6 +13,7 @@ function Item(prop, onClick){
 
     var name = document.createElement("h3");
     name.innerText = prop.name;
+    name.classList.add("item-name");
 
     var image = document.createElement("figure");
     var imagePhoto = document.createElement("img");
@@ -21,6 +22,7 @@ function Item(prop, onClick){
 
     var price = document.createElement("span");
     price.innerText = prop.price + " €";
+    price.classList.add("item-price");
 
     image.append(imagePhoto);
 

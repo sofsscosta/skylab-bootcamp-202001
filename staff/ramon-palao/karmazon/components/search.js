@@ -7,7 +7,7 @@ function Search(props) {
 
     search.classList.add('search');
 
-    search.innerHTML += '<h2>' + props.title + '</h2>'
+    search.innerHTML += '<h2 class = search__title>' + props.title + '</h2>'
         .concat('<input type="text" name="query" placeholder="criteria">')
         .concat('<button type="submit">Search</button>')
 
