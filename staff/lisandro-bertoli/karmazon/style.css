@@ -94,4 +94,22 @@ body {
   color: orange;
 }
 
+.details {
+  display: flex;
+  text-align: left;
+}
+.details__left {
+  background-color: grey;
+}
+.details__exit {
+  background-color: orange;
+  color: white;
+  width: 10%;
+  height: 10%;
+}
+.details__container {
+  display: flex;
+  flex-direction: column;
+}
+
 /*# sourceMappingURL=style.css.map */
