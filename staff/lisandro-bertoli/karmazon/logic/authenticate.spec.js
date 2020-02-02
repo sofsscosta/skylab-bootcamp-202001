@@ -42,17 +42,6 @@ describe('authenticate', function () {
         }).toThrowError(Error, 'Wrong credentials');
     });
 
-    it('should fail on non-string parameters', function () {
-        expect(function () {
-            authenticate(undefined, user.password);
-        }).toThrowError(TypeError, 'username undefined is not a string');
-
-        expect(function () {
-            authenticate(user.username, undefined);
-        }).toThrowError(TypeError, 'password undefined is not a string');
-
-    });
-
     afterEach(function () {
         users.length = 0;
     });

@@ -12,8 +12,5 @@ function searchVehicles(query, callback) {
 
             callback(results);
         }
-
-
     });
 }
-

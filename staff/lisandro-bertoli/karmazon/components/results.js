@@ -4,33 +4,21 @@ function Results(props) {
     var list = document.createElement('ul');
     list.classList.add('results');
 
-    list.innerHTML = '';
-
     props.results.forEach(function (result) {
+        // TODO var item = new Item(...)
         var item = document.createElement('li');
-        item.classList.add('results__item')
-        var title = document.createElement('h3');
-        title.innerText = result.title;
 
-        var link = document.createElement('a');
-        link.target = '_blank';
-        link.href = result.link;
+        var name = document.createElement('h3');
+        name.innerText = result.name;
+        item.append(name);
 
-        link.append(title);
+        var image = document.createElement('img');
+        image.src = result.thumbnail;
+        item.append(image);
 
-        item.append(link);
-
-        if (result.rating) {
-            var rating = document.createElement('span');
-            rating.innerText = result.rating;
-
-            item.append(rating);
-        }
-
-        var description = document.createElement('p');
-        description.innerText = result.description;
-
-        item.append(description);
+        var price = document.createElement('span');
+        price.innerText = result.price;
+        item.append(price);
 
         list.append(item);
     });

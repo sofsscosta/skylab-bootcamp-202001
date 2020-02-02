@@ -1,19 +1,16 @@
 'use strict';
 
-describe('googl', function () {
-    it('should succeed on matching query', function (done) {
-        googl('pepito', function (results) {
+describe('searchVehicles', function () {
+    fit('should succeed on matching query', function (done) {
+        searchVehicles('batman', function (results) {
             expect(results).toBeDefined();
-            //expect(results).toHaveLength(8);
             expect(results.length).toBeGreaterThan(0);
 
-            results.forEach(result => {
-                expect(typeof result.title).toBe('string');
-                expect(typeof result.description).toBe('string');
-                expect(typeof result.link).toBe('string');
-
-                if (result.rating)
-                    expect(typeof result.rating).toBe('string');
+            results.forEach(function (result) {
+                expect(typeof result.id).toBe('string');
+                expect(typeof result.name).toBe('string');
+                expect(typeof result.thumbnail).toBe('string');
+                expect(typeof result.price).toBe('number');
             });
 
             done();
@@ -21,7 +18,7 @@ describe('googl', function () {
     });
 
     it('should succeed on non-matching query returning an empty array', function (done) {
-        googl('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
+        searchVehicles('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
             expect(results).toBeDefined();
             expect(results).toHaveLength(0);
 
@@ -31,38 +28,37 @@ describe('googl', function () {
 
     it('should fail on non-string query', function () {
         expect(function () {
-            googl(undefined, function () { });
+            searchVehicles(undefined, function () { });
         }).toThrowError(TypeError, 'undefined is not a string');
 
         expect(function () {
-            googl(1, function () { });
+            searchVehicles(1, function () { });
         }).toThrowError(TypeError, '1 is not a string');
 
         expect(function () {
-            googl(true, function () { });
+            searchVehicles(true, function () { });
         }).toThrowError(TypeError, 'true is not a string');
 
         expect(function () {
-            googl({}, function () { });
+            searchVehicles({}, function () { });
         }).toThrowError(TypeError, '[object Object] is not a string');
     });
 
     it('should fail on non-function callback', function () {
-
         expect(function () {
-            googl('', undefined);
+            searchVehicles('', undefined);
         }).toThrowError(TypeError, 'undefined is not a function');
 
         expect(function () {
-            googl('', 1);
+            searchVehicles('', 1);
         }).toThrowError(TypeError, '1 is not a function');
 
         expect(function () {
-            googl('', true);
+            searchVehicles('', true);
         }).toThrowError(TypeError, 'true is not a function');
 
         expect(function () {
-            googl('', {});
+            searchVehicles('', {});
         }).toThrowError(TypeError, '[object Object] is not a function');
     });
 });

@@ -1,35 +1,28 @@
-'user strict';
+'use strict';
+
+var IT = '🎈🤡';
 
 function App(props) {
     var app = document.createElement('main');
 
     Component.call(this, app);
 
-    app.classList.add('main')
-
-
     app.innerHTML = '<h1>' + props.title + '</h1>';
 
     var _login = new Login({
-
-
         onSubmit: function (username, password) {
             try {
                 authenticate(username, password);
-                _login.container.reset();
-                _login.container.replaceWith(_google.container);
 
+                _login.container.replaceWith(_search.container);
             } catch (error) {
-                if (error instanceof TypeError) return alert('Something went wrong, try again later');
-
-                _login.showError(error.message);
+                //alert(error.message + ' ' + IT);
+                _login.showError(error.message + ' ' + IT);
             }
         },
         onToRegister: function () {
-            _login.container.reset();
             _login.container.replaceWith(_register.container);
         }
-
     });
 
     app.append(_login.container);
@@ -38,136 +31,43 @@ function App(props) {
         onSubmit: function (name, surname, username, password) {
             try {
                 register(name, surname, username, password);
-                _register.container.reset();
-                _register.container.replaceWith(_login.container);
 
+                _register.container.replaceWith(_login.container);
             } catch (error) {
-                _register.showError(error.message);
+                //alert(error.message + ' ' + IT);
+                _register.showError(error.message + ' ' + IT);
             }
         },
-
         onToLogin: function () {
-            _register.container.reset();
             _register.container.replaceWith(_login.container);
         }
     });
 
-    var _google = new Search({
-        title: 'Googl',
+    var _search = new Search({
+        title: 'Search',
 
         onSubmit: function (query) {
-            googl(query, function (results) {
-                if (results instanceof Error)
-                    //return alert(results.message + ' ' + IT);
-                    return _google.showError(results.message);
+            searchVehicles(query, function (vehicles) {
+                if (vehicles instanceof Error)
+                    return _search.showError(vehicles.message + ' ' + IT);
 
-                if (!results.length)
-                    return _google.showWarning('No results');
+                if (!vehicles.length)
+                    return _search.showWarning('No results ' + IT);
 
-                var _results = Results({ results: results });
+                var __results = Results({ results: vehicles });
 
-                if (!_previousResults) {
-                    _previousResults = _results
-                    app.append(_results);
-
-                }
+                if (!_results)
+                    app.append(_results = __results);
                 else {
-                    _previousResults.replaceWith(_results);
-                    _previousResults = _results;
+                    _results.replaceWith(__results);
+
+                    _results = __results;
                 }
-
             });
-        },
-
-        onLogout: function () {
-            document.querySelector('.results').remove();
-            _google.container.replaceWith(_login.container);
-
         }
-
     });
 
-    // var _ecosia = Search({
-
-    //     title: 'Ecosia',
-
-    //     onSubmit: function (query) {
-
-    //         ecosia(query, function (results) {
-    //             var _results = Results({ results: results });
-
-    //             if (!_previousResults) {
-    //                 _previousResults = _results;
-    //                 app.append(_results);
-    //             }
-    //             else {
-    //                 _previousResults.replaceWith(_results);
-
-    //                 _previousResults = _results;
-    //             }
-    //         });
-    //     },
-
-    //     onLogout: function () {
-    //         document.querySelector('.results').remove();
-    //         _ecosia.replaceWith(_login);
-    //     }
-    // });
-
-    // var _yahoo = Search({
-    //     title: 'Yahoo',
-
-    //     onSubmit: function (query) {
-    //         yahoo(query, function (results) {
-    //             var _results = Results({ results: results });
-
-    //             if (!_previousResults) {
-    //                 _previousResults = _results;
-    //                 app.append(_results);
-    //             }
-    //             else {
-    //                 _previousResults.replaceWith(_results);
-
-    //                 _previousResults = _results;
-    //             }
-    //         });
-    //     },
-
-    //     onLogout: function () {
-    //         document.querySelector('.results').remove();
-    //         _yahoo.replaceWith(_login);
-    //     }
-    // });
-
-    // var _bing = Search({
-    //     title: 'Bing',
-
-    //     onSubmit: function (query) {
-    //         bing(query, function (results) {
-    //             var _results = Results({ results: results });
-
-    //             if (!_previousResults) {
-    //                 _previousResults = _results;
-    //                 app.append(_results);
-    //             }
-    //             else {
-    //                 _previousResults.replaceWith(_results);
-    //                 _previousResults = _results;
-    //             }
-    //         });
-    //     },
-
-    //     onLogout: function () {
-    //         document.querySelector('.results').remove();
-    //         _bing.replaceWith(_login);
-    //     }
-    // });
-
-    var _previousResults;
-
-
-
-
+    var _results;
 }
 
 App.prototype = Object.create(Component.prototype);

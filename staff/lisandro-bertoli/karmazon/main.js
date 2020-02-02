@@ -1,4 +1,3 @@
 'use strict';
 
-
-document.getElementById('root').replaceWith(new App({ title: 'Googl-App' }).container);
+document.getElementById('root').replaceWith(new App({ title: 'KArmazon App' }).container);

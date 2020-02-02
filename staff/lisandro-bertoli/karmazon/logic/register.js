@@ -12,14 +12,9 @@ function register(name, surname, username, password) {
 
     var user = users.find(function (user) { return user.username === username; });
 
-    if (user) throw new Error('User ' + username + ' already exists.');
+    if (user) throw new Error('User ' + username + ' already exists');
 
-    var user = {
-        name: name,
-        surname: surname,
-        username: username,
-        password: password
-    }
+    user = { name: name, surname: surname, username: username, password: password };
 
     users.push(user);
 }
