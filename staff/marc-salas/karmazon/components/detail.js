@@ -1,6 +1,6 @@
 "use strict";
 
-function Detail(results) {
+function Detail(results, callback) {
     var detail = document.createElement("article");
     Component.call(this, detail);
     detail.classList.add("detail");
@@ -43,7 +43,16 @@ function Detail(results) {
     link.href = results.url;
     link.innerText = results.url;
     detail.append(link);
+    
+    var back = document.createElement('button');
+    back.innerText = "BACK";
+    detail.append(back);
 
+    detail.addEventListener('click', function(event){
+        event.preventDefault();
+        
+        callback();
+    })
 
 }
 

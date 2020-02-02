@@ -56,7 +56,9 @@ function App(props) {
                 var _details;
                 var __results = Results({ results: vehicles, onClick(id){
                     retrieveVehicle(id, function(results){
-                        _details = new Detail(results)                      
+                        _details = new Detail(results, function(){
+                           _details.container.replaceWith(__results);
+                        })                      
                         __results.replaceWith(_details.container);
                     });
 
