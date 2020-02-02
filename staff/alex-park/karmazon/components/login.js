@@ -7,11 +7,11 @@ function Login(props) {
 
     login.classList.add('login');
 
-    login.innerHTML = '<h2>Sign-in</h2>'
-        .concat('<input type="text" name="username" placeholder="username">')
-        .concat('<input type="password" name="password" placeholder="password">')
-        .concat('<button>Login</button>')
-        .concat('<a href="">Register</a>');
+    login.innerHTML = '<h2>SIGN-IN</h2>'
+        .concat('<input type="text" name="username" placeholder="Username">')
+        .concat('<input type="password" name="password" placeholder="Password">')
+        .concat('<button>LOGIN</button>')
+        .concat('<a href="">REGISTER</a>');
 
     login.addEventListener('submit', function (event) {
         event.preventDefault();

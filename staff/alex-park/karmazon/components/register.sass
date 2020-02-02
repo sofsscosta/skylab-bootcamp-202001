@@ -3,23 +3,19 @@
     border: 1px solid black
     border-radius: 1rem
     padding: 0.5rem
+    @extend %border-for-box
+
+    h2 
+        @extend %general-titles
     
     &--hide
         display: none
 
     input
-        display: block
-        border: 1px solid black
-        border-radius: 1rem
-        padding: 0.5rem
-        margin: 0.5rem
+        @extend %border-for-inputs
 
     button
-        display: block
-        border: 1px solid black
-        border-radius: 1rem
-        padding: 0.5rem
-        margin: 0.5rem
+        @extend %main-buttons
     
     a
         display: block

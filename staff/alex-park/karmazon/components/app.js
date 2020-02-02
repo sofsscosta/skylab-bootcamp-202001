@@ -4,6 +4,7 @@ var IT = '🎈🤡';
 
 function App(props) {
     var app = document.createElement('main');
+    app.classList.add('app');
 
     Component.call(this, app);
 

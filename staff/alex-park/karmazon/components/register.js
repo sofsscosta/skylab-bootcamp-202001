@@ -8,12 +8,12 @@ function Register(props) {
     register.classList.add('register');
 
     register.innerHTML = '<h2>Sign-up</h2>'
-        .concat('<input type="text" name="name" placeholder="name">')
-        .concat('<input type="text" name="surname" placeholder="surname">')
-        .concat('<input type="text" name="username" placeholder="username">')
-        .concat('<input type="password" name="password" placeholder="password">')
-        .concat('<button>Register</button>')
-        .concat('<a href="">Login</a>');
+        .concat('<input type="text" name="name" placeholder="Name">')
+        .concat('<input type="text" name="surname" placeholder="Surname">')
+        .concat('<input type="text" name="username" placeholder="Username">')
+        .concat('<input type="password" name="password" placeholder="Password">')
+        .concat('<button>REGISTER</button>')
+        .concat('<a href="">LOGIN</a>');
 
 
     register.addEventListener('submit', function (event) {

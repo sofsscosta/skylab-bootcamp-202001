@@ -7,9 +7,9 @@ function Search(props) {
 
     search.classList.add('search');
 
-    search.innerHTML += '<h2>' + props.title + '</h2>'
-        .concat('<input type="text" name="query" placeholder="criteria">')
-        .concat('<button type="submit">Search</button>')
+    search.innerHTML += '<h2>' + props.title.toUpperCase() + '</h2>'
+        .concat('<input type="text" name="query" placeholder="Type here to search for cars...">')
+        .concat('<button type="submit">SEARCH</button>')
 
     search.addEventListener('submit', function (event) {
         event.preventDefault();
