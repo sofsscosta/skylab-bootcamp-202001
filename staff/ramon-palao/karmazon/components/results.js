@@ -6,7 +6,7 @@ function Results(props) {
 
     props.results.forEach(function (result) {
 
-        var _item = new Item(result);
+        var _item = new Item(result, props.onClick);
         //     result: result,
 
         //     onClick: function(){

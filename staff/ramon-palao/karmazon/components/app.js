@@ -54,7 +54,19 @@ function App(props) {
                 if (!vehicles.length)
                     return _search.showWarning('No results ' + IT);
 
-                var __results = Results({ results: vehicles });
+                var __results = Results({ results: vehicles, onClick: function(id){
+                    retrieveVehicle(id, function(results){
+                        var _detail = new Detail(results);
+
+                        __results.replaceWith(_detail.container);
+
+                        _detail.container.querySelector("button").addEventListener("click", function(event){
+                            event.preventDefault();
+
+                            _detail.container.replaceWith(__results);
+                        })
+                    })
+                } });
 
                 if (!_results)
                     app.append(_results = __results);

@@ -1,6 +1,6 @@
 "use strict";
 
-function Item(prop){
+function Item(prop, onClick){
     var item = document.createElement("article");
 
     Component.call(this, item);
@@ -31,15 +31,17 @@ function Item(prop){
     image.addEventListener("click", function(event){
         event.preventDefault();
 
-        retrieveVehicle(id, function(results){
-            // console.log(itemResult);
-            var _detail = new Detail(results);
+        onClick(id);
 
-            //var _list = querySelector("ul");
+        // retrieveVehicle(id, function(results){
+        //     // console.log(itemResult);
+        //     var _detail = new Detail(results);
 
-            itemList.replaceWith(_detail.container);
+        //     var ul = document.querySelector("ul");
 
-        });
+        //     ul.replaceWith(_detail.container);
+
+        // });
 
     });
     
