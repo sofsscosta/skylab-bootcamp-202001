@@ -8,15 +8,15 @@ function Item(props) {
     item.classList.add('item');
 
     item.innerHTML = '<a href="#">'
-        .concat('<img class="item__thumbnail"src=' + props.thumbnail + ' alt=""></a>')
+        .concat('<img class="item__thumbnail"src=' + props.details.thumbnail + ' alt=""></a>')
         .concat('<div class="item__info-wrapper">')
-        .concat('<h3 class="item__name">' + props.name + '</h3>')
-        .concat('<span class="item__price">' + props.price + '</span></div>');
+        .concat('<h3 class="item__name">' + props.details.name + '</h3>')
+        .concat('<span class="item__price">' + props.details.price + '</span></div>');
 
     item.addEventListener('click', function (event) {
         event.preventDefault();
-        console.log(props.id)
-        // props.onToDetails(props.id);
+        console.log(props.details.id)
+        props.onToDetail(props.details.id);
     });
 }
 
