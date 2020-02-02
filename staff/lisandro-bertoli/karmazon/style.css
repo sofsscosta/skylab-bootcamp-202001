@@ -32,6 +32,11 @@ ul, li {
   margin: 0.5rem;
 }
 
+.logout {
+  background-color: red;
+  color: white;
+}
+
 .login {
   display: inline-block;
   border: 1px solid black;
@@ -209,12 +214,36 @@ ul, li {
   margin-bottom: 1rem;
 }
 
+@media screen and (min-width: 768px) {
+  .item {
+    width: 45%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .item {
+    width: 30%;
+    height: 20rem;
+  }
+}
 .results {
   list-style: none;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .results {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .results {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

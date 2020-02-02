@@ -26,7 +26,6 @@ function Detail(props) {
 
     exitLink.addEventListener('click', function (event) {
         event.preventDefault();
-        console.log('back to results');
         props.backToResults();
     });
 

@@ -13,7 +13,7 @@ function App(props) {
         onSubmit: function (username, password) {
             try {
                 authenticate(username, password);
-
+                _login.container.reset();
                 _login.container.replaceWith(_search.container);
             } catch (error) {
                 //alert(error.message + ' ' + IT);
@@ -31,7 +31,7 @@ function App(props) {
         onSubmit: function (name, surname, username, password) {
             try {
                 register(name, surname, username, password);
-
+                _register.container.reset();
                 _register.container.replaceWith(_login.container);
             } catch (error) {
                 //alert(error.message + ' ' + IT);
@@ -59,18 +59,15 @@ function App(props) {
 
                     onToItem: function (productId) {
                         retrieveVehicle(productId, function (vehicle) {
-                            if (vehicle instanceof Error)
-                                return console.log(vehicle.message + ' ' + IT);
-
                             var detail = new Detail({
                                 product: vehicle,
 
                                 backToResults: function () {
-                                    detail.container.replaceWith(_previousResults);
+                                    detail.container.replaceWith(_results.container);
                                 }
                             });
 
-                            _previousResults.replaceWith(detail.container);
+                            _results.container.replaceWith(detail.container);
                         });
                     }
                 });
@@ -85,14 +82,22 @@ function App(props) {
                     _previousResults = _results.container;
                 }
             });
+        },
+
+        onLogout: function () {
+            if (_previousResults) {
+                _search.container.reset();
+                _previousResults = undefined;
+                document.querySelector('.results').remove();
+            }
+            _search.container.replaceWith(_login.container);
+
+
         }
     });
 
     var _previousResults;
 }
-
-
-
 
 App.prototype = Object.create(Component.prototype);
 App.prototype.constructor = App;
