@@ -3,7 +3,8 @@
 function Detail(id) {
     var item = document.createElement('div')
     Component.call(this, item);
-        
+    
+    
     item.classList.add('detail')
 
     item.innerHTML = "<h2" + id.name + "</h2><br>"

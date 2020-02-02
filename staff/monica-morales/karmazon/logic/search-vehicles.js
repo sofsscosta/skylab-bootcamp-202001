@@ -1,6 +1,6 @@
 'use strict';
 
-function searchVehicles(query, callback) {
+function searchVehicle(query, callback) {
     if (typeof query !== 'string') throw new TypeError(query + ' is not a string');
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
   

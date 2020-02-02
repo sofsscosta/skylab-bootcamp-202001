@@ -1,15 +1,20 @@
 'use strict';
 
 function Results(props) {
+    debugger
     var list = document.createElement('ul');
+    Component.call(this, list);
     list.classList.add('results');
 
     props.results.forEach(function (result) {
 
-       var _item = new Item(result)
+       var _item = new Item(result, props.onClick)
 
-        list.append(_item);
+        list.append(_item.container);
     });
-
-    return list;
+    
 }
+Results.prototype = Object.create(Component.prototype);
+Results.prototype.constructor = Results;
+
+

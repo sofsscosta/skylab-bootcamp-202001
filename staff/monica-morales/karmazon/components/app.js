@@ -4,12 +4,13 @@ var IT = '🎈🤡';
 
 function App(props) {
     var app = document.createElement('main');
-
+   
     Component.call(this, app);
 
     app.innerHTML = '<h1>' + props.title + '</h1>';
-
+  
     var _login = new Login({
+        
         onSubmit: function (username, password) {
             try {
                 authenticate(username, password);
@@ -27,6 +28,7 @@ function App(props) {
 
     app.append(_login.container);
 
+
     var _register = new Register({
         onSubmit: function (name, surname, username, password) {
             try {
@@ -43,30 +45,39 @@ function App(props) {
         }
     });
 
+
     var _search = new Search({
         title: 'Search',
 
         onSubmit: function (query) {
-            searchVehicles(query, function (vehicles) {
+            searchVehicle(query, function (vehicles) {
                 if (vehicles instanceof Error)
                     return _search.showError(vehicles.message + ' ' + IT);
 
-                if (!vehicles.length)
+                if (!vehicles.length) 
                     return _search.showWarning('No results ' + IT);
 
-                var __results = Results({ results: vehicles });
+                var __results = new Results({
+                    results: vehicles, 
+                    onClick: function (id) {
+                        retrieveVehicle(id, function (itemResult) {
+                        var detail = new Detail(itemResult)
+                        _results.replaceWith(detail.container);
+                        })
+                    }
+                });
 
                 if (!_results)
-                    app.append(_results = __results);
+                    app.append(_results = __results.container);
                 else {
-                    _results.replaceWith(__results);
+                    _results.replaceWith(__results.container);
 
-                    _results = __results;
+                    _results = __results.container;
 
                     var detailCar = document.querySelector('.detail');
 
                     if (detailCar !== null) {
-                        detailCar.replaceWith(__results);
+                        detailCar.replaceWith(__results.container);
                     }
                 }
             });

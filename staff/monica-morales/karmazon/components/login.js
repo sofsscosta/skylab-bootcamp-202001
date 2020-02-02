@@ -11,7 +11,7 @@ function Login(props) {
         .concat('<input type="password" name="password" placeholder="password">')
         .concat('<button>Login</button>')
         .concat('<a href="">Register</a>');
-
+    
     login.addEventListener('submit', function (event) {
         event.preventDefault();
 

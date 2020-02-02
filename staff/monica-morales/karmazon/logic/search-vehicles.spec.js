@@ -2,7 +2,7 @@
 
 describe('searchVehicles', function () {
     fit('should succeed on matching query', function (done) {
-        searchVehicles('batman', function (results) {
+        searchVehicle('batman', function (results) {
             expect(results).toBeDefined();
             expect(results.length).toBeGreaterThan(0);
 
@@ -18,7 +18,7 @@ describe('searchVehicles', function () {
     });
 
     it('should succeed on non-matching query returning an empty array', function (done) {
-        searchVehicles('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
+        searchVehicle('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
             expect(results).toBeDefined();
             expect(results).toHaveLength(0);
 
@@ -28,37 +28,37 @@ describe('searchVehicles', function () {
 
     it('should fail on non-string query', function () {
         expect(function () {
-            searchVehicles(undefined, function () { });
+            searchVehicle(undefined, function () { });
         }).toThrowError(TypeError, 'undefined is not a string');
 
         expect(function () {
-            searchVehicles(1, function () { });
+            searchVehicle(1, function () { });
         }).toThrowError(TypeError, '1 is not a string');
 
         expect(function () {
-            searchVehicles(true, function () { });
+            searchVehicle(true, function () { });
         }).toThrowError(TypeError, 'true is not a string');
 
         expect(function () {
-            searchVehicles({}, function () { });
+            searchVehicle({}, function () { });
         }).toThrowError(TypeError, '[object Object] is not a string');
     });
 
     it('should fail on non-function callback', function () {
         expect(function () {
-            searchVehicles('', undefined);
+            searchVehicle('', undefined);
         }).toThrowError(TypeError, 'undefined is not a function');
 
         expect(function () {
-            searchVehicles('', 1);
+            searchVehicle('', 1);
         }).toThrowError(TypeError, '1 is not a function');
 
         expect(function () {
-            searchVehicles('', true);
+            searchVehicle('', true);
         }).toThrowError(TypeError, 'true is not a function');
 
         expect(function () {
-            searchVehicles('', {});
+            searchVehicle('', {});
         }).toThrowError(TypeError, '[object Object] is not a function');
     });
 });
