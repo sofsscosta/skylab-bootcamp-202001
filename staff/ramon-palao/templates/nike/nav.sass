@@ -1,0 +1,143 @@
+*
+    margin: 0
+    box-sizing: border-box
+ 
+.nav-upper, .nav-type
+    display: flex
+    flex-direction: row
+    border: $border-basic
+    height: 7vh
+    font-family: $font
+
+    &__right-side
+        width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: flex-end
+
+    &__search, &__trolley, &__menu, &__logo
+        align-self: center
+        padding: 2vh
+
+    &__option
+        @extend .nav-upper__search
+        font-size: 17px
+        font-family: $font
+
+.nav-desktop
+    display: none
+
+.nav-left
+    display: none
+
+.categorias
+    display: none
+
+.main-grid
+    display: grid
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr)
+    grid-gap: 1px
+
+    &__picture
+        width: 100%
+        height: 30vh
+
+    &__info
+        width: 100%
+        font-family: $font
+
+@media only screen and (min-width: 1024px)
+
+    .nav-type
+        display: flex
+        flex-direction: row
+        // border: $border-basic
+        height: 7vh
+        font-family: $font
+
+    .nav-desktop
+        display: flex
+        flex-direction: row
+        height: 7vh
+        width: 100%
+        border: $border-basic
+        font-family: $font
+        position: fixed
+        z-index: 10
+        background-color: white
+        top: 0px
+
+        &__dif-brands
+            display: flex
+            flex-direction: row
+            width: 100%
+        
+        &__dif-options
+            display: flex
+            flex-direction: row
+            justify-content: flex-end
+            width: 100%
+    
+        &__brand
+            align-self: center
+            padding: 2vh
+            border: $border-basic
+        
+        &__option
+            align-self: center
+            padding: 2vh
+
+    .nav-upper
+        position: fixed
+        z-index: 10
+        background-color: white
+        top: 7vh
+        width: 100%
+        height: 10vh
+
+    .nav-left
+        display: flex
+        flex-direction: column
+
+        &__category
+            font-size: 15px
+            font-family: $font
+            padding:  3vh
+        
+    
+    // .aside-upper
+    //     width: 100%
+
+    // .title
+    //     width: 100%
+    
+    .main-gridprueba
+        display: grid
+        grid-template-columns: 1fr 3fr
+        grid-template-rows: 1fr
+        _width: 100%
+        _justify-content: space-around
+        _margin: 10vh 10vh 10vh 15vh
+        box-sizing: border-box
+
+    .main-grid__picture
+            _width: 100%
+            _height: 45vh 
+            max-height: 90vh
+            max-width: 50vh
+            margin: 3vh
+        
+    .main-grid__info
+            max-width: 50vh
+            margin: 3vh
+
+.categorias
+    display: flex
+    flex-direction: column
+    // align-items: center
+    margin-top: 2vh
+    margin-left: 4vh
+    _width: 10%
+
+            
+            

@@ -1,0 +1,39 @@
+@import ../utils/_variables
+@import ../utils/_functions
+@import ../utils/_flex-around
+  
+.post
+  display: flex
+  flex-direction: column
+  height: 50%
+  border: 1px solid blue
+
+  > div:nth-child(1)
+    @extend %flex-around
+    height: 20%
+    font-size: 24px
+
+  > div:nth-child(2)
+    @extend %flex-around
+    height: 80%
+    width: 100%
+    flex-wrap: wrap
+
+  &__photo 
+    width: calc(95%/3)
+    height: 45%
+
+    &--circle
+      +border($border-width, $border-style, $border-color, $border-radius)
+
+
+  
+@media (min-width: $breakpoint-laptop)
+  .post
+    height: 40%
+
+    &__photo
+      height: 95%
+    
+    &__photo:nth-child(1n+4)
+      display: none
