@@ -59,15 +59,16 @@ function App(props) {
 
                     onToItem: function (productId) {
                         retrieveVehicle(productId, function (vehicle) {
-                            var detail = new Detail({
+                            _details = new Detail({
                                 product: vehicle,
 
                                 backToResults: function () {
-                                    detail.container.replaceWith(_results.container);
+                                    _details.container.replaceWith(_results.container);
+                                    _details = null;
                                 }
                             });
 
-                            _results.container.replaceWith(detail.container);
+                            _results.container.replaceWith(_details.container);
                         });
                     }
                 });
@@ -76,7 +77,10 @@ function App(props) {
                     _previousResults = _results.container
                     app.append(_previousResults);
                 }
-                else {
+                else if (_details) {
+                    _details.container.replaceWith(_results.container)
+                    _details = null;
+                } else {
                     _previousResults.replaceWith(_results.container);
 
                     _previousResults = _results.container;
@@ -97,6 +101,7 @@ function App(props) {
     });
 
     var _previousResults;
+    var _details;
 }
 
 App.prototype = Object.create(Component.prototype);
