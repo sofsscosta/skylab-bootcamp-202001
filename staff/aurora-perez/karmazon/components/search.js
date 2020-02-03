@@ -1,10 +1,10 @@
 class Search extends Interactive {
-    constructor({ title, onSubmitm}) {
+    constructor({ title, onSubmit}) {
         super(document.createElement('form'))
 
-        const search =this.container;
+        const search =this.container
 
-        search.classList.add('search');
+        search.classList.add('search')
 
         search.innerHTML += `<h2> ${title}</h2>
             <input type="text" name="query" placeholder="criteria">
@@ -15,11 +15,12 @@ class Search extends Interactive {
 
             const query = this.query.value;
 
-            onSubmit(query);
-        });
+            onSubmit(query)
+        })
+    }
+
+
+    __locateFeedbackInContainer__(feedback) {
+        this.container.append(feedback.container);
+    }
 }
-
-
-__locateFeedbackInContainer__(feedback) {
-    this.container.append(feedback.container);
-};

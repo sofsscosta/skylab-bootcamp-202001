@@ -8,7 +8,7 @@ function searchVehicles(query, callback) {
         if (response instanceof Error) return callback(response);
 
         if (response.status === 200) {
-            var results = JSON.parse(response.content);
+            const results = JSON.parse(response.content);
 
             callback(results);
         }

@@ -8,9 +8,9 @@ class Results extends Component {
 
         list.classList.add('results')
 
-        results.forEach(function (element) {
+        results.forEach(function (results) {
             const item = new Item({
-                element,
+                results,
 
                 onClick: onItemClick
             })
