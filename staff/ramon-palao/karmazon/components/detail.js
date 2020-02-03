@@ -1,25 +1,22 @@
-"use strict";
+class Detail extends Component{
+    constructor({ vehicle: { name, year, price, image, color, maker, collection, description, style } }){
 
-function Detail(props){
+        super(document.createElement("section"))
 
-    var detail = document.createElement("section");
+        const detail = this.container
 
-    Component.call(this, detail);
+        detail.classList.add("detail-info");
 
-    detail.classList.add("detail-info");
-
-    detail.innerHTML = "<h2 class = detail-info__title>" + props.name + "</h2>"
-    .concat("<img src = " + props.image + " class = detail-info__image> </br>")
-    .concat("<p class = detail-info__year> Year: " + props.year + "</p> </br>")
-    .concat("<p class = detail-info__color> Color: " + props.color + "</p> </br>")
-    .concat("<p class = detail-info__maker> Maker: " + props.maker + "</p> </br>")
-    .concat("<p class = detail-info__collection> Collection: " + props.collection + "</p> </br>")
-    .concat("<p class = detail-info__style> Style: " + props.style + "</p> </br>")
-    .concat("<p class = detail-info__description> Description: " + props.description + "</p>")
-    .concat("<p class = detail-info__price> Price : " + props.price + " €" + "</p> </br></br>")
-    .concat("<button class = detail-info__button>GO BACK</button>")
-    
+        detail.innerHTML = `<h2 class = detail-info__title>${name}</h2>
+        <img src = ${image} class = detail-info__image> </br>
+        <p class = detail-info__year> Year: ${year}</p> </br>
+        <p class = detail-info__color> Color: ${color}</p> </br>
+        <p class = detail-info__maker> Maker: ${maker}</p> </br>
+        <p class = detail-info__collection> Collection: ${collection}</p> </br>
+        <p class = detail-info__style> Style: ${style}</p> </br>
+        <p class = detail-info__description> Description: ${description}</p>
+        <p class = detail-info__price> Price : ${price}${"€"}</p> </br></br>
+        <button class = detail-info__button>GO BACK</button>`
+        
+    }
 }
-
-Detail.prototype = Object.create(Component.prototype);
-Detail.prototype.constructor = Detail;

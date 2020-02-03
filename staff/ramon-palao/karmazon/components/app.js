@@ -1,89 +1,90 @@
-'use strict';
+const IT = '🎈🤡';
 
-var IT = '🎈🤡';
+class App extends Component {
+        constructor (props) {
+            super(document.createElement('main'))
 
-function App(props) {
-    var app = document.createElement('main');
+        const app = this.container
 
-    Component.call(this, app);
+        app.innerHTML = '<h1>' + props.title + '</h1>'
+        // .concat("<img src=http://t1.gstatic.com/images?q=tbn:ANd9GcRXouSbtwQ_SbCCu7vxBCmasxx6Vxs1W5KIcvFy-t7tWUbrDBE4 class=logo-hot>");
 
-    app.innerHTML = '<h1>' + props.title + '</h1>'
-    // .concat("<img src=http://t1.gstatic.com/images?q=tbn:ANd9GcRXouSbtwQ_SbCCu7vxBCmasxx6Vxs1W5KIcvFy-t7tWUbrDBE4 class=logo-hot>");
+        const _login = new Login({
+            onSubmit(username, password) {
+                try {
+                    authenticate(username, password);
 
-    var _login = new Login({
-        onSubmit: function (username, password) {
-            try {
-                authenticate(username, password);
-
-                _login.container.replaceWith(_search.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _login.showError(error.message + ' ' + IT);
-            }
-        },
-        onToRegister: function () {
-            _login.container.replaceWith(_register.container);
-        }
-    });
-
-    app.append(_login.container);
-
-    var _register = new Register({
-        onSubmit: function (name, surname, username, password) {
-            try {
-                register(name, surname, username, password);
-
-                _register.container.replaceWith(_login.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _register.showError(error.message + ' ' + IT);
-            }
-        },
-        onToLogin: function () {
-            _register.container.replaceWith(_login.container);
-        }
-    });
-
-    var _search = new Search({
-        title: 'Search',
-
-        onSubmit: function (query) {
-            searchVehicles(query, function (vehicles) {
-                if (vehicles instanceof Error)
-                    return _search.showError(vehicles.message + ' ' + IT);
-
-                if (!vehicles.length)
-                    return _search.showWarning('No results ' + IT);
-
-                var __results = Results({ results: vehicles, onClick: function(id){
-                    retrieveVehicle(id, function(results){
-                        var _detail = new Detail(results);
-
-                        _results = _detail.container
-
-                        __results.container.replaceWith(_detail.container);
-
-                        _detail.container.querySelector("button").addEventListener("click", function(event){
-                            event.preventDefault();
-
-                            _detail.container.replaceWith(__results.container);
-                        })
-                    })
-                } });
-
-                if (!_results)
-                    app.append(_results = __results.container);
-                else {
-                    _results.replaceWith(__results.container);
-
-                    _results = __results.container;
+                    _login.container.replaceWith(_search.container);
+                } catch (error) {
+                    //alert(error.message + ' ' + IT);
+                    _login.showError(error.message + ' ' + IT);
                 }
-            });
-        }
-    });
+            },
+            onToRegister() {
+                _login.container.replaceWith(_register.container);
+            }
+        });
 
-    var _results;
+        app.append(_login.container);
+
+        const _register = new Register({
+            onSubmit(name, surname, username, password) {
+                try {
+                    register(name, surname, username, password);
+
+                    _register.container.replaceWith(_login.container);
+                } catch (error) {
+                    //alert(error.message + ' ' + IT);
+                    _register.showError(error.message + ' ' + IT);
+                }
+            },
+            onToLogin() {
+                _register.container.replaceWith(_login.container);
+            }
+        });
+
+        const _search = new Search({
+            title: 'Search',
+
+            onSubmit(query) {
+                searchVehicles(query, function (vehicles) {
+                    if (vehicles instanceof Error)
+                        return _search.showError(vehicles.message + ' ' + IT);
+
+                    if (!vehicles.length)
+                        return _search.showWarning('No results ' + IT);
+
+                    const __results = new Results({ 
+                        results: vehicles, 
+                        
+                        onItemClick(id){
+                            retrieveVehicle(id, function(vehicle){
+                                var _detail = new Detail({ vehicle: vehicle});
+
+                                _results.replaceWith(_detail.container);
+
+                                _results = _detail.container;
+
+                                _detail.container.querySelector("button").addEventListener("click", function(event){
+                                    event.preventDefault();
+
+                                    _detail.container.replaceWith(__results.container);
+                                })
+                            })
+                    } });
+
+                    if (!_results)
+                        app.append(_results = __results.container);
+                    else {
+                        _results.replaceWith(__results.container);
+
+                        _results = __results.container;
+                    }
+                });
+            }
+        });
+
+        let _results;
+    }
+
 }
-
-App.prototype = Object.create(Component.prototype);
-App.prototype.constructor = App;

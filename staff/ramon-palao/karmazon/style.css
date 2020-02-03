@@ -137,7 +137,6 @@ h1 {
 
 .item-list {
   margin: 0.5rem;
-  width: 30%;
   background-color: white;
   border: 3px solid blue;
   border-radius: 1rem;
@@ -145,11 +144,20 @@ h1 {
 
 .img-photo {
   cursor: pointer;
+  width: 80%;
 }
 
 .item-name, .item-price {
   font-family: "Sigmar One", cursive;
   font-size: 30px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+article {
+  width: 30%;
 }
 
 .detail-info {

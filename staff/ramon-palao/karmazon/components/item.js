@@ -1,46 +1,38 @@
-"use strict";
+class Item extends Component {
+    constructor({item: { id, name, thumbnail, price }, onClick }) {
+        super(document.createElement("article"))
 
-function Item(prop, onClick){
-    var item = document.createElement("article");
+        const item = this.container
 
-    Component.call(this, item);
+        const list = document.createElement("ul");
+        list.classList.add("list");
 
-    var list = document.createElement("ul");
-    list.classList.add("list");
+        const itemList = document.createElement("li");
+        itemList.classList.add("item-list")
 
-    var itemList = document.createElement("li");
-    itemList.classList.add("item-list")
+        const _name = document.createElement("h3");
+        _name.innerText = name;
+        _name.classList.add("item-name");
 
-    var name = document.createElement("h3");
-    name.innerText = prop.name;
-    name.classList.add("item-name");
+        const image = document.createElement("figure");
+        const imagePhoto = document.createElement("img");
+        imagePhoto.src = thumbnail;
+        imagePhoto.classList.add("img-photo");
 
-    var image = document.createElement("figure");
-    var imagePhoto = document.createElement("img");
-    imagePhoto.src = prop.thumbnail;
-    imagePhoto.classList.add("img-photo");
+        const _price = document.createElement("span");
+        _price.innerText = price + " €";
+        _price.classList.add("item-price");
 
-    var price = document.createElement("span");
-    price.innerText = prop.price + " €";
-    price.classList.add("item-price");
+        image.append(imagePhoto);
 
-    image.append(imagePhoto);
+        itemList.append(_name, image, _price);
+        list.append(itemList);
+        item.append(list);
 
-    itemList.append(name, image, price);
-    list.append(itemList);
-    item.append(list);
+        //const id = prop.id;
 
-    var id = prop.id;
-
-    image.addEventListener("click", function(event){
-        event.preventDefault();
-
-        onClick(id);
-
-    });
-    
-    //return itemList;
+        image.addEventListener("click", () => onClick(id))
+        
+        //return itemList;
+    }
 }
-
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
