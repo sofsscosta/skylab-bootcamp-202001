@@ -1,0 +1,31 @@
+@import ../utils/_mixins
+  
+.sneaker
+  +width-height-margin(49%, 40vh, 5px, 0px)   
+
+  &__photo
+    +width-height(100%, 70%)
+    &--circle
+      border-radius: 50%
+
+  &__title
+    margin-left: 10px
+
+  &__text
+    text-align: left
+    color: gray
+    margin: 3px 3px 3px 10px
+
+@media (min-width: 692px)
+  .sneaker
+    +width-height-margin(33%, 40vh, 5px, 0px)
+
+@media (min-width: 1025px)
+  .sneaker
+    +width-height-margin(32%, 60vh, 5px, 0px)
+
+    &__photo
+      +width-height(100%, 75%)
+
+    &__title
+      margin-top: 15px
