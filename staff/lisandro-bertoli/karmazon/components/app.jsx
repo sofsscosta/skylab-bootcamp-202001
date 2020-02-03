@@ -6,7 +6,7 @@ const { Component } = React
 class App extends Component {
     constructor() {
         super()
-        this.state = { loggedIn: false, registered: true }
+        this.state = { loggedIn: false, registered: true, vehicles: undefined }
     }
 
     render() {
@@ -15,9 +15,7 @@ class App extends Component {
             {!this.state.loggedIn && <Login onSubmit={(username, password) => {
                 try {
                     authenticate(username, password);
-                    console.log('auth ok')
-                    // _login.container.reset();
-                    // _login.container.replaceWith(_search.container);
+                    this.setState({ loggedIn: true, registered: true })
                 } catch (error) {
                     //alert(error.message + ' ' + IT);
                     // _login.showError(error.message + ' ' + IT);
@@ -28,13 +26,18 @@ class App extends Component {
                 (name, surname, username, password) => {
                     try {
                         register(name, surname, username, password);
-                        // _register.container.reset();
-                        // _register.container.replaceWith(_login.container);
+                        this.setState({ loggedIn: false, registered: true })
                     } catch (error) {
                         //alert(error.message + ' ' + IT);
                         // _register.showError(error.message + ' ' + IT);
                     }
                 }} onToLogin={() => { this.setState({ loggedIn: false, registered: true }) }} />}
+
+            {this.state.loggedIn && this.state.registered && <Search title="Search" onSubmit={(query) => {
+                searchVehicles(query, vehicles => {
+                    <Results vehicles="vehicles" />
+                })
+            }} />}
         </main>
 
         const _login = new Login({
