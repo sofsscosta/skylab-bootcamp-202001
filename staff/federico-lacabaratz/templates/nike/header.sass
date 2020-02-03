@@ -1,0 +1,28 @@
+@import config
+
+.header__container1
+    position: fixed
+    height: 50px
+    background-color: $genbg-color
+    border-bottom: solid 1px $color-gray
+    @extend %flexRowCenter
+    justify-content: space-between
+    width: 100%
+
+.header__containerA
+    @extend %pipebanner
+    margin-top: 4px
+    margin-left: 7px
+    height: 24px
+    @extend %flexRowCenter
+    justify-content: flex-start
+    width: 100%
+
+.header__containerB
+    @extend %iconbanner
+    margin-top: 4px
+    margin-right: 7px
+    height: 24px
+    @extend %flexRowCenter
+    justify-content: space-between
+    width: 200px
