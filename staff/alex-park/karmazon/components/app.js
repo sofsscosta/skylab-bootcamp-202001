@@ -56,11 +56,12 @@ function App(props) {
                     return _search.showWarning('No results ' + IT);
 
                 var __results = new Results({ results: vehicles, onClick: function(id) {
-                    // TODO: CHECK THE CONTAINER, LIST, ETC.
                     retrieveVehicle(id, function(details) { 
                         var detailedVehicle = new Details(details);
 
                         __results.container.replaceWith(detailedVehicle.container);
+
+                        _results = detailedVehicle.container;
 
                         detailedVehicle.container.querySelector('button').addEventListener('click', function() {
                             detailedVehicle.container.replaceWith(__results.container);
