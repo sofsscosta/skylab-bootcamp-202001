@@ -1,7 +1,3 @@
-body {
-  text-align: center;
-}
-
 .search {
   display: inline-block;
   border: 1px solid black;
@@ -121,8 +117,14 @@ article:nth-child(even) {
   color: red;
 }
 
+body {
+  text-align: center;
+}
+
 main {
   background-color: #00968899;
+  width: 100vw;
+  height: 100vh;
 }
 
 h1 {
