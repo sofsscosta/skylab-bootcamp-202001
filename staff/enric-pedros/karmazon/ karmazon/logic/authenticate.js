@@ -1,4 +1,3 @@
-'use strict';
 
 function authenticate(username, password) {
     if (typeof username !== 'string') throw new TypeError('username ' + username + ' is not a string');

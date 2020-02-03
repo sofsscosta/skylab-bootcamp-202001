@@ -1,22 +1,20 @@
-'use strict';
+class Detail extends Component {
+    constructor({ vehicle: { name, year, price, image, color, maker, collection, description, url }, style: { name: styleName, image: styleImage, url: styleUrl } }) {
+        super(document.createElement('div'))
+        const item = this.container
 
-function Detail(id) {
-    var item = document.createElement('div')
-    Component.call(this, item);
-        
-    item.classList.add('detail')
+        item.classList.add('detail')
 
-    item.innerHTML = "<h2" + id.name + "</h2><br>"
-    .concat("<img src =" + id.image +"><br>")
-    .concat("<span>Year: " + id.year + "</span><br>")
-    .concat("<span>Color: " + id.color + "</span><br>")
-    .concat("<span>Marker: " + id.maker + "</span><br>")
-    .concat("<span>Collection: " + id.collection + "</span><br>")
-    .concat("<span>Style: " + id.style + "</span><br>")
-    .concat("<p>Description: " + id.description + "</p><br>")
-    .concat("<span>Price: " + id.price + " € </span><br><br>")
-  
+        item.innerHTML = `<h2>${name}</h2><br>"
+            ("<img src =${image}><br>")
+            ("<span>Year:${year}</span><br>")
+            ("<span>Color:${color}</span><br>")
+            ("<span>Marker:${maker}</span><br>")
+            ("<span>Collection:${collection}</span><br>")
+            ("<span>Style:${style}</span><br>")
+            ("<p>Description:${description}</p><br>")
+            ("<span>Price:${price}" € </span><br><br>")`
+
+    }
+
 }
-
-Detail.prototype = Object.create(Component.prototype);
-Detail.prototype.constructor = Detail;

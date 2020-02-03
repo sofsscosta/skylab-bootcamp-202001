@@ -1,4 +1,4 @@
-'use strict';
+
 
 function retrieveVehicle(id, callback) {
     if (typeof id !== 'string') throw new TypeError(id + ' is not a string');

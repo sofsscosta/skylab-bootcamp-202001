@@ -1,44 +1,21 @@
-'use strict';
 
-function Item(response, onClick){
-       
-    var item = document.createElement('article');
-    Component.call(this, item);
+class Item extends Component {
+  constructor({ item: { id, name, thumbnail, price }, onClick }) {
+    super(document.createElement('article'))
+    const item = this.container
 
-    var list = document.createElement('ul');
-    list.classList.add('item');
-       
-    var itemList = document.createElement('li');
+    item.addEventListener('click', () => onClick(id))
 
-    var name = document.createElement('h3');
-    name.innerText = response.name;
-    itemList.append(name);
-  
-    var figure = document.createElement('figure');
-    itemList.append(figure);
-    var ancor = document.createElement('a');
-    var image = document.createElement('img');
-    image.src = response.thumbnail;
+    const _name = document.createElement('h3')
+    _name.innerText = name
+    item.append(_name)
 
-    ancor.append(image);
-    figure.append(ancor);
-      
-    var price = document.createElement('span');
-    price.innerText = response.price + ' €';
-    itemList.append(price);
+    const image = document.createElement('img')
+    image.src = thumbnail
+    item.append(image)
 
-    list.append(itemList);
-    item.append(list);
-    
-    image.addEventListener('click',function(event){
-        event.preventDefault();
-        
-        var id = response.id       
-        onClick(id)
-    })
-      
-    
+    const _price = document.createElement('span')
+    _price.innerText = price
+    item.append(_price)  
   }
-
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
+}

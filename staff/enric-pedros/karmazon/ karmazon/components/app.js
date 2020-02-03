@@ -1,88 +1,91 @@
-'use strict';
 
-var IT = '🎈🤡';
+const IT = '🎈🤡';
 
-function App(props) {
-    var app = document.createElement('main');
+class App extends Component {
+    constructor(props) {
+        super(document.createElement('main'))
 
-    Component.call(this, app);
+        const app = this.container
 
-    app.innerHTML = '<h1>' + props.title + '</h1>';
+        app.innerHTML = `<h1>${props.title}</h1>`
 
-    var _login = new Login({
-        onSubmit: function (username, password) {
-            try {
-                authenticate(username, password);
+        const _login = new Login({
+            onSubmit(username, password) {
+                try {
+                    authenticate(username, password);
 
-                _login.container.replaceWith(_search.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _login.showError(error.message + ' ' + IT);
+                    _login.container.replaceWith(_search.container);
+                } catch (error) {
+                    _login.showError(error.message + ' ' + IT);
+                }
+            },
+            onToRegister() {
+                _login.container.replaceWith(_register.container);
             }
-        },
-        onToRegister: function () {
-            _login.container.replaceWith(_register.container);
-        }
-    });
+        });
 
-    app.append(_login.container);
+        app.append(_login.container);
 
-    var _register = new Register({
-        onSubmit: function (name, surname, username, password) {
-            try {
-                register(name, surname, username, password);
+        const _register = new Register({
+            onSubmit(name, surname, username, password) {
+                try {
+                    register(name, surname, username, password);
 
+                    _register.container.replaceWith(_login.container);
+                } catch (error) {
+                    //alert(error.message + ' ' + IT);
+                    _register.showError(error.message + ' ' + IT);
+                }
+            },
+            onToLogin() {
                 _register.container.replaceWith(_login.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _register.showError(error.message + ' ' + IT);
             }
-        },
-        onToLogin: function () {
-            _register.container.replaceWith(_login.container);
-        }
-    });
+        });
 
-    var _search = new Search({
-        title: 'Search',
+        const _search = new Search({
+            title: 'Search',
 
-        onSubmit: function (query) {
-            searchVehicles(query, function (vehicles) {
-                if (vehicles instanceof Error)
-                    return _search.showError(vehicles.message + ' ' + IT);
+            onSubmit(query) {
+                searchVehicles(query, vehicles => {
+                    if (vehicles instanceof Error)
+                        return _search.showError(vehicles.message + ' ' + IT);
 
-                if (!vehicles.length)
-                    return _search.showWarning('No results ' + IT);
+                    if (!vehicles.length)
+                        return _search.showWarning('No results ' + IT);
 
-                var __results = new Results({
-                    results: vehicles, 
-                    onClick: function (id) {
-                        retrieveVehicle(id, function (itemResult) {
-                            var detail = new Detail(itemResult)
-                            _results.replaceWith(detail.container);
-                        })
+                    const __results = new Results({
+                        results: vehicles,
+                        onItemClick(id) {
+                            retrieveVehicle(id, vehicle => {
+                                retrieveStyle(vehicle.style, style => {
+                                    const detail = new Detail({ vehicle, style })
+
+                                    _results.replaceWith(detail.container)
+
+                                    _results = detail.container
+                                })
+                            })
+                        }
+                    })
+
+                    if (!_results)
+                        app.append(_results = __results.container);
+                    else {
+                        _results.replaceWith(__results.container);
+
+                        _results = __results;
+
+                        const detailCar = document.querySelector('.detail');
+
+                        if (detailCar !== null) {
+                            detailCar.replaceWith(__results.container);
+                        }
                     }
                 });
+            }
+        });
 
-                if (!_results)
-                    app.append(_results = __results.container);
-                else {
-                    _results.replaceWith(__results.container);
+        let _results;
+    }
 
-                    _results = __results;
-
-                    var detailCar = document.querySelector('.detail');
-
-                    if (detailCar !== null) {
-                        detailCar.replaceWith(__results.container);
-                    }
-                }
-            });
-        }
-    });
-
-    var _results;
 }
-
-App.prototype = Object.create(Component.prototype);
-App.prototype.constructor = App;
