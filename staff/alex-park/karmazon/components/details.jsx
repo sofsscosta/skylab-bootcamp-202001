@@ -1,4 +1,4 @@
-function Details ({detailInfo: { id, name, image, year, color, maker, collection, style, description, price }}) {
+function Details ({detailInfo: { id, name, image, year, color, maker, collection, style, description, price }, onClick}) {
     return <li className="details">
         <h2>{id}: {name}</h2>
         <img src={image} />
@@ -9,6 +9,6 @@ function Details ({detailInfo: { id, name, image, year, color, maker, collection
         <p><b>STYLE</b>: {style.toProperCase()}</p>
         <p><b>DESCRIPTION</b>: {description}</p></div>
         <span>PRICE: {price}$</span>
-        <button>BACK</button>
+        <button onClick={onClick}>BACK</button>
     </li>
 }
