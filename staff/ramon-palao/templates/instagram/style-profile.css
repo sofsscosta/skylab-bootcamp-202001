@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.border{
+    border: 1px solid black;
+}
+.header__upperbar{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    padding: 0 2vh;
+    width: 100%;
+    height: 5vh;
+    background-color: white;
+}
+.header__back, .header__user-name, .header__options, .main__photo-layout, .main__photo-live, .main__photo-tags, .nav-bottom__home, .nav-bottom__search, .nav-bottom__gallery, .nav-bottom__favs, .nav-bottom__profile{
+    width: 10%;
+    height: 70%;
+    align-self: center;
+    background-color: grey;
+}
+.header__user-photo, .main__stories{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 100%;
+    background-color: #ff7979;
+}
+.header__publish, .header__followers, .header__follows, .header__follows-info, .header__message, .header__email, .header__more-options{
+    width: 10vh;
+    height: 3vh;
+    align-self: center;
+    background-color: black;
+}
+.header__info{
+    height: 15vh;
+    margin-top: 5vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.header__personal-info{
+    height: 15vh;
+    padding: 0 2vh;
+    overflow: auto;
+}
+.header__additional-info{
+    height: 5vh;
+    padding: 0 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.main__stories-bar{
+    height: 15vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.main__photo-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2vh;
+    height: 5vh;
+}.main__photos-display{
+    display: grid;
+    grid-template: repeat(3 ,1fr) / repeat(3, 1fr);
+    grid-gap: 1px;
+}
+.main__picture{
+    width: 100%;
+    height: 21vh;
+    background-color: rgb(212, 255, 21);
+}
+.nav-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    padding: 0 2vh;
+    width: 100%;
+    height: 7vh;
+    background-color: white;
+}
+
+@media only screen and (min-width: 768px){
+    body{
+        background-color: rgba(var(--b3f,250,250,250),1);
+    }
+    .header__upperbar{
+        height: 10vh;
+    }
+    .header__info{
+        margin-top: 15vh;
+    }
+    .header__user-photo, .main__stories{
+        width: 15vh;
+        height: 15vh;
+        border-radius: 100%;
+        background-color: #ff7979;
+    }
+    .header__personal-info, .header__additional-info, .main__stories-bar, .main__photo-options, .main__photos-display{
+        margin: 5vh;
+    }
+
+}
