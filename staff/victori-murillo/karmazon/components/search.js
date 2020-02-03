@@ -1,28 +1,25 @@
-'use strict';
+class Search extends Interactive{
 
-function Search(props) {
-    var search = document.createElement('form');
+    constructor({title, onSubmit}) {
+        super(document.createElement('form'))
+        var search = this.container
 
-    Interactive.call(this, search);
-
-    search.classList.add('search');
-
-    search.innerHTML += '<h2>' + props.title + '</h2>'
-        .concat('<input type="text" name="query" placeholder="criteria">')
-        .concat('<button type="submit">Search</button>')
-
-    search.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        var query = this.query.value;
-
-        props.onSubmit(query);
-    });
+        search.classList.add('search');
+    
+        search.innerHTML += `<h2>${title}</h2>
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>`
+    
+        search.addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            var query = this.query.value;
+    
+            onSubmit(query);
+        });
+    }
+    
+    __locateFeedbackInContainer__(feedback) {
+        this.container.append(feedback.container);
+    };
 }
-
-Search.prototype = Object.create(Interactive.prototype);
-Search.prototype.constructor = Search;
-
-Search.prototype.__locateFeedbackInContainer__ = function (feedback) {
-    this.container.append(feedback.container);
-};

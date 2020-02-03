@@ -1,4 +1,6 @@
-Function.prototype.extend = (father) {
-  this.prototype = Object.create(father.prototype);
-  this.prototype.constructor = this;
-}
+
+if (typeof Function.prototype.extend === 'undefined')
+  Function.prototype.extend = function(parent) {
+    this.prototype = Object.create(parent.prototype)
+    this.prototype.constructor = this
+  }

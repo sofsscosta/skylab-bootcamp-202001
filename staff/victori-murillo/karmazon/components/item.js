@@ -1,22 +1,23 @@
-function Item(result, toggleDetails) {
+class Item extends Component {
+  constructor ({item: {id, name, thumbnail}, toggleDetails}) {
+    
+    super(document.createElement('li'))
+    
+    const item = this.container
+
+    item.classList.add('item')
   
-  var item = document.createElement('li');
-  item.classList.add('item')
-  item.id = result.id
+    const _name = document.createElement('h3');
+    _name.innerText = name;
+    item.append(_name);
   
-  Component.call(this, item)
+    const image = document.createElement('img');
+    image.src = thumbnail;
+    item.append(image);
+  
+    item.addEventListener('click', function() {
+      toggleDetails(id)
+    })
+  }
 
-  var name = document.createElement('h3');
-  name.innerText = result.name;
-  item.append(name);
-
-  var image = document.createElement('img');
-  image.src = result.thumbnail;
-  item.append(image);
-
-  item.addEventListener('click', function() {
-    toggleDetails(result.id)
-  })
 }
-
-Item.prototype.extend(Component)

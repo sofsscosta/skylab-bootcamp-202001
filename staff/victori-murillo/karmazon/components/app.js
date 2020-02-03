@@ -1,91 +1,81 @@
-'use strict';
+class App extends Component {
+    constructor(props) {
+        super(document.createElement('main'))
 
-var IT = '🎈🤡';
+        const app = this.container
 
-function App(props) {
-    var app = document.createElement('main');
+        app.innerHTML = `<h1>${props.title}</h1>`
 
-    Component.call(this, app);
+        const _login = new Login({
+            onSubmit(username, password) {
+                try {
+                    authenticate(username, password)
 
-    app.innerHTML = '<h1>' + props.title + '</h1>';
-
-    var _login = new Login({
-        onSubmit: function (username, password) {
-            try {
-                authenticate(username, password);
-
-                _login.container.replaceWith(_search.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _login.showError(error.message + ' ' + IT);
-            }
-        },
-        onToRegister: function () {
-            _login.container.replaceWith(_register.container);
-        }
-    });
-
-    // app.append(_login.container);
-
-    var _register = new Register({
-        onSubmit: function (name, surname, username, password) {
-            try {
-                register(name, surname, username, password);
-
-                _register.container.replaceWith(_login.container);
-            } catch (error) {
-                _register.showError(error.message + ' ' + IT);
-            }
-        },
-        onToLogin: function () {
-            _register.container.replaceWith(_login.container);
-        }
-    });
-
-    var _search = new Search({
-        title: 'Search',
-
-        onSubmit: function (query) {
-            searchVehicles(query, function (vehicles) {
-                if (vehicles instanceof Error)
-                    return _search.showError(vehicles.message + ' ' + IT);
-
-                if (!vehicles.length)
-                    return _search.showWarning('No results ' + IT);
-
-                var __results = new Results({ results: vehicles, 
-                    
-                    toggleDetails: function(itemId){
-
-                        retrieveVehicle(itemId, function(detail) {
-                            var __details = new Details({detail});
-                            __results.container.replaceWith(__details.container);
-                            _details = __details.container;
-                        })
-                    }
-                });
-                
-                if (!_results) {
-                    app.append(_results = __results.container);
-
-                } else if (_details) {
-                    _details.replaceWith(__results.container);
-                    _results = __results.container;
-
-                } else {
-                    _results.replaceWith(__results.container);
-                    _results = __results.container;
+                    _login.container.replaceWith(_search.container)
+                } catch (error) {
+                    _login.showError(error.message)
                 }
+            },
+            onToRegister() {
+                _login.container.replaceWith(_register.container)
+            }
+        })
 
-                _details = false;
-            });
-        }
-    });
+        app.append(_login.container)
 
-    app.append(_search.container);
+        const _register = new Register({
+            onSubmit(name, surname, username, password) {
+                try {
+                    register(name, surname, username, password)
 
-    var _results;
-    var _details;
+                    _register.container.replaceWith(_login.container)
+                } catch (error) {
+                    _register.showError(error.message + ' ' + IT)
+                }
+            },
+            onToLogin() {
+                _register.container.replaceWith(_login.container)
+            }
+        })
+
+        const _search = new Search({
+            title: 'Search',
+
+            onSubmit(query) {
+                searchVehicles(query, vehicles => {
+                    if (vehicles instanceof Error)
+                        return _search.showError(vehicles.message + ' ' + IT)
+
+                    if (!vehicles.length)
+                        return _search.showWarning('No results ' + IT)
+
+                    const __results = new Results({ 
+                        
+                        results: vehicles,
+                        
+                        toggleDetails(id){
+
+                            retrieveVehicle(id, function(detail) {
+                                const __details = new Details({detail})
+
+                                __results.container.replaceWith(__details.container)
+                                _results = __details.container
+                            })
+                        }
+                    })
+                    
+                    if (!_results) {
+                        app.append(_results = __results.container)
+
+                    } else {
+                        _results.replaceWith(__results.container)
+                        _results = __results.container
+                    }
+
+                })
+            }
+        })
+
+        var _results
+    }
 }
-
-App.prototype.extend(Component)

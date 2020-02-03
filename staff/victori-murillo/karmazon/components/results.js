@@ -1,16 +1,17 @@
 'use strict';
 
-function Results(props) {
+class Results extends Component {
 
-    var list = document.createElement('ul');
-    Component.call(this, list)
+    constructor({results, toggleDetails}) {
+        super(document.createElement('ul'))
+        var list = this.container
+        
+        list.classList.add('results')
     
-    list.classList.add('results');
+        results.forEach(item => {
+            var _item = new Item({item, toggleDetails})
 
-    props.results.forEach(function (result) {
-        var _item = new Item(result, props.toggleDetails)
-        list.append(_item.container);
-    });
+            list.append(_item.container)
+        })
+    }
 }
-
-Results.prototype.extend(Component)

@@ -1,46 +1,41 @@
-'use strict';
+class Register extends Interactive {
 
-function Register(props) {
-    var register = document.createElement('form');
+    constructor({onSubmit, onToLogin}) {
+        super(document.createElement('form'))
+        var register = this.container
+        
+        register.classList.add('register')
     
-    Interactive.call(this, register);
+        register.innerHTML = `<h2>Sign-up</h2>
+        <input type="text" name="name" placeholder="name" autocompolete >
+        <input type="text" name="surname" placeholder="surname" autocomplete >
+        <input type="text" name="username" placeholder="username" autocomplete >
+        <input type="password" name="password" placeholder="password" autocomplete >
+        <button>Register</button>
+        <a href="">Login</a>`
+    
+        register.addEventListener('submit', function (event) {
+            event.preventDefault()
+    
+            var name = this.name.value
+            var surname = this.surname.value
+            var username = this.username.value
+            var password = this.password.value
+    
+            onSubmit(name, surname, username, password)
+        })
+    
+        var login = register.querySelector('a')
+    
+        login.addEventListener('click', function (event) {
+            event.preventDefault()
 
-    register.classList.add('register');
-
-    register.innerHTML = '<h2>Sign-up</h2>'
-        .concat('<input type="text" name="name" placeholder="name">')
-        .concat('<input type="text" name="surname" placeholder="surname">')
-        .concat('<input type="text" name="username" placeholder="username">')
-        .concat('<input type="password" name="password" placeholder="password">')
-        .concat('<button>Register</button>')
-        .concat('<a href="">Login</a>');
-
-
-    register.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        var name = this.name.value;
-        var surname = this.surname.value;
-        var username = this.username.value;
-        var password = this.password.value;
-
-        props.onSubmit(name, surname, username, password);
-    });
-
-    var login = register.querySelector('a');
-
-    login.addEventListener('click', function (event) {
-        event.preventDefault();
-
-        props.onToLogin();
-    });
+            onToLogin()
+        })
+    }
+    
+    __locateFeedbackInContainer__(feedback) {
+        var input = this.container.querySelector('input')
+        this.container.insertBefore(feedback.container, input)
+    }
 }
-
-Register.prototype = Object.create(Interactive.prototype);
-Register.prototype.constructor = Register;
-
-Register.prototype.__locateFeedbackInContainer__ = function(feedback) {
-    var input = this.container.querySelector('input'); //?
-
-    this.container.insertBefore(feedback.container, input);
-};
