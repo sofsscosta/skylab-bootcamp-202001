@@ -1,22 +1,25 @@
-'use strict';
+class Results extends Component {
+    constructor({results}){
+        super(document.createElement('ul'))
 
-function Results(props) {
-    var list = document.createElement('ul');
-    list.classList.add('results');
+        const list = this.container
 
-    props.results.forEach(function (result) {
-        var _item = new Item({
-            results: result,
+        list.classList.add('results');
 
-            onClick: function(){
-                searchDetails(result.id, function(result){
-                    var _details = new Details(result)
-                    _item.after(_details)
-                    _details.classList.add('details__show')
-                })
-            }
-        })
-        list.append(_item);
-    });
-    return list;
+        results.forEach(result => {
+            const _item = new Item({
+                results: result,
+
+                onClick(){
+                    searchDetails(result.id, result => {
+                        const _details = new Details(result)
+                        _item.after(_details)
+                        _details.classList.add('details__show')
+                    })
+                }
+            })
+            list.append(_item);
+        });
+        return list;
+    }
 }

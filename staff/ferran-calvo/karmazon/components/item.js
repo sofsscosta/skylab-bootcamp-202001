@@ -1,30 +1,32 @@
-function Item(props) {
-    
-    var item = document.createElement('li');
-    Component.call(this, item)
-    item.classList.add('item')
+class Item extends Component {
+    constructor(props){
+        super(document.createElement('li'))
+
+        const item = this.container
+        item.classList.add('item')
+
+        const name = document.createElement('h3');
+        name.innerText = props.results.name;
+        item.append(name);
+
+        const image = document.createElement('img');
+        image.src = props.results.thumbnail;
+        item.append(image);
 
 
-    var name = document.createElement('h3');
-    name.innerText = props.results.name;
-    item.append(name);
+        const price = document.createElement('span');
+        price.innerText = props.results.price + " $";
+        item.append(price);
 
-    var image = document.createElement('img');
-    image.src = props.results.thumbnail;
-    item.append(image);
-
-
-    var price = document.createElement('span');
-    price.innerText = props.results.price + " $";
-    item.append(price);
-
-    item.addEventListener('click', function(e){
-        e.preventDefault();
-        props.onClick();
-    })
-    return item;
+        item.addEventListener('click', function(e){
+            e.preventDefault();
+            props.onClick();
+        })
+        return item;
+    }
 }
+    
 
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
+
+    
 
