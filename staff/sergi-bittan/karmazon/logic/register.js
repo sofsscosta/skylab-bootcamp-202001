@@ -1,5 +1,3 @@
-'use strict';
-
 function register(name, surname, username, password) {
     if (typeof name !== 'string') throw new TypeError('name ' + name + ' is not a string');
     if (!name.trim()) throw new Error('name is empty');
@@ -10,11 +8,11 @@ function register(name, surname, username, password) {
     if (typeof password !== 'string') throw new TypeError('password ' + password + ' is not a string');
     if (!password.trim()) throw new Error('password is empty');
 
-    var user = users.find(function (user) { return user.username === username; });
+    const user = users.find( user => user.username === username)
 
-    if (user) throw new Error('User ' + username + ' already exists');
+    if (user) throw new Error(`User ${username} already exists`)
 
-    user = { name: name, surname: surname, username: username, password: password };
+    user = { name: name, surname: surname, username: username, password: password }
 
-    users.push(user);
+    users.push(user)
 }

@@ -1,22 +1,26 @@
-'use strict';
 
-function Results(props) {
-    var list = document.createElement('ul');
-    list.classList.add('results');
+class Results extends Component {
+    constructor({results, onItemClick}) {
+        super(document.createElement("ul"))
 
-    props.results.forEach(function(result) {
-        var _item = new Item({
-            data: result,
-            onClick: function(resultId)
-            {                
-                props.onResultClicked(resultId);
-            }
-        }); 
-        list.append(_item.container);
-    });
+        const list = this.container
 
-    return list;
+        list.classList.add('results');
+
+        results.forEach(item => {
+            const _item = new Item({
+                item,
+                onClick: onItemClick
+            
+             })
+
+            list.append(_item.container);
+        })
+    }
 }
+
+    
+
         
 
 

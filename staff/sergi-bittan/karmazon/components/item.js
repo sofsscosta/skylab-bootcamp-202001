@@ -1,39 +1,30 @@
-"use strict"
+
 
 // props tiene 2 propiedades: data y onClick
-function Item(props){
+class Item extends Component {
+    constructor({item: {id, name, thumbnail, price}, onClick}){
+        super(document.createElement("article"))
+         
+        const item = this.container
 
-    var item = document.createElement("article");
-    Component.call(this,item);
-    item.classList.add("article");
+        image.addEventListener("click", () => onClick(id))
+        
+        const _name = document.createElement("h2");
+        _name.innerText = name;
+        item.append(image)
 
-    var name = document.createElement("h2");
-    name.innerText = props.data.name;
-    name.classList.add("article__tittle");
+        const image = document.createElement("img");
+        image.src = thumbnail;
+        item.append(image);
 
-    item.append(name);
-
-    var image = document.createElement("img");
-    image.src = props.data.thumbnail;
-    image.classList.add("article__photo");
-
-    item.append(image);
-
-    var price = document.createElement("span");
-    price.innerText = props.data.price + " €";
-    price.classList.add("article__price")
-
-    item.append(price);
-
-    image.addEventListener("click", function(event){
-        event.preventDefault();
-        props.onClick(props.data.id);
-    });
+        const _price = document.createElement("span");
+        _price.innerText = price + " €";
+        item.append(_price);
+    }
     
 }
 
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
+
 
 
 
