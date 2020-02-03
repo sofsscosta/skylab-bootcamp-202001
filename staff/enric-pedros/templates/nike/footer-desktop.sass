@@ -1,0 +1,59 @@
+.footer-desktop
+    display: grid
+    grid-template-rows: 2fr 1fr
+    background-color: black
+    height: 400px
+    color: white
+    padding-left: 10px
+    @media screen and ( max-width: 500px  )
+        display: none
+
+    &__container
+        display: grid
+        grid-template-columns: repeat(4,1fr)
+        margin-top: 20px
+        border-bottom: 1px solid gray
+        padding-bottom: 15px
+
+    &__icons
+        display: flex
+        justify-content: space-between
+        padding-right: 15px
+
+    &__first-container
+        display: flex
+        flex-direction: column
+        margin-right: 15px
+        justify-content: space-between
+
+
+    &__container-rights
+        display: grid       
+        grid-template-columns: repeat(2,1fr)
+        color: gray
+        align-items: center
+    &__guide
+        display: flex
+        flex-flow: row-nowrap
+    &__guide > span
+        padding-right: 6px
+        font-size: small    
+.info
+    justify-content: space-between
+
+    &__text
+        color: white
+        font-size: small
+.moreinfo
+    display: flex
+    flex-direction: column
+    color: gray
+    justify-content: space-between
+    margin-right: 15px
+.bestinfo
+    display: flex
+    flex-direction: column
+    color: gray
+    justify-content: space-between
+
+      
