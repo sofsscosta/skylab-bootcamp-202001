@@ -1,6 +1,30 @@
 const IT = '🎈🤡'
 
+const { Component } = React
+
 class App extends Component {
+    constructor() {
+        this.state = {
+            isLoggedIn: false
+        };
+    }
+
+    render() {
+        return <main>
+            <h1>{this.props.title}</h1>
+            {!this.state.isLoggedIn && <Login onSubmit={(username, password) => {
+                try {
+                    authenticate(username, password)
+                    this.setState({ isLoggedIn: true })
+                } catch (error) {
+                    //_login.showError(error.message + ' ' + IT)
+                }
+            }} onToRegister={} />}
+        </main>
+    }
+}
+
+/*class App extends Component {
     constructor(props) {
         super(document.createElement('main'))
         const app = this.container
@@ -87,4 +111,4 @@ class App extends Component {
         let _results
     }
 
-}
+}*/
