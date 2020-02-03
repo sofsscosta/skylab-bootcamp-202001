@@ -2,56 +2,55 @@ class Detail extends Component {
     constructor({results: { name, year, price, image, color, maker, collection, description, url }, onClick}) {
         super(document.createElement('article'))
 
-        const results = this.container
+        const detail = this.container
 
-        var detail = document.createElement("article")
-        Component.call(this, detail)
         detail.classList.add("detail")
 
-        var title = document.createElement("h3")
-        title.innerText += results.name + ' - Id#' + results.id
-        detail.append(title)
+        const _title = document.createElement("h3")
+        _title.innerText += name 
+        detail.append(_title)
 
-        var figure = document.createElement('figure')
-        var image = document.createElement('img')
-        image.src = results.image
-        figure.append(image)
-        detail.append(figure)
+        const _figure = document.createElement('figure')
+        const _image = document.createElement('img')
+        _image.src = image
+        _figure.append(_image)
+        detail.append(_figure)
 
-        var year = document.createElement("span")
-        year.classList.add('year')
-        year.innerText = results.year
-        detail.append(year)
+        const _year = document.createElement("span")
+        _year.classList.add('year')
+        _year.innerText = year
+        detail.append(_year)
 
-        var maker = document.createElement("span")
-        maker.classList.add('maker')
-        maker.innerText = results.maker
-        detail.append(maker)
+        const _maker = document.createElement("span")
+        _maker.classList.add('maker')
+        _maker.innerText = maker
+        detail.append(_maker)
 
-        var collection = document.createElement("span")
-        collection.classList.add('collection')
-        collection.innerText = results.collection
-        detail.append(collection)
+        const _collection = document.createElement("span")
+        _collection.classList.add('collection')
+        _collection.innerText = collection
+        detail.append(_collection)
 
-        var style = document.createElement("span")
-        style.classList.add('style')
-        style.innerText = results.style
-        detail.append(style)
+        // const _style = document.createElement("span")
+        // _style.classList.add('style')
+        // _style.innerText = style
+        // detail.append(_style)
 
-        var description = document.createElement('p')
-        description.innerText = results.description
-        detail.append(description)
+        const _description = document.createElement('p')
+        _description.innerText = description
+        detail.append(_description)
 
-        var link = document.createElement("a")
-        link.href = results.url
-        link.innerText = results.url
-        detail.append(link)
+        const _link = document.createElement("a")
+        _link.href = url
+        _link.innerText = url
+        detail.append(_link)
 
-        var back = document.createElement('button')
-        back.innerText = "X"
-        detail.append(back)
+        const _back = document.createElement('button')
+        _back.innerText = "X"
+        detail.append(_back)
 
-        back.addEventListener('click', function (event) {
+
+        _back.addEventListener('click', function (event) {
             event.preventDefault()
 
             onClick()

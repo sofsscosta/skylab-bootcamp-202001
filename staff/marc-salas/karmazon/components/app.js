@@ -58,23 +58,23 @@ class App extends Component {
                                 const _details = new Detail({
                                     results: results,
                                     onClick: function () {
-                                        _details.container.replaceWith(__results)
+                                        _details.container.replaceWith(__results.container)
                                     }
                                 })
-                                __results.replaceWith(_details.container)
+                                __results.container.replaceWith(_details.container)
                             })
 
                         }
                     })
 
                     if (!_results) {
-                        app.append(_results = __results)
+                        app.append(_results = __results.container)
                     } else {
-                        _results.replaceWith(__results)
+                        _results.replaceWith(__results.container)
                         _results = __results
                         const _detailsNode = document.querySelector('.detail')
                         if (_detailsNode !== null) {
-                            _detailsNode.replaceWith(__results)
+                            _detailsNode.replaceWith(__results.container)
                         }
                     }
                 })
