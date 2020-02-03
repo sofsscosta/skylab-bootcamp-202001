@@ -1,9 +1,9 @@
-describe('retrieveStyle', () => {
+describe('retrieveCollection', () => {
     it('should succeed on valid ID#', done => {
         
-        const id = 'entertainment'
+        const id = 'hw-screen-time'
         
-        retrieveStyle(id, vehicle => {
+        retrieveCollection(id, vehicle => {
             expect(vehicle).toBeDefined()
             expect(vehicle.id).toBeDefined(id)
             expect(vehicle.id).not.toBeInstanceOf(Error)
@@ -20,7 +20,7 @@ describe('retrieveStyle', () => {
     it('should return null on non-matching vehicle id', done => {
         const id = 'non-valid-id'
 
-        retrieveStyle(id, vehicle => {
+        retrieveCollection(id, vehicle => {
             expect(vehicle).not.toBeInstanceOf(Error)
 
             expect(vehicle).toBeNull()
@@ -31,37 +31,37 @@ describe('retrieveStyle', () => {
 
     it('should fail on non-string query', () => {
         expect(() => 
-            retrieveStyle(undefined, () => {})
+            retrieveCollection(undefined, () => {})
         ).toThrowError(TypeError, 'undefined is not a string')
 
         expect(() => 
-            retrieveStyle(1, () => {})
+            retrieveCollection(1, () => {})
         ).toThrowError(TypeError, '1 is not a string')
 
         expect(() => 
-            retrieveStyle(true, () => {})
+            retrieveCollection(true, () => {})
         ).toThrowError(TypeError, 'true is not a string')
 
         expect(() => 
-            retrieveStyle({}, () => {})
+            retrieveCollection({}, () => {})
         ).toThrowError(TypeError, '[object Object] is not a string')
     })
 
     it('should fail on non-function callback', () => {
         expect(() => 
-            retrieveStyle('', undefined)
+            retrieveCollection('', undefined)
         ).toThrowError(TypeError, 'undefined is not a function')
 
         expect(() => 
-            retrieveStyle('', 1)
+            retrieveCollection('', 1)
         ).toThrowError(TypeError, '1 is not a function')
 
         expect(() => 
-            retrieveStyle('', true)
+            retrieveCollection('', true)
         ).toThrowError(TypeError, 'true is not a function')
 
         expect(() => 
-            retrieveStyle('', {})
+            retrieveCollection('', {})
         ).toThrowError(TypeError, '[object Object] is not a function')
     })
 })

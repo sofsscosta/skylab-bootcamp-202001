@@ -53,14 +53,18 @@ class App extends Component {
                     const __results = new Results({ 
                         results: vehicles, 
                         
-                        onItemClick(id){
-                            retrieveVehicle(id, vehicle => {
-                                retrieveStyle(vehicle.style, style => {
-                                const detail = new Detail({ vehicle, style})                      
-                                
-                                _results.replaceWith(detail.container)
-
-                                _results = detail.container
+                    onItemClick(id){
+                        retrieveVehicle(id, vehicle => {
+                            retrieveStyle(vehicle.style, style => {
+                                retrieveMaker(vehicle.maker, maker => {
+                                    retrieveCollection(vehicle.collection, collection => {
+                                        const detail = new Detail({ vehicle, style, maker, collection })                      
+                                        
+                                        _results.replaceWith(detail.container)
+        
+                                        _results = detail.container
+                                    })
+                                })
                             })
                         })
                     }

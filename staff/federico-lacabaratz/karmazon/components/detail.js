@@ -1,5 +1,5 @@
 class Detail extends Component {
-    constructor({vehicle: { name, id, image, year, price, maker, collection, description, url}, style: {name: styleName, image: styleImage, url: styleUrl}}) {
+    constructor({vehicle: { name, id, image, year, price, description, url}, style: {name: styleName, image: styleImage, url: styleUrl}, maker: {name: makerName, url: makerUrl }, collection: {name: collectionName, image: collectionImage, url: collectionUrl}}) {
         super(document.createElement('li'))
     
         const detail = this.container
@@ -25,21 +25,35 @@ class Detail extends Component {
     detail.append(_year)
     
     const _maker = document.createElement('p')
-    _maker.innerText = `Maker: ${maker}`
+    const _makerLink = document.createElement('a')
+    _maker.innerText = `Maker: `
+    _makerLink.innerText = makerName
+    _makerLink.href = makerUrl
+    _maker.append(_makerLink)
     detail.append(_maker)
     
     const _collection = document.createElement('p')
-    _collection.innerText = `Collection: ${collection}`
+    const _collectionLink = document.createElement('a')
+    _collection.innerText = `Collection: `
+    _collectionLink.innerText = collectionName
+    _collectionLink.href = collectionUrl
+    _collection.append(_collectionLink)
+    const _collectionImage = document.createElement('img')
+    _collectionImage.src = collectionImage
+    _collectionImage.href = collectionUrl
+    _collectionLink.append(_collectionImage)
     detail.append(_collection)
     
     const style = document.createElement('p')
     const styleLink = document.createElement('a')
-    styleLink.innerText = `Style: ${styleName}`
-    styleLink.innerText = styleUrl
+    style.innerText = `Style: `
+    styleLink.innerText = styleName
+    styleLink.href = styleUrl
     style.append(styleLink)
     const _styleImage = document.createElement('img')
     _styleImage.src = styleImage
-    style.append(_styleImage)
+    _styleImage.href = styleImage
+    styleLink.append(_styleImage)
     detail.append(style)
 
     const _description = document.createElement('p')

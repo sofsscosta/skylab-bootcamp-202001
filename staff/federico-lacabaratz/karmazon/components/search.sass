@@ -1,7 +1,11 @@
+@import ../config
+    
 .search
+    @extend %text-searchTitle
     display: inline-block
-    border: 1px solid black
-    border-radius: 1rem
+    background-color: $color-ElectricBlue
+    border: 1px solid $color-gray
+    border-radius: 0.5rem
     padding: 0.5rem
     
     &--hide
@@ -9,14 +13,16 @@
 
     input
         display: block
-        border: 1px solid black
-        border-radius: 1rem
+        background-color: $LightBlueBackground-color
+        border: 1px solid $color-gray
+        border-radius: 0.5rem
         padding: 0.5rem
         margin: 0.5rem
 
     button
         display: block
-        border: 1px solid black
-        border-radius: 1rem
+        background-color: $LightBlueBackground-color
+        border: 1px solid $color-gray
+        border-radius: 0.5rem
         padding: 0.5rem
         margin: 0.5rem

@@ -1,16 +1,15 @@
-describe('retrieveStyle', () => {
+describe('retrieveMaker', () => {
     it('should succeed on valid ID#', done => {
         
-        const id = 'entertainment'
+        const id = '20th-century-fox'
         
-        retrieveStyle(id, vehicle => {
+        retrieveMaker(id, vehicle => {
             expect(vehicle).toBeDefined()
             expect(vehicle.id).toBeDefined(id)
             expect(vehicle.id).not.toBeInstanceOf(Error)
 
             expect(typeof vehicle.id).toBe('string')
             expect(typeof vehicle.name).toBe('string')
-            expect(typeof vehicle.image).toBe('string')
             expect(typeof vehicle.url).toBe('string')
 
             done()
@@ -20,7 +19,7 @@ describe('retrieveStyle', () => {
     it('should return null on non-matching vehicle id', done => {
         const id = 'non-valid-id'
 
-        retrieveStyle(id, vehicle => {
+        retrieveMaker(id, vehicle => {
             expect(vehicle).not.toBeInstanceOf(Error)
 
             expect(vehicle).toBeNull()
@@ -31,37 +30,37 @@ describe('retrieveStyle', () => {
 
     it('should fail on non-string query', () => {
         expect(() => 
-            retrieveStyle(undefined, () => {})
+            retrieveMaker(undefined, () => {})
         ).toThrowError(TypeError, 'undefined is not a string')
 
         expect(() => 
-            retrieveStyle(1, () => {})
+            retrieveMaker(1, () => {})
         ).toThrowError(TypeError, '1 is not a string')
 
         expect(() => 
-            retrieveStyle(true, () => {})
+            retrieveMaker(true, () => {})
         ).toThrowError(TypeError, 'true is not a string')
 
         expect(() => 
-            retrieveStyle({}, () => {})
+            retrieveMaker({}, () => {})
         ).toThrowError(TypeError, '[object Object] is not a string')
     })
 
     it('should fail on non-function callback', () => {
         expect(() => 
-            retrieveStyle('', undefined)
+            retrieveMaker('', undefined)
         ).toThrowError(TypeError, 'undefined is not a function')
 
         expect(() => 
-            retrieveStyle('', 1)
+            retrieveMaker('', 1)
         ).toThrowError(TypeError, '1 is not a function')
 
         expect(() => 
-            retrieveStyle('', true)
+            retrieveMaker('', true)
         ).toThrowError(TypeError, 'true is not a function')
 
         expect(() => 
-            retrieveStyle('', {})
+            retrieveMaker('', {})
         ).toThrowError(TypeError, '[object Object] is not a function')
     })
 })
