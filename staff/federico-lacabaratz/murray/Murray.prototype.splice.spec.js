@@ -41,7 +41,7 @@ describe('Murray.prototoype.splice', function () {
 
         months.splice(2, 2, 'Feb', 'Oct');
 
-        expect(months).toHaveLength(6);
+        expect(months).toHaveLength(4);
 
         ['Jan', 'March', 'Feb', 'Oct'].forEach(function (value, index) {
             expect(months[index]).toBe(value);
