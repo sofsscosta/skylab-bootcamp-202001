@@ -1,97 +1,98 @@
 body {
-  text-align: center;
-}
+  text-align: center; }
 
 .search {
   display: inline-block;
   border: 1px solid black;
   border-radius: 1rem;
-  padding: 0.5rem;
-}
-.search--hide {
-  display: none;
-}
-.search input {
-  display: block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
-.search button {
-  display: block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
+  padding: 0.5rem; }
+  .search--hide {
+    display: none; }
+  .search input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .search button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
 
 .login {
   display: inline-block;
   border: 1px solid black;
   border-radius: 1rem;
-  padding: 0.5rem;
-}
-.login--hide {
-  display: none;
-}
-.login input {
-  display: block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
-.login button {
-  display: block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
-.login a {
-  display: block;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
+  padding: 0.5rem; }
+  .login--hide {
+    display: none; }
+  .login input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .login button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .login a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem; }
 
 .register {
   display: inline-block;
   border: 1px solid black;
   border-radius: 1rem;
-  padding: 0.5rem;
-}
-.register--hide {
-  display: none;
-}
-.register input {
-  display: block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
-.register button {
-  display: block;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
-.register a {
-  display: block;
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
+  padding: 0.5rem; }
+  .register--hide {
+    display: none; }
+  .register input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .register button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .register a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem; }
 
 .feedback {
-  color: green;
-}
-.feedback--error {
-  color: red;
-}
-.feedback--warning {
-  color: orange;
-}
+  color: green; }
+  .feedback--error {
+    color: red; }
+  .feedback--warning {
+    color: orange; }
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none; }
+
+.item-list {
+  margin: 0.5rem;
+  width: 30%;
+  background-color: white;
+  border: 3px solid blue;
+  border-radius: 1rem; }
+
+.img-photo {
+  cursor: pointer; }
+
+.item-name, .item-price {
+  font-family: "Sigmar One", cursive;
+  font-size: 30px; }
 
 /*# sourceMappingURL=style.css.map */

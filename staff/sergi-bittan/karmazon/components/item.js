@@ -9,16 +9,19 @@ function Item(props){
 
     var name = document.createElement("h2");
     name.innerText = props.data.name;
+    name.classList.add("article__tittle");
 
     item.append(name);
 
     var image = document.createElement("img");
     image.src = props.data.thumbnail;
+    image.classList.add("article__photo");
 
     item.append(image);
 
     var price = document.createElement("span");
     price.innerText = props.data.price + " €";
+    price.classList.add("article__price")
 
     item.append(price);
 
