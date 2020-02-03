@@ -55,10 +55,10 @@ class App extends Component {
                         
                         onItemClick(id){
                             retrieveVehicle(id, vehicle => {
-                                retieveStyle(vehicle.style, style => {
-                                const details = new Detail({ vehicle, style})                      
+                                retrieveStyle(vehicle.style, style => {
+                                const detail = new Detail({ vehicle, style})                      
                                 
-                                _results.replaceWith(_details.container)
+                                _results.replaceWith(detail.container)
 
                                 _results = detail.container
                             })

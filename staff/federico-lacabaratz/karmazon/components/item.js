@@ -1,6 +1,6 @@
 class Item extends Component {
-    constructor({ item: { id, name, thumbnail, price}, onClick}) {
-        super(document.createElement('article'))
+    constructor({ item: { id, name, thumbnail, price }, onClick}) {
+        super(document.createElement('li'))
     
     const item = this.container
 
@@ -15,7 +15,7 @@ class Item extends Component {
     item.append(_image)
 
     const _price = document.createElement('span')
-    _price.innerText += `price: ${price} €`
+    _price.innerText = `price: ${price} €`
     item.append(_price)
     }
 }

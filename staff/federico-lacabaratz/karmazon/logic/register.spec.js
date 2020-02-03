@@ -1,14 +1,12 @@
-'use strict'
+describe('register', () => {
+    it("Should add the different inputs in the user", () => {
 
-describe('register', function() {
-    it("Should add the different inputs in the user", function() {
-        // Añadir done cuando sea asíncrono
-        register("antonio", "antonio", "antonio", "123", function(results) {
-            expect(results.length).toBe(4);
+        register("antonio", "antonio", "antonio", "123", results => {
+            expect(results.length).toBe(4)
 
-            results.forEach(function(result) {
+            results.forEach(result => {
                 expect(typeof result.name).toBe("antonio")
             })
         })
-    });
-});
+    })
+})

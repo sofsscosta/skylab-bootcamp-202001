@@ -1,1 +1,1 @@
-document.getElementById('root').replaceWith(new App({ title: 'Karmazon App' }).container);
+document.getElementById('root').replaceWith(new App({ title: 'Karmazon App' }).container)

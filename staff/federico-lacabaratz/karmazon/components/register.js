@@ -14,8 +14,8 @@ class Register extends Interactive {
             <button>Register</button>
             <a href="">Login</a>`
 
-
-        register.addEventListener('submit', function (event) {
+        
+        register.addEventListener('submit', function (event) { 
             event.preventDefault()
 
             const name = this.name.value

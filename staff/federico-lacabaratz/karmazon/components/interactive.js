@@ -1,14 +1,14 @@
 class Interactive extends Component {
     constructor(container) {
-        super()
+        super(container)
     }
 
     __showFeedback__(level, message) {
-        var feedback = new Feedback({ level, message })
+        const feedback = new Feedback({ level, message })
 
         this.__locateFeedbackInContainer__(feedback)
 
-        setTimeout(() => this.removeChild(feedback.container), 3000)
+        setTimeout(() => this.container.removeChild(feedback.container), 3000)
     }
 
     __locateFeedbackInContainer__(feedback) {

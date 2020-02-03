@@ -1,5 +1,3 @@
-'use strict';
-
 beforeEach(function () {
   jasmine.addMatchers({
     toBePrimitive: function () {

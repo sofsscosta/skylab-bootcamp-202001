@@ -6,7 +6,7 @@ class Feedback extends Component {
 
         
         feedback.classList.add('feedback')
-        feedback.classList.add('feedback--' + props.level)
+        feedback.classList.add(`feedback--${props.level}`)
 
         feedback.innerText = props.message
 
