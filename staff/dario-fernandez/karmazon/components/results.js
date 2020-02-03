@@ -1,20 +1,15 @@
-'use strict'
+class Results extends Component{
+    constructor({ results, onClick }) {
+        super(document.createElement('ul'))
+        const list  = this.container
+        list.classList.add('list')
+        
+        results.forEach(element => {
+            const article = new Article(element, onClick)
 
+            list.appendChild(article.container)
+        })
 
-function Results(props) {
-    var list  = document.createElement('ul')
-    list.classList.add('list')
-
-    Component.call(this, list)
-    
-    props.results.forEach(function (element) {
-        var article = new Article(element, props.onClick)
-
-        list.appendChild(article.container)
-    })
-
-    
+        
+    }
 }
-
-Results.prototype = Object.create(Component.prototype)
-Results.prototype.constructor = Results

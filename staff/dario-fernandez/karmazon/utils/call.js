@@ -1,11 +1,11 @@
 function call(url, callback) {
-    var URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/
+    const URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/
 
     if(!(URL_REGEX.test(url))) {
         throw new SyntaxError(url + ' is not a valid url')
     }
 
-    var xhr = new XMLHttpRequest
+    const xhr = new XMLHttpRequest
 
     xhr.open('GET', url)
 
@@ -16,9 +16,7 @@ function call(url, callback) {
         } )
     })
 
-    xhr.addEventListener('error', function() {
-        callback(new Error('Network error'))
-    })
+    xhr.addEventListener('error', () => callback(new Error('Network error')))
 
     xhr.send()
 }

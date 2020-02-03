@@ -1,1 +1,1 @@
-var users = []
+const users = []

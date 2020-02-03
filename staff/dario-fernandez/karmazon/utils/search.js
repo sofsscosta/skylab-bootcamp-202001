@@ -1,5 +1,3 @@
-'use strict'
-
 function search(url, itemSelector, titleSelector, linkSelector, descriptionSelector, callback){
     call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function(response) {
         if(response instanceof Error) {
