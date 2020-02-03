@@ -1,23 +1,14 @@
-'use strict';
+class Item extends Component {
+    constructor({results: {id, name, thumbnail, price}, onClick}) {
+    super (document.createElement('div'))
 
-function Item(results, onClick) {
-    var item = document.createElement('div');
+    const item = this.container
 
-    Component.call(this, item);
+    item.classList.add('item')
 
-    item.classList.add('item');
+    item.innerHTML = `<h2> ${name} </h2> <img src="${thumbnail}"><span>Price: $ ${price} </span>`
 
-    item.innerHTML = '<h2>' + results.name + '</h2>'
-        .concat('<img src="' + results.thumbnail + '">')
-        .concat('<span>Price: $ ' + results.price + '</span>');
-
-    item.querySelector('img').addEventListener('click', function() {
-        var id = results.id;
-        
-        onClick(id)
-
-    }); 
-};
-
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
+    item.querySelector('img').addEventListener('click', () => onClick(id))
+    
+    }
+}

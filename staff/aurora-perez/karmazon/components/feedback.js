@@ -1,19 +1,17 @@
-'use strict';
 
-function Feedback(props) {
-    var feedback = document.createElement('p');
 
-    Component.call(this, feedback);
+class Feedback extends Component {
+    constructor(props) {
+
+    supr (document.createElement('p'))
+
+    var feedback = this.container
     
-    feedback.classList.add('feedback');
+    feedback.classList.add('feedback')
     feedback.classList.add('feedback--' + props.level);
 
     feedback.innerText = props.message;
 
-    feedback.showMessage = function(message) {
-        this.innerText = message;
-    };
+    feedback.showMessage = (message) => feedback.innerText = message
+    
 }
-
-Feedback.prototype = Object.create(Component.prototype);
-Feedback.prototype.constructor = Feedback;

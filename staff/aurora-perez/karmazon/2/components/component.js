@@ -1,5 +1,5 @@
 class Component {
     constructor(container) {
-        this.container
+        this.container = container
     }
 }

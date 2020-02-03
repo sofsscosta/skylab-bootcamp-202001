@@ -1,24 +1,20 @@
-'use strict'
-function Details (detailInfo) {
+class Details extends Component {
+    constructor({ detailInfo: {id, name, image, color, makeer, collection, style, description, price}}) {
+    
+    super(document.createElement('div'))
 
-    var details = document.createElement ('div');
-
-    Component.call(this, details);
+    const details = this.container
  
     details.classList.add('details');
 
-    details.innerHTML = '<button class="details__button">BACK</button>'
-        .concat('<div class="details__title-img"><h2>' + detailInfo.id +': '+detailInfo.name+'</h2>')
-        .concat('<img src="' + detailInfo.image + '"></div>')
-        .concat('<div class="details__content"><p class ="details__year"><b>YEAR: </b>' + detailInfo.year + '</p>')
-        .concat('<p class ="details__content-color"><b>COLOR:</b> ' + detailInfo.color.toProperCase() + '</p>')
-        .concat('<p class ="details__content-cmaker><b>MAKER: </b>' + detailInfo.maker.toProperCase() + '</p>')
-        .concat('<p class ="details__content-ccollection><b>COLLECTION: </b>' + detailInfo.collection.toProperCase() + '</p>')
-        .concat('<p class ="details__content-cstyle><b>STYLE: </b>' + detailInfo.style.toProperCase() + '</p>')
-        .concat('<p class ="details__content-cdescription><b>DESCRIPTION: </b>' + detailInfo.description + '<p></div>')
-        .concat('<span class ="details__price"><b>PRICE: $ </b>' + detailInfo.price + ' </span>');   
-
+    details.innerHTML = `<h2>${id}: ${name}</h2>
+        <img src="${image}">
+        <div class="content"><p><b>YEAR</b>: ${year}</p>
+        <p><b>COLOR</b>: ${color.toProperCase()}</p>
+        <p><b>MAKER</b>: ${maker.toProperCase()}</p>
+        <p><b>COLLECTION</b>: ${collection.toProperCase()}</p>
+        <p><b>STYLE</b>: ${style.toProperCase()}</p>
+        <p><b>DESCRIPTION</b>: ${description}</p></div>
+        <span>PRICE: ${price}$</span>
+        <button>BACK</button>`
 }
-
-Details.prototype = Object.create(Component.prototype);
-Details.prototype.constructor = Details;

@@ -1,11 +1,10 @@
 class Login extends Interactive {
-    constructor({ onSubmit, onToRegister}) {
+    constructor({ onSubmit, onToRegister }) {
         super(document.createElement('form'))
 
         const login = this.container
 
-
-        login.classList.add('login');
+        login.classList.add('login')
 
         login.innerHTML = `<h2>Sign-in</h2>
             <input type="text" name="username" placeholder="username">
@@ -16,24 +15,23 @@ class Login extends Interactive {
         login.addEventListener('submit', function (event) {
             event.preventDefault()
 
-            var username = this.username.value
-            var password = this.password.value
+            const username = this.username.value
+            const password = this.password.value
 
             onSubmit(username, password)
         })
 
-        var register = login.querySelector('a')
+        const register = login.querySelector('a')
 
-        register.addEventListener('click', function (event) {
+        register.addEventListener('click', event => {
             event.preventDefault()
 
             onToRegister()
         })
-
     }
 
-    __locateFeedbackInContainer__ (feedback) {
-        var button = this.container.querySelector('button')
+    __locateFeedbackInContainer__(feedback) {
+        const button = this.container.querySelector('button') //?
 
         this.container.insertBefore(feedback.container, button)
     }
