@@ -94,4 +94,22 @@ body {
   color: orange;
 }
 
+.results {
+  display: flex;
+  flex-wrap: wrap;
+}
+.results ul {
+  list-style: none;
+}
+
+.item {
+  display: flex;
+}
+
+figure {
+  background-color: #F4F6F6;
+  padding: 1rem;
+  border-radius: 3%;
+}
+
 /*# sourceMappingURL=style.css.map */

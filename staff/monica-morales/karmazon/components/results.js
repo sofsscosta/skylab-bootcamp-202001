@@ -1,7 +1,6 @@
 'use strict';
 
 function Results(props) {
-    debugger
     var list = document.createElement('ul');
     Component.call(this, list);
     list.classList.add('results');

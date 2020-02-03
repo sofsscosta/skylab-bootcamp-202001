@@ -1,32 +1,8 @@
 'use strict';
 
-describe('retrieveVehicle', function () {
-    fit('should succeed on matching query', function (done) {
-        retrieveVehicle('mario', function (results) {
-            expect(results).toBeDefined();
-            expect(results.length).toBeGreaterThan(0);
-
-            results.forEach(function (result) {
-                expect(typeof result.id).toBe('string');
-                expect(typeof result.name).toBe('string');
-                expect(typeof result.thumbnail).toBe('string');
-                expect(typeof result.price).toBe('number');
-            });
-
-            done();
-        });
-    });
-
-    it('should succeed on non-matching query returning an empty array', function (done) {
-        retrieveVehicle('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
-            expect(results).toBeDefined();
-            expect(results).toHaveLength(0);
-
-            done();
-        });
-    });
-
-    it('should fail on non-string query', function () {
+describe('detail-vehicle', function () {
+    
+    it('should fail on non-string id', function () {
         expect(function () {
             retrieveVehicle(undefined, function () { });
         }).toThrowError(TypeError, 'undefined is not a string');

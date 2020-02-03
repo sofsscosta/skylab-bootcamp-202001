@@ -1,7 +1,7 @@
 'use strict';
 
 describe('searchVehicles', function () {
-    fit('should succeed on matching query', function (done) {
+    it('should succeed on matching query', function (done) {
         searchVehicle('batman', function (results) {
             expect(results).toBeDefined();
             expect(results.length).toBeGreaterThan(0);
