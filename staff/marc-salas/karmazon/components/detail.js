@@ -45,12 +45,12 @@ function Detail(results, callback) {
     detail.append(link);
     
     var back = document.createElement('button');
-    back.innerText = "BACK";
+    back.innerText = "X";
     detail.append(back);
 
-    detail.addEventListener('click', function(event){
+    back.addEventListener('click', function(event){
         event.preventDefault();
-        
+
         callback();
     })
 
