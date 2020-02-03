@@ -1,64 +1,62 @@
-'use strict';
+describe('searchVehicles', () => {
+    it('should succeed on matching query', (done) => {
+        searchVehicle('batman', (results) => {
+            expect(results).toBeDefined()
+            expect(results.length).toBeGreaterThan(0)
 
-describe('searchVehicles', function () {
-    it('should succeed on matching query', function (done) {
-        searchVehicle('batman', function (results) {
-            expect(results).toBeDefined();
-            expect(results.length).toBeGreaterThan(0);
+            results.forEach((result) => {
+                expect(typeof result.id).toBe('string')
+                expect(typeof result.name).toBe('string')
+                expect(typeof result.thumbnail).toBe('string')
+                expect(typeof result.price).toBe('number')
+            })
 
-            results.forEach(function (result) {
-                expect(typeof result.id).toBe('string');
-                expect(typeof result.name).toBe('string');
-                expect(typeof result.thumbnail).toBe('string');
-                expect(typeof result.price).toBe('number');
-            });
+            done()
+        })
+    })
 
-            done();
-        });
-    });
+    it('should succeed on non-matching query returning an empty array', (done) => {
+        searchVehicle('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', (results) => {
+            expect(results).toBeDefined()
+            expect(results).toHaveLength(0)
 
-    it('should succeed on non-matching query returning an empty array', function (done) {
-        searchVehicle('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', function (results) {
-            expect(results).toBeDefined();
-            expect(results).toHaveLength(0);
+            done()
+        })
+    })
 
-            done();
-        });
-    });
+    it('should fail on non-string query', () => {
+        expect(() => {
+            searchVehicle(undefined, () => { })
+        }).toThrowError(TypeError, 'undefined is not a string')
 
-    it('should fail on non-string query', function () {
-        expect(function () {
-            searchVehicle(undefined, function () { });
-        }).toThrowError(TypeError, 'undefined is not a string');
+        expect(() => {
+            searchVehicle(1, () => { })
+        }).toThrowError(TypeError, '1 is not a string')
 
-        expect(function () {
-            searchVehicle(1, function () { });
-        }).toThrowError(TypeError, '1 is not a string');
+        expect(() => {
+            searchVehicle(true, () => { })
+        }).toThrowError(TypeError, 'true is not a string')
 
-        expect(function () {
-            searchVehicle(true, function () { });
-        }).toThrowError(TypeError, 'true is not a string');
+        expect(() => {
+            searchVehicle({}, () => { })
+        }).toThrowError(TypeError, '[object Object] is not a string')
+    })
 
-        expect(function () {
-            searchVehicle({}, function () { });
-        }).toThrowError(TypeError, '[object Object] is not a string');
-    });
+    it('should fail on non-function callback', () => {
+        expect(() => {
+            searchVehicle('', undefined)
+        }).toThrowError(TypeError, 'undefined is not a function')
 
-    it('should fail on non-function callback', function () {
-        expect(function () {
-            searchVehicle('', undefined);
-        }).toThrowError(TypeError, 'undefined is not a function');
+        expect(() => {
+            searchVehicle('', 1)
+        }).toThrowError(TypeError, '1 is not a function')
 
-        expect(function () {
-            searchVehicle('', 1);
-        }).toThrowError(TypeError, '1 is not a function');
+        expect(() => {
+            searchVehicle('', true)
+        }).toThrowError(TypeError, 'true is not a function')
 
-        expect(function () {
-            searchVehicle('', true);
-        }).toThrowError(TypeError, 'true is not a function');
-
-        expect(function () {
+        expect(() => {
             searchVehicle('', {});
-        }).toThrowError(TypeError, '[object Object] is not a function');
-    });
-});
+        }).toThrowError(TypeError, '[object Object] is not a function')
+    })
+})
