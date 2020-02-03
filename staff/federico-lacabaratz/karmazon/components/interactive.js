@@ -1,7 +1,7 @@
 class Interactive extends Component {
     constructor(container) {
         super()
-}
+    }
 
     __showFeedback__(level, message) {
         var feedback = new Feedback({ level, message })
