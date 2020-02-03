@@ -1,0 +1,49 @@
+
+figure
+    margin: 0
+
+
+.results
+    display: flex
+    flex-direction: column
+
+    &__searched
+        display: flex
+        justify-content: space-between
+        height: 10vh
+        padding-right: 10px
+        position: sticky
+        top: -1px
+        background-color: white
+    &__container
+        display: flex
+
+    &__options
+        display: flex
+        align-items: center    
+        @media screen and ( min-width: 900px  )
+            display: none    
+    &__text
+        display: flex
+        align-items: center
+
+    &__products-container
+        display: flex
+        flex-wrap: wrap        
+        justify-content: space-around
+        padding-left: 40px
+        @media screen and ( min-width: 900px  )
+            width: 70%
+    &__product
+        width: calc(90%/2)
+        margin:5px
+        @media screen and ( min-width: 900px)
+            width: calc(90%/3)
+    &__filter 
+        width: 25%
+        @media screen and ( max-width: 900px)
+            display: none
+img    
+    width: 100%
+    min-height: 150px
+    height: auto
