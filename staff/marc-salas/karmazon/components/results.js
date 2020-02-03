@@ -1,26 +1,25 @@
-'use strict';
+class Results extends Comment {
+    constructor(props) {
 
-function Results(props) {
-    var list = document.createElement('ul');
-    list.classList.add('results');
+        super(document.createElement('ul'))
 
-    props.results.forEach(function(result) {
+        const list = this.container
 
-        // TODO var item = new Item(...)
-        var item = document.createElement('li');
+        list.classList.add('results')
 
-        var _item = new Item({
-            result: result,
-            onClick: function(id) {                
-                props.onClick(id);
-            }
-        });
-        item.append(_item)
-        list.append(item);
-    });
+        props.results.forEach(item => {
 
+            // TODO var item = new Item(...)
+            const __item = document.createElement('li')
 
-
-
-    return list;
+            const _item = new Item({
+                result: result,
+                onClick: function (id) {
+                    props.onClick(id)
+                }
+            })
+            __item.append(_item.container)
+            list.append(item)
+        })
+    }
 }
