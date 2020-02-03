@@ -55,17 +55,18 @@ function App(props) {
                     return _search.showWarning('No results ' + IT);
 
                 var __results = new Results({ results: vehicles, 
-                onClick: function(id){
-                    retrieveVehicle(id, function(details){
-                        var detailedCar = new Details(details);
+                    onClick: function(id){
+                        retrieveVehicle(id, function(details){
+                            var detailedCar = new Details(details);
 
-                        __results.container.replaceWith(detailedCar.container);
+                            __results.container.replaceWith(detailedCar.container);
 
-                        detailedCar.container.querySelector('button').addEventListener('click', function (){
-                            detailedCar.container.replaceWith(__results.container);
+                            detailedCar.container.querySelector('button').addEventListener('click', function (){
+                                detailedCar.container.replaceWith(__results.container);
+                            })
                         })
-                    })
-                } });
+                }
+                });
 
                 if (!_results)
                     app.append(_results = __results.container);
