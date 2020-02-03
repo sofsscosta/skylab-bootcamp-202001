@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background-color: gainsboro;
+  background-color: steelblue;
   list-style-type: none;
   font-family: Impact, Charcoal, sans-serif;
 }
@@ -106,8 +106,9 @@ body {
 }
 
 .item {
-  border: 1px solid black;
-  background-color: darkgrey;
+  border: 4px solid navy;
+  background-color: lightblue;
+  border-radius: 30px;
   margin-bottom: 30px;
   margin-left: 50px;
   width: 100%;
@@ -123,22 +124,27 @@ body {
   height: 100%;
 }
 .item h3 {
-  font-size: 15px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 25px;
 }
 .item span {
-  font-size: 15px;
+  border: 1px solid red;
+  color: white;
+  background-color: salmon;
+  font-size: 30px;
 }
 
 .detail {
   margin-left: 4vw;
-  border: 1px solid black;
+  border: 4px solid navy;
   border-radius: 30px;
   width: 90vw;
   height: 70vh;
   display: grid;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: lightblue;
   grid-template-areas: "x x x x x" "i n n n n" "i d d d d" "l y m c s";
-  grid-template-rows: 10% 30% 55% 5%;
+  grid-template-rows: 20% 30% 45% 5%;
 }
 .detail h3 {
   grid-area: n;
@@ -174,6 +180,7 @@ body {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+  margin-top: 5px;
   margin-left: 97%;
 }
 
