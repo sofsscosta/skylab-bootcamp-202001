@@ -1,0 +1,23 @@
+@import ../utils/_flex-center
+  
+header
+  border-bottom: 1px solid grey
+  height: 7vh
+  width: 100%
+  display: flex
+  justify-content: space-between
+
+  > div
+    @extend %flex-center
+    width: calc(100%/3)
+    font-size: 20px
+
+  > div:nth-child(1)
+    display: flex
+    justify-content: flex-start
+    margin-left: 20px
+
+  > div:nth-child(3)
+    display: flex
+    justify-content: flex-end
+    margin-right: 20px

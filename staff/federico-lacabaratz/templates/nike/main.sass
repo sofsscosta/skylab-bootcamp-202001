@@ -1,0 +1,49 @@
+@import config
+
+.resultSearch__container1
+    height: 180px
+    background-color: $genbg-color
+    @extend %flexRowCenter
+    justify-content: space-between
+    width: 100%
+
+.resultSearch__containerA
+    @extend %flexRowCenter
+    @extend %text-results
+    margin-top: 50px
+    margin-left: 7px
+    justify-content: flex-start
+    width: 50%
+
+.iconfilter
+    @extend %flexRowCenter
+    @extend %iconbannersmall
+    margin-top: 50px
+    margin-right: 7px
+    justify-content: flex-end
+    width: 50%
+
+.product
+    @extend %flexRowCenter
+    flex-wrap: wrap
+    justify-content: space-between
+    width: 100%
+
+.product__container1
+    margin-bottom: 5%
+    background-color: $genbg-color
+    @extend %flexColumnCenter
+    align-content: space-between
+    width: 49%
+
+.product__containerA
+    @extend %flexRowCenter
+    justify-content: space-between
+    width: 100%
+    & > img
+        width: 99.5%
+    
+.product__description
+    @extend %flexColumnCenter
+    align-content: space-between
+    width: 100%
