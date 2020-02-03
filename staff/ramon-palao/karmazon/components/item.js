@@ -39,7 +39,7 @@ function Item(prop, onClick){
 
     });
     
-    return itemList;
+    //return itemList;
 }
 
 Item.prototype = Object.create(Component.prototype);

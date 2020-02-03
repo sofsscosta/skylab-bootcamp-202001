@@ -5,43 +5,49 @@
     border-radius: 1rem
     background-color: white
     margin-top: 1rem
-    height: 150vh
+    display: grid
+    grid-template-areas: "n n""p y""p c""p m""p co"" p s""d d""pr pr""b b"
+    // grid-template-rows: 10% 20% 20% 20% 20% 20% 20%
 
     &__image
-        transform: translate(-350px)
+        grid-area: p
     
     &__title
-        transform: translate(-500px)
+        grid-area: n
+        color: blue
 
     &__year
-        transform: translate(350px, -550px)
+        grid-area: y
     
     &__color
-        transform: translate(350px, -650px)
+        grid-area: c
 
     &__maker
-        transform: translate(350px, -750px)
+        grid-area: m
 
     &__collection
-        transform: translate(350px, -850px)
+        grid-area: co
 
     &__style
-        transform: translate(350px, -950px)
+        grid-area: s
     
     &__description
-        transform: translateY(-750px)
+        grid-area: d
     
     &__price
-        transform: translateY(-750px)
+        grid-area: pr
+        color: red
     
     &__button
-        transform: translateY(-750px)
         font-family: 'Sigmar One', cursive
         font-size: 30px
         color: red
         border: 3px solid red
         border-radius: 100%
         cursor: pointer
+        align-content: center
+        grid-area: b
+        width: 10%
     
     &__button:hover
         border: 6px solid red

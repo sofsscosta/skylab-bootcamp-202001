@@ -59,22 +59,24 @@ function App(props) {
                     retrieveVehicle(id, function(results){
                         var _detail = new Detail(results);
 
-                        __results.replaceWith(_detail.container);
+                        _results = _detail.container
+
+                        __results.container.replaceWith(_detail.container);
 
                         _detail.container.querySelector("button").addEventListener("click", function(event){
                             event.preventDefault();
 
-                            _detail.container.replaceWith(__results);
+                            _detail.container.replaceWith(__results.container);
                         })
                     })
                 } });
 
                 if (!_results)
-                    app.append(_results = __results);
+                    app.append(_results = __results.container);
                 else {
-                    _results.replaceWith(__results);
+                    _results.replaceWith(__results.container);
 
-                    _results = __results;
+                    _results = __results.container;
                 }
             });
         }

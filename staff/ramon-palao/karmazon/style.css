@@ -159,43 +159,48 @@ h1 {
   border-radius: 1rem;
   background-color: white;
   margin-top: 1rem;
-  height: 150vh;
+  display: grid;
+  grid-template-areas: "n n" "p y" "p c" "p m" "p co" " p s" "d d" "pr pr" "b b";
 }
 .detail-info__image {
-  transform: translate(-350px);
+  grid-area: p;
 }
 .detail-info__title {
-  transform: translate(-500px);
+  grid-area: n;
+  color: blue;
 }
 .detail-info__year {
-  transform: translate(350px, -550px);
+  grid-area: y;
 }
 .detail-info__color {
-  transform: translate(350px, -650px);
+  grid-area: c;
 }
 .detail-info__maker {
-  transform: translate(350px, -750px);
+  grid-area: m;
 }
 .detail-info__collection {
-  transform: translate(350px, -850px);
+  grid-area: co;
 }
 .detail-info__style {
-  transform: translate(350px, -950px);
+  grid-area: s;
 }
 .detail-info__description {
-  transform: translateY(-750px);
+  grid-area: d;
 }
 .detail-info__price {
-  transform: translateY(-750px);
+  grid-area: pr;
+  color: red;
 }
 .detail-info__button {
-  transform: translateY(-750px);
   font-family: "Sigmar One", cursive;
   font-size: 30px;
   color: red;
   border: 3px solid red;
   border-radius: 100%;
   cursor: pointer;
+  align-content: center;
+  grid-area: b;
+  width: 10%;
 }
 .detail-info__button:hover {
   border: 6px solid red;
