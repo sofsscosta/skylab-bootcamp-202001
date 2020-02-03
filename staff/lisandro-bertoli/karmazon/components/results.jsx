@@ -1,9 +1,6 @@
-function Results(props) {
-    // const vehicles = props.map(vehicle => new Item({ details: vehicle, onToItem: props.onToItem }))
-
-
+function Results({ results, onItemClick }) {
     return <ul className="results">
-        {props.vechicles.forEach(vehicle => <li>{vehicle}</li>)}
+        {results.map(item => <Item vehicle={item} onClick={onItemClick} />)}
     </ul>
 
 

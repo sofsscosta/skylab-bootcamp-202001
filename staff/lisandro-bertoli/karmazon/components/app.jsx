@@ -6,7 +6,12 @@ const { Component } = React
 class App extends Component {
     constructor() {
         super()
-        this.state = { loggedIn: false, registered: true, vehicles: undefined }
+        this.state = {
+            loggedIn: false,
+            registered: true,
+            vehicles: undefined,
+            details: undefined
+        }
     }
 
     render() {
@@ -35,41 +40,21 @@ class App extends Component {
 
             {this.state.loggedIn && this.state.registered && <Search title="Search" onSubmit={(query) => {
                 searchVehicles(query, vehicles => {
-                    <Results vehicles="vehicles" />
+                    this.setState({ vehicles, details: undefined });
                 })
+            }} />}
+
+            {this.state.vehicles && <Results results={this.state.vehicles} onItemClick={(productId) => {
+                retrieveVehicle(productId, details => {
+                    this.setState({ details, vehicles: undefined })
+                })
+            }} />}
+
+            {this.state.details && <Detail product={this.state.details} backToResults={() => {
+                this.setState({ details: undefined })
             }} />}
         </main>
 
-        const _login = new Login({
-            onSubmit(username, password) {
-                try {
-                    authenticate(username, password);
-                    _login.container.reset();
-                    _login.container.replaceWith(_search.container);
-                } catch (error) {
-                    //alert(error.message + ' ' + IT);
-                    _login.showError(error.message + ' ' + IT);
-                }
-            },
-
-            onToRegister() { _login.container.replaceWith(_register.container) }
-        });
-
-        app.append(_login.container);
-
-        const _register = new Register({
-            onSubmit(name, surname, username, password) {
-                try {
-                    register(name, surname, username, password);
-                    _register.container.reset();
-                    _register.container.replaceWith(_login.container);
-                } catch (error) {
-                    //alert(error.message + ' ' + IT);
-                    _register.showError(error.message + ' ' + IT);
-                }
-            },
-            onToLogin() { _register.container.replaceWith(_login.container) }
-        });
 
         const _search = new Search({
             title: 'Search',
