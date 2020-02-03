@@ -3,7 +3,7 @@
 function Results(props) {
 
     var list = document.createElement('ul');
-    Interactive.call(this, list)
+    Component.call(this, list)
     
     list.classList.add('results');
 
@@ -13,5 +13,4 @@ function Results(props) {
     });
 }
 
-Results.prototype = Object.create(Interactive.prototype);
-Results.prototype.constructor = Results;
+Results.prototype.extend(Component)

@@ -6,9 +6,10 @@ function Details(props) {
   
   var {detail} = props
 
-  console.log(detail)
+  // var divImage = document.createElement("div")
 
   details.innerHTML = '<h2>' + detail.name + '</h2>'
+  .concat(`<span>X</span>`)
   .concat(`<h3>${detail.maker.toUpperCase()}, ${detail.year}</h3>`)
   .concat(`<p>${detail.description}</p>`)
   .concat(`<h4>$${detail.price}</h4>`)

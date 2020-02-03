@@ -25,7 +25,7 @@ function App(props) {
         }
     });
 
-    app.append(_login.container);
+    // app.append(_login.container);
 
     var _register = new Register({
         onSubmit: function (name, surname, username, password) {
@@ -34,7 +34,6 @@ function App(props) {
 
                 _register.container.replaceWith(_login.container);
             } catch (error) {
-                //alert(error.message + ' ' + IT);
                 _register.showError(error.message + ' ' + IT);
             }
         },
@@ -54,14 +53,17 @@ function App(props) {
                 if (!vehicles.length)
                     return _search.showWarning('No results ' + IT);
 
-                var __results = new Results({ results: vehicles, toggleDetails: function(itemID){
+                var __results = new Results({ results: vehicles, 
+                    
+                    toggleDetails: function(itemId){
 
-                    retrieveVehicle(itemID, function(detail) {
-                       var __details = new Details({detail})
-                        __results.container.replaceWith(__details.container)
-                        _details = __details.container
-                    })
-                }});
+                        retrieveVehicle(itemId, function(detail) {
+                            var __details = new Details({detail});
+                            __results.container.replaceWith(__details.container);
+                            _details = __details.container;
+                        })
+                    }
+                });
                 
                 if (!_results) {
                     app.append(_results = __results.container);
@@ -80,9 +82,10 @@ function App(props) {
         }
     });
 
+    app.append(_search.container);
+
     var _results;
     var _details;
 }
 
-App.prototype = Object.create(Component.prototype);
-App.prototype.constructor = App;
+App.prototype.extend(Component)

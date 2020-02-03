@@ -8,9 +8,9 @@ function retrieveVehicle(id, callback) {
         if (response instanceof Error) return callback(response);
 
         if (response.status === 200) {
-            var details = JSON.parse(response.content);
+            var result = JSON.parse(response.content);
 
-            callback(details);
+            callback(result);
         }
     });
 }

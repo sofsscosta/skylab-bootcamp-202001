@@ -4,7 +4,7 @@ function Item(result, toggleDetails) {
   item.classList.add('item')
   item.id = result.id
   
-  Interactive.call(this, item)
+  Component.call(this, item)
 
   var name = document.createElement('h3');
   name.innerText = result.name;
@@ -14,18 +14,9 @@ function Item(result, toggleDetails) {
   image.src = result.thumbnail;
   item.append(image);
 
-  var price = document.createElement('span');
-  price.innerText = result.price;
-
-  item.append(price);
-
   item.addEventListener('click', function() {
     toggleDetails(result.id)
   })
 }
 
-Item.prototype = Object.create(Interactive.prototype)
-
-Item.prototype.toggleDetails = function() {
-
-}
+Item.prototype.extend(Component)
