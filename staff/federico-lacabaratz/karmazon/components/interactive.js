@@ -1,30 +1,25 @@
-'use strict';
-
-function Interactive(container) {
-    Component.call(this, container);
+class Interactive extends Component {
+    constructor(container) {
+        super()
 }
 
-Interactive.prototype = Object.create(Component.prototype);
-Interactive.prototype.constructor = Interactive;
+    __showFeedback__(level, message) {
+        var feedback = new Feedback({ level, message })
 
-Interactive.prototype.__showFeedback__ = function (level, message) {
-    var feedback = new Feedback({ level: level, message: message });
+        this.__locateFeedbackInContainer__(feedback)
 
-    this.__locateFeedbackInContainer__(feedback);
+        setTimeout(() => this.removeChild(feedback.container), 3000)
+    }
 
-    setTimeout(function () {
-        this.removeChild(feedback.container);
-    }.bind(this.container), 3000);
-};
+    __locateFeedbackInContainer__(feedback) {
+        throw Error('This method must be implemented in child types')
+    }
 
-Interactive.prototype.__locateFeedbackInContainer__ = function(feedback) {
-    throw Error('This method must be implemented in child types');
-};
+    showError(error) {
+        this.__showFeedback__('error', error)
+    }
 
-Interactive.prototype.showError = function (error) {
-    this.__showFeedback__('error', error);
-};
-
-Interactive.prototype.showWarning = function (warning) {
-    this.__showFeedback__('warning', warning);
-};
+    showWarning(warning) {
+        this.__showFeedback__('warning', warning)
+    }
+}

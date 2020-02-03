@@ -1,34 +1,21 @@
-"use strict"
+class Item extends Component {
+    constructor({ item: { id, name, thumbnail, price}, onClick}) {
+        super(document.createElement('article'))
+    
+    const item = this.container
 
-function Item(props) {
-    var item = document.createElement('article');
-    Component.call(this, item);
-    item.classList.add('item');
+    item.addEventListener("click", () => onClick(id))
 
-    var name = document.createElement('h3');
-    name.innerText = props.result.name;
-    item.append(name);
+    const _name = document.createElement('h3')
+    _name.innerText = name
+    item.append(_name)
 
-    var figure = document.createElement('figure');
-    var anchor = document.createElement('a');
-    var image = document.createElement('img');
-    image.src = props.result.thumbnail;
-    anchor.append(image);
-    figure.append(anchor);
-    item.append(figure);
+    const _image = document.createElement('img')
+    _image.src = thumbnail
+    item.append(_image)
 
-    var price = document.createElement('span');
-    price.innerText += "price: " + props.result.price + "€";
-    item.append(price);
-
-    item.addEventListener("click", function(event) {
-        event.preventDefault();
-        
-        props.onClick(props.result.id)
-       
-    })
-    return item;
-};
-
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
+    const _price = document.createElement('span')
+    _price.innerText += `price: ${price} €`
+    item.append(_price)
+    }
+}
