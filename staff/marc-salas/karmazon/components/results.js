@@ -1,21 +1,18 @@
 class Results extends Comment {
-    constructor(props) {
-
+    constructor({results, onClick}) {
         super(document.createElement('ul'))
 
         const list = this.container
 
         list.classList.add('results')
 
-        props.results.forEach(item => {
-
-            // TODO var item = new Item(...)
+        results.forEach(item => {
             const __item = document.createElement('li')
 
             const _item = new Item({
                 result: result,
                 onClick: function (id) {
-                    props.onClick(id)
+                    onClick(id)
                 }
             })
             __item.append(_item.container)

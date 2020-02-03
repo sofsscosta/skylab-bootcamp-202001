@@ -2,7 +2,7 @@ class Search extends Interactive {
     constructor({ title, onSubmit }) {
         super(document.createElement('form'))
 
-        const search = document.createElement('form')
+        const search = this.container
 
         search.classList.add('search')
 

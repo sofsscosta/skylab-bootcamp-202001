@@ -52,7 +52,7 @@ class App extends Component {
 
                     if (!vehicles.length)
                         return _search.showWarning('No results ' + IT)
-                    const __results = Results({
+                    const __results = new Results({
                         results: vehicles, onClick(id) {
                             retrieveVehicle(id, function (results) {
                                 const _details = new Detail({

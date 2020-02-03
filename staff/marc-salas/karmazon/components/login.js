@@ -12,7 +12,7 @@ class Login extends Interactive {
         <a href="">Register</a>`
         
         login.addEventListener('submit', function (event) {
-            debugger
+       
             event.preventDefault()
             const username = this.username.value
             const password = this.password.value
