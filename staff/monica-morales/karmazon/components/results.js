@@ -1,19 +1,22 @@
-'use strict';
 
-function Results(props) {
-    var list = document.createElement('ul');
-    Component.call(this, list);
-    list.classList.add('results');
+class Results extends Component {
+    constructor({results, onItemClick}) {
+        super(document.createElement('ul'))
+        const list = this.container
+        
+        list.classList.add('results')
 
-    props.results.forEach(function (result) {
+        results.forEach(item => {
+            const _item = new Item({
+                item,
 
-       var _item = new Item(result, props.onClick)
+                onClick: onItemClick
+            })
 
-        list.append(_item.container);
-    });
-    
+            list.append(_item.container)
+        })
+    }
 }
-Results.prototype = Object.create(Component.prototype);
-Results.prototype.constructor = Results;
+
 
 

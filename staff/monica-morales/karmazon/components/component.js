@@ -1,5 +1,5 @@
-'use strict';
-
-function Component(container) {
+class Component {
+    constructor(container) {
     this.container = container;
+    }
 }
