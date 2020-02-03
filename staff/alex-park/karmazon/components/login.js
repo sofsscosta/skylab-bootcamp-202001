@@ -1,41 +1,36 @@
-'use strict';
+class Login extends Interactive {
+    constructor({ onSubmit, onToRegister}) {
+        super(document.createElement('form'))
+        const login = this.container
 
-function Login(props) {
-    var login = document.createElement('form');
+        login.classList.add('login')
 
-    Interactive.call(this, login);
+        login.innerHTML = `<h2>SIGN-IN</h2>
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button>LOGIN</button>
+            <a href="">REGISTER</a>`
 
-    login.classList.add('login');
+        login.addEventListener('submit', function (event) {
+            event.preventDefault()
 
-    login.innerHTML = '<h2>SIGN-IN</h2>'
-        .concat('<input type="text" name="username" placeholder="Username">')
-        .concat('<input type="password" name="password" placeholder="Password">')
-        .concat('<button>LOGIN</button>')
-        .concat('<a href="">REGISTER</a>');
+            const username = this.username.value
+            const password = this.password.value
 
-    login.addEventListener('submit', function (event) {
-        event.preventDefault();
+            onSubmit(username, password)
+        })
 
-        var username = this.username.value;
-        var password = this.password.value;
+        const register = login.querySelector('a')
 
-        props.onSubmit(username, password);
-    });
+        register.addEventListener('click', (event) => {
+            event.preventDefault()
 
-    var register = login.querySelector('a');
+            onToRegister()
+        })
+    }
 
-    register.addEventListener('click', function (event) {
-        event.preventDefault();
-
-        props.onToRegister();
-    });
+    __locateFeedbackInContainer__(feedback) {
+        const button = this.container.querySelector('button')
+        this.container.insertBefore(feedback.container, button)
+    }
 }
-
-Login.prototype = Object.create(Interactive.prototype);
-Login.prototype.constructor = Login;
-
-Login.prototype.__locateFeedbackInContainer__ = function(feedback) {
-    var button = this.container.querySelector('button'); //?
-
-    this.container.insertBefore(feedback.container, button);
-};
