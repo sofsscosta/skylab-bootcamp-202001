@@ -1,0 +1,39 @@
+@import ../utils/_flex-between
+@import ../utils/_variables
+  
+header
+  @extend %flex-between
+  height: 48px
+  position: fixed
+  top: 0
+  width: 100%
+  border-bottom: 1px solid $light-gray
+  background-color: white
+
+  figure
+    padding-left: 20px
+
+    .fa-check
+      font-size: 34px
+
+  nav
+    @extend %flex-between
+    width: 30%
+    margin-right: 20px
+
+    i
+      font-size: 18px
+      cursor: pointer
+      
+    i:nth-last-child(1)
+      font-size: 24px
+
+
+@media (min-width: 768px)
+  header
+    height: 80px
+
+    nav
+      width: 20%
+    i
+      font-size: 30px
