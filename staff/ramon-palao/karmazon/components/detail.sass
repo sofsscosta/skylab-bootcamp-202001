@@ -1,13 +1,14 @@
 .detail-info
     font-family: 'Sigmar One', cursive
-    font-size: 30px
+    font-size: 25px
     border: 3px solid blue
     border-radius: 1rem
     background-color: white
     margin-top: 1rem
+    _width: 70%
     display: grid
     grid-template-areas: "n n""p y""p c""p m""p co"" p s""d d""pr pr""b b"
-    // grid-template-rows: 10% 20% 20% 20% 20% 20% 20%
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 20% 10% 20%
 
     &__image
         grid-area: p
@@ -40,14 +41,15 @@
     
     &__button
         font-family: 'Sigmar One', cursive
-        font-size: 30px
+        font-size: 15px
         color: red
         border: 3px solid red
         border-radius: 100%
         cursor: pointer
         align-content: center
         grid-area: b
-        width: 10%
+        width: 10vh
+        height: 10vh
     
     &__button:hover
         border: 6px solid red

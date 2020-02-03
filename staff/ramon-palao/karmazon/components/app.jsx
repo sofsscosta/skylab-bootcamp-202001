@@ -29,7 +29,7 @@ class App extends Component {
                 )
             }}/>}
 
-            {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicle} onItemClick={id => {
+            {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
                 retrieveVehicle(id, vehicle =>
                     retrieveStyle(vehicle.style, style =>
                         this.setState({ vehicle, style})
