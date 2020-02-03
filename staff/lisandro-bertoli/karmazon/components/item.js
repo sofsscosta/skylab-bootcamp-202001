@@ -1,26 +1,20 @@
-'use strict';
+class Item extends Component {
+    constructor({ details: { id, thumbnail, name, price }, onToItem }) {
+        super(document.createElement('li'))
 
-function Item(props) {
-    var item = document.createElement('li');
+        const item = this.container;
 
-    Component.call(this, item);
+        item.classList.add('item');
 
-    item.classList.add('item');
+        item.innerHTML = `<a href="#">
+        <img class="item__thumbnail"src='${thumbnail}'alt=""></a>
+        <div class="item__info-wrapper">
+        <h3 class="item__name">${name}</h3>
+        <span class="item__price">$${price}</span></div>`
 
-    item.innerHTML = '<a href="#">'
-        .concat('<img class="item__thumbnail"src=' + props.details.thumbnail + ' alt=""></a>')
-        .concat('<div class="item__info-wrapper">')
-        .concat('<h3 class="item__name">' + props.details.name + '</h3>')
-        .concat('<span class="item__price">$' + props.details.price + '</span></div>');
-
-    item.addEventListener('click', function (event) {
-        event.preventDefault();
-        props.onToItem(props.details.id);
-    });
+        item.addEventListener('click', () => {
+            onToItem(id);
+        });
+    }
 }
-
-Item.prototype = Object.create(Component.prototype);
-Item.prototype.constructor = Item;
-
-
 

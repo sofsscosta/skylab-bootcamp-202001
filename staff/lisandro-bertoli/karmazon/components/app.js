@@ -1,108 +1,100 @@
-'use strict';
 
-var IT = '🎈🤡';
+const IT = '🎈🤡';
 
-function App(props) {
-    var app = document.createElement('main');
+class App extends Component {
+    constructor({ title }) {
+        super(document.createElement('main'))
+        const app = this.container
 
-    Component.call(this, app);
 
-    app.innerHTML = '<h1>' + props.title + '</h1>';
+        app.innerHTML = `<h1>${title}</h1>`
 
-    var _login = new Login({
-        onSubmit: function (username, password) {
-            try {
-                authenticate(username, password);
-                _login.container.reset();
-                _login.container.replaceWith(_search.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _login.showError(error.message + ' ' + IT);
-            }
-        },
-        onToRegister: function () {
-            _login.container.replaceWith(_register.container);
-        }
-    });
+        const _login = new Login({
+            onSubmit(username, password) {
+                try {
+                    authenticate(username, password);
+                    _login.container.reset();
+                    _login.container.replaceWith(_search.container);
+                } catch (error) {
+                    //alert(error.message + ' ' + IT);
+                    _login.showError(error.message + ' ' + IT);
+                }
+            },
 
-    app.append(_login.container);
+            onToRegister() { _login.container.replaceWith(_register.container) }
+        });
 
-    var _register = new Register({
-        onSubmit: function (name, surname, username, password) {
-            try {
-                register(name, surname, username, password);
-                _register.container.reset();
-                _register.container.replaceWith(_login.container);
-            } catch (error) {
-                //alert(error.message + ' ' + IT);
-                _register.showError(error.message + ' ' + IT);
-            }
-        },
-        onToLogin: function () {
-            _register.container.replaceWith(_login.container);
-        }
-    });
+        app.append(_login.container);
 
-    var _search = new Search({
-        title: 'Search',
+        const _register = new Register({
+            onSubmit(name, surname, username, password) {
+                try {
+                    register(name, surname, username, password);
+                    _register.container.reset();
+                    _register.container.replaceWith(_login.container);
+                } catch (error) {
+                    //alert(error.message + ' ' + IT);
+                    _register.showError(error.message + ' ' + IT);
+                }
+            },
+            onToLogin() { _register.container.replaceWith(_login.container) }
+        });
 
-        onSubmit: function (query) {
-            searchVehicles(query, function (vehicles) {
-                if (vehicles instanceof Error)
-                    return _search.showError(vehicles.message + ' ' + IT);
+        const _search = new Search({
+            title: 'Search',
 
-                if (!vehicles.length)
-                    return _search.showWarning('No results ' + IT);
+            onSubmit(query) {
+                searchVehicles(query, vehicles => {
+                    if (vehicles instanceof Error)
+                        return _search.showError(vehicles.message + ' ' + IT);
 
-                var _results = new Results({
-                    results: vehicles,
+                    if (!vehicles.length)
+                        return _search.showWarning('No results ' + IT);
 
-                    onToItem: function (productId) {
-                        retrieveVehicle(productId, function (vehicle) {
-                            _details = new Detail({
-                                product: vehicle,
+                    const _results = new Results({
+                        results: vehicles,
 
-                                backToResults: function () {
-                                    _details.container.replaceWith(_results.container);
-                                    _details = null;
-                                }
+                        onToItem(productId) {
+                            retrieveVehicle(productId, vehicle => {
+
+                                const _details = new Detail({
+                                    product: vehicle,
+
+                                    backToResults() {
+                                        _details.container.replaceWith(_results.container);
+                                        _previousResults = _results.container
+                                    }
+                                });
+
+                                _results.container.replaceWith(_details.container);
+                                _previousResults = _details.container;
                             });
+                        }
+                    });
 
-                            _results.container.replaceWith(_details.container);
-                        });
+                    if (!_previousResults) {
+                        _previousResults = _results.container
+                        app.append(_previousResults);
+                    } else {
+                        _previousResults.replaceWith(_results.container);
+
+                        _previousResults = _results.container;
                     }
                 });
+            },
 
-                if (!_previousResults) {
-                    _previousResults = _results.container
-                    app.append(_previousResults);
+            onLogout() {
+                if (_previousResults) {
+                    _search.container.reset();
+                    _previousResults = undefined;
+                    document.querySelector('.results').remove();
                 }
-                else if (_details) {
-                    _details.container.replaceWith(_results.container)
-                    _details = null;
-                } else {
-                    _previousResults.replaceWith(_results.container);
+                _search.container.replaceWith(_login.container);
 
-                    _previousResults = _results.container;
-                }
-            });
-        },
 
-        onLogout: function () {
-            if (_previousResults) {
-                _search.container.reset();
-                _previousResults = undefined;
-                document.querySelector('.results').remove();
             }
-            _search.container.replaceWith(_login.container);
+        });
 
-
-        }
-    });
-
-    var _previousResults;
-    var _details;
+        let _previousResults;
+    }
 }
-
-App.prototype = Object.create(Component.prototype);
-App.prototype.constructor = App;

@@ -1,37 +1,33 @@
-'use strict';
+class Search extends Interactive {
+    constructor({ title, onSubmit, onLogout }) {
+        super(document.createElement('form'))
+        const search = this.container
 
-function Search(props) {
-    var search = document.createElement('form');
+        search.classList.add('search');
 
-    Interactive.call(this, search);
+        search.innerHTML += `<h2>${title}</h2>
+            <input type="text" name="query" placeholder="criteria">
+            <button type="submit">Search</button>
+            <button class="logout">Logout</button>`
 
-    search.classList.add('search');
+        search.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-    search.innerHTML += '<h2>' + props.title + '</h2>'
-        .concat('<input type="text" name="query" placeholder="criteria">')
-        .concat('<button type="submit">Search</button>')
-        .concat('<button class="logout">Logout</button>');
+            const query = this.query.value;
 
-    search.addEventListener('submit', function (event) {
-        event.preventDefault();
+            onSubmit(query);
+        });
 
-        var query = this.query.value;
+        const logoutButton = search.querySelector('.logout');
 
-        props.onSubmit(query);
-    });
+        logoutButton.addEventListener('click', event => {
+            event.preventDefault();
 
-    var logoutButton = search.querySelector('.logout');
+            onLogout();
+        });
+    }
 
-    logoutButton.addEventListener('click', function (event) {
-        event.preventDefault();
-
-        props.onLogout();
-    });
+    __locateFeedbackInContainer__ = function (feedback) {
+        this.container.append(feedback.container);
+    }
 }
-
-Search.prototype = Object.create(Interactive.prototype);
-Search.prototype.constructor = Search;
-
-Search.prototype.__locateFeedbackInContainer__ = function (feedback) {
-    this.container.append(feedback.container);
-};

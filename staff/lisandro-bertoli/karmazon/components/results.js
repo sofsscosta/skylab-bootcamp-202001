@@ -1,19 +1,16 @@
-'use strict';
+class Results extends Component {
+    constructor(props) {
+        super(document.createElement('ul'))
+        var list = this.container
 
-function Results(props) {
-    var list = document.createElement('ul');
+        list.classList.add('results');
 
-    Component.call(this, list);
+        props.results.forEach(result => {
+            var item = new Item({ details: result, onToItem: props.onToItem });
 
-    list.classList.add('results');
+            list.append(item.container);
+        });
 
-    props.results.forEach(function (result) {
-        var item = new Item({ details: result, onToItem: props.onToItem });
-
-        list.append(item.container);
-    });
+    }
 
 }
-
-Results.prototype = Object.create(Component.prototype);
-Results.prototype.constructor = Results;
