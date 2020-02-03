@@ -1,0 +1,44 @@
+.title
+    @extend .nav-upper
+    padding: 2vh
+    height: 10vh
+    justify-content: space-between
+    background-color: white
+    z-index: 9
+    position: sticky
+    top: 0px
+
+    &__result
+        align-self: center
+        font-family: $font
+        position: sticky
+        top: 0px
+
+    &__filter
+        @extend .nav-upper__search
+        border: $border-basic
+        background-color: black
+        position: sticky
+        top: 0px
+
+.aside-upper
+    display: none
+
+@media only screen and (min-width: 1024px)
+
+    .title
+        position: sticky
+        top: 17vh
+        width: 100%
+
+        &__result
+            _width: 100%
+
+    .aside-upper
+        display: inline-block
+        height: 10vh
+        width: 100%
+        color: grey
+        background-color: lightgrey
+        text-align: center
+        margin-top: 17vh
