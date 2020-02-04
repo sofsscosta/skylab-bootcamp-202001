@@ -23,7 +23,7 @@ class App extends Component {
 
                     setTimeout(() => {
                         this.setState({ error: undefined })
-                    }, 3000);
+                    }, 3000)
                 }
             }} onToRegister={() => this.setState({ view: 'register' })} error={this.state.error} />}
 
@@ -37,7 +37,7 @@ class App extends Component {
 
                     setTimeout(() => {
                         this.setState({ error: undefined })
-                    }, 3000);
+                    }, 3000)
                 }
             }} onToLogin={() => this.setState({ view: 'login' })} error={this.state.error} />}
 
@@ -48,7 +48,7 @@ class App extends Component {
                     if (!vehicles.length)
                         setTimeout(() => {
                             this.setState({ error: undefined })
-                        }, 3000);
+                        }, 3000)
                 })
             }} warning={this.state.error} />}
 
