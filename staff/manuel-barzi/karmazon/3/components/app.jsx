@@ -1,95 +1,66 @@
 const IT = '🎈🤡'
 
-const { Component } = React
+const { Component, Fragment } = React
 
 class App extends Component {
     constructor() {
         super()
 
-        this.state = { loggedIn: !false, vehicles: undefined }
+        this.state = { view: 'search', vehicles: undefined, vehicle: undefined, style: undefined, error: undefined }
     }
 
     render() {
-        return <main>
+        return <Fragment>
             <h1>{this.props.title}</h1>
 
-            {!this.state.loggedIn && <Login onSubmit={(username, password) => {
+            {this.state.view === 'login' && <Login onSubmit={(username, password) => {
                 try {
                     authenticate(username, password)
 
-                    this.setState({ loggedIn: true })
+                    this.setState({ view: 'search' })
                 } catch (error) {
-                    //_login.showError(error.message + ' ' + IT)
+                    this.setState({ error: error.message + ' ' + IT })
+
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
                 }
-            }} />}
+            }} onToRegister={() => this.setState({ view: 'register' })} error={this.state.error} />}
 
-            {this.state.loggedIn && <Search title="Search" onSubmit={query => {
-                searchVehicles(query, vehicles => {
-                    this.setState({ vehicles })
-                })
-            }} />}
-
-            {this.state.vehicles && <Results results={this.state.vehicles} />}
-        </main>
-
-
-        const _register = new Register({
-            onSubmit(name, surname, username, password) {
+            {this.state.view === 'register' && <Register onSubmit={(name, surname, username, password) => {
                 try {
                     register(name, surname, username, password)
 
-                    _register.container.replaceWith(_login.container)
+                    this.setState({ view: 'login' })
                 } catch (error) {
-                    //alert(error.message + ' ' + IT)
-                    _register.showError(error.message + ' ' + IT)
+                    this.setState({ error: error.message + ' ' + IT })
+
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
                 }
-            },
-            onToLogin() {
-                _register.container.replaceWith(_login.container)
-            }
-        })
+            }} onToLogin={() => this.setState({ view: 'login' })} error={this.state.error} />}
 
-        const _search = new Search({
-            title: 'Search',
-
-            onSubmit(query) {
+            {this.state.view === 'search' && <Search title="Search" onSubmit={query => {
                 searchVehicles(query, vehicles => {
-                    if (vehicles instanceof Error)
-                        return _search.showError(vehicles.message + ' ' + IT)
+                    this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
 
                     if (!vehicles.length)
-                        return _search.showWarning('No results ' + IT)
-
-                    const __results = new Results({
-                        results: vehicles,
-
-                        onItemClick(id) {
-                            retrieveVehicle(id, vehicle => {
-                                retrieveStyle(vehicle.style, style => {
-                                    const detail = new Detail({ vehicle, style })
-
-                                    _results.replaceWith(detail.container)
-
-                                    _results = detail.container
-                                })
-
-                            })
-                        }
-                    })
-
-                    if (!_results)
-                        app.append(_results = __results.container)
-                    else {
-                        _results.replaceWith(__results.container)
-
-                        _results = __results.container
-                    }
+                        setTimeout(() => {
+                            this.setState({ error: undefined })
+                        }, 3000)
                 })
-            }
-        })
+            }} warning={this.state.error} />}
 
-        //app.append(_search.container) // BYPASS for quick testing search on screen (without going through login)
+            {this.state.view === 'search' && this.state.vehicles && <Results results={this.state.vehicles} onItemClick={id => {
+                retrieveVehicle(id, vehicle =>
+                    retrieveStyle(vehicle.style, style =>
+                        this.setState({ vehicle, style, vehicles: undefined })
+                    )
+                )
+            }} />}
 
-        let _results
+            {this.state.view === 'search' && this.state.vehicle && <Detail vehicle={this.state.vehicle} style={this.state.style} />}
+        </Fragment>
     }
 }
