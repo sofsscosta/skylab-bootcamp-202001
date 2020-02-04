@@ -10,6 +10,7 @@ function call(url, callback) {
     xhr.open('GET', url)
 
     xhr.addEventListener('load', function() {
+
         callback( {
             content: this.responseText,
             status: this.status

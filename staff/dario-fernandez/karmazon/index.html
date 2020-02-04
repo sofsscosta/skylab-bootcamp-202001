@@ -11,34 +11,39 @@
 </head>
 <body>
     <main id="root"></main>
+    
+    <!-- THIRD PARTIES -->
+    <script src="vendor/react/16.12.0/react.development.js"></script>
+    <script src="vendor/react/16.12.0/react-dom.development.js"></script>
+    <script src="vendor/babel/6.26.0/babel.js"></script>
+    
+    <!-- DATA -->
+    <script src="data.js"></script>
 
-<!-- DATA -->
-<script src="data.js"></script>
+    <!-- LOGIC -->
+    <script src="logic/authenticate.js"></script>
+    <script src="logic/register.js"></script>
+    <script src="logic/search-vehicles.js"></script>
+    <script src="logic/search-details.js"></script>
 
-<!-- LOGIC -->
-<script src="logic/authenticate.js"></script>
-<script src="logic/register.js"></script>
-<script src="logic/search-vehicles.js"></script>
-<script src="logic/search-details.js"></script>
+    <!-- UTILS -->
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+    <script src="utils/polyfills.js"></script>
 
-<!-- UTILS -->
-<script src="utils/call.js"></script>
-<script src="utils/search.js"></script>
-<script src="utils/polyfills.js"></script>
+    <!-- COMPONENTS -->
+    <script src="components/app.jsx" type="text/babel"></script>
+    <script src="components/search.jsx" type="text/babel"></script>
+    <script src="components/results.jsx" type="text/babel"></script>
+    <script src="components/article.jsx" type="text/babel"></script>
+    <script src="components/details.jsx" type="text/babel"></script>
+    <script src="components/register.jsx" type="text/babel"></script>
+    <script src="components/login.jsx" type="text/babel"></script>
+    <script src="components/feedback.jsx " type="text/babel"></script>
 
-<!-- COMPONENTS -->
-<script src="components/component.js"></script>
-<script src="components/interactive.js"></script>
-<script src="components/app.js"></script>
-<script src="components/search.js"></script>
-<script src="components/results.js"></script>
-<script src="components/article.js"></script>
-<script src="components/details.js"></script>
-<script src="components/register.js"></script>
-<script src="components/login.js"></script>
-<script src="components/feedback.js"></script>
+    <!-- MAIN -->
+    <script src="main.jsx" type="text/babel"></script>
 
-<!-- MAIN -->
-<script src="main.js"></script>
+
 </body>
 </html>

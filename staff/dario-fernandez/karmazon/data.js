@@ -1,1 +1,6 @@
-const users = []
+const users = [
+    {
+        username: '',
+        password: ''
+    }
+]
