@@ -1,6 +1,3 @@
 function Feedback({level, message}){
-    return <p className = "feedback"
-              className = {"feedback--" + {level}}>
-
-    </p>
+    return <p className = {`feedback feedback--${level}`}>{message}</p>
 }

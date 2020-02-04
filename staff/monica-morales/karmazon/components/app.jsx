@@ -6,39 +6,55 @@ class App extends Component {
     constructor() {
         super()
 
-        this.state = { loggedIn: false, registeredWindow: false, vehicles: undefined, vehicle: undefined, style: undefined }
+        this.state = { view: 'search', vehicles: undefined, vehicle: undefined, style: undefined, error: undefined, warning: undefined}
     }
+
+    // handleLogin = 
+
 
     render() {
         return <main>
             <h1>{this.props.title}</h1>
 
 
-            {!this.state.loggedIn && !this.state.registeredWindow && <Login onSubmit={(username, password) => {
+            {this.state.view === 'login' && <Login onSubmit={(username, password) => {
                 try {
                     authenticate(username, password)
                     
-                    this.setState({ loggedIn: true })
+                    this.setState({ view:'search'})
                 } catch (error) {
-                    //_login.showError(error.message + ' ' + IT)
+                    this.setState({error: error.message + ' ' + IT})
                 }
-            }} onToRegister={() => {this.setState({ registeredWindow: true})}}/>}
+            }} onToRegister={() => {this.setState({ view:'register'})}} error={this.state.error}/>}
 
-            {!this.state.loggedIn && this.state.registeredWindow && <Register onSubmit={(name, surname, username, password) => {
+            {this.state.view === 'register' && <Register onSubmit={(name, surname, username, password) => {
                 try {
                     register(name, surname, username, password)
 
-                    this.setState({ registeredWindow: false })
+                    this.setState({ view: 'login' })
                 } catch (error) {
-                    // _register.showError(error.message + ' ' + IT)
+                    this.setState({error: error.message + ' ' + IT})
                 }
-            }} onToLogin={() => {this.setState({registeredWindow: false})}}/>}
+            }} onToLogin={() => {this.setState({view:'login'})}} error={this.state.error}/>}
 
-            {this.state.loggedIn && !this.state.registeredWindow && <Search title="Search" onSubmit={query => {
-                searchVehicles(query, vehicles =>
-                    this.setState({ vehicles })
+            {this.state.view === 'search' && <Search title="Search" onSubmit={query => {
+                searchVehicles(query, vehicles => {
+                    if(this.state.vehicle) {
+                        this.setState({ vehicle: undefined })
+                    }
+
+                        this.setState({ vehicles, error: vehicles.length? undefined:'No results' })
+                    
+                        if (!vehicles.length){
+                        setTimeout(() => {
+                            this.setState({ error: undefined })
+                        }, 3000)
+                    }
+                }
                 )
-            }} />}
+
+
+            }} error={this.state.error} />}
 
             {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
                 retrieveVehicle(id, vehicle =>

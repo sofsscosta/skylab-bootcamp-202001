@@ -1,4 +1,4 @@
-function Register ({onSubmit, onToLogin}){
+function Register ({onSubmit, onToLogin, error}){
     return <form className = "register"
                  onSubmit = {event =>{
                     event.preventDefault()
@@ -10,6 +10,7 @@ function Register ({onSubmit, onToLogin}){
                     onSubmit(name, surname, username, password) 
                  }}>
            <h2>Sign-up</h2>
+             {error && <Feedback level='error' message= {error}/>}    
             <input type="text" name="name" placeholder="name"/>
             <input type="text" name="surname" placeholder="surname"/>
             <input type="text" name="username" placeholder="username"/>
