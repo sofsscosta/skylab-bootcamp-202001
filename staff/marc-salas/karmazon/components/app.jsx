@@ -12,6 +12,7 @@ class App extends Component {
     render() {
         return <main>
             <h1>{this.props.title}</h1>
+
             {!this.state.loggedIn && <Login onSubmit={(username, password) => {
                 try {
                     authenticate(username, password)
