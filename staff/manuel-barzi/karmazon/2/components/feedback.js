@@ -1,13 +1,13 @@
 class Feedback extends Component {
-    constructor(props) {
+    constructor({ level, message }) {
         super(document.createElement('p'))
 
         const feedback = this.container
 
         feedback.classList.add('feedback')
-        feedback.classList.add('feedback--' + props.level)
+        feedback.classList.add('feedback--' + level)
 
-        feedback.innerText = props.message
+        feedback.innerText = message
 
         // feedback.showMessage = function (message) {
         //     this.innerText = message
