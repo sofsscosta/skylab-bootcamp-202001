@@ -9,10 +9,9 @@ function Search({title, onSubmit, error}){
     }}>
         <h2>{title}</h2>
         <input type="text" name="query" placeholder="car"/>
-
+        <button type="submit">Search</button>
+        
         {error && <Feedback level="warning" message={error} />}
-
-        <button>Search</button>
 
     </form>
 }
