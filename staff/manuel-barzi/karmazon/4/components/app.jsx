@@ -18,15 +18,16 @@ class App extends Component {
     // ES.NEXT
     handleLogin = (username, password) => {
         try {
-            authenticate(username, password)
-
-            this.setState({ view: 'search' })
+            authenticateUser(username, password, token => {
+                // WTF w/ token?
+                this.setState({ view: 'search' })
+            })
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
 
             setTimeout(() => {
                 this.setState({ error: undefined })
-            }, 3000);
+            }, 3000)
         }
     }
 
@@ -34,15 +35,15 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            register(name, surname, username, password)
-
-            this.setState({ view: 'login' })
+            registerUser(name, surname, username, password, () => {
+                this.setState({ view: 'login' })
+            })
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
 
             setTimeout(() => {
                 this.setState({ error: undefined })
-            }, 3000);
+            }, 3000)
         }
     }
 
@@ -55,7 +56,7 @@ class App extends Component {
             if (!vehicles.length)
                 setTimeout(() => {
                     this.setState({ error: undefined })
-                }, 3000);
+                }, 3000)
         })
     }
 
