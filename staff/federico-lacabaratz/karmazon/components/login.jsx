@@ -1,6 +1,6 @@
-function Login ({ onSubmit, onToRegister}) {
+function Login({ onSubmit, onToRegister}) {
 
-    return <form className='login' onSubmit={event => {
+    return <form className="login" onSubmit={event => {
 
         const username = event.target.username.value
         const password = event.target.password.value

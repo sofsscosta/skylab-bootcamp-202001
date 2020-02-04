@@ -6,7 +6,7 @@ class App extends Component {
     constructor() {
         super()
 
-        this.state = { loggedIn: !false, vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined }
+        this.state = { loggedIn: false, registered: false, vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined }
     }
 
     render() {
@@ -27,6 +27,16 @@ class App extends Component {
                 searchVehicles(query, vehicles =>
                     this.setState({ vehicles })
                 )
+            }} />}
+
+            {!this.state.registerd && <Register onSubmit={(name, surname, username, password) => {
+                try {
+                    register(name, surname, username, password)
+
+                    this.setState({ registered: true })
+                } catch (error) {
+                    //_register.showError(error.message + ' ' + IT)
+                }
             }} />}
 
             {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
