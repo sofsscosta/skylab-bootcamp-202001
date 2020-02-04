@@ -1,4 +1,4 @@
-function Login({ onSubmit, onToRegister}) {
+function Login({ onSubmit, onToRegister, error}) {
     return <form className="login" onSubmit={event => {
         event.preventDefault()
 
@@ -16,6 +16,8 @@ function Login({ onSubmit, onToRegister}) {
 
             onToRegister()
         }}>Register</a>
+
+        {error && <Feedback level="error" message={error}/>}
     </form>
 }
 

@@ -6,7 +6,7 @@ function retrieveStyle(id, callback) {
         if (response instanceof Error) return callback(response)
 
         if (response.status === 200) {
-            var result = JSON.parse(response.content)
+            const result = JSON.parse(response.content)
 
             callback(result)
         }
