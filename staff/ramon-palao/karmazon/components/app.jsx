@@ -26,7 +26,7 @@ class App extends Component {
 
         handleRegister = (name, surname, username, password) => {
             try{
-                register(name, surname, username, password)
+                registerUser(name, surname, username, password)
                 this.setState({view: "login"})
             } catch (error) {
                 this.setState({error: `${error.message} ${IT}`})
@@ -40,11 +40,16 @@ class App extends Component {
         handleGoToRegister = () => this.setState({view: "register"})
 
         handleSearch = query => {
-            searchVehicles(query, vehicles =>
-                this.setState({ vehicles, vehicle: undefined })
-            )
-        }
+            searchVehicles(query, vehicles => {
+                this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT  })
 
+                if (!vehicles.length)
+                    setTimeout(() =>{
+                        this.setState({error: undefined})
+                    }, 3000)
+            })
+        }
+        
         handleDetail = id => {
             retrieveVehicle(id, vehicle =>
                 retrieveStyle(vehicle.style, style =>
@@ -65,7 +70,7 @@ class App extends Component {
             
             {view === "login" && <Login onSubmit = {handleLogin} onToRegister = {handleGoToRegister} error = {error} />}
 
-            {view === "search" && <Search title = "Search" onSubmit = {handleSearch}/>}
+            {view === "search" && <Search title = "Search" onSubmit = {handleSearch} warning = {error}/>}
 
             {view === "search" && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail}/>}
 
