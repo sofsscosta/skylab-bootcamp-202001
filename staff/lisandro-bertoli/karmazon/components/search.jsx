@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, onLogout }) {
+function Search({ title, onSubmit, onLogout, error }) {
     return <form className="search" onSubmit={event => {
         event.preventDefault();
 
@@ -8,6 +8,9 @@ function Search({ title, onSubmit, onLogout }) {
     }}>
         <h2>{title}</h2>
         <input type="text" name="query" placeholder="criteria" />
+
+        {error && <Feedback level="warning" message={error} />}
+
         <button type="submit">Search</button>
         <button className="logout" onClick={event => {
             event.preventDefault();
@@ -16,9 +19,4 @@ function Search({ title, onSubmit, onLogout }) {
         }}>Logout</button>
     </form >
 }
-
-
-    // __locateFeedbackInContainer__ = function (feedback) {
-    //     this.container.append(feedback.container);
-    // }
 

@@ -190,7 +190,7 @@ ul, li {
 }
 .item__thumbnail {
   width: 80%;
-  margin-top: 0.5rem;
+  margin: 0.5rem auto;
   padding: 1rem;
   background-color: #f7f7f7;
 }
