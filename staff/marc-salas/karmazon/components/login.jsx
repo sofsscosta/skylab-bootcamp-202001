@@ -9,15 +9,15 @@ function Login({ onSubmit, onToRegister }) {
         onSubmit(username, password);
     }}>
         
-        <h2>Sing-in</h2>
+        <h2>Sign-in</h2>
         <input type="text" name="username" placeholder="username" />
         <input type="password" name="password" placeholder="password" />
         <button>Login</button>
         <a href="" onClick={event => {
             event.preventDefault()
+
             onToRegister()
         }}>Register</a>
-
     </form>
 }
 
