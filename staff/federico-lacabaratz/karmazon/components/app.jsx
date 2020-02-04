@@ -1,16 +1,13 @@
 const IT = '🎈🤡'
 
-const { Component } = React
+const { Component, Fragment } = React
 
 class App extends Component {
-    constructor() {
-        super()
-
-        this.state = { loggedIn: false, registered: false, vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined }
-    }
+    
+    state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined }
 
     render() {
-        return <main>
+        return <Fragment>
             <h1>{this.props.title}</h1>
 
             {!this.state.loggedIn && <Login onSubmit={(username, password) => {
@@ -54,7 +51,7 @@ class App extends Component {
             }} />}
 
             {this.state.vehicle && <Detail vehicle={this.state.vehicle} style={this.vehicle.style} maker={this.vehicle.maker} collection={this.vehicle.collection} />}
-        </main>
+        </Fragment>
     }
 }
 

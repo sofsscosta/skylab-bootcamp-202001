@@ -15,6 +15,9 @@ function Register ({ onSubmit, onToLogin}) {
         <input type="text" name="surname" placeholder="surname" />
         <input type="text" name="username" placeholder="username" />
         <input type="password" name="password" placeholder="password" />
+
+        { error && <Feedback level="error" message={error} />}
+
         <button>Register</button>
         <a href="" onClick={event => {
             event.preventDefault()

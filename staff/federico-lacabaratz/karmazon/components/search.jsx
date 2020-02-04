@@ -9,9 +9,7 @@ function Search ({ title, onSubmit }) {
         <h2>{title}</h2>
         <input type="text" name="query" placeholder="criteria" />
         <button type="submit">Search</button>
+
+        { warning && <Feedback level="warning" message={warning} />}
     </form>
 }
-
-    //  __locateFeedbackInContainer__(feedback) {
-    //     this.container.append(feedback.container)
-    //  }
