@@ -1,15 +1,49 @@
 const IT = '🎈🤡'
 
-const { Component } = React
+const { Component, Fragment } = React
 
 class App extends Component {
-    constructor() {
-        super()
 
-        this.state = { loggedIn: true  , registered: undefined, vehicles: undefined, vehicle: undefined}
-    }
+
+
+        state = { view: "Login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined}
+    
+        handleLogin = (username, password) => {
+            try {
+                authenticate(username, password)
+
+                this.setState({ view: "search"})
+            } catch (error) {
+                this.setState ({error:`error.message ${IT}`})
+                setTimeout (()=> {
+                 this.setState({error: undefined})   
+                }, 3000)
+            }
+        }
+
+        handleGoToRegister=()=> this.setState({ view: "register" })
+            
+        handleRegister=(name, surname, username, password)=> {
+            try {
+                register(name, surname, username, password)
+
+                this.setState({view: "login"})
+            } catch (error) {
+                this.setState ({error:`error.message ${IT}`})
+                setTimeout (()=> {
+                this.setState({error: undefined})   
+                }, 3000)
+            }
+        }
+
+        handleGoToLogin=()=> this.setState({ view: "login" })
+
+
+
+
+
     render() {
-        return <main>
+        return <Fragment>
             <h1>{this.props.title}</h1>
 
             {this.state.loggedIn && <Login onSubmit={(username, password) => {
@@ -46,7 +80,7 @@ class App extends Component {
                     this.setState( vehicles))
             }} />}
 
-        </main>
+        </Fragment>
     }
 }
 
