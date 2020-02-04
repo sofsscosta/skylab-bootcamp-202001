@@ -1,6 +1,7 @@
-function Search ({ title, onSubmit }) {
+function Search({ title, onSubmit, error }) {
 
     return <form className="search" onSubmit={event => {
+        event.preventDefault()
 
         const query = event.target.query.value
 
@@ -10,6 +11,6 @@ function Search ({ title, onSubmit }) {
         <input type="text" name="query" placeholder="criteria" />
         <button type="submit">Search</button>
 
-        { warning && <Feedback level="warning" message={warning} />}
+        {error && <Feedback level="warning" message={error} />}
     </form>
 }

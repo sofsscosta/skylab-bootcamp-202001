@@ -1,6 +1,7 @@
-function Login({ onSubmit, onToRegister, error}) {
+function Login({ onSubmit, onToRegister, error }) {
 
     return <form className="login" onSubmit={event => {
+        event.preventDefault()
 
         const username = event.target.username.value
         const password = event.target.password.value
