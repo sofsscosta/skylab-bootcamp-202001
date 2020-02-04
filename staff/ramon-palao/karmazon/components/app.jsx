@@ -1,43 +1,42 @@
 const IT = '🎈🤡';
 
-const {Component} = React
+const {Component, Fragment} = React
 
 class App extends Component {
-    constructor () {
-        super()
+    // constructor () {
+    //     super()
         
-        this.state = {loggedIn: !false, vehicles: undefined, vehicle: undefined, style: undefined}
-    }
+         state = {view: "login", vehicle: undefined, vehicles: undefined, style: undefined}
         
     render() {
-        return <main>
+        return <Fragment>
             <h1>{this.props.title}</h1>
             
-            {!this.state.loggedIn && <Login onSubmit = {(username, password) => {
+            {this.state.view === "login" && <Login onSubmit = {(username, password) => {
                 try {
                     authenticate(username, password)
 
-                    this.setState({loggedIn: true})
+                    this.setState({view: "search"})
                 } catch (error) {
                     //_login.showError(error.message + " " + IT)
                 }
             }} />}
 
-            {this.state.loggedIn && <Search title = "Search" onSubmit = {query => {
+            {this.state.view === "search" && <Search title = "Search" onSubmit = {query => {
                 searchVehicles(query, vehicles =>
-                    this.setState({ vehicles })
+                    this.setState({ vehicles, vehicle: undefined })
                 )
             }}/>}
 
-            {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
+            {this.state.view === "search" && this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
                 retrieveVehicle(id, vehicle =>
                     retrieveStyle(vehicle.style, style =>
-                        this.setState({ vehicle, style})
+                        this.setState({ vehicles: undefined, vehicle, style})
                     )
                 )
             }}/>}
 
-            {this.state.vehicle && <Detail vehicle={this.state.vehicle} style={this.state.style} />}
-        </main>
+            {this.state.view === "search" && this.state.vehicle && <Detail vehicle={this.state.vehicle} style={this.state.style} />}
+        </Fragment>
     }
 }
