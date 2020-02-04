@@ -1,4 +1,4 @@
-function Login ({ onSubmit, onToRegister }) {
+function Login ({ onSubmit, onToRegister, error }) {
 
     return <form className="login" onSubmit={event => {
         event.preventDefault()
@@ -11,6 +11,9 @@ function Login ({ onSubmit, onToRegister }) {
         <h2>SIGN-IN</h2>
         <input type="text" name="username" placeholder="Username" />
         <input type="password" name="password" placeholder="Password" />
+
+        {error && <Feedback level={'error'} message={error}/>}
+        
         <button>LOGIN</button>
         <a href="" onClick={event => {
             event.preventDefault()

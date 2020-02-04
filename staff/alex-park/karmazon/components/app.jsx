@@ -1,116 +1,81 @@
 const IT = '🎈🤡'
 
-const { Component } = React
+const { Component, Fragment } = React
 
 class App extends Component {
-    constructor() {
-        super()
 
-        this.state = { loggedIn: false, registerIn: false, vehicles: undefined, vehicle: undefined, style: undefined }
+    state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined }
+    
+    handleLogin = (username, password) => {
+        try {
+            authenticate(username, password)
+
+            this.setState({ view: 'search' })
+        } catch (error) {
+            this.setState({error: error.message + " " + IT})
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+        }
     }
+
+    handleGoToRegister = () => {this.setState({view: 'register'})}
+    
+    handleRegister = (name, surname, username, password) => {
+        try {
+            register(name, surname, username, password)
+
+            this.setState({ view: 'login' })
+        } catch (error) {
+            this.setState({error: error.message + " " + IT})
+
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+        }
+    }
+
+    handleGoToLogin = () => {this.setState({view: 'login'})}
+
+    handleSearch = query => {
+        searchVehicles(query, vehicles => {
+            if(this.vehicle) {
+                this.setState({vehicle: undefined})
+            }
+            this.setState({query: {query}})
+            this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
+        
+
+            if (!vehicles.length)
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+        })
+    }
+
+    handleDetail = id => {
+        retrieveVehicle(id, vehicle => this.setState({ vehicle }))
+    }
+
+    handleBackToResults = () => {
+        this.setState({ vehicle: undefined })}
 
     render() {
-        return <main>
-            <h1>${this.props.title}</h1>
 
-            {!this.state.loggedIn && <Login onSubmit={(username, password) => {
-                try {
-                    authenticate(username, password)
+        const { props: {title}, state: { view, vehicles, vehicle, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleBackToResults } = this
+        return <Fragment>
+            <h1>{title}</h1>
 
-                    this.setState({ loggedIn: true })
-                } catch (error) {
-                    // _login.showError(error.message + ' ' + IT)
-                }
-            }} 
+            {view === "login" && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
             
-            onToRegister={ <Register onSubmit={(name, surname, username, password) => {
-                try {
-                    register(name, surname, username, password)
-    
-                    this.setState({ registerIn: true })
-                } catch (error) {
-                    // _register.showError(error.message + ' ' + IT)
-                }
-            }}/> }/>}
+            {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {this.state.loggedIn && <Search title="Search" onSubmit={query => {
-                searchVehicles(query, vehicles =>
-                    this.setState({ vehicles })
-                )
-            }} />}
+            {view === 'search' && <Search title="Search" onSubmit={handleSearch} error={error}/>}
 
-            {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
-                retrieveVehicle(id, vehicle => this.setState({vehicle}))
-            }}/>}
+            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail}/>}
 
-            {this.state.vehicle && <Details detailInfo={this.state.vehicle} onClick={() => <Results />}/>}
+            {view === 'search' && vehicle && <Details detailInfo={vehicle} onBack={handleBackToResults} />}
 
-        </main>
+        </Fragment>
     }
 }
-
-//             ,
-//         onToRegister() {
-//             _login.container.replaceWith(_register.container)
-//         }
-//     })
-
-//     app.append(_login.container)
-
-//     const _register = new Register({
-//         onSubmit(name, surname, username, password) {
-//             try {
-//                 register(name, surname, username, password)
-
-//                 _register.container.replaceWith(_login.container)
-//             } catch (error) {
-//                 _register.showError(error.message + ' ' + IT)
-//             }
-//         },
-//         onToLogin() {
-//             _register.container.replaceWith(_login.container)
-//         }
-//     })
-
-//     const _search = new Search({
-//         title: 'Search',
-
-//         onSubmit(query) {
-//             searchVehicles(query, vehicles => {
-//                 if (vehicles instanceof Error)
-//                     return _search.showError(vehicles.message + ' ' + IT)
-
-//                 if (!vehicles.length)
-//                     return _search.showWarning('No results ' + IT)
-
-//                 const __results = new Results({ 
-//                     results: vehicles, 
-                    
-//                     onItemClick(id) {
-//                     retrieveVehicle(id, detailInfo => { 
-//                         const detailedVehicle = new Details({detailInfo})
-
-//                         __results.container.replaceWith(detailedVehicle.container)
-
-//                         _results = detailedVehicle.container
-
-//                         detailedVehicle.container.querySelector('button').addEventListener('click', function() {
-//                             detailedVehicle.container.replaceWith(__results.container)
-//                         })
-//                     })
-//                 } })
-
-//                 if (!_results)
-//                     app.append(_results = __results.container)
-//                 else {
-//                     _results.replaceWith(__results.container)
-
-//                     _results = __results.container
-//                 }
-//             })
-//         }
-//     })
-
-//     let _results
-//     }
-// }
