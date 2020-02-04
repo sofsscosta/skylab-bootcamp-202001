@@ -1,0 +1,1 @@
+ReactDOM.render(<App title="Google App" />, document.querySelector('#root'))
