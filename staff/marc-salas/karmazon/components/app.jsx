@@ -6,7 +6,7 @@ class App extends Component {
     constructor() {
         super()
 
-        this.state = { loggedIn: !false, registered: undefined, vehicles: undefined, vehicle: undefined}
+        this.state = { loggedIn: true  , registered: undefined, vehicles: undefined, vehicle: undefined}
     }
     render() {
         return <main>
