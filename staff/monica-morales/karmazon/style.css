@@ -98,7 +98,8 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-.results ul {
+
+ul {
   list-style: none;
 }
 

@@ -55,22 +55,22 @@ class App extends Component {
                     if (!vehicles.length) 
                         return _search.showWarning('No results ' + IT)
 
-                    const __results = new Results({
-                        results: vehicles, 
+                        const __results = new Results({
+                            results: vehicles, 
 
-                        onItemClick(id) {
-                            retrieveVehicle(id, vehicle => {
-                                retrieveStyle(vehicle.style, style => {
-                                    const detail = new Detail({ vehicle, style })
+                            onItemClick(id) {
+                                retrieveVehicle(id, vehicle => {
+                                    retrieveStyle(vehicle.style, style => {
+                                        const detail = new Detail({ vehicle, style })
 
-                                    _results.replaceWith(detail.container)
+                                        _results.replaceWith(detail.container)
 
-                                    _results = detail.container
+                                        _results = detail.container
+                                    })
+
                                 })
-
-                            })
-                        }
-                    })
+                            }
+                        })
 
                     if (!_results)
                         app.append(_results = __results.container)

@@ -1,4 +1,4 @@
-function Search (title, onSubmit){
+function Search ({title, onSubmit}){
     return <form className = "search"
                  onSubmit = {
                     event =>{
@@ -7,7 +7,7 @@ function Search (title, onSubmit){
                         onSubmit(query)
                     }
                 }>
-            <h2> ${title} </h2>
+            <h2> {title} </h2>
             <input type="text" name="query" placeholder="criteria"/>
             <button type="submit">Search</button>
     </form>

@@ -1,4 +1,4 @@
-function Register (onSubmit, onToLogin){
+function Register ({onSubmit, onToLogin}){
     return <form className = "register"
                  onSubmit = {event =>{
                     event.preventDefault()

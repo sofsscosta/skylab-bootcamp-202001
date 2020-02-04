@@ -1,4 +1,4 @@
-function Item ({ item: { id, name, thumbnail, price }, onClick }){
+function Item ({item: { id, name, thumbnail, price }, onClick }){
     return <li onClick = {event => {
                 event.preventDefault()
                 onClick(id)

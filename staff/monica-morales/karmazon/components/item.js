@@ -4,7 +4,6 @@ class Item extends Component {
 
         const item = this.container
 
-
         const _name = document.createElement('h3')
         _name.innerText = name
         item.append(_name)
