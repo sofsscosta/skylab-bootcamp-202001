@@ -1,4 +1,16 @@
-class Results {
+function Results({ results, onItemClick }) {
+    //debugger
+    return <div className="results">
+        <ul className="results__list">
+            {results.map((result, index) => {
+                result.key = index
+                return <Item item={result} onClick={onItemClick} key={index} />
+            })}
+        </ul>
+    </div>
+}
+
+/*class Results {
     constructor(props) {
         const resultsEl = document.createElement('div');
         resultsEl.classList.add('results');
@@ -15,4 +27,4 @@ class Results {
 
         return resultsEl;
     }
-}
+}*/
