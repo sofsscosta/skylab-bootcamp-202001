@@ -1,0 +1,223 @@
+@media only screen and (max-width: 600px){
+    
+    .header__input-search {display: none}
+    .header__search-container{display: none}
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    border: black solid 1px;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+.header > div {
+    margin: 5px;
+    border: blue solid 1px;
+    width: calc(100%/3);
+    
+}
+main {
+    border: black solid 1px;
+    height: 80vh;
+    width: 100%;
+
+}
+section.main__first-section{
+    display: grid;
+    width: 100%;
+    height: 50%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "main__photo   main__editprofile  main__editprofile"
+    "main__photo   main__editprofile  main__editprofile"
+    "main__follow  main__follow       main__follow" ;
+}
+.main__photo{
+    background-color: grey;
+    grid-area: main__photo;
+}
+.main__editprofile {
+    background-color: cadetblue;
+    grid-area: main__editprofile;
+}
+.main__follow {
+    background-color: red;
+    grid-area: main__follow;
+}
+section.main__second-section{
+    border: black solid 1px;
+    width: 100%;
+    height: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-areas: 
+    "main__markers main__markers main__markers"
+    "main__images  main__images  main__images"
+    "main__images  main__images  main__images"
+    ;
+
+}
+
+.main__markers {
+    background-color: sienna;
+    grid-area: main__markers;
+}
+section figure .main__images{
+    grid-area: main__images;
+}
+.main__images{
+    border: black solid 1px;
+}
+
+.main-footer {
+    display: flex;
+    border: rgb(134, 87, 179) 1px solid;
+    justify-content: space-between;
+    height: 100%;
+}
+.main-footer__items {
+    padding: 2px;
+    height: 10vh;
+    flex-grow: 1;
+}
+.main-footer div:nth-child(odd){
+    background-color: chocolate;
+}
+.main-footer div:nth-child(even){
+    background-color: rgb(59, 45, 34);
+}
+
+/*------------profile.html------------*/
+.main__public-info{
+width: 100%;
+background-color: red;
+height: 50%;
+display: grid;
+grid-template-columns:  1fr 1fr;
+grid-template-rows: repeat(5,1fr) ;
+grid-template-areas: 
+"image name"
+"input input"
+"input input"
+"input input"
+"description description "
+;
+}
+.main__editprofile{
+  background-color: blue;
+  grid-area: image;  
+} 
+.main__name{
+background-color: lightgray;
+grid-area:  name;
+}
+.main__fill{
+    background-color: hotpink;
+    grid-area: input;
+    border: black solid 1px;
+}
+.main__descript {
+    grid-area: description;
+    background-color: black;
+}
+
+.main__private-info {
+background-color:greenyellow;
+height: 50%;
+width: 100%;
+display: flex;       
+flex-direction: column;
+
+}
+.main__fill-private{
+background-color: sandybrown;
+border-style: black solid 1px;
+height: 50%;
+}
+.main__private-info input:nth-child(odd){
+    background-color: cadetblue;
+}
+/*-----------feed instagram---------------*/
+.main-userpage{
+    width: 100%;
+    height: 400px;
+    background-color: chocolate;
+}
+.main-userpage__photo-container{
+    height: 60%;
+    background-color: cyan;
+}
+.main-userpage__main-photos-container{
+    height: 40%;
+    background-color:plum;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.main-userpage__photo{
+    width: 10%;
+    height: 50%;
+    border-radius: 50%;
+    border:1px solid black;
+}
+.main-userpage__photo-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.main-userpage__autophoto{
+    border-radius: 50%;
+    border:1px solid black;
+    width: 10%;
+    height: 50%;    
+}
+.main-userpage__name{
+    border:1px solid black;
+    height: 50%;
+    width: 70%;
+}
+.followers{
+    height: 100vh;
+}
+.followers__publishes,.followers__isotypes{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    background-color: cadetblue;
+    height:50px;
+}
+.followers__publish{
+    width: calc(100%/3);
+    border:1px solid black;
+}
+.followers__istoype-item{
+    width: calc(100%/3);
+    border:1px solid black;
+    background-color: cornflowerblue;
+}
+.followers__photos-container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "fotos fotos fotos"
+    "fotos fotos fotos"
+    "fotos fotos fotos"
+    ;
+    
+}
+figure >.followers__photos{
+    grid-area: fotos;
+    height: 100%;
+}
