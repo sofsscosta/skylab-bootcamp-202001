@@ -95,4 +95,8 @@ body {
   font-family: "Sigmar One", cursive;
   font-size: 30px; }
 
+.detail-info {
+  display: flex;
+  flex-direction: column; }
+
 /*# sourceMappingURL=style.css.map */
