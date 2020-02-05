@@ -8,7 +8,7 @@ class App extends Component {
 
     handleLogin = (username, password) => {
         try {
-            autenticateUser(username, password, token =>{
+            authenticateUser(username, password, token =>{
                 if (token.status === 404) throw new Error(token.content)
 
                 const stringToken = JSON.parse(token.content).token

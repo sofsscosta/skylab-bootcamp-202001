@@ -9,7 +9,8 @@ describe('registerUser', () => {
     })
 
     it('should succeed on new user', done => {
-        registerUser(name, surname, username, password, error => {
+        debugger
+        register(name, surname, username, password, error => {
             expect(error).toBeUndefined()
 
             done()

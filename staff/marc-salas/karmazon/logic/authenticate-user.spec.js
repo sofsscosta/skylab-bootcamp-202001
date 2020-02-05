@@ -14,7 +14,8 @@ describe('authenticateUser', () => {
 
     describe('when user already exists', () => {
         beforeEach(() =>
-            users.push(user)
+         //do not use logic!
+            register(user.name, user.surname, user.username, user.password)
         )
 
         it('should succeed on correct credentials', () =>
