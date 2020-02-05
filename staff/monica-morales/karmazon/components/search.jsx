@@ -1,4 +1,4 @@
-function Search ({title, onSubmit, error, warning}){
+function Search ({title, onSubmit, error, warning, nameOfUser}){
     return <form className = "search"
                  onSubmit = {
                     event =>{
@@ -8,6 +8,7 @@ function Search ({title, onSubmit, error, warning}){
                     }
                 }>
             <h2> {title} </h2>
+            {nameOfUser && <span>{nameOfUser}</span>}
             <input type="text" name="query" placeholder="criteria"/>
             <button type="submit">Search</button>
             {error && <Feedback level = 'error' message = {error}/>} 
