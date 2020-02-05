@@ -8,9 +8,13 @@ class App extends Component {
 
     handleLogin = (username, password) => {
         try {
-            authenticate(username, password)
+            autenticateUser(username, password, token =>{
+                if (token.status === 404) throw new Error(token.content)
 
-            this.setState({ view: "search" })
+                const stringToken = JSON.parse(token.content).token
+                localStorage.setItem('userToken', stringToken) 
+                this.setState({ view: "search" })
+            })
         } catch (error) {
             this.setState({ error: `error.message ${IT}` })
             setTimeout(() => {
