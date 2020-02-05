@@ -8,9 +8,12 @@ class App extends Component {
 
     handleLogin = (username, password) => {
         try {
-            authenticate(username, password)
+            authenticateUser(username, password, token =>{
+                const stringToken = JSON.parse(token.content).token
+                localStorage.setItem('UsersToken', stringToken)
+                this.setState({ view: "search" })
+            })
 
-            this.setState({ view: "search" })
         } catch (error) {
             this.setState({ error: `${error.message} ${IT}` })
             setTimeout(() => {
@@ -23,9 +26,9 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            register(name, surname, username, password)
-
-            this.setState({ view: "login" })
+            registerUser(name, surname, username, password, () => {
+                this.setState({ view: "login" })
+            })
         } catch (error) {
             this.setState({ error: `${error.message} ${IT}` })
             setTimeout(() => {
@@ -61,6 +64,7 @@ class App extends Component {
     }        
 
     render() {
+
         const { props: { title }, state: { view, vehicles, vehicle, style, maker, collection, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail } = this
 
         return <Fragment>
