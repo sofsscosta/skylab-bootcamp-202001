@@ -33,7 +33,7 @@ describe('call', () => {
 
         call(url, undefined, error => {
             expect(error).toBeInstanceOf(Error)
-            expect(error.message).toBe('Network error')
+            expect(error.message).toBe('network error')
 
             done()
         })
