@@ -1,20 +1,15 @@
-'use strict';
+describe('authenticate', () => {
+    let name, surname, username, password
 
-describe('authenticate', function () {
-    var user;
+    beforeEach(()=> {
+        name: 'name-' + Math.random()
+        surname: 'surname-' + Math.random()
+        username: 'username-' + Math.random()
+        password: 'password-' + Math.random()
+    
+    })
 
-    beforeEach(function () {
-        users.length = 0;
-
-        user = {
-            name: 'name-' + Math.random(),
-            surname: 'surname-' + Math.random(),
-            username: 'username-' + Math.random(),
-            password: 'password-' + Math.random()
-        };
-    });
-
-    describe('when user already exists', function () {
+    describe('when user already exists', ()=>  {
         beforeEach(function () {
             users.push(user);
         });

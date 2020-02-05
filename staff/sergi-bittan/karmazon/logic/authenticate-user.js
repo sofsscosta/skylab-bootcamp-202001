@@ -1,4 +1,4 @@
-function authenticate(username, password, callback) {
+function authenticateUser(username, password, callback) {
     if (typeof username !== 'string') throw new TypeError(`username ${username} is not a string`)
     if (typeof password !== 'string') throw new TypeError(`password ${password} is not a string`)
 
@@ -9,8 +9,8 @@ function authenticate(username, password, callback) {
     }, response =>{
         const content = JSON.parse(response.content)
         if (response instanceof Error)  callback(response)
-        if (response.status !==201) callback(new Error(content.error))
-        if (response.status === 201) callback(content.token)
+        if (response.status !==200) callback(new Error(content.error))
+        else callback(content.token)
     })
 }
 

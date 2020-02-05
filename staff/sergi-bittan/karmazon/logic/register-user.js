@@ -13,10 +13,14 @@ function registerUser (name, surname, username, password, callback) {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name, surname, username, password})
     }, response =>{
+        if (response.content) {
         const content = JSON.parse(response.content)
         if (response instanceof Error) return callback(response)
         if (response.status !==201) callback(new Error(content.error))
+        }
         if (response.status === 201) callback()
+        
+
     })
 
    
