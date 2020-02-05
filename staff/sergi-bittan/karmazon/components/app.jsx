@@ -10,9 +10,13 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            register(name, surname, username, password)
+            registerUser(name, surname, username, password, (response)=>{
+                if (response instanceof Error) {
+                    this.setState({error: response.message})
+                }else{
+                this.setState({ view: "login" })
+            }})
 
-            this.setState({ view: "login" })
         } catch (error) {
             this.setState({error: `${error.message} ${IT}`})
 
@@ -27,9 +31,15 @@ class App extends Component {
 
     handleLogin = (username, password) => {
         try {
-            authenticate(username, password)
+            authenticateUser(username, password, (response)=>{
+                if (response instanceof Error){
+                    this.setState({error: response.message})
+                }else{
+                    this.setState({view: "search"})
+                }
+            })
 
-            this.setState({ view: "search" })
+           
         } catch (error) {
             this.setState({error: `${error.message} ${IT}`})
 

@@ -97,6 +97,13 @@ body {
 
 .detail-info {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #af6565;
+  padding: 20px 10px;
+  margin: 60px; }
+  .detail-info__description {
+    height: 250px;
+    width: 165px; }
 
 /*# sourceMappingURL=style.css.map */
