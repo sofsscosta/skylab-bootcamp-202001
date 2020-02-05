@@ -18,6 +18,6 @@ function Detail({ vehicle: { name, year, price, image, color, maker, collection,
                 event.preventDefault()
                 onBack()
             }
-            }>Back</a>
+            }>Back</a>            
     </li>
 }
