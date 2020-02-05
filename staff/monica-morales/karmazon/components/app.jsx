@@ -27,9 +27,10 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            register(name, surname, username, password)
+            registerUser(name, surname, username, password, () => {
+                this.setState({ view: 'login'})
+            })
 
-            this.setState({ view: 'login' })
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
             setTimeout(() => {
