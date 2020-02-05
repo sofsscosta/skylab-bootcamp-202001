@@ -3,7 +3,7 @@ const IT = '🎈🤡'
 const { Component, Fragment } = React
 
 class App extends Component {
-    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined, userToPrint: undefined}
+    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined, userToPrint: undefined, token:undefined}
 
     handleLogin = (username, password) => {
         try {
@@ -70,21 +70,43 @@ class App extends Component {
     handleBack = () =>{
         this.setState({vehicle: undefined, view: 'search'})
     }
+    handleGoToUpdateUser = () =>{
+        this.setState({view: 'updateuser'})
+    }
+    handleGoToUpdatePassword = () =>{
+        this.setState({view: 'updatepassword'})
+    }
+    handleUpdateUser = (token, oldUser, newUser) => {
+        updateUser(token, oldUser, newUser, callback =>{
+            this.setState({view: 'login'})
+        })
+
+    }
+    handleUpdatePassword = (token, oldPassword, newPassword) => {
+        debugger
+        updatePassword(token, oldPassword, newPassword, callback =>{
+            this.setState({view: 'login'})
+        })
+    }
 
     render() {
-        const { props: { title }, state: { view, vehicles, vehicle, style, error, userToPrint }, handleLogin, handleGoToRegister, handleGoToLogin, handleRegister, handleSearch, handleDetail, handleBack } = this
+        const { props: { title }, state: { view, vehicles, vehicle, style, error, userToPrint, token }, handleLogin, handleGoToRegister, handleGoToLogin, handleRegister, handleSearch, handleDetail, handleBack, handleUpdateUser, handleUpdatePassword, handleGoToUpdateUser, handleGoToUpdatePassword } = this
 
         return <Fragment>
             <h1>{title}</h1>
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
 
-            {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
+            {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} on error={error} />}
 
-            {view === 'search' && <Search  user={userToPrint} title="Search" onSubmit={handleSearch} warning={error} />}
+            {view === 'search' && <Search  user={userToPrint} title="Search" onSubmit={handleSearch} onToUpdateUser={handleGoToUpdateUser} onToUpdatePassword={handleGoToUpdatePassword} warning={error} />}
 
             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} />}
 
             {view === 'search' &&  vehicle && vehicles && <Detail vehicle={vehicle} style={style} onClick={handleBack} />}
+
+            {view === 'updateuser' && <UpdateUser token={token} onSubmit={handleUpdateUser} />}
+
+            {view === 'updatepassword' && <UpdatePassword token={token} onSubmit={handleUpdatePassword}  />}
 
 
         </Fragment>
