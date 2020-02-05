@@ -23,29 +23,30 @@ describe('authenticateUser', () => {
             })
         )
 
-        it('should succeed on correct credentials', () =>
-            expect(() =>
-                authenticateUser(user.username, user.password)
-            ).not.toThrow()
-        )
-
-        it('should fail on incorrect credentials', () => {
-            authenticateUser(user.username, user.password + '-wrong', token => {
-
-                expect(token.status).toBe(401)
+        it('should succeed on correct credentials', done =>{
+            expect(() => authenticateUser(user.username, user.password, function(){})).not.toThrow() 
+            done()
+        })
+            
+        it('should fail on incorrect credentials', done => {
+            authenticateUser(user.username, user.password + '-wrong', error => {
+                expect(error).toBeDefined()
+                expect(error.message).toBe("username and/or password wrong")
+                done()
             })
-            authenticateUser(user.username + '-wrong', user.password, token => {
-
-                expect(token.status).toBe(404)
+            authenticateUser(user.username + '-wrong', user.password, error => {
+                expect(error).toBeDefined()
+                expect(error.message).toBe("username and/or password wrong")
+                done()
             })
         })
     })
 
-    it('should fail when user does not exist', () =>
-        authenticateUser(user.username, user.password, token => {
+    // it('should fail when user does not exist', () =>
+    //     authenticateUser(user.username, user.password, token => {
 
-            expect(token.status).toBe(404)
-        })
-    )
+    //         expect(token.status).toBe(404)
+    //     })
+    // )
 
 })
