@@ -215,4 +215,37 @@ article {
   border: 6px solid red;
 }
 
+.update {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+.update__title {
+  font-family: "Sigmar One", cursive;
+  color: blue;
+}
+.update--hide {
+  _display: none;
+}
+.update input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.update button {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: "Sigmar One", cursive;
+  color: red;
+  border: 3px solid red;
+  border-radius: 100%;
+  cursor: pointer;
+  transform: translate(55px);
+}
+
 /*# sourceMappingURL=style.css.map */

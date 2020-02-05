@@ -1,4 +1,4 @@
-function registerUser(name, surname, username, password, callback) {
+function registerUser(username, password, callback) {
     if (typeof name !== 'string') throw new TypeError('name ' + name + ' is not a string');
     if (!name.trim()) throw new Error('name is empty');
     if (typeof surname !== 'string') throw new TypeError('surname ' + surname + ' is not a string');
@@ -9,21 +9,16 @@ function registerUser(name, surname, username, password, callback) {
     if (!password.trim()) throw new Error('password is empty');
 
     call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
-        method: "POST",
+        method: "PTCH",
         headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({name, surname, username, password})
-    }, response =>{
+        body: JSON.stringify({username, password})
+    }, response =>{ 
+        const content = JSON.parse(response.content)
         
-        if (response.content){
+        if (response instanceof Error) return callback(response)
 
-            const content = JSON.parse(response.content)
-        
-            if (response instanceof Error) return callback(response)
-    
-            if(response.status !== 201) callback(new Error(content.error))
-    
-        }
+        if(response.status !== 204) callback(new Error(content.error))
 
-        if (response.status === 201) callback()
+        if (response.status === 204) callback()
     })
 }

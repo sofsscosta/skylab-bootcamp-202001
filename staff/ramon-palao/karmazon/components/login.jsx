@@ -1,4 +1,4 @@
-function Login({ onSubmit, onToRegister, error}) {
+function Login({ onSubmit, onToRegister, onToUpdate, error}) {
     return <form className="login" onSubmit={event => {
         event.preventDefault()
 
@@ -16,6 +16,10 @@ function Login({ onSubmit, onToRegister, error}) {
 
             onToRegister()
         }}>Register</a>
+        <a href="" onClick={event =>{
+            event.preventDefault()
+            onToUpdate()
+        }}>Do you want to change your password?</a>
 
         {error && <Feedback level="error" message={error}/>}
     </form>
