@@ -1,27 +1,20 @@
+@import utils
+    
 .login
-    display: inline-block
-    border: 1px solid black
-    border-radius: 1rem
-    padding: 0.5rem
+    @extend %form
     
     &--hide
         display: none
 
-    input
-        display: block
-        border: 1px solid black
-        border-radius: 1rem
-        padding: 0.5rem
-        margin: 0.5rem
+    .input
+        @extend %input
 
     button
-        display: block
-        border: 1px solid black
-        border-radius: 1rem
-        padding: 0.5rem
-        margin: 0.5rem
-    
+        @extend %button
+
     a
+        color: rgb(113, 113, 113)
         display: block
         padding: 0.5rem
         margin: 0.5rem
+        font-family: Arial, sans-serif

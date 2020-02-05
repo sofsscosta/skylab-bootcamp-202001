@@ -1,4 +1,4 @@
-class Interactive extends Component {
+class Interactive extends Component{
     constructor(container) {
         super(container)
     }
@@ -8,10 +8,7 @@ class Interactive extends Component {
 
         this.__locateFeedbackInContainer__(feedback)
 
-        // setTimeout(function () {
-        //     this.removeChild(feedback.container)
-        // }.bind(this.container), 5000)
-        setTimeout(() => this.container.removeChild(feedback.container), 5000)
+        setTimeout( () => this.container.removeChild(feedback.container), 5000)
     }
 
     __locateFeedbackInContainer__(feedback) {
@@ -25,4 +22,5 @@ class Interactive extends Component {
     showWarning(warning) {
         this.__showFeedback__('warning', warning)
     }
+    
 }

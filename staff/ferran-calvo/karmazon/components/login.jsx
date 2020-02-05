@@ -1,30 +1,23 @@
-function Login({ onSubmit, goToRegister, error }) {
+function Login ({onSubmit, onToRegister, error}) {
 
-    return <form className="login" onSubmit={event => {
+    return <form className="login" onSubmit = { event => {
         event.preventDefault()
 
-        const username = event.target.username.value
-        const password = event.target.password.value
+            const username = event.target.username.value
+            const password = event.target.password.value
 
-        onSubmit(username, password)
+            onSubmit(username, password)
     }}>
-        <h2>Sign-in</h2>
-        <input type="text" name="username" placeholder="username" />
-        <input type="password" name="password" placeholder="password" />
-        
-        { error && <Feedback level="error" message={error} />}
-        
-        <button>Login</button>
-        <a href="" onClick={event => {
-            event.preventDefault()
+        <h2 className="form__title">Sign-in</h2>
+        <input className="input" type="text" name="username" placeholder="username"/>
+        <input className="input" type="password" name="password" placeholder="password"/>
+        <button className="button">Login</button>
 
-            goToRegister()
-        }}>Register</a>
+        { error && <Feedback level="error" message={error} />}
+
+        <a className="link" href="" onClick = { event => {
+            event.preventDefault()
+            onToRegister()
+        }}>Click here to register</a>
     </form>
 }
-
-// __locateFeedbackInContainer__(feedback) {
-//     const button = this.container.querySelector('button') //?
-
-//     this.container.insertBefore(feedback.container, button)
-// }
