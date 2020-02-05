@@ -19,8 +19,14 @@ class App extends Component {
     handleLogin = (username, password) => {
         try {
             authenticateUser(username, password, token => {
-                // WTF w/ token?
-                this.setState({ view: 'search' })
+                if (token instanceof Error) {
+                    this.setState({ error: error.message + ' ' + IT })
+
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                } else
+                    this.setState({ view: 'search', token })
             })
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
@@ -35,8 +41,15 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            registerUser(name, surname, username, password, () => {
-                this.setState({ view: 'login' })
+            registerUser(name, surname, username, password, error => {
+                if (error) {
+                    this.setState({ error: error.message + ' ' + IT })
+
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                } else
+                    this.setState({ view: 'login' })
             })
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
