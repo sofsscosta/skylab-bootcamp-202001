@@ -1,11 +1,15 @@
 const {Component} = React
 
 class App extends Component {
-    state = {view: "login", details: undefined, vehicles: undefined, vehicle: undefined, error: undefined}
+    state = {view: "login", vehicles: undefined, vehicle: undefined, error: undefined, msg: undefined}
 
-    onSubmitLogin = (username, password) => {
+    handleLogin = (username, password) => {
         try {
-            authenticate(username, password)
+            authenticateUser(username, password, response => {
+                const stringToken = JSON.parse(response.content).token
+                localStorage.setItem("token", stringToken)
+            })
+
             this.setState({view: "search"})
         } catch (error) {
             this.setState({error: error.message})
@@ -13,43 +17,70 @@ class App extends Component {
         }
     }
 
-    onToRegister = () => this.setState({view: "register"})
+    handleGoToRegister = () => this.setState({view: "register"})
 
-    onSubmitRegister = user => {
+    handleRegister = user => {
         this.setState({view: "login"})
-        users.push(user)
-    }
-
-    onToLogin = () => this.setState({view: "login"})
-
-    onSubmitSearch = query => {
-        searchVehicles(query, vehicles => {
-            this.setState({ vehicles, vehicle: undefined})
+        registerUser(user, () => {
+            this.setState({msg: "Successful User Registered"})
+            setTimeout(() => {this.setState({msg: undefined})}, 5000);
         })
     }
 
-    onToDetails = id => {
+    handleGoToLogin = () => this.setState({view: "login"})
+
+    handleSearch = (query) => {
+        
+        try {
+            if (!query) throw new Error("please enter a name car")
+            
+            searchVehicles(query, (vehicles) => {
+                if (!vehicles.length) {
+                    this.setState({error: "car not found"})
+                    setTimeout(() => this.setState({error: undefined}), 3000);
+                } else 
+                    this.setState({ vehicles, vehicle: undefined})
+            })
+
+        } catch (error) {
+            this.setState({error: error.message})
+            setTimeout(() => this.setState({error: undefined}), 3000);
+        }
+        
+    }
+
+    handleDetail = id => {
         retrieveVehicle(id, result => {
             this.setState({vehicle: result})
         })
     }
+
+    componentDidMount = () => {
+        if (localStorage.getItem('token')) {
+            this.setState({view: "search"})
+        }
+    }
     
     render() {
-        const {props: {title}, state: {view, details, vehicles, vehicle, error}, 
-        onSubmitLogin, onToRegister, onSubmitRegister, onToLogin, onSubmitSearch, onToDetails} = this
+
+        const {props: {title}, state: {view, vehicles, vehicle, error, msg}, 
+        handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail} = this
 
         return <main>
             <h1>{title}</h1>
+            {msg && <p style={styleP}>{msg}</p>}
 
-            {view === "login" && <Login onSubmit={onSubmitLogin} onToRegister={onToRegister} error={error}/>}
+            {view === "login" && <Login onSubmit={handleLogin} handleGoToRegister={handleGoToRegister} error={error}/>}
             
-            {view === "register" && <Register onSubmit={onSubmitRegister} onToLogin={onToLogin} />}
+            {view === "register" && <Register onSubmit={handleRegister} handleGoToLogin={handleGoToLogin} />}
 
-            {view === "search" && <Search title="Search" onSubmit={onSubmitSearch} />}
+            {view === "search" && <Search title="Search" onSubmit={handleSearch} error={error} />}
 
-            {vehicles && !vehicle && <Results results={vehicles} onClickItem={onToDetails}/>}
+            {view === "search" && vehicles && !vehicle && <Results results={vehicles} onClickItem={handleDetail}/>}
 
-            {vehicle && <Details result={vehicle} />}
+            {view === "search" && vehicle && <Details result={vehicle} />}
         </main>
     }
 }
+
+const styleP = {fontSize: "20px" ,padding: "10px 0px",color: 'white', backgroundColor: 'green', borderRadius: "10px"}

@@ -1,6 +1,6 @@
-function Register (props) {
+function Register ({onSubmit, handleGoToLogin}) {
 
-    const onSubmit = event => {
+    const _onSubmit = event => {
         event.preventDefault()
 
         let name = event.target.name.value
@@ -8,10 +8,10 @@ function Register (props) {
         let username = event.target.username.value
         let password = event.target.password.value
 
-        props.onSubmit({name, surname, username, password})
+        onSubmit({name, surname, username, password})
     }
 
-    return <form className="register" onSubmit={onSubmit} >
+    return <form className="register" onSubmit={_onSubmit} >
         <h2>Sign-up</h2>
         <input type="text" name="name" placeholder="name" autoComplete="true" />
         <input type="text" name="surname" placeholder="surname" autoComplete="true" />
@@ -20,7 +20,7 @@ function Register (props) {
         <button>Register</button>
         <a href="" onClick={(event)=> {
             event.preventDefault()
-            props.onToLogin()}} >Login</a>
+            handleGoToLogin()}} >Login</a>
     </form>
 
     /*

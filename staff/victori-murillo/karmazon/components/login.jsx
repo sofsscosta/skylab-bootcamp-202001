@@ -1,22 +1,22 @@
-function Login(props) {
-    const onSubmit = event => {
+function Login({onSubmit, handleGoToRegister, error}) {
+    const _onSubmit = event => {
         event.preventDefault()
         const username = event.target.username.value
         const password = event.target.password.value
-        props.onSubmit(username, password)
+        onSubmit(username, password)
     }
 
     const onToRegister = event =>  {
         event.preventDefault()
-        props.onToRegister()
+        handleGoToRegister()
     }
 
-    return <form className="login" onSubmit={onSubmit} >
+    return <form className="login" onSubmit={_onSubmit} >
         <h2>Sign-in</h2>
         <input type="text" name="username" placeholder="username" autoComplete="off" />
         <input type="password" name="password" placeholder="password" autoComplete="off" />
         <button>Login</button>
-        {props.error && <p style={{color: "red"}}>{props.error}</p>}
+        {error && <p style={{color: "red"}}>{error}</p>}
         <a href="" onClick={onToRegister} >Register</a>
     </form>
 }
