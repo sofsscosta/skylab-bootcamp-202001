@@ -4,14 +4,28 @@ const { Component } = React
 
 class App extends Component {
 
-    state= { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined}
+    state= { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined, token: undefined, user:undefined}
     
 
     handleLogin = (username, password) => {
         try {
-            authenticate(username, password)
+            authenticateUser(username, password, (response)=>{
+                if (response instanceof Error) {
+                    this.setState ({error: response.message})
 
-            this.setState({ view : 'search'})
+                    setTimeout(() => {
+                    this.setState({ error: undefined })
+                    }, 3000)
+                } else { 
+                    
+                    retrieveUser(response, name=>{
+                        console.log(name)
+                        this.setState({ view : 'search', token : response, user: name})
+                        
+                    })
+                }
+            })
+
         } catch (error) {
             this.setState ({error: error.message})
             setTimeout(() => {
@@ -25,7 +39,17 @@ class App extends Component {
 
     handleRegister =(name, surname, username, password)=> { 
         try{
-            register(name, surname, username, password) 
+            registerUser(name, surname, username, password, (response)=> {
+                if(response instanceof Error) {
+                    this.setState({error: response.message}) 
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+            
+                }else  {
+                    this.setState({ view: 'login'})
+                }
+            }) 
 
             this.setState({ view: 'login'})
         } catch (error) {
@@ -57,7 +81,7 @@ class App extends Component {
 
 
     render() {
-        const { props: {title}, state: {view, vehicle, vehicles, error}, handleDetail, handleLogin, handleRegister, handleSearch, handleToLogin, handleToRegister, handleBack } = this
+        const { props: {title}, state: {view, vehicle, vehicles, error, user}, handleDetail, handleLogin, handleRegister, handleSearch, handleToLogin, handleToRegister, handleBack} = this
         return <main>
             <h1>{title}</h1>
 
@@ -65,7 +89,7 @@ class App extends Component {
 
             {view === 'register' && <Register onSubmit ={handleRegister} onToLogin = {handleToLogin} error={error}/>}
 
-            {view=== 'search' && <Search title="Search" onSubmit={handleSearch} />}
+            {view=== 'search' && <Search title="Search" name={user} onSubmit={handleSearch} />}
 
             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail}/>}
 
