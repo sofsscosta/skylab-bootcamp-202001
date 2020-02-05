@@ -6,9 +6,9 @@ function retrieveVehicle(id, callback) {
         if (response instanceof Error) return callback(response)
 
         if (response.status === 200) {
-            const detailInfo = JSON.parse(response.content)
+            const vehicle = JSON.parse(response.content)
 
-            callback(detailInfo)
+            callback(vehicle)
         }
     })
 }

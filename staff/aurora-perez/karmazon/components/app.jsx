@@ -3,40 +3,73 @@ const IT = '🎈🤡'
 const { Component } = React
 
 class App extends Component {
-    constructor() {
-        super()
 
-        this.state = { loggedIn: !false, vehicles: undefined, vehicle: undefined, style: undefined }
+    state= { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined}
+    
+
+    handleLogin = (username, password) => {
+        try {
+            authenticate(username, password)
+
+            this.setState({ view : 'search'})
+        } catch (error) {
+            this.setState ({error: error.message})
+            setTimeout(() => {
+            this.setState({ error: undefined })
+            }, 3000)
+        }             
     }
 
+
+    handleToRegister =()=> this.setState({view: 'register'})
+
+    handleRegister =(name, surname, username, password)=> { 
+        try{
+            register(name, surname, username, password) 
+
+            this.setState({ view: 'login'})
+        } catch (error) {
+            this.setState({error: error.message}) 
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+            
+        }
+    }
+
+    handleToLogin = () => this.setState({view: 'login'})
+
+    handleSearch = query => {
+        searchVehicles(query, vehicles =>
+            this.setState({ vehicles })
+        )
+    }
+
+    handleDetail = id => {
+        retrieveVehicle(id, vehicle => 
+            this.setState({ vehicle})
+        )
+    }
+
+    handleBack = () => {
+        this.setState({vehicle: undefined})
+    }
+
+
     render() {
+        const { props: {title}, state: {view, vehicle, vehicles, error}, handleDetail, handleLogin, handleRegister, handleSearch, handleToLogin, handleToRegister, handleBack } = this
         return <main>
-            <h1>{this.props.title}</h1>
+            <h1>{title}</h1>
 
-            {!this.state.loggedIn && <Login onSubmit={(username, password) => {
-                try {
-                    authenticate(username, password)
+            {view==='login' && <Login onSubmit={handleLogin} onToRegister = {handleToRegister} error={error}/>} 
 
-                    this.setState({ loggedIn: true })
-                } catch (error) {
-                    //_login.showError(error.message + ' ' + IT)
-                }
-            }} />}
+            {view === 'register' && <Register onSubmit ={handleRegister} onToLogin = {handleToLogin} error={error}/>}
 
-            {this.state.loggedIn && <Search title="Search" onSubmit={query => {
-                searchVehicles(query, vehicles =>
-                    this.setState({ vehicles })
-                )
-            }} />}
+            {view=== 'search' && <Search title="Search" onSubmit={handleSearch} />}
 
-            {this.state.vehicles && !this.state.vehicle && <Results results={this.state.vehicles} onItemClick={id => {
-                retrieveVehicle(id, vehicle =>
-                    this.setState({ vehicle, vehicles: undefined})
-                )
-            }}
-            />}
+            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail}/>}
 
-            {this.state.vehicle && <Detail vehicle={this.state.vehicle} style={this.state.style} />}
+            {view === 'search' && vehicle && <Detail vehicle={vehicle} onBack ={handleBack}/>}
         </main>
     }
 }
