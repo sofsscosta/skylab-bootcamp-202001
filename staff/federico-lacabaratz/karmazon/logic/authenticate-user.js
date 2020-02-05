@@ -9,6 +9,10 @@ function authenticateUser(username, password, callback) {
     }, response => {
         if(response instanceof Error) return callback(response)
 
-        if(response.status === 200) callback(response)
+        const { error, token } = JSON.parse(response.content)
+
+        if (error) return callback(new Error(error))
+
+        callback(token)
     })
 }
