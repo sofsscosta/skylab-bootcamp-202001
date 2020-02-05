@@ -10,7 +10,7 @@ function Login({onSubmit, onToRegister, error}){
                     const username = event.target.username.value
                     const password = event.target.password.value
         
-                    onSubmit(username, password)
+                    onSubmit({ username, password })
                     }
                 }>
                     <input type="text" className="login__input" name="username" placeholder="Username" />

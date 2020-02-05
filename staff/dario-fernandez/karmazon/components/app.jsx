@@ -4,11 +4,9 @@ const { Component, Fragment } = React // === const Component = React.Component
 class App extends Component{
     state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined }
 
-    handleLogin = (username, password) =>  {
+    handleLogin = (credentials) =>  {
         try {
-            authenticate(username, password)
-
-            this.setState({ view: 'search' })
+            authenticateUser(credentials, () => this.setState({ view: 'search' }))
         } catch(error) {
             this.setState({ error: error.message })
 
@@ -22,11 +20,13 @@ class App extends Component{
         this.setState({ view: 'register' })
     }
     
-    handleRegister = ({ username, password }) => {
+    handleRegister = ({ name, surname, username, password }) => {
         try{
-            register({ username, password })
+            registerUser({ name, surname, username, password }, () => {
+                this.setState({ view: 'login' })
+            })
 
-            this.setState({ view: 'login' })
+            
         } catch (error) {
             this.setState({ error: error.message })
 

@@ -5,10 +5,14 @@ function Register({ onSubmit, onToLogin, error }) {
                 <form className="register__form" onSubmit={ event => {
                         event.preventDefault()
 
+                        const name = event.target.name.value
+                        const surname = event.target.surname.value
                         const username = event.target.username.value
                         const password = event.target.password.value
                 
                         const user = {
+                            name: name,
+                            surname: surname,
                             username: username,
                             password: password
                         }
