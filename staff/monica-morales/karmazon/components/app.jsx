@@ -15,8 +15,7 @@ class App extends Component {
                     this.setState({ error: undefined })
                 }, 3000)
             } else {
-                
-                
+                          
                 retrieveUser(token, send => {
                     if (send instanceof Error) {
                         console.log('matadme')
@@ -76,12 +75,13 @@ class App extends Component {
     handleToBack = () => { this.setState({ vehicle: undefined, view: 'search'}) }
 
     
-
     render() {
 
         const { props: { title }, state: { view, vehicles, vehicle, style, error, nameOfUser }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleToBack } = this
 
         return <Fragment>
+
+            {nameOfUser && <span>{nameOfUser}</span>}
 
             <h1>{title}</h1>
 
