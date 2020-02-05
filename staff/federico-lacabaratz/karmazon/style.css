@@ -23,7 +23,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .register a, .login a {
@@ -64,7 +71,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .register a, .login a {
@@ -140,7 +154,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .register a, .login a {
@@ -216,7 +237,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .login a, .register a {
@@ -264,7 +292,6 @@ li, ul {
   padding: 0.5rem;
   margin: 0.5rem;
 }
-
 * {
   padding: 0;
   margin: 0;
@@ -284,7 +311,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .login a, .register a {
@@ -330,7 +364,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .login a, .register a {
@@ -376,7 +417,14 @@ h1, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.search p {
+  font-family: Italic;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
 }
 
 .login a, .register a {

@@ -2,11 +2,10 @@ describe('authenticateUser', () => {
     let name, surname, username, password
 
     beforeEach(() => {
-
-            name = 'name-' + Math.random(),
-            surname = 'surname-' + Math.random(),
-            username = 'username-' + Math.random(),
-            password = 'password-' + Math.random()
+        name = 'name-' + Math.random(),
+        surname = 'surname-' + Math.random(),
+        username = 'username-' + Math.random(),
+        password = 'password-' + Math.random()
     })
 
     describe('when user already exists', () => {
@@ -17,6 +16,12 @@ describe('authenticateUser', () => {
                 body: JSON.stringify({ name, surname, username, password })
             }, response => {
                 if (response instanceof Error) return done(response)
+
+                if(response.content) {
+                    const { error } = JSON.prse(response.content)
+
+                    if(error) return done(new Error(error))
+                }
 
                 done()
             })

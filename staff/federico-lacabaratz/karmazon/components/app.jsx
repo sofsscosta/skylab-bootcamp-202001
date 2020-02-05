@@ -4,7 +4,7 @@ const { Component, Fragment } = React
 
 class App extends Component {
     
-    state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined }
+    state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined, userToPrint: undefined }
 
     handleLogin = (username, password) => {
         try {
@@ -16,9 +16,11 @@ class App extends Component {
                     this.setState({ error: undefined })
                     }, 3000)
 
-                } else 
-                    this.setState({ view: "search", token })
-                
+                } else {
+                    retrieveUser(token, userToPrint => {
+                        this.setState({ view: "search", token, userToPrint })
+                    })
+                }
             })
 
         } catch (error) {
@@ -71,8 +73,8 @@ class App extends Component {
     }        
 
     render() {
-
-        const { props: { title }, state: { view, vehicles, vehicle, style, maker, collection, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail } = this
+        
+        const { props: { title }, state: { view, vehicles, vehicle, style, maker, collection, error, userToPrint }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail } = this
 
         return <Fragment>
             <h1>{title}</h1>
@@ -80,8 +82,8 @@ class App extends Component {
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
 
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
-
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} warning={error} />}
+            
+            {view === 'search' && <Search user={userToPrint} title="Search" onSubmit={handleSearch} warning={error} />}
 
             {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} />}
 

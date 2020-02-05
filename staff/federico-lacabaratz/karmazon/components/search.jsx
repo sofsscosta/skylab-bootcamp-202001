@@ -1,5 +1,5 @@
-function Search({ title, onSubmit, error }) {
-
+function Search({ user, title, onSubmit, error }) {
+    
     return <form className="search" onSubmit={event => {
         event.preventDefault()
 
@@ -8,6 +8,7 @@ function Search({ title, onSubmit, error }) {
         onSubmit(query)
     }}>
         <h2>{title}</h2>
+        <p>User: {user} is logged in</p>
         <input type="text" name="query" placeholder="criteria" />
         <button type="submit">Search</button>
 

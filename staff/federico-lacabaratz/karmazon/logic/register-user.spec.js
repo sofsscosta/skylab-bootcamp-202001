@@ -38,4 +38,37 @@ describe('registerUser', () => {
             })
         })
     })
+
+    afterEach(done => {
+        call(`https://skylabcoders.herokuapp.com/api/v2/users/auth`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        }, response => {
+            if (response instanceof Error) return done(response)
+
+            const { error, token } = JSON.parse(response.content)
+
+            if (error) return done(new Error(error))
+
+            call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ password })
+            }, response => {
+                if (response instanceof Error) return done(response)
+
+                if(response.content) {
+                const { error } = JSON.parse(response.content)
+
+                if (error) return done(new Error(error))
+                }
+
+                done()
+            })
+        })
+    })
 })
