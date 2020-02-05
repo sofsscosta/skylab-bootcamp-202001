@@ -3,17 +3,22 @@ const IT = '🎈🤡'
 const { Component, Fragment } = React
 
 class App extends Component {
-
-    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined}
+    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined, userToPrint: undefined}
 
     handleLogin = (username, password) => {
         try {
             authenticateUser(username, password, token =>{
-                //if (token.status === 404) throw new Error(token.content)
-
-                const stringToken = JSON.parse(token)
-                localStorage.setItem('userToken', stringToken) 
-                this.setState({ view: "search" })
+                if (token instanceof Error) {
+                    this.setState({ error: `${token.message} ${IT}` })
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                }else{
+                    retrieveUser(token, userToPrint =>{ 
+                                     
+                        this.setState({ view: "search", token, userToPrint })                  
+                    })
+                }
             })
         } catch (error) {
             this.setState({ error: `error.message ${IT}` })
@@ -67,7 +72,7 @@ class App extends Component {
     }
 
     render() {
-        const { props: { title }, state: { view, vehicles, vehicle, style, error }, handleLogin, handleGoToRegister, handleGoToLogin, handleRegister, handleSearch, handleDetail, handleBack } = this
+        const { props: { title }, state: { view, vehicles, vehicle, style, error, userToPrint }, handleLogin, handleGoToRegister, handleGoToLogin, handleRegister, handleSearch, handleDetail, handleBack } = this
 
         return <Fragment>
             <h1>{title}</h1>
@@ -75,7 +80,7 @@ class App extends Component {
 
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} warning={error} />}
+            {view === 'search' && <Search  user={userToPrint} title="Search" onSubmit={handleSearch} warning={error} />}
 
             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} />}
 
