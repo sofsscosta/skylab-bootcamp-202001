@@ -7,7 +7,9 @@ function authenticateUser(username, password,callback){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({username, password})
     }, response => {
-        if (response.status === 404) return callback(response)  
+        if (response.status === 404) return callback(response)
+        
+        if (response.status === 401) return callback(response)  
 
         if (response.status === 200) callback(response)
     })

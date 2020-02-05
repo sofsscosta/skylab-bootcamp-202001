@@ -14,8 +14,13 @@ describe('authenticateUser', () => {
 
     describe('when user already exists', () => {
         beforeEach(() =>
-         //do not use logic!
-            register(user.name, user.surname, user.username, user.password)
+            call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: user.name, surname: user.surname, username: user.username, password: user.password })
+            }, response => {
+                const _response = response
+            })
         )
 
         it('should succeed on correct credentials', () =>
@@ -25,23 +30,22 @@ describe('authenticateUser', () => {
         )
 
         it('should fail on incorrect credentials', () => {
-            expect(() =>
-                authenticateUser(user.username, user.password + '-wrong')
-            ).toThrowError(Error, 'Wrong credentials')
+            authenticateUser(user.username, user.password + '-wrong', token => {
 
-            expect(() =>
-                authenticateUser(user.username + '-wrong', user.password)
-            ).toThrowError(Error, 'Wrong credentials')
+                expect(token.status).toBe(401)
+            })
+            authenticateUser(user.username + '-wrong', user.password, token => {
+
+                expect(token.status).toBe(404)
+            })
         })
     })
 
     it('should fail when user does not exist', () =>
-        expect(() => {
-            authenticateUser(user.username, user.password)
-        }).toThrowError(Error, 'Wrong credentials')
+        authenticateUser(user.username, user.password, token => {
+
+            expect(token.status).toBe(404)
+        })
     )
 
-    afterEach(() =>
-        users.length = 0
-    )
 })
