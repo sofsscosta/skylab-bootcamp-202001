@@ -4,7 +4,7 @@ const { Component, Fragment } = React
 
 class App extends Component {
 
-    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined }
+    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined}
 
     handleLogin = (username, password) => {
         try {
@@ -51,7 +51,7 @@ class App extends Component {
     handleDetail = id => {
         retrieveVehicle(id, vehicle =>
             retrieveStyle(vehicle.style, style =>
-                this.setState({ vehicle, style, vehicles: undefined }
+                this.setState({ vehicle, style,}
                 )
             )
         )
@@ -73,9 +73,9 @@ class App extends Component {
 
             {view === 'search' && <Search title="Search" onSubmit={handleSearch} warning={error} />}
 
-            {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} />}
+            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} />}
 
-            {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} onClick={handleBack} />}
+            {view === 'search' &&  vehicle && vehicles && <Detail vehicle={vehicle} style={style} onClick={handleBack} />}
 
 
         </Fragment>
