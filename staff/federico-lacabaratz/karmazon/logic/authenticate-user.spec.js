@@ -3,7 +3,7 @@ describe('authenticateUser', () => {
 
     beforeEach(() => {
         users.length = 0
-
+        
         user = {
             name: 'name-' + Math.random(),
             surname: 'surname-' + Math.random(),
@@ -25,17 +25,17 @@ describe('authenticateUser', () => {
 
         it('should fail on incorrect credentials', () => {
             expect(() =>
-                authenticateUser(user.username, user.password + '-wrong')
+                authenticateUser(user.username, `${user.password}-wrong`)
             ).toThrowError(Error, 'Wrong credentials')
 
             expect(() =>
-                authenticateUser(user.username + '-wrong', user.password)
+                authenticateUser(`${user.username}-wrong`, user.password)
             ).toThrowError(Error, 'Wrong credentials')
         })
     })
 
     it('should fail when user does not exist', () => {
-        expect(() =>
+        expect(() => 
             authenticateUser(user.username, user.password)
         ).toThrowError(Error, 'Wrong credentials')
     })
