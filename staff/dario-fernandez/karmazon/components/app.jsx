@@ -2,11 +2,18 @@ const { Component, Fragment } = React // === const Component = React.Component
 
 
 class App extends Component{
-    state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined }
+    state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined, token: undefined, userName: undefined }
 
     handleLogin = (credentials) =>  {
         try {
-            authenticateUser(credentials, () => this.setState({ view: 'search' }))
+            authenticateUser(credentials, token => {
+                this.setState({ token })
+                getUserInfo(token, userInfo => {
+                    this.setState({ userName: `${userInfo.name} ${userInfo.surname}` })
+                })
+                
+                this.setState({ view: 'search' })
+            })
         } catch(error) {
             this.setState({ error: error.message })
 
@@ -65,13 +72,13 @@ class App extends Component{
     }
     
     render(){
-        const {props: { title }, state: { view, vehicles, vehicle, error }, handleLogin, handleOnToRegister, handleRegister, handleOnToLogin, handleSearch, handleOnToDetails, handleCloseDetails} = this
+        const {props: { title }, state: { view, vehicles, vehicle, error, token, userName }, handleLogin, handleOnToRegister, handleRegister, handleOnToLogin, handleSearch, handleOnToDetails, handleCloseDetails} = this
 
         return <main className="app">
             <h1 className="app__title">{title}</h1>
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleOnToRegister} error={error}  />}
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleOnToLogin} error={error} />}
-            {view === 'search' && <Search onSubmit={handleSearch} warning={error} />} 
+            {view === 'search' && <Search onSubmit={handleSearch} warning={error} user={userName}/>} 
             {view === 'search' && vehicles && <Results results={vehicles} onClick={handleOnToDetails} />}
             {view === 'details' && <Details details={vehicle} onCloseDetails={handleCloseDetails}/>}
         </main>

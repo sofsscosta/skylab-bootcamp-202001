@@ -7,8 +7,14 @@ function registerUser(user, callback) {
     }, response => {
         if(response instanceof Error) return callback(response)
 
-        if(response.status === 201) callback()
+        if(response.status === 201) {
+            callback()
+        } else if (response.status === 409) {
+            const { error } = JSON.parse(response.content)
+
+            callback(new Error(error))
+        } else {
+            callback(new Error('Unknown error'))
+        }
     } )
-
-
 }

@@ -1,5 +1,6 @@
-function Search({ onSubmit, warning }) {
+function Search({ onSubmit, warning, user }) {
         return <section className="search">
+            <p className="search__user">Bienvenido, {user}</p>
             <form className="search__form" onSubmit={ event => {
                 event.preventDefault()
 
