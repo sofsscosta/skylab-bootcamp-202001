@@ -13,9 +13,19 @@ class App extends Component {
     }
 
     handleLogin = (username, password) => {
+
         try {
-            authenticate(username, password)
-            this.setState({ view: 'search' })
+
+            authenticateUser(username, password, response => {
+
+                if (response instanceof Error) {
+                    this.setState({ error: response.message })
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                } else { this.setState({ view: 'search' }) }
+            })
+
 
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
@@ -29,8 +39,11 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            register(name, surname, username, password)
-            this.setState({ view: 'login' })
+            registerUser(name, surname, username, password, error => {
+                if (error) throw new Error(error)
+                this.setState({ view: 'login' })
+            })
+
 
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
@@ -66,6 +79,7 @@ class App extends Component {
     }
 
     handleLogout = () => {
+        localStorage.clear();
         this.setState({ vehicles: undefined, view: 'login' })
     }
 
