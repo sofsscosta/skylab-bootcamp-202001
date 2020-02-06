@@ -7,12 +7,13 @@ function authenticateUser(username, password, callback) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     }, response => {
-        if (response instanceof Error) return callback(response)
+        
+        if (response instanceof Error) return callback(response) //error de status eje. 400
 
-        const { error, token } = JSON.parse(response.content)
+        const { error, token } = JSON.parse(response.content) // en el contenido me puede llegar un error o un token
 
-        if (error) return callback(new Error(error))
+        if (error) return callback(new Error(error)) //si me llega un error hago una callback para tratar este error
 
-        callback(token)
+        callback(token) //si no hay error me devuelves el token
     })
 }
