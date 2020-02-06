@@ -1,6 +1,8 @@
 describe('searchVehicles', () => {
     it('should succeed on matching query', done => {
-        searchVehicles('batman', results => {
+        searchVehicles('batman', (error, results) => {
+            expect(error).toBeUndefined()
+
             expect(results).toBeDefined()
             expect(results.length).toBeGreaterThan(0)
 
@@ -16,7 +18,9 @@ describe('searchVehicles', () => {
     })
 
     it('should succeed on non-matching query returning an empty array', done => {
-        searchVehicles('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', results => {
+        searchVehicles('asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', (error, results) => {
+            expect(error).toBeUndefined()
+
             expect(results).toBeDefined()
             expect(results).toHaveLength(0)
 

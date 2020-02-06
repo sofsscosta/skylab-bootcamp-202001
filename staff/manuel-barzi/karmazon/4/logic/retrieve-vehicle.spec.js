@@ -4,9 +4,10 @@ describe('retrieveVehicle', () => {
 
         const id = ids.random()
 
-        retrieveVehicle(id, vehicle => {
-            expect(vehicle).not.toBeInstanceOf(Error)
+        retrieveVehicle(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
 
+            expect(vehicle).toBeDefined()
             expect(vehicle.id).toBe(id)
             expect(typeof vehicle.name).toBe('string')
             expect(typeof vehicle.year).toBe('number')
@@ -19,8 +20,8 @@ describe('retrieveVehicle', () => {
     it('should return null on non-matching vehicle id', done => {
         const id = 'non-valid-id'
 
-        retrieveVehicle(id, vehicle => {
-            expect(vehicle).not.toBeInstanceOf(Error)
+        retrieveVehicle(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
 
             expect(vehicle).toBeNull()
 
