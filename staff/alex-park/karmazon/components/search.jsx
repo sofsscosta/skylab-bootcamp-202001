@@ -1,4 +1,4 @@
-function Search ({ title, onSubmit, error }) {
+function Search ({ title, onSubmit, error, nameOfUser }) {
     return <form className="search" onSubmit={event => {
         event.preventDefault()
 
@@ -7,6 +7,7 @@ function Search ({ title, onSubmit, error }) {
         onSubmit(query)
     }}>
         <h2>{title.toUpperCase()}</h2>
+        {nameOfUser && <span>{nameOfUser}</span>}
         <input type="text" name="query" placeholder="Type here to search for cars..." />
         <button type="submit">SEARCH</button>
         

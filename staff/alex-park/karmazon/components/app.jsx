@@ -4,23 +4,32 @@ const { Component, Fragment } = React
 
 class App extends Component {
 
-    state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined }
+    state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined, nameOfUser: undefined }
     
     handleLogin = (username, password) => {
-        try {
-            authenticateUser(username, password, response => {
+        authenticateUser(username, password, token => {
+            if (token instanceof Error) {
+                this.setState({error: error.message + " " + IT})
+                setTimeout(() => {
+                    this.setState({ error: undefined })
+                }, 3000)
+            } else {
+                retrieveUser(token, send => { 
+                    if (send instanceof Error) {
+                        this.setState({error: error.message + " " + IT})
+                        setTimeout(() => {
+                            this.setState({ error: undefined })
+                        }, 3000)
+                    } else {
+                        this.setState({ nameOfUser: `¡Hola ${send.name} ${send.surname}, bienvenid@ de nuevo!` })
+                    }
+                })
+
                 this.setState({ view: 'search' })
-                // retrieveUser = token => { debugger
+            }
+        })
 
-                // }
-            })
-
-        } catch (error) {
-            this.setState({error: error.message + " " + IT})
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
-        }
+     
     }
 
     handleGoToRegister = () => this.setState({view: 'register'})
@@ -66,7 +75,7 @@ class App extends Component {
 
     render() {
 
-        const { props: {title}, state: { view, vehicles, vehicle, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleBackToResults } = this
+        const { props: {title}, state: { view, vehicles, vehicle, error, nameOfUser }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleBackToResults } = this
         return <Fragment>
             <h1>{title}</h1>
 
@@ -74,7 +83,7 @@ class App extends Component {
             
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} error={error}/>}
+            {view === 'search' && <Search title="Search" onSubmit={handleSearch} error={error} nameOfUser={nameOfUser}/>}
 
             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail}/>}
 
