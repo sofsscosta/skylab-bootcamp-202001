@@ -17,7 +17,7 @@ function registerUser(name, surname, username, password, callback) {
     }, (error, response) => {
         if(error) return callback(error)
 
-        if(response.status === 201) callback()
+        if(response.status === 201) callback(error)
         else if (response.status === 409) {
             const { error } = JSON.parse(response.content)
 
