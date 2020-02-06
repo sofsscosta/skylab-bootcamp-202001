@@ -10,13 +10,13 @@ function retrieveUser(token, callback) {
         method: "GET",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
         body: undefined
-    }, response => {
-        if (response instanceof Error) return callback(response)
+    }, (error, response) => {
+        if (error) return callback(error)
 
-        const send = JSON.parse(response.content)
+        const send  = JSON.parse(response.content), {error: _error} = send
 
-        //if (error) return callback(new Error(error))
+        if (_error) return callback(new Error(_error))
 
-        callback(send)
+        callback(undefined, send)
     })
 }
