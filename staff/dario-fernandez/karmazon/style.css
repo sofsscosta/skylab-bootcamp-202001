@@ -369,6 +369,7 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 1rem 0;
+  max-width: 100%;
 }
 .feedback--error {
   color: #e23f3d;

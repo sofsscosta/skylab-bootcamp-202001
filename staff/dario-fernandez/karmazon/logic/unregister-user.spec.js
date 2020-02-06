@@ -1,19 +1,47 @@
-describe('unregisterUser()', () => {
-    it('should delete a user from the API', (done) => {
-        const userForRegister = { name: '1234', surname: '56678', username: '9876', password: '54321' }
-        const userForAuthenticate = { username: '9876', password: '54321' }
-        registerUser(userForRegister, () => {
-            authenticateUser(userForAuthenticate, (response) => {
-                const _JSON = response.content
-                const object = JSON.parse(_JSON)
-                const token = object.token
+fdescribe('unregisterUser()', () => {
+    const user = {name: undefined, surname: undefined, username: undefined, password: undefined}
+    let userToken
+    
+    beforeEach(done => {
+        for(key in user) {
+            user[key] = `${key}--${Math.random()}`
+        }
+        
+        call('https://skylabcoders.herokuapp.com/api/v2/users/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+            }, (error, response) => {
+                if(error) {
+                    return done(error)
+                } else if(response.content) {
+                    return done(error)
+                } else {
+                    call('https://skylabcoders.herokuapp.com/api/v2/users/auth', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username: user.username, password: user.password })
+                    }, (error, response) => {
+                        if(error) {
+                            return done(error)
+                        } else {
+                            const { token } = JSON.parse(response.content)
+            
+                            userToken = token
+            
+                            done()  
+                        }
+                    })
+                }
 
-                unregisterUser(userForAuthenticate.password, token, (response) => {
-                    expect(response.status).toBe(204)
 
-                    done()
-                })
-            })
         })
+
     })
-}) 
+
+    it('should delete an existing user', done => {
+        expect(userToken).toBeDefined()
+
+
+    })
+})

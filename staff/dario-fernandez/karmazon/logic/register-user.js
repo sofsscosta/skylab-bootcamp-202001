@@ -4,11 +4,11 @@ function registerUser(user, callback) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
-    }, response => {
-        if(response instanceof Error) return callback(response)
+    }, (error, response) => {
+        if(error) return callback(error)
 
         if(response.status === 201) {
-            callback()
+            callback(undefined)
         } else if (response.status === 409) {
             const { error } = JSON.parse(response.content)
 

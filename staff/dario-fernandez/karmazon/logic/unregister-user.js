@@ -1,15 +1,26 @@
 function unregisterUser(password, token, callback) {
-    debugger
+    const requestBody = {
+        password: password
+    }
+
     call('https://skylabcoders.herokuapp.com/api/v2/users', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
+            'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(password)
-    }, response => {
-        if(response instanceof Error) callback(response)
+        body: JSON.stringify(requestBody)
+    }, (error, response) => {
+        if(error){
+            return callback(error)
+        } else if(response.status === 204) {
+            callback()
+        } else if(response.status === 401) {
+            const { error } = JSON.parse(response.content)
 
-        if(response.status === 204) callback(response)
+            callback(new Error(error))
+        } else {
+            callback(new Error('Unknon error'))
+        }
     })
 }

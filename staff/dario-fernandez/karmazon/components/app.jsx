@@ -2,17 +2,39 @@ const { Component, Fragment } = React // === const Component = React.Component
 
 
 class App extends Component{
-    state = { view: 'login', vehicles: undefined, vehicle: undefined, error: undefined, token: undefined, userName: undefined }
+        state = { view: undefined, vehicles: undefined, vehicle: undefined, error: undefined, userName: undefined }
+    
+    componentWillMount() {
+        const { token } = sessionStorage
+        if(token) {
+            getUserInfo(token, userInfo => {
+                this.setState({ userName: `${userInfo.name} ${userInfo.surname}` })
+                this.setState({ view: 'search' })
+            })
 
+        } else {
+            this.setState({ view: 'login' })
+        }
+    }
+    
     handleLogin = (credentials) =>  {
         try {
-            authenticateUser(credentials, token => {
-                this.setState({ token })
-                getUserInfo(token, userInfo => {
-                    this.setState({ userName: `${userInfo.name} ${userInfo.surname}` })
-                })
+            authenticateUser(credentials, (error, token) => {
+                if(error) {
+                    this.setState({ error: 'Wrong credentials' })
+
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                } else {
+                    sessionStorage.token = token
+                    getUserInfo(token, userInfo => {
+                        this.setState({ userName: `${userInfo.name} ${userInfo.surname}` })
+                    })
+                    
+                    this.setState({ view: 'search' })
+                }     
                 
-                this.setState({ view: 'search' })
             })
         } catch(error) {
             this.setState({ error: error.message })
@@ -29,11 +51,18 @@ class App extends Component{
     
     handleRegister = ({ name, surname, username, password }) => {
         try{
-            registerUser({ name, surname, username, password }, () => {
-                this.setState({ view: 'login' })
+            registerUser({ name, surname, username, password }, error => {
+                if(error) {
+                    this.setState({ error: undefined })
+                    this.setState({ error: `${username} is in use` })
+
+                    setTimeout(() => {
+                    }, 3000)
+                } else {
+                    this.setState({ view: 'login' })
+                }
             })
 
-            
         } catch (error) {
             this.setState({ error: error.message })
 
@@ -48,21 +77,32 @@ class App extends Component{
     }
 
     handleSearch = (query) => {
-        searchVehicles(query, vehicles => {
-            this.setState({ vehicles, vehicle: undefined,  error: vehicles.length? undefined : 'No results' })
-            
-            if(!vehicles.length){
+        searchVehicles(query, (error, vehicles) => {
+            if(error) {
+                this.setState({ error: error.message })
+
                 setTimeout(() => {
                     this.setState({ error: undefined })
-                }, 3000);
+                }, 3000)
+            } else {
+                this.setState({ vehicles, vehicle: undefined,  error: vehicles.length? undefined : 'No results' })
             }
+            
         })}
 
     handleOnToDetails = (id) => {
-        searchDetails(id, vehicle => {
-            this.setState({ vehicles: undefined })
-            this.setState({ vehicle })
-            this.setState({ view: 'details' })
+        searchDetails(id, (error, vehicle) => {
+            if(error) {
+                this.setState({ error: error.message })
+
+                setTimeout(() => {
+                    this.setState({  })
+                })
+            } else {
+                this.setState({ vehicles: undefined })
+                this.setState({ vehicle })
+                this.setState({ view: 'details' })
+            }
         })
     }
 
@@ -72,7 +112,7 @@ class App extends Component{
     }
     
     render(){
-        const {props: { title }, state: { view, vehicles, vehicle, error, token, userName }, handleLogin, handleOnToRegister, handleRegister, handleOnToLogin, handleSearch, handleOnToDetails, handleCloseDetails} = this
+        const {props: { title }, state: { view, vehicles, vehicle, error, userName }, handleLogin, handleOnToRegister, handleRegister, handleOnToLogin, handleSearch, handleOnToDetails, handleCloseDetails} = this
 
         return <main className="app">
             <h1 className="app__title">{title}</h1>

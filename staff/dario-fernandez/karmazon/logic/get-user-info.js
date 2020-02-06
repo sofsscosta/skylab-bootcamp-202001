@@ -7,9 +7,9 @@ function getUserInfo(token, callback) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         }
-    }, response => {
-        if(response instanceof Error) {
-            return callback(response)
+    }, (error, response) => {
+        if(error) {
+            return callback(error)
         } else if (response.status === 400) {
             callback(new Error('Wrong user id'))
         } else if(response.status === 401) {
