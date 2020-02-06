@@ -57,9 +57,7 @@ class App extends Component {
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
 
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            setTimeout(() => this.setState({ error: undefined }), 3000)
         }
     }
 
@@ -92,7 +90,7 @@ class App extends Component {
         try {
             searchVehicles(query, (error, vehicles) => {
                 if (error)
-                    this.setState({ error: error.message + ' ' + IT })
+                    this.setState({ error: error.message })
 
                 const { protocol, host, pathname } = location
 

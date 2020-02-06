@@ -1,7 +1,7 @@
 describe('authenticateUser', function () {
     let user
 
-    beforeEach(() => {
+    beforeEach(() => {debugger
         user = {
             name: 'done' + Math.random(),
             surname: 'done' + Math.random(),

@@ -1,7 +1,8 @@
-function Login({onSubmit, handleGoToRegister, error}) {
+function Login({onSubmit, handleGoToRegister, error, message}) {
 
     return (
     <Form className='login' onSubmit={onSubmit}>
+        {message && <P color={"green"}>{message}</P>} 
         <H2>Sign-in</H2>
         <Input name="username" placeholder="username" /> 
         <Input name="password" placeholder="password" type="password" /> 

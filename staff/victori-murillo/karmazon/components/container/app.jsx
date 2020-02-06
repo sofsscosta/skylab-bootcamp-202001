@@ -1,26 +1,33 @@
 const {Component, Fragment} = React
 
 class App extends Component {
-    state = {view: "login", vehicles: undefined, vehicle: undefined, error: undefined, 
-    msg: undefined, token: undefined, name: undefined}
+
+    state = {view: "login", vehicles: undefined, vehicle: undefined, error: undefined, message: undefined, token: undefined, user: undefined}
+
+    componentWillMount = () => {
+        const { protocol, host, pathname } = location
+        const url = `${protocol}//${host}${pathname}`
+        history.pushState({ path: url }, '', url)
+    }
 
     handleLogin = ({username, password}) => {
         try {
-            authenticateUser(username, password, response => {
+            authenticateUser(username, password, (error, token) => {
+                // Asyn Error
+                if (error) {
+                    this.setState({error: error.message})
+                    setTimeout(() => this.setState({error: undefined}), 3000);
+                } else {
+                    retrieveUser(token, (error, user) => {
+                        if (error)
+                            return this.setState({ error: error.message })
 
-                const stringToken = JSON.parse(response.content).token
-                this.setState({token: stringToken})
-
-                const payload = stringToken.split(".")[1]
-                const {sub} = JSON.parse(atob(`${payload}`))
-
-                retrieveUser(stringToken, sub, response => {
-                    const {name} = JSON.parse(response.content)
-                    this.setState({name})
-                })
+                        sessionStorage.token = token
+                        this.setState({ view: 'search', user })
+                    })
+                }
             })
-
-            this.setState({view: "search"})
+            // Sync Error
         } catch (error) {
             this.setState({error: error.message})
             setTimeout(() => this.setState({error: undefined}), 3000);
@@ -30,27 +37,46 @@ class App extends Component {
     handleGoToRegister = () => this.setState({view: "register"})
 
     handleRegister = user => {
-        this.setState({view: "login"})
+        try {
+            registerUser(user, (error, message) => {
+                // Asyn Error
+                if (error) {
+                    this.setState({error: error.message})
+                    setTimeout(() => this.setState({error: undefined}), 3000);
+                }
 
-        registerUser(user, () => {
-            this.setState({msg: "Successful User Registered"})
-            setTimeout(() => {this.setState({msg: undefined})}, 5000);
-        })
+                this.setState({view: "login", message})
+                setTimeout(() => this.setState({message: undefined}), 3000);
+
+            })
+            
+            // Sync Errror
+        } catch (error) {
+            this.setState({error: error.message})
+            setTimeout(() => this.setState({error: undefined}), 3000);
+        }
+        
     }
 
     handleGoToLogin = () => this.setState({view: "login"})
 
     handleSearch = ({query}) => {
-        
         try {
             if (!query) throw new Error("please enter a name car")
             
-            searchVehicles(query, vehicles => {
-                if (!vehicles.length) {
-                    this.setState({error: "car not found"})
+            searchVehicles(query, sessionStorage.token, (error, vehicles) => {
+                if(error) {
+                    this.setState({error: error.message})
                     setTimeout(() => this.setState({error: undefined}), 3000);
-                } else 
-                    this.setState({ vehicles, vehicle: undefined})
+                } else {
+                    const { protocol, host, pathname } = location
+                    const url = `${protocol}//${host}${pathname}?q=${query}`
+                    history.pushState({ path: url }, '', url)
+                    
+                    this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results '})
+                    if (!vehicles.length) setTimeout(() => this.setState({error: undefined}), 3000);
+                }
+
             })
 
         } catch (error) {
@@ -72,19 +98,31 @@ class App extends Component {
             console.log(msg);
         })
     }
+
+    handleHeart = id => {
+        try {
+            toggleFavVehicle(sessionStorage.token, id, (error, query) => {
+                if (error)
+                    this.setState({error: error.message})
+                else
+                    this.handleSearch({query})
+            })
+        } catch (error) {
+            this.setState({error: error.message})
+        }
+        
+    }
     
     render() {
-        console.log(this.state)
-
-        const {props: {title}, state: {view, vehicles, vehicle, error, msg, name}, 
-        handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleUpdate} = this
+        const {props: {title}, state: {view, vehicles, vehicle, error, message, user}, 
+        handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleUpdate, handleHeart} = this
 
         return <Fragment>
-            {name && <Avatar name={name} />}
+            {user && <Avatar user={user} />}
             
             <h1>{title}</h1>
 
-            {view === "login" && <Login onSubmit={handleLogin} handleGoToRegister={handleGoToRegister} error={error}/>}
+            {view === "login" && <Login onSubmit={handleLogin} handleGoToRegister={handleGoToRegister} error={error} message={message} />}
             
             {view === "register" && <Register onSubmit={handleRegister} handleGoToLogin={handleGoToLogin} error={error} />}
 
@@ -92,9 +130,9 @@ class App extends Component {
 
             {view === "search" && <Update onSubmit={handleUpdate} />}
 
-            {view === "search" && vehicles && !vehicle && <Results results={vehicles} onClickItem={handleDetail}/>}
+            {view === "search" && vehicles && !vehicle && <Results results={vehicles} onClickItem={handleDetail} toggleHeart={handleHeart} />}
 
-            {view === "search" && vehicle && <Details result={vehicle} />}
+            {view === "search" && vehicle && <Detail result={vehicle} />}
         </Fragment>
     }
 }

@@ -7,3 +7,4 @@ function H2(props) {
 
   return <h2 style={style}>{props.children}</h2>
 }
+

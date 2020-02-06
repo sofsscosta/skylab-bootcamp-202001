@@ -14,9 +14,9 @@ function retrieveUser(token, callback) {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
     }, (error, response) => {
-        if (error) return callback(error)
+        if (error) return callback(error) // Network Error
 
-        const user = JSON.parse(response.content), { error: _error } = user
+        const user = JSON.parse(response.content), { error: _error } = user // Logi Error
 
         if (_error) return callback(new Error(_error))
 

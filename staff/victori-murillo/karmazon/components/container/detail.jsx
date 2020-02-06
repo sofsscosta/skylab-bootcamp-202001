@@ -1,4 +1,4 @@
-function Details({result: {name, maker, year, description, price, image}}) {
+function Detail({result: {name, maker, year, description, price, image}}) {
   return <div>
     <h2>{name}</h2>
     <h3>{maker.toUpperCase()}, {year}</h3>

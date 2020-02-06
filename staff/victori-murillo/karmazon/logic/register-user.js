@@ -15,14 +15,16 @@ function registerUser({name, surname, username, password}, callback) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, surname, username, password })
-    }, response => {
-        if (response instanceof Error) return callback(response)
+    }, (error, response) => {
+        // Network Error
+        if (error) return callback(error)
 
-        if (response.status === 201) callback()
-        else if (response.status === 409) {
-            const { error } = JSON.parse(response.content)
+        // Error if user already exist
+        if (response.content) {
+            const {error: _error} = JSON.parse(response.content)
+            if (_error) return callback(new Error(_error))
+        } 
 
-            callback(new Error(error))
-        } else callback(new Error('Unknown error'))
+        callback(undefined, "user registered!")
     })
 }
