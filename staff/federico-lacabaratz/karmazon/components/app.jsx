@@ -10,7 +10,7 @@ class App extends Component {
         try {
             authenticateUser(username, password, token =>{
                 if (token instanceof Error) {
-                    this.setState({ error: `${error.message} ${IT}` })
+                    this.setState({ error: `${token.message} ${IT}` })
                     
                     setTimeout(() => {
                     this.setState({ error: undefined })
@@ -18,7 +18,7 @@ class App extends Component {
 
                 } else {
                     retrieveUser(token, userToPrint => {
-                        this.setState({ view: "search", token, userToPrint })
+                        this.setState({ view: "search", token, userToPrint: userToPrint.username })
                     })
                 }
             })

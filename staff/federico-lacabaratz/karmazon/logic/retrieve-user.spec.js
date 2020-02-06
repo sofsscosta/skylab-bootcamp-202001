@@ -1,4 +1,4 @@
-fdescribe('retrieveUser', () => {
+describe('retrieveUser', () => {
     let name, surname, username, password, token
 
     beforeEach(() => {
@@ -38,12 +38,11 @@ fdescribe('retrieveUser', () => {
 
                     done()
                 })
-
             })
         )
 
-        it('should succeed on correct token', done =>
-            retrieveUser(token, user => {
+        it('should succeed on correct token', done => 
+            retrieveUser(token, user => { 
                 expect(user).not.toBeInstanceOf(Error)
 
                 expect(user.name).toBe(name)
@@ -108,7 +107,7 @@ fdescribe('retrieveUser', () => {
 
         expect(() =>
             retrieveUser(token, () => {})
-        ).toThrowError(Error, 'invalid token')
+        ).toThrowError(Error, `Failed to execute 'atob' on 'Window': The string to be decoded is not correctly encoded.`)
     })
 
     it('should fail on non-function callback', () => {
