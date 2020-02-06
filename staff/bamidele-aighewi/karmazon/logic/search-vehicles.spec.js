@@ -25,16 +25,38 @@ describe('searchVehicles', () => {
     })
 
     it('should fail on non-string query', () => {
-        expect(() => searchVehicles(undefined, () => { })).toThrowError(TypeError, 'undefined is not a string')
-        expect(() => searchVehicles(1, () => { })).toThrowError(TypeError, '1 is not a string')
-        expect(() => searchVehicles(true, () => { })).toThrowError(TypeError, 'true is not a string')
-        expect(() => searchVehicles({}, () => { })).toThrowError(TypeError, '[object Object] is not a string')
+        expect(() =>
+            searchVehicles(undefined, () => { })
+        ).toThrowError(TypeError, 'undefined is not a string')
+
+        expect(() =>
+            searchVehicles(1, () => { })
+        ).toThrowError(TypeError, '1 is not a string')
+
+        expect(() =>
+            searchVehicles(true, () => { })
+        ).toThrowError(TypeError, 'true is not a string')
+
+        expect(() =>
+            searchVehicles({}, () => { })
+        ).toThrowError(TypeError, '[object Object] is not a string')
     })
 
     it('should fail on non-function callback', () => {
-        expect(() => searchVehicles('', undefined)).toThrowError(TypeError, 'undefined is not a function')
-        expect(() => searchVehicles('', 1)).toThrowError(TypeError, '1 is not a function')
-        expect(() => searchVehicles('', true)).toThrowError(TypeError, 'true is not a function')
-        expect(() => searchVehicles('', {})).toThrowError(TypeError, '[object Object] is not a function')
+        expect(() =>
+            searchVehicles('', undefined)
+        ).toThrowError(TypeError, 'undefined is not a function')
+
+        expect(() =>
+            searchVehicles('', 1)
+        ).toThrowError(TypeError, '1 is not a function')
+
+        expect(() =>
+            searchVehicles('', true)
+        ).toThrowError(TypeError, 'true is not a function')
+
+        expect(() =>
+            searchVehicles('', {})
+        ).toThrowError(TypeError, '[object Object] is not a function')
     })
 })

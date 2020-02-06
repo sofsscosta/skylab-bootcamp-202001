@@ -158,6 +158,13 @@ body {
 .details .pills__item:not(:last-child) {
   margin-right: 20px;
 }
+.details .pills__item .pills__image {
+  height: 50px;
+  text-align: center;
+}
+.details .pills__item .pills__image img {
+  width: 50%;
+}
 .details__price {
   font-size: 18px;
 }
@@ -172,6 +179,35 @@ body {
   background-color: #999999;
   padding: 5px;
   cursor: pointer;
+}
+
+.update {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.update--hide {
+  display: none;
+}
+.update input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.update button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.update a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */
