@@ -12,7 +12,3 @@ function Search({ title, onSubmit, name}) {
         <button type="submit">Search</button>
     </form>
 }
-
-    // __locateFeedbackInContainer__(feedback) {
-    //     this.container.append(feedback.container)
-    // }

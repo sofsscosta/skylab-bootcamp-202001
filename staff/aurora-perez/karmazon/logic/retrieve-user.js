@@ -9,18 +9,16 @@ function retrieveUser(token, callback) {
     call('https://skylabcoders.herokuapp.com/api/v2/users/'+ sub, { 
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+token}
-        }, (response)=>{
+        }, (error, response)=>{
             
-            if (response instanceof Error) return callback(response)
+            if (error) return callback(error)
 
-
-            const {name, surname, username, error} = JSON.parse(response.content) //TODO
+            const user = JSON.parse(response.content)
+            const {error: _error} = user
             
-            if(error) return callback (new Error (error))
+            if(_error) return callback (new Error (_error))
 
-            const user = {name :name, surname: surname, username: username} //todo
-
-            callback (user)
+            callback (undefined, user)
         })
     
 }

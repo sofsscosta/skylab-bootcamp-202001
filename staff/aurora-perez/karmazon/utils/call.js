@@ -19,14 +19,14 @@ function call(url, options = {method : 'GET'}, callback) {
     xhr.addEventListener('load', function (event) {
         var self = event.target
 
-        callback({
+        callback(undefined, {
             content: self.responseText,
             status: self.status
         })
     })
 
     xhr.addEventListener('error', function() {
-        callback(new Error('Network error'));
+        callback(new Error('Network error'))
     })
 
     xhr.send(body)
