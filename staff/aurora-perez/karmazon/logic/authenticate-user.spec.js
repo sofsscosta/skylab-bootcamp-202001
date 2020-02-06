@@ -100,8 +100,7 @@ describe('authenticateUser', () => {
         username = 1
         expect(() =>
             authenticateUser(username, password, () => { })
-        )
-            .toThrowError(TypeError, `username ${username} is not a string`)
+        ).toThrowError(TypeError, `username ${username} is not a string`)
 
         username = true
         expect(() =>

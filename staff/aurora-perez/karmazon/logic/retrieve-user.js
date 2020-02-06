@@ -1,7 +1,6 @@
 function retrieveUser(token, callback) {
-    //if (typeof password !== 'string') throw new TypeError(id + ' is not a string')
-    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
-    //if (typeof token !== 'string') throw new TypeError(token + ' is not a string')
+    if (typeof token !== 'string') throw new TypeError('token '+ token + ' is not a string')
+    if (typeof callback !== 'function') throw new TypeError('callback '+ callback + ' is not a function')
 
     const [header, payload, signature] = token.split('.')
     const payloadObject = JSON.parse(atob(payload))
@@ -17,7 +16,7 @@ function retrieveUser(token, callback) {
 
             const {name, surname, username, error} = JSON.parse(response.content) //TODO
             
-            if(error) return callback (error)
+            if(error) return callback (new Error (error))
 
             const user = {name :name, surname: surname, username: username} //todo
 
