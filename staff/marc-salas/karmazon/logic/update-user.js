@@ -12,7 +12,6 @@ function updateUser( token, oldUsername, newUsername, callback){
         },
         body: JSON.stringify({username: newUsername, oldUsername: oldUsername}),  
     }, response=>{
-        debugger
         if (response instanceof Error) return callback(response)
 
         callback()

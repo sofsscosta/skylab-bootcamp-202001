@@ -10,7 +10,7 @@ function updatePassword(token, oldpassword, newpassword, callback){
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({password :newpassword , oldpassword: oldpassword}),  
+        body: JSON.stringify({password :newpassword , oldPassword: oldpassword}),  
     }, response=>{
         if (response instanceof Error) return callback(response)
 

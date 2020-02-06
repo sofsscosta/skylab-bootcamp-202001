@@ -4,7 +4,6 @@ function retrieveUser(token, callback) {
     const _token = token.split(".")
     const id = JSON.parse(atob(_token[1])).sub
 
-
     call(`https://skylabcoders.herokuapp.com/api/v2/users/${id}`, {
         method: "GET",
         headers: {
