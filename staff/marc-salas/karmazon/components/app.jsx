@@ -77,16 +77,31 @@ class App extends Component {
         this.setState({view: 'updatepassword'})
     }
     handleUpdateUser = (token, oldUser, newUser) => {
-        updateUser(token, oldUser, newUser, callback =>{
-            this.setState({view: 'login'})
-        })
+        try{
+            updateUser(token, oldUser, newUser, callback =>{
+                this.setState({view: 'login'})
+            
+            })
+        }catch(error){
+            this.setState({ error: `error.message ${IT}` })
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+        }
 
     }
     handleUpdatePassword = (token, oldPassword, newPassword) => {
-        debugger
-        updatePassword(token, oldPassword, newPassword, callback =>{
-            this.setState({view: 'login'})
-        })
+        try{
+            updatePassword(token, oldPassword, newPassword, callback =>{
+                this.setState({view: 'login'})
+            })
+        } catch(error){
+            this.setState({ error: `error.message ${IT}` })
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+        }
+
     }
 
     render() {

@@ -1,6 +1,6 @@
 function updateUser( token, oldUsername, newUsername, callback){
-    if(typeof oldUsername !== "string") throw new TypeError (`token ${oldUsername} is not a string`)
-    if(typeof newUsername !== "string") throw new TypeError (`token ${newUsername} is not a string`)
+    if(typeof oldUsername !== "string") throw new TypeError (`old Username ${oldUsername} is not a string`)
+    if(typeof newUsername !== "string") throw new TypeError (`new Username ${newUsername} is not a string`)
     if(typeof callback !== "function") throw new TypeError (`callback ${callback} is not a function`)
 
 
