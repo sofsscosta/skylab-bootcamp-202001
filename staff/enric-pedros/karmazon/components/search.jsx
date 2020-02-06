@@ -1,6 +1,5 @@
 function Search ({ title, onSubmit,error,warning}){
-return  
-    <form className ='search' 
+return  <form className ='search' 
           onSubmit = {event => {
            event.preventDefault()
            const query = event.target.query.value

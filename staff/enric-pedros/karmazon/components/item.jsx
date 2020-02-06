@@ -1,12 +1,11 @@
-function Item ({ item: { id, name, thumbnail, price }, onClick }){
+function Item({ item: { id, name, thumbnail, price }, onClick }) {
 
-    return
-    <article onClick ={event => {
+    return <article onClick={event => {
         event.preventDefault()
         onClick(id)
     }}>
         <h3>{name}</h3>
-        <img src= {thumbnail}/>
+        <img src={thumbnail} />
         <span>{price}</span>
     </article>
 }
