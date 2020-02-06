@@ -1,15 +1,16 @@
 function Item({ item: { id, name, thumbnail, price, fav }, onClick, favToggle }) {
 
     return <article>
-        {fav && <h4>{name}</h4>}
-        {!fav && <h2>{name}</h2>}
+        {fav && <h3>{`${name} ❤️`}</h3>}
+        {!fav && <h3>{name}</h3>}
         <img src={thumbnail}  onClick={event => {
             event.preventDefault()
             onClick(id)
         }} />
-        <span onClick={event =>{
+        <span >{price}</span>
+        <p onClick={event =>{
             event.preventDefault()
             favToggle(id)
-        }}>{price}</span>
+        }}>Favorite</p>
     </article>
 } 
