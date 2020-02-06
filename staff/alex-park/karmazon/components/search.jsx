@@ -10,7 +10,7 @@ function Search ({ title, onSubmit, error }) {
         <input type="text" name="query" placeholder="Type here to search for cars..." />
         <button type="submit">SEARCH</button>
         
-        {error && <Feedback level={'error'} message={error}/>}
+        {error && <Feedback level='error' message={error}/>}
     </form>
 }
 

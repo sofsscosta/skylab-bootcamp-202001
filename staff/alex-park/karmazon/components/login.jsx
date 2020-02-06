@@ -12,7 +12,7 @@ function Login ({ onSubmit, onToRegister, error }) {
         <input type="text" name="username" placeholder="Username" />
         <input type="password" name="password" placeholder="Password" />
 
-        {error && <Feedback level={'error'} message={error}/>}
+        {error && <Feedback level='error' message={error}/>}
         
         <button>LOGIN</button>
         <a href="" onClick={event => {

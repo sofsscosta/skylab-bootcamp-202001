@@ -12,7 +12,7 @@ function Register ({ onSubmit, onToLogin, error }) {
     }}>
             <h2>Sign-up</h2>
 
-            {error && <Feedback level={'error'} message={error}/>}
+            {error && <Feedback level='error' message={error}/>}
 
             <input type="text" name="name" placeholder="Name" />
             <input type="text" name="surname" placeholder="Surname" />

@@ -8,7 +8,7 @@ class App extends Component {
     
     handleLogin = (username, password) => {
         try {
-            authenticateUser(username, password, response => { console.log('hola')
+            authenticateUser(username, password, response => {
                 this.setState({ view: 'search' })
                 // retrieveUser = token => { debugger
 
@@ -23,7 +23,7 @@ class App extends Component {
         }
     }
 
-    handleGoToRegister = () => {this.setState({view: 'register'})}
+    handleGoToRegister = () => this.setState({view: 'register'})
     
     handleRegister = (name, surname, username, password) => {
         try {
@@ -40,7 +40,7 @@ class App extends Component {
         }
     }
 
-    handleGoToLogin = () => {this.setState({view: 'login'})}
+    handleGoToLogin = () => this.setState({view: 'login'})
 
     handleSearch = query => {
         searchVehicles(query, vehicles => {
@@ -62,8 +62,7 @@ class App extends Component {
         retrieveVehicle(id, vehicle => this.setState({ vehicle }))
     }
 
-    handleBackToResults = () => {
-        this.setState({ vehicle: undefined })}
+    handleBackToResults = () => this.setState({ vehicle: undefined })
 
     render() {
 
