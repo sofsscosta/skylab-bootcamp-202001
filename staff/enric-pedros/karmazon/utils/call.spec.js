@@ -12,7 +12,7 @@ describe('call', function () {
 
         var target = targets.random();
 
-        call('https://skylabcoders.herokuapp.com/proxy?url=' + target.url, function(response) {
+        call('https://skylabcoders.herokuapp.com/proxy?url=' + target.url, undefined, function(response) {
             expect(response.status).toBe(200);
 
             //expect(response.content.toLowerCase().includes(target.text)).toBeTruthy();
@@ -33,7 +33,7 @@ describe('call', function () {
     it('should fail on valid non-existing url', function(done) {
         var url = 'https://non-existing.url';
         
-        call(url, function(error) {
+        call(url, undefined, function(error) {
             expect(error).toBeInstanceOf(Error);
             expect(error.message).toBe('Network error');
 
