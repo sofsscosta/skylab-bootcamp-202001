@@ -12,7 +12,7 @@ function authenticateUser(username, password, callback) {
 
         const { error, token } = JSON.parse(response.content)
 
-        if (error) callback(new Error(error))
+        if (error) return callback(new Error(error))
 
         callback(token)
     })

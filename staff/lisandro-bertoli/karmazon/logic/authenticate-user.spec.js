@@ -10,9 +10,9 @@ describe('authenticateUser', () => {
 
     });
 
-    fdescribe('when user already exists', () => {
+    describe('when user already exists', () => {
 
-        beforeEach(done => {
+        beforeEach(done =>
             call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -29,16 +29,14 @@ describe('authenticateUser', () => {
                 done()
             })
 
-        });
+        )
 
         it('should succeed on correct credentials', done => {
 
             authenticateUser(username, password, token => {
-
                 expect(token).toBeA('string')
 
                 const [header, payload, signature] = token.split('.')
-
                 expect(header.length).toBeGreaterThan(0)
                 expect(payload.length).toBeGreaterThan(0)
                 expect(signature.length).toBeGreaterThan(0)
@@ -76,7 +74,7 @@ describe('authenticateUser', () => {
                 body: JSON.stringify({ username, password })
             }, response => {
 
-                if (response instanceof Error) return callback(response)
+                if (response instanceof Error) return done(response)
 
                 const { error, token } = JSON.parse(response.content)
 
@@ -105,20 +103,16 @@ describe('authenticateUser', () => {
 
         })
 
-
     })
 
     it('should fail when user does not exist', done => {
+        debugger
         authenticateUser(username, password, error => {
-
             expect(error).toBeInstanceOf(Error)
             expect(error.message).toBe('username and/or password wrong')
 
             done()
-
         })
-
-
     })
 
     it('should fail on non-string username', () => {

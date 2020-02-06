@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, onLogout, error }) {
+function Search({ title, onSubmit, onLogout, error, name }) {
     return <form className="search" onSubmit={event => {
         event.preventDefault();
 
@@ -6,7 +6,7 @@ function Search({ title, onSubmit, onLogout, error }) {
 
         onSubmit(query);
     }}>
-        <h2>{title}</h2>
+        <h2>{title}</h2>{name && <span>{name}</span>}
         <input type="text" name="query" placeholder="criteria" />
 
         {error && <Feedback level="warning" message={error} />}

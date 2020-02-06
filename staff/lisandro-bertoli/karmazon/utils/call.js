@@ -16,8 +16,7 @@ function call(url, options = { method: 'GET' }, callback) {
         xhr.setRequestHeader(key, headers[key])
 
 
-    xhr.addEventListener('load', function (event) {
-
+    xhr.addEventListener('load', function () {
         callback({
             content: this.responseText,
             status: this.status

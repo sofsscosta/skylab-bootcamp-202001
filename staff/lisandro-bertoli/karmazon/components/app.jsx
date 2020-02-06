@@ -9,26 +9,31 @@ class App extends Component {
         view: 'login',
         vehicles: undefined,
         vehicle: undefined,
-        error: undefined
+        error: undefined,
+        user: undefined
     }
 
     handleLogin = (username, password) => {
-
         try {
-
-            authenticateUser(username, password, response => {
-
+            authenticateUser(username, password, (response) => {
                 if (response instanceof Error) {
                     this.setState({ error: response.message })
+
                     setTimeout(() => {
                         this.setState({ error: undefined })
                     }, 3000)
-                } else { this.setState({ view: 'search' }) }
+                } else {
+
+                    retrieveUser(response, name => {
+                        console.log(name)
+                        this.setState({ view: 'search', token: response, user: name })
+
+                    })
+                }
             })
 
-
         } catch (error) {
-            this.setState({ error: error.message + ' ' + IT })
+            this.setState({ error: error.message })
             setTimeout(() => {
                 this.setState({ error: undefined })
             }, 3000)
@@ -84,7 +89,7 @@ class App extends Component {
     }
 
     render() {
-        const { props: { title }, state: { view, vehicles, vehicle, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleBackToResults, handleItemClick, handleLogout } = this
+        const { props: { title }, state: { view, vehicles, vehicle, error, user }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleBackToResults, handleItemClick, handleLogout } = this
         return <Fragment>
 
             <h1>{title}</h1>
@@ -93,7 +98,7 @@ class App extends Component {
 
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} error={error} onLogout={handleLogout} />}
+            {view === 'search' && <Search title="Search" name={user} onSubmit={handleSearch} error={error} onLogout={handleLogout} />}
 
             {vehicles && !vehicle && <Results results={vehicles} onItemClick={handleItemClick} />}
 
