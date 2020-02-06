@@ -6,7 +6,7 @@ function Search({ title, onSubmit, onLogout, error, name }) {
 
         onSubmit(query);
     }}>
-        <h2>{title}</h2>{name && <span>{name}</span>}
+        <h2>{title}</h2>
         <input type="text" name="query" placeholder="criteria" />
 
         {error && <Feedback level="warning" message={error} />}

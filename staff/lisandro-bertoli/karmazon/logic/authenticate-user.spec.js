@@ -106,7 +106,7 @@ describe('authenticateUser', () => {
     })
 
     it('should fail when user does not exist', done => {
-        debugger
+
         authenticateUser(username, password, error => {
             expect(error).toBeInstanceOf(Error)
             expect(error.message).toBe('username and/or password wrong')

@@ -85,7 +85,7 @@ class App extends Component {
 
     handleLogout = () => {
         localStorage.clear();
-        this.setState({ vehicles: undefined, view: 'login' })
+        this.setState({ user: undefined, vehicles: undefined, view: 'login' })
     }
 
     render() {
@@ -93,7 +93,7 @@ class App extends Component {
         return <Fragment>
 
             <h1>{title}</h1>
-
+            {user && <h2>{user.name}</h2>}
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
 
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
