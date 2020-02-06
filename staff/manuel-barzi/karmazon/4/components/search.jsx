@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, warning }) {
+function Search({ title, query, onSubmit, warning }) {
     return <form className="search" onSubmit={event => {
         event.preventDefault()
 
@@ -7,7 +7,7 @@ function Search({ title, onSubmit, warning }) {
         onSubmit(query)
     }}>
         <h2>{title}</h2>
-        <input type="text" name="query" placeholder="criteria" />
+        <input type="text" name="query" placeholder="criteria" defaultValue={query} />
         <button type="submit">Search</button>
 
         { warning && <Feedback level="warning" message={warning} />}
