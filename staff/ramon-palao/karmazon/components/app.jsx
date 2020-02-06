@@ -6,7 +6,15 @@ class App extends Component {
     // constructor () {
     //     super()
 
-    state = { view: "login", vehicle: undefined, vehicles: undefined, style: undefined, error: undefined, user: undefined }
+    state = { view: "login", vehicle: undefined, vehicles: undefined, style: undefined, error: undefined, user: undefined, token: undefined }
+
+    handleRetrieveToken = () => {
+        return sessionStorage.token
+    }
+
+    handleStoreToken = (token) => {
+        sessionStorage.token = token
+    }
 
     handleLogin = (username, password) => {
         try {
@@ -19,8 +27,10 @@ class App extends Component {
                     }, 3000)
                 } else {
                     const token = response
-                    retrieveUser(token, user =>{
+                    this.handleStoreToken(token)
+                    retrieveUser(token, user => {
                         this.setState({ view: "search", user })
+                        
                     })
                 }
             })
@@ -80,11 +90,33 @@ class App extends Component {
         )
     }
 
-    handleUpdate = () => this.setState({ view: "update" })
+    handleUpdate = (newUser) => {
+        try {
+            const token = this.handleRetrieveToken()
+            updateUser(token, newUser, response =>{
+                if(response instanceof Error){
+                    this.setState({error: `${response.message} ${IT}`})
+                } else {
+                    this.setState({user: Object.assign(this.state.user, newUser)})
+                }
+            })
+
+        } catch (error) {
+            this.setState({ error: `${error.message} ${IT}` })
+
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+        }
+    }
+
+    handleGoToUpdate = () => this.setState({ view: "update" })
+
+    handleGoToSearch = () => this.setState({view: "search"})
 
 
     render() {
-        const { props: { title }, state: { vehicle, vehicles, view, style, error, user }, handleDetail, handleGoToLogin, handleGoToRegister, handleLogin, handleRegister, handleSearch, handleUpdate } = this
+        const { props: { title }, state: { vehicle, vehicles, view, style, error, user }, handleDetail, handleGoToLogin, handleGoToRegister, handleLogin, handleRegister, handleSearch, handleUpdate, handleGoToUpdate, handleGoToSearch } = this
 
         return <Fragment>
 
@@ -94,15 +126,16 @@ class App extends Component {
 
             {view === "register" && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {view === "login" && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} onToUpdate={handleUpdate} error={error} />}
+            {view === "login" && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
 
-            {view === "update" && <Update onSubmit={handleUpdate}/>}
+            {view === "update" && <Update onSubmit={handleUpdate} user={user} onGoToSearch={handleGoToSearch} error={error} />}
 
-            {view === "search" && <Search title="Search" onSubmit={handleSearch} warning={error} user={user} />}
+            {view === "search" && <Search title="Search" onSubmit={handleSearch} warning={error} onGoToUpdate={handleGoToUpdate}/>}
 
             {view === "search" && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} />}
 
             {view === "search" && vehicle && <Detail vehicle={vehicle} style={style} />}
+
         </Fragment>
     }
 }

@@ -1,6 +1,7 @@
 function Detail({vehicle: {name, year, price, image, color, maker, collection, description, url}, style: {name: styleName, image: styleImage, url: styleUrl} }) {
     return <li className="detail-info">
         <h3 className="detail-info__title">{name} ({year})</h3>
+        <i className="far fa-heart"></i>
         <img className="detail-info__image" src={image} />
         <p className="detail-info__color">{color}</p>
         <p className="detail-info__maker">{maker}</p>
