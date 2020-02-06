@@ -1,57 +1,76 @@
 describe("registerUser", () => {
-  let user
+  let name, surname, username, password
 
-  beforeEach(done => {
-      user = {
-        name: 'done' + Math.random(),
-        surname: 'done' + Math.random(),
-        username: 'done' + Math.random(),
-        password: 'done' + Math.random()
-    }
-
-    registerUser(user, error => {
-        expect(error).toBeUndefined()
-        done()
-    })
+  beforeEach(() => {
+    name = 'vcr-'
+    surname = 'vcr-' + Math.random()
+    username = 'vcr-' + Math.random()
+    password = 'vcr-' + Math.random()
   })
 
-  // it('should succeed on new user', done => {
-  //     registerUser(user, error => {
-  //       expect(error).toBeUndefined()
-  //       done()
-  //   })
-  // })
-
-  it("should fail when an user already exist", done => {
-
-    call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    }, response => {
-      console.log(response)
-      var error = JSON.parse(response.content).error
-      expect(error).toBe(`user with username "${user.username}" already exists`)
-      expect(response.status).toBe(409)
-
+  it("should succeed a new user", done => {
+    registerUser(name, surname, username, password, error => {
+      expect(error).toBeUndefined()
       done()
     })
-    
-    // expect(() => {
-    //   registerUser(user, error => {
+  })
 
-    //   }).t
-    // })
+  describe("should succeed on new user", () => {
 
-    // registerUser(user, error => {
-    //   expect(error).toBeDefined()
-    //   expect(error.message).toBe(`user with username ${user.username} already exists`)
+    beforeEach( done => {
+      call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({name, surname, username, password})
+      }, response => {
+        if (response instanceof Error) return done(response)
+        done()
+      })
 
-    //   done()
-    // })
+    })
+
+    it('should fail on already existing user', done => {
+      registerUser(name, surname, username, password, error => {
+        expect(error).toBeDefined()
+        expect(error.message).toBe(`user with username "${username}" already exists`)
+        done()
+      })
+    })
 
   })
 
+  afterEach(done => {
+    call(`https://skylabcoders.herokuapp.com/api/v2/users/auth`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({username, password})
+      }, response => {
 
+        if(response instanceof Error) return done(response)
 
+        const {error, token} = JSON.parse(response.content)
+
+        if(error) return done(new Error(error))
+
+        call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+          method: 'DELETE',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({password})
+        }, response => {
+
+          if (response instanceof Error) return done(response)
+
+          if (response.content) {
+            const { error } = JSON.parse(response.content)
+
+            if(error) return done(new Error(error))
+          }
+
+          done()
+        })
+      })
+    })
 })

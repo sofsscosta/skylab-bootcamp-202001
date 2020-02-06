@@ -20,6 +20,16 @@ beforeEach(function () {
           }
         }
       }
+    },
+
+    toBeA: function () {
+      return {
+        compare: function (target, expected) {
+          return {
+            pass: typeof target === expected
+          }
+        }
+      }
     }
   })
 })

@@ -20,7 +20,6 @@ class App extends Component {
         try {
             authenticateUser(username, password, token => {
                 // WTF w/ token?
-                console.log(token);
                 this.setState({ view: 'search' })
             })
         } catch (error) {

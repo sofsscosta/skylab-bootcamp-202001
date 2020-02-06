@@ -1,14 +1,9 @@
 function Search({title, onSubmit, error}){
 
-    return <form className="search" onSubmit={event => {
-        event.preventDefault();
-        var query = event.target.query.value;
-        
-        onSubmit(query);
-    }} >
-        <h2>{title}</h2>
-        {error && <p>{error}</p>}
-        <input type="text" name="query" placeholder="criteria" autoComplete="off" />
-        <button type="submit">Search</button>
-    </form>
+    return <Form className="search" onSubmit={onSubmit} >
+        <H2>{title}</H2>
+        {error && <P>{error}</P>}
+        <Input name="query" placeholder="criteria" />
+        <Button>Search</Button>
+    </Form>
 }
