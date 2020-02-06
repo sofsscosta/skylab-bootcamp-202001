@@ -1,4 +1,4 @@
-fdescribe('authenticateUser', () => {
+describe('authenticateUser', () => {
     let name, surname, username, password
 
     beforeEach(() => {
@@ -16,6 +16,12 @@ fdescribe('authenticateUser', () => {
                 body: JSON.stringify({ name, surname, username, password })
             }, response => {
                 if (response instanceof Error) return done(response)
+
+                if (response.content) {
+                    const { error } = JSON.parse(response.content)
+    
+                    if (error) return done(new Error(error))
+                }
 
                 done()
             })
@@ -99,8 +105,7 @@ fdescribe('authenticateUser', () => {
         username = 1
         expect(() =>
             authenticateUser(username, password, () => { })
-        )
-            .toThrowError(TypeError, `username ${username} is not a string`)
+        ).toThrowError(TypeError, `username ${username} is not a string`)
 
         username = true
         expect(() =>
@@ -129,4 +134,6 @@ fdescribe('authenticateUser', () => {
             authenticateUser(username, password, () => { })
         ).toThrowError(TypeError, `password ${password} is not a string`)
     })
+
+    // TODO should fail on non-function callback
 })
