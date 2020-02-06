@@ -10,9 +10,10 @@ describe('call', () => {
 
         const target = targets.random()
 
-        call(`https://skylabcoders.herokuapp.com/proxy?url=${target.url}`, undefined, response => {
-            expect(response.status).toBe(200)
+        call(`https://skylabcoders.herokuapp.com/proxy?url=${target.url}`, undefined, (error, response) => {
+            expect(error).toBeUndefined()
 
+            expect(response.status).toBe(200)
             //expect(response.content.toLowerCase().includes(target.text)).toBeTruthy()
             expect(response.content.toLowerCase()).toContain(target.text)
 
@@ -31,9 +32,11 @@ describe('call', () => {
     it('should fail on valid non-existing url', done => {
         const url = 'https://non-existing.url'
 
-        call(url, undefined, error => {
+        call(url, undefined, (error, response) => {
             expect(error).toBeInstanceOf(Error)
-            expect(error.message).toBe('Network error')
+            expect(error.message).toBe('network error')
+
+            expect(response).toBeUndefined()
 
             done()
         })

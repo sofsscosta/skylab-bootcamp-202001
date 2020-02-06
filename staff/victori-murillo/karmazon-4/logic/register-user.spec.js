@@ -1,4 +1,4 @@
-fdescribe('registerUser', () => {
+describe('registerUser', () => {
     let name, surname, username, password
 
     beforeEach(() => {
@@ -15,8 +15,6 @@ fdescribe('registerUser', () => {
             done()
         })
     })
-
-    // TODO unhappy paths
 
     describe('when user already exists', () => {
         beforeEach(done => {
@@ -47,7 +45,6 @@ fdescribe('registerUser', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         }, response => {
-            
             if (response instanceof Error) return done(response)
 
             const { error, token } = JSON.parse(response.content)
