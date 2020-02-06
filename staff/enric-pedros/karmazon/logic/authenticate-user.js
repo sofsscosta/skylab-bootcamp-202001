@@ -2,20 +2,20 @@
 function authenticateUser(username, password, callback) {
     if (typeof username !== 'string') throw new TypeError('username ' + username + ' is not a string');
     if (typeof password !== 'string') throw new TypeError('password ' + password + ' is not a string');
-
+    
     call('https://skylabcoders.herokuapp.com/api/v2/users/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
-    }, response => {
+    }, (error,response) => {
 
-        if (response instanceof Error) return callback(response) //possible 40X of status
+        if (error instanceof Error) return callback(error) //possible 40X of status
 
-        const { error, token } = JSON.parse(response.content)
+        const { error: _error, token } = JSON.parse(response.content)
 
-        if (error) return callback(new Error(error))
+        if (_error) return callback(new Error(_error), undefined)
 
-        callback(token)
+        callback(undefined, token)
     })
 }
 

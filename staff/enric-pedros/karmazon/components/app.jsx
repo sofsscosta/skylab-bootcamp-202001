@@ -4,32 +4,84 @@ const { Component, Fragment } = React
 
 class App extends Component {
 
-    state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, error: undefined, warning: undefined, token:undefined, nameOfUser: undefined }
+    state = { view: undefined, vehicles: undefined, vehicle: undefined, query: undefined, 
+        style: undefined, error: undefined, warning: undefined, token: undefined, 
+        nameOfUser: undefined}
+    componentWillMount() {
+        const { token } = sessionStorage
+
+        if (token)
+            retrieveUser(token, (error, user) => {
+                if (error)
+                    return this.setState({ error: error.message + ' ' + IT })
+
+                if (location.search) {
+                    const query = location.search.split('=')[1]
+
+                    searchVehicles(token, query, (error, vehicles) => {
+                        if (error)
+                            this.setState({ error: error.message + ' ' + IT })
+
+                        this.setState({ view: 'search', user, query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
+
+                        if (!vehicles.length)
+                            setTimeout(() => {
+                                this.setState({ error: undefined })
+                            }, 3000)
+                    })
+                } else
+                    this.setState({ view: 'search', user })
+            })
+        else this.setState({ view: 'login' })
+    }
+    // componentWillMount() {
+    //     const { token } = sessionStorage
+
+    //     if (token) {
+    //         retrieveUser(token, (error, send) => {
+    //             if (error) {
+    //                 return this.setState({ error: error.message + ' ' + IT })
+
+    //             } else this.setState({ nameOfUser: `Hola ${send.name}, bienvenido de nuevo` })
+    //         })
+    //         this.setState({ view: 'search' })
+    //     }
+    // }
+
 
 
     handleLogin = (username, password) => {
+        try {
+            authenticateUser(username, password, (error, token) => {
+                if (error) {
+                    this.setState({ error: token + ' ' + IT })
 
-        authenticateUser(username, password, token => {
-            if (token instanceof Error) {
-                this.setState({ error: token + ' ' + IT })
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000);
 
-                setTimeout(() => {
-                    this.setState({ error: undefined })
-                }, 3000);
+                }
 
-            }
-            
-            else {
-                retrieveUser(token, send =>{
-                    if(send instanceof Error){
-                        console.log('odio tu vida')
-                    }else this.setState({nameOfUser: `Hola ${send.name}, bienvenido de nuevo`})
-                })
-                this.setState({ view: 'search' })
-            }
-        })
+                else {
+                    retrieveUser(token, (error, send) => {
+                        if (error) {
+                            return this.setState({ error: error.message + ' ' + IT })
 
+                        } else this.setState({ nameOfUser: `Hola ${send.name}, bienvenido de nuevo` })
+                    })
+                    sessionStorage.token = token
+                    this.setState({ view: 'search' })
+                }
+            })
+        }
+        catch (error) {
+            this.setState({ error: token + ' ' + IT })
 
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000);
+
+        }
 
     }
 
@@ -38,14 +90,23 @@ class App extends Component {
     }
 
     handleRegister = (name, surname, username, password) => {
-        registerUser(name, surname, username, password, response => {
-            if (response instanceof Error) {
-                this.setState({ error: response + ' ' + IT })
-                setTimeout(() => {
-                    this.setState({ error: undefined })
-                }, 3000)
-            } else this.setState({ view: 'login' })
-        })
+        try {
+            registerUser(name, surname, username, password, error => {
+
+                if (error) {
+                    this.setState({ error: error.message + ' ' + IT })
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                } else this.setState({ view: 'login' })
+            })
+        } catch (error) {
+            this.setState({ error: error.message + ' ' + IT })
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
+
+        }
     }
 
 
@@ -53,12 +114,13 @@ class App extends Component {
     handleGoToLogin = () => { this.setState({ view: 'login' }) }
 
     handleSearch = query => {
-        searchVehicles(query, vehicles => {
-            if (this.vehicle) {
+        const { token } = sessionStorage
+        searchVehicles(token, query, (error, vehicles) => {
+            if (error) {
                 this.setState({ vehicle: undefined })
             }
 
-            this.setState({ vehicles, error: vehicles.length ? undefined : 'No results' })
+            this.setState({ query: query, vehicles, error: vehicles.length ? undefined : 'No results' })
 
             if (!vehicles.length) {
                 setTimeout(() => {
@@ -69,16 +131,37 @@ class App extends Component {
     }
 
     handleDetail = id => {
-        retrieveVehicle(id, vehicle =>
-            this.setState({ vehicle, view: 'detail' })
+        retrieveVehicle(id, (error, vehicle) => {
+            error ? this.setState({ error: undefined }) : this.setState({ vehicle, view: 'detail' })
+        }
         )
     }
 
     handleToBack = () => { this.setState({ vehicle: undefined, view: 'search' }) }
 
+    handleFavs = id => {
+        const { token } = sessionStorage
+        toggleFavVehicle(id, token, error => {
+            
+            if (error) {
+                this.setState({ error: error.message })
+            } else {
+                const { query } = this.state
+                searchVehicles(token, query, (error, vehicles) => {
+                    if (error) {
+                        this.setState({ vehicle: undefined })
+                    }
+                   
+                    this.setState({ vehicles, error: vehicles.length ? undefined : 'No results' })
+                })
+            }
+        })
+
+    }
+
     render() {
 
-        const { props: { title }, state: { view, vehicles, vehicle, nameOfUser, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleToBack } = this
+        const { props: { title }, state: { view, vehicles, vehicle, nameOfUser, error }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleToBack, handleFavs } = this
 
         return <Fragment>
             {nameOfUser && <span>{nameOfUser}</span>}
@@ -91,7 +174,7 @@ class App extends Component {
 
             {view === 'search' && <Search title="Search" onSubmit={handleSearch} error={error} />}
 
-            {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} />}
+            {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} onFavToggle={handleFavs} />}
 
             {view === 'detail' && vehicle && <Detail vehicle={vehicle} onBack={handleToBack} />}
 

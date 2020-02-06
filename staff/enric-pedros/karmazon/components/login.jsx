@@ -3,7 +3,7 @@ return <form className = 'login'
              onSubmit = {event => {
                  event.preventDefault()
                  const username = event.target.username.value
-                 const password = event.target.username.value 
+                 const password = event.target.password.value 
                  onSubmit(username,password)  
              }}> 
         <h2>COME IN</h2>
