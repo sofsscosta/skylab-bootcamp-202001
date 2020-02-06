@@ -26,7 +26,7 @@ describe('searchVehicles', function () {
         });
     });
 
-    it('should fail on non-string query', function () {
+    it('should fail on non-string query', function (done) {
         expect(function () {
             searchVehicles(undefined, function () { });
         }).toThrowError(TypeError, 'undefined is not a string');
@@ -42,9 +42,11 @@ describe('searchVehicles', function () {
         expect(function () {
             searchVehicles({}, function () { });
         }).toThrowError(TypeError, '[object Object] is not a string');
+
+        done()
     });
 
-    it('should fail on non-function callback', function () {
+    it('should fail on non-function callback', function (done) {
         expect(function () {
             searchVehicles('', undefined);
         }).toThrowError(TypeError, 'undefined is not a function');
@@ -60,5 +62,7 @@ describe('searchVehicles', function () {
         expect(function () {
             searchVehicles('', {});
         }).toThrowError(TypeError, '[object Object] is not a function');
+
+        done()
     });
 });

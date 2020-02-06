@@ -30,7 +30,7 @@ describe('retrieveVehicle', function () {
         });
     });
 
-    it('should fail on non-string id', function () {
+    it('should fail on non-string id', function (done) {
         expect(function () {
             retrieveVehicle(undefined, function () { });
         }).toThrowError(TypeError, 'undefined is not a string');
@@ -46,9 +46,11 @@ describe('retrieveVehicle', function () {
         expect(function () {
             retrieveVehicle({}, function () { });
         }).toThrowError(TypeError, '[object Object] is not a string');
+
+        done()
     });
 
-    it('should fail on non-function callback', function () {
+    it('should fail on non-function callback', function (done) {
         expect(function () {
             retrieveVehicle('', undefined);
         }).toThrowError(TypeError, 'undefined is not a function');
@@ -64,5 +66,7 @@ describe('retrieveVehicle', function () {
         expect(function () {
             retrieveVehicle('', {});
         }).toThrowError(TypeError, '[object Object] is not a function');
+
+        done()
     });
 });
