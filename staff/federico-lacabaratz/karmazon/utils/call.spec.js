@@ -10,7 +10,7 @@ describe('call', () => {
 
         const target = targets.random()
 
-        call(`https://skylabcoders.herokuapp.com/proxy?url=${target.url}`, undefined, response => {
+        call(`https://skylabcoders.herokuapp.com/proxy?url=${target.url}`, undefined, (error, response) => {
             expect(response.status).toBe(200)
             expect(response.content.toLowerCase()).toContain(target.text)
 

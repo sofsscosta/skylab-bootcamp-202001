@@ -3,7 +3,8 @@ describe('retrieveMaker', () => {
         
         const id = '20th-century-fox'
         
-        retrieveMaker(id, vehicle => {
+        retrieveMaker(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
             expect(vehicle).toBeDefined()
             expect(vehicle.id).toBeDefined(id)
             expect(vehicle.id).not.toBeInstanceOf(Error)
@@ -19,7 +20,8 @@ describe('retrieveMaker', () => {
     it('should return null on non-matching vehicle id', done => {
         const id = 'non-valid-id'
 
-        retrieveMaker(id, vehicle => {
+        retrieveMaker(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
             expect(vehicle).not.toBeInstanceOf(Error)
 
             expect(vehicle).toBeNull()

@@ -14,11 +14,11 @@ describe('authenticateUser', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, surname, username, password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
                 if(response.content) {
-                    const { error } = JSON.prse(response.content)
+                    const { error } = JSON.parse(response.content)
 
                     if(error) return done(new Error(error))
                 }
@@ -28,9 +28,10 @@ describe('authenticateUser', () => {
         )
 
         it('should succeed on correct credentials', done => {
-            authenticateUser(username, password, token => {
+            authenticateUser(username, password, (error, token) => {
+                expect(error).toBeUndefined()
                 expect(token).toBeA('string')
-
+                
                 const [header, payload, signature] = token.split('.')
                 expect(header.length).toBeGreaterThan(0)
                 expect(payload.length).toBeGreaterThan(0)
@@ -63,12 +64,12 @@ describe('authenticateUser', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
-                const { error, token } = JSON.parse(response.content)
+                const { error: _error, token } = JSON.parse(response.content)
 
-                if (error) return done(new Error(error))
+                if (_error) return done(new Error(_error))
 
                 call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
                     method: 'DELETE',
@@ -77,8 +78,8 @@ describe('authenticateUser', () => {
                         'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify({ password })
-                }, response => {
-                    if (response instanceof Error) return done(response)
+                }, (error, response) => {
+                    if (error) return done(error)
 
                     if(response.content) {
                     const { error } = JSON.parse(response.content)
@@ -93,7 +94,7 @@ describe('authenticateUser', () => {
     })
 
     it('should fail when user does not exist', done => {
-        authenticateUser(username, password, error => {
+        authenticateUser(username, password, (error, token) => {
             expect(error).toBeInstanceOf(Error)
             expect(error.message).toBe('username and/or password wrong')
 

@@ -3,7 +3,8 @@ describe('retrieveCollection', () => {
         
         const id = 'hw-screen-time'
         
-        retrieveCollection(id, vehicle => {
+        retrieveCollection(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
             expect(vehicle).toBeDefined()
             expect(vehicle.id).toBeDefined(id)
             expect(vehicle.id).not.toBeInstanceOf(Error)
@@ -20,7 +21,8 @@ describe('retrieveCollection', () => {
     it('should return null on non-matching vehicle id', done => {
         const id = 'non-valid-id'
 
-        retrieveCollection(id, vehicle => {
+        retrieveCollection(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
             expect(vehicle).not.toBeInstanceOf(Error)
 
             expect(vehicle).toBeNull()

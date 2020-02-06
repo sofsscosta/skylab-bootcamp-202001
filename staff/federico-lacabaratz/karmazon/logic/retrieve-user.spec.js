@@ -1,6 +1,5 @@
 describe('retrieveUser', () => {
     let name, surname, username, password, token
-
     beforeEach(() => {
         name = 'name-' + Math.random()
         surname = 'surname-' + Math.random()
@@ -14,8 +13,8 @@ describe('retrieveUser', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, surname, username, password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
                 if (response.content) {
                     const { error } = JSON.parse(response.content)
@@ -27,12 +26,12 @@ describe('retrieveUser', () => {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
-                }, response => {
-                    if (response instanceof Error) return done(response)
+                }, (error, response) => {
+                    if (error) return done(error)
 
-                    const { error, token: _token } = JSON.parse(response.content)
+                    const { error: _error, token: _token } = JSON.parse(response.content)
 
-                    if (error) return done(new Error(error))
+                    if (_error) return done(new Error(_error))
 
                     token = _token
 
@@ -42,7 +41,8 @@ describe('retrieveUser', () => {
         )
 
         it('should succeed on correct token', done => 
-            retrieveUser(token, user => { 
+            retrieveUser(token, (error, user) => { 
+                expect(error).toBeUndefined()
                 expect(user).not.toBeInstanceOf(Error)
 
                 expect(user.name).toBe(name)
@@ -71,8 +71,8 @@ describe('retrieveUser', () => {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
                 if (response.content) {
                     const { error } = JSON.parse(response.content)

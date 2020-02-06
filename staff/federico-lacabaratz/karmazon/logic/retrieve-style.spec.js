@@ -3,7 +3,8 @@ describe('retrieveStyle', () => {
         
         const id = 'entertainment'
         
-        retrieveStyle(id, vehicle => {
+        retrieveStyle(id, (error, vehicle) => {
+            expect(error).toBeUndefined()
             expect(vehicle).toBeDefined()
             expect(vehicle.id).toBeDefined(id)
             expect(vehicle.id).not.toBeInstanceOf(Error)
@@ -20,7 +21,7 @@ describe('retrieveStyle', () => {
     it('should return null on non-matching vehicle id', done => {
         const id = 'non-valid-id'
 
-        retrieveStyle(id, vehicle => {
+        retrieveStyle(id, (error, vehicle) => {
             expect(vehicle).not.toBeInstanceOf(Error)
 
             expect(vehicle).toBeNull()
