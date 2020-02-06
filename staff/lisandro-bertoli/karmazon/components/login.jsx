@@ -22,9 +22,3 @@ function Login({ onSubmit, onToRegister, error }) {
 }
 
 
-
-// __locateFeedbackInContainer__(feedback) {
-//     const button = this.container.querySelector('button'); //?
-
-//     this.container.insertBefore(feedback.container, button);
-// };

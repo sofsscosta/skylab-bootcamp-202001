@@ -213,6 +213,9 @@ ul, li {
   display: inline-block;
   margin-bottom: 1rem;
 }
+.item__heart {
+  color: red;
+}
 
 @media screen and (min-width: 768px) {
   .item {

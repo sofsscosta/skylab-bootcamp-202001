@@ -17,15 +17,13 @@ function call(url, options = { method: 'GET' }, callback) {
 
 
     xhr.addEventListener('load', function () {
-        callback({
+        callback(undefined, {
             content: this.responseText,
             status: this.status
         })
     })
 
-    xhr.addEventListener('error', function () {
-        callback(new Error('Network error'))
-    })
+    xhr.addEventListener('error', () => callback(new Error('Network error')))
 
     xhr.send(body)
 }

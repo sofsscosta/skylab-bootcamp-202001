@@ -1,6 +1,6 @@
-function Results({ results, onItemClick }) {
+function Results({ results, onItemClick, onHeartClick }) {
     return <ul className="results">
-        {results.map(item => <Item key={item.id} vehicle={item} onClick={onItemClick} />)}
+        {results.map(item => <Item key={item.id} vehicle={item} onClick={onItemClick} onFavClick={onHeartClick} />)}
     </ul>
 
 }
