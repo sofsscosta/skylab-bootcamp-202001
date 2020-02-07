@@ -51,17 +51,17 @@ function updateUser(token, data, callback) {
 
     call(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
         method: 'PATCH',
-        headers: { 
+        headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(data)
-    }, response => {
-        if (response instanceof Error) return callback(response)
+    }, (error, response) => {
+        if (error) return callback(error)
 
         if (response.content) {
             const { error } = JSON.parse(response.content)
-    
+
             if (error) return callback(new Error(error))
         }
 

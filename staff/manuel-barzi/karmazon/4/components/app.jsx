@@ -28,7 +28,7 @@ class App extends Component {
 
                     searchVehicles(query, (error, vehicles) => {
                         if (error)
-                            this.setState({ error: error.message + ' ' + IT })
+                            return this.setState({ error: error.message + ' ' + IT })
 
                         this.setState({ view: 'search', user, query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
 
@@ -102,7 +102,7 @@ class App extends Component {
         try {
             searchVehicles(query, (error, vehicles) => {
                 if (error)
-                    this.setState({ error: error.message + ' ' + IT })
+                    return this.setState({ error: error.message + ' ' + IT })
 
                 const { protocol, host, pathname } = location
 
@@ -127,11 +127,17 @@ class App extends Component {
     }
 
     handleDetail = id => {
-        retrieveVehicle(id, vehicle =>
-            retrieveStyle(vehicle.style, style =>
+        retrieveVehicle(id, (error, vehicle) => {
+            if (error)
+                return this.setState({ error: error.message + ' ' + IT })
+
+            retrieveStyle(vehicle.style, (error, style) => {
+                if (error)
+                    return this.setState({ error: error.message + ' ' + IT })
+
                 this.setState({ vehicle, style, vehicles: undefined })
-            )
-        )
+            })
+        })
     }
 
     render() {
@@ -146,7 +152,7 @@ class App extends Component {
 
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} query={query} warning={error} />}
+            {view === 'search' && <Search onSubmit={handleSearch} query={query} warning={error} />}
 
             {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} />}
 
