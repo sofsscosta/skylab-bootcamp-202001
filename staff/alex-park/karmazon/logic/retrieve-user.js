@@ -17,6 +17,6 @@ function retrieveUser(token, callback) {
 
         if (_error) return callback(new Error(_error))
 
-        callback(undefined, send)
+        callback(undefined, {name: send.name, surname: send.surname, username: send.username})
     })
 }

@@ -6,6 +6,12 @@ body {
   font-family: "Arial";
 }
 
+.favbutton {
+  padding: 1%;
+  background-color: white;
+  cursor: pointer;
+}
+
 .details, .item, .register, .login, .search {
   background-image: linear-gradient(to bottom right, #7f70ff, #fafafa);
   border-top: 0.8em solid #491386;
@@ -295,6 +301,12 @@ h1 {
   font-size: 2.1em;
   font-weight: bolder;
 }
+.item .fa-heart {
+  font-size: 2em;
+}
+.item .fas {
+  color: red;
+}
 
 .details, .search, .login, .register, .item {
   background-image: linear-gradient(to bottom right, #7f70ff, #fafafa);
@@ -340,6 +352,12 @@ h1 {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
+.details .fa-heart {
+  font-size: 2em;
+}
+.details .fas {
+  color: red;
+}
 .details h2 {
   grid-area: 1/2/1/6;
 }
@@ -368,6 +386,16 @@ h1 {
   grid-area: 5/1/5/4;
   font-size: 2.5em;
   font-weight: bolder;
+}
+
+.favlist {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-left: 5%;
+}
+.favlist.item {
+  max-width: 40vw;
 }
 
 /*# sourceMappingURL=style.css.map */
