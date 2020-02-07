@@ -1,4 +1,4 @@
-fdescribe('authenticateUser', () => {
+describe('authenticateUser', () => {
     let name, surname, username, password
 
     beforeEach(() => {

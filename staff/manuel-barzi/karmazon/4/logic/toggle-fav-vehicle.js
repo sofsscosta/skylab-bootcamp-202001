@@ -1,4 +1,4 @@
-function searchVehicles(token, query, callback) {
+function toggleFavVehicle(token, id, callback) {
     if (typeof token !== 'string') throw new TypeError(`token ${token} is not a string`)
 
     const [header, payload, signature] = token.split('.')
@@ -8,8 +8,9 @@ function searchVehicles(token, query, callback) {
 
     if (!sub) throw new Error('no user id in token')
 
-    if (typeof query !== 'string') throw new TypeError(`${query} is not a string`)
-    if (typeof callback !== 'function') throw new TypeError(`${callback} is not a function`)
+    if (typeof id !== 'string') throw new TypeError(`id ${id} is not a string`)
+
+    if (typeof callback !== 'function') throw new TypeError(`callback ${callback} is not a function`)
 
     call(`https://skylabcoders.herokuapp.com/api/v2/users/${sub}`, {
         method: 'GET',
@@ -25,16 +26,25 @@ function searchVehicles(token, query, callback) {
 
         const { favs = [] } = user
 
-        call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles?q=${query}`, undefined, (error, response) => {
+        favs.toggle(id)
+
+        call(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ favs })
+        }, (error, response) => {
             if (error) return callback(error)
 
-            if (response.status === 200) {
-                const vehicles = JSON.parse(response.content)
+            if (response.content) {
+                const { error } = JSON.parse(response.content)
 
-                vehicles.forEach(vehicle => vehicle.isFav = favs.includes(vehicle.id))
-
-                callback(undefined, vehicles)
+                if (error) return callback(new Error(error))
             }
+
+            callback()
         })
     })
 }
