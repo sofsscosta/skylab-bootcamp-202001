@@ -6,7 +6,7 @@ class App extends Component {
     // constructor() {
     //     super()
 
-    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined , user: undefined}
+    state = { view: "login", vehicles: undefined, query: undefined, vehicle: undefined, style: undefined, error: undefined , user: undefined, favorites: []}
 
 
     handleRetrieveToken = () => sessionStorage.getItem("token") //retorna el token
@@ -63,9 +63,13 @@ class App extends Component {
     handleGoToRegister = ()=> this.setState({view: "register"})
 
     handleSearch = query => {
-        searchVehicles(query, vehicles =>
-            this.setState({ vehicles, vehicle: undefined })
-        )
+        const token = this.handleRetrieveToken()
+        searchVehicles(query, token,  response =>{
+            const {vehicles, favorites} = response
+            this.setState({ vehicles,favorites, vehicle: undefined , query})
+
+        })
+       
     }
 
     handleDetail = id => {
@@ -101,13 +105,24 @@ class App extends Component {
 
     handleGoToUpdate = () => this.setState({view:"update"})
 
+    handleFav = (id) => {
+        const token = this.handleRetrieveToken()
+        toggleVehicle(token, id, response =>{
+            if (response instanceof Error){
+                this.setState({error: response.message})
+        }else{
+                console.log("toggle vehicle ok")
+                this.handleSearch(this.state.query)
+        }})
+    } 
+
    
 
 
 
     render() {
 
-        const {props:{title}, state:{view, vehicles, vehicle, style, error, user}, handleLogin, handleGoToLogin, handleRegister, handleGoToRegister, handleSearch,  handleDetail, handleUpdate, handleGoToSearch, handleGoToUpdate} = this
+        const {props:{title}, state:{view, vehicles, vehicle, style, error, user, favorites}, handleLogin, handleGoToLogin, handleRegister, handleGoToRegister, handleSearch,  handleDetail, handleUpdate, handleGoToSearch, handleGoToUpdate, handleFav} = this
         return <Fragment>
 
             <h1>{title}</h1>
@@ -115,16 +130,16 @@ class App extends Component {
 
             {user && <h2>{user.name}</h2>}
             {view === "update" && <Update onSubmitValidar={handleUpdate} onGoToSearch={handleGoToSearch} user={user}/>}
-            
+
             {view === "register" && <Register onSubmit={handleRegister}  onToLogin={handleGoToLogin} error={error}/>}
 
             {view === "login" && <Login onSubmit={handleLogin}  onToRegister={handleGoToRegister} error={error}/>}
 
             {view === "search" && <Search title="Search" onSubmit={handleSearch} onGoToUpdate={ handleGoToUpdate} user={user} />}
 
-            {view === "search" && !vehicle && vehicles && <Results results={vehicles} onItemClick={handleDetail} />}
+            {view === "search" && !vehicle && vehicles && <Results results={vehicles} onItemClick={handleDetail} onToggleFav={handleFav} favorites={favorites}/>}
 
-            {view === "search" && vehicle && <Detail vehicle={vehicle} style={style} />}
+            {view === "search" && vehicle && <Detail vehicle={vehicle} style={style} onToggleFav={handleFav} favorites={favorites} />}
         </Fragment>
     }
 }

@@ -1,14 +1,14 @@
 
 
 // props tiene 2 propiedades: data y onClick
-function Item({item: {id, name, thumbnail, price, index}, onClick, onToggle}) {
+function Item({item: {id, name, thumbnail, price, index}, onClick, onToggleFav, isFavorited}) {
     return(
-        <article onClick={()=>onClick(id)} key={index}>
-            <h2>{name}</h2>
+        <article  key={index} className="article">
+            <h2 onClick={()=>onClick(id)}>{name}</h2>
             <figure>
-                <i class="far fa-heart" onClick={(event)=>{
+                <i className={`${isFavorited ? 'fas' : 'far'} fa-heart`} onClick={(event)=>{
                     event.preventDefault()
-                    onToggle()
+                    onToggleFav(id)
                 }}></i>
             </figure>
             <img src={thumbnail}/>
