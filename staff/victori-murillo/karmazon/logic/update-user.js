@@ -10,9 +10,11 @@ function updateUser(user, token, callback) {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(user)
-    }, response => {
-        if (response instanceof Error) return callback(response)
+    }, (error, response) => {
+        if (error) return callback(error)
 
-        if (response.status === 204) return callback('update successful!')
+        if (response.status === 204) {
+            return callback('update successful!')
+        } 
     })
 }

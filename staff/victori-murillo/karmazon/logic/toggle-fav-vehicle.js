@@ -37,8 +37,8 @@ function toggleFavVehicle(token, id, callback) {
             if (_error) return callback(new Error(_error))
           }
 
-          const search = location.search.split("=")[1]
-          callback(undefined, search)
+          const query = location.search.split("=")[1]
+          callback(undefined, query)
         }
       )
     }

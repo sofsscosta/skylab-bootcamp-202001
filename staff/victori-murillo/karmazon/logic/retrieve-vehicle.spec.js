@@ -1,4 +1,4 @@
-describe('retrive-vehicles', function() {
+describe('retrive-vehicles', () => {
 
   it("should match the id", function(done) {
 

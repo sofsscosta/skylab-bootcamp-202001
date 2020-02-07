@@ -6,7 +6,6 @@ function Item ({item: {id, name, thumbnail, heart}, onClickItem, toggleHeart}) {
       {
         heart ? <HeartRed onClick={toggleHeart} id={id} /> : <Heart onClick={toggleHeart} id={id} />
       }
-      
     </div>
     <img onClick={() => onClickItem(id)} src={thumbnail} />
   </li>

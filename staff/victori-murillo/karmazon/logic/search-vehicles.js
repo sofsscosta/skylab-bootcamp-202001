@@ -4,9 +4,7 @@ function searchVehicles(query, token, callback) {
   if (typeof callback !== "function")
     throw new TypeError(callback + " is not a function")
 
-  call(
-    "https://skylabcoders.herokuapp.com/api/hotwheels/vehicles?q=" + query,
-    undefined,
+  call("https://skylabcoders.herokuapp.com/api/hotwheels/vehicles?q=" + query, undefined,
     (error, response) => {
       if (error) return callback(error)
 
@@ -15,9 +13,7 @@ function searchVehicles(query, token, callback) {
       if (response.status === 200) {
         var results = JSON.parse(response.content)
 
-        call(
-          `https://skylabcoders.herokuapp.com/api/v2/users`,
-          {
+        call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -26,7 +22,7 @@ function searchVehicles(query, token, callback) {
           },
           (error, response) => {
             if (error) return callback(error)
-            const user = JSON.parse(response.content),{ error: _error } = user
+            const user = JSON.parse(response.content), { error: _error } = user
             if (_error) return callback(new Error(_error))
 
             const {fav} = user
