@@ -1,6 +1,7 @@
 function retrieveUser(token, callback) {
     if (typeof token !== 'string') throw new TypeError(`token ${token} is not a string`)
     if (typeof callback !== 'function') throw new TypeError(`callback ${callback} is not a function`)
+    
     const _token = token.split('.')
     const id = JSON.parse(atob(_token[1])).sub
 
@@ -8,18 +9,14 @@ function retrieveUser(token, callback) {
 
     call(`https://skylabcoders.herokuapp.com/api/v2/users/${id}`, {
         method: 'GET',
-        headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` 
-        }
+        headers: { 'Authorization': `Bearer ${token}`}
     }, (error, response) => {
         if(error) return callback(error)
     
-        const { error: _error, name, surname, username } = JSON.parse(response.content)
+        const userData= { error: _error, username } = JSON.parse(response.content)
 
         if (_error) return callback(new Error(_error))
-        const userData = JSON.parse(response.content)
 
-        callback(error, userData)
+        callback(undefined, userData)
     })
 }

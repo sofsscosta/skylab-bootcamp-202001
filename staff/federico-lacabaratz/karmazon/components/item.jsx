@@ -1,11 +1,24 @@
 function Item ({ item: { id, name, thumbnail, price }, onClick, onFav}) {
 
-    return <li onClick={() => onClick(id)}> 
-        <h3>{name}</h3>
-        <button onClick={() => 
-         onFav(id)
-        }>❤️</button>
-        <img src={thumbnail} />
-        <span>{price} €</span>
-    </li>
+    if(!fav || !fav.includes(id)) {
+        return  <li>
+                    <article>
+                        <h3>{name}   <span onClick={() => onFav(id)}>🤍</span></h3>
+                    </article>
+                    <article onClick={() => onClick(id)}> 
+                        <img src={thumbnail} />
+                        <span>{price} €</span>
+                    </article>
+                </li>
+    } else {
+        return  <li>
+                    <article>
+                        <h3>{name}   <span onClick={() => onFav(id)}>❤️</span></h3>
+                    </article>
+                    <article onClick={() => onClick(id)}> 
+                        <img src={thumbnail} />
+                        <span>{price} €</span>
+                    </article>
+                </li>
+    }
 }
