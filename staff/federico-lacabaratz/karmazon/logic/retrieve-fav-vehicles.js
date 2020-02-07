@@ -1,4 +1,4 @@
-function retrieveVehicle(token, id, callback) {  
+function retrieveFavVehicles(token, id, callback){
     if (typeof token !== 'string') throw new TypeError(`${token} is not a string`)
     if (typeof id !== "string") throw new TypeError(`${id} is not a string`)
     if (typeof callback !== 'function') throw new TypeError(`${callback} is not a function`)
@@ -20,15 +20,20 @@ function retrieveVehicle(token, id, callback) {
         if(error) return callback(error)
 
         const userData = JSON.parse(response.content)
-        
-        call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`, undefined, (error, response) => {
-            if (error) return callback(error)
-    
-            if (response.status === 200) {
-                const result = JSON.parse(response.content)
-    
-                callback(error ,result, userData.fav)
-            }
-        })
+
+        const fav = userData.fav
+
+        for(let i = 0; i<fav.length; i++){
+            call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${fav[i]}`, undefined, (error, response)=> {
+                if(error) return callback (error)
+
+                if(response.status === 200){
+                    const result = JSON.parse(response.content)
+
+                    let favs = result.push(fav[i])
+                }
+            })    
+        }
+        callback(error, favs)
     })
 }
