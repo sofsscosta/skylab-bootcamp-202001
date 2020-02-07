@@ -112,7 +112,7 @@ describe('retrieveUser', () => {
     })
 
     it('should fail on non-function callback', () => {
-        token = '...'
+        token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNiZDhmZDE3YjgwOTFiYWFjMTIxMzgiLCJpYXQiOjE1ODA5ODA3NjEsImV4cCI6MTU4MDk4NDM2MX0.t8g49qXznSCYiK040NvOWHPXWqnj9riJ_6MD2vwIv3M'
 
         callback = 1
         expect(() =>

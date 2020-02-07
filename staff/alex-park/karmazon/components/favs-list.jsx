@@ -1,7 +1,11 @@
-function FavsList ({results, onItemClick, onFavToggle}) {
+function FavsList ({results, onBack, onFavToggle}) {
     
     return <ul className = "favlist">
-         {results.map(result => <Details key={result.id} detailInfo = {result}
-         onBack = {onItemClick} onFavToggle={onFavToggle}/>)}
+        <a href="" onClick={event => {
+            event.preventDefault()
+            onBack()
+        }}>GO BACK</a>
+        {results.map(result => <Details key={result.id} detailInfo = {result}
+        onBack = {onBack} onFavToggle={onFavToggle}/>)}
     </ul>
 }

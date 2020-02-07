@@ -116,21 +116,25 @@ class App extends Component {
     handleToBack = () => {
 
         const { query } = this.state
-        searchVehicles(sessionStorage.token, query, (error, vehicles) => {
-            if (error) {
-                this.setState({ vehicle: undefined })
-            }
-            const { protocol, host, pathname } = location
-            const url = `${protocol}//${host}${pathname}?q=${query}`
-            // const url = `${location.href}?q=${query}`
-            history.pushState({ path: url }, '', url)
-            this.setState({ view: 'search', query: query, vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results' })
-            if (!vehicles.length) {
-                setTimeout(() => {
-                    this.setState({ error: undefined })
-                }, 3000)
-            }
-        })
+        if (query) {
+            searchVehicles(sessionStorage.token, query, (error, vehicles) => {
+                if (error) {
+                    this.setState({ vehicle: undefined })
+                }
+                const { protocol, host, pathname } = location
+                const url = `${protocol}//${host}${pathname}?q=${query}`
+                // const url = `${location.href}?q=${query}`
+                history.pushState({ path: url }, '', url)
+                this.setState({ view: 'search', listOfFavs: undefined, query: query, vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results' })
+                if (!vehicles.length) {
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+                    }, 3000)
+                }
+            })
+        } else {
+            this.setState({ view: 'search' })
+        }
     }
 
     handleFavs = id => {
@@ -197,7 +201,7 @@ class App extends Component {
         return <Fragment>
             {nameOfUser && <span>{nameOfUser}</span>}
             <br />
-            <p className="favbutton" href="" onClick={handleListOfFavs}>GO TO LIST OF FAVORITES</p>
+            {view === 'search' && <p className="favbutton" href="" onClick={handleListOfFavs}>GO TO LIST OF FAVORITES</p>}
             <h1>{title}</h1>
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
