@@ -1,5 +1,4 @@
 function Details({details: { name, year, price, image, color, maker, collection, style, description, url}, onCloseDetails }){ 
-    debugger
             return <section className="details">
                 <div className="details__main">
                     <h2 className="details__name">{name}</h2>

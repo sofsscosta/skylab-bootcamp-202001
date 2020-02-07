@@ -304,6 +304,12 @@ body {
   align-self: flex-end;
   font-weight: 100;
 }
+.article__fav {
+  cursor: pointer;
+}
+.article__fav--faved {
+  color: #e23f3d;
+}
 
 body {
   width: 100vw;
@@ -369,7 +375,7 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 1rem 0;
-  max-width: 100%;
+  max-width: 80%;
 }
 .feedback--error {
   color: #e23f3d;

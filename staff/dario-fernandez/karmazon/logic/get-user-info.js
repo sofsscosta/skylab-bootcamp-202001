@@ -17,7 +17,7 @@ function getUserInfo(token, callback) {
         } else if(response.status === 200) {
             const userInfo = JSON.parse(response.content)
             
-            callback(userInfo)
+            callback(undefined, userInfo)
         } else {
             callback(new Error('Unknown error'))
         }
