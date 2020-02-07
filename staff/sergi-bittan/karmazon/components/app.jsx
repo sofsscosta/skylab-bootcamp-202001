@@ -6,7 +6,12 @@ class App extends Component {
     // constructor() {
     //     super()
 
-    state = { view: "register", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined , user: undefined}
+    state = { view: "login", vehicles: undefined, vehicle: undefined, style: undefined, error: undefined , user: undefined}
+
+
+    handleRetrieveToken = () => sessionStorage.getItem("token") //retorna el token
+
+    handleStoreToken = (token) => sessionStorage.setItem("token", token) //guarder token en session storage
 
     handleRegister = (name, surname, username, password) => {
         try {
@@ -36,6 +41,7 @@ class App extends Component {
                     this.setState({error: response.message})
                 }else{
                     const token = response
+                    this.handleStoreToken(token)
                     retrieveUser(token, (user)=>{   //user es content de retrieveUser
                         this.setState({view: "search", user})
 
@@ -70,21 +76,51 @@ class App extends Component {
         )
     }
 
+    handleUpdate=(newUser)=>{
+        try{
+            const token = this.handleRetrieveToken()
+            updateUser(token, newUser, (response) =>{
+                if (response instanceof Error) {
+                    this.setState({error: response.message})
+                }else{
+                    this.setState({error: "update correcte", user: Object.assign(this.state.user, newUser)})
+                }
+
+            })
+
+        }catch(error){
+            this.setState({error: `${error.message} ${IT}`})
+
+            setTimeout(()=>{
+                this.setState({error: undefined})
+            }, 3000)
+
+        }
+    }
+    handleGoToSearch = () => this.setState({view: "search"})
+
+    handleGoToUpdate = () => this.setState({view:"update"})
+
+   
+
+
 
     render() {
 
-        const {props:{title}, state:{view, vehicles, vehicle, style, error, user}, handleLogin, handleGoToLogin, handleRegister, handleGoToRegister, handleSearch,  handleDetail} = this
+        const {props:{title}, state:{view, vehicles, vehicle, style, error, user}, handleLogin, handleGoToLogin, handleRegister, handleGoToRegister, handleSearch,  handleDetail, handleUpdate, handleGoToSearch, handleGoToUpdate} = this
         return <Fragment>
 
             <h1>{title}</h1>
             
 
             {user && <h2>{user.name}</h2>}
+            {view === "update" && <Update onSubmitValidar={handleUpdate} onGoToSearch={handleGoToSearch} user={user}/>}
+            
             {view === "register" && <Register onSubmit={handleRegister}  onToLogin={handleGoToLogin} error={error}/>}
 
             {view === "login" && <Login onSubmit={handleLogin}  onToRegister={handleGoToRegister} error={error}/>}
 
-            {view === "search" && <Search title="Search" onSubmit={handleSearch} user={user} />}
+            {view === "search" && <Search title="Search" onSubmit={handleSearch} onGoToUpdate={ handleGoToUpdate} user={user} />}
 
             {view === "search" && !vehicle && vehicles && <Results results={vehicles} onItemClick={handleDetail} />}
 

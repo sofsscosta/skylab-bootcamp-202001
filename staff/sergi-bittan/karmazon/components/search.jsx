@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, user }) {
+function Search({ title, onSubmit,onGoToUpdate, user }) {
     return (
         <form className="search" onSubmit={(event) => {
             event.preventDefault();
@@ -10,6 +10,10 @@ function Search({ title, onSubmit, user }) {
             <h3>{user.name}</h3>
             <input type="text" name="query" placeholder="criteria" />
             <button type="submit">Search</button>
+            <a href="" onClick={(event)=>{
+                event.preventDefault()
+                onGoToUpdate()
+            }}>Update</a>
 
         </form>
     )

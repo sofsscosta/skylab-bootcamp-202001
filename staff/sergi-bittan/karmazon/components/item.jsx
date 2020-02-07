@@ -1,10 +1,16 @@
 
 
 // props tiene 2 propiedades: data y onClick
-function Item({item: {id, name, thumbnail, price, index}, onClick}) {
+function Item({item: {id, name, thumbnail, price, index}, onClick, onToggle}) {
     return(
         <article onClick={()=>onClick(id)} key={index}>
             <h2>{name}</h2>
+            <figure>
+                <i class="far fa-heart" onClick={(event)=>{
+                    event.preventDefault()
+                    onToggle()
+                }}></i>
+            </figure>
             <img src={thumbnail}/>
             <span>{price} €</span>
         </article>

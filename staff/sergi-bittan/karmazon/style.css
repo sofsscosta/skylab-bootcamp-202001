@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css");
 body {
   text-align: center; }
 
@@ -105,5 +106,25 @@ body {
   .detail-info__description {
     height: 250px;
     width: 165px; }
+
+.update {
+  display: inline-block;
+  background-color: #d2e0b0;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem; }
+  .update input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .update button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
 
 /*# sourceMappingURL=style.css.map */
