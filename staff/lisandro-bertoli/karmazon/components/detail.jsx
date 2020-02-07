@@ -1,5 +1,4 @@
-function Detail({ product: { name, image, year, color, maker, collection, style, description }, backToResults }) {
-
+function Detail({ vehicle: { id, name, image, year, color, maker, collection, style, description, isFav }, backToResults, onFavClick }) {
 
     return <section className="details">
         <div className="details__intro">
@@ -7,6 +6,10 @@ function Detail({ product: { name, image, year, color, maker, collection, style,
                 backToResults()
             }}>{'<< Back to results'}</a>
             <h2 className="details__car-name">{name}</h2>
+            <span onClick={() => { onFavClick(id) }}>
+                {isFav && <i className="fas fa-heart item__heart"></i>}
+                {!isFav && <i className="far fa-heart item__heart"></i>}
+            </span>
             <div className="details__img-container">
                 <img className="details__img" src={image} alt="" />
             </div>
