@@ -1,7 +1,5 @@
 .login
     display: inline-block
-    border: 1px solid black
-    border-radius: 1rem
     padding: 0.5rem
     
     &--hide
@@ -9,15 +7,13 @@
 
     input
         display: block
-        border: 1px solid black
-        border-radius: 1rem
+        +border(1px, solid, $border-color, 1rem)
         padding: 0.5rem
         margin: 0.5rem
 
     button
         display: block
-        border: 1px solid black
-        border-radius: 1rem
+        +border(1px, solid, $border-color, 1rem)
         padding: 0.5rem
         margin: 0.5rem
     
