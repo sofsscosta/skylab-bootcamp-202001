@@ -9,6 +9,13 @@ class App extends Component {
         nameOfUser: undefined, listOfFavs: undefined
     }
 
+    __handleError__(error) {
+        this.setState({ error: error.message + ' ' + IT })
+        setTimeout(() => {
+            this.setState({ error: undefined })
+        }, 3000)
+    }
+
     componentWillMount() {
         const { token } = sessionStorage
         if (token)
@@ -37,10 +44,7 @@ class App extends Component {
         try {
             authenticateUser(username, password, (error, token) => {
                 if (error) {
-                    this.setState({ error: error.message + ' ' + IT })
-                    setTimeout(() => {
-                        this.setState({ error: undefined })
-                    }, 3000)
+                    this.__handleError__(error)
                 } else {
                     retrieveUser(token, (error, user) => {
                         if (error)
@@ -52,10 +56,7 @@ class App extends Component {
                 }
             })
         } catch (error) {
-            this.setState({ error: error.message + ' ' + IT })
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            this.__handleError__(error)
         }
     }
 
@@ -65,18 +66,12 @@ class App extends Component {
         try {
             registerUser(name, surname, username, password, error => {
                 if (error) {
-                    this.setState({ error: error.message + ' ' + IT })
-                    setTimeout(() => {
-                        this.setState({ error: undefined })
-                    }, 3000)
+                    this.__handleError__(error)
                 } else
                     this.setState({ view: 'login' })
             })
         } catch (error) {
-            this.setState({ error: error.message + ' ' + IT })
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            this.__handleError__(error)
         }
     }
 
@@ -88,10 +83,9 @@ class App extends Component {
             if (error) {
                 this.setState({ vehicle: undefined })
             }
-            const { protocol, host, pathname } = location
-            const url = `${protocol}//${host}${pathname}?q=${query}`
-            // const url = `${location.href}?q=${query}`
-            history.pushState({ path: url }, '', url)
+
+            location.queryString = { q: query }
+
             this.setState({ query: query, vehicles, error: vehicles.length ? undefined : 'No results' })
             if (!vehicles.length) {
                 setTimeout(() => {
@@ -106,7 +100,7 @@ class App extends Component {
 
         retrieveVehicle(token, id, (error, vehicle) => {
             if (error) {
-                this.setState({ error: error.message })
+                this.__handleError__(error)
             } else {
                 this.setState({ vehicle, view: 'detail' })
             }
@@ -121,10 +115,9 @@ class App extends Component {
                 if (error) {
                     this.setState({ vehicle: undefined })
                 }
-                const { protocol, host, pathname } = location
-                const url = `${protocol}//${host}${pathname}?q=${query}`
-                // const url = `${location.href}?q=${query}`
-                history.pushState({ path: url }, '', url)
+
+                location.queryString = { q: query }
+
                 this.setState({ view: 'search', listOfFavs: undefined, query: query, vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results' })
                 if (!vehicles.length) {
                     setTimeout(() => {
@@ -142,7 +135,7 @@ class App extends Component {
         const { token } = sessionStorage
         toggleFavVehicle(id, token, error => {
             if (error) {
-                this.setState({ error: error.message })
+                this.__handleError__(error)
             } else {
                 const { query } = this.state
                 searchVehicles(token, query, (error, vehicles) => {
@@ -160,12 +153,12 @@ class App extends Component {
         const { token } = sessionStorage
         toggleFavVehicle(id, token, error => {
             if (error) {
-                this.setState({ error: error.message })
+                this.__handleError__(error)
             } else {
                 if (this.state.view === 'favlist') {
                     searchFavs(token, (error, listOfFavs) => {
                         if (error) {
-                            this.setState({ error: error.message })
+                            this.__handleError__(error)
                         } else {
                             this.setState({ view: 'favlist', vehicles: undefined, vehicle: undefined, listOfFavs })
                         }
@@ -173,7 +166,7 @@ class App extends Component {
                 } else if (this.state.view === 'detail') {
                     retrieveVehicle(token, id, (error, vehicle) => {
                         if (error) {
-                            this.setState({ error: error.message })
+                            this.__handleError__(error)
                         } else {
                             this.setState({ vehicle, view: 'detail' })
 
@@ -189,16 +182,25 @@ class App extends Component {
         const { token } = sessionStorage
         searchFavs(token, (error, listOfFavs) => {
             if (error) {
-                this.setState({ error: error.message })
+                this.__handleError__(error)
             } else {
                 this.setState({ view: 'favlist', vehicles: undefined, vehicle: undefined, listOfFavs })
             }
         })
     }
 
+    handleLogout = () => {
+        sessionStorage.clear()
+
+        // TODO clear querystring in url
+
+        this.setState({ view: 'login', nameOfUser: undefined })
+    }
+
     render() {
-        const { props: { title }, state: { view, vehicles, vehicle, style, error, nameOfUser, listOfFavs }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleToBack, handleFavs, handleFavsDetails, handleListOfFavs } = this
+        const { props: { title }, state: { view, vehicles, vehicle, style, error, nameOfUser, listOfFavs, query }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleToBack, handleFavs, handleFavsDetails, handleListOfFavs, handleLogout } = this
         return <Fragment>
+            {nameOfUser && <Fragment><h2>{nameOfUser.name} <button onClick={handleLogout}>Logout</button></h2></Fragment>}
             {nameOfUser && <span>{nameOfUser}</span>}
             <br />
             {view === 'search' && <p className="favbutton" href="" onClick={handleListOfFavs}>GO TO LIST OF FAVORITES</p>}
