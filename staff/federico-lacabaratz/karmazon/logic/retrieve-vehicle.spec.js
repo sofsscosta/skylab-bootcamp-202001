@@ -1,9 +1,11 @@
 describe('retrieveVehicle', () => {
     it('should succeed on valid ID#', done => {
         
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNjM2NmYzQxMDQ0ZTAwMTU0NDUwY2EiLCJpYXQiOjE1ODEwMTYwODUsImV4cCI6MTU4MTAxOTY4NX0.kMTJu-yC5usghKsHRUSyajaLlhnR2tdJkd_6pa-fBIw"
+
         const id = 'FJV58'
         
-        retrieveVehicle(id, (error, vehicle) => {
+        retrieveVehicle(token, id, (error, vehicle) => {
             expect(error).toBeUndefined()
             expect(vehicle).toBeDefined()
             expect(vehicle.id).toBeDefined(id)
@@ -26,9 +28,10 @@ describe('retrieveVehicle', () => {
     })
 
     it('should return null on non-matching vehicle id', done => {
+        
         const id = 'non-valid-id'
 
-        retrieveVehicle(id, (error, vehicle) => {
+        retrieveVehicle(token, id, (error, vehicle) => {
             expect(error).toBeUndefined()
             expect(vehicle).not.toBeInstanceOf(Error)
 
@@ -40,37 +43,37 @@ describe('retrieveVehicle', () => {
 
     it('should fail on non-string query', () => {
         expect(() => 
-            retrieveVehicle(undefined, () => {})
+            retrieveVehicle(token, undefined, (error, vehicle) => {})
         ).toThrowError(TypeError, 'undefined is not a string')
 
         expect(() => 
-            retrieveVehicle(1, () => {})
+            retrieveVehicle(token, 1, (error, vehicle) => {})
         ).toThrowError(TypeError, '1 is not a string')
 
         expect(() => 
-            retrieveVehicle(true, () => {})
+            retrieveVehicle(token, true, (error, vehicle) => {})
         ).toThrowError(TypeError, 'true is not a string')
 
         expect(() => 
-            retrieveVehicle({}, () => {})
+            retrieveVehicle(token, {}, (error, vehicle) => {})
         ).toThrowError(TypeError, '[object Object] is not a string')
     })
 
     it('should fail on non-function callback', () => {
         expect(() => 
-            retrieveVehicle('', undefined)
+            retrieveVehicle(token, '', undefined)
         ).toThrowError(TypeError, 'undefined is not a function')
 
         expect(() => 
-            retrieveVehicle('', 1)
+            retrieveVehicle(token, '', 1)
         ).toThrowError(TypeError, '1 is not a function')
 
         expect(() => 
-            retrieveVehicle('', true)
+            retrieveVehicle(token, '', true)
         ).toThrowError(TypeError, 'true is not a function')
 
         expect(() => 
-            retrieveVehicle('', {})
+            retrieveVehicle(token, '', {})
         ).toThrowError(TypeError, '[object Object] is not a function')
     })
 })

@@ -1,6 +1,9 @@
 describe('searchVehicles', () => {
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNjM2NmYzQxMDQ0ZTAwMTU0NDUwY2EiLCJpYXQiOjE1ODEwMTYwODUsImV4cCI6MTU4MTAxOTY4NX0.kMTJu-yC5usghKsHRUSyajaLlhnR2tdJkd_6pa-fBIw"
+    
     it('should succeed on matching query', done => {
-        searchVehicles('batman', (error, results) => {
+        searchVehicles(token, 'batman', (error, results) => {
             expect(error).toBeUndefined()
             expect(results).toBeDefined()
             expect(results.length).toBeGreaterThan(0)
@@ -17,7 +20,8 @@ describe('searchVehicles', () => {
     })
 
     it('should succeed on non-matching query returning an empty array', done => {
-        searchVehicles('asdasdfñlajsfklasldñkf', (error, results) => {
+        
+        searchVehicles(token, 'asdasdfñlajsfklasldñkf', (error, results) => {
             expect(error).toBeUndefined()
             expect(results).toBeDefined()
             expect(results).toHaveLength(0)
@@ -28,37 +32,37 @@ describe('searchVehicles', () => {
 
     it('should fail on non-string query', () => {
         expect(() => 
-            searchVehicles(undefined, () => {})
+            searchVehicles(token, undefined, (error, results) => {})
         ).toThrowError(TypeError, 'undefined is not a string')
 
         expect(() => 
-            searchVehicles(1, () => {})
+            searchVehicles(token, 1, (error, results) => {})
         ).toThrowError(TypeError, '1 is not a string')
 
         expect(() => 
-            searchVehicles(true, () => {})
+            searchVehicles(token, true, (error, results) => {})
         ).toThrowError(TypeError, 'true is not a string')
 
         expect(() => 
-            searchVehicles({}, () => {})
+            searchVehicles(token, {}, (error, results) => {})
         ).toThrowError(TypeError, '[object Object] is not a string')
     })
 
     it('should fail on non-function callback', () => {
         expect(() => 
-            searchVehicles('', undefined)
+            searchVehicles(token, '', undefined)
         ).toThrowError(TypeError, 'undefined is not a function')
 
         expect(() => 
-            searchVehicles('', 1)
+            searchVehicles(token, '', 1)
         ).toThrowError(TypeError, '1 is not a function')
 
         expect(() => 
-            searchVehicles('', true)
+            searchVehicles(token, '', true)
         ).toThrowError(TypeError, 'true is not a function')
 
         expect(() => 
-            searchVehicles('', {})
+            searchVehicles(token, '', {})
         ).toThrowError(TypeError, '[object Object] is not a function')
     })
 })
