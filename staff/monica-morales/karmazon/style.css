@@ -107,6 +107,14 @@ ul {
   display: flex;
 }
 
+.fas {
+  color: red;
+}
+
+.fa-heart {
+  font-size: 2em;
+}
+
 figure {
   background-color: #F4F6F6;
   padding: 1rem;

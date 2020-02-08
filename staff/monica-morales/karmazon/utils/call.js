@@ -18,7 +18,7 @@ function call(url, options ={ method :'GET'}, callback) {
     }
 
     xhr.addEventListener('load', function (){
-        callback({
+        callback(undefined, {
             content: this.responseText,
             status: this.status
         })

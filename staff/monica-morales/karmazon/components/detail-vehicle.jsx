@@ -1,4 +1,4 @@
-function Detail({ vehicle: { name, year, price, image, color, maker, collection, description, url }, onBack }){
+function Detail({ vehicle: { name, year, price, image, color, maker, collection, description, url ,fav}, onBack }){
     return <li>
         <h3>{name}{year}</h3>
         <img src = {image}/>
@@ -13,11 +13,21 @@ function Detail({ vehicle: { name, year, price, image, color, maker, collection,
         <p>{description}</p>
         <a href={url}>{url}</a>
         <br />
+        {!fav && <p onClick={event =>{
+            event.preventDefault()
+            favToggle(id)
+        }}><i className="far fa-heart"></i></p>}
+
+        {fav && <p onClick={event =>{
+                    event.preventDefault()
+                    favToggle(id)
+                }}><i className="fas fa-heart"></i></p>}
         <a href="" 
             onClick={event => {
                 event.preventDefault()
                 onBack()
             }
-            }>Back</a>            
+            }>Back</a>   
+
     </li>
 }
