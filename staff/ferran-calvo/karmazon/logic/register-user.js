@@ -14,8 +14,14 @@ function registerUser(name, surname, username, password, callback) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, surname, username, password })
    
-    }, response => {
+    }, (error, response) => {
         if (response instanceof Error) return callback(response)
+
         if (response.status === 201) callback()
+        else if (response.status === 409) {
+            const { error } = JSON.parse(response.content)
+
+            callback(new Error(error))
+        } else callback(new Error('Unknown error'))
     })
 }

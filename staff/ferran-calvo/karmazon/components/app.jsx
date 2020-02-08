@@ -1,102 +1,65 @@
-// const IT = '🎈🤡'
-
-// const { Component } = React
-
-// //const Component = React.Component
-
-// class App extends Component {
-//     constructor() {
-//         super()
-//         this.state = {loggedIn: true, toRegister: false, vehicles: undefined}
-//     }
-
-//     render() {
-//         return <main>
-//             <h1>{this.props.title}</h1>
-
-//             {this.state.loggedIn && <Login onSubmit= {(username, password) => {
-//                 try { 
-//                     authenticate(username, password)
-
-//                     this.setState({ toRegister: false}) //_login.container.replaceWith(_search.container)
-//                     this.setState({ loggedIn: false }) //_login.container.replaceWith(_search.container)
-//                 } catch (error) {
-//                     //alert(error.message + ' ' + IT)
-//                     //_login.showError(error.message + ' ' + IT)
-//                 }
-//             }} onToRegister= { () => {
-//                 this.setState({ toRegister: true })
-//                 this.setState({ loggedIn: false })
-//                 }
-//             } /> }
-
-//             {this.state.toRegister && <Register onSubmit={(name, surname, username, password) => {
-//                 try {
-//                     register(name, surname, username, password)
-
-//                     this.setState({ loggedIn: true })
-//                     // _register.container.replaceWith(_login.container)
-//                 } catch (error) {
-//                     //alert(error.message + ' ' + IT)
-//                     //_register.showError(error.message + ' ' + IT)
-//                 }
-//             }} onToLogin= { () => {
-//                 this.setState({loggedIn: true})
-//                 this.setState({toRegister: false})
-
-//                 }
-//             } />}
-
-//             {!this.state.loggedIn && !this.state.toRegister && <Search title="Search" onSubmit={query => {
-//                 searchVehicles(query, vehicles => {
-//                     this.setState({ vehicles })
-//                 })
-//             }}
-
-//             />}
-
-//             {this.state.vehicles && <Results results={this.state.vehicles} onItemClick={event => {
-//                 event.preventDefault()
-
-//             }
-//             }/>}
-
-
-
-//         </main>
-
-//         let _results
-//     }
-// }
-
-
-
-
-
-
-
-
-///
-
-
-
 const IT = '🎈🤡'
 
 const { Component, Fragment } = React
 
 class App extends Component {
-   
-    state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, error: undefined }
 
+    state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, 
+    error: undefined, user: undefined}
+    
+    componentWillMount() {
+        const { token } = sessionStorage
+
+        if (token)
+            retrieveUser(token, (error, user) => {
+                if (error)
+                    return this.setState({ error: error.message + ' ' + IT })
+                if (location.search) {
+                    const query = location.search.split('=')[1]
+                    const token = sessionStorage.token
+                    searchVehicles(query, token, (error, vehicles) => {
+                        if (error)
+                            this.setState({ error: error.message + ' ' + IT })
+
+                        this.setState({ view: 'search', user, query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
+
+                        if (!vehicles.length)
+                            setTimeout(() => {
+                                this.setState({ error: undefined })
+                            }, 3000)
+                    })
+                } else
+                    this.setState({ view: 'search', user })
+            })
+        else this.setState({ view: 'login' })
+    }
+    
     handleLogin = (username, password) => {
         try {
-            authenticateUser(username, password, token => {
-                // WTF w/ token?
-                const stringToken = JSON.parse(token.content).token
-                localStorage.setItem("token", stringToken)
+            authenticateUser(username, password, (error, token) => {
 
-                this.setState({ view: 'search' })
+                if (error) {
+                    this.setState({ error: error.message + ' ' + IT })
+    
+                    setTimeout(() => {
+                        this.setState({ error: undefined })
+
+                    }, 3000)
+
+                } else {
+
+                    retrieveUser(token, (error, user) => {
+
+                        if (error)
+                            return this.setState({ error: error.message + ' ' + IT })
+
+                        sessionStorage.token = token
+
+                        this.setState({ view: 'search', user })
+                    })
+                }
             })
+            
         } catch (error) {
             this.setState({ error: error.message + ' ' + IT })
 
@@ -110,7 +73,14 @@ class App extends Component {
 
     handleRegister = (name, surname, username, password) => {
         try {
-            registerUser(name, surname, username, password, () => {
+            registerUser(name, surname, username, password, (error) => {
+            if (error) {
+                this.setState({ error: error.message + ' ' + IT })
+
+                setTimeout(() => {
+                    this.setState({ error: undefined })
+                }, 3000)
+            } else
                 this.setState({ view: 'login' })
             })
         } catch (error) {
@@ -124,8 +94,18 @@ class App extends Component {
 
     handleGoToLogin = () => this.setState({ view: 'login' })
 
+    
     handleSearch = query => {
-        searchVehicles(query, vehicles => {
+        const token = sessionStorage.token
+
+        searchVehicles(query, token, vehicles => {
+            
+            const { protocol, host, pathname } = location
+
+            const url = `${protocol}//${host}${pathname}?q=${query}`
+
+            history.pushState({ path: url }, '', url)
+            
             this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
 
             if (!vehicles.length)
@@ -136,51 +116,107 @@ class App extends Component {
     }
 
     handleDetail = id => {
-        retrieveVehicle(id, vehicle =>
+        const token = sessionStorage.token
+        retrieveVehicle(id, token, vehicle =>
             retrieveStyle(vehicle.style, style =>
                 this.setState({ vehicle, style})
             )
         )
     }
 
-    handleChangeUsername = (newUsername) => {
-        const token = localStorage.getItem("token")
-        console.log(token)
-            updateUser(newUsername, token, () => {
+    
+    handleOnToChangeUsername = () => this.setState({view: "changeUsername"}) 
+    
+    handleChangeUsername = (newUsername) => { debugger
+            updateUsername(newUsername, token, () => { 
                 this.setState({view: "login"}) 
             })
-        
     }
-
-    handleOnToChangeUsername = () => this.setState({view: "changeUsername"}) 
-
     handleOnToChangePassword = ()  => this.setState({view: "changePassword"})
 
     handleChangePassword = (oldPassword, password) => {
-        const token = localStorage.getItem("token")
-        console.log(token)
-            updatePassword(oldPassword, password, token, () => {
-                this.setState({view: "login"}) 
-            })
+        updatePassword(oldPassword, password, token, () => {
+            this.setState({view: "login"}) 
+        })
     }
 
     handleOnToDeleteUser = () => this.setState({view: "deleteUser"}) 
 
     handleDeleteUser = (password) => {
-        const token = localStorage.getItem("token")
-        console.log(token)
-            deleteUser(password, token, () => {
-                this.setState({view: "login"}) 
-            })
+        deleteUser(password, token, () => {
+            this.setState({view: "login"}) 
+        })
     }
 
-    handleGoBack =  () => this.setState({ vehicle : undefined})
+    handleOnFavClick = (id) => {
+        const {token} = sessionStorage
+
+        toggleFavVehicle(id, token, () => {
+            const _query = location.search.split('=')[1]
+
+            this.handleSearch(_query)
+            
+            // searchVehicles(_query, token, (error, vehicles) => {
+
+            //     if (error)
+            //         this.setState({ error: error.message + ' ' + IT })
+
+            //     const { protocol, host, pathname } = location
+
+            //     const url = `${protocol}//${host}${pathname}?q=${query}`
+    
+            //     history.pushState({ path: url }, '', url)
+
+            //     this.setState({ view: 'search', query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
+
+            //     if (!vehicles.length)
+            //         setTimeout(() => {
+            //             this.setState({ error: undefined })
+            //         }, 3000)
+            // })
+        })
+    }
+
+    handleOnFavClickDetail = (id) => {
+        const {token} = sessionStorage
+
+        toggleFavVehicle(id, token, () => {
+
+            this.handleDetail(id)
+        })
+    }
+
+    handleGoBack =  () => {
+
+        const token = sessionStorage.token
+        const _query = location.search.split('=')[1]
+
+        searchVehicles(_query, token, vehicles => {
+            
+            const { protocol, host, pathname } = location
+
+            const url = `${protocol}//${host}${pathname}?q=${_query}`
+
+            history.pushState({ path: url }, '', url)
+            
+            this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
+
+            if (!vehicles.length)
+                setTimeout(() => {2
+                    this.setState({ error: undefined })
+                }, 3000)
+        })
+
+       // this.setState({ vehicle : undefined})
+    }
+    
 
     render() {
-        const { props: { title }, state: { view, vehicles, vehicle, style, error }, handleLogin, 
+        const { props: { title }, state: { view, vehicles, vehicle, style, error, user}, handleLogin, 
         handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, 
         handleGoBack, handleChangeUsername, handleOnToChangeUsername, handleOnToChangePassword, 
-        handleChangePassword, handleDeleteUser, handleOnToDeleteUser } = this
+        handleChangePassword, handleDeleteUser, handleOnToDeleteUser, 
+        handleOnFavClick, handleOnFavClickDetail} = this
 
         return <Fragment>
             <h1>{title}</h1>
@@ -189,7 +225,11 @@ class App extends Component {
 
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={handleGoToLogin} error={error} />}
 
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} warning={error} onToChangeUsername={handleOnToChangeUsername} onToChangePassword={handleOnToChangePassword} onToDeleteUser={handleOnToDeleteUser}/>}
+            {view === 'search' && <Search title="Search" onSubmit={handleSearch} warning={error} 
+            onToChangeUsername={handleOnToChangeUsername} onToChangePassword={handleOnToChangePassword} 
+            onToDeleteUser={handleOnToDeleteUser}/>}
+            
+            {user && <h1>{user.name}</h1>}
 
             {view === 'changeUsername' && <ChangeUsername onToLogin={handleGoToLogin} onSubmit={handleChangeUsername} error={error}/>}
 
@@ -197,96 +237,11 @@ class App extends Component {
 
             {view === 'deleteUser' && <DeleteUser onToLogin={handleGoToLogin} onSubmit={handleDeleteUser} error={error}/>}
 
-            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} />}
+            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} 
+            onFavClick={handleOnFavClick}/>}
 
-            {view === 'search' && vehicle && vehicles && <Detail vehicle={vehicle} style={style} goBack={handleGoBack}/>}
+            {view === 'search' && vehicle && vehicles && <Detail vehicle={vehicle} style={style} goBack={handleGoBack}
+            onFavClick={handleOnFavClickDetail}/>}
         </Fragment>
     }
 }
-
-
-
-
-
-
-
-
-
-// const IT = '🎈🤡'
-
-// const { Component, Fragment } = React
-
-// class App extends Component {
-
-//         state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, error: undefined}
-
-//         handleRegister = (name, surname, username, password) => {
-//             try {
-//                 register(name, surname, username, password)
-
-//                 this.setState({ view: 'login'})
-//             } catch (error) {
-//                 this.setState({error: `${error}.message ${IT}`})
-
-//                 setTimeout(()=>{
-//                     this.setState({error: undefined})
-//                 },3000)
-//             }
-//         }
-
-//         handleLogin = (username, password) => {
-//             try {
-//                 authenticate(username, password)
-
-//                 this.setState({ view: 'search'})
-//             } catch (error) {
-//                 this.setState({error: `${error}.message ${IT}`})
-//                 setTimeout(()=>{
-//                     this.setState({error: undefined})
-//                 },3000)
-//             }
-//         }
-
-//         handleGoToRegister = () => this.setState({view: 'register'})
-
-//         handleGoToLogin = () => this.setState({view: 'login'})
-
-//         handleSearch = query => {
-//             searchVehicles(query, vehicles =>
-//                 this.setState({ vehicles })
-//             )
-//         }
-
-//         handleDetail = id => {
-//             retrieveVehicle(id, vehicle =>
-//                 retrieveStyle(vehicle.style, style => {
-//                     this.setState({ vehicle, style })
-//                 }
-//                 )
-//             )
-//         }
-
-//         handleGoBack =  () => this.setState({ vehicle : undefined})
-    
-
-//     render() {
-
-//         const {props: {title}, state: {view, vehicles, vehicle, style, error}, handleLogin, handleRegister, 
-//         handleGoToRegister, handleGoToLogin, handleSearch, handleDetail, handleGoBack} = this
-
-//         return <Fragment>
-//             <h1>{title}</h1>
-
-//             {view === 'login' && <Login onSubmit={handleLogin} goToRegister={handleGoToRegister} error={error}/>}
-
-//             {view === 'register' && <Register onSubmit={handleRegister} goToLogin={handleGoToLogin} error={error}/>}
-
-//             {view === 'search' && <Search title="Search" onSubmit={handleSearch} warning={error}/>}
-
-//             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} />}
-
-//             {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} goBack={handleGoBack}
-//             />}
-//         </Fragment>
-//     }
-// }

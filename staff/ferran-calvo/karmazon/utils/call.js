@@ -8,14 +8,13 @@ function call(url, options = { method: 'GET' }, callback) {
     const xhr = new XMLHttpRequest
 
     const { method, headers, body } = options
-    console.log(body)
     xhr.open(method, url)
 
     for (const key in headers)
         xhr.setRequestHeader(key, headers[key])
 
     xhr.addEventListener('load', function () {
-        callback({
+        callback(undefined, {
             content: this.responseText,
             status: this.status
         })

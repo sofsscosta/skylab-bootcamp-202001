@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css");
 * {
   margin: 0;
 }
@@ -552,6 +553,19 @@ body {
   justify-self: flex-end;
   padding: 2vh 0;
   background-color: #aae2ee;
+}
+
+.fav {
+  width: 5vw;
+  height: 5vw;
+  background-image: url("fav.png");
+  background-size: cover;
+}
+.fav__faved {
+  width: 5vw;
+  height: 5vw;
+  background-image: url("faved.png");
+  background-size: cover;
 }
 
 .search, .login, .register {

@@ -1,4 +1,4 @@
-function DeleteUser({onSubmit, onToLogin}) {
+function DeleteUser({onSubmit, onToLogin, error}) {
 
     return <form className="changeUsername" onSubmit = { event => {
         event.preventDefault()
@@ -11,7 +11,7 @@ function DeleteUser({onSubmit, onToLogin}) {
         <input className="input" type="password" name="password" placeholder="password"/>
         <button className="button">Delete</button>
 
-        {/* { error && <Feedback level="error" message={error} />} */}
+        { error && <Feedback level="error" message={error} />}
 
         <a className="link" href="" onClick = { event => {
             event.preventDefault()

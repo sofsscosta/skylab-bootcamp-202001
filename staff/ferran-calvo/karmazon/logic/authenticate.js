@@ -8,10 +8,14 @@ function authenticateUser(username, password, callback) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
    
-    }, response => {
-        if (response instanceof Error) return callback(response)
-        console.log(response)
-        if (response.status === 200) callback(response)
+    }, (error, response) => {
+        if (error) return callback(error)
+
+        const { error: _error, token } = JSON.parse(response.content)
+
+        if (_error) return callback(new Error(_error))
+
+        callback(undefined, token)
     })
     
     // var user = users.find(function (user) { return user.username === username; });

@@ -9,8 +9,8 @@ function Login ({onSubmit, onToRegister, error}) {
             onSubmit(username, password)
     }}>
         <h2 className="form__title">Sign-in</h2>
-        <input className="input" type="text" name="username" placeholder="username"/>
-        <input className="input" type="password" name="password" placeholder="password"/>
+        <input className="input" type="text" name="username" placeholder="username" required/>
+        <input className="input" type="password" name="password" placeholder="password" required/>
         <button className="button">Login</button>
 
         { error && <Feedback level="error" message={error} />}

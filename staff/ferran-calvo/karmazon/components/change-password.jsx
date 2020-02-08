@@ -1,4 +1,4 @@
-function ChangePassword({onSubmit, onToLogin}) {
+function ChangePassword({onSubmit, onToLogin, error}) {
    
     return <form className="changeUsername" onSubmit = { event => {
         event.preventDefault()
@@ -13,7 +13,7 @@ function ChangePassword({onSubmit, onToLogin}) {
         <input className="input" type="password" name="password" placeholder="New Password"/>
         <button className="button">Change</button>
 
-        {/* { error && <Feedback level="error" message={error} />} */}
+        { error && <Feedback level="error" message={error} />}
 
         <a className="link" href="" onClick = { event => {
             event.preventDefault()

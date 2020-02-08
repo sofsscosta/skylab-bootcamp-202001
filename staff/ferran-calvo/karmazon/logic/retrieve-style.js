@@ -1,12 +1,9 @@
-'use strict';
-
 function retrieveStyle(id, callback) {
-    // TODO
 
     if (typeof id !== 'string') throw new TypeError(id + ' is not a string');
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
-    call(`https://skylabcoders.herokuapp.com/api/hotwheels/styles/${id}`, undefined, response => {
+    call(`https://skylabcoders.herokuapp.com/api/hotwheels/styles/${id}`, undefined, (error, response) => {
         if (response instanceof Error) return callback(response);
 
         if (response.status === 200) {

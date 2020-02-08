@@ -1,4 +1,4 @@
-function ChangeUsername ({onSubmit, onToLogin}) {
+function ChangeUsername ({onSubmit, onToLogin, error}) {
 
     return <form className="changeUsername" onSubmit = { event => {
         event.preventDefault()
@@ -10,7 +10,7 @@ function ChangeUsername ({onSubmit, onToLogin}) {
         <input className="input" type="text" name="username" placeholder="New Username"/>
         <button className="button">Change</button>
 
-        {/* { error && <Feedback level="error" message={error} />} */}
+        { error && <Feedback level="error" message={error} />}
 
         <a className="link" href="" onClick = { event => {
             event.preventDefault()
