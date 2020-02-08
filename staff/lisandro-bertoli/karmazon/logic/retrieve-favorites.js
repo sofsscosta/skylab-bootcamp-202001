@@ -18,7 +18,10 @@ function retrieveFavorites(token, callback) {
 
         const { favs } = user
 
+        if (!favs.length) return callback(undefined, favs)
+
         let favsList = []
+
         counter = 0
 
         favs.forEach(id => {

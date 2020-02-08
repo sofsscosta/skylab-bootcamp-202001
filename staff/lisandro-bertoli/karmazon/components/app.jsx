@@ -1,5 +1,5 @@
 const IT = '🎈🤡'
-
+//TODO when no favs it does not go and render the favorites component
 const { Component } = React
 
 class App extends Component {
@@ -189,7 +189,7 @@ class App extends Component {
         })
     }
 
-    handleOnToFavs = () => {
+    handleOnToFavs = () => {//TODO when no favs it does not go and render the favorites component
         const token = sessionStorage.token
         retrieveFavorites(token, (error, favsList) => {
             if (error) return this.__handleErrors__(error)
@@ -226,7 +226,7 @@ class App extends Component {
             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} onHeartClick={handleHeartClick} />}
 
             {view === 'search' && vehicle && <Detail vehicle={vehicle} onBack={handleBackToSearch} onFavClick={handleHeartClick} />}
-
+            {/* //TODO when no favs it does not go and render the favorites component */}
             {view === 'favorites' && <Favorites favs={favorites} onItemClick={handleDetail} onHeartClick={handleHeartClick} onToSearch={handleBackToSearch} />}
 
         </main>

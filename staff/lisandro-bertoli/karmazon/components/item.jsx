@@ -1,7 +1,7 @@
 function Item({ vehicle: { id, thumbnail, name, price, isFav }, onClick, onFavClick }) {
 
     return <li className="item" >
-
+        {/* TODO refactor to use stop bubbling of the event instead of current */}
         <img className="item__thumbnail" src={thumbnail} alt="" />
         <div onClick={() => { onFavClick(id) }}>
             {isFav && <i className="fas fa-heart item__heart"></i>}
