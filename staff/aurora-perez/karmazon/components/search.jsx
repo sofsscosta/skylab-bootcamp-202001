@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, name}) {
+function Search({ title, onSubmit, onLogout, name}) {
     return <form className="search" onSubmit={event => {
         event.preventDefault()
 
@@ -10,5 +10,11 @@ function Search({ title, onSubmit, name}) {
     {name && <span>{name}</span>}
         <input type="text" name="query" placeholder="criteria" />
         <button type="submit">Search</button>
+
+    <button className="logout" onClick={event => {
+            event.preventDefault();
+
+            onLogout();
+        }}>Logout</button>
     </form>
 }
