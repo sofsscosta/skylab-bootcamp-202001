@@ -3,6 +3,7 @@
     width: 400px
     border: 1px solid #cccccc
     display: inline-block
+    position: relative
 
     // &:not(:last-child)
 
@@ -19,3 +20,21 @@
 
         &:hover, &:focus, &:active 
             color: #000000
+    
+    &__heart
+        position: absolute
+        text-align: center
+        height: 30px
+        width: 30px
+        border-radius: 50%
+        right: 5px
+        top: 5px
+        background-color: #cccccc
+        display: flex
+        align-items: center
+        justify-items: center
+        align-content: center
+        justify-content: center
+
+        & .fas
+            color: red

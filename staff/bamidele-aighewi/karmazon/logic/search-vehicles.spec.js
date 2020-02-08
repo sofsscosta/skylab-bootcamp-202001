@@ -42,6 +42,14 @@ describe('searchVehicles', () => {
         ).toThrowError(TypeError, '[object Object] is not a string')
     })
 
+    it('should fail if token is empty', () => {
+        expect(() => toggleFavVehicle('test', '', () => { })).toThrowError(Error, 'token is empty')
+    })
+
+    it('should fail if token parts on split is not equal to 3', () => {
+        expect(() => toggleFavVehicle('test', 'header.payload', () => { })).toThrowError(Error, 'token is invalid')
+    })
+
     it('should fail on non-function callback', () => {
         expect(() =>
             searchVehicles('', undefined)

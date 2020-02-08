@@ -95,6 +95,9 @@ body {
 .feedback--warning {
   color: orange;
 }
+.feedback--success {
+  color: green;
+}
 
 .results .results__list {
   list-style: none;
@@ -105,6 +108,7 @@ body {
   width: 400px;
   border: 1px solid #cccccc;
   display: inline-block;
+  position: relative;
 }
 .item__link {
   text-decoration: none;
@@ -118,6 +122,24 @@ body {
 }
 .item__title:hover, .item__title:focus, .item__title:active, .item__price:hover, .item__price:focus, .item__price:active {
   color: #000000;
+}
+.item__heart {
+  position: absolute;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  right: 5px;
+  top: 5px;
+  background-color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.item__heart .fas {
+  color: red;
 }
 
 .details {

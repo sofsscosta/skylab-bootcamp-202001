@@ -4,27 +4,10 @@ const { Component, Fragment } = React
 
 class App extends Component {
 
-    state = { view: undefined, token: undefined, user: undefined, vehicle: undefined, vehicles: undefined, style: undefined, level: 'error', error: undefined, maker: undefined, collection: undefined }
-
-    componentDidMount() {
-        const token = this.handleRetrieveToken()
-        if (token){
-            retrieveUser(token, (user) => {
-                if(user instanceof Error){
-                    this.handleFeedback(user.message)
-                    this.handleClearToken()
-                    return
-                }
-
-                if (!!token.trim()) this.setState({ view: 'search', user })
-            })
-        }else{
-            this.handleNavigation('login')
-        }
-    }
+    state = { view: undefined, favourites: [], query: undefined, token: undefined, user: undefined, vehicle: undefined, vehicles: undefined, style: undefined, level: 'error', error: undefined, maker: undefined, collection: undefined }
 
     handleFeedback = (message, level = 'error') => {
-        this.setState({ error: message, level }, ()=>{
+        this.setState({ error: message, level }, () => {
             setTimeout(() => {
                 this.setState({ error: undefined, level: 'error' })
             }, 3000);
@@ -87,9 +70,20 @@ class App extends Component {
     }
 
     handleSearch = (query) => {
-        searchVehicles(query, vehicles => {
-            this.setState({ vehicles, vehicle: undefined })
-        })
+        try {
+            const token = this.handleRetrieveToken()
+            searchVehicles(query, token, response => {
+                if (response instanceof Error) {
+                    this.handleFeedback(response.message + ' ' + IT)
+                } else {
+                    const { vehicles, favourites } = response
+                    history.pushState(location.href, '', `?q=${query}`)
+                    this.setState({ vehicles, favourites, query, vehicle: undefined })
+                }
+            })
+        } catch (error) {
+            this.handleFeedback(error.message)
+        }
     }
 
     handleItemClick = id => {
@@ -119,7 +113,7 @@ class App extends Component {
                     this.handleFeedback(response.message)
                 } else {
                     this.handleFeedback('Update successfully ' + IT, 'success')
-                    this.setState({ user: Object.assign(this.state.user, newUser)})
+                    this.setState({ user: Object.assign(this.state.user, newUser) })
                 }
             })
         } catch (error) {
@@ -130,16 +124,72 @@ class App extends Component {
     handleItemBackButton = () => this.setState({ vehicle: undefined })
     handleNavigation = (toView) => this.setState({ view: toView })
 
+    getUrlQueryParams = () => {
+        let queryParam = {}
+        try {
+            const search = location.search.substring(1);
+            queryParam = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+        } catch (error) {
+            console.log(error.message)
+        }
+
+        return queryParam
+    }
+
+    /* REACT LIFECYCLES */
+
+    componentWillMount() {
+        const query = this.getUrlQueryParams().q
+        this.setState({ query })
+    }
+
+    componentDidMount() {
+        const token = this.handleRetrieveToken()
+        if (token) {
+            retrieveUser(token, (user) => {
+                if (user instanceof Error) {
+                    this.handleFeedback(user.message)
+                    this.handleClearToken()
+                    return
+                }
+
+                if (!!token.trim()) this.setState({ view: 'search', user }, () => {
+                    if (this.state.query) {
+                        this.handleSearch(this.state.query)
+                    }
+                })
+            })
+        } else {
+            this.handleNavigation('login')
+        }
+    }
+
+    handleToggleFavVehicle = vehicleId => {
+        try {
+            const token = this.handleRetrieveToken()
+
+            toggleFavVehicle(vehicleId, token, (response) => {
+                if (response instanceof Error) {
+                    this.handleFeedback(response.message + ' ' + IT)
+                } else {
+                    this.handleSearch(this.state.query)
+                }
+            })
+        } catch (error) {
+            this.handleFeedback(error.message + ' ' + IT)
+        }
+    }
+
     render() {
-        const { props: { title }, state: { view, vehicle, vehicles, style, maker, collection, error, user, level }, handleUpdate, handleLogin, handleRegister, handleSearch, handleItemClick, handleItemBackButton, handleNavigation } = this
+        const { props: { title }, state: { view, vehicle, vehicles, style, maker, collection, error, user, level, query, favourites }, handleToggleFavVehicle, handleUpdate, handleLogin, handleRegister, handleSearch, handleItemClick, handleItemBackButton, handleNavigation } = this
 
         return <Fragment>
             <h1>{title}</h1>
             {user && <h1>{user.name}</h1>}
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={() => handleNavigation('register')} error={error} />}
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={() => handleNavigation('login')} error={error} />}
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} onToUpdateProfile={() => handleNavigation('update')} user={user} />}
-            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleItemClick} />}
+            {view === 'search' && <Search title="Search" onSubmit={handleSearch} onToUpdateProfile={() => handleNavigation('update')} user={user} query={query} error={error} level={level} />}
+            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleItemClick} favourites={favourites} toggleFavVehicle={handleToggleFavVehicle} />}
             {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} maker={maker} collection={collection} onBackButtonClick={handleItemBackButton} />}
             {view === 'update' && <Update onSubmit={handleUpdate} onToSearch={() => handleNavigation('search')} user={user} error={error} level={level} />}
         </Fragment>
