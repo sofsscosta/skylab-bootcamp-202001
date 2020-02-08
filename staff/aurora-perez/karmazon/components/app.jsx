@@ -174,16 +174,16 @@ class App extends Component {
     }
 
     render() {
-        const { props: {title}, state: {view, vehicle, vehicles, error, user, favorites}, handleDetail, handleLogin, handleRegister, handleSearch, handleToLogin, handleToRegister, handleBack, handleLogout, handleHeart, handleOnToFavorites} = this
+        const { props: {title}, state: { view, vehicle, vehicles, error, user, favorites}, handleDetail, handleLogin, handleRegister, handleSearch, handleToLogin, 
+        handleToRegister, handleBack, handleLogout, handleHeart, handleOnToFavorites} = this
         return <main>
             <h1>{title}</h1>
-            <a href="#" onClick={handleOnToFavorites}>Favorites</a>
 
             {view==='login' && <Login onSubmit={handleLogin} onToRegister = {handleToRegister} error={error}/>} 
 
             {view === 'register' && <Register onSubmit ={handleRegister} onToLogin = {handleToLogin} error={error}/>}
 
-            {view=== 'search' && <Search title="Search" name={user.name} onSubmit={handleSearch} onLogout={handleLogout} />}
+            {view=== 'search' && <Search title="Search" name={user.name} onSubmit={handleSearch} onLogout={handleLogout} onFavorites={handleOnToFavorites}/>}
 
             {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} onFavSelection={handleHeart}/>}
 
