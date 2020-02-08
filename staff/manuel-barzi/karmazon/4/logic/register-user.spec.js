@@ -9,8 +9,10 @@ describe('registerUser', () => {
     })
 
     it('should succeed on new user', done => {
-        registerUser(name, surname, username, password, error => {
+        registerUser(name, surname, username, password, (error, response) => {
             expect(error).toBeUndefined()
+
+            expect(response).toBeUndefined()
 
             done()
         })
@@ -22,8 +24,8 @@ describe('registerUser', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, surname, username, password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, error => {
+                if (error) return done(error)
 
                 done()
             })
@@ -44,12 +46,12 @@ describe('registerUser', () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
-        }, response => {
-            if (response instanceof Error) return done(response)
+        }, (error, response) => {
+            if (error) return done(error)
 
-            const { error, token } = JSON.parse(response.content)
+            const { error: _error, token } = JSON.parse(response.content)
 
-            if (error) return done(new Error(error))
+            if (_error) return done(new Error(_error))
 
             call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
                 method: 'DELETE',
@@ -58,8 +60,8 @@ describe('registerUser', () => {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
                 if (response.content) {
                     const { error } = JSON.parse(response.content)
