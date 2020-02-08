@@ -16,7 +16,7 @@ main {
   box-sizing: border-box;
 }
 
-h1, h2 {
+h2, h1 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
@@ -30,7 +30,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+.search p, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #000000;
@@ -64,7 +64,7 @@ li {
   box-sizing: border-box;
 }
 
-h1, h2 {
+h2, h1 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
@@ -78,7 +78,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+.search p, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #000000;
@@ -139,6 +139,22 @@ body {
   margin: 0.5rem;
 }
 
+h2 {
+  display: inline-block;
+  background-color: #348feb;
+  border: 1px solid #857f7f;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+h2 button {
+  display: block;
+  background-color: #b1d1f2;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -147,7 +163,7 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2 {
+h2, h1 {
   font-family: Italic;
   font-weight: bold;
   color: #f2ff00;
@@ -161,7 +177,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+.search p, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #000000;
@@ -244,7 +260,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+.search p, h2 {
   font-family: Italic;
   font-weight: bold;
   color: #000000;
@@ -318,7 +334,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+h2, .search p {
   font-family: Italic;
   font-weight: bold;
   color: #000000;
@@ -374,7 +390,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+h2, .search p {
   font-family: Italic;
   font-weight: bold;
   color: #000000;
@@ -431,7 +447,7 @@ h1, h2 {
   font-size: 1rem;
 }
 
-.search p {
+h2, .search p {
   font-family: Italic;
   font-weight: bold;
   color: #000000;

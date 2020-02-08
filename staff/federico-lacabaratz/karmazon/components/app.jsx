@@ -10,27 +10,33 @@ class App extends Component {
         const { token } = sessionStorage
 
         if (token)
-            retrieveUser(token, (error, userToPrint) => {
-                if (error)
-                    return this.setState({ error: `${error.message} ${IT}`})
+            try {
+                retrieveUser(token, (error, userToPrint) => {
+                    if (error)
+                        this.handleLogout()
 
-                if (location.search) {
-                    const query = location.search.split('=')[1]
+                    if (location.search) {
+                        const query = location.search.split('=')[1]
 
-                    searchVehicles(token, query, (error, vehicles) => {
-                        if (error)
-                            this.setState({ error: `${error.message} ${IT}` })
+                        searchVehicles(token, query, (error, vehicles) => {
+                            if (error)
+                                this.setState({ error: `${error.message} ${IT}` })
 
-                            this.setState({ view: 'search', userToPrint, _query: query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
+                                this.setState({ view: 'search', userToPrint, _query: query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
 
-                        if (!vehicles.length)
-                            setTimeout(() => {
-                                this.setState({ error: undefined })
-                            }, 3000)
-                    })
-                } else
-                    this.setState({ view: 'search', userToPrint })
-            })
+                            if (!vehicles.length)
+                                setTimeout(() => {
+                                    this.setState({ error: undefined })
+                                }, 3000)
+                        })
+                    } else
+                        this.setState({ view: 'search', userToPrint })
+                })
+            } catch (error) {
+                sessionStorage.clear()
+
+                this.setState({ view: 'login' })
+            }
         else this.setState({ view: 'login' })
     }
     
@@ -50,19 +56,16 @@ class App extends Component {
                         return this.setState({ error: `${error.message} ${IT}` })
                         
                         sessionStorage.token = token
-                        this.setState({ view: "search", token, userToPrint: userToPrint.username })
+                        this.setState({ view: "search", token, userToPrint })
                     })
                 }
             })
 
         } catch (error) {
-            // this.setState({ error: `${error.message} ${IT}` })
-            // setTimeout(() => {
-            //     this.setState({ error: undefined })
-            // }, 3000)
-            sessionStorage.clear()
-
-            this.setState({ view: "login" })
+            this.setState({ error: `${error.message} ${IT}` })
+            setTimeout(() => {
+                this.setState({ error: undefined })
+            }, 3000)
         }
     }
 
@@ -145,21 +148,19 @@ class App extends Component {
         })
     }
 
-    handleLogout=  (username, password) => {
+    handleLogout=  () => {
         sessionStorage.clear()
-        this.setState({ view: 'login' })
+        this.setState({ view: 'login', userToPrint: undefined })
     }
 
-        
-    
     render() {
 
-        const { props: { title }, state: { view, vehicles, vehicle, style, maker, collection, error, userToPrint, query, fav }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleFav } = this
+        const { props: { title }, state: { view, vehicles, vehicle, style, maker, collection, error, userToPrint, query, fav }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleFav, handleLogout } = this
 
         return <main>
             <h1>{title}</h1>
 
-            {user && <Fragment><h2>{user.name} <button onClick={handleLogout}>Logout</button></h2></Fragment> }
+            {userToPrint && <Fragment><h2>{userToPrint.name} <button onClick={handleLogout}>Logout</button></h2></Fragment> }
 
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
 
