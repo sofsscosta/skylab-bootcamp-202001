@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, onLogout, error, name }) {
+function Search({ title, onSubmit, onLogout, error }) {
     return <form className="search" onSubmit={event => {
         event.preventDefault();
 

@@ -2,7 +2,7 @@ function Detail({ vehicle: { id, name, image, year, color, maker, collection, st
 
     return <section className="details">
         <div className="details__intro">
-            <a className="details__exit" href="#" onClick={() => {
+            <a className="details__exit" href="" onClick={() => {
                 backToResults()
             }}>{'<< Back to results'}</a>
             <h2 className="details__car-name">{name}</h2>
