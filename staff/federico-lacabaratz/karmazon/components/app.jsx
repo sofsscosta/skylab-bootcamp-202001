@@ -38,7 +38,7 @@ class App extends Component {
         try {
             authenticateUser(username, password, (error, token) => {
                 if (error) {
-                    this.setState({ error: `${error.message} ${IT}` })
+                    this.handleLogout()
 
                     setTimeout(() => {
                         this.setState({ error: undefined })
@@ -56,10 +56,13 @@ class App extends Component {
             })
 
         } catch (error) {
-            this.setState({ error: `${error.message} ${IT}` })
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            // this.setState({ error: `${error.message} ${IT}` })
+            // setTimeout(() => {
+            //     this.setState({ error: undefined })
+            // }, 3000)
+            sessionStorage.clear()
+
+            this.setState({ view: "login" })
         }
     }
 
@@ -142,14 +145,21 @@ class App extends Component {
         })
     }
 
+    handleLogout=  (username, password) => {
+        sessionStorage.clear()
+        this.setState({ view: 'login' })
+    }
+
         
     
     render() {
 
         const { props: { title }, state: { view, vehicles, vehicle, style, maker, collection, error, userToPrint, query, fav }, handleLogin, handleGoToRegister, handleRegister, handleGoToLogin, handleSearch, handleDetail, handleFav } = this
 
-        return <Fragment>
+        return <main>
             <h1>{title}</h1>
+
+            {user && <Fragment><h2>{user.name} <button onClick={handleLogout}>Logout</button></h2></Fragment> }
 
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={handleGoToRegister} error={error} />}
 
@@ -160,7 +170,7 @@ class App extends Component {
             {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} fav={fav} onFav={handleFav}/>}
 
             {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} maker={maker} collection={collection} fav={fav} onFav={handleFav}/>}
-        </Fragment>
+        </main>
     }
 }
 
