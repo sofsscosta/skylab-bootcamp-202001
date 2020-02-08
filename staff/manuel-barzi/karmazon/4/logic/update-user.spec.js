@@ -14,8 +14,8 @@ describe('updateUser', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, surname, username, password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
                 if (response.content) {
                     const { error } = JSON.parse(response.content)
@@ -27,12 +27,12 @@ describe('updateUser', () => {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
-                }, response => {
-                    if (response instanceof Error) return done(response)
+                }, (error, response) => {
+                    if (error) return done(error)
 
-                    const { error, token: _token } = JSON.parse(response.content)
+                    const { error: _error, token: _token } = JSON.parse(response.content)
 
-                    if (error) return done(new Error(error))
+                    if (_error) return done(new Error(_error))
 
                     token = _token
 
@@ -49,22 +49,23 @@ describe('updateUser', () => {
             oldPassword = password
             password += '-update'
 
-            updateUser(token, { name, surname, username, oldPassword, password }, error => {
+            updateUser(token, { name, surname, username, oldPassword, password }, (error, response) => {
                 expect(error).toBeUndefined()
+                expect(response).toBeUndefined()
 
                 call(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
-                }, response => {
-                    if (response instanceof Error) return callback(response)
+                }, (error, response) => {
+                    if (error) return callback(error)
 
                     // retrieve user to check public info has actually been updated
 
-                    const user = JSON.parse(response.content), { error } = user
+                    const user = JSON.parse(response.content), { error: _error } = user
 
-                    if (error) return callback(new Error(error))
+                    if (_error) return callback(new Error(_error))
 
                     expect(user.name).toBe(name)
                     expect(user.surname).toBe(surname)
@@ -77,12 +78,12 @@ describe('updateUser', () => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ username, password })
-                    }, response => {
-                        if (response instanceof Error) return callback(response)
+                    }, (error, response) => {
+                        if (error) return callback(error)
 
-                        const { error, token } = JSON.parse(response.content)
+                        const { error: _error, token } = JSON.parse(response.content)
 
-                        if (error) return done(new Error(error))
+                        if (_error) return done(new Error(_error))
 
                         expect(token).toBeA('string')
 
@@ -94,9 +95,11 @@ describe('updateUser', () => {
         })
 
         it('should fail on invalid token', done => {
-            updateUser(`${token}-wrong`, {}, error => {
+            updateUser(`${token}-wrong`, {}, (error, response) => {
                 expect(error).toBeInstanceOf(Error)
                 expect(error.message).toBe('invalid token')
+
+                expect(response).toBeUndefined()
 
                 done()
             })
@@ -110,8 +113,8 @@ describe('updateUser', () => {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ password })
-            }, response => {
-                if (response instanceof Error) return done(response)
+            }, (error, response) => {
+                if (error) return done(error)
 
                 if (response.content) {
                     const { error } = JSON.parse(response.content)
@@ -173,77 +176,77 @@ describe('updateUser', () => {
 
         let data = { name: 1 }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(TypeError, `name ${data.name} is not a string`)
 
         data = { name: '' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `name is empty or blank`)
 
         data = { name: '\t\n\r' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `name is empty or blank`)
 
         data = { surname: 1 }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(TypeError, `surname ${data.surname} is not a string`)
 
         data = { surname: '' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `surname is empty or blank`)
 
         data = { surname: '\t\n\r' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `surname is empty or blank`)
 
         data = { username: 1 }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(TypeError, `username ${data.username} is not a string`)
 
         data = { username: '' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `username is empty or blank`)
 
         data = { username: '\t\n\r' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `username is empty or blank`)
 
         data = { password: 1 }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(TypeError, `password ${data.password} is not a string`)
 
         data = { password: '' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `password is empty or blank`)
 
         data = { password: '\t\n\r' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `password is empty or blank`)
 
         data = { oldPassword: 1 }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(TypeError, `oldPassword ${data.oldPassword} is not a string`)
 
         data = { oldPassword: '' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `oldPassword is empty or blank`)
 
         data = { oldPassword: '\t\n\r' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `oldPassword is empty or blank`)
     })
 
@@ -252,12 +255,24 @@ describe('updateUser', () => {
 
         data = { password: '123' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `oldPassword is not defined`)
 
         data = { oldPassword: '123' }
         expect(() =>
-            updateUser(token, data, () => {})
+            updateUser(token, data, () => { })
         ).toThrowError(Error, `password is not defined`)
+    })
+
+    it('should fail on non-familiar property', () => {
+        token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNiZDhmZDE3YjgwOTFiYWFjMTIxMzgiLCJpYXQiOjE1ODA5ODA3NjEsImV4cCI6MTU4MDk4NDM2MX0.t8g49qXznSCYiK040NvOWHPXWqnj9riJ_6MD2vwIv3M'
+
+        const property = 'hello'
+
+        data = { [property]: 'world' }
+
+        expect(() =>
+            updateUser(token, data, () => { })
+        ).toThrowError(Error, `property ${property} is not allowed`)
     })
 })

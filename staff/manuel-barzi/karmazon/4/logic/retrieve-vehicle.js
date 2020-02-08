@@ -2,13 +2,13 @@ function retrieveVehicle(id, callback) {
     if (typeof id !== 'string') throw new TypeError(`${id} is not a string`)
     if (typeof callback !== 'function') throw new TypeError(`${callback} is not a function`)
 
-    call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`, undefined, response => {
-        if (response instanceof Error) return callback(response)
+    call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`, undefined, (error, response) => {
+        if (error) return callback(error)
 
         if (response.status === 200) {
             var result = JSON.parse(response.content)
 
-            callback(result)
+            callback(undefined, result)
         }
     })
 }
