@@ -38,7 +38,6 @@ describe('retrieveUser', () => {
 
                     done()
                 })
-
             })
         )
 
@@ -47,6 +46,10 @@ describe('retrieveUser', () => {
                 expect(error).toBeUndefined()
 
                 expect(user).toBeDefined()
+
+                const VALID_KEYS = ['name', 'surname', 'username']
+                Object.keys(user).forEach(key => VALID_KEYS.includes(key))
+                
                 expect(user.name).toBe(name)
                 expect(user.surname).toBe(surname)
                 expect(user.username).toBe(username)

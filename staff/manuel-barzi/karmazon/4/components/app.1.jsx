@@ -35,8 +35,8 @@ class App extends Component {
                         this.handleLogout()
                     }
 
-                    if (location.queryString.q) {
-                        const { q: query } = location.queryString 
+                    if (location.search) {
+                        const query = location.search.split('=')[1]
 
                         searchVehicles(token, query, (error, vehicles) => {
                             if (error)
@@ -112,7 +112,11 @@ class App extends Component {
                 if (error)
                     return this.__handleError__(error)
 
-                location.queryString = { q: query }
+                const { protocol, host, pathname } = location
+
+                const url = `${protocol}//${host}${pathname}?q=${query}`
+
+                history.pushState({ path: url }, '', url)
 
                 this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
 

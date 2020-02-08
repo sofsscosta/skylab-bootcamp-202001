@@ -263,4 +263,16 @@ describe('updateUser', () => {
             updateUser(token, data, () => { })
         ).toThrowError(Error, `password is not defined`)
     })
+
+    it('should fail on non-familiar property', () => {
+        token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNiZDhmZDE3YjgwOTFiYWFjMTIxMzgiLCJpYXQiOjE1ODA5ODA3NjEsImV4cCI6MTU4MDk4NDM2MX0.t8g49qXznSCYiK040NvOWHPXWqnj9riJ_6MD2vwIv3M'
+
+        const property = 'hello'
+
+        data = { [property]: 'world' }
+
+        expect(() =>
+            updateUser(token, data, () => { })
+        ).toThrowError(Error, `property ${property} is not allowed`)
+    })
 })
