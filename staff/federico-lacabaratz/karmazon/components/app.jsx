@@ -6,6 +6,14 @@ class App extends Component {
 
     state = { view: undefined, vehicles: undefined, vehicle: undefined, style: undefined, maker: undefined, collection: undefined, userToPrint: undefined, _query: undefined, error: undefined, fav: undefined, token: undefined}
 
+    __handleError__(error) {
+        this.setState({ error: error.message + ' ' + IT })
+
+        setTimeout(() => {
+            this.setState({ error: undefined })
+        }, 3000)
+    }
+
     componentWillMount() { 
         const { token } = sessionStorage
 
@@ -20,7 +28,7 @@ class App extends Component {
 
                         searchVehicles(token, query, (error, vehicles) => {
                             if (error)
-                                this.setState({ error: `${error.message} ${IT}` })
+                                return this.__handleError__(error)
 
                                 this.setState({ view: 'search', userToPrint, _query: query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
 
@@ -44,28 +52,22 @@ class App extends Component {
         try {
             authenticateUser(username, password, (error, token) => {
                 if (error) {
-                    this.handleLogout()
-
-                    setTimeout(() => {
-                        this.setState({ error: undefined })
-                    }, 3000)
+                    this.__handleError__(error)
 
                 } else {
                     retrieveUser(token, (error, userToPrint) => {
                         if (error)
-                        return this.setState({ error: `${error.message} ${IT}` })
+                        return this.__handleError__(error)
                         
                         sessionStorage.token = token
+
                         this.setState({ view: "search", token, userToPrint })
                     })
                 }
             })
 
         } catch (error) {
-            this.setState({ error: `${error.message} ${IT}` })
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            this.__handleError__(error)
         }
     }
 
@@ -75,19 +77,12 @@ class App extends Component {
         try {
             registerUser(name, surname, username, password, error => {
                 if (error) {
-                    this.setState({ error: `${error.message} ${IT}` })
-
-                    setTimeout(() => {
-                        this.setState({ error: undefined })
-                    }, 3000)
+                    return this.__handleError__(error)
                 } else
                     this.setState({ view: "login" })
             })
         } catch (error) {
-            this.setState({ error: `${error.message} ${IT}` })
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            this.__handleError__(error)
         }
     }
 
@@ -100,7 +95,7 @@ class App extends Component {
         try{
             searchVehicles(sessionStorage.token, query, (error, vehicles, fav)=> {
                 if (error) 
-                    this.setState({ error: `${error.message} ${IT}` })
+                    return this.__handleError__(error)
 
                 const { protocol, host, pathname } = location
 
@@ -117,35 +112,53 @@ class App extends Component {
                 }
             })
         } catch (error){
-            this.setState({ error: `${error.message} ${IT}` })
-
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            this.__handleError__(error)
         }
     }
 
     handleDetail = id => {
+        try {
         retrieveVehicle(sessionStorage.token, id, (error, vehicle, fav) =>{
-            retrieveStyle(vehicle.style, (error, style) =>
-                retrieveMaker(vehicle.maker, (error, maker) =>
-                    retrieveCollection(vehicle.collection, (error, collection) =>
-                        this.setState({ vehicle, style, error, maker, collection, vehicles: undefined, fav })
-                    )
-                )
-            )
+            if(error)
+                return this.__handleError__(error)
+
+                retrieveStyle(vehicle.style, (error, style) =>{
+                    if(error)
+                        return this.__handleError__(error)
+
+                        retrieveMaker(vehicle.maker, (error, maker) => {
+                            if(error)
+                                return this.__handleError__(error)
+                            
+                                retrieveCollection(vehicle.collection, (error, collection) => {
+                                    if(error)
+                                        return this.__handleError__(error)
+
+                                this.setState({ vehicle, style, error, maker, collection, vehicles: undefined, fav })
+                            })
+                        })
+                    })
+                })
+        } catch (error) {
+            this.__handleError__(error)
         }
-
-        )
     }
-    handleFav= id => { 
 
-        const query = this.state._query
-        
-        toggleFavVehicle(sessionStorage.token, id, ()=> {
-            if (!this.state.vehicle) this.handleSearch(query)
-            else this.handleDetail(id)
-        })
+    handleFav= id => { 
+        try {
+            const query = this.state._query
+            
+            toggleFavVehicle(sessionStorage.token, id, (error)=> {
+                if(error)
+                    return this.__handleError__(error)
+
+                if (!this.state.vehicle) this.handleSearch(query)
+                
+                else this.handleDetail(id)
+            })
+        } catch (error) {
+            this.__handleError__(error)
+        }
     }
 
     handleLogout=  () => {

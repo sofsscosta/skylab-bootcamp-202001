@@ -50,7 +50,7 @@ li, ul {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
@@ -98,7 +98,7 @@ li, ul {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
@@ -197,7 +197,7 @@ li, ul {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
@@ -280,7 +280,7 @@ li, ul {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
@@ -354,14 +354,14 @@ li, ul {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
 }
 
 ul {
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   background-color: #b1d1f2;
   list-style-type: none;
@@ -410,14 +410,15 @@ li, ul {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
 }
 
 li {
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin-right: 15px;
   margin-left: 15px;
   background-color: #b1d1f2;
@@ -467,13 +468,13 @@ ul, li {
   align-items: center;
 }
 
-li {
+.detail {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
 }
 
-li {
+.detail {
   background-color: #b1d1f2;
   list-style-type: none;
   width: 100%;
