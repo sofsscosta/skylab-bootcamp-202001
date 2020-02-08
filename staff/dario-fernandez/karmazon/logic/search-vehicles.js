@@ -1,9 +1,8 @@
 function searchVehicles(query, token, callback) {
-    getUserInfo(token, (error, userInfo) => {
+    __retrieveUserFavs__(token, (error, favs) => {
         if(error) {
             callback(error)
-        } else {
-            const { favs } = userInfo       
+        } else {       
             call('https://skylabcoders.herokuapp.com/api/hotwheels/vehicles?q=' + query, undefined, function(error, response) {
                 var data = JSON.parse(response.content)
             

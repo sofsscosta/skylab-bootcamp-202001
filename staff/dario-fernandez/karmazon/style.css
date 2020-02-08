@@ -244,6 +244,17 @@ body {
 .search__submit:hover {
   cursor: pointer;
 }
+.search__user {
+  color: white;
+  align-self: flex-end;
+}
+.search__user:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.search__user-avatar {
+  margin-left: 1rem;
+}
 
 body {
   width: 100vw;

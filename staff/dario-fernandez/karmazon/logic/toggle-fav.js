@@ -1,15 +1,15 @@
 function toggleFav(vehicleID, token, callback) {
-    getUserInfo(token, (error, userInfo) => {
+    __retrieveUserFavs__(token, (error, favs) => {
         if(error) {
             callback(error)
         } else {
-            if(userInfo.favs.some(element => element === vehicleID)) {
-                userInfo.favs.removeValue(vehicleID)
+            if(favs.some(element => element === vehicleID)) {
+                favs.removeValue(vehicleID)
             } else {
-                userInfo.favs.push(vehicleID)
+                favs.push(vehicleID)
             }
 
-            updateFavs(userInfo.favs, token, error => {
+            updateFavs(favs, token, error => {
                 if(error) {
                     callback(error)
                 } else {

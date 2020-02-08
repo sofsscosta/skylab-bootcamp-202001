@@ -1,4 +1,4 @@
-function getUserInfo(token, callback) {
+function retrieveUser(token, callback) {
     const sub = getSub(token)
 
     call(`https://skylabcoders.herokuapp.com/api/v2/users/${sub}`, {
@@ -15,9 +15,9 @@ function getUserInfo(token, callback) {
         } else if(response.status === 401) {
             callback(new Error('Wrong token'))
         } else if(response.status === 200) {
-            const userInfo = JSON.parse(response.content)
-            
-            callback(undefined, userInfo)
+            const {name, surname, username }  = JSON.parse(response.content)
+
+            callback(undefined, { name, surname, username })
         } else {
             callback(new Error('Unknown error'))
         }

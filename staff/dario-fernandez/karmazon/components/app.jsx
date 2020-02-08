@@ -2,12 +2,20 @@ const { Component, Fragment } = React // === const Component = React.Component
 
 
 class App extends Component{
-        state = { view: undefined, vehicles: undefined, vehicle: undefined, error: undefined, userName: undefined }
-    
+    state = { view: undefined, vehicles: undefined, vehicle: undefined, error: undefined, userName: undefined }
+
+    showFeedback = error =>{
+        this.setState({ error: error.message })
+
+        setTimeout(() => {
+            this.setState({ error: undefined })
+        }, 3000)
+    }
+
     componentWillMount() {
         const { token } = sessionStorage
         if(token) {
-            getUserInfo(token, (error, userInfo) => {
+            retrieveUser(token, (error, userInfo) => {
                 if(error) {
                     sessionStorage.clear()
                     this.setState({ view: 'login' })
@@ -17,11 +25,7 @@ class App extends Component{
 
                         searchVehicles(query, token, (error, vehicles) => {
                             if(error) {
-                                this.setState({ error: error.message })
-
-                                setTimeout(() => {
-                                    this.setState({ error: undefined })
-                                })
+                                this.showFeedback(error)
                             } else {
                                 this.setState({ view: 'search', userName: `${userInfo.name} ${userInfo.surname}`, vehicle: undefined, vehicles })
                             }
@@ -34,19 +38,15 @@ class App extends Component{
             this.setState({ view: 'login' })
         }
     }
-    
+
     handleLogin = credentials =>  {
         try {
             authenticateUser(credentials, (error, token) => {
                 if(error) {
-                    this.setState({ error: 'Wrong credentials' })
-
-                    setTimeout(() => {
-                        this.setState({ error: undefined })
-                    }, 3000)
+                    this.showFeedback(error)
                 } else {
                     sessionStorage.token = token
-                    getUserInfo(token, (error, userInfo) => {
+                    retrieveUser(token, (error, userInfo) => {
                         if(error) {
                             this.setState({ error: 'Token error' })
                         } else {
@@ -59,38 +59,26 @@ class App extends Component{
                 
             })
         } catch(error) {
-            this.setState({ error: error.message })
-
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000)
+            this.showFeedback(error)
         }
     }
 
     handleOnToRegister = () => {
         this.setState({ view: 'register' })
     }
-    
+
     handleRegister = ({ name, surname, username, password }) => {
         try{
             registerUser({ name, surname, username, password, favs: [] }, error => {
                 if(error) {
-                    this.setState({ error: undefined })
-                    this.setState({ error: `${username} is in use` })
-
-                    setTimeout(() => {
-                    }, 3000)
+                    this.showFeedback(error)
                 } else {
                     this.setState({ view: 'login' })
                 }
             })
 
         } catch (error) {
-            this.setState({ error: error.message })
-
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000);
+            this.showFeedback(error)
         }
     }
 
@@ -102,12 +90,7 @@ class App extends Component{
         let { token } = sessionStorage
         searchVehicles(query, token, (error, vehicles) => {
             if(error) {
-                this.setState({ error: error.message })
-
-                setTimeout(() => {
-                    this.setState({ error: undefined })
-                }, 3000)
-            
+                this.showFeedback(error)
             }
 
             const { protocol, host, pathname } = location
@@ -123,11 +106,7 @@ class App extends Component{
     handleOnToDetails = id => {
         searchDetails(id, (error, vehicle) => {
             if(error) {
-                this.setState({ error: error.message })
-
-                setTimeout(() => {
-                    this.setState({  })
-                })
+                this.showFeedback(error)
             } else {
                 this.setState({ vehicles: undefined })
                 this.setState({ vehicle })
@@ -145,14 +124,10 @@ class App extends Component{
         let { token } = sessionStorage
         toggleFav(id, token, error => {
             if(error){
-                this.setState({ error: error.message })
-
-                setTimeout(() => {
-                    this.setState({ error: undefined })
-                })
+                this.showError(error)
             } else {
                 let query = location.search.split('=')[1]
-                
+
                 this.handleSearch(query)
             }
         })
