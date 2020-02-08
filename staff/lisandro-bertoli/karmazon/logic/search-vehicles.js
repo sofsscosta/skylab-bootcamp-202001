@@ -11,12 +11,10 @@ function searchVehicles(token, query, callback) {
         if (error) return callback(error)
 
         const user = JSON.parse(response.content)
-        const { error: _error } = user
+        const { error: _error, favs } = user
 
 
         if (_error) return callback(new Error(_error))
-
-        const { favs } = user
 
 
         call('https://skylabcoders.herokuapp.com/api/hotwheels/vehicles?q=' + query, undefined, (error, response) => {
