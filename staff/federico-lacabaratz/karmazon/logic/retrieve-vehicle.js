@@ -27,7 +27,7 @@ function retrieveVehicle(token, id, callback) {
             if (response.status === 200) {
                 const result = JSON.parse(response.content)
     
-                callback(error ,result, userData.fav)
+                callback(undefined ,result, userData.fav)
             }
         })
     })

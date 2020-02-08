@@ -42,7 +42,7 @@ describe('authenticateUser', () => {
         })
         
         it('should fail on incorrect password', done => {
-            authenticateUser(username, `${password}-wrong`, error => {
+            authenticateUser(username, `${password}-wrong`, (error, token) => {
                 expect(error).toBeInstanceOf(Error)
                 expect(error.message).toBe('username and/or password wrong')
 
@@ -51,7 +51,7 @@ describe('authenticateUser', () => {
         })
             
         it('should fail on incorrect username', done => {
-            authenticateUser(`${username}-wrong`, password, error => {
+            authenticateUser(`${username}-wrong`, password, (error, token) => {
                 expect(error).toBeInstanceOf(Error)
                 expect(error.message).toBe('username and/or password wrong')
 

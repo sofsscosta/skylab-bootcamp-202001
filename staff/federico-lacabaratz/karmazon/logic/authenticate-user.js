@@ -8,10 +8,9 @@ function authenticateUser(username, password, callback) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     }, (error, response) => {
-        if(error) return callback(error)
+        if (error) return callback(error)
 
         const { error: _error, token } = JSON.parse(response.content)
-
         if (_error) return callback(new Error(_error))
 
         callback(undefined, token)

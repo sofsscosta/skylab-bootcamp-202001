@@ -9,23 +9,25 @@ describe('registerUser', () => {
     })
 
     it('should succeed on new user', done => {
-        registerUser(name, surname, username, password, error => {
+        registerUser(name, surname, username, password, (error, response) => {
             expect(error).toBeUndefined()
+
+            expect(response).toBeUndefined()
 
             done()
         })
     })
-    
+
     describe('On existing user', () => {
         beforeEach(done => {
             call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, surname, username, password })
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, surname, username, password })
             }, (error, response) => {
-            if(error) return done(error)
+                if (error) return callback(error)
 
-            done()
+                done()
             })
         })
 
@@ -61,10 +63,10 @@ describe('registerUser', () => {
             }, (error, response) => {
                 if (error) return done(error)
 
-                if(response.content) {
-                const { error } = JSON.parse(response.content)
+                if (response.content) {
+                    const { error } = JSON.parse(response.content)
 
-                if (error) return done(new Error(error))
+                    if (error) return done(new Error(error))
                 }
 
                 done()

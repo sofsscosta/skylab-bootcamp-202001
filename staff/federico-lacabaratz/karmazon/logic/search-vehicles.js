@@ -24,9 +24,9 @@ function searchVehicles(token, query, callback) {
             if (error) return callback(error)
 
             if (response.status === 200) {
-                var results = JSON.parse(response.content)
+                const results = JSON.parse(response.content)
 
-                callback(error, results, userFav)
+                callback(undefined, results, userFav)
             }
         })
     })
