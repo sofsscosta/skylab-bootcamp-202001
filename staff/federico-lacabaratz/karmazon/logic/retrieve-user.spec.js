@@ -100,6 +100,11 @@ describe('retrieveUser', () => {
         expect(() =>
             retrieveUser(token, () => { })
         ).toThrowError(TypeError, `token ${token} is not a string`)
+
+        token = null
+        expect(() =>
+            retrieveUser(token, () => { })
+        ).toThrowError(TypeError, `token ${token} is not a string`)
     })
 
     it('should fail on invalid token format', () => {
@@ -116,16 +121,21 @@ describe('retrieveUser', () => {
         callback = 1
         expect(() =>
             retrieveUser(token, callback)
-        ).toThrowError(TypeError, `callback ${callback} is not a function`)
+        ).toThrowError(TypeError, `${callback} is not a function`)
 
         callback = true
         expect(() =>
             retrieveUser(token, callback)
-        ).toThrowError(TypeError, `callback ${callback} is not a function`)
+        ).toThrowError(TypeError, `${callback} is not a function`)
 
         callback = undefined
         expect(() =>
             retrieveUser(token, callback)
-        ).toThrowError(TypeError, `callback ${callback} is not a function`)
+        ).toThrowError(TypeError, `${callback} is not a function`)
+
+        callback = null
+        expect(() =>
+            retrieveUser(token, callback)
+        ).toThrowError(TypeError, `${callback} is not a function`)
     })
 })

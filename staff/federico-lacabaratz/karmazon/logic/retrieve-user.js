@@ -1,6 +1,6 @@
 function retrieveUser(token, callback) {
     if (typeof token !== 'string') throw new TypeError(`token ${token} is not a string`)
-    if (typeof callback !== 'function') throw new TypeError(`callback ${callback} is not a function`)
+    if (typeof callback !== 'function') throw new TypeError(`${callback} is not a function`)
     
     const _token = token.split('.')
     const id = JSON.parse(atob(_token[1])).sub
