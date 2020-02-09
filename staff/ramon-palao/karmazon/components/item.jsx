@@ -1,10 +1,10 @@
-function Item({item: {id, name, thumbnail, price}, onClick, ontoggle}) {
-    return <li className="item-list" onClick={() => onClick(id)}>
-        <h3 className="item-name">{name}</h3>
+function Item({item: {id, name, thumbnail, price}, onClick, onToggleFav, isFavorite}) {
+    return <li className="item-list" >
+        <h3 className="item-name" onClick={() => onClick(id)}>{name}</h3>
         <figure>
-            <i className="far fa-heart" onClick={event =>{
+            <i className= {`${isFavorite ? "fas" : "far"} fa-heart`} onClick={event =>{
                 event.preventDefault()
-                ontoggle()
+                onToggleFav(id)
             }}></i>
         </figure>
         <img className="img-photo" src={thumbnail}/>

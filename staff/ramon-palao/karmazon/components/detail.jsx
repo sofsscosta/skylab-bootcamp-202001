@@ -1,7 +1,9 @@
-function Detail({vehicle: {name, year, price, image, color, maker, collection, description, url}, style: {name: styleName, image: styleImage, url: styleUrl} }) {
+function Detail({vehicle: {id, name, year, price, image, color, maker, collection, description, url}, style: {name: styleName, image: styleImage, url: styleUrl}, onToggleFav, favs }) {
     return <li className="detail-info">
         <h3 className="detail-info__title">{name} ({year})</h3>
-        <i className="far fa-heart"></i>
+        <i className={`${favs.find(value => value === id) ? "fas" : "far"} fa-heart`} onClick={event =>{
+                event.preventDefault()
+                onToggleFav(id)}}></i>
         <img className="detail-info__image" src={image} />
         <p className="detail-info__color">{color}</p>
         <p className="detail-info__maker">{maker}</p>

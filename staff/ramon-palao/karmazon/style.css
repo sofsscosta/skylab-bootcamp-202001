@@ -159,6 +159,10 @@ article {
   _width: 30%;
 }
 
+.fas {
+  color: red;
+}
+
 .detail-info {
   font-family: "Sigmar One", cursive;
   font-size: 25px;
