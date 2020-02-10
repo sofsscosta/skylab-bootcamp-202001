@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Googl - The best web searcher in the world!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="title.css">
+</head>
+<body>
+    <section class="text">
+        <h3 class="textt">Manu please stop you're killing us</h3>
+        <h1><span class="fontawesome-star star"></span> <span>The Ultimate Web-Searcher</span> <span class="fontawesome-star star"></span></h1>
+    </section>
+    
+    <form class="login _login--hide">
+        <p>Sign-in</p>
+        <input type="text" autocomplete="off" name="username" placeholder="Username" required>
+        <input type="password" autocomplete="off" name="password" placeholder="Password" required>
+        <button>Login</button>
+        
+        <a href="">Register</a>
+    </form>
+
+    <form class="register register--hide">
+        <p>Sign-up</p>
+        <input type="text" autocomplete="off" name="name" placeholder="Name" required>
+        <input type="text" autocomplete="off" name="surname" placeholder="Surname" required>
+        <input type="text" autocomplete="off" name="username" placeholder="User name" required>
+        <input type="password" autocomplete="off" name="password" placeholder="Password" required>
+        <button type="submit">Submit</button>
+        
+        <a href="">Login</a>
+
+    </form>
+    <!-- <form class="login login--hide">
+        <input type="text" autocomplete="off" name="username" placeholder="Username" required>
+        <input type="password" autocomplete="off" name="password" placeholder="Password" required>
+        <button>Login</button>
+    </form> -->
+
+
+    <form class="googl search search--hide">
+        <h2>
+            <p class="p1">G</p>
+            <p class="p2">o</p>
+            <p class="p3">o</p>
+            <p class="p4">g</p>
+            <p class="p5">l</p>
+        </h2>
+        <input type="text" autocomplete="off" name="query" id="text" placeholder="Type here to search on Googl">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="googl results"></ul>
+
+    <form class="ecosia search search--hide">
+        <h2 class="ecosia">Ecosia</h2>
+
+        <input type="text" name="query" placeholder="Type here to search on Ecosia">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="ecosia results"></ul>
+
+    <form class="bing search search--hide">
+        <h2 class="bing">Bing</h2>
+
+        <input type="text" name="query" placeholder="Type here to search on Bing">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="bing results"></ul>
+
+    <form class="yahoo search search--hide">
+        <h2 class="yahoo">Yahoo</h2>
+
+        <input type="text" name="query" placeholder="Type here to search on Yahoo">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="yahoo results"></ul>
+
+    <!-- <script src="utils/spy.js"></script> -->
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
+
+    <script src="data.js"></script>
+
+    <script src="logic/googl.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/register.js"></script>
+    <script src="logic/authenticate.js"></script>
+    
+    <script src="main.js"></script>
+</body>
+</html>
