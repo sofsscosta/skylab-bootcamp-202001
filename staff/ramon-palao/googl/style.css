@@ -1,0 +1,52 @@
+body {
+  text-align: center;
+}
+
+.search--hide {
+  display: none;
+}
+
+.enter--hide {
+  display: none;
+}
+
+.register--hide {
+  display: none;
+}
+
+.login--hide {
+  display: none;
+}
+
+.header__results--hide {
+  display: none;
+}
+
+.footer--hide {
+  display: none;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  font-size: 35px;
+  justify-content: center;
+  align-self: center;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.header__start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */
