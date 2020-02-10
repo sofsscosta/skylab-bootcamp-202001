@@ -1,4 +1,4 @@
-function Search({ title, onSubmit, onToUpdateProfile, user, query, level, error }){
+function Search({ title, onSubmit, onToUpdateProfile, onToFavourites, user, query, level, error }){
     return (
         <form className="search" onSubmit={(event)=>{
             event.preventDefault()
@@ -12,7 +12,12 @@ function Search({ title, onSubmit, onToUpdateProfile, user, query, level, error 
             <a href="" onClick={event => {
                 event.preventDefault()
                 onToUpdateProfile()
-            }}>Goto Profile</a>
+            }}>Goto Profile</a><br/>
+
+            <a href="" onClick={event => {
+                event.preventDefault()
+                onToFavourites()
+            }}>View favourites</a>
 
             {level && error && <Feedback level={level} message={error} />}
         </form>

@@ -4,10 +4,10 @@ const { Component, Fragment } = React
 
 class App extends Component {
 
-    state = { view: undefined, favourites: [], query: undefined, token: undefined, user: undefined, vehicle: undefined, vehicles: undefined, style: undefined, level: 'error', error: undefined, maker: undefined, collection: undefined }
+    state = { view: undefined, favourites: [], favouritesList: [], query: undefined, token: undefined, user: undefined, vehicle: undefined, vehicles: undefined, style: undefined, level: 'error', error: undefined, maker: undefined, collection: undefined }
 
     handleFeedback = (message, level = 'error') => {
-        this.setState({ error: message, level }, () => {
+        this.setState({ error: message + ' ' + IT, level }, () => {
             setTimeout(() => {
                 this.setState({ error: undefined, level: 'error' })
             }, 3000);
@@ -46,7 +46,7 @@ class App extends Component {
                 })
             })
         } catch (error) {
-            this.handleFeedback(error.message + ' ' + IT)
+            this.handleFeedback(error.message)
         }
     }
 
@@ -62,10 +62,7 @@ class App extends Component {
                 this.setState({ view: 'login' })
             })
         } catch (error) {
-            this.setState({ error: error.message + ' ' + IT })
-            setTimeout(() => {
-                this.setState({ error: undefined })
-            }, 3000);
+            this.handleFeedback(error.message)
         }
     }
 
@@ -74,11 +71,11 @@ class App extends Component {
             const token = this.handleRetrieveToken()
             searchVehicles(query, token, response => {
                 if (response instanceof Error) {
-                    this.handleFeedback(response.message + ' ' + IT)
+                    this.handleFeedback(response.message)
                 } else {
                     const { vehicles, favourites } = response
                     history.pushState(location.href, '', `?q=${query}`)
-                    this.setState({ vehicles, favourites, query, vehicle: undefined })
+                    this.setState({ view: 'search', vehicles, favourites, query, vehicle: undefined, favouritesList: [] })
                 }
             })
         } catch (error) {
@@ -86,15 +83,21 @@ class App extends Component {
         }
     }
 
-    handleItemClick = id => {
+    handleRetrieveVehicleDetails = (id, callback) => {
         retrieveVehicle(id, vehicle => {
             retrieveStyle(vehicle.style, style => {
                 retrieveMaker(vehicle.maker, maker => {
                     retrieveCollection(vehicle.collection, collection => {
-                        this.setState({ vehicle, style, maker, collection, vehicles: undefined })
+                        callback(vehicle, style, maker, collection)
                     })
                 })
             })
+        })
+    }
+
+    handleItemClick = id => {
+        this.handleRetrieveVehicleDetails(id, (vehicle, style, maker, collection) => {
+            this.setState({ vehicle, style, maker, collection, vehicles: undefined })
         })
     }
 
@@ -112,12 +115,12 @@ class App extends Component {
                 if (response instanceof Error) {
                     this.handleFeedback(response.message)
                 } else {
-                    this.handleFeedback('Update successfully ' + IT, 'success')
+                    this.handleFeedback('Update successfully', 'success')
                     this.setState({ user: Object.assign(this.state.user, newUser) })
                 }
             })
         } catch (error) {
-            this.handleFeedback(error.message + ' ' + IT)
+            this.handleFeedback(error.message)
         }
     }
 
@@ -134,6 +137,59 @@ class App extends Component {
         }
 
         return queryParam
+    }
+
+    handleToggleFavVehicle = vehicleId => {
+        try {
+            const token = this.handleRetrieveToken()
+
+            toggleFavVehicle(vehicleId, token, (response) => {
+                if (response instanceof Error) {
+                    this.handleFeedback(response.message)
+                } else {
+                    this.handleSearch(this.state.query)
+                }
+            })
+        } catch (error) {
+            this.handleFeedback(error.message)
+        }
+    }
+
+    handleRetrieveFavourites = () => {
+        try {
+            const token = this.handleRetrieveToken()
+
+            retrieveFavourites(token, (response) => {
+                if (response instanceof Error) {
+                    this.handleFeedback(response.message)
+                } else {
+                    const { favourites } = response
+                    let results = []
+                    let position = 0
+
+                    const recursive = () => {
+                        if (results.length !== favourites.length){
+                            this.handleRetrieveVehicleDetails(favourites[position], (vehicle, style, maker, collection) => {
+                                position++
+                                results.push({ vehicle, style, maker, collection })
+
+                                if (results.length !== favourites.length) {
+                                    recursive()
+                                }else{
+                                    console.log('ARRIVED AT THE END OF RECURSIVITY.... YAYYYY')
+                                    //this.setState({ vehicle, style, maker, collection, vehicles: undefined })
+                                    this.setState({ favouritesList: results }, () => this.handleNavigation('search:favourites'))
+                                }
+                            })
+                        }
+                    }
+
+                    recursive()
+                }
+            })
+        } catch (error) {
+            this.handleFeedback(error.message)
+        }
     }
 
     /* REACT LIFECYCLES */
@@ -164,32 +220,17 @@ class App extends Component {
         }
     }
 
-    handleToggleFavVehicle = vehicleId => {
-        try {
-            const token = this.handleRetrieveToken()
-
-            toggleFavVehicle(vehicleId, token, (response) => {
-                if (response instanceof Error) {
-                    this.handleFeedback(response.message + ' ' + IT)
-                } else {
-                    this.handleSearch(this.state.query)
-                }
-            })
-        } catch (error) {
-            this.handleFeedback(error.message + ' ' + IT)
-        }
-    }
-
     render() {
-        const { props: { title }, state: { view, vehicle, vehicles, style, maker, collection, error, user, level, query, favourites }, handleToggleFavVehicle, handleUpdate, handleLogin, handleRegister, handleSearch, handleItemClick, handleItemBackButton, handleNavigation } = this
+        const { props: { title }, state: { view, vehicle, vehicles, style, maker, collection, error, user, level, query, favourites, favouritesList }, handleToggleFavVehicle, handleUpdate, handleLogin, handleRegister, handleSearch, handleItemClick, handleItemBackButton, handleNavigation, handleRetrieveFavourites } = this
 
         return <Fragment>
             <h1>{title}</h1>
             {user && <h1>{user.name}</h1>}
             {view === 'login' && <Login onSubmit={handleLogin} onToRegister={() => handleNavigation('register')} error={error} />}
             {view === 'register' && <Register onSubmit={handleRegister} onToLogin={() => handleNavigation('login')} error={error} />}
-            {view === 'search' && <Search title="Search" onSubmit={handleSearch} onToUpdateProfile={() => handleNavigation('update')} user={user} query={query} error={error} level={level} />}
-            {view === 'search' && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleItemClick} favourites={favourites} toggleFavVehicle={handleToggleFavVehicle} />}
+            {(view === 'search' || (view && view.includes('search:'))) && <Search title="Search" onSubmit={handleSearch} onToFavourites={handleRetrieveFavourites} onToUpdateProfile={() => handleNavigation('update')} user={user} query={query} error={error} level={level} />}
+            {view === 'search' && vehicles && !vehicle && !favouritesList.length && <Results results={vehicles} onItemClick={handleItemClick} favourites={favourites} toggleFavVehicle={handleToggleFavVehicle} />}
+            {view === 'search:favourites' && favouritesList.length && !vehicle && <Favourites results={favouritesList} onBackButtonClick={handleItemBackButton} />}
             {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} maker={maker} collection={collection} onBackButtonClick={handleItemBackButton} />}
             {view === 'update' && <Update onSubmit={handleUpdate} onToSearch={() => handleNavigation('search')} user={user} error={error} level={level} />}
         </Fragment>
