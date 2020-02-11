@@ -1,0 +1,1 @@
+ReactDOM.render(<App title="Karmazon App" />, document.getElementById('root'))
