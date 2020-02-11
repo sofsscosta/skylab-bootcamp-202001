@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Cambria";
+  font-size: 5.5rem;
+  margin: 3% auto 3% auto;
+}
+
+.p1 {
+  color: blue;
+}
+
+.p2 {
+  color: red;
+}
+
+.p3 {
+  color: yellow;
+}
+
+.p4 {
+  color: blue;
+}
+
+.p5 {
+  color: green;
+}
+
+/*# sourceMappingURL=header.css.map */
