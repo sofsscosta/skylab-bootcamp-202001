@@ -1,0 +1,78 @@
+@import config
+
+.footer 
+    background-color: $footer-color
+    margin-top: 15%
+    padding-top: 4%
+
+    @extend %footer-main
+
+    &__menu
+        padding: 3%
+        list-style: none
+        border-bottom: 1.5px solid #7a7a7a 
+
+        &-info
+            padding: 1.5%
+
+    &__help-info
+        display: grid
+        grid-template-columns: 1fr 30px
+        padding-top: 5%
+        padding-left: 5%
+
+        &-msg
+            grid-area: 1 / 1 / 1 / 1
+
+        &.fas 
+            color: white
+            font-size: 16px 
+            text-align: center
+
+    &__help-aboutus
+        display: grid
+        grid-template-columns: 1fr 30px
+        padding-top: 15%
+        padding-left: 5%
+
+        &-msg
+            grid-area: 1 / 1 / 1 / 1
+
+        &.fas 
+            color: white
+            font-size: 16px 
+            text-align: center
+
+    &__misc
+        list-style: none
+
+        &-info
+            padding: 3%
+            color: #7E7E7E
+
+    &__media
+        display: flex
+        flex-wrap: wrap
+        align-content: center
+        margin: 10% 3%
+
+        &.fab
+            color:#7E7E7E
+            font-size: 30px
+            margin: 3%
+
+    &__location
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        margin: 5% 3% 0 3%
+
+        &.fas
+            color: white
+            font-size: 20px
+            margin-right: 3%
+            padding-bottom: 5%
+       
+            
+
+    
