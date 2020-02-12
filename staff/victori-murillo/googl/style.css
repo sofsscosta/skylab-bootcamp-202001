@@ -1,0 +1,134 @@
+body {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0px 10%;
+}
+ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  margin: 0;
+}
+ul li a {
+  text-decoration: none;
+}
+
+a {
+  margin-top: 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+}
+.title h2 {
+  color: red;
+}
+.title--blue {
+  color: #4285f4;
+}
+.title--red {
+  color: #ea4335;
+}
+.title--yellow {
+  color: #fbbc04;
+}
+.title--green {
+  color: #34a853;
+}
+.title span {
+  margin: 0;
+  padding: 0;
+  font-size: 100px;
+  font-family: arial;
+  margin: -5px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login input {
+  margin-bottom: 15px;
+  height: 25px;
+  width: 200px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+.login button {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 25px;
+  width: 80px;
+  font-size: 16px;
+}
+.login--hide {
+  display: none;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.register input {
+  margin-bottom: 15px;
+  height: 25px;
+  width: 200px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.register button {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 25px;
+  width: 80px;
+  font-size: 16px;
+}
+.register--hide {
+  display: none;
+}
+
+.results a {
+  color: blue;
+}
+.results p {
+  margin-top: 0px;
+  text-align: left;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.search h2 {
+  color: blue;
+  font-size: 50px;
+}
+.search input {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 30px;
+  width: 180px;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=style.css.map */

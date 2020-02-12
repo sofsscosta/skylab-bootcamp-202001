@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial";
+}
+
+.search > * {
+  border-radius: 1em;
+  text-align: center;
+  height: 2em;
+  margin-bottom: 3%;
+  background-color: #f5f4f4;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+.search {
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.search--hide {
+  display: none;
+}
+.search > h2 {
+  font-size: 2em;
+}
+.search > h2.ecosia {
+  color: red;
+}
+.search > h2.bing {
+  color: #116800;
+}
+.search > h2.yahoo {
+  color: #00425c;
+}
+.search > input {
+  padding-left: 2%;
+  width: 90%;
+  text-align: left;
+}
+.search > button {
+  width: 40%;
+  background-color: #1bb12f;
+  color: white;
+  cursor: pointer;
+}
+.search > button:hover {
+  background-color: #148824;
+}
+.search > button:active {
+  background-color: #0f661a;
+}
+
+/*# sourceMappingURL=searcher.css.map */

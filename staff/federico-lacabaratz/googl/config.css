@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.google-logo {
+  font-family: Catull, Sans-Serif;
+  font-size: 50px;
+}
+
+.google-G {
+  color: #0047F1;
+}
+
+.google-o1 {
+  color: #DD172C;
+}
+
+.google-o2 {
+  color: #F9A600;
+}
+
+.google-g {
+  color: #0047F1;
+}
+
+.google-l {
+  color: #00930E;
+}
+
+.google-a {
+  color: #E61B31;
+}
+
+.google-p1 {
+  color: #F9A600;
+}
+
+.google-p2 {
+  color: #00930E;
+}
+
+/*# sourceMappingURL=config.css.map */
