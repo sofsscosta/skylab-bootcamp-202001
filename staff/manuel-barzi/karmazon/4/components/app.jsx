@@ -106,7 +106,9 @@ class App extends Component {
 
     handleDetail = id => {
         try {
-            retrieveVehicle(id, (error, vehicle) => {
+            const { token } = sessionStorage
+
+            retrieveVehicle(token, id, (error, vehicle) => {
                 if (error)
                     return this.__handleError__(error)
 
@@ -132,10 +134,15 @@ class App extends Component {
                 if (error)
                     return this.__handleError__(error)
 
-                const { query } = this.state
+                if (address.search.q) {
+                    const { q: query } = address.search
 
-                if (query)
                     this.handleSearch(query)
+                } else if (address.hash && address.hash.startsWith('vehicles/')) {
+                    const [, id] = address.hash.split('/')
+
+                    this.handleDetail(id)
+                }
             })
         } catch (error) {
             this.__handleError__(error)
@@ -167,7 +174,7 @@ class App extends Component {
 
             {view === 'search' && vehicles && <Results results={vehicles} onItemClick={handleDetail} onItemFavClick={handleFav} />}
 
-            {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} />}
+            {view === 'search' && vehicle && <Detail vehicle={vehicle} style={style} onFavClick={handleFav} />}
         </main>
     }
 }
