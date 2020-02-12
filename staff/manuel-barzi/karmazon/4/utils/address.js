@@ -18,7 +18,7 @@ const address = {
             url += queryString
         }
 
-        history.pushState({ path: url }, '', url)
+        history.pushState(undefined, undefined, url)
     },
 
     get search() {
@@ -44,7 +44,7 @@ const address = {
 
         let url = `${protocol}//${host}${pathname}${hash ? `#${hash}` : ''}`
 
-        history.pushState({ path: url }, '', url)
+        history.pushState(undefined, undefined, url)
     },
 
     get hash() {
@@ -58,6 +58,6 @@ const address = {
 
         let url = `${protocol}//${host}${pathname}`
 
-        history.pushState({ path: url }, '', url)
+        history.pushState(undefined, undefined, url)
     }
 }
