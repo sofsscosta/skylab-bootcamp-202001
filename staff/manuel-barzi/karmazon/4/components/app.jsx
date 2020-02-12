@@ -3,16 +3,6 @@ const IT = '🎈🤡'
 const { Component, Fragment } = React
 
 class App extends Component {
-    // ES6
-    // constructor() {
-    //     super()
-
-    //     this.state = { view: 'login', vehicles: undefined, vehicle: undefined, style: undefined, error: undefined }
-
-    //     this.handleLogin = this.handleLogin.bind(this)
-    // }
-
-    // ES.NEXT
     state = { view: undefined, vehicles: undefined, vehicle: undefined, style: undefined, error: undefined, query: undefined }
 
     __handleError__(error) {
@@ -35,34 +25,22 @@ class App extends Component {
                         this.handleLogout()
                     }
 
-                    if (location.queryString.q) {
-                        const { q: query } = location.queryString 
+                    this.setState({ view: 'search', user })
 
-                        searchVehicles(token, query, (error, vehicles) => {
-                            if (error)
-                                return this.__handleError__(error)
+                    if (address.search.q) {
+                        const { q: query } = address.search
 
-                            this.setState({ view: 'search', user, query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
+                        this.handleSearch(query)
+                    } else if (address.hash && address.hash.startsWith('vehicles/')) {
+                        const [, id] = address.hash.split('/')
 
-                            if (!vehicles.length)
-                                setTimeout(() => {
-                                    this.setState({ error: undefined })
-                                }, 3000)
-                        })
-                    } else
-                        this.setState({ view: 'search', user })
+                        this.handleDetail(id)
+                    }
                 })
             } catch (error) {
-                // this.setState({ error: error.message + ' ' + IT })
-
-                // setTimeout(() => {
-                //     this.setState({ error: undefined })
-                // }, 3000)
-                sessionStorage.clear()
-
-                this.setState({ view: 'login' })
+                this.handleLogout()
             }
-        else this.setState({ view: 'login' })
+        else this.handleLogout()
     }
 
     // ES.NEXT
@@ -112,9 +90,9 @@ class App extends Component {
                 if (error)
                     return this.__handleError__(error)
 
-                location.queryString = { q: query }
+                address.search = { q: query }
 
-                this.setState({ vehicles, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
+                this.setState({ view: 'search', vehicles, query, vehicle: undefined, error: vehicles.length ? undefined : 'No results ' + IT })
 
                 if (!vehicles.length)
                     setTimeout(() => {
@@ -136,7 +114,9 @@ class App extends Component {
                     if (error)
                         return this.__handleError__(error)
 
-                    this.setState({ vehicle, style, vehicles: undefined })
+                    address.hash = `vehicles/${id}`
+
+                    this.setState({ view: 'search', vehicle, style, vehicles: undefined })
                 })
             })
         } catch (error) {
@@ -164,6 +144,7 @@ class App extends Component {
 
     handleLogout = () => {
         sessionStorage.clear()
+        address.clear()
 
         // TODO clear querystring in url
 
