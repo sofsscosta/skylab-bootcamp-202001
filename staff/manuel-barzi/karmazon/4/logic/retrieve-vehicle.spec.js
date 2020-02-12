@@ -75,7 +75,7 @@ describe('retrieveVehicle', () => {
             retrieveVehicle(token, 'asdasdfñlajsfklasldñkfjañlsjflasjflasjfñladjs', (error, vehicle) => {
                 expect(error).toBeUndefined()
 
-                expect(vehicle).toNull()
+                expect(vehicle).toBeNull()
 
                 done()
             })

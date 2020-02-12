@@ -31,7 +31,8 @@ function retrieveVehicle(token, id, callback) {
             if (response.status === 200) {
                 const vehicle = JSON.parse(response.content)
 
-                vehicle.isFav = favs.includes(vehicle.id)
+                vehicle && (vehicle.isFav = favs.includes(vehicle.id))
+
 
                 callback(undefined, vehicle)
             }
