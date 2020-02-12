@@ -155,7 +155,7 @@ describe('updateUser', () => {
     it('should fail on non-function callback', () => {
         token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNiZDhmZDE3YjgwOTFiYWFjMTIxMzgiLCJpYXQiOjE1ODA5ODA3NjEsImV4cCI6MTU4MDk4NDM2MX0.t8g49qXznSCYiK040NvOWHPXWqnj9riJ_6MD2vwIv3M'
 
-        callback = 1
+        let callback = 1
         expect(() =>
             updateUser(token, {}, callback)
         ).toThrowError(TypeError, `callback ${callback} is not a function`)
