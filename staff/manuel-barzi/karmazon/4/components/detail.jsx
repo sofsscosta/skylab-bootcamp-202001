@@ -1,6 +1,10 @@
-function Detail({ vehicle: { name, year, price, image, color, maker, collection, description, url }, style: { name: styleName, image: styleImage, url: styleUrl } }) {
+function Detail({ vehicle: { id, name, year, price, image, color, maker, collection, description, url, isFav }, style: { name: styleName, image: styleImage, url: styleUrl }, onFavClick }) {
     return <li>
-        <h3>{name} ({year})</h3>
+        <h3>{name} ({year}) <span className="detail__fav" onClickCapture={event => {
+            event.stopPropagation()
+            
+            onFavClick(id)
+        }}>{isFav ? '💖' : '🤍'}</span></h3>
         <img src={image} />
         <span>{price} €</span>
         <p>{color}</p>

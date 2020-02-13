@@ -1,0 +1,63 @@
+.details
+    font-family: sans-serif
+    border-top: 1px solid #b4b4b4
+    margin-top: 1.5%
+    display: grid
+    width: 100%
+    //grid-template-columns: 60% 40%
+    //grid-template-rows: 50px 1fr
+    grid-template-columns: repeat (5, 1fr) 
+    grid-template-rows: repeat (5, 1fr) 
+
+    .button
+        //grid-area: 1 / 1 / 1 / 2
+        grid-area: 1 / 1 / 1 / 1  
+        border: 1px solid black
+        border-radius: 1rem
+        padding: 0.5rem
+        margin: 0.5rem
+        cursor: pointer
+        background-color: #7bcbe4
+        color: white
+        font-size: 0.7em
+        
+    h2
+        grid-area: 1 / 2 / 5 / 4
+        text-shadow: 0.07em 0.07em black
+        color:  #008eb9
+        font-weight: bolder
+        
+
+    img
+        //grid-area: 2 / 1 / 2 / 1
+        grid-area: 2 / 1 / 5 / 4
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        max-width: 50vw
+        width: auto
+        margin-top: 4%
+        
+            
+
+    .content
+        grid-area: 2 / 4/ 6/ 6
+        //grid-area: 2/ 2/2/2
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        text-align: justify
+
+    span
+        grid-area:  5 / 1 / 5/ 4
+        margin: 2.5%
+        font-size: 2em
+        font-weight: bolder
+        color:  #008eb9
+        text-shadow: 0.07em 0.07em black
+
+    .heart
+        color: red 
+    
+
+    

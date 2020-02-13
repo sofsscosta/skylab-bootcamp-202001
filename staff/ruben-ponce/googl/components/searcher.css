@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.search {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search > input {
+  border-radius: 1em;
+  width: 45%;
+  height: 60%;
+  padding-left: 2.5%;
+  font-family: "Arial";
+  font-size: 1.3em;
+  background-color: #f5f4f4;
+}
+.search > button {
+  height: 70%;
+  width: 12.5%;
+  border-radius: 1em;
+  background-color: #1bb12f;
+  color: white;
+  font-family: "Arial";
+  font-size: 1.3em;
+  margin-left: 3%;
+  cursor: pointer;
+}
+.search > button:hover {
+  background-color: #148824;
+}
+.search > button:active {
+  background-color: #0f661a;
+}
+
+/*# sourceMappingURL=searcher.css.map */

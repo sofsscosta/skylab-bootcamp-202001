@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*header general de la pagina */
+
+.header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: rgb(232, 206, 233);
+    justify-content: space-between;
+    height: 13vh;
+    align-items: center;
+    padding: 2%;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+
+/* stories */
+.stories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: start;
+    margin: 5px;
+    border-bottom: 1px solid rgb(43, 41, 41);
+    padding-bottom: 3%;
+}
+
+.stories__circle{
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border: 2px solid rgb(255, 0, 64);
+    border-radius: 50%;
+    margin-right: 3px;
+    
+}
+
+
+/* feed: todos los post en el main*/
+.main{
+    display: flex;
+    flex-direction: column;  
+    max-width: 600px;
+    margin: auto;
+}
+
+
+.post__image{
+    width: 100%;
+    max-width: 600px;
+    
+    margin: auto;
+}
+
+.post-buttons{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+    grid-template-rows: 20px 1fr;
+}
+.post-buttons__heart{
+    grid-column: 1;
+    background-color: red;
+    border: 1px solid black;
+   
+}
+
+.post-buttons__comment{
+    grid-column: 2;
+    background-color: rgb(232, 206, 233);
+    border: 1px solid black;
+}
+
+.post-buttons__share{
+    grid-column: 3;
+    background-color: rgb(232, 206, 233);
+    border: 1px solid black;
+}
+
+.post-buttons__collection{
+    grid-column: 6;
+    background-color: rgb(232, 206, 233);
+    border: 1px solid black;
+}
+
+
+/* perfil parte de arriba*/
+.profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 3%;
+    padding: 3% 5%;
+    margin: 10px;
+}
+
+.profile__name{
+    padding: 3% 0%;
+}
+
+.profile__photo{
+    height: 50px;
+    width: 50px;
+    min-width: 70px;
+    min-height: 70px;
+    border: 2px solid rgb(255, 0, 64);
+    border-radius: 50%;
+    margin-right: 3px;
+    background-color: rgb(233, 129, 146);
+}
+
+.profile__text{
+    font-size: ;
+}
+
+.profile-post{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 900px;
+    margin: 2%;
+}
+
+
+.profile-post-image{
+    margin-right: 2%;
+    max-width: 293px;
+    width: 25vw;
+    padding: 2%; 
+}
+
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.main_post, .post{
+    background-color: rgb(246, 178, 199);
+    padding:5px;
+    margin: 2px;
+    border: 1px solid black;
+}
