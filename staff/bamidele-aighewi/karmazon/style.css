@@ -1,0 +1,235 @@
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.search {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.search--hide {
+  display: none;
+}
+.search input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.search button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.login {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.login--hide {
+  display: none;
+}
+.login input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.register--hide {
+  display: none;
+}
+.register input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
+}
+.feedback--success {
+  color: green;
+}
+
+.results .results__list {
+  list-style: none;
+}
+
+.item {
+  cursor: pointer;
+  width: 400px;
+  border: 1px solid #cccccc;
+  display: inline-block;
+  position: relative;
+}
+.item__link {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.item__title, .item__price {
+  font-weight: 100;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+.item__title:hover, .item__title:focus, .item__title:active, .item__price:hover, .item__price:focus, .item__price:active {
+  color: #000000;
+}
+.item__heart {
+  position: absolute;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  right: 5px;
+  top: 5px;
+  background-color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.item__heart .fas {
+  color: red;
+}
+
+.details {
+  width: 50vw;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #cccccc;
+  margin-bottom: 5rem;
+}
+.details img {
+  width: 100%;
+}
+.details__descriptionSection {
+  background-color: #f7f7f7;
+  border-top: 1px solid #cccccc;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.details__name {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.details .pills {
+  display: flex;
+  justify-content: space-between;
+}
+.details .pills__item {
+  flex: 1 1 0;
+  background-color: #ffffff;
+  padding: 5px;
+  display: inline;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+}
+.details .pills__item:not(:last-child) {
+  margin-right: 20px;
+}
+.details .pills__item .pills__image {
+  height: 50px;
+  text-align: center;
+}
+.details .pills__item .pills__image img {
+  width: 50%;
+}
+.details__price {
+  font-size: 18px;
+}
+.details__backButton {
+  border-bottom: 1px solid #cccccc;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  color: #ffffff;
+}
+.details__backButton span {
+  background-color: #999999;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.update {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.update--hide {
+  display: none;
+}
+.update input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.update button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.update a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+/*# sourceMappingURL=style.css.map */
