@@ -4,14 +4,11 @@ class Interactive extends Component {
     }
 
     __showFeedback__(level, message) {
-        const feedback = new Feedback({ level, message })
+        var feedback = new Feedback({ level, message })
 
         this.__locateFeedbackInContainer__(feedback)
 
-        // setTimeout(function () {
-        //     this.removeChild(feedback.container);
-        // }.bind(this.container), 5000);
-        setTimeout(() => this.container.removeChild(feedback.container), 5000)
+        setTimeout(() =>{this.removeChild(feedback.container)}, 5000)
     }
 
     __locateFeedbackInContainer__(feedback) {
@@ -22,7 +19,7 @@ class Interactive extends Component {
         this.__showFeedback__('error', error)
     }
 
-    showWarning (warning) {
+    showWarning(warning) {
         this.__showFeedback__('warning', warning)
     }
 }

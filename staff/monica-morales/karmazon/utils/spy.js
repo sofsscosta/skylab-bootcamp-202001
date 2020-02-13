@@ -1,23 +1,21 @@
-'use strict';
-
 function spy(func, ctx) {
     return function() {
         console.log(func.name +  '(' + (function() {
-            var args = '';
+            const args = ''
 
-            for (var i = 0; i < arguments.length; i++) {
-                args += arguments[i];
+            for (let i = 0; i < arguments.length; i++) {
+                args += arguments[i]
                 
-                if(i < arguments.length -1) args += ', ';
+                if(i < arguments.length -1) args += ', '
             }
 
             return args;
-        }).apply(ctx, arguments) + ') {');
+        }).apply(ctx, arguments) + ') {')
 
-        var ret = func.apply(ctx, arguments);
+        const ret = func.apply(ctx, arguments)
 
-        console.log('} ' + func.name + ' => ' + ret);
+        console.log('} ' + func.name + ' => ' + ret)
         
-        return ret;
+        return ret
     }
 }
