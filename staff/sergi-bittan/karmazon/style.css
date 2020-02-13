@@ -1,0 +1,133 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css");
+body {
+  text-align: center; }
+
+.search {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem; }
+  .search--hide {
+    display: none; }
+  .search input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .search button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+
+.login {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem; }
+  .login--hide {
+    display: none; }
+  .login input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .login button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .login a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem; }
+  .register--hide {
+    display: none; }
+  .register input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .register button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .register a {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+
+.feedback {
+  color: green; }
+  .feedback--error {
+    color: red; }
+  .feedback--warning {
+    color: orange; }
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none; }
+
+.item-list {
+  margin: 0.5rem;
+  width: 30%;
+  background-color: white;
+  border: 3px solid blue;
+  border-radius: 1rem; }
+
+.img-photo {
+  cursor: pointer; }
+
+.item-name, .item-price {
+  font-family: "Sigmar One", cursive;
+  font-size: 30px; }
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #af6565;
+  padding: 20px 10px;
+  margin: 60px; }
+  .detail-info__description {
+    height: 250px;
+    width: 165px; }
+
+.update {
+  display: inline-block;
+  background-color: #d2e0b0;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem; }
+  .update input {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+  .update button {
+    display: block;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 0.5rem; }
+
+.article .fas {
+  color: red; }
+
+/*# sourceMappingURL=style.css.map */
