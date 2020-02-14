@@ -1,0 +1,45 @@
+figure
+    margin: 0
+.results
+    display: flex
+    flex-direction: column
+    &__searched
+        display: flex 
+        flex-direction: row
+        justify-content: space-between
+        position: sticky
+        top: -1px
+        background-color: white
+    &__container
+        display: flex
+    &__text
+        display: flex
+        align-items: center
+    &__filter
+        display: flex
+        flex-direction: column
+        width: 15%
+        @media screen and (max-width: 900px)
+            display: none
+            
+    &__products-container
+        display: flex
+        flex-wrap: wrap
+        @media screen and (min-width: 900px)
+            width: 100%
+    &__product
+        width: calc(90%/2)
+        margin: 5px
+        @media screen and (min-width: 900px)
+            width: calc(90%/3)
+            margin: 1vh
+    &__parameter
+        padding-bottom: 2vh
+            
+img
+    width: 100%
+    min-height: 150px
+    height: auto
+
+ul
+    list-style-type: none
