@@ -14,6 +14,7 @@ function searchVehicles(token, query, callback) {
         const { error: _error, favs } = user
 
 
+
         if (_error) return callback(new Error(_error))
 
 
@@ -23,9 +24,12 @@ function searchVehicles(token, query, callback) {
             if (response.status === 200) {
                 const results = JSON.parse(response.content);
 
-                results.forEach(vehicle => {
-                    if (favs.includes(vehicle.id)) vehicle.isFav = true
-                });
+                if (favs) {
+                    results.forEach(vehicle => {
+                        if (favs.includes(vehicle.id)) vehicle.isFav = true
+                    });
+
+                }
 
                 callback(undefined, results)
             }

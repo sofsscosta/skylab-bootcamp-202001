@@ -37,7 +37,7 @@ class App extends Component {
                         if (error)
                             this.setState({ error: error.message + ' ' + IT })
 
-                        this.setState({ view: 'search', user, query, vehicles, error: !vehicles.length ? undefined : 'No results ' + IT })
+                        this.setState({ view: 'search', user, query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
 
                         if (!vehicles.length)
                             setTimeout(() => {

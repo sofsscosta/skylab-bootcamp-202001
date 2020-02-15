@@ -16,7 +16,7 @@ function toggleFavVehicle(id, token, callback) {
 
         let { favs } = user
 
-        if (favs.length && favs.includes(id)) {
+        if (favs && favs.includes(id)) {
             favs = favs.filter((car) => car !== id)
         } else if (favs && !favs.includes(id)) {
             favs.push(id)
