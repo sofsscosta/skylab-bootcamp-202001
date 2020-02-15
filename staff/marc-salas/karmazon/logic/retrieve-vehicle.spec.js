@@ -1,59 +1,83 @@
-'use strict';
+describe('retrieveVehicle', () => {
+    it('should succeed on valid ID#', done => {
+        
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNjM2NmYzQxMDQ0ZTAwMTU0NDUwY2EiLCJpYXQiOjE1ODEwMTYwODUsImV4cCI6MTU4MTAxOTY4NX0.kMTJu-yC5usghKsHRUSyajaLlhnR2tdJkd_6pa-fBIw"
 
-describe('retrieveVehicles', function() {
-    it('should succeed on valid id#', function(done) {
-        retrieveVehicle('FJV58', function(results) {
-            expect(results).toBeDefined();
-                expect(typeof results.id).toBe('string');
-                expect(typeof results.name).toBe('string');
-                expect(typeof results.image).toBe('string');
-                expect(typeof results.year).toBe('number');
-                expect(typeof results.color).toBe('string');
-                expect(typeof results.maker).toBe('string');
-                expect(typeof results.collection).toBe('string');
-                expect(typeof results.style).toBe('string');
-                expect(typeof results.description).toBe('string');
-                expect(typeof results.price).toBe('number');
-                expect(typeof results.url).toBe('string');
+        const ids = ['FYF46', 'FYF93', 'FYD43', 'FYD16', 'FYC00', 'FYC05', 'FYF75', 'FYB99', 'FYC82', 'FYD62', 'FYD19', 'FYC38', 'FYC55', 'FYD18', 'FJW82', 'FYG57', 'FYD55', 'FYD65', 'FJY64', 'FJY65']
 
+        const id = ids.random()
+        
+        retrieveVehicle(token, id, (error, vehicle) => {
+            expect(error).toBeUndefined()
+            expect(vehicle).toBeDefined()
+            expect(vehicle.id).toBeDefined(id)
+            expect(vehicle.id).not.toBeInstanceOf(Error)
 
-            done();
-        });
-    });
+            expect(typeof vehicle.id).toBe('string')
+            expect(typeof vehicle.name).toBe('string')
+            expect(typeof vehicle.image).toBe('string')
+            expect(typeof vehicle.year).toBe('number')
+            expect(typeof vehicle.color).toBe('string')
+            expect(typeof vehicle.maker).toBe('string')
+            expect(typeof vehicle.collection).toBe('string')
+            expect(typeof vehicle.style).toBe('string')
+            expect(typeof vehicle.description).toBe('string')
+            expect(typeof vehicle.price).toBe('number')
+            expect(typeof vehicle.url).toBe('string')
 
-    it('should fail on non-string id', function() {
-        expect(function() {
-            retrieveVehicle(undefined, function() {});
-        }).toThrowError(TypeError, 'undefined is not a string');
+            done()
+        })
+    })
+    
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZTNjM2NmYzQxMDQ0ZTAwMTU0NDUwY2EiLCJpYXQiOjE1ODEwMTYwODUsImV4cCI6MTU4MTAxOTY4NX0.kMTJu-yC5usghKsHRUSyajaLlhnR2tdJkd_6pa-fBIw"
+    
+    it('should return null on non-matching vehicle id', done => {
 
-        expect(function() {
-            retrieveVehicle(1, function() {});
-        }).toThrowError(TypeError, '1 is not a string');
+        const id = 'fffffff'
 
-        expect(function() {
-            retrieveVehicle(true, function() {});
-        }).toThrowError(TypeError, 'true is not a string');
+        retrieveVehicle(token, id, (error, vehicle) => {
+            expect(error).toBeUndefined()
+            expect(vehicle).not.toBeInstanceOf(Error)
 
-        expect(function() {
-            retrieveVehicle({}, function() {});
-        }).toThrowError(TypeError, '[object Object] is not a string');
-    });
+            expect(vehicle).toBeNull()
 
-    it('should fail on non-function callback', function() {
-        expect(function() {
-            retrieveVehicle('', undefined);
-        }).toThrowError(TypeError, 'undefined is not a function');
+            done()
+        })
+    })
 
-        expect(function() {
-            retrieveVehicle('', 1);
-        }).toThrowError(TypeError, '1 is not a function');
+    it('should fail on non-string query', () => {
+        expect(() => 
+            retrieveVehicle(token, undefined, () => {})
+        ).toThrowError(TypeError, 'undefined is not a string')
 
-        expect(function() {
-            retrieveVehicle('', true);
-        }).toThrowError(TypeError, 'true is not a function');
+        expect(() => 
+            retrieveVehicle(token, 1, () => {})
+        ).toThrowError(TypeError, '1 is not a string')
 
-        expect(function() {
-            retrieveVehicle('', {});
-        }).toThrowError(TypeError, '[object Object] is not a function');
-    });
-});
+        expect(() => 
+            retrieveVehicle(token, true, () => {})
+        ).toThrowError(TypeError, 'true is not a string')
+
+        expect(() => 
+            retrieveVehicle(token, {}, () => {})
+        ).toThrowError(TypeError, '[object Object] is not a string')
+    })
+
+    it('should fail on non-function callback', () => {
+        expect(() => 
+            retrieveVehicle(token, '', undefined)
+        ).toThrowError(TypeError, 'undefined is not a function')
+
+        expect(() => 
+            retrieveVehicle(token, '', 1)
+        ).toThrowError(TypeError, '1 is not a function')
+
+        expect(() => 
+            retrieveVehicle(token, '', true)
+        ).toThrowError(TypeError, 'true is not a function')
+
+        expect(() => 
+            retrieveVehicle(token, '', {})
+        ).toThrowError(TypeError, '[object Object] is not a function')
+    })
+})

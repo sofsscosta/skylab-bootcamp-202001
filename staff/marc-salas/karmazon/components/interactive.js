@@ -3,18 +3,15 @@ class Interactive extends Component {
         super(container)
     }
 
-
     __showFeedback__(level, message) {
-        var feedback = new Feedback({ level: level, message: message })
+        const feedback = new Feedback({ level, message })
 
         this.__locateFeedbackInContainer__(feedback)
 
-        setTimeout(function () {
-            this.removeChild(feedback.container)
-        }.bind(this.container), 5000)
+        setTimeout(() => this.container.removeChild(feedback.container), 3000)
     }
 
-    __locateFeedbackInContainer__ (feedback) {
+    __locateFeedbackInContainer__(feedback) {
         throw Error('This method must be implemented in child types')
     }
 

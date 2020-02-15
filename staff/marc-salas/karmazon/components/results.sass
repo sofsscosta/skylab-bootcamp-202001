@@ -1,11 +1,9 @@
-.results 
-    font-family: Arial, Helvetica, sans-serif
-    display: flex
-    flex-wrap: wrap
+@import ../config
+
+ul
+    @extend %flexRowCenter
     justify-content: space-around
-    padding: 0   
+    flex-wrap: wrap
+    background-color: $LightBlueBackground-color
     list-style-type: none
-    width: 90vw
-    margin: 20px
-    li        
-        width: 40%
+    width: 100%

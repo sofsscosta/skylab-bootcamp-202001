@@ -1,5 +1,5 @@
 describe('registerUser', () => {
-    let name, surname, username, password
+    let name, surname, username, password, error
 
     beforeEach(() => {
         name = 'name-' + Math.random()
@@ -9,31 +9,145 @@ describe('registerUser', () => {
     })
 
     it('should succeed on new user', done => {
-        register(name, surname, username, password, error => {
+        registerUser(name, surname, username, password, (error, response) => {
             expect(error).toBeUndefined()
+
+            expect(response).toBeUndefined()
 
             done()
         })
     })
-    describe('when user already exist', () => {
+
+    describe('On existing user', () => {
         beforeEach(done => {
             call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, surname, username, password })
-            }, response => {
-                if (response instanceof Error) return callback(response)
+            }, (error, response) => {
+                if (error) return callback(error)
+
                 done()
             })
         })
-        it('should fail in already existing user', done =>{
-            register(name, surname, username, password, error =>{
+
+        it('should fail on already existing user', done => {
+            registerUser(name, surname, username, password, error => {
                 expect(error).toBeDefined()
                 expect(error.message).toBe(`user with username "${username}" already exists`)
+
                 done()
             })
         })
+    })
 
+    it('should fail on non-string name', () => {
+        name = 1
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `name ${name} is not a string`)
 
+        name = true
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `name ${name} is not a string`)
+
+        name = undefined
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `name ${name} is not a string`)
+
+        name = null
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `name ${name} is not a string`)
+    })
+
+    it('should fail on non-string surname', () => {
+        surname = 1
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `surname ${surname} is not a string`)
+
+        surname = true
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `surname ${surname} is not a string`)
+
+        surname = undefined
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `surname ${surname} is not a string`)
+
+        surname = null
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `surname ${surname} is not a string`)
+    })
+
+    it('should fail on non-string username', () => {
+        username = 1
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `username ${username} is not a string`)
+
+        username = true
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `username ${username} is not a string`)
+
+        username = undefined
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `username ${username} is not a string`)
+
+        username = null
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `username ${username} is not a string`)
+    })
+
+    it('should fail on non-string password', () => {
+        password = 1
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `password ${password} is not a string`)
+
+        password = true
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `password ${password} is not a string`)
+
+        password = undefined
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `password ${password} is not a string`)
+
+        password = null
+        expect(() =>
+            registerUser(name, surname, username, password, error => { })
+        ).toThrowError(TypeError, `password ${password} is not a string`)
+    })
+
+    it('should fail on non-function callback', () => {
+        callback = 1
+        expect(() =>
+            registerUser(name, surname, username, password, callback)
+        ).toThrowError(TypeError, `${callback} is not a function`)
+
+        callback = true
+        expect(() =>
+            registerUser(name, surname, username, password, callback)
+        ).toThrowError(TypeError, `${callback} is not a function`)
+
+        callback = undefined
+        expect(() =>
+            registerUser(name, surname, username, password, callback)
+        ).toThrowError(TypeError, `${callback} is not a function`)
+
+        callback = null
+        expect(() =>
+            registerUser(name, surname, username, password, callback)
+        ).toThrowError(TypeError, `${callback} is not a function`)
     })
 })
