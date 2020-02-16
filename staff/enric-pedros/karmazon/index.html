@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Molle:400i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,24 +19,34 @@
     <script src="vendor/react/16.12.0/react.development.js"></script>
     <script src="vendor/react/16.12.0/react-dom.development.js"></script>
     <script src="vendor/babel/6.26.0/babel.js"></script>
+    
     <script src="utils/call.js"></script>
-    <script  src="components/app.jsx" type="text/babel"></script>
+    <script src="utils/string-polyfills.js"></script>
+    <script src="utils/location.prototype.query-string.js"></script>
+
+
+    <script src="components/app.jsx" type="text/babel"></script>
     <script src="components/login.jsx" type="text/babel"></script>
     <script src="components/register.jsx" type="text/babel"></script>
     <script src="components/search.jsx" type="text/babel"></script>
     <script src="components/results.jsx" type="text/babel"></script>
     <script src="components/feedback.jsx" type="text/babel"></script>
     <script src="components/item.jsx" type="text/babel"></script>
-    <script src="components/detail-vehicle.jsx" type="text/babel"></script>
-    
+    <script src="components/details.jsx" type="text/babel"></script>
+    <script src="components/favs-list.jsx" type="text/babel"></script>
     
     <script src="logic/retrieve-user.js"></script>
-    <script src="logic/toogle-fav-vehicle.js"></script>
+    <script src="logic/retrieve-vehicle.js"></script>
+    <script src="logic/toggle-fav-vehicle.js"></script>
     <script src="logic/search-vehicles.js"></script>
     <script src="logic/register-user.js"></script>
     <script src="logic/authenticate-user.js"></script>
     <script src="logic/detail-vehicle.js"></script>
+    <script src="logic/search-favs.js"></script>
+    <script src="logic/toggle-fav-vehicle.js"></script>    
     <script src="main.jsx" type="text/babel"></script>
+
+
 </body>
 
 </html>

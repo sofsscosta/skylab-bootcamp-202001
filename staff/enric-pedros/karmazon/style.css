@@ -8,6 +8,14 @@
 .search--hide {
   display: none;
 }
+.search__items {
+  display: flex;
+  flex-direction: column;
+}
+.search__items > img {
+  width: 50%;
+  margin: auto;
+}
 .search input {
   display: block;
   border: 1px solid black;
@@ -105,6 +113,22 @@ article:nth-child(even) {
   background-color: gray;
 }
 
+.detail {
+  display: flex;
+  flex-direction: column;
+}
+.detail__container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #f70ad2;
+}
+
+.detail > h2 {
+  border: 1px solid black;
+  background-color: #0000ff5e;
+}
+
 .detail p {
   font-style: oblique;
 }
@@ -124,7 +148,8 @@ body {
 main {
   background-color: #00968899;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 
 h1 {

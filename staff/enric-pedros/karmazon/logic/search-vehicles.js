@@ -5,7 +5,7 @@ function searchVehicles(token, query, callback) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
     
     retrieveUser(token, (error, user) => {
-        console.log(user)
+        
         if (error) return callback(error)
 
         if (user.favs !== undefined) {
@@ -17,7 +17,7 @@ function searchVehicles(token, query, callback) {
                     results.forEach(car => {
                         user.favs.includes(car.id)? car.fav = true : car.fav = false
                     })
-                    console.log(results)
+                 
                     callback(undefined, results);
                 }
             })

@@ -7,7 +7,7 @@ function registerUser(name, surname, username, password, callback) {
     if (!username.trim()) throw new Error('username is empty')
     if (typeof password !== 'string') throw new TypeError('password ' + password + ' is not a string');
     if (!password.trim()) throw new Error('password is empty')
-debugger
+
     call('https://skylabcoders.herokuapp.com/api/v2/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
