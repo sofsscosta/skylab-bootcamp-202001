@@ -1,0 +1,52 @@
+@import config
+
+.login
+    width: 50%
+    margin-left: 25%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    font-family: 'Arial'
+
+    & > *
+        width: 55%
+        margin-left: 22.5%
+        margin-bottom: 3%
+        text-align: center
+
+    & > h2 
+        font-size: 3vw
+
+    & > p
+        text-align: center
+
+    & > input
+        @extend %item-border
+        background-color: #ececec
+        // color: white
+
+    & > button
+        width: 40%
+        margin-left: 30%
+        height: 2em
+        border-radius: 1em
+        text-align: center
+        // @extend %item-border
+        background-color: #02940e
+        color: white
+
+    & > a 
+        width: 40%
+        margin-left: 30%
+        height: 2em
+        border-radius: 1em
+        display: flex
+        justify-content: center
+        align-items: center
+        // @extend %item-border
+        background-color: #0066ff
+        color: white
+
+
+    &--hide
+        display: none

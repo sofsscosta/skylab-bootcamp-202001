@@ -105,7 +105,7 @@ describe('searchVehicles', () => {
                 })
             })
 
-            it('should get results on matching query but no favs if not previously added', done => {
+            it('should get results on matching query with favs as previously added', done => {
                 searchVehicles(token, query, (error, vehicles) => {
                     expect(error).toBeUndefined()
 
@@ -129,7 +129,7 @@ describe('searchVehicles', () => {
                         const { favs } = user
 
                         for (const fav of favs)
-                            expect(ids).toContain(fav)
+-                            expect(ids).toContain(fav)
 
                         vehicles.forEach(vehicle => {
                             expect(typeof vehicle.id).toBe('string')

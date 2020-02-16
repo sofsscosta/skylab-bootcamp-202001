@@ -1,0 +1,235 @@
+body {
+  text-align: center;
+}
+
+.search {
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 1.3rem;
+  font-family: sans-serif;
+  background-image: linear-gradient(-90deg, #a9e7ec, #66c9e7);
+  font-size: 1.3em;
+}
+.search a {
+  font-size: 1em;
+}
+.search--hide {
+  display: none;
+}
+.search input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.search button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: #008eb9;
+  color: white;
+  font-size: 0.7em;
+}
+
+.login {
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-image: linear-gradient(-90deg, #a9e7ec, #66c9e7);
+  font-size: 1.3em;
+}
+.login--hide {
+  display: none;
+}
+.login input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: #008eb9;
+  color: white;
+  font-size: 0.7em;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.register {
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-image: linear-gradient(-90deg, #a9e7ec, #66c9e7);
+  font-size: 1.3em;
+}
+.register--hide {
+  display: none;
+}
+.register input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: #008eb9;
+  color: white;
+  font-size: 0.7em;
+}
+.register a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
+}
+
+.details {
+  font-family: sans-serif;
+  border-top: 1px solid #b4b4b4;
+  margin-top: 1.5%;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat 5, 1fr;
+  grid-template-rows: repeat 5, 1fr;
+}
+.details .button {
+  grid-area: 1/1/1/1;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: #7bcbe4;
+  color: white;
+  font-size: 0.7em;
+}
+.details h2 {
+  grid-area: 1/2/5/4;
+  text-shadow: 0.07em 0.07em black;
+  color: #008eb9;
+  font-weight: bolder;
+}
+.details img {
+  grid-area: 2/1/5/4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 50vw;
+  width: auto;
+  margin-top: 4%;
+}
+.details .content {
+  grid-area: 2/4/6/6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: justify;
+}
+.details span {
+  grid-area: 5/1/5/4;
+  margin: 2.5%;
+  font-size: 2em;
+  font-weight: bolder;
+  color: #008eb9;
+  text-shadow: 0.07em 0.07em black;
+}
+.details .heart {
+  color: red;
+}
+
+.item {
+  font-family: sans-serif;
+  font-size: 20px;
+  border: 2px solid black;
+  padding: 1.5%;
+  margin: 1.5% 0%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 5px grey;
+  min-width: 300px;
+}
+.item .heart {
+  color: red;
+}
+.item h3 {
+  text-shadow: 0.07em 0.07em black;
+  color: #008eb9;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.item img {
+  max-width: 350px;
+  min-width: 150px;
+}
+.item span {
+  font-size: 1.2em;
+}
+
+.results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 4em;
+  font-weight: bolder;
+  color: #008eb9;
+  text-shadow: 0.04em 0.04em black;
+}
+
+h2 {
+  text-shadow: 0.07em 0.07em black;
+  color: #008eb9;
+  font-weight: bolder;
+  font-family: sans-serif;
+}
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */
