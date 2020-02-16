@@ -1,0 +1,18 @@
+@import utils
+@import config
+
+.search
+    +flex(column, space-between)
+    height: 15vh
+    max-width: 30vw
+    margin: auto
+    align-items: center
+
+    &--hide
+        display: none
+
+    .input
+        @extend %input
+
+    .submit
+        @extend %button
