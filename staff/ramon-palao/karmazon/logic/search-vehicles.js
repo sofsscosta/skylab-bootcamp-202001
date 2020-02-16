@@ -16,6 +16,9 @@ function searchVehicles(token, query, callback) {
     }, response => {
 
         const content = JSON.parse(response.content)
+        if(!content.favs){
+            content.favs = []
+        }
 
         if (response instanceof Error) return callback(response)
 
@@ -29,7 +32,7 @@ function searchVehicles(token, query, callback) {
                 if (response.status === 200) {
                     var results = JSON.parse(response.content);
 
-                    callback({vehicles: results, favs: content.favs});
+                    callback({vehicles: results, favs: content.favs}); 
                 }
             })
         }

@@ -16,36 +16,7 @@ class App extends Component {
         sessionStorage.token = token
     }
 
-    // componentWillMount() {
-
-    //     const { token } = sessionStorage
-
-    //     if (token) {
-
-    //         retrieveUser(token, (error, user) => {
-    //             if (error)
-    //                 return this.setState({ error: error.message + ' ' + IT })
-
-    //             if (location.search) {
-    //                 const query = location.search.split('=')[1]
-
-    //                 searchVehicles(query, (error, vehicles) => {
-    //                     if (error)
-    //                         return this.setState({ error: error.message + ' ' + IT })
-
-    //                     this.setState({ view: 'search', user, query, vehicles, error: vehicles.length ? undefined : 'No results ' + IT })
-
-    //                     if (!vehicles.length)
-    //                         setTimeout(() => {
-    //                             this.setState({ error: undefined })
-    //                         }, 3000)
-    //                 })
-    //             } else
-    //                 this.setState({ view: 'search', user })
-    //         })
-    //     }
-    //     else this.setState({ view: 'login' })
-    // }
+    handleClearToken = () => window.sessionStorage.clear()
 
     handleLogin = (username, password) => {
         try {
@@ -188,7 +159,7 @@ class App extends Component {
 
 
     render() {
-        const { props: { title }, state: { vehicle, vehicles, view, style, error, user, favs }, handleDetail, handleGoToLogin, handleGoToRegister, handleLogin, handleRegister, handleSearch, handleUpdate, handleGoToUpdate, handleGoToSearch, handleFav } = this
+        const { props: { title }, state: { vehicle, vehicles, view, style, error, user, favs }, handleDetail, handleGoToLogin, handleGoToRegister, handleLogin, handleRegister, handleSearch, handleUpdate, handleGoToUpdate, handleGoToSearch, handleFav, handleLogout } = this
 
         return <Fragment>
 
@@ -202,7 +173,7 @@ class App extends Component {
 
             {view === "update" && <Update onSubmit={handleUpdate} user={user} onGoToSearch={handleGoToSearch} error={error} />}
 
-            {view === "search" && <Search title="Search" onSubmit={handleSearch} warning={error} onGoToUpdate={handleGoToUpdate} />}
+            {view === "search" && <Search title="Search" onSubmit={handleSearch} warning={error} onGoToUpdate={handleGoToUpdate} onLogout={handleLogout} />}
 
             {view === "search" && vehicles && !vehicle && <Results results={vehicles} onItemClick={handleDetail} onToggleFav={handleFav} favs={favs} />}
 

@@ -1,4 +1,4 @@
-function Search({title, onSubmit, onGoToUpdate}) {
+function Search({title, onSubmit, onGoToUpdate, onLogout}) {
     return <form className="search" onSubmit={event => {
         event.preventDefault()
         const query = event.target.query.value
@@ -10,7 +10,7 @@ function Search({title, onSubmit, onGoToUpdate}) {
         <a href="" onClick={event=>{
             event.preventDefault()
             onGoToUpdate()
-        }}>Go to your profile</a>
+        }}>Go to your profile</a><br></br>
     </form>
 }
 
