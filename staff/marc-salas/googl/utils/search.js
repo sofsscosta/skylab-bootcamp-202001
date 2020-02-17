@@ -1,0 +1,42 @@
+function search(url, resultsSelector, titleSelector, linkSelector, contentSelector, callback) {
+    if (typeof url !== 'string') throw new TypeError(url + ' is not a string');
+    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
+
+    call('https://skylabcoders.herokuapp.com/proxy?url=' + url, function (response) {
+        if (response instanceof Error) return callback(response) 
+
+        var doc = new DOMParser().parseFromString(response.content, 'text/html')
+
+        var items = doc.querySelectorAll(resultsSelector)
+
+        var results = []
+
+        for (var i = 0; i < items.length - 2; i++) {
+            var item = items[i]
+
+            var title = item.querySelector(titleSelector)
+
+            if (title) {
+                var result = {}
+
+                result.title = title.innerText
+
+                var rating = item.querySelector(linkSelector)
+
+                if (rating) {
+                    result.rating = rating.innerText
+                }
+
+                var description = item.querySelector(contentSelector);
+                if (description) {
+                    result.description = description.innerText;
+                }
+            }
+
+            results.push(result)
+        }
+
+        callback(results)
+    })
+}
+

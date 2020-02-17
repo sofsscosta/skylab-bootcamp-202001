@@ -1,0 +1,27 @@
+.login {
+  margin: 0 15%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register {
+  margin: 0 15%;
+  display: flex;
+  flex-direction: column;
+}
+
+.results {
+  margin-top: 40vh;
+}
+
+main {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 80vw;
+  height: 60vh;
+  margin-left: 8vw;
+  margin-top: 8vh;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */
