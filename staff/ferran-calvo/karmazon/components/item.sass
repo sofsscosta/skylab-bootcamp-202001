@@ -1,0 +1,37 @@
+@import utils
+
+.item
+    width: 29vw
+    justify-content: flex-end
+    display: flex
+    flex-flow: column wrap
+    margin: 2vh 0.5vw
+    background-color: rgb(161, 233, 255)
+    border-radius: 0.5em
+    overflow: hidden
+
+    &__thumbnail
+        width: 20vw
+        align-self: center
+
+    &__name
+        padding: 2vh 0
+        //font-size: 2rem
+        background-color: rgb(170, 226, 238)
+
+    &__price
+        justify-self: flex-end
+        padding: 2vh 0
+        background-color: rgb(170, 226, 238)
+
+.fav
+    width: 5vw
+    height: 5vw
+    background-image: url("fav.png")
+    background-size: cover
+
+    &__faved
+        width: 5vw
+        height: 5vw
+        background-image: url("faved.png")
+        background-size: cover
