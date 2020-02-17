@@ -1,0 +1,32 @@
+.main-results
+    &__menu
+        +flex(column, flex-start)
+        position: sticky
+        height: 100%
+        top: 0
+        z-index: -1
+
+    &__categories
+        padding-left:0
+
+    &__title
+        padding-bottom: 20px
+
+    &__sizes
+        +flex(row, space-between)
+        align-content: space-evenly
+        max-height: 250px
+        width: 250px
+        flex-flow: row wrap
+        padding-right: $padding-menu
+        box-sizing: border-box
+
+        .button-size
+            @extend %button-size
+
+            &:hover
+                +border(1px, solid, black, 5px)
+                cursor: pointer
+                
+    .menu
+        margin-bottom: 40px
