@@ -1,22 +1,51 @@
-var form = document.querySelector('form');
-form.addEventListener('submit', function(event){
-    event.preventDefault();
-    var query = this.query.value;
-    googl(query, function(results) {
-        var ul = document.createElement('ul');
-        for (var i=0; i<results.length; i++){
-            var li= document.createElement('li')
-            var h3 = document.createElement('h3');
-            var p = document.createElement('p');
-            var resultTitle = document.createTextNode(results[i].title);
-            var description = document.createTextNode(results[i].description);
-            p.appendChild(description);
-            h3.appendChild(resultTitle);
-            li.appendChild(h3);
-            li.appendChild(p);
-            ul.appendChild(li);
-        }
-        var div1 = document.getElementById("div1");
-        div1.appendChild(ul);
+var users = []; // ej: user => { name, surname, username, password }
+
+var searchGoogle = createSearch('.search-1', function (query) {
+    googl(query, function (results) {
+        createResults('.results', results);
+        results.classList.toggle('results--hide')
+    });
+});
+var searchEcosia = createSearch('.search-2', function (query) {
+    ecosia(query, function (results) {
+        createResults('.results', results);
+     /*    var results = document.querySelector('.results-2')
+        results.classList.toggle('results--hide') */
+    });
+});
+var searchBing = createSearch('.search-3', function (query) {
+    bing(query, function (results) {
+        createResults('.results', results);
+    /*     var results = document.querySelector('.results-3')
+        results.classList.toggle('results--hide') */
+    });
+});
+var searchYahoo = createSearch('.search-4', function (query) {
+    yahoo(query, function (results) {
+        createResults('.results', results);
+   /*      var results = document.querySelector('.results-4')
+        results.classList.toggle('results--hide') */
+    });
+});
+
+
+
+
+var login = createLogin('.login', function(username, password) {
+    var access=users.some(function(element){
+        
+        return element.username===username && element.password===password
     })
+    if (access) {
+        var search=document.querySelector('.search')
+        search.classList.toggle('search--hide');
+        login.classList.toggle('login--hide');
+    } else alert('you cannot get in :P');
+});
+                        
+
+
+var register= createRegister('.register', function(){
+    register.classList.toggle('search--hide');
+    login.classList.toggle('login--hide');                
 })

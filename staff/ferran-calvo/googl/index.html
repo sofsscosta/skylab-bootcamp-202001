@@ -1,26 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        ul {
-            list-style-type: none;
-        }
-    </style>
+    <title>Googl</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="div1">
-        <h1>Googl</h1>
-        <form id="searcher">
-            <input type="text" name="query" id="text" placeholder="Type here...">
-            <button type="submit">Search</button>
+    
+
+    <form class="register">
+        <!-- <div class="changeForm">
+            <button class="changeToLogin">Login</button>
+            <button class="changeToRegister">Registrar</button>
+        </div> -->
+        <h1 class="register__title">Googl</h1>
+        <div class="register__form">
+            <input type="text" name="name" class="register__name" placeholder="Name" required autocomplete="off">
+            <input type="text" name="surname" class="register__surname" placeholder="Surname" required autocomplete="off">
+            <input type="text" name="username" class="register__username" placeholder="Username" required autocomplete="off">
+            <input type="password" name="password" class="register__password" placeholder="Password" required autocomplete="off">
+            <button type="submit" class="register__submit">Registrar</button>
+        </div>
+    </form>
+
+
+    <form class="login login--hide">
+        <!-- <div class="changeForm">
+            <button class="changeToLogin">Login</button>
+            <button class="changeToRegister">Registrar</button>
+        </div> -->
+        <div class="login__form">
+            <h1 class="login__title">Googl</h1>
+            <input type="text" name="username" class="login__username" placeholder="Username" required autocomplete="off">
+            <input type="password" name="password" class="login__password" placeholder="Password" required autocomplete="off">
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
+
+    <div class="search search--hide">
+        <form class="search-1">
+            <h1 class="results__title">Googl</h1>
+            <input type="text" class="search__query" name="query">
+            <button type="submit">Go!</button>
         </form>
-        <script src="googl.js"></script>
-        <script src="main.js"></script>
+
+    
+        <form class="search-2">
+            <h1 class="results__title">Ecosia</h1>
+            <input type="text" class="search__query" name="query">
+            <button type="submit">Go!</button>
+        </form>
+    
+        
+        <form class="search-3">
+            <h1 class="results__title">Bing</h1>
+            <input type="text" class="search__query" name="query">
+            <button type="submit">Go!</button>
+        </form>
+    
+
+        <form class="search-4">
+            <h1 class="results__title">Yahoo</h1>
+            <input type="text" class="search__query" name="query">
+            <button type="submit">Go!</button>
+        </form>
     </div>
+    
+    <section class="results">
+        <ul class="results__list results">
+        </ul>
+    </section>
+
+
+    <script src="call.js"></script>
+    <script src="search.js"></script>
+    <script src="googl.js"></script>
+    <script src="bing.js"></script>
+    <script src="ecosia.js"></script>
+    <script src="yahoo.js"></script>
+    <script src="components.js"></script>
+    <script src="main.js"></script>
+
+
 </body>
 </html>

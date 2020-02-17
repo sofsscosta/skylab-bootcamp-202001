@@ -1,0 +1,12 @@
+.results {
+  width: 40%;
+}
+.results li {
+  list-style: none;
+  margin-bottom: 2em;
+}
+.results--hide {
+  display: none;
+}
+
+/*# sourceMappingURL=results.css.map */

@@ -1,46 +1,80 @@
-h1 {
-  font-size: 15vh;
-  justify-content: center;
-  align-items: center;
-  font-family: "Cambria";
+.register {
   display: flex;
-  flex-direction: row;
-  margin: 0;
-  margin-top: 20vh;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  height: 80%;
 }
-h1 .p1 {
-  color: blue;
-  margin: 0;
+.register--hide {
+  display: none;
 }
-h1 .p2 {
-  color: red;
-  margin: 0;
+.register__form {
+  display: flex;
+  flex-direction: column;
+  height: 45%;
+  width: 15rem;
+  justify-content: space-evenly;
 }
-h1 .p3 {
-  color: yellow;
-  margin: 0;
+.register__password {
+  margin-bottom: 1.5rem;
 }
-h1 .p4 {
-  color: blue;
-  margin: 0;
+.register__submit {
+  align-self: flex-end;
+  width: 40%;
 }
-h1 .p5 {
-  color: green;
+.register__title {
+  font-size: 6rem;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  height: 80%;
+}
+.login--hide {
+  display: none;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  height: 45%;
+  width: 15rem;
+  justify-content: space-evenly;
+}
+.login__title {
+  font-size: 6rem;
+}
+
+.search {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+}
+.search--hide {
+  display: none;
+}
+
+.results {
+  width: 40%;
+}
+.results li {
+  list-style: none;
+  margin-bottom: 2em;
+}
+.results--hide {
+  display: none;
+}
+* {
   margin: 0;
 }
 
-form {
-  text-align: center;
-  margin-top: 7vh;
-}
-form input {
-  border-radius: 1em;
-  width: 50%;
-  height: 4vh;
-}
-form button {
-  height: 4vh;
-  background-color: green;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */
