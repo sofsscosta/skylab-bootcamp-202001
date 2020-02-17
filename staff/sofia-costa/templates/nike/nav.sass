@@ -1,0 +1,40 @@
+@import button
+@import config
+    
+
+%brand-nav   
+.header-top__brand-nav
+    +flex(row, flex-start)
+    max-height: $header-nav-height
+    max-width: 50vw
+
+.button-nav-brand
+    @extend %button-brand-nav
+
+
+%site-nav
+.header-top__site-nav
+    +flex(row, flex-start)
+    max-height: $header-nav-height
+    max-width: 50vw
+
+%main-nav
+.header-bottom
+    +flex(row, space-between)
+    height: $header-main-nav-height
+    align-items: center
+    padding: 10px
+    box-sizing: border-box
+
+    &__logotype
+        height: $header-main-nav-height
+        max-width: 150px
+        max-height: 50px
+    
+    &__main-nav
+        +flex(row, space-evenly)
+        padding: 0 20px
+        max-width: 60vw
+
+    .search__query
+        @extend %search-query

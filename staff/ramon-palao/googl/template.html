@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Googl</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+​
+​
+    <header class="header__start">
+        <div>
+            <section class="logo">
+                <div class="logo-g">G</div>
+                <div class="logo-o">O</div>
+                <div class="logo-oo">O</div>
+                <div class="logo-gg">G</div>
+                <div class="logo-l">L</div>
+            </section>
+​        
+            <form class="search search--hide">
+                <input type="text" name="query" class="search__query">
+                <button class="search__button">SEARCH</button>
+            </form>
+​
+            <div class="enter _enter--hide">
+                <button class="enter__register">Register</button>
+                <button class="enter__login">Login</button>
+            </div>
+            <form class="register register--hide">
+                <h2>Sign-up</h2>
+                <input type="text" name="name" placeholder="name">
+                <input type="text" name="surname" placeholder="surname">
+                <input type="text" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <button type="submit">REGISTER</button>
+
+                <a href="">Login</a>
+            </form>
+            <form class="login login--hide">
+                <h2>Sign-in</h2>
+
+                <input type="text" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <button type="submit">LOGIN</button>
+
+                <a href="">Register</a>
+            </form>
+        </div>
+    </header>
+​
+​
+​
+    <header class="header__results header__results--hide">
+        <div class="top-header__results">
+            <a href="http://www.google.com"><h1>Google</h1></a>
+            <form class="search__form">
+                <div class="query">
+                    <input type="text" name="query" class="query">
+                    <button type="submit" class="submit">Submit</button>
+                    <button class="keyboard"></button>
+                    <button class="microphone"></button>
+                </div>
+            </form>
+            <ul class="results__list"></ul>
+            <div>
+                <div class="google-options"></div>
+                <div class="user-icon"></div>
+            </div>
+        </div>
+        <div class="bottom-header">
+            <nav class="menu">
+                <ul>
+                    <li class="menu__option">Todas</li>
+                    <li class="menu__option">Imagens</li>
+                    <li class="menu__option">Shopping</li>
+                    <li class="menu__option">Maps</li>
+                    <li class="menu__option">Vídeos</li>
+                    <li class="menu__option">Mais</li>
+                    <li class="menu__option">Configurações</li>
+                    <li class="menu__option">Ferramentas</li>
+                </ul>
+                <ul>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                    <li class="menu__selected"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+​
+​
+​
+    <ul class="results">
+    </ul>
+​
+​
+​
+    <footer class="footer footer--hide">
+        <div class="footer__location">
+            <ul>
+                <li class="info country">Espanha</li>
+                <li class="info city"></li>
+            </ul>
+        </div>
+        <div class="footer__bottom">
+            <ul>
+                <li class="info">Ajuda</li>
+                <li class="info">Enviar feedback</li>
+                <li class="info">Privacidade</li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="utils/call.js"></script>
+    <script src="utils/data.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/results.js"></script>
+    <script src="components/search.js"></script>
+
+    <script src="logic/googl.js"></script>
+    <script src="logic/register.js"></script>
+
+    <script src="main.js"></script>
+
+</body>
+</html>

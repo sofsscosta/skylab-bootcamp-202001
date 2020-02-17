@@ -1,0 +1,20 @@
+@import config
+    
+.favlist
+    display: flex
+    flex-wrap: wrap
+    width: 90%
+    margin-left: 5%
+
+a
+    display: center
+    justify-content: center
+    margin-left: 30%
+    @extend %main-buttons
+    font-weight: bolder
+    color: black
+    background-color: white
+
+
+    &.item
+        max-width: 40vw

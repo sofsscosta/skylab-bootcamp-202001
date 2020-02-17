@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.75rem;
+  height: 5%;
+  border-bottom: 1px solid #AEB6BF;
+}
+
+.show-results {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.75rem;
+  position: sticky;
+  top: 0;
+  background-color: #FDFEFE;
+}
+.show-results__icon {
+  margin-top: 2rem;
+}
+
+.products {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.products__article {
+  width: calc(90%/2);
+  height: 50%;
+  flex-wrap: wrap;
+  margin: 0.25rem;
+}
+.products__image {
+  width: 100%;
+  height: 20%;
+  margin: 0;
+  background-color: #F8F9F9;
+}
+.products__thumbail {
+  width: 65%;
+  height: 100%;
+  margin-left: 3.5vh;
+}
+.products__description {
+  width: 100%;
+  height: 50%;
+  margin: 1vh;
+}
+.products__model-product {
+  font-weight: bold;
+}
+.products__type-product {
+  color: #AEB6BF;
+}
+.products__gender-product {
+  color: #AEB6BF;
+}
+.products__colors-product {
+  color: #AEB6BF;
+}
+.products__price-product {
+  font-weight: bold;
+}
+
+.footer {
+  width: 100%;
+  background-color: #000000;
+}
+
+.footertext {
+  border-bottom: 1px solid #FDFEFE;
+  padding: 1rem;
+}
+.footertext__text {
+  color: #FDFEFE;
+  border-bottom: thick #FDFEFE;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.help {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.help__matters {
+  color: #FDFEFE;
+  border-bottom: thick #FDFEFE;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.help__plus {
+  color: #FDFEFE;
+  margin-right: 2rem;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.socialmedia {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.socialmedia__social {
+  color: #FDFEFE;
+  background: #85929E;
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: #000000;
+  margin-right: 0.5rem;
+}
+
+.address {
+  color: #FDFEFE;
+  margin-left: 1rem;
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+.legal__terms {
+  color: #85929E;
+}
+
+/*# sourceMappingURL=style.css.map */

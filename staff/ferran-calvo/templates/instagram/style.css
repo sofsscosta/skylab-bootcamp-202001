@@ -1,0 +1,124 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    height:  6vh;
+    justify-content: space-between;
+    padding: 0 1vh;
+}
+.header__takePhoto, .header__chats{
+    width: 10%;
+    height: 70%;
+    align-self: center;
+}
+.header__logo{
+    width: 20%;
+    height: 70%;
+    align-self: center;
+    text-align: center;
+    padding: 0.5vh 0;
+}
+.nav{
+    height: 10vh;
+    width: 100%;
+}
+.nav__carrusel{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+    padding: 1vh 0;
+}
+.nav__stories{
+    border-radius: 50%;
+    width: 8vh;
+    height: 8vh;
+    margin: 0 1vh;
+}
+.border{
+    border: 1px solid black;
+}
+.nav__stories--border-user{
+    border: 2px solid red; 
+    margin: 0 1vh;
+}
+.upper-bar{
+    display: flex;
+    flex-direction: row;
+    height: 7vh;
+    width: 100%;
+    padding: 1vh 1vh;
+    justify-content: space-between;
+}
+.upper-bar__user{
+    display: flex;
+    flex-direction: row;
+}
+.upper-bar__user-photo{
+    border-radius: 50%;
+    width: 5vh;
+    height: 5vh;
+    margin-right: 1vh;
+}
+.upper-bar__user-name{
+    height: 5vh;
+    width: 15vh;
+}
+.upper-bar__options{
+    height: 5vh;
+    width: 6vh;
+    
+}
+.image{
+    height: 45vh;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:  1vh 1vh;
+    height: 8vh;
+}
+.actions{
+    display: flex;
+    flex-direction: row;
+}
+.actions__like{
+    background-color: red;
+}
+.actions__like, .actions__comment, .actions__send{
+    height: 6vh;
+    width: 6vh;
+    margin: 0 1vh;
+}
+.comments{
+    height: 16vh;
+    font-size: 1em;
+    text-align: center;
+}
+.save-post{
+    height: 6vh;
+    width: 6vh;
+}
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1vh 1vh;
+}
+.navigation__home, .navigation__search, .navigation__post, .navigation__activity, .navigation__profile{
+    height: 6vh;
+    width: 6vh;
+}
+
+

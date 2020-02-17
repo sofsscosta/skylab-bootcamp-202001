@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Googl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Googl App</h1>
+
+    <form class="login _login--hide">
+        <h2>Sign-in</h2>
+
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button>Login</button>
+
+        <a href="">Register</a>
+    </form>
+
+    <form class="register register--hide">
+        <h2>Sign-up</h2>
+
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="surname" placeholder="surname">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button>Register</button>
+
+        <a href="">Login</a>
+    </form>
+    
+    <form class="googl search search--hide">
+        <h2>Googl</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="googl results"></ul>
+
+    <form class="ecosia search search--hide">
+        <h2>Ecosia</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="ecosia results"></ul>
+
+    <form class="bing search search--hide">
+        <h2>Bing</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="bing results"></ul>
+
+    <form class="yahoo search search--hide">
+        <h2>Yahoo</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="yahoo results"></ul>
+
+    <script src="utils/spy.js"></script>
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
+
+    <script src="data.js"></script>
+
+    <script src="logic/googl.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/yahoo.js"></script>
+    <script src="logic/register.js"></script>
+    <script src="logic/authenticate.js"></script>
+    
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  max-width: 20vw;
+}
+.register--hide {
+  display: none;
+}
+.register__title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/*# sourceMappingURL=register.css.map */

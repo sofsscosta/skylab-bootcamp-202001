@@ -1,0 +1,155 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: aria, sans-serif;
+}
+.login input {
+  margin-bottom: 15px;
+  height: 25px;
+  width: 200px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+.login button {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 25px;
+  width: 80px;
+  font-size: 16px;
+}
+.login--hide {
+  display: none;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: aria, sans-serif;
+}
+.search--hide {
+  display: none;
+}
+.search input {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 30px;
+  width: 120px;
+  margin-bottom: 3px;
+}
+.search button {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 25px;
+  width: 80px;
+  font-size: 16px;
+  background-color: #a3e88e;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.register input {
+  margin-bottom: 15px;
+  height: 30px;
+  width: 250px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.register button {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+}
+.register--hide {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .register input {
+    margin-bottom: 15px;
+    height: 25px;
+    width: 200px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 10px;
+    font-size: 18px;
+  }
+  .register button {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 25px;
+    width: 80px;
+    font-size: 16px;
+  }
+  .register--hide {
+    display: none;
+  }
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.title__green {
+  color: #32aa52;
+  font-size: 60px;
+  font-family: aria, sans-serif;
+}
+.title__blue {
+  color: #4285f4;
+  font-size: 60px;
+  font-family: aria, sans-serif;
+}
+.title__red {
+  color: #ea4335;
+  font-size: 60px;
+  font-family: aria, sans-serif;
+}
+.title__yellow {
+  color: #fbbc04;
+  font-size: 60px;
+  font-family: aria, sans-serif;
+}
+
+span {
+  margin: -5px;
+}
+
+.results {
+  list-style: none;
+  font-family: arial, sans-serif;
+  font-size: 20px;
+}
+
+.feedback {
+  color: green;
+  font-family: Arial;
+  font-size: 20px;
+}
+.feedback--warning {
+  color: orange;
+}
+.feedback--error {
+  color: red;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,92 @@
+@import config
+@import footer-main
+
+.footer
+    background-color: $footer-bg
+    width: 100%
+    max-width: 100%
+    margin: 10% 0% 0% 0%
+    padding-bottom: 20%
+    @extend %footer-main
+    
+    
+    &__info-user
+        margin: 0
+        width: 90%
+        margin-left: 5%
+        line-height: 5
+
+    &__info-help
+        width: 90%
+        margin-top: 15%
+        display: grid
+        grid-template-columns: auto 50px
+        margin-left: 5%
+
+        &-msg
+            grid-area: 1 / 1 / 1 / 1
+        
+        &.fas
+            grid-area: 1 / 2 / 1 / 2
+            color: white
+            font-size: 16px
+            text-align: center
+
+    &__info-about-us
+        width: 90%
+        margin-top: 15%
+        display: grid
+        grid-template-columns: auto 50px
+        margin-left: 5%
+
+        &-msg
+            grid-area: 1 / 1 / 1 / 1
+        
+        &.fas
+            grid-area: 1 / 2 / 1 / 2
+            color: white
+            font-size: 16px
+            text-align: center
+            
+
+    &__info-media
+        display: flex
+        flex-wrap: wrap
+        padding: 5% 0%
+        width: 90%
+        margin-left: 3%
+        justify-content: flex-start
+        
+
+        &.fab
+            padding: 0 3%
+            color: $gallery-desc
+            font-size: 38px
+            width: 15%
+
+    &__info-map
+        width: 90%
+        
+        padding: 5% 0% 0% 0%
+        justify-content: flex-start
+        margin-left: 5%
+
+        &.fas
+            font-size: 24px
+
+    &__info-misc
+        color: $gallery-desc
+        font-size: 12px
+        padding-top: 1%
+        width: 90%
+        margin-left: 5%
+        line-height: 2
+
+
+
+
+ul
+    list-style: none
+
+li
+    padding-top: 5%

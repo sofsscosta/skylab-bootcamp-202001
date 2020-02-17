@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body class=body>
+    <div class=body__feed>
+        <header class="header">
+            <div class="header__logo"></div>
+            <input class="header__search">
+            <nav class="header__nav">
+                <button class="nav__search nav__button" value="search">A</button>
+                <button class="nav__notifications nav__button">B</button>
+                <button class="nav__profile nav__button">C</button>
+                <button class="nav__profile--active nav__button">C</button>
+            </nav>
+        </header>
+        <main class=main__feed>
+            <nav class=feed__nav>
+                <div class=nav__item></div>
+                <div class=nav__item></div>
+                <div class=nav__item></div>
+                <div class=nav__item></div>
+            </nav>
+            <article class=post>
+                <header class=post__header>
+                    <img class="post__user-pic">
+                    <h2 class=post__username>USERNAME</h2>
+                </header>
+                <img class="post__img">
+                <footer class=post__footer>
+                    <nav class=post__nav>
+                        <div class=post__nav-container>
+                            <button class="post__fav post__button"></button>
+                            <button class="post__fav--active post__button"></button>
+                            <button class="post__comment post__button"></button>
+                            <button class="post__share post__button"></button>
+                        </div>
+                        <button class="post__collection post__button"></button>
+                        <button class="post__collection--active post__button"></button>
+                    </nav>
+                    <button class=post__likes>200 likes</button>
+                    <section class=post__comment-area>
+                        <section class=post__comment-list>
+                            <p>Sarah commented here.
+                            <br> John commented here.
+                            </p>
+                        </section>
+                        <a class=post__more-comment>See 10 more comments...</a>
+                        <input class=comment__query value="Add a comment...">
+                        <button class=somment__submit value="Publish"></button>
+                    </section>
+                    <time class=post__date>13 hours ago</time>
+                </footer>
+            </article>
+        </main>
+    </div>
+</body>
+</html>

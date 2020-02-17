@@ -1,0 +1,71 @@
+@import config
+
+.footer__container
+    @extend %flexRowCenter
+    flex-wrap: wrap
+    color: $color-gray
+    background-color: $bg-footer
+    width: 100%
+
+.footer__container1
+    margin-top: 4%
+    margin-bottom: 4%
+    border-bottom: solid 1px $color-gray
+    @extend %flexColumnCenter
+    align-content: flex-start
+    color: $color-white
+    line-height: 200%
+    flex-wrap: wrap
+    width: 100%
+    &__link
+        width: 100%
+
+.footer__container2
+    margin-top: 1%
+    margin-bottom: 5%
+    @extend %flexRowCenter
+    justify-content: space-between
+    flex-wrap: wrap
+    color: $color-white
+    width: 100%
+    &__help
+        justify-content: flex-start
+        width: 50%
+    &__about
+        justify-content: flex-start
+        width: 50%
+
+.footer__symbols
+    @extend %iconbanner
+    margin-top: 1%
+    margin-bottom: 3%
+    margin-right: 50%
+    @extend %flexRowCenter
+    justify-content: space-around
+    color: $color-gray
+    line-height: 200%
+    flex-wrap: wrap
+    width: 100%
+
+.footer__location
+    margin-bottom: 2%
+    @extend %iconbannersmall
+    color: $color-white
+    font-size: 1rem
+
+.footer__copyrights
+    @extend %flexRowCenter
+    margin-top: 4%
+    margin-bottom: 4%
+    
+.footer__disclaimer
+    margin-top: 4%
+    margin-bottom: 4%
+    @extend %flexColumnCenter
+    align-content: flex-start
+    color: $color-gray
+    line-height: 200%
+    flex-wrap: wrap
+    width: 100%
+    &__link
+        width: 100%

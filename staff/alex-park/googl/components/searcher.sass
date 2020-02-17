@@ -1,0 +1,31 @@
+@import config
+
+.search
+    width: 80%
+    margin-left: 10%
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+    &--hide
+        display: none
+
+    & > input
+        @extend %item-border
+        padding-left: 2%
+        width: 90%
+        text-align: left
+
+    & > button
+        @extend %item-border
+        width: 40%
+        background-color: #1bb12f
+        color: white
+        cursor: pointer
+
+        &:hover
+            background-color: #148824   
+
+        &:active
+            background-color: #0f661a   

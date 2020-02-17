@@ -1,0 +1,256 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css");
+.search {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+.search__title {
+  font-family: "Sigmar One", cursive;
+  color: blue;
+}
+.search--hide {
+  display: none;
+}
+.search input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.search button {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: "Sigmar One", cursive;
+  color: red;
+  border: 3px solid red;
+  border-radius: 100%;
+  cursor: pointer;
+  transform: translate(55px);
+}
+.search button:hover {
+  border: 5px solid red;
+}
+
+.login {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+.login__title {
+  font-family: "Sigmar One", cursive;
+  color: blue;
+}
+.login--hide {
+  display: none;
+}
+.login input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login button {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: "Sigmar One", cursive;
+  color: red;
+  border: 3px solid red;
+  border-radius: 100%;
+  cursor: pointer;
+  transform: translate(55px);
+}
+.login button:hover {
+  border: 5px solid red;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+.register--hide {
+  display: none;
+}
+.register input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
+}
+
+body {
+  background-color: lightblue;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Sigmar One", cursive;
+  font-size: 40px;
+  color: blue;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.item-list {
+  margin: 0.5rem;
+  background-color: white;
+  border: 3px solid blue;
+  border-radius: 1rem;
+  width: 30%;
+}
+
+.img-photo {
+  cursor: pointer;
+  width: 75%;
+}
+
+.item-name, .item-price {
+  font-family: "Sigmar One", cursive;
+  font-size: 30px;
+}
+
+.list {
+  _list-style-type: none;
+}
+
+article {
+  _width: 30%;
+}
+
+.fas {
+  color: red;
+}
+
+.detail-info {
+  font-family: "Sigmar One", cursive;
+  font-size: 25px;
+  border: 3px solid blue;
+  border-radius: 1rem;
+  background-color: white;
+  margin-top: 1rem;
+  _width: 70%;
+  display: grid;
+  grid-template-areas: "n n" "p y" "p c" "p m" "p co" " p s" "d d" "pr pr" "b b";
+  grid-template-rows: 10% 10% 10% 10% 10% 10% 20% 10% 20%;
+}
+.detail-info__image {
+  grid-area: p;
+}
+.detail-info__title {
+  grid-area: n;
+  color: blue;
+}
+.detail-info__year {
+  grid-area: y;
+}
+.detail-info__color {
+  grid-area: c;
+}
+.detail-info__maker {
+  grid-area: m;
+}
+.detail-info__collection {
+  grid-area: co;
+}
+.detail-info__style {
+  grid-area: s;
+}
+.detail-info__description {
+  grid-area: d;
+}
+.detail-info__price {
+  grid-area: pr;
+  color: red;
+}
+.detail-info__button {
+  font-family: "Sigmar One", cursive;
+  font-size: 15px;
+  color: red;
+  border: 3px solid red;
+  border-radius: 100%;
+  cursor: pointer;
+  align-content: center;
+  grid-area: b;
+  width: 10vh;
+  height: 10vh;
+}
+.detail-info__button:hover {
+  border: 6px solid red;
+}
+
+.update {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+.update__title {
+  font-family: "Sigmar One", cursive;
+  color: blue;
+}
+.update--hide {
+  _display: none;
+}
+.update input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.update button {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: "Sigmar One", cursive;
+  color: red;
+  border: 3px solid red;
+  border-radius: 100%;
+  cursor: pointer;
+  transform: translate(55px);
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,212 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    background-color: rgba(var(--b3f,250,250,250),1);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    padding: 0 2vh;
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+}
+.nav-bottom{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 0 2vh;
+    height: 10vh;
+    background-color: white;
+}
+.header__take-photo, .header__chats, .nav-bottom__home, .nav-bottom__search, .nav-bottom__gallery, .nav-bottom__favs, .nav-bottom__profile{
+    width: 10%;
+    height: 70%;
+    align-self: center;
+    background-color: grey;
+}
+.header__logo{
+    width: 15%;
+    height: 70%;
+    align-self: center;
+    background-color: black;
+}
+.border{
+    border: 1px solid black;
+}
+nav{
+    padding: 1vh 0;
+}
+.nav-upper__carrusel{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 0;
+}
+.nav-upper__stories{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: orchid;
+}
+.nav-upper__stories--border-user{
+    border: 1px solid red;
+}
+.upperbar, .interaction{
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+    background-color: white;
+}
+.upperbar__user{
+    display: flex;
+    flex-direction: row;
+}
+.upperbar__options-choice, .interaction__like, .interaction__comment, .interaction__message, .interaction__share{
+    width: 5vh;
+    height: 3vh;
+    align-self: center;
+    margin: 1vh;
+    background-color: grey;
+}
+.interaction__like--color{
+    background-color: red;
+}
+.upperbar__userphoto{
+    width: 5vh;
+    height: 3vh;
+    align-self: center;
+    margin: 1vh;
+    background-color: grey;
+    cursor: pointer;
+}
+.upperbar__username{
+    width: 16vh;
+    height: 3vh;
+    align-self: center;
+    background-color: grey;
+    cursor: pointer;
+}
+.upperbar__options, .interaction__options-two{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%
+}
+.picture{
+    height: 40vh;
+}
+.picture__user{
+    width: 100%;
+    height: 40vh;
+}
+.interaction__options{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+.comment{
+    background-color: white;
+}
+.comment__add{
+    width: 100%;
+    height: 6vh;
+}
+.nav-upper__aside{
+    display: none;
+}
+
+@media only screen and (min-width: 768px){
+
+    main{
+        width: 70%;
+        margin-top: 5vh;
+        align-self: center;
+    }
+    .picture{
+        height: 60vh;
+    }
+    .picture__user{
+        height: 60vh;
+    }
+    .nav-upper{
+        padding: 1vh;
+        width: 70%;
+        background-color: rgba(var(--b3f,250,250,250),1);
+        display: flex;
+        align-self: center;
+        margin-top: 5vh;
+    }
+    .nav-upper__carrusel{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%;
+        padding: 0;
+    }
+    .nav-upper__stories{
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
+        background-color: orchid;
+    }
+    .nav-bottom{
+        display: none;
+    }
+    .nav-upper__aside{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+
+    main{
+        width: 40%;
+        margin: 15vh 70vh 10vh 40vh;
+    }
+    .nav-upper{
+        padding: 2vh;
+        width: 20%;
+        height: 35vh;
+        background-color: white;
+        display: flex;
+        align-self: flex-end;
+        position: fixed;
+        top: 25vh;
+        right: 40vh;
+        left: 135vh;
+    }
+    .nav-upper__carrusel{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 0;
+    }
+    .nav-upper__aside{
+        padding: 2vh 2vh;
+        width: 20%;
+        height: 25vh;
+        background-color: white;
+        align-self: flex-end;
+        position: fixed;
+        overflow: auto;
+        top: 67vh;
+        left: 135vh;
+        display: inline-block;
+    }
+}
