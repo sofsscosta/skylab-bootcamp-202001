@@ -1,0 +1,160 @@
+.search {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: orange;
+}
+.search--hide {
+  display: none;
+}
+.search__items {
+  display: flex;
+  flex-direction: column;
+}
+.search__items > img {
+  width: 50%;
+  margin: auto;
+}
+.search input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.search button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.login {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: yellow;
+  font-family: "Molle", cursive;
+}
+.login--hide {
+  display: none;
+}
+.login input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.login a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.register--hide {
+  display: none;
+}
+.register input {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register button {
+  display: block;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.register a {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
+}
+
+.item {
+  list-style: none;
+}
+
+article:nth-child(odd) {
+  background-color: green;
+}
+
+article:nth-child(even) {
+  background-color: gray;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+}
+.detail__container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #f70ad2;
+}
+
+.detail > h2 {
+  border: 1px solid black;
+  background-color: #0000ff5e;
+}
+
+.detail p {
+  font-style: oblique;
+}
+
+.detail span {
+  color: black;
+}
+
+.detail span:last-of-type {
+  color: red;
+}
+
+body {
+  text-align: center;
+}
+
+main {
+  background-color: #00968899;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Sigmar One", cursive;
+  background-color: #ff00d4f2;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,36 @@
+@import utils
+@import nav
+    
+.header
+    +flex(column, center)
+
+    &-top
+        +flex(row, space-between)
+        @extend %brand-nav
+        @extend %site-nav
+
+    @extend %main-nav
+
+    &-bottom
+        &__mobile
+            display: none
+
+@media only screen and (max-width: 992px)
+    .header-top
+        display: none
+
+    .header-bottom
+        height: 45px
+        +flex(row, space-between)
+        &__main-nav
+            display: none
+        &__search
+            display: none
+        &__mobile
+            display: block
+            height: 45px
+            &-img
+                height: 45px
+
+
+

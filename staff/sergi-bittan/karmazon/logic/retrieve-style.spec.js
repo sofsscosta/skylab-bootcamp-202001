@@ -1,0 +1,3 @@
+describe("retrieveStyle", function (){
+  //todo
+})

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex</title>
+    <style>
+ * {
+            box-sizing: border-box;
+        }
+ body {
+            margin: 0;
+        }
+
+        .container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px; 
+    height: 100vh;
+    width: 100%
+}
+
+header {
+  height: 15%;
+  border: 2px solid black;
+  width: 100%;
+  background-color: blue;
+}
+
+nav {
+    border: 2px solid black;
+    height: 20%;
+    width: 100%;
+    background-color: purple;
+
+}
+
+main {
+    border: 2px solid black;
+    height: 30%;
+    width: 100%;
+    background-color: orange;
+
+
+}
+
+aside {
+    border: 2px solid black;
+    height: 20%;
+    width: 100%;
+    background-color: red;
+}
+
+footer {
+border: 2px solid black;
+height: 15%;
+width: 100%;
+background-color: yellow;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+   
+    header {
+  height: 20%;
+}
+   
+    nav {
+    border: 2px solid black;
+    height:60%;
+    width: 25%;
+
+
+}
+
+aside {
+    border: 2px solid black;
+    height: 60%;
+    width: 25%;
+}
+
+
+main {
+    border: 2px solid black;
+    height: 60%;
+    width: 50%;
+}
+
+footer {
+border: 2px solid black;
+height: 20%;
+width: 100%
+}
+
+    </style>
+</head>
+<body>
+       
+<div class="container"> 
+    <header>Header</header>
+    <nav>Nav</nav>
+    <main>Main</main>
+    <aside>Aside</aside> 
+    <footer>Footer</footer>
+</div>
+ 
+</body>
+</html>

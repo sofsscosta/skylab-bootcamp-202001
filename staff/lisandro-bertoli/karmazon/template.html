@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Karmazon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Karmazon App</h1>
+
+    <form class="login">
+        <h2>Sign-in</h2>
+
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+
+        <p class="feedback feedback--error">Wrong credentials</p>
+
+        <button>Login</button>
+
+        <a href="">Register</a>
+    </form>
+
+    <form class="register">
+        <h2>Sign-up</h2>
+
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="surname" placeholder="surname">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+
+        <p class="feedback feedback--error">Username is already registered</p>
+
+        <button>Register</button>
+
+        <a href="">Login</a>
+    </form>
+
+    <form class="search">
+        <h2>Karmazon</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+
+        <p class="feedback feedback--warning">No results</p>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="results">
+        <li class="item">
+            <a href="#">
+                <img class="item__thumbnail"
+                    src="https://media.mattel.com/root/HWCarsCatalog/Web/Thumbnail/DHT15_c_16_003.png" alt="">
+            </a>
+            <div class="item__info-wrapper">
+                <h3 class="item__name">Tv Series Batmobile</h3>
+                <span class="item__price">$159</span>
+            </div>
+        </li>
+    </ul>
+
+    <section class="details">
+        <div class="details__left">
+            <a class="details__exit" href="#">Back to results</a>
+            <h2 class="details__car-name">Car Name</h2>
+            <div class="details__img-container">
+                <img class="details__img"
+                    src="https://media.mattel.com/root/HWCarsCatalog/Web/MainImage/FJV58_C_17_003.png" alt="">
+            </div>
+        </div>
+        <div class="details__rigtht">
+            <h2>Car Info</h2>
+            <ul class="details__container">
+                <li class="details__detail year">2020</li>
+                <li class="details__detail color">Red</li>
+                <li class="details__detail maker">Nissan</li>
+                <li class="details__detail collection">img</li>
+                <li class="details__detail style">sport</li>
+                <li class="details__detail description">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Officiis excepturi molestiae consectetur hic exercitationem blanditiis.</li>
+                <li class="details__detail price">159</li>
+            </ul>
+        </div>
+    </section>
+
+</body>
+
+</html>
