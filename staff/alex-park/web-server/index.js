@@ -3,11 +3,12 @@ const logger = require('./logger')
 const fs = require('fs')
 
 logger.info('starting server')
+const port = 8080
 
 const server = net.createServer(socket => {
     logger.debug('setting encoding to utf8')
     socket.setEncoding('utf8')
-
+    
     socket.on('data', request => {
         logger.info(`request received ${request} from ${socket.remoteAddress}`)
 
@@ -17,6 +18,7 @@ const server = net.createServer(socket => {
         if (path === '/') path += 'index.html'
 
         path = `.${path}`
+        
 
         fs.readFile(path, 'utf8', (error, content) => {
             if (error) {
@@ -39,4 +41,6 @@ ${content}
     socket.on('error', error => logger.error(error))
 })
 
-server.listen(8080)
+server.listen(port, () => {
+    logger.info(`Connected to port ${port}`)
+})

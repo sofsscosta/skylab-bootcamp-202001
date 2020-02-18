@@ -1,5 +1,8 @@
 function log(level, message) {
-    console.log(level, message)
+    const fs = require('fs')
+    fs.appendFile('server.log', `${level}: ${message}\n`, 'utf8', error => {
+        if (error) throw error
+    })
 }
 
 module.exports = {
