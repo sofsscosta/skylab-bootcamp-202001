@@ -1,11 +1,21 @@
 const net = require('net');
 
+const clients = {}
+
 const server = net.createServer( socket => {
     socket.on('data', chunk=>{
-        // const message = JSON.parse(chunk)
-        // console.log(message)
+        
+        let user = chunk.toString().split(":")[0]
+        
+        clients[user] = socket
+        
         console.log(chunk.toString())
-        socket.end('ok')
+
+        for (user in clients){
+            clients[user].write(`${chunk.toString()}`)
+        }
+
+        //socket.end('message sended')
     })  
 
 })
