@@ -6,7 +6,7 @@ const clients = [];
 
 // Start a TCP Server
 net.createServer(function (socket) {
-    
+    debugger
   // Identify this client
   socket.name = socket.remoteAddress + ":" + socket.remotePort 
 
