@@ -1,20 +1,42 @@
 const net = require('net')
+const logger = require('./logger')
+const fs = require('fs')
 
-let connections = 0
-const port = 8080
+logger.info('starting server')
 
 const server = net.createServer(socket => {
-    socket.on('data', chunk => {
-        console.log(chunk.toString())
+    logger.debug('setting encoding to utf8')
+    socket.setEncoding('utf8')
 
-        //socket.end(`HTTP/1.1 200 OK\nServer: Cowboy\nAccess-Control-Allow-Origin: *\nConnections: ${++connections}\nContent-Type: text/plain\n\n<h1>HOLA MUNDO</h1>\n`) // Content-Type: text/html
-        socket.end(`HTTP/1.1 404
-Connections: ${++connections}
+    socket.on('data', request => {
+        logger.info(`request received ${request} from ${socket.remoteAddress}`)
+
+        const lines = request.split('\n')
+        let [, path] = lines[0].split(' ')
+
+        if (path === '/') path += 'index.html'
+
+        path = `.${path}`
+
+        fs.readFile(path, 'utf8', (error, content) => {
+            if (error) {
+                logger.error(error)
+
+                return socket.end(`HTTP/1.1 404 NOT FOUND
 Content-Type: text/html
 
-<h1>Not found</h1>
+<h1>Not found</h1>`)
+            }
+
+            socket.end(`HTTP/1.1 200 OK
+Content-Type: text/html
+
+${content}
 `)
+        })
     })
+
+    socket.on('error', error => logger.error(error))
 })
 
-server.listen(port)
+server.listen(8080)
