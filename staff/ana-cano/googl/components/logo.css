@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 3rem;
+}
+.logo__title {
+  wigth: 15rem;
+  height: 7rem;
+}
+
+/*# sourceMappingURL=logo.css.map */
