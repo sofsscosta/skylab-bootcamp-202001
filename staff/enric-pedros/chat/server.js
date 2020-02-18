@@ -1,11 +1,32 @@
+
 const net = require('net')
 
-const server = net.createServer(socket =>{
-    socket.on('data', chunk =>{
-        // const message = JSON.parse(chunk)
-        // console.log(message)
-        console.log(chunk.toString())
-        socket.end('OK')
+const sessions = {}
+
+const server = net.createServer(socket => { debugger
+    socket.on('data', chunk => { // <user> or <user>:<message>
+        const alreadyExists = (() => {
+            for (const user in sessions)
+                if (socket === sessions[user]) {
+                    return true
+                }
+
+            return false
+        })()
+
+        debugger
+
+        if (!alreadyExists)
+            sessions[chunk.toString()] = socket
+        else {
+            const [user, message] = chunk.toString().split(':')
+
+            const _socket = sessions[user]
+
+            if (_socket) _socket.write(message)
+            else socket.write('ERROR user is not online')
+        }
     })
 })
+
 server.listen(8080)
