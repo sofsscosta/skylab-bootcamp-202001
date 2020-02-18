@@ -1,22 +1,34 @@
 const net = require('net')
+const readline = require('readline');
 
 
-const { argv: [, , host, port, username, message] } = process
+const { argv: [, , userName, host, port] } = process
 
 const socket = net.createConnection({ host, port })
 
-socket.write(`${username}: ${message}`)
-
-
-let counter = 0
+socket.write(userName)
 
 socket.on('data', chunk => {
     console.log(chunk.toString())
-    ++counter
 
-    if (counter === 2) {
-        counter = 0
-        socket.destroy()
-    }
+
 })
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+(function ask() {
+    let prompt = 'Write <username to send to> : <message> >> ';
+    rl.question(prompt, userMessage => {
+
+        socket.write(userMessage + '\n')
+
+        ask()
+    });
+
+})()
+
+
+
 
