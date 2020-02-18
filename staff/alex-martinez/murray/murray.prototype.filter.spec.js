@@ -1,3 +1,8 @@
+
+if(typeof require !== 'undefined'){
+    var Murray = require('./murray')
+}
+
 var murray = new Murray(1,2,3);
 murray.filter(function(value){
     return value % 2 === 0;

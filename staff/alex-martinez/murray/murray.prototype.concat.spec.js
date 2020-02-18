@@ -1,3 +1,8 @@
+
+if(typeof require !== 'undefined'){
+    var Murray = require('./murray')
+}
+
 describe('Murray.concat',function(){
     it('should concatenate 2 murrays',function(){
         var murray = new Murray(1,2,3);

@@ -172,3 +172,10 @@ Murray.prototype.reduce = function(callback,initialValue){
         return accumulator + currenValue;
     }
 }
+
+
+if(typeof module !== 'undefined'){
+    module.exports = Murray
+}
+
+
