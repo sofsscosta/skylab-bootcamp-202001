@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid</title>
+</head>
+<body>
+    <style>
+        *{
+            border: solid 2px;
+            overflow-x: hidden;
+            overflow-y:hidden;
+            box-sizing: border-box; 
+            margin: 0;
+        }
+        .item-a {
+            grid-area: header;
+            height: 20vh;
+            width: 100%;
+        }
+        .asd {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: 50vh 80vh 100%;
+            grid-auto-flow: row;
+            height: 60vh;
+        }
+        .item-e {
+            height: 20vh;
+            width: 100%;
+        }
+        body{
+            height: 100vh;
+        }
+    </style>
+    <div class="container">
+            <div class="header item-a"> header</div> 
+            <div class="asd">
+                <div class="nav item-b"> nav </div> 
+                <div class="main item-c"> main </div>
+                <div class="aside item-d">aside</div>  
+            </div>
+                
+            <div class="footer item-e"> footer </div> 
+      </div>     
+</body>
+</html>
