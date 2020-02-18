@@ -7,4 +7,4 @@ app.use('/', function(req, res){
 });
 
 app.listen(3000);
-console.log('La aplicación está eschucando en http:/localhost: 3000')
+console.log('La aplicación está eschucando en http:/localhost:3000')
