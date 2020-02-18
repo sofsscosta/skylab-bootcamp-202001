@@ -1,5 +1,10 @@
 'use strict'
 
+
+if(typeof require !== 'undefined'){
+    var Murray = require('./murray')
+}
+
 describe('Murray.prototype.map',function(){
     it('should return a new array, the original array be the same, and the original array have values + 2',function(){
         var murray = new Murray(1,2,3,4);

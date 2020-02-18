@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Googl1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <figure class="logo">
+        <img class="logo__title" src="https://www.google.es/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">
+    </figure>
+
+
+    <form class="login login--hide">
+        <h2>Sign-in</h2>
+
+        <input class="login__username" type="text" placeholder="username" name="username">
+        <input class="login__password" type="password" placeholder="password" name="password">
+        <button class="login__button">Login</button>
+
+        <a href="">Register</a>
+    </form>
+
+    <form class="register register--hide">
+        <h2>Sign-up:</h2>
+
+        <input class="register__name" type="text" name="name" placeholder="name" autocomplete="off" required>
+        <input class="register__surname" type="text" name="surname" placeholder="surname" autocomplete="off" required>
+        <input class="register__username" type="text" name="username" placeholder="username" autocomplete="off" required>
+        <input class="register__password" type="password" name="password" placeholder="password" autocomplete="off" required>
+        <button class="register__button">Register</button>
+        <a href="">Login</a>
+    </form>
+
+    <form class="search search--hide">
+        <figure class="logo">
+            <img class="logo__title" src="https://www.google.es/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">
+        </figure>
+
+        <input class="search__query" type="text" name="query">
+        <button type="submit" name="submit">Search</button>
+    </form>
+
+    <ul class="results"></ul>
+
+    <form class="search-2 search search--hide">
+        <h2>Ecosia</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="results-2 results"></ul>
+
+    <form class="search-3 search search--hide">
+        <h2>Bing</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="results-3 results"></ul>
+
+    <form class="search-4 search search--hide">
+        <h2>Yahoo</h2>
+
+        <input type="text" name="query" placeholder="criteria">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul class="results-4 results"></ul>
+
+    <script src="utils/spy.js"></script>
+    <script src="utils/call.js"></script>
+    <script src="utils/search.js"></script>
+
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/results.js"></script>
+
+    <script src="data.js"></script>
+
+    <script src="logic/googl.js"></script>
+    <script src="logic/ecosia.js"></script>
+    <script src="logic/bing.js"></script>
+    <script src="logic/register.js"></script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
