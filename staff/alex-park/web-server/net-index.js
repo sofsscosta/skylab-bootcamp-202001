@@ -2,14 +2,19 @@ const net = require('net')
 const logger = require('./logger')
 const fs = require('fs')
 
-logger.info('starting server')
+const { argv: [, , port = 8080] } = process
+
+// logger.setDebugEnabled(true)
+
+logger.debug('starting server')
 
 const server = net.createServer(socket => {
     logger.debug('setting encoding to utf8')
     socket.setEncoding('utf8')
 
     socket.on('data', request => {
-        logger.info(`request received ${request} from ${socket.remoteAddress}`)
+        logger.info(`request from ${socket.remoteAddress}:
+${request}`)
 
         const lines = request.split('\n')
         let [, path] = lines[0].split(' ')
@@ -20,7 +25,7 @@ const server = net.createServer(socket => {
 
         fs.readFile(path, 'utf8', (error, content) => {
             if (error) {
-                logger.error(error)
+                logger.warn(error)
 
                 return socket.end(`HTTP/1.1 404 NOT FOUND
 Content-Type: text/html
@@ -39,4 +44,10 @@ ${content}
     socket.on('error', error => logger.error(error))
 })
 
-server.listen(8080)
+server.listen(port, () => logger.info(`server up and running on port ${port}`))
+
+process.on('SIGINT', () => {
+    logger.warn(`server abruptly stopped`)
+
+    setTimeout(() => process.exit(0), 1000)
+})
