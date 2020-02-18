@@ -1,3 +1,8 @@
+
+if(typeof require !== 'undefined'){
+    var Murray = require('./murray')
+}
+
 describe('Murray.prototype.slice',function(){
     it('should the original array be the same',function(){
         var murray = new Murray(1,2,3,4);
