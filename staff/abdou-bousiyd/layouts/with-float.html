@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>with-float</title>
+</head>
+<body>
+    <style>
+        * { 
+            overflow-x: hidden;
+            overflow-y:hidden;
+            box-sizing: border-box; 
+            margin: 0;
+            }
+        .header, .footer {
+            border: solid 1px black;
+            height: 25%; 
+            text-align: center; 
+        }
+        .nav, .aside {
+            float:left; 
+            border: solid 1px black; 
+            width: 20%; 
+            height: 60%; 
+            text-align:center; 
+        }
+        .main {
+            float: left;
+            border: solid 1px black;
+            width: 60%; 
+            height: 60%;
+            text-align:center; 
+        }
+    </style>
+    <div style="width: 100%; height: 100vh; border: solid 3px black; position:absolute;">
+            <div class="header" > header</div> 
+            <div class="nav"> nav </div> 
+            <div class="main"> main </div>
+            <div class="aside">aside</div>  
+            <div class="footer" > footer </div> 
+      </div>     
+</body>
+</html>

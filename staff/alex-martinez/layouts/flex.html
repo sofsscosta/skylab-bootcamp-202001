@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex Layout adaptive/responsive mobile first</title>
+    <style>
+        /*MOBILE FIRST*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            max-width: 1200px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        header,nav,main,aside,footer{
+            height: 200px;
+        }
+
+        header{
+            background-color: red;
+            width: 100%;
+        }
+        nav{
+            background-color: green;
+            width: 100%;
+        }
+        main{
+            background-color: blue;
+            width: 100%;
+        }
+
+        aside{
+            background-color: cadetblue;
+            width: 100%;
+        }
+        footer{
+            background-color: orange;
+            width: 100%;
+        }
+
+        
+        @media only screen and (min-width: 768px) {
+            main{
+                width: 80%;
+            }
+            aside{
+                width: 20%;
+            }
+        }
+        @media only screen and (min-width: 992px) {
+            main{
+                width: 70%;
+            }
+            aside{
+                width: 20%;
+            }
+            nav{
+                width: 10%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>HEADER</header>
+        <nav>NAV</nav>
+        <main>MAIN</main>
+        <aside>ASIDE</aside>
+        <footer>FOOTER</footer>
+    </div>
+</body>
+</html>
