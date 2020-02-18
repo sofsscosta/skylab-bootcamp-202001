@@ -1,0 +1,56 @@
+.headerB
+    display: grid
+
+    &__top
+        display: flex
+        justify-content: space-between
+        
+        &__left
+            display: flex
+        
+            & > div
+                margin: 0 .5rem
+
+        &__right
+            display: flex
+
+            & > div
+                margin: 0 .5rem
+    &__middle
+        display: flex
+        &__first
+            margin: 0 1rem
+        &__second
+            display: flex
+            margin: 0 auto
+            & > div
+                margin: 0 1rem
+        &__last
+            margin: 0 1rem
+    &__bottom
+        margin: 1rem auto
+
+aside
+    grid-area: 4 / 2 / span 1 / span 1
+
+@media screen and ( max-width: 1024px )
+    .headerB
+        display: none
+
+@media screen and ( min-width:1024px  )
+    .header
+        display: none
+    .content
+        display: grid
+        grid-template: 1fr 1fr 1fr auto auto auto / 1fr 1fr
+    .headerB
+        grid-area: 1 / 1 / span 3 / span 2
+    .image
+        grid-area: 4 / 1 / span 2 / span 1
+    .main
+        grid-area: 5 / 2 / span 1 / span 1
+    .footer
+        grid-area: 6 / 1 / span 1 / span 2
+    .main__results
+        display: grid
+        grid-template: auto / 300px 2fr

@@ -1,3 +1,4 @@
+
 if(typeof require !== 'undefined'){
     var Murray = require('./murray')
 }

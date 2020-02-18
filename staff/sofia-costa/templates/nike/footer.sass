@@ -1,0 +1,35 @@
+@import utils
+
+.footer
+    background-color: $black
+    height: 55vh
+    +flex(column, space-between)
+    box-sizing: border-box
+    padding: 40px 40px 0 40px
+    max-width: 100vw
+
+    @media only screen and (max-width: 992px)
+        overflow: hidden
+    
+
+    &__main
+        +flex(row, space-between)
+
+    &__columns
+        +flex(row, space-between)
+
+    .list-line
+        line-height: 30px
+
+    &__list
+        max-width: 200px
+        padding-right: 50px
+    
+    &__share-img
+        max-height: 40px
+
+    &__footer
+        max-width: 100vw
+
+    &__img
+        max-width: 90vw

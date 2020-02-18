@@ -1,6 +1,8 @@
+
 if(typeof require !== 'undefined'){
     var Murray = require('./murray')
 }
+
 
 describe('Murray.lastIndexOf',function(){
     it('should return the index of the last element matches with the value',function(){

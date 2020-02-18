@@ -173,6 +173,9 @@ Murray.prototype.reduce = function(callback,initialValue){
     }
 }
 
+
 if(typeof module !== 'undefined'){
     module.exports = Murray
 }
+
+

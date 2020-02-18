@@ -1,6 +1,8 @@
+
 if(typeof require !== 'undefined'){
     var Murray = require('./murray')
 }
+
 
 describe('Murray.findIndex',function(){
     it('method returns the index of the first element in the array that satisfies the provided testing function',function(){

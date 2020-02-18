@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid Layout</title>
+    <style>
+        header{
+            grid-area: header;
+            background-color: red;
+            height: 150px;
+        }
+        nav{
+            grid-area: nav;
+            background-color: green;
+            height: 150px;
+        }
+        main{
+            grid-area: main;
+            background-color: blue;
+            height: 150px;
+        }
+        aside{
+            grid-area: aside;
+            background-color: purple;
+            height: 150px;
+        }
+        footer{
+            grid-area: footer;
+            background-color: orange;
+            height: 150px;
+        }
+        .container{
+            display: grid;
+            grid-template-areas: 'header header header header header header'
+            'nav nav nav nav nav nav'
+            'main main main main main main'
+            'aside aside aside aside aside aside'
+            'footer footer footer footer footer footer';
+        }
+        @media only screen and (min-width: 768px) {
+            .container{
+                grid-template-areas: 'header header header header header header'
+                'nav nav nav nav nav nav'
+                'main main main main aside aside'
+                'footer footer footer footer footer footer';
+            }
+        }
+        @media only screen and (min-width: 992px) {
+            .container{
+                grid-template-areas: 'header header header header header header'
+                'nav  main main main aside aside'
+                'footer footer footer footer footer footer';
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>HEADER</header>
+        <nav>NAV</nav>
+        <main>MAIN</main>
+        <aside>ASIDE</aside>
+        <footer>FOOTER</footer>
+    </div>
+</body>
+</html>
