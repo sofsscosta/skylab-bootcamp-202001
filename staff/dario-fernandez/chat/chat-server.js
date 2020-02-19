@@ -27,6 +27,9 @@ const server = net.createServer(socket => {
 
         if(!alreadyExists){
             sessions[chunk.toString().trim()] = socket
+            for(let user in sessions) {
+                sessions[user].write(`${chunk.toString().trim()} joined the chat`)
+            }
         }else {
             const [message, user] = chunk.toString().split('->')
 
@@ -38,7 +41,7 @@ const server = net.createServer(socket => {
             } else {
                 for(users in sessions) {
                     if(sender != users) {
-                        sessions[users].write(`${sender}: ${message}`)
+                        sessions[users].write(`GLOBAL => ${sender}: ${message}`)
                     }
                 }
             }
