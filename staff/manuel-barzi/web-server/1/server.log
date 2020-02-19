@@ -5104,3 +5104,192 @@ Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
 
 WARN 2020-02-18 17:57:01.657 server abruptly stopped
 WARN 2020-02-18 17:57:01.785 server abruptly stopped
+DEBUG 2020-02-19 10:05:12.036 starting server
+INFO 2020-02-19 10:05:12.060 server up and running on port 8080
+DEBUG 2020-02-19 10:06:22.164 starting server
+INFO 2020-02-19 10:06:22.176 server up and running on port 8080
+DEBUG 2020-02-19 10:06:39.342 starting server
+INFO 2020-02-19 10:06:39.356 server up and running on port 8080
+DEBUG 2020-02-19 10:08:36.182 starting server
+INFO 2020-02-19 10:08:36.195 server up and running on port 8080
+DEBUG 2020-02-19 10:10:38.059 starting server
+INFO 2020-02-19 10:10:38.071 server up and running on port 8080
+DEBUG 2020-02-19 10:11:10.157 starting server
+INFO 2020-02-19 10:11:10.170 server up and running on port 8080
+DEBUG 20200219101324750 starting server
+INFO 20200219101324762 server up and running on port 8080
+DEBUG 2020-02-19 10:14:41.758 starting server
+INFO 2020-02-19 10:14:41.773 server up and running on port 8080
+INFO 2020-02-19 10:14:44.795 request from undefined:
+[object Object]
+DEBUG 2020-02-19 10:15:00.502 starting server
+INFO 2020-02-19 10:15:00.514 server up and running on port 8080
+INFO 2020-02-19 10:15:03.278 request from undefined:
+[object Object]
+WARN 2020-02-19 10:15:03.280 Error: ENOENT: no such file or directory, open './hola'
+WARN 2020-02-19 10:16:43.845 server abruptly stopped
+DEBUG 2020-02-19 10:16:52.051 starting server
+INFO 2020-02-19 10:16:52.064 server up and running on port 8080
+INFO 2020-02-19 10:16:54.236 request from undefined:
+[object Object]
+DEBUG 2020-02-19 10:18:37.703 starting server
+INFO 2020-02-19 10:18:37.715 server up and running on port 8080
+INFO 2020-02-19 10:18:38.362 request from undefined:
+[object Object]
+WARN 2020-02-19 10:18:38.365 Error: ENOENT: no such file or directory, open './hola'
+INFO 2020-02-19 10:18:39.867 request from undefined:
+[object Object]
+WARN 2020-02-19 10:18:39.868 Error: ENOENT: no such file or directory, open './hola'
+INFO 2020-02-19 10:18:42.992 request from undefined:
+[object Object]
+INFO 2020-02-19 10:18:46.670 request from undefined:
+[object Object]
+INFO 2020-02-19 10:18:51.947 request from undefined:
+[object Object]
+DEBUG 2020-02-19 12:18:09.120 starting server
+INFO 2020-02-19 12:18:09.131 server up and running on port 8080
+INFO 2020-02-19 12:18:22.860 request from undefined:
+[object Object]
+WARN 2020-02-19 12:18:30.532 server abruptly stopped
+WARN 2020-02-19 12:18:30.651 server abruptly stopped
+WARN 2020-02-19 12:18:30.780 server abruptly stopped
+DEBUG 2020-02-19 12:18:36.831 starting server
+INFO 2020-02-19 12:18:36.843 server up and running on port 8080
+DEBUG 2020-02-19 12:38:45.613 starting server
+INFO 2020-02-19 12:38:45.624 server up and running on port 8080
+INFO 2020-02-19 12:38:49.105 request from undefined:
+[object Object]
+INFO 2020-02-19 12:38:54.817 request from undefined:
+[object Object]
+WARN 2020-02-19 12:38:54.818 Error: ENOENT: no such file or directory, open './asdfa'
+INFO 2020-02-19 12:39:33.519 request from undefined:
+[object Object]
+WARN 2020-02-19 12:39:33.519 Error: ENOENT: no such file or directory, open './asdfa'
+WARN 2020-02-19 12:46:13.276 server abruptly stopped
+WARN 2020-02-19 12:46:13.402 server abruptly stopped
+DEBUG 2020-02-19 12:46:16.367 starting server
+INFO 2020-02-19 12:46:16.380 server up and running on port 8080
+INFO 2020-02-19 12:46:24.042 request from undefined:
+[object Object]
+INFO 2020-02-19 12:46:40.607 request from undefined:
+[object Object]
+WARN 2020-02-19 12:46:40.608 Error: ENOENT: no such file or directory, open './asdfa'
+WARN 2020-02-19 12:46:47.370 server abruptly stopped
+WARN 2020-02-19 12:46:47.513 server abruptly stopped
+WARN 2020-02-19 12:46:47.641 server abruptly stopped
+DEBUG 2020-02-19 12:46:58.268 starting server
+INFO 2020-02-19 12:46:58.282 server up and running on port 8080
+INFO 2020-02-19 12:47:01.037 request from undefined:
+[object Object]
+WARN 2020-02-19 12:47:01.039 Error: ENOENT: no such file or directory, open './asdfa'
+INFO 2020-02-19 12:47:04.612 request from undefined:
+[object Object]
+WARN 2020-02-19 12:50:10.532 server abruptly stopped
+WARN 2020-02-19 12:50:10.660 server abruptly stopped
+WARN 2020-02-19 12:50:10.788 server abruptly stopped
+WARN 2020-02-19 12:50:10.924 server abruptly stopped
+DEBUG 2020-02-19 12:50:14.818 starting server
+INFO 2020-02-19 12:50:14.832 server up and running on port 8080
+INFO 2020-02-19 12:50:18.872 request from undefined:
+[object Object]
+INFO 2020-02-19 12:50:23.098 request from undefined:
+[object Object]
+WARN 2020-02-19 12:50:23.099 Error: ENOENT: no such file or directory, open './asdfa'
+WARN 2020-02-19 12:56:57.930 server abruptly stopped
+WARN 2020-02-19 12:56:58.074 server abruptly stopped
+WARN 2020-02-19 12:56:58.178 server abruptly stopped
+DEBUG 2020-02-19 12:56:59.984 starting server
+INFO 2020-02-19 12:56:59.998 server up and running on port 8080
+INFO 2020-02-19 12:57:02.958 request from undefined:
+[object Object]
+INFO 2020-02-19 12:58:48.283 request from undefined:
+[object Object]
+INFO 2020-02-19 13:00:05.722 request from undefined:
+[object Object]
+INFO 2020-02-19 13:00:09.510 request from undefined:
+[object Object]
+WARN 2020-02-19 13:04:02.689 server abruptly stopped
+WARN 2020-02-19 13:04:02.848 server abruptly stopped
+WARN 2020-02-19 13:04:02.968 server abruptly stopped
+DEBUG 2020-02-19 13:04:04.773 starting server
+INFO 2020-02-19 13:04:04.785 server up and running on port 8080
+INFO 2020-02-19 13:04:08.271 request from undefined:
+[object Object]
+WARN 2020-02-19 13:04:45.534 server abruptly stopped
+WARN 2020-02-19 13:04:45.678 server abruptly stopped
+DEBUG 2020-02-19 13:04:47.336 starting server
+INFO 2020-02-19 13:04:47.347 server up and running on port 8080
+INFO 2020-02-19 13:04:49.200 request from ::1:
+[object Object]
+INFO 2020-02-19 13:05:06.497 request from ::1:
+[object Object]
+INFO 2020-02-19 13:05:08.656 request from ::ffff:192.168.0.21:
+[object Object]
+INFO 2020-02-19 13:05:08.958 request from ::ffff:192.168.0.21:
+[object Object]
+WARN 2020-02-19 13:05:08.959 Error: ENOENT: no such file or directory, open './favicon.ico'
+WARN 2020-02-19 13:06:39.195 server abruptly stopped
+WARN 2020-02-19 13:06:39.355 server abruptly stopped
+WARN 2020-02-19 13:06:39.467 server abruptly stopped
+DEBUG 2020-02-19 13:06:41.642 starting server
+INFO 2020-02-19 13:06:41.653 server up and running on port 8080
+WARN 2020-02-19 13:06:57.083 server abruptly stopped
+WARN 2020-02-19 13:06:57.251 server abruptly stopped
+WARN 2020-02-19 13:06:57.507 server abruptly stopped
+DEBUG 2020-02-19 13:07:40.622 starting server
+INFO 2020-02-19 13:07:40.634 server up and running on port 8080
+INFO 2020-02-19 13:07:45.966 request from ::1:
+ata
+WARN 2020-02-19 13:08:40.600 server abruptly stopped
+WARN 2020-02-19 13:08:40.784 server abruptly stopped
+WARN 2020-02-19 13:08:40.912 server abruptly stopped
+DEBUG 2020-02-19 13:09:07.765 starting server
+INFO 2020-02-19 13:09:07.777 server up and running on port 8080
+DEBUG 2020-02-19 13:16:33.034 starting server
+INFO 2020-02-19 13:16:33.047 server up and running on port 8080
+INFO 2020-02-19 13:16:35.009 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+user-agent: curl/7.64.1
+accept: */*
+
+INFO 2020-02-19 13:17:02.042 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+
+WARN 2020-02-19 13:17:43.700 server abruptly stopped
+WARN 2020-02-19 13:17:43.995 server abruptly stopped
+WARN 2020-02-19 13:17:44.195 server abruptly stopped
+DEBUG 2020-02-19 13:18:14.270 starting server
+INFO 2020-02-19 13:18:14.282 server up and running on port 8080
+INFO 2020-02-19 13:18:16.090 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+user-agent: curl/7.64.1
+accept: */*
+
+WARN 2020-02-19 13:18:19.843 server abruptly stopped
+WARN 2020-02-19 13:18:20.010 server abruptly stopped
+WARN 2020-02-19 13:18:20.138 server abruptly stopped
+DEBUG 2020-02-19 13:20:24.089 starting server
+INFO 2020-02-19 13:20:24.101 server up and running on port 8080
+INFO 2020-02-19 13:20:25.643 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+user-agent: curl/7.64.1
+accept: */*
+
+WARN 2020-02-19 13:20:28.352 server abruptly stopped
+WARN 2020-02-19 13:20:28.519 server abruptly stopped
+WARN 2020-02-19 13:20:28.623 server abruptly stopped
