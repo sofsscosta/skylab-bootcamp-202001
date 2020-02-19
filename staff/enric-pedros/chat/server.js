@@ -14,10 +14,10 @@ const server = net.createServer(socket => { debugger
             return false
         })()
 
-        debugger
 
-        if (!alreadyExists)
+        if (!alreadyExists){
             sessions[chunk.toString()] = socket
+        }
         else {
             const [user, message] = chunk.toString().split(':')
 

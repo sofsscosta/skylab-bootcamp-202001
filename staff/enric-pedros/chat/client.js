@@ -5,7 +5,7 @@ const readline = require('readline')
 // $ node client <nick> <ip> <port>
 
 const { argv: [, , nick, ip, port] } = process
-
+console.log(process.argv)
 const socket = net.createConnection({ host: ip, port })
 
 socket.write(nick)
