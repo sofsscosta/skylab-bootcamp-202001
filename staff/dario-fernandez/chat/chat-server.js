@@ -38,7 +38,7 @@ const server = net.createServer(socket => {
             } else {
                 for(users in sessions) {
                     if(sender != users) {
-                        sessions[users].write(message.toString())
+                        sessions[users].write(`${sender}: ${message}`)
                     }
                 }
             }
