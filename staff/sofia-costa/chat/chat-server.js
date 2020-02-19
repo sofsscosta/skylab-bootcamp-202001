@@ -40,9 +40,10 @@ const server = net.createServer( socket => {
             }
 
             else {
-                socket.write(`${sender}: ${message}`)
+                for (users in sessions)
+                    if(sender != users)
+                        sessions[user].write(`GLOBAL => ${sender}: ${message}`)
             }
-
         }
     })
 })
