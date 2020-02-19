@@ -9,12 +9,13 @@ const { argv: [, , port = 8080] } = process
 logger.debug('starting server')
 
 const requestListener = (req, res) => {
-
+    logger.info(`New request: ${req.connection.remoteAddress}`)
+    debugger
     const main = '/index.html'
 
     const rs = fs.createReadStream(`.${req.url === '/' ? main : req.url}`)
 
-    if (req.url !== 'favicon.ico') {
+    if (req.url !== '/favicon.ico') {
         rs.on('data', body => {
             res.end(body)
         })
@@ -25,16 +26,16 @@ const requestListener = (req, res) => {
             res.end('NOT FOUND')
         })
     } else {
-        logger.error(error)
+        logger.error('favicon not found')
         res.writeHead(404)
         res.end('NOT FOUND')
     }
 
-    // req.on('error', error => {
-    //     logger.error(error)
-    //     res.writeHead(404)
-    //     res.end('NOT FOUND')
-    // })
+    req.on('error', error => {
+        logger.error(error)
+        res.writeHead(404)
+        res.end('NOT FOUND')
+    })
 }
 
 const server = http.createServer(requestListener)
