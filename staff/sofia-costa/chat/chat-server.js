@@ -12,8 +12,9 @@ const server = net.createServer( socket => {
 
                 if(socket === sessions[user])
                     return true
-                else return false
             }
+
+            return false
         })()
 
         const sender = (() => {
@@ -28,14 +29,21 @@ const server = net.createServer( socket => {
         else {
             const [message, user] = chunk.toString().split('->')
 
-            const _socket = sessions[user.trim()]
+            if (user) {
+    
+                const _socket = sessions[user.trim()]
+    
+                if (_socket) _socket.write(`${sender}: ${message}`)
+    
+                else socket.write('ERROR user is not online')
 
-            if (_socket) _socket.write(`${sender}: ${message}`)
+            }
 
-            else socket.write('ERROR user is not online')
+            else {
+                
+            }
 
         }
-        //socket.end('Bye bye!')
     })
 })
 
