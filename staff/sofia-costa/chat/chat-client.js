@@ -37,7 +37,7 @@ const readline = require('readline')
 ​
 const { argv: [, , nick] } = process
 ​
-const socket = net.createConnection({ host: '192.168.0.16', port: '8080' })
+const socket = net.createConnection({ host: '192.168.0.15', port: '8080' })
 ​
 socket.write(nick)
 ​

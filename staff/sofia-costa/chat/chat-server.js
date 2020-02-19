@@ -40,7 +40,7 @@ const server = net.createServer( socket => {
             }
 
             else {
-                
+                socket.write(`${sender}: ${message}`)
             }
 
         }
