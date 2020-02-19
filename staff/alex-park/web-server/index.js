@@ -1,43 +1,19 @@
-const http = require('http')
-const logger = require('./logger')
+const express = require('express')
+const logger = require('./utils/logger')
 const fs = require('fs')
 
 const { argv: [, , port = 8080] } = process
 
 // logger.setDebugEnabled(true)
 
+const app = express()
+
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
+    res.send(req)
+})
+
 logger.debug('starting server')
 
-const requestListener = (req, res) => {
-    logger.info(`New request: ${req.connection.remoteAddress}`)
-    debugger
-    const main = '/index.html'
-
-    const rs = fs.createReadStream(`.${req.url === '/' ? main : req.url}`)
-
-    if (req.url !== '/favicon.ico') {
-        rs.on('data', body => {
-            res.end(body)
-        })
-
-        rs.on('error', error => {
-            logger.error(error)
-            res.writeHead(404)
-            res.end('NOT FOUND')
-        })
-    } else {
-        logger.error('favicon not found')
-        res.writeHead(404)
-        res.end('NOT FOUND')
-    }
-
-    req.on('error', error => {
-        logger.error(error)
-        res.writeHead(404)
-        res.end('NOT FOUND')
-    })
-}
-
-const server = http.createServer(requestListener)
-
-server.listen(port, () => logger.info(`server up and running on port ${port}`));
+const server = app.listen(port, () => { logger.info(`Connected to server on port ${port}`) })
