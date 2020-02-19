@@ -12,22 +12,28 @@ const server = http.createServer((request, response) => {
     logger.info(`request from ${request.remoteAddress}:
 ${request}`)
 
+    debugger
+
     let path = request.url
 
     if (path === '/') path += 'index.html'
 
     path = `.${path}`
 
-    fs.readFile(path, 'utf8', (error, content) => {
-        response.setHeader('Content-Type', 'text/html')
+    const rs = fs.createReadStream(path)
 
-        if (error) {
-            logger.warn(error)
+    response.setHeader('Content-Type', 'text/html')
 
-            return response.end(`<h1>Not found</h1>`)
-        }
+    rs.on('data', chunk => response.write(chunk))
 
-        response.end(content)
+    rs.on('end', () => response.end())
+
+    rs.on('error', error => {
+        logger.warn(error)
+
+        response.writeHead(404)
+
+        return response.end(`<h1>Not found</h1>`)
     })
 
     response.on('error', error => logger.error(error))
