@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-
-    <script src="main.js"></script>
+    <h1>Login</h1>
+    <form action="/authenticate" method="POST">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>Send</button>
+    </form>
 </body>
 </html>

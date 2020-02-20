@@ -1,0 +1,35 @@
+.app {
+  text-align: center;
+}
+
+.login {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 1px;
+}
+.login input {
+  border: none;
+}
+.login button {
+  border: none;
+}
+.login__error {
+  color: red;
+}
+
+.register {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 1px;
+}
+.register input {
+  border: none;
+}
+.register button {
+  border: none;
+}
+.register__error {
+  color: red;
+}
+
+/*# sourceMappingURL=style.css.map */
