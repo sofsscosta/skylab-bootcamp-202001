@@ -1,5 +1,5 @@
 const net = require('net')
-const logger = require('./logger')
+const logger = require('./utils/logger')
 const fs = require('fs')
 
 const { argv: [, , port = 8000] } = process

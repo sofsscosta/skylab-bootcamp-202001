@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs')
-const logger = require('./logger')
+const logger = require('./utils/logger')
 
 const { argv: [, , port = 8000] } = process
 

@@ -1,4 +1,7 @@
-'use strict';
+require('jasmine')
+
+const users = require('../data.js')
+const authenticate = require('./authenticate.js')
 
 describe('authenticate', function () {
     var user;
