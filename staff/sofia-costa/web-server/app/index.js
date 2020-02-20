@@ -3,48 +3,59 @@ const path = require('path')
 const fs = require('fs')
 const logger = require('./utils/logger')
 const staticMidWare = require('./utils/static-mid-ware')
-const bodyParser = require('./utils/body-parser')
+const bodyParser = require('body-parser')
 const users = require('./data')
-const register = require('./logic/register')
-const authenticate = require('./logic/authenticate')
+const { Landing, Login, Register, Home, App } = require('./components')
+const { authenticate, register, retrieveUser } = require('./logic')
 const loggerMidWare = require('./utils/logger-mid-ware')
-const retrieveUser = require('./logic/retrieve-user')
 
-const {argv: [, , port = 8080]} = process
+const { argv: [, , port = 8080] } = process
 
 const app = express()
 
 app.use(loggerMidWare)
 
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.get('/', (req, res) => {
+    res.send(App({ title: 'SoDaFede', body: Landing() }))
+})
+
+app.get('/login', (req, res) => {
+    //if (!loggedIn)
+        res.send(App({ title: 'login', Login() }))
+    //else res.redirect(`/home/${loggedIn}`)
+})
+
+app.get('/register', (req, res) => {
+    res.send(App({ title: 'register', Register() }))
+})
 
 app.post('/login', bodyParser, (req, res) => {
 
     try {
-        const {username, password} = req.body
+        const { username, password } = req.body
         authenticate(username, password)
 
-        debugger
-
         const user = retrieveUser(username)
-        
+
         res.send(`<h1>Welcome ${user.name} ${user.surname}!</h1>`)
 
-    } catch (error) {
-        res.status(400).send(`<h1>400 ${error.message}</h1> \n <a href="/login.html">Go To Login</a> \n <a href="/register.html">Go To Register</a>`)
+    } catch ({message}) {
+        res.send(App({title: 'login', Login({error: message})}))
     }
 })
 
 app.post('/register', bodyParser, (req, res) => {
 
     try {
-        const {name, surname, username, password} = req.body
+        const { name, surname, username, password } = req.body
         register(name, surname, username, password)
-        
+
         //res.redirect('/login.html')
 
-    } catch (error) {
-        res.status(400).send(`<h1>400 ${error.message}</h1> \n <a href="/login.html">Go To Login</a> \n <a href="/register.html">Go To Register</a>`)
+    } catch ({message}) {
+        res.send(App({title: 'register', Register({error: message})}))
     }
 
     res.sendFile(path.join(__dirname + '/public/login.html'))
@@ -91,10 +102,10 @@ app.listen('8080', () => logger.info(`Example app listening on port ${8080}!`))
 // app.post('/welcome', (req, res) => {
 //     try {
 //         fs.readFile(path.join(__dirname, './public/welcome.html'), (error, data) => {
-    
+
 //             let html = data.toString().replace('{name}', username)
 //             res.status(200).send(html)
-    
+
 //         })
 //     } catch (error) {
 //         res.status(401).send("<h1>401, Wrong Credentials!</h1>")

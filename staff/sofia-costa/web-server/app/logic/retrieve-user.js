@@ -1,15 +1,14 @@
 const users = require('../data')
 
-const retrieveUser = (user) => {
+const retrieveUser = user => {
 
-    const userInfo = users.find(el => {
+    if(typeof user !== 'string') throw new TypeError (`user ${user} is not a string`)
 
-        if (el.username === user) {
-            return {name: el.name, surname: el.surname, username: el.username}
-        }
+    const _user = users.find(el => {
+        if (el.username === user) {return {name: el.name, surname: el.surname, username: el.username} }
     })
-    
-    return userInfo
+
+    return _user
 }
 
 module.exports = retrieveUser
