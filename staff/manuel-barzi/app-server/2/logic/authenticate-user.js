@@ -6,5 +6,5 @@ module.exports = function (username, password) {
 
     const user = users.find(user => user.username === username && user.password === password)
 
-    if (!user) throw new Error('Wrong credentials')
+    if (!user) throw new Error('wrong credentials')
 }

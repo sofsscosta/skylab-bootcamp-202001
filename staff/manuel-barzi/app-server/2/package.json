@@ -8,7 +8,8 @@
     "watch": "npx nodemon .",
     "debug": "node debug .",
     "test": "npx jasmine logic/*.spec.js",
-    "style": "npx sass components/index.sass public/style.css"
+    "style": "npx sass components/index.sass public/style.css",
+    "style-watch": "npx sass --watch components/index.sass public/style.css"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,7 @@
 const express = require('express')
-const { logger, loggerMidWare, cookieParserMidWare } = require('./utils')
+const logger = require('./utils/logger')
 const path = require('path')
+const loggerMidWare = require('./utils/logger-mid-ware')
 const { authenticateUser, retrieveUser, registerUser } = require('./logic')
 const bodyParser = require('body-parser')
 const { Login, App, Home, Register, Landing } = require('./components')
@@ -18,7 +19,6 @@ logger.debug('setting up server')
 const app = express()
 
 app.use(loggerMidWare)
-app.use(cookieParserMidWare)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -27,9 +27,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    const { cookies: { username } } = req
+    const { headers: { cookie } } = req
 
-    if (sessions.includes(username)) return res.redirect(`/home/${username}`)
+    if (cookie) {
+        const [, username] = cookie.split('=')
+
+        if (sessions.includes(username)) return res.redirect(`/home/${username}`)
+    }
 
     res.send(App({ title: 'Login', body: Login() }))
 })
@@ -44,9 +48,15 @@ app.post('/login', (req, res) => {
 
         sessions.push(username)
 
-        const { cookies: { username: _username } } = req
+        const { headers: { cookie } } = req
 
-        username !== _username && res.setHeader('set-cookie', `username=${username}`)
+        if (!cookie)
+            res.setHeader('set-cookie', `username=${username}`)
+        else {
+            const [, _username] = cookie.split('=')
+
+            if (username !== _username) res.setHeader('set-cookie', `username=${username}`)
+        }
 
         res.redirect(`/home/${username}`)
     } catch ({ message }) {
@@ -60,9 +70,9 @@ app.get('/home/:username', (req, res) => {
     if (sessions.includes(username)) {
         const { name } = retrieveUser(username)
 
-        const { cookies: { username: _username } } = req
+        const { headers: { cookie } } = req
 
-        username !== _username && res.setHeader('set-cookie', `username=${username}`)
+        !cookie && res.setHeader('set-cookie', `username=${username}`)
 
         res.send(App({ title: 'Home', body: Home({ name, username }) }))
     } else res.redirect('/login')
@@ -74,8 +84,6 @@ app.post('/logout', (req, res) => {
     const index = sessions.indexOf(username)
 
     sessions.splice(index, 1)
-
-    res.clearCookie('username')
 
     res.redirect('/login')
 })
