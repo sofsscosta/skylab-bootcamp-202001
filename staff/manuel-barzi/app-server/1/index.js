@@ -3,6 +3,8 @@ const logger = require('./utils/logger')
 const path = require('path')
 const loggerMidWare = require('./utils/logger-mid-ware')
 // const staticMidWare = require('./utils/static-mid-ware')
+const urlencodedBodyParser = require('./utils/urlencoded-body-parser')
+const { authenticateUser, registerUser } = require('./logic')
 
 const { argv: [, , port = 8080] } = process
 
@@ -19,20 +21,40 @@ app.use(loggerMidWare)
 app.use(express.static(path.join(__dirname, 'public')))
 
 // TRY this from CLI: $ curl http://localhost:8080/authenticate -X POST -d 'hola=mundo'
+
+app.use(urlencodedBodyParser)
+
 app.post('/authenticate', (req, res) => {
-    let body = ''
+    // TODO call authenticate user logic
 
-    req.on('data', chunk => {
-        body += chunk
-    })
+    const { username, password } = req.body
 
-    req.on('end', () => {
-        // DO something with body (debug here, analise it, parse it... etc)
+    try {
+        authenticateUser(username, password)
 
-        console.log('body =>', body)
+        // TODO const user = retrieveUser(username); NEXT paint landing with user name welcome.
+    } catch ({ message }) {
+        res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/authenticate" method="POST">
+        <input type="text" name="username">
+        <input type="password" name="password">
 
-        res.end()
-    })
+        <p>${message}</p>
+
+        <button>Send</button>
+    </form>
+</body>
+</html>
+`)
+    }
 })
 
 app.listen(port, () => logger.info(`server up and running on port ${port}`))
