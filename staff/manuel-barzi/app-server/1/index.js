@@ -4,7 +4,7 @@ const path = require('path')
 const loggerMidWare = require('./utils/logger-mid-ware')
 // const staticMidWare = require('./utils/static-mid-ware')
 const urlencodedBodyParser = require('./utils/urlencoded-body-parser')
-const { authenticateUser, registerUser } = require('./logic')
+const { authenticateUser, retrieveUser } = require('./logic')
 
 const { argv: [, , port = 8080] } = process
 
@@ -32,7 +32,19 @@ app.post('/authenticate', (req, res) => {
     try {
         authenticateUser(username, password)
 
-        // TODO const user = retrieveUser(username); NEXT paint landing with user name welcome.
+        const user = retrieveUser(username)
+
+        res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome, ${user.name}!</h1>
+</body>
+</html>`)
     } catch ({ message }) {
         res.send(`<!DOCTYPE html>
 <html lang="en">
@@ -52,8 +64,7 @@ app.post('/authenticate', (req, res) => {
         <button>Send</button>
     </form>
 </body>
-</html>
-`)
+</html>`)
     }
 })
 
