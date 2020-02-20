@@ -29,18 +29,18 @@ describe('authenticate', function () {
         it('should fail on incorrect credentials', function () {
             expect(function () {
                 authenticateUser(user.username, user.password + '-wrong')
-            }).toThrowError(Error, 'Wrong credentials')
+            }).toThrowError(Error, 'wrong credentials')
 
             expect(function () {
                 authenticateUser(user.username + '-wrong', user.password)
-            }).toThrowError(Error, 'Wrong credentials')
+            }).toThrowError(Error, 'wrong credentials')
         })
     })
 
     it('should fail when user does not exist', function () {
         expect(function () {
             authenticateUser(user.username, user.password)
-        }).toThrowError(Error, 'Wrong credentials')
+        }).toThrowError(Error, 'wrong credentials')
     })
 
     afterEach(function () {
