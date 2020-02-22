@@ -1,12 +1,7 @@
-function Landing(props = {}) {
-
-    const { SignCookies } = props
+function Landing() {
 
     return `<a href="/register">Go To Register</a> or <a href="/login">Go To Login</a>
-    ${error ? `<p>${error.message}<p>` : ''}
-    ${SignCookies ? SignCookies() : ''}`
-    
+    ${error ? `<p>${error.message}<p>` : ''}`
 }
-module.exports = Landing
 
-//${SignCookie}`
+module.exports = Landing

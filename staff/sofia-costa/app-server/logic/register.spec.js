@@ -1,64 +1,79 @@
-require('jasmine')
+const registerUser = require('./register-user')
+const { call } = require('../utils')
 
-const users = require('../data.js')
-const register = require('./register.js')
+describe('registerUser', () => {
+    let name, surname, username, password
 
-describe('register', function () {
-    let user
-    
-    beforeEach(function () { 
-        users.length = 0
-
-        user = {
-            name: 'name-' + Math.random(),
-            surname: 'surname-' + Math.random(),
-            username: 'username-' + Math.random(),
-            password: 'password-' + Math.random()
-        }
+    beforeEach(() => {
+        name = 'name-' + Math.random()
+        surname = 'surname-' + Math.random()
+        username = 'username-' + Math.random()
+        password = 'password-' + Math.random()
     })
 
-    describe('when registering a username that already exists within our database', function () {
+    it('should succeed on new user', done => {
+        registerUser(name, surname, username, password, (error, response) => {
+            expect(error).toBeUndefined()
 
-        it('should succeed on complete correct new data', function () {
-            expect(function () { 
-                register(user.name, user.surname, user.username, user.password)
-            }).not.toThrow(Error)
-        })
+            expect(response).toBeUndefined()
 
-        it('should fail on matching a new username with an already created username', function () {
-            users.push(user)
-            
-            expect(function () { 
-                register(user.name, user.surname, user.username, user.password)
-            }).toThrowError(Error, 'User ' + user.username + ' already exists')
-        })
-        
-        it('should fail when a user name is not a \'string\'', function () {
-            expect(function () { 
-                register(1, user.surname, user.username, user.password)
-            }).toThrowError(TypeError, 'name ' + 1 + ' is not a string')
-        })
-        
-        it('should fail when a user surname is not a \'string\'', function () {
-            expect(function () { 
-                register(user.name, 1, user.username, user.password)
-            }).toThrowError(TypeError, 'surname ' + 1 + ' is not a string')
-        })
-        
-        it('should fail when a user username is not a \'string\'', function () {
-            expect(function () { 
-                register(user.name, user.surname, 1, user.password)
-            }).toThrowError(TypeError, 'username ' + 1 + ' is not a string')
-        })
-        
-        it('should fail when a user password is not a \'string\'', function () {
-            expect(function () { 
-                register(user.name, user.surname, user.username, 1)
-            }).toThrowError(TypeError, 'password ' + 1 + ' is not a string')
+            done()
         })
     })
-    
-    afterEach(function () {
-        users.length = 0
+
+    describe('when user already exists', () => {
+        beforeEach(done => {
+            call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, surname, username, password })
+            }, error => {
+                if (error) return done(error)
+
+                done()
+            })
+        })
+
+        it('should fail on already existing user', done => {
+            registerUser(name, surname, username, password, error => {
+                expect(error).toBeDefined()
+                expect(error.message).toBe(`user with username "${username}" already exists`)
+
+                done()
+            })
+        })
+    })
+
+    afterEach(done => {
+        call(`https://skylabcoders.herokuapp.com/api/v2/users/auth`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        }, (error, response) => {
+            if (error) return done(error)
+
+            const { error: _error, token } = JSON.parse(response.content)
+
+            if (_error) return done(new Error(_error))
+
+            call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ password })
+            }, (error, response) => {
+                if (error) return done(error)
+
+                if (response.content) {
+                    const { error } = JSON.parse(response.content)
+
+                    if (error) return done(new Error(error))
+                }
+
+                done()
+            })
+        })
     })
 })

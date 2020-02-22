@@ -4,5 +4,4 @@ module.exports = {
     Register: require('./register'),
     Login: require('./login'),
     Home: require('./home'),
-    SignCookie: require('./cookies')
 }

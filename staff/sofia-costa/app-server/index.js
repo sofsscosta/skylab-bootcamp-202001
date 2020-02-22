@@ -3,7 +3,8 @@ const { logger, loggerMidWare, cookieParserMidWare } = require('./utils')
 const path = require('path')
 const { authenticate, register, retrieveUser } = require('./logic')
 const bodyParser = require('body-parser')
-const { Landing, Login, Register, Home, App, SignCookie } = require('./components')
+const session = require('express-session')
+const { Landing, Login, Register, Home, App } = require('./components')
 const { sessions } = require('./data')
 
 const urlencodedBodyParser = bodyParser.urlencoded({ extended: false })
@@ -12,43 +13,37 @@ const { argv: [, , port = 8080] } = process
 
 logger.level = logger.DEBUG
 logger.path = path.join(__dirname, 'server.log')
+
 logger.debug('setting up server')
 
 const app = express()
 
 app.use(loggerMidWare)
-app.use(cookieParserMidWare)
-
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/components', express.static(path.join(__dirname, 'components')))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: true }))
 
-app.get('/', (req, res) => {
+app.get('/', ({ session: { acceptCookies } }, res) => {
 
-    res.send(App({ title: 'SoDaFede', body: Landing({SignCookies}) }))
-    
-    if()res.send(App({ title: 'SoDaFede', body: Landing({feedback}) }))
-        
-})
+    res.send(App({ title: 'SoDaFede', body: Landing({ acceptCookies }) }))
 
-app.get('/no-access', (req, res) => {
-
-    res.send(App({title: 'Access Denied', body: NoAccess()}))
 })
 
 app.get('/login', (req, res) => {
-    const { cookies: { username } } = req
+    const { session: { username } } = req
 
-    if (sessions.includes(username)) return res.redirect(`/home/${username}`)
+    if (username) return res.redirect(`/home/${username}`)
 
-    res.send(App({ title: 'Login', body: Login() }))
+    const { session: { acceptCookies } } = req
+
+    res.send(App({ title: 'Login', body: Login(), acceptCookies }))
 })
 
-app.use(urlencodedBodyParser)
-
-app.post('/login', (req, res) => {
-    const { username, password } = req.body
+app.post('/login', urlencodedBodyParser, (req, res) => {
+    const { body: { username, password }, session } = req.body
 
     try {
-        authenticate(username, password)
+        authenticate(username, password, (error, ke))
 
         sessions.push(username)
 
@@ -110,7 +105,15 @@ app.post('/register', (req, res) => {
 
 app.get('/register', (req, res) => {
     res.send(App({ title: 'Register', body: Register() }))
-})        
+})
+
+app.post('/accept-cookies', (req, res) => {
+    const { session } = req
+
+    session.acceptCookies = true
+
+    res.redirect(req.get('referer'))
+})
 
 app.listen(port, () => logger.info(`Example app listening on port ${port}!`))
 

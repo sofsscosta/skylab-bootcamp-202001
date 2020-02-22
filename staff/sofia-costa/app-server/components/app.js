@@ -1,6 +1,8 @@
+const Cookies = require('./cookies')
+
 function App (props = {}){
 
-    const {title, body} = props
+    const {title, body, acceptCookies} = props
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -11,6 +13,7 @@ function App (props = {}){
 </head>
 <body>
     ${body}
+    ${!acceptCookies ? Cookies() : ''}
 </body>
 </html>`
 
