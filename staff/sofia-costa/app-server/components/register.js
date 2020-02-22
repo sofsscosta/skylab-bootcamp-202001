@@ -1,8 +1,9 @@
 function Register(props = {}) {
     const { error } = props
 
-    return `<h1>REGISTER</h1>
-<form action="/register" method="POST">
+    return `<section>
+    <h1>REGISTER</h1>
+    <form action="/register" method="POST">
     <input type="text" placeholder="name" name="name">
     <input type="text" placeholder="surname" name="surname">
     <input type="text" placeholder="username" name="username">
@@ -11,8 +12,9 @@ function Register(props = {}) {
 
     ${error ? `<p>${error}</p>` : ''}
 
+    </form>
     <a href="/login">Already registered? Go to login!</a>
-</form>`
+    <section>`
 }
 
 module.exports = Register

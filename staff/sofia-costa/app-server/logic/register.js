@@ -11,7 +11,7 @@ function register (name, surname, username, password) {
     if (typeof password !== 'string') throw new TypeError('password ' + password + ' is not a string')
     if (!password.trim()) throw new Error('password is empty')
     
-    let user = users.find(user => user.username === username })
+    let user = users.find(function (user) { return user.username === username })
     
     if (user) throw new Error('User ' + username + ' already exists')
     

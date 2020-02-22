@@ -1,6 +1,6 @@
 require('jasmine')
 
-const users = require('../data/data.js')
+const users = require('../data.js')
 const authenticate = require('./authenticate.js')
 
 describe('authenticate', function () {
