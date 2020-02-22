@@ -37721,3 +37721,2490 @@ if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
 DEBUG 2020-02-20 19:01:37.767 setting up server
 INFO 2020-02-20 19:01:37.779 server up and running on port 8080
 WARN 2020-02-20 19:02:29.635 server abruptly stopped
+DEBUG 2020-02-21 12:58:22.266 setting up server
+INFO 2020-02-21 12:58:22.283 server up and running on port 8080
+WARN 2020-02-21 12:58:51.816 server abruptly stopped
+DEBUG 2020-02-21 13:12:52.628 setting up server
+INFO 2020-02-21 13:12:52.641 server up and running on port 8080
+INFO 2020-02-21 13:13:22.301 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:22.415 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:22.525 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:22.530 request from ::ffff:192.168.0.33:
+GET /favicon.ico HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+referer: http://192.168.0.33:8080/
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:56.652 request from ::ffff:127.0.0.1:
+GET / HTTP/1.1
+host: 127.0.0.1:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:56.736 request from ::ffff:127.0.0.1:
+GET /style.css HTTP/1.1
+host: 127.0.0.1:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://127.0.0.1:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:56.856 request from ::ffff:127.0.0.1:
+GET /style.css.map HTTP/1.1
+host: 127.0.0.1:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:13:56.859 request from ::ffff:127.0.0.1:
+GET /favicon.ico HTTP/1.1
+host: 127.0.0.1:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://127.0.0.1:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:14:20.343 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+if-none-match: W/"183-74Ucb8ZCHyzzsruZYOWrh5pN3Pw"
+
+INFO 2020-02-21 13:14:20.436 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+if-none-match: W/"1b8-17062bf98a5"
+if-modified-since: Thu, 20 Feb 2020 13:18:08 GMT
+
+INFO 2020-02-21 13:14:20.545 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+if-none-match: W/"11e-17062bf98a4"
+if-modified-since: Thu, 20 Feb 2020 13:18:08 GMT
+
+WARN 2020-02-21 13:15:55.182 server abruptly stopped
+DEBUG 2020-02-21 13:16:13.632 setting up server
+INFO 2020-02-21 13:16:13.649 server up and running on port 8080
+INFO 2020-02-21 13:16:15.527 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+if-none-match: W/"183-74Ucb8ZCHyzzsruZYOWrh5pN3Pw"
+
+INFO 2020-02-21 13:16:15.589 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+
+INFO 2020-02-21 13:16:15.609 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:16:16.771 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+
+INFO 2020-02-21 13:16:16.820 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+
+INFO 2020-02-21 13:16:16.861 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:16:20.690 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 33
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5
+
+INFO 2020-02-21 13:16:20.716 request from ::1:
+GET /home/manuelbarzi HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:16:20.767 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/home/manuelbarzi
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:16:20.796 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+WARN 2020-02-21 13:22:52.205 server abruptly stopped
+DEBUG 2020-02-21 13:22:56.069 setting up server
+INFO 2020-02-21 13:22:56.082 server up and running on port 8080
+INFO 2020-02-21 13:22:59.273 request from ::1:
+GET /home/manuelbarzi HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1ed-mCIx8GqufST+0ue3JG8WfkwBy7w"
+
+INFO 2020-02-21 13:22:59.291 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:22:59.364 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:22:59.389 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+DEBUG 2020-02-21 13:23:13.927 setting up server
+INFO 2020-02-21 13:23:13.939 server up and running on port 8080
+INFO 2020-02-21 13:23:15.586 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"313-KCvags/bT6j6hZmDkiTBBvTzPz0"
+
+INFO 2020-02-21 13:23:15.645 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:23:15.663 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:23:19.136 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:23:21.495 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:23:25.398 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:23:27.987 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+DEBUG 2020-02-21 13:23:55.785 setting up server
+INFO 2020-02-21 13:23:55.797 server up and running on port 8080
+DEBUG 2020-02-21 13:24:01.825 setting up server
+INFO 2020-02-21 13:24:01.837 server up and running on port 8080
+DEBUG 2020-02-21 13:26:47.283 setting up server
+INFO 2020-02-21 13:26:47.296 server up and running on port 8080
+DEBUG 2020-02-21 13:29:02.281 setting up server
+INFO 2020-02-21 13:29:02.293 server up and running on port 8080
+INFO 2020-02-21 13:29:27.583 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:29:27.607 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 13:29:27.666 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:29:27.707 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+DEBUG 2020-02-21 13:31:23.641 setting up server
+INFO 2020-02-21 13:31:23.656 server up and running on port 8080
+DEBUG 2020-02-21 13:33:06.969 setting up server
+INFO 2020-02-21 13:33:06.982 server up and running on port 8080
+DEBUG 2020-02-21 13:33:17.182 setting up server
+INFO 2020-02-21 13:33:17.197 server up and running on port 8080
+DEBUG 2020-02-21 13:33:50.763 setting up server
+INFO 2020-02-21 13:33:50.776 server up and running on port 8080
+INFO 2020-02-21 13:33:53.907 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 13:33:53.958 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:33:53.998 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:16.579 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"289-JFQBRTLDSmoOTyCvM7+8iQTkcEs"
+
+INFO 2020-02-21 13:42:16.629 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:16.664 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:19.582 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi
+
+INFO 2020-02-21 13:42:19.600 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 13:42:19.654 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+
+INFO 2020-02-21 13:42:19.689 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: session-id=5; username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:29.251 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"289-JFQBRTLDSmoOTyCvM7+8iQTkcEs"
+
+INFO 2020-02-21 13:42:29.311 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:29.335 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:32.969 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 29
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:42:32.978 request from ::1:
+GET /home/pepigri HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri
+if-none-match: W/"15c-v1dkIgihsYubkGDqDIOTeQa6exA"
+
+INFO 2020-02-21 13:42:33.026 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri
+
+INFO 2020-02-21 13:42:33.058 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:37.709 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri
+
+INFO 2020-02-21 13:42:37.714 request from ::1:
+GET /home/pepigri HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+if-none-match: W/"269-At8MJSKoWf+PUP7kW8hTS8nwTy8"
+
+INFO 2020-02-21 13:42:37.764 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+if-none-match: W/"38e-17063799d29"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 13:42:37.797 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+DEBUG 2020-02-21 13:43:22.976 setting up server
+INFO 2020-02-21 13:43:22.989 server up and running on port 8080
+DEBUG 2020-02-21 13:43:41.022 setting up server
+INFO 2020-02-21 13:43:41.036 server up and running on port 8080
+DEBUG 2020-02-21 13:44:06.258 setting up server
+INFO 2020-02-21 13:44:06.270 server up and running on port 8080
+DEBUG 2020-02-21 13:44:08.452 setting up server
+INFO 2020-02-21 13:44:08.464 server up and running on port 8080
+DEBUG 2020-02-21 13:44:11.221 setting up server
+INFO 2020-02-21 13:44:11.235 server up and running on port 8080
+DEBUG 2020-02-21 13:44:16.500 setting up server
+INFO 2020-02-21 13:44:16.516 server up and running on port 8080
+DEBUG 2020-02-21 13:44:43.231 setting up server
+INFO 2020-02-21 13:44:43.244 server up and running on port 8080
+DEBUG 2020-02-21 13:44:50.555 setting up server
+INFO 2020-02-21 13:44:50.568 server up and running on port 8080
+DEBUG 2020-02-21 13:44:57.613 setting up server
+INFO 2020-02-21 13:44:57.628 server up and running on port 8080
+DEBUG 2020-02-21 13:44:59.493 setting up server
+INFO 2020-02-21 13:44:59.506 server up and running on port 8080
+DEBUG 2020-02-21 13:45:02.394 setting up server
+INFO 2020-02-21 13:45:02.406 server up and running on port 8080
+DEBUG 2020-02-21 13:45:10.864 setting up server
+INFO 2020-02-21 13:45:10.878 server up and running on port 8080
+DEBUG 2020-02-21 13:45:13.670 setting up server
+INFO 2020-02-21 13:45:13.683 server up and running on port 8080
+DEBUG 2020-02-21 13:45:15.533 setting up server
+INFO 2020-02-21 13:45:15.545 server up and running on port 8080
+DEBUG 2020-02-21 13:45:25.410 setting up server
+INFO 2020-02-21 13:45:25.423 server up and running on port 8080
+DEBUG 2020-02-21 13:46:02.362 setting up server
+INFO 2020-02-21 13:46:02.374 server up and running on port 8080
+DEBUG 2020-02-21 13:46:22.230 setting up server
+INFO 2020-02-21 13:46:22.242 server up and running on port 8080
+INFO 2020-02-21 13:47:27.053 request from ::1:
+GET /home/pepigri HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+if-none-match: W/"269-At8MJSKoWf+PUP7kW8hTS8nwTy8"
+
+INFO 2020-02-21 13:47:27.064 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+
+INFO 2020-02-21 13:47:36.589 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/home/pepigri
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+if-none-match: W/"289-JFQBRTLDSmoOTyCvM7+8iQTkcEs"
+
+INFO 2020-02-21 13:48:31.263 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:48:57.878 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=pepigri; accept-cookies=true
+if-none-match: W/"289-JFQBRTLDSmoOTyCvM7+8iQTkcEs"
+
+INFO 2020-02-21 13:49:04.235 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 13:50:27.309 request from ::ffff:192.168.0.33:
+GET /components/login.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+DEBUG 2020-02-21 13:50:51.600 setting up server
+INFO 2020-02-21 13:50:51.614 server up and running on port 8080
+INFO 2020-02-21 13:50:54.685 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 13:50:54.778 request from ::ffff:192.168.0.33:
+GET /components/login.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:51:02.930 request from ::ffff:192.168.0.33:
+GET /components HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+DEBUG 2020-02-21 13:51:14.745 setting up server
+INFO 2020-02-21 13:51:14.757 server up and running on port 8080
+INFO 2020-02-21 13:51:17.172 request from ::ffff:192.168.0.33:
+GET /components HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+DEBUG 2020-02-21 13:54:16.642 setting up server
+INFO 2020-02-21 13:54:16.654 server up and running on port 8080
+INFO 2020-02-21 13:54:21.725 request from ::ffff:192.168.0.33:
+GET /components HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:54:33.795 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"183-74Ucb8ZCHyzzsruZYOWrh5pN3Pw"
+
+INFO 2020-02-21 13:54:33.927 request from ::ffff:192.168.0.33:
+GET /components/login.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:54:42.552 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:55:10.481 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:55:41.377 request from ::ffff:192.168.0.33:
+GET /components/app.js HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 13:56:19.222 request from ::ffff:192.168.0.33:
+GET /components/index.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+DEBUG 2020-02-21 13:57:15.844 setting up server
+INFO 2020-02-21 13:57:15.857 server up and running on port 8080
+DEBUG 2020-02-21 13:57:27.887 setting up server
+INFO 2020-02-21 13:57:27.901 server up and running on port 8080
+DEBUG 2020-02-21 13:57:31.587 setting up server
+INFO 2020-02-21 13:57:31.599 server up and running on port 8080
+INFO 2020-02-21 13:57:59.933 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"203-FUPEiSHVca3026f0o3IhE+c7IW8"
+
+DEBUG 2020-02-21 13:58:23.280 setting up server
+INFO 2020-02-21 13:58:23.292 server up and running on port 8080
+INFO 2020-02-21 13:58:44.959 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"203-FUPEiSHVca3026f0o3IhE+c7IW8"
+
+INFO 2020-02-21 13:59:19.003 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"203-FUPEiSHVca3026f0o3IhE+c7IW8"
+
+INFO 2020-02-21 13:59:39.135 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"203-FUPEiSHVca3026f0o3IhE+c7IW8"
+
+DEBUG 2020-02-21 14:00:47.081 setting up server
+INFO 2020-02-21 14:00:47.094 server up and running on port 8080
+INFO 2020-02-21 14:00:54.219 request from ::ffff:192.168.0.33:
+GET / HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"203-FUPEiSHVca3026f0o3IhE+c7IW8"
+
+INFO 2020-02-21 14:00:54.282 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:00:54.298 request from ::ffff:192.168.0.33:
+GET /favicon.ico HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+referer: http://192.168.0.33:8080/
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:00:54.301 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:00:54.336 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:01:44.207 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: document
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:44.244 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: style
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:44.352 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:46.444 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+if-none-match: W/"38e-17067d4ff9b"
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: style
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:46.470 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:53.276 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: document
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"203-FUPEiSHVca3026f0o3IhE+c7IW8"
+
+INFO 2020-02-21 14:01:53.299 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+if-none-match: W/"38e-17067d4ff9b"
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: style
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:53.310 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:01:53.349 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:02:35.911 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: document
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:02:35.938 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: style
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:02:36.013 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/82.0.4065.1 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:02:45.356 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 14:02:45.412 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:02:45.444 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:02:45.459 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:02:47.903 request from ::ffff:192.168.0.33:
+POST /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 30
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:02:47.978 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:02:48.008 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:02:48.046 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:09:42.342 request from ::ffff:192.168.0.33:
+POST /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 33
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:09:42.355 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+
+INFO 2020-02-21 14:09:42.417 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:09:42.489 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:09:42.528 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:09:51.571 request from ::ffff:192.168.0.33:
+POST /accept-cookies HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+
+INFO 2020-02-21 14:09:51.577 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"26d-A7OUJBC+lszh1t011tG0Hy8kOP4"
+
+INFO 2020-02-21 14:09:51.628 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:09:51.660 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:09:51.688 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+DEBUG 2020-02-21 14:10:19.062 setting up server
+INFO 2020-02-21 14:10:19.074 server up and running on port 8080
+DEBUG 2020-02-21 14:10:20.655 setting up server
+INFO 2020-02-21 14:10:20.670 server up and running on port 8080
+DEBUG 2020-02-21 14:10:51.871 setting up server
+INFO 2020-02-21 14:10:51.883 server up and running on port 8080
+DEBUG 2020-02-21 14:10:52.962 setting up server
+INFO 2020-02-21 14:10:52.977 server up and running on port 8080
+DEBUG 2020-02-21 14:10:54.021 setting up server
+INFO 2020-02-21 14:10:54.035 server up and running on port 8080
+DEBUG 2020-02-21 14:11:06.339 setting up server
+INFO 2020-02-21 14:11:06.353 server up and running on port 8080
+DEBUG 2020-02-21 14:11:21.079 setting up server
+INFO 2020-02-21 14:11:21.094 server up and running on port 8080
+DEBUG 2020-02-21 14:11:27.377 setting up server
+INFO 2020-02-21 14:11:27.389 server up and running on port 8080
+DEBUG 2020-02-21 14:11:51.201 setting up server
+INFO 2020-02-21 14:11:51.213 server up and running on port 8080
+DEBUG 2020-02-21 14:12:00.139 setting up server
+INFO 2020-02-21 14:12:00.154 server up and running on port 8080
+DEBUG 2020-02-21 14:12:02.588 setting up server
+INFO 2020-02-21 14:12:02.602 server up and running on port 8080
+DEBUG 2020-02-21 14:12:30.229 setting up server
+INFO 2020-02-21 14:12:30.242 server up and running on port 8080
+DEBUG 2020-02-21 14:12:41.961 setting up server
+INFO 2020-02-21 14:12:41.975 server up and running on port 8080
+DEBUG 2020-02-21 14:12:43.021 setting up server
+INFO 2020-02-21 14:12:43.033 server up and running on port 8080
+DEBUG 2020-02-21 14:13:03.680 setting up server
+INFO 2020-02-21 14:13:03.691 server up and running on port 8080
+DEBUG 2020-02-21 14:13:21.220 setting up server
+INFO 2020-02-21 14:13:21.234 server up and running on port 8080
+DEBUG 2020-02-21 14:13:48.576 setting up server
+INFO 2020-02-21 14:13:48.589 server up and running on port 8080
+DEBUG 2020-02-21 14:14:01.157 setting up server
+INFO 2020-02-21 14:14:01.171 server up and running on port 8080
+DEBUG 2020-02-21 14:14:02.319 setting up server
+INFO 2020-02-21 14:14:02.333 server up and running on port 8080
+DEBUG 2020-02-21 14:14:03.610 setting up server
+INFO 2020-02-21 14:14:03.623 server up and running on port 8080
+DEBUG 2020-02-21 14:14:07.593 setting up server
+INFO 2020-02-21 14:14:07.607 server up and running on port 8080
+DEBUG 2020-02-21 14:14:21.404 setting up server
+INFO 2020-02-21 14:14:21.418 server up and running on port 8080
+DEBUG 2020-02-21 14:14:23.140 setting up server
+INFO 2020-02-21 14:14:23.152 server up and running on port 8080
+DEBUG 2020-02-21 14:14:40.683 setting up server
+INFO 2020-02-21 14:14:40.696 server up and running on port 8080
+DEBUG 2020-02-21 14:15:09.268 setting up server
+INFO 2020-02-21 14:15:09.282 server up and running on port 8080
+DEBUG 2020-02-21 14:15:13.239 setting up server
+INFO 2020-02-21 14:15:13.251 server up and running on port 8080
+DEBUG 2020-02-21 14:15:15.297 setting up server
+INFO 2020-02-21 14:15:15.309 server up and running on port 8080
+DEBUG 2020-02-21 14:15:27.867 setting up server
+INFO 2020-02-21 14:15:27.879 server up and running on port 8080
+INFO 2020-02-21 14:16:01.411 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"26d-A7OUJBC+lszh1t011tG0Hy8kOP4"
+
+INFO 2020-02-21 14:16:01.425 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+
+INFO 2020-02-21 14:16:01.478 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:16:01.518 request from ::ffff:192.168.0.33:
+GET /favicon.ico HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"4316-17062d2e1c4"
+if-modified-since: Thu, 20 Feb 2020 13:39:12 GMT
+
+INFO 2020-02-21 14:16:01.525 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:16:01.554 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+DEBUG 2020-02-21 14:16:47.306 setting up server
+INFO 2020-02-21 14:16:47.319 server up and running on port 8080
+INFO 2020-02-21 14:16:54.516 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"289-JFQBRTLDSmoOTyCvM7+8iQTkcEs"
+
+INFO 2020-02-21 14:16:54.571 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:16:54.587 request from ::ffff:192.168.0.33:
+GET /favicon.ico HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:16:54.590 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:16:54.610 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:16:56.768 request from ::ffff:192.168.0.33:
+POST /accept-cookies HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:16:56.788 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 14:16:56.839 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+
+INFO 2020-02-21 14:16:56.872 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:16:56.887 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:16:58.999 request from ::ffff:192.168.0.33:
+POST /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 33
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+
+INFO 2020-02-21 14:16:59.006 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+
+INFO 2020-02-21 14:16:59.055 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+
+INFO 2020-02-21 14:16:59.088 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:16:59.098 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 14:17:01.587 request from ::ffff:192.168.0.33:
+POST /logout HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 20
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+
+INFO 2020-02-21 14:17:01.592 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 14:17:01.650 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 14:17:01.678 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 14:17:01.685 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+WARN 2020-02-21 14:18:11.549 server abruptly stopped
+DEBUG 2020-02-21 15:18:45.286 setting up server
+INFO 2020-02-21 15:18:45.301 server up and running on port 8080
+INFO 2020-02-21 15:18:47.128 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 15:18:47.214 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 15:18:47.340 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:18:47.384 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 15:18:47.395 request from ::ffff:192.168.0.33:
+GET /favicon.ico HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 15:18:52.480 request from ::ffff:192.168.0.33:
+POST /accept-cookies HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 15:18:52.499 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+if-none-match: W/"304-e2+ybC7tGh/HRdt9VNCZ+ZESbjs"
+
+INFO 2020-02-21 15:18:52.548 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+
+INFO 2020-02-21 15:18:52.577 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:18:52.591 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 15:19:04.140 request from ::ffff:192.168.0.33:
+POST /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 33
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true
+
+INFO 2020-02-21 15:19:04.148 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+if-none-match: W/"1f2-v7IQrXq/y+hMvaT41tnGPIpzXiI"
+
+INFO 2020-02-21 15:19:04.207 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 15:19:04.242 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:19:04.254 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+WARN 2020-02-21 15:31:33.659 server abruptly stopped
+DEBUG 2020-02-21 15:33:26.473 setting up server
+INFO 2020-02-21 15:33:26.485 server up and running on port 8080
+INFO 2020-02-21 15:33:29.747 request from ::ffff:192.168.0.33:
+POST /logout HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 20
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: accept-cookies=true; username=manuelbarzi
+
+INFO 2020-02-21 15:33:29.770 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 15:33:29.824 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 15:33:29.859 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:33:29.873 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 15:33:32.773 request from ::ffff:192.168.0.33:
+POST /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 33
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 15:33:32.780 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"1f2-v7IQrXq/y+hMvaT41tnGPIpzXiI"
+
+INFO 2020-02-21 15:33:32.840 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+
+INFO 2020-02-21 15:33:32.877 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:33:32.884 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 15:33:34.457 request from ::ffff:192.168.0.33:
+POST /accept-cookies HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi
+
+INFO 2020-02-21 15:33:34.462 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"26d-A7OUJBC+lszh1t011tG0Hy8kOP4"
+
+INFO 2020-02-21 15:33:34.514 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+
+INFO 2020-02-21 15:33:34.545 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:33:34.564 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 15:33:36.734 request from ::ffff:192.168.0.33:
+GET /home/manuelbarzi HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1f2-v7IQrXq/y+hMvaT41tnGPIpzXiI"
+
+INFO 2020-02-21 15:33:36.789 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+
+INFO 2020-02-21 15:33:36.804 request from ::ffff:192.168.0.33:
+GET /favicon.ico HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+
+INFO 2020-02-21 15:33:36.812 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:33:36.830 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+INFO 2020-02-21 15:33:38.140 request from ::ffff:192.168.0.33:
+POST /logout HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+content-length: 20
+cache-control: max-age=0
+origin: http://192.168.0.33:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: username=manuelbarzi; accept-cookies=true
+
+INFO 2020-02-21 15:33:38.146 request from ::ffff:192.168.0.33:
+GET /login HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+referer: http://192.168.0.33:8080/home/manuelbarzi
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 15:33:38.205 request from ::ffff:192.168.0.33:
+GET /style.css HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+if-none-match: W/"38e-17067d4ff9b"
+if-modified-since: Fri, 21 Feb 2020 12:59:37 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+referer: http://192.168.0.33:8080/login
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+
+INFO 2020-02-21 15:33:38.241 request from ::ffff:192.168.0.33:
+GET /style.css.map HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1a2-17063799d28"
+if-modified-since: Thu, 20 Feb 2020 16:41:19 GMT
+
+INFO 2020-02-21 15:33:38.249 request from ::ffff:192.168.0.33:
+GET /components/app.sass HTTP/1.1
+host: 192.168.0.33:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"1b-17062b2ac5e"
+if-modified-since: Thu, 20 Feb 2020 13:04:01 GMT
+
+WARN 2020-02-21 15:33:43.456 server abruptly stopped
