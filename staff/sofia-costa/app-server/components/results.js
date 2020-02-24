@@ -3,9 +3,9 @@ const Item = require('./item')
 
 
 module.exports=function({ results, error }) {
-    return `<ul className="results">
-        ${results? results.map(item=>Item({item})):''}
-        ${error?`<p>${error}</p>`:''}
+    return `<ul class="results">
+        ${error ?`<p class="results_error">${error}</p>`:''}
+        ${results ? results.map(item=>Item({item})).join('') :''}
     </ul>`
 
 }

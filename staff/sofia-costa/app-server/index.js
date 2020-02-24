@@ -4,7 +4,7 @@ const path = require('path')
 const { authenticateUser, retrieveUser, registerUser, searchVehicles, retrieveVehicle, createFav, retrieveFavs } = require('./logic')
 const bodyParser = require('body-parser')
 const session = require('express-session')
-const { Login, App, Home, Register, Landing, Details, Favourites } = require('./components')
+const { Login, App, Home, Register, Landing, Details } = require('./components')
 
 const urlencodedBodyParser = bodyParser.urlencoded({ extended: false })
 
@@ -20,12 +20,17 @@ const app = express()
 app.use(loggerMidWare)
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/components', express.static(path.join(__dirname, 'components'))) // NOTE to see sass files in browser
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: true }))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }, resave: false, saveUninitialized: true }))
 
 app.get('/', ({ session: { acceptCookies } }, res) => {
     try {
         if (token) {
             retrieveUser(token, error => {
+                if (error) {
+                    const { message } = error
+                    res.send(App({ title: 'My App', body: Search({ error: message }), acceptCookies }))
+                }
+
                 res.send(App({ title: 'My App', body: Search(), acceptCookies }))
             })
         } else {
@@ -72,6 +77,8 @@ app.post('/login', urlencodedBodyParser, (req, res) => {
 
                 const { username } = user
 
+                req.session.user = user
+
                 res.redirect(`/home/${username}`)
             })
         })
@@ -83,57 +90,27 @@ app.post('/login', urlencodedBodyParser, (req, res) => {
 })
 
 app.get(`/home/:username/`, (req, res) => {
-    const { params: { username }, session: { token } } = req
+    const { params: { username }, session: { user: { name }, acceptCookies } } = req
 
-    retrieveUser(token, (error, user) => {
-        if (error) {
-            const { message } = error
-            const { session: { acceptCookies } } = req
-
-            return res.send(App({ title: 'Login', body: Login({ error: message }), acceptCookies }))
-        }
-
-        const { username: _username } = user
-        req.session.user = user
-
-        if (username === _username) {
-            const { name } = user
-
-            const { session: { acceptCookies } } = req
-
-            res.send(App({ title: 'Home', body: Home({ name, username }), acceptCookies }))
-
-        } else res.redirect('/login')
-    })
+    res.send(App({ title: 'Home', body: Home({ name, username }), acceptCookies }))
 })
 
 app.get(`/search`, (req, res) => {
-    const { session: { acceptCookies, token }, query } = req
+    const { session: { acceptCookies, token, user }, query } = req
     req.session.query = query
 
     try {
-        retrieveUser(token, (error, user) => {
+        const { name } = user
+        const _query = query.query
+        searchVehicles(token, _query, (error, results) => {
             if (error) {
-                const { message } = error
-
-                return res.send(App({ title: 'Login', body: Login({ error: message }), acceptCookies }))
+                res.send(App({ title: 'Home', body: Home({ name, error }), acceptCookies }))
             }
-
-            const { name } = user
-            const _query = query.query
-            searchVehicles(token, _query, (error, results) => {
-                if (error) {
-                    res.send(App({ title: 'Home', body: Home({ name, error }), acceptCookies }))
-                }
-                else {
-                    res.send(App({ title: 'Home', body: Home({ name, results }), acceptCookies }))
-
-                }
-
-            })
-
+            else {
+                res.send(App({ title: 'Home', body: Home({ name, results }), acceptCookies }))
+            }
         })
-    } catch ({ error }) {
+    } catch ({ message }) {
         res.send(App({ title: 'Home', body: Home({ error: message }), acceptCookies }))
     }
 
@@ -141,7 +118,7 @@ app.get(`/search`, (req, res) => {
 
 app.get('/favourites/:name', (req, res) => {
     const { session: { acceptCookies, token }, params: { name } } = req
-    
+
     try {
         retrieveFavs(token, (error, results) => {
             if (error) {
@@ -151,8 +128,8 @@ app.get('/favourites/:name', (req, res) => {
                 res.send(App({ title: 'favourites', body: Home({ name, results }), acceptCookies }))
             }
         })
-    } catch (error) {
-        res.send(App({ title: 'Home', body: Home({ name, error }), acceptCookies }))
+    } catch ({ message }) {
+        res.send(App({ title: 'Home', body: Home({ name, error: message }), acceptCookies }))
     }
 })
 

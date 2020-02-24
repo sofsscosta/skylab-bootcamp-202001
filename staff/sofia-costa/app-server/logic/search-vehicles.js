@@ -34,8 +34,7 @@ module.exports=function (token, query, callback) {
             if (response.status === 200) {
                 const vehicles = JSON.parse(response.content)
 
-                vehicles.forEach(vehicle => {vehicle.isFav = fav.includes(vehicle.id)
-                    console.log(vehicle.isFav)})
+                vehicles.forEach(vehicle => {vehicle.isFav = fav.includes(vehicle.id)})
 
                 callback(undefined, vehicles)
             }
