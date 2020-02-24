@@ -1,4 +1,4 @@
-const authenticateUser = require('./authenticate-user')
+const { authenticateUser } = require('.')
 const { call } = require('../utils')
 
 describe('authenticateUser', () => {

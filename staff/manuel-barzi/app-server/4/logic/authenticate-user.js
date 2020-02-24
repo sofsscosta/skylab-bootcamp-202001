@@ -10,8 +10,6 @@ module.exports = function (username, password, callback) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     }, (error, response) => {
-        debugger
-        
         if (error) return callback(error)
 
         const { error: _error, token } = JSON.parse(response.content)

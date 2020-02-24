@@ -1,5 +1,6 @@
 module.exports = {
     loggerMidWare: require('./logger-mid-ware'),
     logger: require('./logger'),
-    call: require('./call')
+    call: require('./call'),
+    wait: require('./wait')
 }
