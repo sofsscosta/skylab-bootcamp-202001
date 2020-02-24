@@ -1,4 +1,4 @@
-const { call } = require('../utils')
+    const { call } = require('../utils')
 
 module.exports = function (name, surname, username, password, callback) {
     if (typeof name !== 'string') throw new TypeError(`name ${name} is not a string`)
@@ -26,6 +26,3 @@ module.exports = function (name, surname, username, password, callback) {
         } else callback(new Error('Unknown error'))
     })
 }
-
-if(require !== undefined)
-    module.exports = register

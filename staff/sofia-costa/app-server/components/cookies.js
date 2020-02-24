@@ -1,9 +1,5 @@
-function SignCookie() {
-
-    return `<div>
-    <h3>This site uses cookies!</h3>
-    <form action="/accept-cookies" method="POST"><button type="submit">I accept</button></form>
-</div>`
+module.exports = function() {
+    return `<section>
+    We use cookies...<form action="/accept-cookies" method="POST"> <button>Understood!</button></form>
+</section>`
 }
-
-module.exports = SignCookie

@@ -7,7 +7,8 @@
     "start": "node .",
     "watch": "npx nodemon .",
     "debug": "node debug .",
-    "test": "npx jasmine logic/*.spec.js",
+    "inspect": "node inspect .",
+    "test": "npx jasmine utils/*.spec.js logic/*.spec.js",
     "style": "npx sass components/index.sass public/style.css",
     "style-watch": "npx sass --watch components/index.sass public/style.css"
   },
@@ -15,16 +16,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "atob": "^2.1.2",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "moment": "^2.24.0"
+    "express-session": "^1.17.0",
+    "moment": "^2.24.0",
+    "uuid": "^3.4.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "body-parser": "^1.19.0",
-    "install": "^0.13.0",
     "jasmine": "^3.5.0",
-    "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
-    "npm": "^6.13.7",
     "sass": "^1.25.0"
   }
 }

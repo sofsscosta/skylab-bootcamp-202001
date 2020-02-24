@@ -144,4 +144,5 @@ describe('authenticateUser', () => {
         ).toThrowError(TypeError, `password ${password} is not a string`)
     })
 
+    // TODO should fail on non-function callback
 })
