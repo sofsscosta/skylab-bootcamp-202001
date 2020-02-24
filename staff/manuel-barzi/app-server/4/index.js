@@ -1,10 +1,10 @@
 const express = require('express')
 const { logger, loggerMidWare, /*wait*/ } = require('./utils')
 const path = require('path')
-const { authenticateUser, retrieveUser, registerUser, searchVehicles } = require('./logic')
+const { authenticateUser, retrieveUser, registerUser, searchVehicles, toggleFavVehicle } = require('./logic')
 const bodyParser = require('body-parser')
 const session = require('express-session')
-const { Login, App, Home, Register, Landing } = require('./components')
+const { Login, App, Home, Register, Landing, Search, Results } = require('./components')
 const FileStore = require('session-file-store')(session)
 
 const urlencodedBodyParser = bodyParser.urlencoded({ extended: false })
@@ -154,6 +154,24 @@ app.get('/search', (req, res) => {
         const { session: { acceptCookies } } = req
 
         res.send(App({ title: 'Login', body: Login({ error: message }), acceptCookies })) // ?
+    }
+})
+
+app.post('/toggle-fav/:id', (req, res) => {
+    const { params: { id }, session: { token, acceptCookies }} = req
+
+    try {
+        toggleFavVehicle(token, id, error => {
+            if (error) {
+                // ?
+
+                return
+            }
+
+            res.redirect(req.get('referer'))
+        })
+    } catch({message}) {
+        // ?
     }
 })
 
