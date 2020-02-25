@@ -17,6 +17,9 @@ logger.debug('setting up server')
 
 const app = express()
 
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'components'))
+
 app.use(loggerMidWare)
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/components', express.static(path.join(__dirname, 'components')))
