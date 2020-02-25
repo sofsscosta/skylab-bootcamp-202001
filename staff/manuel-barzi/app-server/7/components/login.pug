@@ -1,22 +1,10 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Login
-    link(rel="icon" href="/favicon.ico" type="image/x-icon")
-    link(rel="stylesheet" href="/style.css")
-  body.app
-    section.login
-      h1 Login
-      form(action="/login" method="POST")
-        input(type="text" name="username" placeholder="username")
-        input(type="password" name="password" placeholder="password")
-        button Send
-      a(href="/register") Register
-    if acceptCookies
-        h2 hola mundo
-    else
-        h2 hello world
-    if !acceptCookies
-        include cookies
+extends app
+
+block body
+  section.login
+    h1 Login
+    form(action="/login" method="POST")
+      input(type="text" name="username" placeholder="username" value=(username || false))
+      input(type="password" name="password" placeholder="password")
+      button Send
+    a(href="/register") Register
