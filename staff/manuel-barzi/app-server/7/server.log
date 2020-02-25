@@ -61192,3 +61192,1316 @@ cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4d
 if-none-match: W/"266-1707bafabd3"
 if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
 
+DEBUG 2020-02-25 12:12:10.510 setting up server
+INFO 2020-02-25 12:12:10.525 server up and running on port 8080
+INFO 2020-02-25 12:12:12.422 request from ::1:
+GET /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:12:12.519 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:12:12.649 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+DEBUG 2020-02-25 12:13:15.715 setting up server
+INFO 2020-02-25 12:13:15.729 server up and running on port 8080
+DEBUG 2020-02-25 12:13:23.371 setting up server
+INFO 2020-02-25 12:13:23.394 server up and running on port 8080
+INFO 2020-02-25 12:13:26.535 request from ::1:
+GET /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"2e3-TGDyZ69hhHtdQH8QBpVf56D9KZQ"
+
+INFO 2020-02-25 12:13:26.938 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:13:26.954 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:13:26.957 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:13:43.380 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"238-gNWXfnHYmahKWRpUJ8OhjIlc4rk"
+
+INFO 2020-02-25 12:13:43.511 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:13:43.533 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:13:48.977 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 35
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:13:49.516 Error: username and/or password wrong
+INFO 2020-02-25 12:13:49.582 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:13:49.598 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:14:08.385 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 32
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:14:08.813 Error: password is empty or blank
+INFO 2020-02-25 12:14:08.870 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:14:08.884 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+WARN 2020-02-25 12:14:45.429 server abruptly stopped
+DEBUG 2020-02-25 12:16:26.280 setting up server
+INFO 2020-02-25 12:16:26.296 server up and running on port 8080
+INFO 2020-02-25 12:16:30.160 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 32
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:16:30.659 Error: password is empty or blank
+DEBUG 2020-02-25 12:18:16.953 setting up server
+INFO 2020-02-25 12:18:16.971 server up and running on port 8080
+INFO 2020-02-25 12:18:26.034 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 23
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:18:26.511 Error: password is empty or blank
+INFO 2020-02-25 12:18:26.939 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:18:26.963 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:20:49.985 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 23
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"238-gNWXfnHYmahKWRpUJ8OhjIlc4rk"
+
+WARN 2020-02-25 12:20:50.425 Error: password is empty or blank
+INFO 2020-02-25 12:20:50.522 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:20:50.536 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:20:50.539 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:21:10.226 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 19
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:21:10.645 Error: username is empty or blank
+INFO 2020-02-25 12:21:10.732 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:21:10.751 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:22:04.268 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 19
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"22e-Z1E/L6JbSqPfx34Px006c+8dl6Q"
+
+WARN 2020-02-25 12:22:04.700 Error: username is empty or blank
+INFO 2020-02-25 12:22:32.901 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 19
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:22:33.324 Error: username is empty or blank
+INFO 2020-02-25 12:22:46.097 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 19
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:22:46.519 Error: username is empty or blank
+INFO 2020-02-25 12:23:25.716 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 19
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:23:26.177 Error: username is empty or blank
+INFO 2020-02-25 12:24:25.697 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 19
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:24:26.124 Error: username is empty or blank
+INFO 2020-02-25 12:24:26.210 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:24:26.232 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:24:26.233 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:24:30.548 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 26
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:24:30.967 Error: username is empty or blank
+INFO 2020-02-25 12:24:31.068 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:24:31.088 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:25:11.283 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 26
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"225-qJv0nz4KHgvor4V9W7bfuhKhquo"
+
+WARN 2020-02-25 12:25:11.706 Error: username is empty or blank
+INFO 2020-02-25 12:25:11.786 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:25:11.804 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:25:11.815 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:27:13.689 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 26
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"225-qJv0nz4KHgvor4V9W7bfuhKhquo"
+
+WARN 2020-02-25 12:27:14.114 Error: username is empty or blank
+INFO 2020-02-25 12:27:14.192 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:27:14.204 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:27:14.208 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:27:28.412 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 26
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: null
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"225-qJv0nz4KHgvor4V9W7bfuhKhquo"
+
+WARN 2020-02-25 12:27:28.873 Error: username is empty or blank
+INFO 2020-02-25 12:27:28.937 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:27:37.825 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 23
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+WARN 2020-02-25 12:27:38.249 Error: password is empty or blank
+INFO 2020-02-25 12:27:38.321 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:27:38.335 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:34:14.511 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 23
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"232-06ivPPLhM0WRYHdq6lVg9kFOyJk"
+
+WARN 2020-02-25 12:34:14.949 Error: password is empty or blank
+INFO 2020-02-25 12:34:15.030 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:34:15.046 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:34:15.047 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Aa254cBOGGEZwDKfXNc1CK6ikybxKCxSU.I%2Bj6dbjL6jjfjx6g7qf4dyErMhHQRT%2FuyyWmHefAfjQ
+
+INFO 2020-02-25 12:35:17.937 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 23
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+origin: http://localhost:8080
+content-type: application/x-www-form-urlencoded
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+if-none-match: W/"232-06ivPPLhM0WRYHdq6lVg9kFOyJk"
+
+WARN 2020-02-25 12:35:18.361 Error: password is empty or blank
+INFO 2020-02-25 12:35:18.441 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:35:18.460 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:35:18.472 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:35:20.959 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:35:20.973 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:35:21.051 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:35:21.089 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:36:26.774 request from ::1:
+GET /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"295-eMDew2VSa4rTiK3kg3wKBsHsZHA"
+
+INFO 2020-02-25 12:36:26.867 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:36:26.891 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:36:30.839 request from ::1:
+POST /accept-cookies HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 0
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:36:30.854 request from ::1:
+GET /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"306-9Bq7S1ukuPEVbEpyaiqmKL0cCX4"
+
+INFO 2020-02-25 12:36:30.943 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:36:30.971 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+DEBUG 2020-02-25 12:36:54.711 setting up server
+INFO 2020-02-25 12:36:54.726 server up and running on port 8080
+DEBUG 2020-02-25 12:36:55.779 setting up server
+INFO 2020-02-25 12:36:55.795 server up and running on port 8080
+INFO 2020-02-25 12:36:57.313 request from ::1:
+GET /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"306-9Bq7S1ukuPEVbEpyaiqmKL0cCX4"
+
+INFO 2020-02-25 12:36:57.743 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:36:57.783 request from ::1:
+GET /favicon.ico HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+pragma: no-cache
+cache-control: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: image/webp,image/apng,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:36:57.789 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+DEBUG 2020-02-25 12:37:06.054 setting up server
+INFO 2020-02-25 12:37:06.069 server up and running on port 8080
+DEBUG 2020-02-25 12:38:06.148 setting up server
+INFO 2020-02-25 12:38:06.163 server up and running on port 8080
+INFO 2020-02-25 12:38:11.193 request from ::1:
+GET /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"225-qJv0nz4KHgvor4V9W7bfuhKhquo"
+
+INFO 2020-02-25 12:38:11.647 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:38:11.669 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+INFO 2020-02-25 12:38:14.278 request from ::1:
+POST /login HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 33
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:38:15.271 request from ::1:
+GET / HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+cache-control: max-age=0
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/login
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"2fa-lhQbDgegz22CM8C69FnAA94B6Fo"
+
+INFO 2020-02-25 12:38:15.819 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"461-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+
+INFO 2020-02-25 12:38:15.852 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3Awv-LHmIlUy_e1QWpYxJR5Ol5-wT5uhKa.fGcHOZb9R2ajyXw8o1paILQnckDKmX7n89MWqzu0vxM
+if-none-match: W/"266-1707bafabd3"
+if-modified-since: Tue, 25 Feb 2020 09:31:15 GMT
+
+WARN 2020-02-25 12:38:27.130 server abruptly stopped
