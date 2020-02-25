@@ -1,5 +1,3 @@
-// const { App, Login } = require('../components')
-
 module.exports = (req, res) => {
     const { session: { token } } = req
 
@@ -7,7 +5,5 @@ module.exports = (req, res) => {
 
     const { session: { acceptCookies } } = req
 
-    debugger
-    //res.send(App({ title: 'Login', body: Login(), acceptCookies }))
     res.render('login', { acceptCookies })
 }
