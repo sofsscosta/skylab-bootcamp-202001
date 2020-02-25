@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "watch": "npx nodemon .",
+    "watch": "npx nodemon . --ignore ./sessions",
     "debug": "node debug .",
     "inspect": "node inspect .",
     "test": "npx jasmine utils/*.spec.js logic/*.spec.js",
@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "moment": "^2.24.0",
+    "session-file-store": "^1.4.0",
     "uuid": "^3.4.0",
     "xmlhttprequest": "^1.8.0"
   },

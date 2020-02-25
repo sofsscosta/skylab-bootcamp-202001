@@ -1,6 +1,4 @@
-
 const Item = require('./item')
-
 
 module.exports=function({ results, error }) {
     return `<ul class="results">

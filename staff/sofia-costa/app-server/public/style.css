@@ -68,23 +68,8 @@
   width: 20vw;
 }
 .results .item .fav {
-  heught: 5vh;
+  height: 5vh;
   width: 5vh;
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-}
-.details__container {
-  display: flex;
-  flex-flow: row wrap;
-}
-.details__img {
-  width: 50vw;
-}
-.details__text-container {
-  width: 40vw;
 }
 
 ul {
