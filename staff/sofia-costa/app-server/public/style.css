@@ -72,6 +72,21 @@
   width: 5vh;
 }
 
+.details {
+  display: flex;
+  flex-direction: column;
+}
+.details__container {
+  display: flex;
+  flex-flow: row wrap;
+}
+.details__img {
+  width: 50vw;
+}
+.details__text-container {
+  width: 40vw;
+}
+
 ul {
   padding-left: 0;
   list-style: none;
