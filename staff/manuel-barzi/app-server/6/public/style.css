@@ -40,9 +40,6 @@
 .register button {
   border: none;
 }
-.register__error {
-  color: red;
-}
 
 .search {
   display: inline-block;
@@ -76,6 +73,16 @@
 
 .item {
   cursor: pointer;
+}
+
+.feedback {
+  color: green;
+}
+.feedback--error {
+  color: red;
+}
+.feedback--warning {
+  color: orange;
 }
 
 /*# sourceMappingURL=style.css.map */
