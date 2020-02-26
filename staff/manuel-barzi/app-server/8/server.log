@@ -68929,3 +68929,97 @@ if-none-match: W/"2a6-1707d02f80e"
 if-modified-since: Tue, 25 Feb 2020 15:41:51 GMT
 
 WARN 2020-02-26 12:47:09.440 server abruptly stopped
+DEBUG 2020-02-26 16:04:34.453 setting up server
+INFO 2020-02-26 16:04:34.468 server up and running on port 8080
+INFO 2020-02-26 16:04:37.275 request from ::1:
+GET /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3AWWDJ1pH7UDD6cKyFmE91Dq0rWlN5mRRU.mX%2BwODVfBfBBkbEeDBXycbB0V2tDTUXCSt2MSKQWpr8
+
+INFO 2020-02-26 16:04:37.729 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"4cb-1707d02f80e"
+if-modified-since: Tue, 25 Feb 2020 15:41:51 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3AWWDJ1pH7UDD6cKyFmE91Dq0rWlN5mRRU.mX%2BwODVfBfBBkbEeDBXycbB0V2tDTUXCSt2MSKQWpr8
+
+INFO 2020-02-26 16:04:37.811 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3AWWDJ1pH7UDD6cKyFmE91Dq0rWlN5mRRU.mX%2BwODVfBfBBkbEeDBXycbB0V2tDTUXCSt2MSKQWpr8
+if-none-match: W/"2a6-1707d02f80e"
+if-modified-since: Tue, 25 Feb 2020 15:41:51 GMT
+
+INFO 2020-02-26 16:04:48.909 request from ::1:
+POST /register HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+content-length: 37
+cache-control: max-age=0
+origin: http://localhost:8080
+upgrade-insecure-requests: 1
+content-type: application/x-www-form-urlencoded
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+sec-fetch-user: ?1
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: same-origin
+sec-fetch-mode: navigate
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3AWWDJ1pH7UDD6cKyFmE91Dq0rWlN5mRRU.mX%2BwODVfBfBBkbEeDBXycbB0V2tDTUXCSt2MSKQWpr8
+
+WARN 2020-02-26 16:04:48.924 Error: password is empty
+INFO 2020-02-26 16:04:49.053 request from ::1:
+GET /style.css HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+if-none-match: W/"4cb-1707d02f80e"
+if-modified-since: Tue, 25 Feb 2020 15:41:51 GMT
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept: text/css,*/*;q=0.1
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+referer: http://localhost:8080/register
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3AWWDJ1pH7UDD6cKyFmE91Dq0rWlN5mRRU.mX%2BwODVfBfBBkbEeDBXycbB0V2tDTUXCSt2MSKQWpr8
+
+INFO 2020-02-26 16:04:49.094 request from ::1:
+GET /style.css.map HTTP/1.1
+host: localhost:8080
+connection: keep-alive
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: en-GB,en-US;q=0.9,en;q=0.8
+cookie: connect.sid=s%3AWWDJ1pH7UDD6cKyFmE91Dq0rWlN5mRRU.mX%2BwODVfBfBBkbEeDBXycbB0V2tDTUXCSt2MSKQWpr8
+if-none-match: W/"2a6-1707d02f80e"
+if-modified-since: Tue, 25 Feb 2020 15:41:51 GMT
+
+WARN 2020-02-26 16:35:53.914 server abruptly stopped

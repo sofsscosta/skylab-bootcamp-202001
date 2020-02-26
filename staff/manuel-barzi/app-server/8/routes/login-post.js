@@ -7,7 +7,6 @@ module.exports = (req, res) => {
     try {
         authenticateUser(username, password)
             .then(token => {
-                debugger
                 session.token = token
 
                 session.save(() => {

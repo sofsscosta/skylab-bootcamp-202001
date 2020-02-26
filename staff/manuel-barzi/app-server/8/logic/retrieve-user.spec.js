@@ -31,13 +31,13 @@ describe('retrieveUser', () => {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ username, password })
                     })
-                        .then(response => {
-                            const { error: _error, token: _token } = JSON.parse(response.content)
+                })
+                .then(response => {
+                    const { error: _error, token: _token } = JSON.parse(response.content)
 
-                            if (_error) throw new Error(_error)
+                    if (_error) throw new Error(_error)
 
-                            token = _token
-                        })
+                    token = _token
                 })
         )
 
@@ -58,6 +58,7 @@ describe('retrieveUser', () => {
 
         it('should fail on invalid token', () =>
             retrieveUser(`${token}-wrong`)
+                .then(() => { throw new Error('should not reach this point') })
                 .catch(error => {
                     expect(error).toBeInstanceOf(Error)
                     expect(error.message).toBe('invalid token')
