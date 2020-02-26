@@ -7,13 +7,12 @@ const id = 'user-id-abc'
 
 const token = jwt.sign({ sub: id }, SECRET, { expiresIn: '1h' })
 
+// let [, payload] = token.split('.')
+// payload = JSON.parse(atob(payload))
+
 try {
-    jwt.verify(token, SECRET)
-    //jwt.verify(token + '-manipulation', SECRET)
-
-    let [, payload] = token.split('.')
-
-    payload = JSON.parse(atob(payload))
+    const payload = jwt.verify(token, SECRET)
+    //const payload = jwt.verify(token + '-manipulation', SECRET)
 
     debugger
 } catch (error) {
