@@ -19,7 +19,6 @@ module.exports = (req, res) => {
                 })
             })
             .catch(error => {
-                debugger
                 logger.warn(error)
 
                 const { message } = error
