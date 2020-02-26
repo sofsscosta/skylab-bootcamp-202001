@@ -1,20 +1,19 @@
-const { call } = require('../utils')
+const { fetch } = require('../utils')
 
-module.exports = function (id, token, callback) {
+module.exports = function (id, token) {
     if (typeof id !== 'string') throw new TypeError('id ' + id + ' is not a string');
     if (typeof token !== 'string') throw new TypeError('token ' + token + ' is not a string');
-    if (typeof callback !== 'function') throw new TypeError('callback ' + callback + ' is not a function');
 
-    call(`https://skylabcoders.herokuapp.com/api/v2/users`, {
+    return fetch(`https://skylabcoders.herokuapp.com/api/v2/users`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${token}` },
    
-    }, (error, response) => {
-        if (error) return callback(error)
+    })
+    .then(response => {
+
         const user = JSON.parse(response.content)
 
         let {fav} = user
-        //const fav = user.fav
 
         if (!fav)
             fav = [id]
@@ -24,19 +23,19 @@ module.exports = function (id, token, callback) {
             : fav.push(id)
 
         if (response.status === 200) {
-            call(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
+            return fetch(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${token}`},
                 body: JSON.stringify({ fav })
             
-            }, (error, response) => {
-                //console.log(response)
-                if (error) return callback(error)
-                if (response.status === 204) {
-
-                    callback()
-                }
             })
+        }
+    })
+    .then(response => {
+
+        if (response.status === 204) {
+    
+            return
         }
     })
 }

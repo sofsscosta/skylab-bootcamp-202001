@@ -1,5 +1,9 @@
 extends app
 
+include search
+include feedback
+include details
+
 block body
     section
         if name
@@ -9,13 +13,19 @@ block body
                 a(href='/register') Register
                 |  or 
                 a(href='/login') Login
-        h2 Search
-        form(action='/search/', method='GET')
-            input(type='text', name='query', value='')
-            button(type='submit') Search
+        +search(query)
         if username
             form(action='/logout', method='POST')
-                input(type='hidden', value='7', name='username')
+                input(type='hidden', value=username, name='username')
                 button Logout
-            form(action='/favourites/7', method='GET')
+            form(action=(`/favourites/${username}`), method='GET')
                 button(type='submit') My favourites
+        if results
+            if (results.length)
+                include results
+                +results(results)
+            else
+                +feedback('warning', 'No Results')
+        if result
+            - const { id, name, year, price, image, color, maker, collection, description, url, isFav } = result
+            +details(id, name, year, price, image, color, maker, collection, description, url, isFav)

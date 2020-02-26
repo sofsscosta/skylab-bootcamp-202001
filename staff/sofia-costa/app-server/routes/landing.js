@@ -11,12 +11,12 @@ module.exports = ({ session: { acceptCookies, token } }, res) => {
 
                     return res.redirect('/error')
                 }
-
-                res.send(App({ title: 'My App', body: Home({ name, username }), acceptCookies }))
+                res.render('home', { name, username, acceptCookies })
+                // res.send(App({ title: 'My App', body: Home({ name, username }), acceptCookies }))
             })
         } else {
-
-            res.send(App({ title: 'My App', body: Home(), acceptCookies }))
+            res.render('home', { acceptCookies })
+            // res.send(App({ title: 'My App', body: Home(), acceptCookies }))
         }
     } catch (error) {
         logger.error(error)

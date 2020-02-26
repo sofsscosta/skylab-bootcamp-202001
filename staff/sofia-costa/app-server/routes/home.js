@@ -6,20 +6,20 @@ module.exports = (req, res) => {
 
     try {
         if (token) {
-            const { session: { user: { name, username } } } = props
-            retrieveUser(token, (error, user) => {
-                if (error) {
-                    logger.error(error)
-
-                    return res.redirect('/error')
-                }
-
-                // res.send(App({ title: 'My App', body: Home({ name, username }), acceptCookies }))
+            retrieveUser(token)
+            .then(user => {
+                req.session.user = user
+                const { session: { user: { name, username } } } = props
                 res.render('home', { name, username, acceptCookies })
             })
+            .catch(error => {
+                
+                logger.error(error)
+    
+                return res.redirect('/error')
+            })
+                
         } else {
-
-            // res.send(App({ title: 'My App', body: Home(), acceptCookies }))
             res.render('home', { acceptCookies })
         }
     } catch (error) {

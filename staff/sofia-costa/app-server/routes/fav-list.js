@@ -6,19 +6,21 @@ module.exports = (req, res) => {
     const { session: { acceptCookies, token }, params: { name } } = req
 
     try {
-        retrieveFavs(token, (error, results) => {
-            if (error) {
-                logger.error(error)
-
-                res.redirect('/error')           
-            }
-            else {
-                res.send(App({ title: 'favourites', body: Home({ name, results }), acceptCookies }))
-            }
+        return retrieveFavs(token)
+        .then(results => {
+            console.log(results)
+            res.render('home', { name, results, acceptCookies })
         })
+        .catch(error => {
+
+            logger.error(error)
+    
+            res.redirect('/error')
+        })
+            
     } catch (error) {
         logger.error(error)
 
-        res.redirect('/error')    
+        res.redirect('/error')
     }
 }

@@ -1,7 +1,7 @@
-const { call } = require('../utils')
+const { fetch } = require('../utils')
 const atob = require('atob')
 
-module.exports=function (token, id, callback) {
+module.exports=function (token, id) {
 
     if(token) {
 
@@ -16,46 +16,46 @@ module.exports=function (token, id, callback) {
     }
 
     if (typeof id !== 'string') throw new TypeError(`${id} is not a string`)
-    if (typeof callback !== 'function') throw new TypeError(`${callback} is not a function`)
 
     if(token) {
 
-        call(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
+        return fetch(`https://skylabcoders.herokuapp.com/api/v2/users/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
-        }, (error, response) => {
-            if (error) return callback(error)
-    
+        })
+        .then(response => {
+
             const user = JSON.parse(response.content), { error: _error } = user
     
-            if (_error) return callback(new Error(_error))
+            if (_error) throw new Error(_error)
     
             const { fav = [] } = user
-    
-            call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`, undefined, (error, response) => {
-                if (error) return callback(error)
-    
+
+            return fetch(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`)
+
+            .then(response => {
+
                 if (response.status === 200) {
                     const vehicle = JSON.parse(response.content)
     
                     vehicle && (vehicle.isFav = fav.includes(vehicle.id))
     
-                    callback(undefined, vehicle)
+                    return vehicle
                 }
             })
         })
+    
     } else {
-        
-        call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`, undefined, (error, response) => {
-                if (error) return callback(error)
+        return fetch(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`)
+        .then(response => {
+
+            if (response.status === 200) {
+                const vehicle = JSON.parse(response.content)
     
-                if (response.status === 200) {
-                    const vehicle = JSON.parse(response.content)
-    
-                    callback(undefined, vehicle)
-                }
-            })
+                return vehicle
+            }
+        })
     }
 }

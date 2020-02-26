@@ -9,29 +9,30 @@ module.exports = (req, res) => {
     try {
         if (token) {
             const { name, username } = req.session.user
-            searchVehicles(token, query, (error, results) => {
-                if (error) {
-                    logger.error(error)
+            return searchVehicles(token, query)
+            .then(results => {
 
-                    res.redirect('/error')
-                }
-                else {
-                    res.send(App({ title: 'Home', body: Home({ name, username, query, results }), acceptCookies }))
-                }
+                res.render('home', { name, username, query, results, acceptCookies })
+            })
+            .catch(error => {
+
+                logger.error(error)
+
+                res.redirect('/error')
             })
         }
 
         else {
-            searchVehicles(undefined, query, (error, results) => {
-                if (error) {
-                    logger.error(error)
+            return searchVehicles(undefined, query)
+            .then(results => {
 
-                    res.redirect('/error')
-                }
-                else {
-                    res.send(App({ title: 'Home', body: Home({ query, results }), acceptCookies }))
-                }
+                res.render('home', { query, results, acceptCookies })
             })
+            .catch(error => {
+                logger.error(error)
+
+                res.redirect('/error')
+            }) 
         }
     } catch (error) {
         logger.error(error)

@@ -1,0 +1,17 @@
+mixin details(id, name, year, price, image, color, maker, collection, description, url, isFav)
+    div.details
+        h3.details__title=(`${name} (${year})`)
+        form(action=(`/toggle-fav/${id}`), method='POST')
+            button(type='submit', name='isFav')
+                span.fav=isFav ? '❤' : '♡'
+        div.details__container
+            img.details__img(src=`${image}`)
+            div.details__text-container
+                span.details__text=`${price} €`
+                p.details__text= color
+                p.details__text= maker
+                p.details__text= collection
+                p.details__text= description
+                form(action='/go-back', method='GET')
+                    button Go Back
+                a.details__title(href='${url}') click HERE!!!!

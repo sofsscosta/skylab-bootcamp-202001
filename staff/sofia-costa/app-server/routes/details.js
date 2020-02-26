@@ -8,30 +8,35 @@ module.exports = (req, res) => {
     try {
         if (token) {
             const { token } = req.session
-            retrieveVehicle(token, id, (error, result) => {
-                if (error) {
-                    logger.warn(error)
-                    res.redirect(req.get('referer'))
-                }
-                if (result)
-                    res.send(App({ title: `${result.name}`, body: Details({ result }), acceptCookies }))
+            return retrieveVehicle(token, id)
+            .then(result => {
+
+                res.render('home', { result, acceptCookies })
             })
+            .catch(error => {
+                logger.warn(error)
+                res.redirect(req.get('referer'))
+
+            })
+                
         }
         else {
-            retrieveVehicle(undefined, id, (error, result) => {
-                if (error) {
-                    logger.warn(error)
-                    res.redirect(req.get('referer'))
-                }
-                if (result)
-                    res.send(App({ title: `${result.name}`, body: Details({ result }), acceptCookies }))
+            return retrieveVehicle(undefined, id)
+            .then(result => {
+
+                res.render('home', { result, acceptCookies })
+            })
+            .catch(error => {
+
+                logger.warn(error)
+                res.redirect(req.get('referer'))
             })
         }
     }
     catch ({ message }) {
-        const { session: { user: { name } } } = req
+        // const { session: { user: { name } } } = req
         logger.warn(message)
-        res.send(App({ title: 'Home', body: Home({ name, error: message }), acceptCookies }))
+        res.render('home', { error: message, acceptCookies })
 
     }
 }

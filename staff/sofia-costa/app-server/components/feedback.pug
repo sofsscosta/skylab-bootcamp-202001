@@ -1,1 +1,2 @@
-p(class='login__error')=error
+mixin feedback(level, message)
+    p.feedback(class = `feedback--${level}`)= message

@@ -1,50 +1,45 @@
-const { call } = require('../utils')
-const atob = require('atob')
+const { fetch } = require('../utils')
 
-module.exports = function (token, callback) {
-    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
+module.exports = function (token) {
     if (typeof token !== 'string') throw new TypeError(token + ' is not a string');
 
-
-    call('https://skylabcoders.herokuapp.com/api/v2/users/', {
+    return fetch('https://skylabcoders.herokuapp.com/api/v2/users/', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
-    }, (error, response) => {
+    })
+        .then(response => {
 
-        if (error) return callback(error)
+            const user = JSON.parse(response.content)
+            const { error: _error } = user
 
-        const user = JSON.parse(response.content)
-        const { error: _error } = user
+            if (_error) throw new Error(_error)
 
+            const { fav } = user
 
-        if (_error) return callback(new Error(_error))
+            if (!fav.length) return fav
 
-        const { fav } = user
+            let favList = []
 
-        if (!fav.length) return callback(undefined, fav)
+            return fav.map(id => {
+                return fetch(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`)
+                    .then(response => {
 
-        let favList = []
+                        if (response.status === 200) {
+                            var vehicle = JSON.parse(response.content)
+                            vehicle.isFav = true
+                            favList.push(vehicle)
 
-        counter = 0
-
-        fav.forEach(id => {
-            call(`https://skylabcoders.herokuapp.com/api/hotwheels/vehicles/${id}`, undefined, (error, response) => {
-                if (error) return callback(error);
-
-                counter++
-
-                if (response.status === 200) {
-                    var vehicle = JSON.parse(response.content)
-                    vehicle.isFav = true
-                    favList.push(vehicle)
-
-                    if (counter === fav.length) {
-                        return callback(undefined, favList)
-                    }
-                }
-            });
+                            // console.log(counter)
+                            // console.log(fav.length)
+                            // if (counter === fav.length) {
+                            console.log(favList)
+                            return favList
+                            // }
+                        }
+                    })
+                    .then(calls => Promise.all(calls))
+                    .then(favList => {return favList})
+            })
 
         })
-
-    })
 }
