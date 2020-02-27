@@ -32,13 +32,14 @@ module.exports = function (token) {
                             // console.log(counter)
                             // console.log(fav.length)
                             // if (counter === fav.length) {
-                            console.log(favList)
+                            // console.log(favList)
                             return favList
                             // }
                         }
                     })
-                    .then(calls => Promise.all(calls))
-                    .then(favList => {return favList})
+                    // .then(calls => Promise.all(calls))
+                    // .then(favList => {return favList})
+                    .then(() => favList)
             })
 
         })

@@ -8,7 +8,7 @@ const { landing, login, home, loginPost, logout, register, registerPost, acceptC
 
 const urlencodedBodyParser = bodyParser.urlencoded({ extended: false })
 
-const { argv: [, , port = 8081] } = process
+const { argv: [, , port = 8082] } = process
 
 logger.level = logger.DEBUG
 logger.path = path.join(__dirname, 'server.log')

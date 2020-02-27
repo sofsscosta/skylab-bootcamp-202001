@@ -1,0 +1,12 @@
+[
+    {
+        "id": "e7481585-1a53-4fb2-9a89-879a0b45a488",
+        "name": "Sofia",
+        "surname": "Costa",
+        "email": "so@mail.com",
+        "password": "123",
+        "created": "2020-02-27T08:44:51.117Z",
+        "authenticated": "2020-02-27T09:46:08.973Z",
+        "retrieved": "2020-02-27 10:57:30.266"
+    }
+]
