@@ -1,5 +1,5 @@
 const { validate } = require('../utils')
-const { database } = require('../data')
+const { database, models: { User } } = require('../data')
 const { NotAllowedError } = require('../errors')
 
 module.exports = (name, surname, email, password) => {
@@ -15,7 +15,7 @@ module.exports = (name, surname, email, password) => {
         .then(user => {
             if (user) throw new NotAllowedError(`user with email ${email} already exists`)
 
-            user = { name, surname, email, password, created: new Date }
+            user = new User({ name, surname, email, password })
 
             return users.insertOne(user)
         })
