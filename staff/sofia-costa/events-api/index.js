@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const fs = require('fs')
 const path = require('path')
+const { jwtVerifierMidWare } = require('./mid-wares')
 
 const logger = winston.createLogger({
     level: env === 'development' ? 'debug' : 'info',
@@ -35,7 +36,7 @@ app.use(morgan('combined', { stream: accessLogStream }))
 
 app.post('/users', jsonBodyParser, registerUser)
 
-app.get('/users', jsonBodyParser, retrieveUser)
+app.get('/users', jwtVerifierMidWare, retrieveUser)
 
 app.post('/users/auth', jsonBodyParser, authenticateUser)
 

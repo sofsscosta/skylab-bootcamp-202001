@@ -1,125 +1,107 @@
-// TODO
-const { authenticateUser, registerUser } = require('.')
-const { fetch } = require('../utils')
-require('../specs/specs-helper')
+const { authenticateUser, registerUser, retrieveUser } = require('.')
+const chai = require('chai')
+const expect = chai.expect
+const { users } = require('../data')
+const fs = require('fs').promises
 
 describe('authenticateUser', () => {
-    let name, surname, username, password
+    let name, surname, email, password, id
 
     beforeEach(() => {
         name = 'name-' + Math.random()
         surname = 'surname-' + Math.random()
-        username = 'username-' + Math.random()
+        email = Math.random() + '@mail.com'
         password = 'password-' + Math.random()
     })
 
     describe('when user already exists', () => {
-        beforeEach(() => {
-            registerUser(name, surname, username, password)
-                .then(() => console.log('registered'))
-                .catch(error => console.error(error))
+        
+        it('should succeed on correct credentials', () =>
+            authenticateUser(email, password)
+                .then(_id => {
+                    id = _id
+                    expect(_id).to.be.string
+                    expect(_id.length).to.be.at.least(0)
+                })
+        )
+
+        it('should fail on incorrect password', () => {
+            expect(() => {
+                authenticateUser(email, `${password}-wrong`)
+            }).to.throw(Error, 'wrong credentials')
         })
 
-        it('should succeed on correct credentials', () =>
-            authenticateUser(username, password)
-                .then(token => {
-                    expect(token).toBeA('string')
-
-                    const [header, payload, signature] = token.split('.')
-                    expect(header.length).toBeGreaterThan(0)
-                    expect(payload.length).toBeGreaterThan(0)
-                    expect(signature.length).toBeGreaterThan(0)
-                })
-        )
-
-        it('should fail on incorrect password', () =>
-            authenticateUser(username, `${password}-wrong`)
-                .then(() => { throw new Error('should not reach this point') })
+        beforeEach(() => {
+            registerUser(name, surname, email, password)
+                .then(() => console.log('registered'))
                 .catch(error => {
-                    expect(error).toBeInstanceOf(Error)
-                    expect(error.message).toBe('username and/or password wrong')
+                    expect(error).to.be.an('undefined')
                 })
-        )
+        })
 
-        it('should fail on incorrect username', () =>
-            authenticateUser(`${username}-wrong`, password)
-                .then(() => { throw new Error('should not reach this point') })
-                .catch(error => {
-                    expect(error).toBeInstanceOf(Error)
-                    expect(error.message).toBe('username and/or password wrong')
+        afterEach(() => {
+            retrieveUser(id)
+                .then(user => {
+                    users.splice(users.indexOf(user), 1)
+                    return fs.writeFile(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, 4))
                 })
-        )
-
-        afterEach(() =>
-            fetch(`https://skylabcoders.herokuapp.com/api/v2/users/auth`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            })
-                .then(response => {
-                    const { error: _error, token } = JSON.parse(response.content)
-
-                    if (_error) throw new Error(_error)
-
-                    return fetch(`https://skylabcoders.herokuapp.com/api/v2/users`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${token}`
-                        },
-                        body: JSON.stringify({ password })
-                    })
-                        .then(response => {
-                            if (response.content) {
-                                const { error } = JSON.parse(response.content)
-
-                                if (error) throw new Error(error)
-                            }
-                        })
-                })
-        )
+        })
     })
 
-    it('should fail when user does not exist', () =>
-        authenticateUser(username, password)
-            .then(() => { throw new Error('should not reach this point') })
-            .catch(error => {
-                expect(error).toBeInstanceOf(Error)
-                expect(error.message).toBe('username and/or password wrong')
-            })
-    )
+    it('should fail when user does not exist', () => {
 
-    it('should fail on non-string username', () => {
-        username = 1
-        expect(() =>
-            authenticateUser(username, password)
-        ).toThrowError(TypeError, `username ${username} is not a string`)
+        email = Math.random() + '@mail.com'
+        expect(() => {
+            authenticateUser(email, password)
+        }).to.throw(Error, 'wrong credentials')
+            // .then(() => { throw new Error('should not reach this point') })
+            // .catch(error => {
+            //     expect(error).to.be.instance.of(Error)
+            //     //expect(error.message).to.have.string('wrong credentials')
+            // })
+    })
 
-        username = true
+    it('should fail on non-string email', () => {
+        email = 1
         expect(() =>
-            authenticateUser(username, password)
-        ).toThrowError(TypeError, `username ${username} is not a string`)
+            authenticateUser(email, password)
+        ).to.throw(TypeError, `email ${email} is not a string`)
 
-        username = undefined
+        email = true
         expect(() =>
-            authenticateUser(username, password)
-        ).toThrowError(TypeError, `username ${username} is not a string`)
+            authenticateUser(email, password)
+        ).to.throw(TypeError, `email ${email} is not a string`)
+
+        email = undefined
+        expect(() =>
+            authenticateUser(email, password)
+        ).to.throw(TypeError, `email ${email} is not a string`)
     })
 
     it('should fail on non-string password', () => {
+        email = Math.random() + '@mail.com'
         password = 1
         expect(() =>
-            authenticateUser(username, password)
-        ).toThrowError(TypeError, `password ${password} is not a string`)
+            authenticateUser(email, password)
+        ).to.throw(TypeError, `password ${password} is not a string`)
 
         password = true
         expect(() =>
-            authenticateUser(username, password)
-        ).toThrowError(TypeError, `password ${password} is not a string`)
+            authenticateUser(email, password)
+        ).to.throw(TypeError, `password ${password} is not a string`)
 
         password = undefined
         expect(() =>
-            authenticateUser(username, password)
-        ).toThrowError(TypeError, `password ${password} is not a string`)
+            authenticateUser(email, password)
+        ).to.throw(TypeError, `password ${password} is not a string`)
     })
 })
+
+
+
+
+// .then(() => {throw new Error('should not have reached this point')})
+//                 .catch(error => {
+//                     expect(error).to.be.instance.of(Error)
+//                     expect(error.status).to.equal(409)
+//                 })

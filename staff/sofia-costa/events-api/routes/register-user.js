@@ -1,4 +1,5 @@
 const { registerUser } = require('../logic')
+const { ConflictError } = require('../errors')
 
 module.exports = (req, res) => {
     const { body: { name, surname, email, password } } = req
@@ -13,9 +14,16 @@ module.exports = (req, res) => {
                         error: message
                     })
             )
-    } catch ({ message }) {
+    } catch (error) {
+
+        let status = 400
+
+        if (error instanceof ConflictError) status = 409
+
+        const { message } = error
+
         res
-            .status(409) //?
+            .status(status)
             .json({
                 error: message
             })

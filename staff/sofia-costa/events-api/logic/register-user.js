@@ -4,6 +4,8 @@ const fs = require('fs').promises
 const path = require('path')
 const uuid = require('uuid/v4')
 
+const { ConflictError } = require('../errors')
+
 module.exports = (name, surname, email, password) => {
     validate.string(name, 'name')
     validate.string(surname, 'surname')
@@ -13,7 +15,7 @@ module.exports = (name, surname, email, password) => {
 
     let user = users.find(user => user.email === email)
 
-    if (user) throw new Error(`user with email ${email} already exists`)
+    if (user) throw new ConflictError(`user with email ${email} already exists`)
 
     user = { id: uuid(), name, surname, email, password, created: new Date }
 

@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
 
     const [bearer, token] = authorization.split(' ')
 
-    if(bearer.oLowerCase() !== 'bearer') return res.status(401).json({ error: 'invalid authorization header' })
+    if(bearer.toLowerCase() !== 'bearer') return res.status(401).json({ error: 'invalid authorization header' })
 
     try{
 
