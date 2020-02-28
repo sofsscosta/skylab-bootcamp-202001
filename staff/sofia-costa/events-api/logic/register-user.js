@@ -1,8 +1,9 @@
-const { validate } = require('../utils')
-const { users } = require('../data')
+const { validate, client } = require('../utils')
+//const { users } = require('../data')
 const fs = require('fs').promises
 const path = require('path')
 const uuid = require('uuid/v4')
+const { ObjectId } = require('mongodb')
 
 const { ConflictError } = require('../errors')
 
@@ -13,7 +14,20 @@ module.exports = (name, surname, email, password) => {
     validate.email(email)
     validate.string(password, 'password')
 
-    let user = users.find(user => user.email === email)
+    let user
+
+    client.connect()
+        .then(() => {
+            const db = client.db('events')
+
+            const users = db.collection('users')
+
+            user = users.findOne({email: email})
+
+            user.createOne()
+        })
+
+    //let user = users.find(user => user.email === email)
 
     if (user) throw new ConflictError(`user with email ${email} already exists`)
 

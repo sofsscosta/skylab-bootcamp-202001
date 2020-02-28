@@ -3,6 +3,7 @@ const chai = require('chai')
 const expect = chai.expect
 const { users } = require('../data')
 const fs = require('fs').promises
+const path = require('path')
 
 describe('authenticateUser', () => {
     let name, surname, email, password, id

@@ -1,5 +1,6 @@
 const { authenticateUser, registerUser, retrieveUser } = require('.')
 const chai = require('chai')
+const path = require('path')
 const expect = chai.expect
 const { users } = require('../data')
 const fs = require('fs').promises
@@ -39,13 +40,11 @@ describe('registerUser', () => {
             })
     })
 
-
     afterEach(() => {
-        authenticateUser(email, password)
-            .then(_id => id = _id)
-            .then(() => retrieveUser(id))
+        retrieveUser(id)
             .then(user => {
-                users.splice(users.indexOf(user), 1)
+                const index = users.findIndex(user => Object.values(user)[3] === email)
+                users.splice(index, 1)
                 return fs.writeFile(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, 4))
             })
     })
