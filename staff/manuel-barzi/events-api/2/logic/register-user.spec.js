@@ -1,18 +1,17 @@
 require('dotenv').config()
 
 const { expect } = require('chai')
-const { ObjectId } = require('mongodb')
 const { random } = Math
-const { database } = require('../data')
+const { database, database: { ObjectId } } = require('../data')
 const { registerUser } = require('../logic')
 
-const { env: { MONGODB_URL }} = process
+const { env: { TEST_MONGODB_URL } } = process
 
-describe.only('registerUser', () => {
+describe('registerUser', () => {
     let name, surname, email, password, users
 
-    before(() => 
-        database.connect(MONGODB_URL)
+    before(() =>
+        database.connect(TEST_MONGODB_URL)
             .then(() => users = database.collection('users'))
     )
 
