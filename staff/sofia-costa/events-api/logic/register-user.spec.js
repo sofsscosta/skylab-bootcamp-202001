@@ -35,8 +35,7 @@ describe('registerUser', () => {
         return registerUser(name, surname, email, password)
             .then(() => { throw new Error('should not reach this point') })
             .catch(error => {
-                expect(error).to.be.an('error', `user with email "${email}" already exists`)
-                //expect(error.status).to.equal(409)
+                expect(error).to.eql(Error(`user with email "${email}" already exists`))
             })
     })
 

@@ -1,11 +1,7 @@
-const { validate, client } = require('../utils')
-//const { users } = require('../data')
-const fs = require('fs').promises
-const path = require('path')
-const uuid = require('uuid/v4')
-const { ObjectId } = require('mongodb')
+const { validate } = require('../utils')
+const { database } = require('../data')
 
-const { ConflictError } = require('../errors')
+const { NotAllowedError } = require('../errors')
 
 module.exports = (name, surname, email, password) => {
     validate.string(name, 'name')
@@ -14,26 +10,15 @@ module.exports = (name, surname, email, password) => {
     validate.email(email)
     validate.string(password, 'password')
 
-    let user
+    const users = database.collection('users')
 
-    client.connect()
-        .then(() => {
-            const db = client.db('events')
+    return users.findOne({ email })
+        .then(user => {
+            if (user) throw new NotAllowedError(`user with email ${email} already exists`)
 
-            const users = db.collection('users')
-
-            user = users.findOne({email: email})
-
-            user.createOne()
+            user = { name, surname, email, password, created: new Date }
+            
+            return users.insertOne(user)
         })
-
-    //let user = users.find(user => user.email === email)
-
-    if (user) throw new ConflictError(`user with email ${email} already exists`)
-
-    user = { id: uuid(), name, surname, email, password, created: new Date }
-
-    users.push(user)
-
-    return fs.writeFile(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, 4))
+        .then(() => {})
 }

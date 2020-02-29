@@ -1,20 +1,22 @@
 const { validate } = require('../utils')
-const { users } = require('../data')
+const { database } = require('../data')
 
-const fs = require('fs').promises
-const path = require('path')
+const { NotAllowedError } = require('../errors')
 
 module.exports = (email, password) => {
     validate.string(email, 'email')
     validate.email(email)
     validate.string(password, 'password')
 
-    const user = users.find(user => user.email === email && user.password === password)
+    const users = database.collection('users')
 
-    if (!user) throw new Error(`wrong credentials`)
+    return users.findOne({ email })
 
-    user.authenticated = new Date
+        .then(user => {
+            if (!user) throw new NotAllowedError(`wrong credentials`)
 
-    return fs.writeFile(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, 4))
-        .then(() => user.id)
+            user.authenticated = new Date
+
+            return user._id
+        })
 }
