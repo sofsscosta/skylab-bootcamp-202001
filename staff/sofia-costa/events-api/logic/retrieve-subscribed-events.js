@@ -1,11 +1,9 @@
 const { validate } = require('../utils')
-const { database, database: { ObjectId }, models: { Event } } = require('../data')
+const { database, database: { ObjectId } } = require('../data')
 
 module.exports = (userId) => {
 
     validate.string(userId, 'userId')
-
-    const events = database.collection('events')
 
     const users = database.collection('users')
 

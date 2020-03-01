@@ -8,7 +8,7 @@ module.exports = (userId, eventId, title, description, date, location) => {
 
     title && validate.string(title, 'title')
     description && validate.string(description, 'description')
-    date && validate.string(date, 'date')
+    date && validate.type(date, 'date', Date)
     location && validate.string(location, 'location')
     
     const events = database.collection('events')

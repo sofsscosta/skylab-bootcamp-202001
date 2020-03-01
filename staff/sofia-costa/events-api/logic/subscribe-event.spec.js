@@ -4,10 +4,10 @@ const { env: { TEST_MONGODB_URL } } = process
 const { database, database: { ObjectId }, models: { User, Event } } = require('../data')
 const { expect } = require('chai')
 const { random } = Math
-const retrieveLastEvents = require('./retrieve-last-events')
+const subscribeEvent = require('./subscribe-event')
 const createEvent = require('./create-event')
 
-describe('retrieveLastEvents', () => {
+describe('subscribeEvent', () => {
     before(() =>
         database.connect(TEST_MONGODB_URL)
             .then(() => {
@@ -16,7 +16,8 @@ describe('retrieveLastEvents', () => {
             })
     )
 
-    let name, surname, email, password, users, events, title, description, date, location, eventId1, eventId2, eventId3
+    let name, surname, email, password, users, events, title, description, date,
+        location, eventId1, eventId2, eventId3
 
     beforeEach(() => {
         name = `name-${random()}`
@@ -70,39 +71,17 @@ describe('retrieveLastEvents', () => {
 
         it('should succeed on valid id', () => {
 
-            return retrieveLastEvents()
-                .then(events => {
-                    console.log(events[0]._id.toString())
-                    console.log(events[1]._id.toString())
-                    console.log(events[2]._id.toString())
-                    console.log(events[3]._id.toString())
-
-                    expect(events.length).to.equal(3)
-                    expect(events[2]._id.toString()).to.equal(eventId1)
-                    expect(events[2].title).to.equal(title)
-                    expect(events[2].description).to.equal(description)
-                    expect(events[2].location).to.equal(location)
-                    expect(events[2].date.toString()).to.equal(date.toString())
-                    expect(events[1]._id.toString()).to.equal(eventId2)
-                    expect(events[1].title).to.equal(title1)
-                    expect(events[1].description).to.equal(description1)
-                    expect(events[1].location).to.equal(location1)
-                    expect(events[1].date.toString()).to.equal(date1.toString())
-                    expect(events[0]._id.toString()).to.equal(eventId3)
-                    expect(events[0].title).to.equal(title2)
-                    expect(events[0].description).to.equal(description2)
-                    expect(events[0].location).to.equal(location2)
-                    expect(events[0].date.toString()).to.equal(date2.toString())
+            return subscribeEvent(id, eventId1)
+                .then(() => users.findOne({ _id: ObjectId(id) }))
+                .then(user => {
+                    expect(user.subscribedEvents[0].toString()).to.equal(eventId1)
                 })
         })
 
         it('should fail on incorrect data', () => {
-            return retrieveLastEvents()
-                .then(() => { throw new Error('should not reach this point') })
-                .catch((error) => {
-                    expect(error).to.exist
-                    expect(error).to.be.an('error')
-                })
+            expect(() => {
+                subscribeEvent('lololo', 'lalala')
+            }).to.throw(Error, 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters')
         })
 
         afterEach(() => {

@@ -4,10 +4,11 @@ const { env: { TEST_MONGODB_URL } } = process
 const { database, database: { ObjectId }, models: { User, Event } } = require('../data')
 const { expect } = require('chai')
 const { random } = Math
-const retrievePublishedEvents = require('./retrieve-published-events')
+const deleteEvent = require('./delete-event')
 const createEvent = require('./create-event')
+const subscribeEvent = require('./subscribe-event')
 
-describe('retrievePublishedEvents', () => {
+describe('deleteEvent', () => {
     before(() =>
         database.connect(TEST_MONGODB_URL)
             .then(() => {
@@ -16,8 +17,8 @@ describe('retrievePublishedEvents', () => {
             })
     )
 
-    let name, surname, email, password, users, events, title, description, date, 
-    location, eventId1, eventId2, eventId3
+    let name, surname, email, password, users, events, title, description, date,
+        location, eventId1, eventId2, user, id
 
     beforeEach(() => {
         name = `name-${random()}`
@@ -31,7 +32,6 @@ describe('retrievePublishedEvents', () => {
     })
 
     describe('when user already exists', () => {
-        let id
 
         beforeEach(() => {
             name = `name-${random()}`
@@ -41,11 +41,13 @@ describe('retrievePublishedEvents', () => {
             title = `title-${random()}`
             description = `description-${random()}`
             date = new Date
+            date.setDate(20)
             location = `location-${random()}`
 
             title1 = `title-${random()}`
             description1 = `description-${random()}`
             date1 = new Date
+            date1.setDate(10)
             location1 = `location-${random()}`
 
             return users.insertOne(new User({ name, surname, email, password }))
@@ -53,54 +55,56 @@ describe('retrievePublishedEvents', () => {
                 .then(() => createEvent(id, title, description, location, date))
                 .then(() => events.findOne({ publisher: ObjectId(id), title, description, location, date }))
                 .then(event => eventId1 = event._id.toString())
+                .then(() => subscribeEvent(id, eventId1))
                 .then(() => createEvent(id, title1, description1, location1, date1))
                 .then(() => events.findOne({ publisher: ObjectId(id), title: title1, description: description1, location: location1, date: date1 }))
                 .then(event => eventId2 = event._id.toString())
+                .then(() => subscribeEvent(id, eventId2))
         })
 
-        it('should succeed on valid id', () => {
+        it('should delete the event from events database', () => {
 
-            return retrievePublishedEvents(id)
-                .then(() =>
-                    events.find({ publisher: ObjectId(id) }).toArray()
-                )
-                .then(events => {
-                    expect(events.length).to.equal(2)
-                    expect(events[0].publisher.toString()).to.equal(id)
-                    expect(events[0].title).to.equal(title)
-                    expect(events[0].description).to.equal(description)
-                    expect(events[0].location).to.equal(location)
-                    expect(events[0].date.toString()).to.equal(date.toString())
-                    expect(events[1].publisher.toString()).to.equal(id)
-                    expect(events[1].title).to.equal(title1)
-                    expect(events[1].description).to.equal(description1)
-                    expect(events[1].location).to.equal(location1)
-                    expect(events[1].date.toString()).to.equal(date1.toString())
+            return deleteEvent(id, eventId1)
+                .then(() => events.findOne({ _id: ObjectId(eventId1) }))
+                .then(event => {
+                    expect(event).to.be.a('null')
                 })
         })
 
-        it('should fail on incorrect id', () => {
-            debugger
-            expect(() =>
-                retrievePublishedEvents('lololo')
-            ).to.throw(Error, 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters')
+        it('should delete the event from the publisher\'s publishedEvents array', () => {
 
+            return deleteEvent(id, eventId2)
+                .then(() => users.findOne({ _id: ObjectId(id) }))
+                .then(user => {
+                    expect(user.publishedEvents).not.to.include(eventId2)
+                })
         })
 
-        it('should fail on incorrect id format', () => {
-
-            expect(() =>
-                retrievePublishedEvents(true)
-            ).to.throw(TypeError, 'id true is not a string')
-
+        it('should delete the event from the event\'s subscribers array from users', () => {
+            return deleteEvent(id, eventId1)
+                .then(() => users.findOne({ _id: ObjectId(id) }))
+                .then(user => {
+                    expect(user.subscribedEvents).not.to.include(eventId1)
+                })
         })
+    })
 
-        afterEach(() => {
-            events.deleteMany({ publisher: ObjectId(id) })
-            users.deleteMany({ name, surname, email, password })
-        })
-
+    afterEach(() => {
+        events.deleteMany({ publisher: ObjectId(id) })
+        users.deleteOne({ _id: ObjectId(id) })
     })
 
     after(() => database.disconnect())
 })
+
+// it('should fail on incorrect data', () => {
+//     expect(() => {
+//         deleteEvent('lalala')
+//     }).to.throw(Error, 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters')
+// })
+
+
+
+
+
+

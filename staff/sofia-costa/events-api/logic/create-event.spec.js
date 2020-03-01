@@ -36,35 +36,40 @@ describe('createEvent', () => {
                 .then(({ insertedId }) => id = insertedId.toString())
         )
 
-        it('should succeed on valid data', () =>{
+        it('should succeed on valid data', () => {
 
-                return createEvent(id, title, description, location, date)
-                    .then(() =>
-                        events.findOne({ title, description, location, date, publisher: ObjectId(id) })
-                    )
-                    .then(event => {
-                        expect(event).to.exist
-                        expect(event.title).to.equal(title)
-                        expect(event.description).to.equal(description)
-                        expect(event.date).to.deep.equal(date)
-                        expect(event.location).to.equal(location)
-                        expect(event.publisher.toString()).to.equal(id)
-                    })
+            return createEvent(id, title, description, location, date)
+                .then(() =>
+                    events.findOne({ title, description, location, date, publisher: ObjectId(id) })
+                )
+                .then(event => {
+                    expect(event).to.exist
+                    expect(event.title).to.equal(title)
+                    expect(event.description).to.equal(description)
+                    expect(event.date).to.deep.equal(date)
+                    expect(event.location).to.equal(location)
+                    expect(event.publisher.toString()).to.equal(id)
                 })
-        
+        })
+
         it('should fail on incorrect data', () => {
-                return createEvent(id, `${title}-wrong`, description, location, date)
-                    .then(() => {throw new Error ('should not reach this point')})
-                    .catch((error) => {
-                        expect(error).to.exist
-                        expect(error).to.be.an('error')
-                    })
-            })
+            return createEvent(id, `${title}-wrong`, description, location, date)
+                .then(() => { throw new Error('should not reach this point') })
+                .catch((error) => {
+                    expect(error).to.exist
+                    expect(error).to.be.an('error')
+                })
+        })
+
+        afterEach(() => {
+            events.deleteMany({ publisher: ObjectId(id) })
+            users.deleteMany({ name, surname, email, password })
+        })
 
     })
 
     describe('when user does not exist', () => {
-        
+
     })
 
 

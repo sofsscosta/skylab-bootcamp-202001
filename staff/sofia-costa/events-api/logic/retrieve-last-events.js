@@ -6,10 +6,6 @@ module.exports = () => {
 
     let lastEvents = []
 
-    //     return events.find().sort({ created: -1 }).toArray()
-    //         .then(events => {return events})
-    // }
-
     const cursor = events.find().sort({ created: -1 });
 
     return (function print() {
@@ -20,6 +16,3 @@ module.exports = () => {
             .then(() => lastEvents)
     })()
 }
-
-    // return cursor
-    //     .then(() => lastEvents)
