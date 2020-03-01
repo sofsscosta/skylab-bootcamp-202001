@@ -4,7 +4,7 @@ const { env: { PORT = 8080, NODE_ENV: env, MONGODB_URL }, argv: [, , port = PORT
 
 const express = require('express')
 const winston = require('winston')
-const { registerUser, authenticateUser, retrieveUser, createEvent } = require('./routes')
+const { registerUser, authenticateUser, retrieveUser, createEvent, retrievePublishedEvents, retrieveLastEvents, subscribeEvent, retrieveSubscribedEvents, updateEvent } = require('./routes')
 const { name, version } = require('./package')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -43,9 +43,21 @@ database.connect(MONGODB_URL)
 
         app.get('/users', jwtVerifierMidWare, retrieveUser)
 
-        app.post('/create-event', jsonBodyParser, createEvent)
-
         app.post('/users/auth', jsonBodyParser, authenticateUser)
+
+        app.post('/users/:id/events', [jwtVerifierMidWare, jsonBodyParser], createEvent)
+
+        app.get('/events/:id', [jwtVerifierMidWare, jsonBodyParser], retrievePublishedEvents)
+
+        app.get('/eventslast', retrieveLastEvents)
+
+        app.patch('/users/events', [jwtVerifierMidWare, jsonBodyParser], subscribeEvent)
+
+        app.get('/users/events/subscribed', [jwtVerifierMidWare, jsonBodyParser], retrieveSubscribedEvents)
+
+        app.patch('/users/events/edit', [jwtVerifierMidWare, jsonBodyParser], updateEvent)
+
+        //updateEvent(id: String - user id, eventId: String - event id, { title?, description?, ... }): Promise // PATCH
 
         app.listen(port, () => logger.info(`server ${name} ${version} up and running on port ${port}`))
 

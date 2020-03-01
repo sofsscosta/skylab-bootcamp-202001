@@ -1,33 +1,31 @@
-const { registerUser } = require('../logic')
-const { NotAllowedError, ContentError } = require('../errors')
+const { subscribeEvent } = require('../logic')
+const { ContentError } = require('../errors')
 
 module.exports = (req, res) => {
-    const { body: { name, surname, email, password } } = req
+    const { payload: { sub: userId }, body: { event: eventId } } = req
 
     try {
-        registerUser(name, surname, email, password)
+        subscribeEvent(userId, eventId)
             .then(() => res.status(201).end())
             .catch(error => {
                 let status = 400
 
-                if (error instanceof NotAllowedError)
-                    status = 409 // conflict
-
-                const { message } = error
+                let { message } = error
 
                 res
                     .status(status)
                     .json({
                         error: message
                     })
-            })
+            }
+            )
     } catch (error) {
         let status = 400
 
         if (error instanceof TypeError || error instanceof ContentError)
             status = 406 // not acceptable
 
-        const { message } = error
+        message = error.message
 
         res
             .status(status)
