@@ -41,7 +41,16 @@ module.exports = (name, schema) => {
 
             const { _id } = this
 
-            return !_id ? collection.insertOne(this).then(() => { }) : collection.updateOne({ _id }, { $set: this })
+            return !_id ?
+                collection.insertOne(this)
+                    .then(result => {
+                        this._id = result.insertedId
+
+                        return this
+                    })
+                :
+                collection.updateOne({ _id }, { $set: this })
+                    .then(() => this)
         }
     }
 }

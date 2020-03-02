@@ -27,5 +27,5 @@ module.exports = (email, password) => {
 
             return user.save()
         })
-        .then(({ _id }) => _id.toString())
+        .then(({ id }) => id)
 }
