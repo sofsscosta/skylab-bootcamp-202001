@@ -1,13 +1,11 @@
 const { validate } = require('../utils')
-const { database: { ObjectId }, models: { User } } = require('../data')
+const { models: { User } } = require('../data')
 const { NotAllowedError } = require('../errors')
 
 module.exports = id => {
     validate.string(id, 'id')
 
-    const _id = ObjectId(id)
-
-    return User.findOne({ _id })
+    return User.findById(id)
         .then(user => {
             if (!user) throw new NotFoundError(`user with id ${id} does not exist`)
 
