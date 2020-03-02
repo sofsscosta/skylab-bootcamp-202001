@@ -68,9 +68,9 @@ describe('createEvent', () => {
 
     })
 
-    describe('when user does not exist', () => {
+    // describe('when user does not exist', () => {
 
-    })
+    // })
 
 
     // TODO more happies and unhappies

@@ -1,65 +1,63 @@
-const { authenticateUser, registerUser, retrieveUser } = require('.')
-const chai = require('chai')
-const expect = chai.expect
-const { users } = require('../data')
-const fs = require('fs').promises
-const path = require('path')
+require('dotenv').config()
+
+const { env: { TEST_MONGODB_URL } } = process
+const { database, database: { ObjectId }, models: { User } } = require('../data')
+const { expect } = require('chai')
+const { random } = Math
+const { authenticateUser, registerUser } = require('.')
+const { NotAllowedError } = require('../errors')
 
 describe('authenticateUser', () => {
-    let name, surname, email, password, id
+
+    before(() => {
+        database.connect(TEST_MONGODB_URL)
+            .then(() => users = database.collection('users'))
+    })
+
+    let name, surname, email, password, users
 
     beforeEach(() => {
-        name = 'name-' + Math.random()
-        surname = 'surname-' + Math.random()
-        email = Math.random() + '@mail.com'
-        password = 'password-' + Math.random()
+        name = 'name-' + random()
+        surname = 'surname-' + random()
+        email = random() + '@mail.com'
+        password = 'password-' + random()
     })
 
     describe('when user already exists', () => {
-        
+
+        let _id
+
+        beforeEach(() =>
+            users.insertOne(new User({ name, surname, email, password }))
+                .then(({ insertedId }) => _id = insertedId)
+        )
+
         it('should succeed on correct credentials', () =>
             authenticateUser(email, password)
-                .then(_id => {
-                    id = _id
-                    expect(_id).to.be.string
-                    expect(_id.length).to.be.at.least(0)
+                .then(id => {
+                    expect(id).to.be.a('string')
+                    expect(id.length).to.be.greaterThan(0)
+                    expect(id).to.equal(_id.toString())
                 })
         )
 
         it('should fail on incorrect password', () => {
-            expect(() => {
-                authenticateUser(email, `${password}-wrong`)
-            }).to.throw(Error, 'wrong credentials')
-        })
-
-        beforeEach(() => {
-            registerUser(name, surname, email, password)
-                .then(() => console.log('registered'))
-                .catch(error => {
-                    expect(error).to.be.an('undefined')
-                })
+            authenticateUser(email, `${password}-wrong`)
+                .then(() => { throw new Error('should not reach this point') })
+                .catch(error => expect(error).to.eql(NotAllowedError, `wrong credentials`))
         })
 
         afterEach(() => {
-            retrieveUser(id)
-                .then(user => {
-                    users.splice(users.indexOf(user), 1)
-                    return fs.writeFile(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, 4))
-                })
+            users.deleteOne({ _id: _id })
         })
     })
 
     it('should fail when user does not exist', () => {
 
-        email = Math.random() + '@mail.com'
+        email = random() + '@mail.com'
         expect(() => {
             authenticateUser(email, password)
         }).to.throw(Error, 'wrong credentials')
-            // .then(() => { throw new Error('should not reach this point') })
-            // .catch(error => {
-            //     expect(error).to.be.instance.of(Error)
-            //     //expect(error.message).to.have.string('wrong credentials')
-            // })
     })
 
     it('should fail on non-string email', () => {
@@ -80,7 +78,7 @@ describe('authenticateUser', () => {
     })
 
     it('should fail on non-string password', () => {
-        email = Math.random() + '@mail.com'
+        email = random() + '@mail.com'
         password = 1
         expect(() =>
             authenticateUser(email, password)
@@ -95,6 +93,10 @@ describe('authenticateUser', () => {
         expect(() =>
             authenticateUser(email, password)
         ).to.throw(TypeError, `password ${password} is not a string`)
+    })
+
+    after(() => {
+        database.disconnect()
     })
 })
 

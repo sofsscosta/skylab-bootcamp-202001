@@ -6,7 +6,6 @@ const { NotAllowedError } = require('../errors')
 module.exports = (name, surname, email, password) => {
     validate.string(name, 'name')
     validate.string(surname, 'surname')
-    validate.string(email, 'email')
     validate.email(email)
     validate.string(password, 'password')
 

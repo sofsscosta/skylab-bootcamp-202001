@@ -27,7 +27,7 @@ module.exports = (req, res) => {
         if (error instanceof TypeError || error instanceof ContentError)
             status = 406 // not acceptable
 
-        const { message } = error
+        message = error.message
 
         res
             .status(status)

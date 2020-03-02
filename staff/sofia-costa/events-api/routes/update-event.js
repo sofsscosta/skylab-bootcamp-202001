@@ -5,7 +5,6 @@ module.exports = (req, res) => {
     const { payload: { sub: userId }, body: { event: eventId, title, description, date, location } } = req
 
     try {
-
         updateEvent(userId, eventId, title ? title : undefined, description ? description : undefined, date ? date : undefined, location ? location : undefined)
             .then(() => res.status(201).end())
             .catch(error => {
