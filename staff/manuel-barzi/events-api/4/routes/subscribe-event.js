@@ -1,16 +1,19 @@
-const { publishEvent } = require('../logic')
+const { subscribeEvent } = require('../logic')
 const { ContentError } = require('../errors')
 
 module.exports = (req, res) => {
-    const { params: { id }, body: { title, description, location, date } } = req
+    const { params: { id, eventId } } = req
 
     try {
-        publishEvent(id, title, description, location, new Date(date))
-            .then(() => res.status(201).end())
+        subscribeEvent(id, eventId)
+            .then(() => res.end())
             .catch(error => {
                 let status = 400
 
                 const { message } = error
+                
+                if (error instanceof NotFoundError)
+                    status = 404
 
                 res
                     .status(status)
