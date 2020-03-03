@@ -1,17 +1,16 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { database, database: { ObjectId }, models: { User } } = require('../data')
+const mongoose = require('mongoose')
 const { expect } = require('chai')
 const { random } = Math
-const { authenticateUser, registerUser } = require('.')
-const { NotAllowedError } = require('../errors')
+const authenticateUser = require('./authenticate-user')
+const { models: { User } } = require('../data')
 
 describe('authenticateUser', () => {
 
     before(() => {
-        database.connect(TEST_MONGODB_URL)
-            .then(() => users = database.collection('users'))
+        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
     let name, surname, email, password, users
@@ -28,8 +27,8 @@ describe('authenticateUser', () => {
         let _id
 
         beforeEach(() =>
-            users.insertOne(new User({ name, surname, email, password }))
-                .then(({ insertedId }) => _id = insertedId)
+            User.create({ name, surname, email, password })
+                .then(user => _id = user.id)
         )
 
         it('should succeed on correct credentials', () =>
@@ -37,7 +36,7 @@ describe('authenticateUser', () => {
                 .then(id => {
                     expect(id).to.be.a('string')
                     expect(id.length).to.be.greaterThan(0)
-                    expect(id).to.equal(_id.toString())
+                    expect(id).to.equal(_id)
                 })
         )
 
@@ -48,16 +47,18 @@ describe('authenticateUser', () => {
         })
 
         afterEach(() => {
-            users.deleteOne({ _id: _id })
+            User.deleteOne({ _id: _id })
         })
     })
 
     it('should fail when user does not exist', () => {
 
-        email = random() + '@mail.com'
-        expect(() => {
+        email = '11111@mail.com'
+        //expect(() => {
             authenticateUser(email, password)
-        }).to.throw(Error, 'wrong credentials')
+            .then(() => { throw new Error('should not reach this point') })
+            .catch(error => expect(error).to.eql(Error, `wrong credentials`))
+        //}).to.throw(Error, 'wrong credentials')
     })
 
     it('should fail on non-string email', () => {
@@ -96,7 +97,7 @@ describe('authenticateUser', () => {
     })
 
     after(() => {
-        database.disconnect()
+        mongoose.disconnect()
     })
 })
 

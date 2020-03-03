@@ -1,5 +1,5 @@
 const { validate } = require('../utils')
-const { database, database: { ObjectId } } = require('../data')
+const { models: { User, Event } } = require('../data')
 
 module.exports = (userId, eventId, title, description, date, location) => {
 
@@ -11,9 +11,8 @@ module.exports = (userId, eventId, title, description, date, location) => {
     date && validate.type(date, 'date', Date)
     location && validate.string(location, 'location')
     
-    const events = database.collection('events')
 
-    return events.findOne({ _id: ObjectId(eventId) })
+    return Event.findOne({ _id: eventId })
         .then(event => {
 
             let params = {}
@@ -25,7 +24,7 @@ module.exports = (userId, eventId, title, description, date, location) => {
 
             const { _title, _description, _date, _location } = params
 
-            return events.updateOne({ _id: ObjectId(eventId) }, { $set: { title : _title, description: _description, date: _date, location: _location } })
+            return Event.updateOne({ _id: eventId }, { $set: { title : _title, description: _description, date: _date, location: _location } })
         })
         .then(() => { })
 }

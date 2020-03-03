@@ -1,7 +1,6 @@
 const { validate } = require('../utils')
+const { models: { User } } = require('../data')
 const moment = require('moment')
-const { ObjectId } = require('mongodb')
-const { database } = require('../data')
 const { NotFoundError, NotAllowedError } = require('../errors')
 
 /**
@@ -15,16 +14,13 @@ const { NotFoundError, NotAllowedError } = require('../errors')
 module.exports = id => {
     validate.string(id, 'id')
 
-    const users = database.collection('users')
-
-    return users.findOne({ _id: ObjectId(id) })
+    return User.findById(id)
         .then(user => {
             if (!user) throw new NotFoundError(`user with id ${id} does not exist`)
             if (user.deactivated) throw new NotAllowedError(`user with id ${id} is deactivated`)
             user.retrieved = moment().format('Y-MM-DD HH:mm:ss.SSS')
-            const { name, surname, email } = user
 
-            return { name, surname, email }
+            return user.save()
         })
-
+        .then(({ name, surname, email }) => ({ name, surname, email }))
 }

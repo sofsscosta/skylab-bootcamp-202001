@@ -1,19 +1,17 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { database, database: { ObjectId }, models: { User, Event } } = require('../data')
+const { models: { User, Event } } = require('../data')
 const { expect } = require('chai')
 const { random } = Math
 const retrievePublishedEvents = require('./retrieve-published-events')
 const createEvent = require('./create-event')
+const mongoose = require('mongoose')
+const { Schema, SchemaTypes: { ObjectId } } = require('mongoose')
 
 describe('retrievePublishedEvents', () => {
     before(() =>
-        database.connect(TEST_MONGODB_URL)
-            .then(() => {
-                users = database.collection('users')
-                events = database.collection('events')
-            })
+        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     )
 
     let name, surname, email, password, users, events, title, description, date, 
@@ -38,6 +36,7 @@ describe('retrievePublishedEvents', () => {
             surname = `surname-${random()}`
             email = `email-${random()}@mail.com`
             password = `password-${random()}`
+
             title = `title-${random()}`
             description = `description-${random()}`
             date = new Date
@@ -48,21 +47,23 @@ describe('retrievePublishedEvents', () => {
             date1 = new Date
             location1 = `location-${random()}`
 
-            return users.insertOne(new User({ name, surname, email, password }))
-                .then(({ insertedId }) => id = insertedId.toString())
+            let user = new User({ name, surname, email, password })
+
+            return User.create(user)
+                .then(user => id = user.id)
                 .then(() => createEvent(id, title, description, location, date))
-                .then(() => events.findOne({ publisher: ObjectId(id), title, description, location, date }))
-                .then(event => eventId1 = event._id.toString())
+                .then(() => Event.findOne({ publisher: id, title, description, location, date }))
+                .then(event => eventId1 = event.id)
                 .then(() => createEvent(id, title1, description1, location1, date1))
-                .then(() => events.findOne({ publisher: ObjectId(id), title: title1, description: description1, location: location1, date: date1 }))
-                .then(event => eventId2 = event._id.toString())
+                .then(() => Event.findOne({ publisher: id, title: title1, description: description1, location: location1, date: date1 }))
+                .then(event => eventId2 = event.id)
         })
 
         it('should succeed on valid id', () => {
 
             return retrievePublishedEvents(id)
                 .then(() =>
-                    events.find({ publisher: ObjectId(id) }).toArray()
+                    Event.find({ publisher: id })
                 )
                 .then(events => {
                     expect(events.length).to.equal(2)
@@ -80,10 +81,13 @@ describe('retrievePublishedEvents', () => {
         })
 
         it('should fail on incorrect id', () => {
-            debugger
-            expect(() =>
+            //expect(() =>
                 retrievePublishedEvents('lololo')
-            ).to.throw(Error, 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters')
+                .then(() => {throw new Error('should not reach this point')})
+                .catch((error) => {
+                    expect(error).to.be.an('error')
+                })
+            //).to.throw(Error, 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters')
 
         })
 
@@ -96,11 +100,11 @@ describe('retrievePublishedEvents', () => {
         })
 
         afterEach(() => {
-            events.deleteMany({ publisher: ObjectId(id) })
-            users.deleteMany({ name, surname, email, password })
+            Event.deleteMany({ publisher: id })
+            User.deleteMany({ name, surname, email, password })
         })
 
     })
 
-    after(() => database.disconnect())
+    after(() => mongoose.disconnect())
 })

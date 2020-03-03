@@ -1,30 +1,41 @@
 const { validate } = require('../utils')
-const { database, database: { ObjectId }, models: { Event } } = require('../data')
+const { models: { User, Event } } = require('../data')
+// const { Types: { ObjectId } } = require('mongoose')
 
 module.exports = (userId, eventId) => {
 
     validate.string(userId, 'userId')
     validate.string(eventId, 'eventId')
 
-    const events = database.collection('events')
+    return User.findByIdAndUpdate(userId, { $addToSet: { subscribedEvents: eventId } })
+        .then(() => Event.findByIdAndUpdate(eventId, { $addToSet: { subscribers: userId } }))
+        .then(() => { })
 
-    const users = database.collection('users')
+}
 
     //users.updateOne()
+    // debugger
 
-    return users.findOne({ _id: ObjectId(userId)})
-        .then(user => {
+    // return User.findById({ _id: userId })
+    //     .then(user => {
+    //         debugger
+    //         if (!user.subscribedEvents)
+    //             user.subscribedEvents = [eventId]
 
-            if (user.subscribedEvents && !user.subscribedEvents.includes(eventId) || !user.subscribedEvents)
-                return users.updateOne({ _id: ObjectId(userId) }, { $push: { subscribedEvents: ObjectId(eventId) } })
+    //         else if (user.subscribedEvents && !user.subscribedEvents.includes(eventId))
+    //             user.subscribedEvents.push(eventId)
 
-        })
-        .then(() => events.findOne({ _id: ObjectId(eventId) }))
-        .then(event => {
+    //         return user.save()
+    //     })
+    //     .then(() => Event.findById({ _id: eventId }))
+    //     .then(event => {
+    //         debugger
+    //         if (!event.subscribers)
+    //             event.subscribers = [userId]
 
-            if (event.subscribers && !event.subscribers.includes(userId) || !event.subscribers)
-                return events.updateOne({ _id: ObjectId(eventId) }, { $push: { subscribers: ObjectId(userId) } })
+    //         if (event.subscribers && !event.subscribers.includes(userId))
+    //             event.subscribers.push(userId)
 
-        })
-        .then(() => {})
-}
+    //         return event.save()
+    //     })
+    //     .then(() => { })

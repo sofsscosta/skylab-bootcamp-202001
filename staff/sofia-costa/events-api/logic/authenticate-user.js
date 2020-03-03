@@ -1,5 +1,5 @@
 const { validate } = require('../utils')
-const { database } = require('../data')
+const { models: { User } } = require('../data')
 const { NotAllowedError } = require('../errors')
 
 /**
@@ -15,19 +15,18 @@ const { NotAllowedError } = require('../errors')
  * @throws {NotAllowedError} on wrong credentials
  */
 module.exports = (email, password) => {
+    
     validate.string(email, 'email')
     validate.email(email)
     validate.string(password, 'password')
 
-    const users = database.collection('users')
-
-    return users.findOne({ email, password })
+    return User.findOne({ email, password })
         .then(user => {
             if (!user) throw new NotAllowedError(`wrong credentials`)
 
-            const { _id } = user
+            user.authenticated = new Date
 
-            return users.updateOne({ _id }, { $set: { authenticated: new Date } })
-                .then(() => _id.toString())
+            return user.save()
         })
+        .then(({ id }) => id)
 }

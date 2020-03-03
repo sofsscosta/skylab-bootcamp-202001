@@ -1,22 +1,20 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { database, database: { ObjectId }, models: { User, Event } } = require('../data')
+const { models: { User, Event } } = require('../data')
 const { expect } = require('chai')
 const { random } = Math
 const subscribeEvent = require('./subscribe-event')
 const createEvent = require('./create-event')
+const mongoose = require('mongoose')
+const { SchemaTypes: { ObjectId } } = require('mongoose')
 
 describe('subscribeEvent', () => {
-    before(() =>
-        database.connect(TEST_MONGODB_URL)
-            .then(() => {
-                users = database.collection('users')
-                events = database.collection('events')
-            })
-    )
+    before(() => {
+        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    })
 
-    let name, surname, email, password, users, events, title, description, date,
+    let name, surname, email, password, title, description, date,
         location, eventId1, eventId2, eventId3
 
     beforeEach(() => {
@@ -56,24 +54,27 @@ describe('subscribeEvent', () => {
             date2.setDate(30)
             location2 = `location-${random()}`
 
-            return users.insertOne(new User({ name, surname, email, password }))
-                .then(({ insertedId }) => id = insertedId.toString())
+            let user = new User({ name, surname, email, password })
+
+            return User.create(user)
+                .then(user => id = user.id)
                 .then(() => createEvent(id, title, description, location, date))
-                .then(() => events.findOne({ publisher: ObjectId(id), title, description, location, date }))
-                .then(event => eventId1 = event._id.toString())
+                .then(() => Event.findOne({ publisher: id, title, description, location, date }))
+                .then(event => eventId1 = event.id)
                 .then(() => createEvent(id, title1, description1, location1, date1))
-                .then(() => events.findOne({ publisher: ObjectId(id), title: title1, description: description1, location: location1, date: date1 }))
-                .then(event => eventId2 = event._id.toString())
+                .then(() => Event.findOne({ publisher: id, title: title1, description: description1, location: location1, date: date1 }))
+                .then(event => eventId2 = event.id)
                 .then(() => createEvent(id, title2, description2, location2, date2))
-                .then(() => events.findOne({ publisher: ObjectId(id), title: title2, description: description2, location: location2, date: date2 }))
-                .then(event => eventId3 = event._id.toString())
+                .then(() => Event.findOne({ publisher: id, title: title2, description: description2, location: location2, date: date2 }))
+                .then(event => eventId3 = event.id)
+                .then(() => {})
         })
 
         it('should succeed on valid id', () => {
-
             return subscribeEvent(id, eventId1)
-                .then(() => users.findOne({ _id: ObjectId(id) }))
+                .then(() => User.findById({_id: id}))
                 .then(user => {
+                    console.log(user)
                     expect(user.subscribedEvents[0].toString()).to.equal(eventId1)
                 })
         })
@@ -85,11 +86,11 @@ describe('subscribeEvent', () => {
         })
 
         afterEach(() => {
-            events.deleteMany({ publisher: ObjectId(id) })
-            users.deleteMany({ name, surname, email, password })
+            Event.deleteMany({ publisher: id })
+            User.deleteMany({ name, surname, email, password })
         })
 
     })
 
-    after(() => database.disconnect())
+    after(() => mongoose.disconnect())
 })

@@ -1,18 +1,16 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { database, database: { ObjectId }, models: { User, Event } } = require('../data')
+const { models: { User, Event } } = require('../data')
+//const { SchemaTypes: { ObjectId } } = require('mongoose')
 const { expect } = require('chai')
 const { random } = Math
 const createEvent = require('./create-event')
+const mongoose = require('mongoose')
 
 describe('createEvent', () => {
     before(() =>
-        database.connect(TEST_MONGODB_URL)
-            .then(() => {
-                users = database.collection('users')
-                events = database.collection('events')
-            })
+        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     )
 
     let name, surname, email, password, users, events, title, description, date, location
@@ -32,15 +30,15 @@ describe('createEvent', () => {
         let id
 
         beforeEach(() =>
-            users.insertOne(new User({ name, surname, email, password }))
-                .then(({ insertedId }) => id = insertedId.toString())
+            User.create(new User({ name, surname, email, password }))
+                .then((user) => id = user.id)
         )
 
         it('should succeed on valid data', () => {
 
             return createEvent(id, title, description, location, date)
                 .then(() =>
-                    events.findOne({ title, description, location, date, publisher: ObjectId(id) })
+                    Event.findOne({ title, description, location, date, publisher: id })
                 )
                 .then(event => {
                     expect(event).to.exist
@@ -62,8 +60,8 @@ describe('createEvent', () => {
         })
 
         afterEach(() => {
-            events.deleteMany({ publisher: ObjectId(id) })
-            users.deleteMany({ name, surname, email, password })
+            Event.deleteOne({ title })
+            User.deleteOne({ id })
         })
 
     })
@@ -75,5 +73,5 @@ describe('createEvent', () => {
 
     // TODO more happies and unhappies
 
-    after(() => database.disconnect())
+    after(() => mongoose.disconnect())
 })

@@ -1,5 +1,6 @@
 const { validate } = require('../utils')
-const { database, database: { ObjectId }, models: { Event } } = require('../data')
+const { models: { User, Event } } = require('../data')
+const { SchemaTypes: { ObjectId } } = require('mongoose')
 
 module.exports = (publisher, title, description, location, date) => {
 
@@ -9,20 +10,16 @@ module.exports = (publisher, title, description, location, date) => {
     validate.string(location, 'location')
     validate.type(date, 'date', Date)
 
-    const events = database.collection('events')
+    let event = new Event({ publisher, title, description, location, date, created: new Date })
 
-    const users = database.collection('users')
-
-    let event
-
-    return events.insertOne(new Event({ publisher: ObjectId(publisher), title, description, location, date }))
+    return event.save()
         .then(() => {
-            event = events.findOne({ publisher: ObjectId(publisher), title, description, location, date })
+            event = Event.findOne({ publisher, title, description, location, date })
         })
-        .then(() => users.findOne({_id: ObjectId(publisher)}))
+        .then(() => User.findOne({ _id: publisher }))
         .then(user => {
             if (user.publishedEvents && !user.publishedEvents.includes(event._id) || !user.publishedEvents)
-                return users.updateOne({ _id: ObjectId(publisher) }, { $push: { publishedEvents: ObjectId(event._id) } })
+                return User.updateOne({ _id: publisher }, { $push: { publishedEvents: event.id } })
         })
         .then(() => { })
 
