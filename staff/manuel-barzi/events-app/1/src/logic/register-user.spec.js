@@ -25,7 +25,7 @@ describe('registerUser', () => {
     it('should succeed on correct user data', async () => {
         const result = await registerUser(name, surname, email, password)
 
-        expect(result).not.toBeDefined()
+        expect(result).toBeUndefined()
 
         const user = await User.findOne({ email })
 
