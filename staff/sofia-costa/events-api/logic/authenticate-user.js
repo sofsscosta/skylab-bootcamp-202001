@@ -1,6 +1,6 @@
-const { validate } = require('../utils')
-const { models: { User } } = require('../data')
-const { NotAllowedError } = require('../errors')
+const { validate } = require('events-utils')
+const { models: { User } } = require('events-data')
+const { NotAllowedError } = require('events-errors')
 
 /**
  * Checks user credentials against the storage

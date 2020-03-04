@@ -1,11 +1,11 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { models: { User, Event } } = require('../data')
+const { models: { User, Event } } = require('events-data')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
 const { expect } = require('chai')
 const { random } = Math
-const mongoose = require('mongoose')
+const { mongoose } = require('events-data')
 const retrieveLastEvents = require('./retrieve-last-events')
 const createEvent = require('./create-event')
 

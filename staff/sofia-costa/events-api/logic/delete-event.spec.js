@@ -1,7 +1,7 @@
 // require('dotenv').config()
 
 // const { env: { TEST_MONGODB_URL } } = process
-// const { database, database: { ObjectId }, models: { User, Event } } = require('../data')
+// const { database, database: { ObjectId }, models: { User, Event } } = require('events-data')
 // const { expect } = require('chai')
 // const { random } = Math
 // const deleteEvent = require('./delete-event')

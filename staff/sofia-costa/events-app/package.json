@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "events-errors": "file:../events-errors",
+    "events-utils": "file:../events-utils",
     "ethers": "^4.0.20",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -16,6 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "events-data": "file:../events-data",
     "node-sass": "^4.13.1"
   },
   "proxy": "http://localhost:8085"

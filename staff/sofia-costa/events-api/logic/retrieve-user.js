@@ -1,7 +1,7 @@
-const { validate } = require('../utils')
-const { models: { User } } = require('../data')
+const { validate } = require('events-utils')
+const { models: { User } } = require('events-data')
 const moment = require('moment')
-const { NotFoundError, NotAllowedError } = require('../errors')
+const { NotFoundError, NotAllowedError } = require('events-errors')
 
 /**
  * @params a user when its id is passed

@@ -1,7 +1,7 @@
 // TODO jwt.verify(token)
 
 const { retrieveUser } = require('../logic')
-const { NotFoundError, NotAllowedError } = require('../errors')
+const { NotFoundError, NotAllowedError } = require('events-errors')
 
 module.exports = (req, res) => {
     // const [, token] = req.get('Authorization').split(' ')

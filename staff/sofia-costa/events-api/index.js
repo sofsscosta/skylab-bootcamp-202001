@@ -11,7 +11,7 @@ const morgan = require('morgan')
 const fs = require('fs')
 const path = require('path')
 const { jwtVerifierMidWare } = require('./mid-wares')
-const mongoose = require('mongoose')
+const { mongoose } = require('events-data')
 const cors = require('cors')
 
 

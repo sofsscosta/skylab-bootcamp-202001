@@ -1,31 +1,28 @@
-export default function (name, surname, email, password) {
-    // if (typeof name !== 'string') throw new TypeError(`name ${name} is not a string`)
-    // if (!name.trim()) throw new Error('name is empty')
-    // if (typeof surname !== 'string') throw new TypeError(`surname ${surname} is not a string`)
-    // if (!surname.trim()) throw new Error('surname is empty')
-    // if (typeof email !== 'string') throw new TypeError(`email ${email} is not a string`)
-    // if (!email.trim()) throw new Error('email is empty')
-    // if (typeof password !== 'string') throw new TypeError(`password ${password} is not a string`)
-    // if (!password.trim()) throw new Error('password is empty')
+const { validate } = require('events-utils')
 
-    return fetch(`/users`, {
+module.exports = async function (name, surname, email, password) {
+    validate.string(name, 'name')
+    validate.string(surname, 'surname')
+    validate.string(email, 'email')
+    validate.string(password, 'password')
+
+    const register = await fetch(`http://localhost:8085/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, surname, email, password })
     })
-        .then(response => {
 
-            if (response.status === 201) return
+    const status = await register.status
 
-            else if (response.status === 409 || response.status === 406 || response.status === 403) {
+    if (status === 201) return
 
-                const { error } = JSON.parse(response.content)
+    else if (status === 409 || status === 406 || status === 403) {
+        const { error } = await register
+        return new Error(error)
+    }
 
-                throw new Error(error)
+    //const res = await register.json()
 
-            } else throw new Error('Unknown error')
 
-        })
-        .then(data => data)
-        .catch(error => console.log(error))
+    else return new Error('Unknown error')
 }
