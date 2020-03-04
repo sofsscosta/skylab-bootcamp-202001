@@ -1,5 +1,3 @@
-//require('dotenv').config()
-
 const { random } = Math
 const { mongoose, models: { User } } = require('events-data')
 const { registerUser } = require('.')
