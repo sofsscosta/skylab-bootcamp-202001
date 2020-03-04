@@ -1,30 +1,25 @@
 const { validate } = require('../utils')
 const { models: { User, Event } } = require('../data')
+const { NotAllowedError, ContentError } = require('../errors')
+const { SchemaTypes: { ObjectId } } = require('mongoose')
 
-module.exports = (userId, eventId, title, description, date, location) => {
-
+module.exports = (userId, eventId, updates) => {
     validate.string(userId, 'userId')
     validate.string(eventId, 'eventId')
 
-    title && validate.string(title, 'title')
-    description && validate.string(description, 'description')
-    date && validate.type(date, 'date', Date)
-    location && validate.string(location, 'location')
-    
+    const validKeys = ['title', 'description', 'date', 'location']
+    let approvedUpdates = {}
 
-    return Event.findOne({ _id: eventId })
-        .then(event => {
+    for (key in updates) {
+        if (!(validKeys.includes(key))) throw new NotAllowedError(`invalid field ${key}`)
 
-            let params = {}
+        if (updates[key] !== '') {
+            approvedUpdates[key] = updates[key]
 
-            title !== undefined ? params['_title'] = title : params['_title'] = event.title
-            description !== undefined ? params['_description'] = description : params['_description'] = event.description
-            date !== undefined ? params['_date'] = date : params['_date'] = event.date
-            location !== undefined ? params['_location'] = location : params['_location'] = event.location
+        } else {
+            throw new ContentError(`field ${key} is empty`)
+        }
+    }
 
-            const { _title, _description, _date, _location } = params
-
-            return Event.updateOne({ _id: eventId }, { $set: { title : _title, description: _description, date: _date, location: _location } })
-        })
-        .then(() => { })
+    return Event.findByIdAndUpdate(eventId, { $set: approvedUpdates })
 }

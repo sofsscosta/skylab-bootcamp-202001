@@ -14,13 +14,9 @@ module.exports = (publisher, title, description, location, date) => {
 
     return event.save()
         .then(() => {
-            event = Event.findOne({ publisher, title, description, location, date })
+            return Event.findOne({ publisher, title, description, location, date })
         })
-        .then(() => User.findOne({ _id: publisher }))
-        .then(user => {
-            if (user.publishedEvents && !user.publishedEvents.includes(event._id) || !user.publishedEvents)
-                return User.updateOne({ _id: publisher }, { $push: { publishedEvents: event.id } })
-        })
+        .then(event => User.findByIdAndUpdate(publisher, { $addToSet: { publishedEvents: event.id } }))
         .then(() => { })
 
 }

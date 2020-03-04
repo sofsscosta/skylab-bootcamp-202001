@@ -1,11 +1,12 @@
-import sayHello from './say-hello'
 import authenticate from './authenticate'
 import registerUser from './register-user'
-
+import retrieveUser from './retrieve-user'
+import createEvent from './create-event'
 
 
 export {
-    sayHello,
     authenticate,
-    registerUser
+    registerUser,
+    retrieveUser,
+    createEvent
 }

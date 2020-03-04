@@ -9,7 +9,8 @@
     "ethers": "^4.0.20",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
