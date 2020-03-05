@@ -1,4 +1,5 @@
 module.exports = {
     User: require('./user'),
-    Event: require('./event')
+    Event: require('./event'),
+    CreditCard: require('./credit-card')
 }
