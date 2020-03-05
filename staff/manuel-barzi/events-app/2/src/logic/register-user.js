@@ -1,9 +1,11 @@
 import { validate } from 'events-utils'
 const { NotAllowedError } = require('events-errors')
 
-const { env: { REACT_APP_API_URL: API_URL } } = process
+//const { env: { REACT_APP_API_URL: API_URL } } = process
 
-module.exports = function (name, surname, email, password) {
+const API_URL = process.env.REACT_APP_API_URL
+
+export default function (name, surname, email, password) {
     validate.string(name, 'name')
     validate.string(surname, 'surname')
     validate.string(email, 'email')
