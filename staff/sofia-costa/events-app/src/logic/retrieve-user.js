@@ -1,24 +1,23 @@
-export default function (token) {
-    if (typeof token !== 'string') throw new TypeError(`token ${token} is not a string`)
+const { validate } = require('events-utils')
 
-    return fetch(`http://localhost:8085/users`, {
+export default async function (token) {
+    validate.string(token, 'token')
+
+    const retrieve = await fetch(`http://localhost:8085/users`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
     })
-        // .then(response => {
 
-        //     const data = JSON.parse(response.content), { error: _error } = data
-        
-        //     if (_error) throw new Error(_error)
-        
-        //     const { name, surname, username } = data
-        
-        //     return { name, surname, username }
-        // })
-        .then(response => response.text())
-        .then(_user => {
-            const user = JSON.parse(_user)
-            return user
-        })
-        .catch(error => console.log(error))
+    const res = await retrieve.text()
+    const user = await res
+
+    const { error } = user
+
+    
+    if (error) {
+        JSON.parse(error)
+        return new Error(error)}
+
+    else return JSON.parse(user)
+
 }

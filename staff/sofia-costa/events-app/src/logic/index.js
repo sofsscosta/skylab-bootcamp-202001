@@ -4,7 +4,8 @@ import retrieveUser from './retrieve-user'
 //const {registerUser} = require('./register-user')
 import createEvent from './create-event'
 import retrievePublished from './retrieve-published-events'
-
+import retrieveLastEvents from './retrieve-last-events'
+import subscribeEvent from './subscribe-event'
 
 
 export {
@@ -12,5 +13,7 @@ export {
     registerUser,
     retrieveUser,
     createEvent,
-    retrievePublished
+    retrievePublished,
+    retrieveLastEvents,
+    subscribeEvent
 }

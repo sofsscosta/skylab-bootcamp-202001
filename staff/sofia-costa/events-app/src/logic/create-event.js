@@ -1,5 +1,11 @@
+const { validate } = require('events-utils')
+
 export default async function (token, title, description, location, date) {
-    if (typeof token !== 'string') throw new TypeError(`token ${token} is not a string`)
+    validate.string(token)
+    validate.string(title, 'title')
+    validate.string(description, 'description')
+    validate.string(location, 'location')
+    validate.type(date, 'date', Date)
 
     const [header, payload, signature] = token.split('.')
     if (!header || !payload || !signature) throw new Error('invalid token')
@@ -16,5 +22,11 @@ export default async function (token, title, description, location, date) {
 
     //const res = await create.json()
 
-    return await create
+    if (create.status === 201)
+        return
+
+    else {
+        console.log(create)
+        return new Error(create.statusText)
+    }
 }

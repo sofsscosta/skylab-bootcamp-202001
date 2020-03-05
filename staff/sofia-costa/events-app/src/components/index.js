@@ -3,6 +3,8 @@ import Register from './Register'
 import Home from './Home'
 import PublishEvent from './Publish-event'
 import RetrievePublished from './RetrievePublished'
+import RetrieveLast from './RetrieveLast'
+import Feedback from './Feedback'
 
 
 export {
@@ -10,5 +12,7 @@ export {
     Register,
     Home,
     PublishEvent,
-    RetrievePublished
+    RetrievePublished,
+    RetrieveLast,
+    Feedback
 }

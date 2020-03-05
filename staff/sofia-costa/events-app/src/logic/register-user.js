@@ -14,12 +14,12 @@ module.exports = async function (name, surname, email, password) {
 
     const status = await register.status
 
-    if (status === 201) return
-
-    else if (status === 409 || status === 406 || status === 403) {
+    if (status === 409 || status === 406 || status === 403) {
         const { error } = await register
         return new Error(error)
     }
+
+    else if (status === 201) return
 
     //const res = await register.json()
 

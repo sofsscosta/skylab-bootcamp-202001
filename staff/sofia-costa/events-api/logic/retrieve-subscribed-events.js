@@ -8,5 +8,10 @@ module.exports = (userId) => {
     //users.updateOne()
 
     return User.findById({_id: userId})
-    .then(user => user.subscribedEvents)
+    .then(user => {
+        let id = user._id.toString()
+        user.id = id
+        delete user._id
+        return user.subscribedEvents
+    })
 }

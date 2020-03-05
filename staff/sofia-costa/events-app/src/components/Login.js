@@ -1,6 +1,7 @@
 import React from 'react'
+import Feedback from './Feedback'
 
-function Login({onSubmit, goToRegister}) {
+function Login({onSubmit, goToRegister, error}) {
 
     return <div>
         <h1>Login</h1>
@@ -16,6 +17,7 @@ function Login({onSubmit, goToRegister}) {
             event.preventDefault()
             goToRegister()
         }} >Register</span>
+        {error && <Feedback error={error}/>}
     </div>
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
+import Feedback from './Feedback'
 
-export default function ({onSubmit }) {
+export default function ({onSubmit, error }) {
     return <section>
         <h1>Create an event!</h1>
         <form onSubmit={event => {
@@ -18,6 +19,7 @@ export default function ({onSubmit }) {
             <input type="text" name="location" placeholder="location" />
             <input type="date" name="date" placeholder="date" />
             <button>Submit</button>
+            {error && <Feedback error={error}/>}
         </form>
     </section>
 }

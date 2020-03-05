@@ -16,8 +16,8 @@ module.exports = id => {
 
     return User.findById(id)
         .then(user => {
-            if (!user) throw new NotFoundError(`user with id ${id} does not exist`)
-            if (user.deactivated) throw new NotAllowedError(`user with id ${id} is deactivated`)
+            if (!user) return new NotFoundError(`user with id ${id} does not exist`)
+            if (user.deactivated) return new NotAllowedError(`user with id ${id} is deactivated`)
             user.retrieved = moment().format('Y-MM-DD HH:mm:ss.SSS')
 
             return user.save()

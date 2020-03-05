@@ -6,7 +6,7 @@ module.exports = (userId, eventId) => {
 
     validate.string(userId, 'userId')
     validate.string(eventId, 'eventId')
-
+debugger
     return User.findByIdAndUpdate(userId, { $addToSet: { subscribedEvents: eventId } })
         .then(() => Event.findByIdAndUpdate(eventId, { $addToSet: { subscribers: userId } }))
         .then(() => { })
