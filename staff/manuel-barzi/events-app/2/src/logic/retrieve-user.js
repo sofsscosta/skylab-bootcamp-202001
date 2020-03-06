@@ -5,24 +5,23 @@ const { NotAllowedError } = require('events-errors')
 
 const API_URL = process.env.REACT_APP_API_URL
 
-export default function (email, password) {
-    validate.string(email, 'email')
-    validate.email(email)
-    validate.string(password, 'password')
+export default function (token) {
+    validate.jwt(token)
 
     return (async () => {
-        const response = await fetch(`${API_URL}/users/auth`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+        const response = await fetch(`${API_URL}/users`, {
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         })
 
         const { status } = response
 
         if (status === 200) {
-            const { token } = await response.json()
+            const user = await response.json()
 
-            return token
+            return user
         }
 
         if (status >= 400 && status < 500) {
