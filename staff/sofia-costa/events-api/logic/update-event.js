@@ -20,6 +20,5 @@ module.exports = (userId, eventId, updates) => {
             throw new ContentError(`field ${key} is empty`)
         }
     }
-
     return Event.findByIdAndUpdate(eventId, { $set: approvedUpdates })
 }

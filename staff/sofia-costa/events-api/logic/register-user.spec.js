@@ -7,6 +7,7 @@ const { random } = Math
 const { NotAllowedError } = require('events-errors')
 const { registerUser } = require('.')
 const { mongoose } = require('events-data')
+const bcrypt = require('bcryptjs')
 
 describe('registerUser', () => {
 
@@ -31,20 +32,22 @@ describe('registerUser', () => {
                 .then(response => {
                     expect(response).to.be.an('undefined')
                 })
-                .then(() => User.findOne({ name, surname, email, password }))
+                .then(() => User.findOne({ email }))
                 .then((user) => {
                     expect(user.name).to.equal(name)
                     expect(user.surname).to.equal(surname)
                     expect(user.email).to.equal(email)
-                    expect(user.password).to.equal(password)
+
+                    return bcrypt.compare(password, user.password)
                 })
+                .then(validPassword => expect(validPassword).to.be.true)
         })
     
         it('should fail on already existing user', () => {
             expect(() => 
                 registerUser(name, surname, email, password)
                 .then(error => {
-                    expect(error).to.eql(Error(`user with email "${email}" already exists`))
+                    expect(error).to.eql(NotAllowedError, `user with email "${email}" already exists`)
                 })
             )
         })

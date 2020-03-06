@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EditEvent({ event, onSubmit }) {
+function EditEvent({ onSubmit, deleteEvent }) {
     return <form onSubmit={_event => {
         _event.preventDefault()
 
@@ -16,6 +16,8 @@ function EditEvent({ event, onSubmit }) {
         <input type='text' name="location" placeholder="location"/>
         <input type='date' name="date" placeholder="date"/>
         <button>Ok!</button>
+
+        {/* <button onClick={() => deleteEvent(event.id)}>Delete event</button> */}
 
     </form>
 }

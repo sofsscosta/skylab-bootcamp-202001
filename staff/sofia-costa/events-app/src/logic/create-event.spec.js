@@ -1,6 +1,7 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { mongoose, models: { Event, User } } = require('events-data')
 const { createEvent, authenticate } = require('./')
+const bcrypt = require('bcryptjs')
 
 describe('createEvent', () => {
     beforeAll(async () => {
@@ -23,17 +24,18 @@ describe('createEvent', () => {
     })
 
     describe('when user already exists', () => {
-        let id
+        let id, _password
 
         beforeEach(async () => {
-            let user = await User.create(new User({ name, surname, email, password }))
+            _password = await bcrypt.hash(password, 10)
+            let user = await User.create(new User({ name, surname, email, password: _password }))
             token = await authenticate(email, password)
             return id = user.id
         })
 
         it('should succeed on valid data', async () => {
 
-            let create = await createEvent(token, title, description, location, date)
+            let create = await createEvent(token, title, description, location, date.toString())
 
             expect(create).toBeUndefined()
 

@@ -1,6 +1,7 @@
 import authenticate from './authenticate'
 import registerUser from './register-user'
 import retrieveUser from './retrieve-user'
+import retrieveUserId from './retrieve-user-id'
 import createEvent from './create-event'
 import retrievePublished from './retrieve-published-events'
 import retrieveLastEvents from './retrieve-last-events'
@@ -13,6 +14,7 @@ export {
     authenticate,
     registerUser,
     retrieveUser,
+    retrieveUserId,
     createEvent,
     retrievePublished,
     retrieveLastEvents,

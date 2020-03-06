@@ -6,7 +6,7 @@ module.exports = () => {
 
     // const cursor = 
     
-    return Event.find({ date: { $gte: new Date } }).sort({ date: 1 })
+    return Event.find(/*{ date: { $gte: new Date } }*/).sort({ date: 1 })
         .lean()
         .then(events => {
             events.forEach(event => {

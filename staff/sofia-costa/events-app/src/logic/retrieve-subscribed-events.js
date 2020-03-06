@@ -10,11 +10,11 @@ export default async function (token) {
 
     const res = await retrieve.json()
 
-    const { results, error } = await res
+    const { error } = await res
 
-    if (error) return new Error(error)
+    if (error) throw new Error(error)
 
-    if(!results) return new Error('You haven\'t subscribed to any events yet!')
+    if(!res) throw new Error('You haven\'t subscribed to any events yet!')
 
-    else return results
+    else return res
 }

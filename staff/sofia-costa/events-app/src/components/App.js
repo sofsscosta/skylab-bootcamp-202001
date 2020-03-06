@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import { Login, Register, Home, PublishEvent, RetrievePublished, RetrieveLast, RetrieveSubscribed, EditEvent } from './'
 import './App.sass'
 import {
-    authenticate, registerUser, retrieveUser, createEvent, retrievePublished,
+    authenticate, registerUser, retrieveUser, retrieveUserId, createEvent, retrievePublished,
     retrieveLastEvents, retrieveSubscribed, subscribeEvent, editEvent
 } from '../logic'
 
@@ -14,6 +14,13 @@ function App() {
     const [events, setEvents] = useState(undefined)
     const [event, setEvent] = useState(undefined)
     const [error, setError] = useState(undefined)
+    const [id, setId] = useState(undefined)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setError()
+        }, 5000)
+    }, [error])
 
 
     //const [viewSection, setViewSection] = useState()
@@ -26,18 +33,20 @@ function App() {
             setToken(token)
 
             const user = await retrieveUser(token)
+            
+            let id = retrieveUserId(token)
 
-            const change = setUser(user)
+            setUser(user)
+
+            setId(id)
 
             setView('home')
 
-            return change
+            return user
 
         } catch (error) {
 
             setError(error.message)
-
-            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -51,7 +60,6 @@ function App() {
         }
         catch (error) {
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -78,25 +86,23 @@ function App() {
 
             const create = await createEvent(_token, title, description, location, date)
 
-            if (!create) return setView('published')
+            if (!create) return handleRetrievePublished()
 
         }
         catch (error) {
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
     }
 
     async function handleRetrievePublished() {
-
-        setView('published')
 
         try {
             const _token = token
             const retrieve = await retrievePublished(_token)
             const events = await retrieve
             setEvents(events)
-            return events
+
+            return setView('published')
             // .then(events => {
             //     setEvents(events)
             // })
@@ -104,7 +110,6 @@ function App() {
         }
         catch (error) {
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -124,7 +129,6 @@ function App() {
         }
         catch (error) {
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -133,42 +137,50 @@ function App() {
         try {
             _token = token
             const subs = await subscribeEvent(_token, eventId)
-            const subbed = await subs
-            return subbed
+            return subs
         }
         catch (error) {
             console.log('failed!')
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
 
     }
 
     async function handleRetrieveSubscribed(_token) {
+        
         setView('subscribed')
 
         try {
+            //setEvents()
             _token = token
             const events = await retrieveSubscribed(_token)
             setEvents(events)
             return events
         }
         catch (error) {
+            // setEvents()
+            // setView('subscribed')
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
     }
 
     async function handleEditEvent(changes) {
-        try{
+        try {
             // _token = token
             // _event = event
-            editEvent(token, event, changes)
+            return await editEvent(token, event, changes)
 
-        } catch(error) {
+        } catch (error) {
             setError(error.message)
-            setTimeout(() => setError(undefined), 3000)
         }
+    }
+
+    async function handleDeleteEvent(event) {
+        // try{
+        //     return await deleteEvent(token, event)
+        // } catch(error) {
+        //     setError(error.message)
+        // }
     }
 
     return (
@@ -181,18 +193,20 @@ function App() {
 
             {view !== 'login' && view !== 'register' && <Home user={user} onToPublishEvent={handleGoToPublishEvent}
                 onToRetrievePublished={handleRetrievePublished} onToRetrieveLast={handleRetrieveLast}
-                onToRetrieveSubscribed={handleRetrieveSubscribed}  />}
+                onToRetrieveSubscribed={handleRetrieveSubscribed} />}
 
             {view === 'publish' && <PublishEvent onSubmit={handleCreateEvent} error={error} />}
 
-            {view === 'published' && <RetrievePublished events={events} subscribe={handleSubscribe} error={error} 
-            edit={handleOnToEditEvent}/>}
+            {view === 'published' && <RetrievePublished events={events} subscribe={handleSubscribe} error={error}
+                edit={handleOnToEditEvent} user={id} edit={handleOnToEditEvent} deleteEvent={handleDeleteEvent}/>}
 
-            {view === 'last' && <RetrieveLast events={events} subscribe={handleSubscribe} error={error} />}
+            {view === 'last' && <RetrieveLast events={events} subscribe={handleSubscribe} error={error} 
+            user={id} edit={handleOnToEditEvent} deleteEvent={handleDeleteEvent}/>}
 
-            {view === 'subscribed' && <RetrieveSubscribed events={events} subscribe={handleSubscribe} error={error} />}
+            {view === 'subscribed' && <RetrieveSubscribed events={events} subscribe={handleSubscribe} 
+            error={error} user={id} edit={handleOnToEditEvent} deleteEvent={handleDeleteEvent}/>}
 
-            {view === 'edit' && <EditEvent event={event} onSubmit={handleEditEvent}/>}
+            {view === 'edit' && <EditEvent event={event} onSubmit={handleEditEvent} deleteEvent={handleDeleteEvent}/>}
 
         </Fragment>
 

@@ -1,12 +1,13 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { mongoose, models: { User } } = require('events-data')
 const { authenticate, retrieveUser } = require('./')
+const bcrypt = require('bcryptjs')
 
 describe('authenticate-user', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-        await User.deleteMany()
+        return await User.deleteMany()
     })
 
     let name, surname, email, password, id
@@ -20,11 +21,13 @@ describe('authenticate-user', () => {
 
     describe('when user already exists', () => {
 
-        let _id, user
+        let _id, user, _password
 
         beforeEach(async () => {
 
-            user = await User.create({ name, surname, email, password })
+            _password = await bcrypt.hash(password, 10)
+
+            user = await User.create({ name, surname, email, password: _password })
 
             return _id = user.id
         })

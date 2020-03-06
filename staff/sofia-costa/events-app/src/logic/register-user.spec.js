@@ -1,6 +1,7 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { mongoose, models: { User } } = require('events-data')
 const { registerUser } = require('./')
+const bcrypt = require('bcryptjs')
 
 describe('registerUser', () => {
 
@@ -29,7 +30,9 @@ describe('registerUser', () => {
         expect(user.name).toBe(name)
         expect(user.surname).toBe(surname)
         expect(user.email).toBe(email)
-        expect(user.password).toBe(password)
+
+        let pass = await bcrypt.compare(password, user.password)
+        expect(pass).toBe(true)
     })
 
     it('should fail on already existing user', async () => {

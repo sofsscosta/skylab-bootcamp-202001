@@ -15,7 +15,7 @@ export default async function (token, eventId, updates) {
 
         const status = edit.status
 
-        if (status === 409 || status === 406 || status === 403) {
+        if (status === 409 || status === 406 || status === 403 || status === 404) {
             const { error } = edit
             throw new Error(error)
         }

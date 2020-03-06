@@ -6,6 +6,8 @@ const { expect } = require('chai')
 const { random } = Math
 const authenticateUser = require('./authenticate-user')
 const { models: { User } } = require('events-data')
+const { NotAllowedError } = require('events-errors')
+const bcrypt = require('bcryptjs')
 
 describe('authenticateUser', () => {
 
@@ -13,7 +15,7 @@ describe('authenticateUser', () => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
-    let name, surname, email, password, users
+    let name, surname, email, password
 
     beforeEach(() => {
         name = 'name-' + random()
@@ -27,7 +29,10 @@ describe('authenticateUser', () => {
         let _id
 
         beforeEach(() =>
-            User.create({ name, surname, email, password })
+            bcrypt.hash(password, 10)
+                .then(password =>
+                    User.create({ name, surname, email, password })
+                )
                 .then(user => _id = user.id)
         )
 
