@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import CreateEvent from './CreateEvent'
-import { retrieveUser, retrieveLastEvents } from '../logic'
+import { retrieveUser, publishEvent, retrieveLastEvents } from '../logic'
 import { Context } from './ContextProvider'
 
 export default function () {
@@ -25,13 +25,17 @@ export default function () {
 
     function handleLogout() {
         sessionStorage.clear()
-        
+
         setState({ page: 'login' })
+    }
+
+    function handleCreateEvent(title, description, date, location) {
+        // TODO
     }
 
     return <>
         <h1>Hello, {name}!</h1>
         <button onClick={handleLogout}>Logout</button>
-        <CreateEvent />
+        <CreateEvent onSubmit={handleCreateEvent} />
     </>
 }

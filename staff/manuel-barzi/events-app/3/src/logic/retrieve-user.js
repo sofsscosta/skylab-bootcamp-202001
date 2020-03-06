@@ -10,9 +10,9 @@ export default function (token) {
 
     return (async () => {
         const response = await fetch(`${API_URL}/users`, {
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         })
 
