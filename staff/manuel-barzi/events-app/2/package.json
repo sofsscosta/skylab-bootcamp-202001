@@ -35,6 +35,7 @@
     ]
   },
   "devDependencies": {
+    "bcryptjs": "^2.4.3",
     "events-data": "file:../../events-data",
     "node-sass": "^4.13.1"
   }

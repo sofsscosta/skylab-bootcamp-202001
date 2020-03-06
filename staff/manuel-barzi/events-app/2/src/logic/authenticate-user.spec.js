@@ -1,6 +1,7 @@
 const { random } = Math
 const { mongoose, models: { User } } = require('events-data')
 const { authenticateUser } = require('.')
+const bcrypt = require('bcryptjs')
 
 const { env: { REACT_APP_TEST_MONGODB_URL: TEST_MONGODB_URL } } = process
 
@@ -22,10 +23,12 @@ describe('authenticateUser', () => {
     describe('when user already exists', () => {
         let _id
 
-        beforeEach(() =>
-            User.create({ name, surname, email, password })
+        beforeEach(async () => {
+            const _password = await bcrypt.hash(password, 10)
+
+            await User.create({ name, surname, email, password: _password })
                 .then(user => _id = user.id)
-        )
+        })
 
         it('should succeed on correct and valid and right credentials', () =>
             authenticateUser(email, password)
