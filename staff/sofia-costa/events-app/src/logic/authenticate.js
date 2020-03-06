@@ -13,10 +13,10 @@ export default async function (email, password) {
 
     const res = await auth.json()
 
-    const { token, error } = await res
+    const { error, token } = res
 
     if (error)
-        return new Error(error)
+        throw new Error(error)
 
     else return token
 }

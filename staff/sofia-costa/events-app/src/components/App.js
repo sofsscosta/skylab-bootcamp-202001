@@ -1,7 +1,10 @@
 import React, { useState, Fragment } from 'react'
-import { Login, Register, Home, PublishEvent, RetrievePublished, RetrieveLast } from './'
+import { Login, Register, Home, PublishEvent, RetrievePublished, RetrieveLast, RetrieveSubscribed, EditEvent } from './'
 import './App.sass'
-import { authenticate, registerUser, retrieveUser, createEvent, retrievePublished, retrieveLastEvents, subscribeEvent } from '../logic'
+import {
+    authenticate, registerUser, retrieveUser, createEvent, retrievePublished,
+    retrieveLastEvents, retrieveSubscribed, subscribeEvent, editEvent
+} from '../logic'
 
 function App() {
 
@@ -9,6 +12,7 @@ function App() {
     const [user, setUser] = useState('Anon')
     const [token, setToken] = useState()
     const [events, setEvents] = useState(undefined)
+    const [event, setEvent] = useState(undefined)
     const [error, setError] = useState(undefined)
 
 
@@ -17,24 +21,23 @@ function App() {
     async function handleLogin(email, password) {
 
         try {
-            const auth = await authenticate(email, password)
-
-            const token = await auth
+            const token = await authenticate(email, password)
 
             setToken(token)
 
             const user = await retrieveUser(token)
 
-            const change = await setUser(user)
+            const change = setUser(user)
 
-            if (!user.error)
-                setView('home')
+            setView('home')
 
             return change
 
         } catch (error) {
+
             setError(error.message)
-            setTimeout(()=> setError(undefined), 3000)
+
+            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -48,7 +51,7 @@ function App() {
         }
         catch (error) {
             setError(error.message)
-            setTimeout(()=> setError(undefined), 3000)
+            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -60,34 +63,13 @@ function App() {
         setView('login')
     }
 
-    function handlePublishEvent() {
+    function handleGoToPublishEvent() {
         setView('publish')
     }
 
-    async function handleRetrievePublished() {
-
-        setView('published')
-
-        try {
-
-            const _token = token
-
-            const retrieve = await retrievePublished(_token)
-
-            const events = await retrieve
-
-            setEvents(events)
-
-            return events
-            // .then(events => {
-            //     setEvents(events)
-            // })
-            // .catch(error => console.log('async error: ' + error))
-        }
-        catch (error) {
-            setError(error.message)
-            setTimeout(()=> setError(undefined), 3000)
-        }
+    function handleOnToEditEvent(event) {
+        setEvent(event)
+        setView('edit')
     }
 
     async function handleCreateEvent(_token, title, description, location, date) {
@@ -96,11 +78,33 @@ function App() {
 
             const create = await createEvent(_token, title, description, location, date)
 
-            return create
+            if (!create) return setView('published')
+
         }
         catch (error) {
             setError(error.message)
-            setTimeout(()=> setError(undefined), 3000)
+            setTimeout(() => setError(undefined), 3000)
+        }
+    }
+
+    async function handleRetrievePublished() {
+
+        setView('published')
+
+        try {
+            const _token = token
+            const retrieve = await retrievePublished(_token)
+            const events = await retrieve
+            setEvents(events)
+            return events
+            // .then(events => {
+            //     setEvents(events)
+            // })
+            // .catch(error => console.log('async error: ' + error))
+        }
+        catch (error) {
+            setError(error.message)
+            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -120,7 +124,7 @@ function App() {
         }
         catch (error) {
             setError(error.message)
-            setTimeout(()=> setError(undefined), 3000)
+            setTimeout(() => setError(undefined), 3000)
         }
     }
 
@@ -132,12 +136,39 @@ function App() {
             const subbed = await subs
             return subbed
         }
-        catch(error) {
+        catch (error) {
             console.log('failed!')
             setError(error.message)
-            setTimeout(()=> setError(undefined), 3000)
+            setTimeout(() => setError(undefined), 3000)
         }
 
+    }
+
+    async function handleRetrieveSubscribed(_token) {
+        setView('subscribed')
+
+        try {
+            _token = token
+            const events = await retrieveSubscribed(_token)
+            setEvents(events)
+            return events
+        }
+        catch (error) {
+            setError(error.message)
+            setTimeout(() => setError(undefined), 3000)
+        }
+    }
+
+    async function handleEditEvent(changes) {
+        try{
+            // _token = token
+            // _event = event
+            editEvent(token, event, changes)
+
+        } catch(error) {
+            setError(error.message)
+            setTimeout(() => setError(undefined), 3000)
+        }
     }
 
     return (
@@ -148,14 +179,20 @@ function App() {
 
             {view === 'register' && <Register onSubmit={handleRegister} goToLogin={handleGoToLogin} error={error} />}
 
-            {view !== 'login' && view !== 'register' && <Home user={user} onToPublishEvent={handlePublishEvent}
-                RetrievePublished={handleRetrievePublished} RetrieveLast={handleRetrieveLast} />}
+            {view !== 'login' && view !== 'register' && <Home user={user} onToPublishEvent={handleGoToPublishEvent}
+                onToRetrievePublished={handleRetrievePublished} onToRetrieveLast={handleRetrieveLast}
+                onToRetrieveSubscribed={handleRetrieveSubscribed}  />}
 
             {view === 'publish' && <PublishEvent onSubmit={handleCreateEvent} error={error} />}
 
-            {view === 'published' && <RetrievePublished events={events} subscribe={handleSubscribe} error={error} />}
+            {view === 'published' && <RetrievePublished events={events} subscribe={handleSubscribe} error={error} 
+            edit={handleOnToEditEvent}/>}
 
             {view === 'last' && <RetrieveLast events={events} subscribe={handleSubscribe} error={error} />}
+
+            {view === 'subscribed' && <RetrieveSubscribed events={events} subscribe={handleSubscribe} error={error} />}
+
+            {view === 'edit' && <EditEvent event={event} onSubmit={handleEditEvent}/>}
 
         </Fragment>
 

@@ -30,11 +30,10 @@ describe('authenticate-user', () => {
         })
 
         it('should succeed on correct credentials', async () => {
+        
+            let token = await authenticate(email, password)
 
-            let id = await authenticate(email, password)
-
-            let token = await id
-
+            console.log(token)
             expect(typeof token).toBe('string')
             expect(token.length).not.toBe(0)
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Home({user, onToPublishEvent, RetrievePublished, RetrieveLast}) {
+function Home({user, onToPublishEvent, onToRetrievePublished, onToRetrieveLast, onToRetrieveSubscribed, onToEditEvent}) {
 
     const { name } = user
 
@@ -13,12 +13,16 @@ function Home({user, onToPublishEvent, RetrievePublished, RetrieveLast}) {
             }}>Create an Event</button>
             <button onClick={event => {
                 event.preventDefault()
-                RetrievePublished()
-            }}>See your published events</button>
+                onToRetrievePublished()
+            }}>Your published events</button>
             <button onClick={event => {
                 event.preventDefault()
-                RetrieveLast()
-            }}>See the last events</button>
+                onToRetrieveLast()
+            }}>Last events</button>
+            <button onClick={event => {
+                event.preventDefault()
+                onToRetrieveSubscribed()
+            }}>Your subscribed events</button>
         </nav>
     </section>
 }
