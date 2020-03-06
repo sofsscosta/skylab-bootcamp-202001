@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import './App.sass'
 import Page from './Page'
 import Register from './Register'
 import Login from './Login'
 import Home from './Home'
 import { registerUser, authenticateUser, retrieveUser } from '../logic'
+import { Context } from './ContextProvider'
 
 function App() {
-  const [page, setPage] = useState('register')
-  const [error, setError] = useState()
-  const [name, setName] = useState()
+  const [state, setState] = useContext(Context)
+
+  useEffect(() => {
+    const { token } = sessionStorage
+
+    token ? setState({ token, page: 'home' }) : setState({ page: 'login' })
+  }, [])
 
   async function handleRegister(name, surname, email, password) {
     try {
       await registerUser(name, surname, email, password)
 
-      setPage('login')
+      setState({ page: 'login' })
     } catch ({ message }) {
-      setError(message)
+      setState({ error: message })
     }
   }
 
@@ -25,23 +30,21 @@ function App() {
     try {
       const token = await authenticateUser(email, password)
 
-      const { name } = await retrieveUser(token)
+      sessionStorage.token = token
 
-      setName(name)
-      setPage('home')
-    // } catch ({ message }) {
-    //   setError(message)
-    // }
-    } catch(error) {
-      debugger
+      setState({ token, page: 'home' })
+    } catch ({ message }) {
+      setState({ ...state, error: message })
     }
   }
+
+  const { page, error } = state
 
   return <div className="app">
     <Page name={page}>
       {page === 'register' && <Register onSubmit={handleRegister} error={error} />}
       {page === 'login' && <Login onSubmit={handleLogin} error={error} />}
-      {page === 'home' && <Home name={name} />}
+      {page === 'home' && <Home />}
     </Page>
   </div>
 }
