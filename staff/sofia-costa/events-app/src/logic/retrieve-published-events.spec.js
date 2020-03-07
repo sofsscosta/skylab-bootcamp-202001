@@ -1,6 +1,6 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { mongoose, models: { Event, User } } = require('events-data')
-const { createEvent, authenticate, retrieveLastEvents } = require('./')
+const { createEvent, authenticate, retrievePublished } = require('./')
 const bcrypt = require('bcryptjs')
 
 describe('retrieveLastEvents', () => {
@@ -53,16 +53,11 @@ describe('retrieveLastEvents', () => {
 
             await createEvent(token, title, description, location, date.toString())
             let event1 = await Event.findOne({ publisher: id, title, description, location })
-            console.log(event1)
             eventId1 = event1.id
 
             await createEvent(token, title1, description1, location1, date1.toString())
             let event2 = await Event.findOne({ publisher: id, title: title1, description: description1, location: location1 })
             eventId2 = event2.id
-
-            await createEvent(token, title2, description2, location2, date2.toString())
-            let event3 = await Event.findOne({ publisher: id, title: title2, description: description2, location: location2 })
-            eventId3 = event3.id
 
         })
 
@@ -70,38 +65,35 @@ describe('retrieveLastEvents', () => {
             return await User.deleteOne({ _id: id })
         })
 
-        it('should succeed', async () => {
+        it('should succeed on valid id', async () => {
 
-            events = await retrieveLastEvents()
-            expect(events.length).toBe(3)
-            expect(events[0].id).toBe(eventId2)
-            expect(events[0].title).toBe(title1)
-            expect(events[0].description).toBe(description1)
-            expect(events[0].location).toBe(location1)
-            //expect(events[0].date.toString()).toBe(date1.toString())
-            expect(events[1].id).toBe(eventId1)
-            expect(events[1].title).toBe(title)
-            expect(events[1].description).toBe(description)
-            expect(events[1].location).toBe(location)
-            //expect(events[1].date.toString()).toBe(date.toString())
-            expect(events[2].id).toBe(eventId3)
-            expect(events[2].title).toBe(title2)
-            expect(events[2].description).toBe(description2)
-            expect(events[2].location).toBe(location2)
-            //expect(events[0].date.toString()).toBe(date2.toString())
+            let events = await retrievePublished(token)
 
+            let event = await Event.find({ publisher: id })
+
+            expect(events.length).toBe(2)
+            expect(events[0].publisher.toString()).toBe(id)
+            expect(events[0].title).toBe(title)
+            expect(events[0].description).toBe(description)
+            expect(events[0].location).toBe(location)
+            //expect(events[0].date.toString()).toBe(date.toString())
+            expect(events[1].publisher.toString()).toBe(id)
+            expect(events[1].title).toBe(title1)
+            expect(events[1].description).toBe(description1)
+            expect(events[1].location).toBe(location1)
+            //expect(events[1].date.toString()).toBe(date1.toString())
         })
     })
 
-    it('should show a message of no results if there are none', async () => {
-        try {
-            await retrieveLastEvents()
-        } catch (error) {
-            expect(error).toBe(`No Events have been published recently!`)
-        }
+    // it('should show a message of no results if there are none', async () => {
+    //     try {
+    //         await retrieveLastEvents()
+    //     } catch (error) {
+    //         expect(error).toBe(`No Events have been published recently!`)
+    //     }
 
 
-    })
+    // })
 
     afterAll(async () => {
         await User.deleteMany()
@@ -109,3 +101,30 @@ describe('retrieveLastEvents', () => {
         return await mongoose.disconnect()
     })
 })
+
+
+
+
+
+
+
+
+
+        // it('should fail on incorrect id', () => {
+        //     //expect(() =>
+        //         retrievePublished('lololo')
+        //         .then(() => {throw new Error('should not reach this point')})
+        //         .catch((error) => {
+        //             expect(error).to.be.an('error')
+        //         })
+        //     //).to.throw(Error, 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters')
+
+        // })
+
+        // it('should fail on incorrect id format', () => {
+
+        //     expect(() =>
+        //         retrievePublished(true)
+        //     ).to.throw(TypeError, 'id true is not a string')
+
+        // })

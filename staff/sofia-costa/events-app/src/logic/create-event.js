@@ -18,7 +18,7 @@ export default async function (token, title, description, location, date) {
     const create = await fetch(`http://localhost:8085/users/${sub}/events`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify({ title, description, location, date: moment(date, "YYYY-MM-DD") })
+        body: JSON.stringify({ title, description, location, date: moment(date).format("YYYY-MM-DD") })
     })
 
     //const res = await create.json()
