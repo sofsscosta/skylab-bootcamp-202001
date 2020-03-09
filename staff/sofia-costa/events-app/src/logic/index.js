@@ -8,6 +8,7 @@ import retrieveLastEvents from './retrieve-last-events'
 import retrieveSubscribed from './retrieve-subscribed-events'
 import subscribeEvent from './subscribe-event'
 import editEvent from './edit-event'
+import isLoggedIn from './is-logged-in'
 
 
 export {
@@ -20,5 +21,6 @@ export {
     retrieveLastEvents,
     retrieveSubscribed,
     subscribeEvent,
-    editEvent
+    editEvent,
+    isLoggedIn
 }
