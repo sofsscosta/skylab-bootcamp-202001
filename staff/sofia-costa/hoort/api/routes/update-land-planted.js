@@ -1,12 +1,12 @@
-const { changeDivisions } = require('../logic')
+const { updateLandPlanted } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('errors')
 
 module.exports = (req, res) => {
-    const { body: { land : landId, operation } } = req
+    const { body: { land: id, scheme } } = req
 
     try {
-        changeDivisions(landId, operation)
-            .then(land => res.status(201).json(land))
+        updateLandPlanted(id, scheme)
+            .then(() => res.status(201).end())
             .catch(error => {
                 let status = 400
 
