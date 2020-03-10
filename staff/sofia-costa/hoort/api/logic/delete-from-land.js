@@ -1,9 +1,9 @@
 const { validate } = require('utils')
-const { models: { Land, User } } = require('data')
+const { models: { Land, User, Item } } = require('data')
 const { NotAllowedError } = require('errors')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
 
-module.exports = (id, landId) => {
+module.exports = (id, landId, itemId) => {
     
     validate.string(id, 'id')
     validate.string(landId, 'landId')

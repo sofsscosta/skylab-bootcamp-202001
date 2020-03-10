@@ -13,47 +13,51 @@ describe('createItem', () => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     )
 
-    let id, colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference
+    let id, colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference
 
     beforeEach(() => {
         colorId = `colorId-${random()}`
         name = `name-${random()}`
         type = `type-${random()}`
+        subtype = `subtype-${random()}`
         growth = `growth-${random()}@mail.com`
         growthDuration = `growthDuration-${random()}`
         soil = `soil-${random()}`
         temperature = `temperature-${random()}`
         bestPeriod = `bestPeriod-${random()}`
+        bestPeriodNum = `bestPeriodNum-${random()}`
         lightPreference = `lightPreference-${random()}`
     })
 
     it('should succeed on valid data', () => {
 
-        return createItem(colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference)
+        return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
             .then(() => Item.findOne({ name }) )
             .then(item => {
                 expect(item).to.exist
                 id = item.id
                 expect(item.name).to.equal(name)
                 expect(item.type).to.equal(type)
+                expect(item.subtype).to.equal(subtype)
                 expect(item.growth).to.equal(growth)
                 expect(item.soil).to.equal(soil)
                 expect(item.temperature).to.equal(temperature)
                 expect(item.bestPeriod).to.equal(bestPeriod)
+                expect(item.bestPeriodNum[0]).to.equal(bestPeriodNum)
                 expect(item.lightPreference).to.equal(lightPreference)               
             })
     })
 
     it('should fail on not all fields defined', () => {
         expect(() => {
-            return createItem(colorId, name, type, growthDuration, soil, temperature )
+            return createItem(colorId, name, type, subtype, growthDuration, soil, temperature )
         }).to.throw(TypeError, 'temperature undefined is not a string' )
     })
 
     it('should fail on repeated name', () => {
 
-        return createItem(colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference)
-        .then(() => createItem(colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference))
+        return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
+        .then(() => createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference))
         .then(() => {throw new Error ('should not reach this point')})
         .catch(error => {
             expect(error).to.exist

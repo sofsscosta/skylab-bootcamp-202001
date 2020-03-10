@@ -6,10 +6,10 @@ const bcrypt = require('bcryptjs')
 module.exports = (name, userId, location, soiltype, scheme) => {
 
     validate.string(name, 'name')
-    //validate.string(userId, 'userId')
+    validate.string(userId, 'userId')
     validate.string(location, 'location')
     validate.string(soiltype, 'soiltype')
-    if (scheme) validate.string(scheme, 'scheme')
+    if (scheme) validate.scheme(scheme)
 
     return Land.findOne({ name })
         .then(land => {

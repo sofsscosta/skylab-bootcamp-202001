@@ -1,7 +1,6 @@
 const { validate } = require('utils')
 const { models: { Land, Item } } = require('data')
 const { NotAllowedError } = require('errors')
-const bcrypt = require('bcryptjs')
 
 module.exports = (colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference) => {
 

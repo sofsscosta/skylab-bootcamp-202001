@@ -12,5 +12,6 @@ module.exports = {
     deleteLand: require('./delete-land'),
     searchReccommended: require('./search-reccommended'),
     updateLandDivisions: require('./update-land-divisions'),
-    updateLandPlanted: require('./update-land-planted')
+    updateLandPlanted: require('./update-land-planted'),
+    deleteFromLand: require('./delete-from-land')
 }

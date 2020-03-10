@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = async (landId, operation) => {
     validate.string(landId, 'landId')
-    //validate.string(scheme, 'scheme')
+    validate.string(operation, 'operation')
 
     if (operation === '+')
         return Land.findById(landId)

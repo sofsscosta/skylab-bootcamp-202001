@@ -66,7 +66,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.patch('/land/divisions', jsonBodyParser, updateLandDivisions)
         
-        app.patch('/land/planted', jsonBodyParser, updateLandPlanted)
+        app.patch('/land/planted', [jwtVerifierMidWare, jsonBodyParser], updateLandPlanted)
 
         app.delete('/land', [jwtVerifierMidWare, jsonBodyParser], deleteLand)
 

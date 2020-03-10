@@ -20,5 +20,18 @@ module.exports = {
 
             if (typeof target !== type) throw new TypeError(`${name} ${target} is not a ${type}`)
         } else if (!(target instanceof type)) throw new TypeError(`${name} ${target} is not a ${type.name}`)
+    },
+
+    scheme(target) {
+
+        if(!(target instanceof Array)) throw new TypeError('scheme is not an array')
+
+        if (target.length < 5 || target.length > 20) throw new ContentError('invalid number of rows')
+        
+        target.forEach(item => { if(!(item instanceof Array)) throw new TypeError(`scheme element ${item} is not an array`) })
+        
+        target.forEach(item => { if(item.length < 3 || item.length > 12) throw new ContentError('invalid number of columns') })
+        
+        //target.forEach(item => item.forEach(element => { if (typeof element !== "boolean" || typeof element !== "string" ) throw new TypeError(`${element} is neither a string nor a boolean`) }))
     }
 }

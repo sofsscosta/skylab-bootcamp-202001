@@ -2,21 +2,29 @@ const { updateLandPlanted } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('errors')
 
 module.exports = (req, res) => {
-    const { body: { land: id, scheme } } = req
+    const { payload: { sub: userId }, body: { land: landId, scheme } } = req
 
     try {
-        updateLandPlanted(id, scheme)
+        updateLandPlanted(userId, landId, scheme)
             .then(() => res.status(201).end())
             .catch(error => {
                 let status = 400
 
-                let { message } = error
+                switch (true) {
+                    case error instanceof NotFoundError:
+                        status = 401
+                        break
+                    case error instanceof NotAllowedError:
+                        status = 403
+                }
 
-                res
-                    .status(status)
-                    .json({
-                        error: message
-                    })
+                const { message } = error
+
+                    res
+                        .status(status)
+                        .json({
+                            error: message
+                        })
             })
     } catch (error) {
 

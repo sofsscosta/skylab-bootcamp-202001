@@ -1,17 +1,19 @@
 const { validate } = require('utils')
-const { models: { Land } } = require('data')
+const { models: { User, Land, Item } } = require('data')
 const { NotAllowedError, ContentError } = require('errors')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
 const bcrypt = require('bcryptjs')
 
-module.exports = (id, scheme) => {
-    //validate.string(scheme, 'scheme')
+module.exports = (userId, landId, scheme) => {
+    validate.string(userId, 'userId')
+    validate.string(landId, 'landId')
+    validate.scheme(scheme)
 
-    return Land.findById(id)
+    let veggies = []
+
+    return Land.findById(landId)
         .then(land => {
             if (scheme.length === land.scheme.length) {
-                debugger
-                let veggies = []
 
                 for (let element of scheme) {
                     for (let i of element) {
@@ -24,6 +26,17 @@ module.exports = (id, scheme) => {
                 land.scheme = scheme
                 land.veggies = veggies
                 return land.save()
+                    .then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
+                    .then(() => {
+                        veggies.map(veggie => {
+                            return Item.findById(veggie)
+                                .then(veggie => {
+                                    veggie.state.push({userId, lands: [{ id: landId }]})
+                                    return veggie.save()
+                                })
+                                .then(() => {})
+                        })
+                    }) //{ [userId]: { land: landId } }
                     .then(() => {})
             }
             else throw new Error('Scheme differs from original')
