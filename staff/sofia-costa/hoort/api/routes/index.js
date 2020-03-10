@@ -9,5 +9,7 @@ module.exports = {
     retrieveItem: require('./retrieve-item'),
     searchItems: require('./search-items'),
     retrieveLand: require('./retrieve-land'),
-    deleteLand: require('./delete-land')
+    deleteLand: require('./delete-land'),
+    searchReccommended: require('./search-reccommended'),
+    changeDivisions: require('./change-divisions')
 }

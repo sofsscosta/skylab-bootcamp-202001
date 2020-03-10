@@ -9,7 +9,7 @@ module.exports = (name, userId, location, soiltype, scheme) => {
     //validate.string(userId, 'userId')
     validate.string(location, 'location')
     validate.string(soiltype, 'soiltype')
-    //validate.string(scheme, 'scheme')
+    if (scheme) validate.string(scheme, 'scheme')
 
     return Land.findOne({ name })
         .then(land => {

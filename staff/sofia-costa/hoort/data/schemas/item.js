@@ -12,6 +12,7 @@ module.exports = new Schema({
     //image: { type: String, required: true },
     temperature: { type: String, required: true },
     bestPeriod: { type: String, required: true },   // best period to plant
+    bestPeriodNum: { type: [], required: true },   //to find the month on mongodb
     lightPreference: { type: String, required: true },
     userAverageTime: { type: [{ObjectId: Number}] }, //number of days. ObjectId for each user
     state: { type: [{ ObjectId: [{ ObjectId: String, estTime: Date }] }], ref: 'Land' }, //1st ObjectId for user, second for their lands where this item appears
