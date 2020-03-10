@@ -4,7 +4,7 @@ const { env: { PORT = 8080, NODE_ENV: env, MONGODB_URL }, argv: [, , port = PORT
 
 const express = require('express')
 const winston = require('winston')
-const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem, retrieveItem, searchItems, createLand } = require('./routes')
+const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem, retrieveItem, searchItems, createLand, retrieveLand, deleteLand } = require('./routes')
 const { name, version } = require('./package')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -59,6 +59,10 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         app.get('/allitems', jsonBodyParser, searchItems)
 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
+
+        app.get('/land', [jwtVerifierMidWare, jsonBodyParser], retrieveLand)
+
+        app.delete('/land', [jwtVerifierMidWare, jsonBodyParser], deleteLand)
 
         app.listen(port, () => logger.info(`server ${name} ${version} up and running on port ${port}`))
 

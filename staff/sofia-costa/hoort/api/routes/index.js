@@ -7,5 +7,7 @@ module.exports = {
     createLand: require('./create-land'),
     createItem: require('./create-item'),
     retrieveItem: require('./retrieve-item'),
-    searchItems: require('./search-items')
+    searchItems: require('./search-items'),
+    retrieveLand: require('./retrieve-land'),
+    deleteLand: require('./delete-land')
 }
