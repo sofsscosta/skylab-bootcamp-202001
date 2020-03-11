@@ -9,5 +9,5 @@ module.exports = new Schema({
     authenticated: { type: Date },
     retrieved: { type: Date },
     lands: { type: [ObjectId], ref: 'Land' },
-    veggies: { type: [ObjectId], ref: 'Item' }
+    //veggies: { type: [ObjectId], ref: 'Item' }
 })

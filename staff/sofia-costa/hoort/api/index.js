@@ -6,7 +6,8 @@ const express = require('express')
 const winston = require('winston')
 const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem, 
     retrieveItem, searchItems, createLand, retrieveLand, deleteLand, searchReccommended, 
-    updateLandDivisions, updateLandPlanted, updateItem } = require('./routes')
+    updateLandDivisions, updateLandPlanted, updateItem, updateItemPlanted, updateItemHarvested, 
+    retrieveUserVeggies } = require('./routes')
 const { name, version } = require('./package')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -58,9 +59,15 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.patch('/item', [jwtVerifierMidWare, jsonBodyParser], updateItem)
 
+        app.patch('/item/planted', [jwtVerifierMidWare, jsonBodyParser], updateItemPlanted)
+
+        app.patch('/item/harvested', [jwtVerifierMidWare, jsonBodyParser], updateItemHarvested)
+
         app.get('/item/:userId?', jsonBodyParser, retrieveItem)
 
         app.get('/allitems', jsonBodyParser, searchItems)
+
+        app.get('/items', [jwtVerifierMidWare, jsonBodyParser], retrieveUserVeggies)
 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
 

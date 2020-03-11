@@ -13,5 +13,9 @@ module.exports = {
     searchReccommended: require('./search-reccommended'),
     updateLandDivisions: require('./update-land-divisions'),
     updateLandPlanted: require('./update-land-planted'),
-    updateItem: require('./update-item')
+    updateItem: require('./update-item'),
+    updateItemHarvested: require('./update-item-harvested'),
+    updateItemPlanted: require('./update-item-planted'),
+    retrieveUserVeggies: require('./retrieve-user-veggies')
+
 }

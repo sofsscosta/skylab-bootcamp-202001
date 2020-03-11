@@ -26,37 +26,65 @@ module.exports = (userId, landId, scheme) => {
 
                 land.scheme = scheme
 
-                //land.veggies = []
-                veggies.forEach(veggie => Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {}))
+                let allVeggies = []
+
+                veggies.forEach(veggie => allVeggies.push({_id: veggie}))
+                
+                console.log(allVeggies)
+
+                if (!land.veggies.length) Land.findByIdAndUpdate(landId, { $set: { veggies: allVeggies } }).then(() => {})
+    
+                else land.veggies.forEach(veggie => {
+                    if (!veggies.includes(veggie._id.toString())){
+                        Land.findByIdAndUpdate(landId, { $pull: { veggies: {_id: veggie} } }).then(() => {})
+                    }
+                    else {
+                        Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
+                    }
+                })
+
+                // veggies.forEach(veggie => {
+                //     Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
+                // })
                 
                 return land.save()
+                    // .then(() => User.findById(userId))
+
+                    // .then(user => {
+
+                    //     user.lands.forEach(land => {
+
+                    //         let notIncluded = []
+
+                    //         return Land.findById(land.toString())
+
+                    //             .then(_land => {
 
 
-                //land.veggies = veggies
-                //return land.save()
-                    .then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
-                    // // .then(() => {
-                    // //     debugger
-                    // //     //Promise.all(
+                    //                 for (let element of _land.veggies) {
 
-                    // //         veggies.forEach(veggie => {
+                    //                     if (!user.veggies.includes(element._id)) {
 
-                    // //             const itemState = new ItemState({ user: userId, lands: [{ land: landId }] })
+                    //                         user.veggies.push(element._id)
 
-                    // //             return Item.findByIdAndUpdate(veggie, { $set: { itemState } })
-                    // //                 // .then(item => {
-                    // //                 //     //item.state.push({ user: userId })
-                    // //                 //     //item.state.push()
-                    // //                 //     //item.state = []
-                                    
-                    // //                 //     return item.save()
-                    // //                 // })
-                    // //                 .then(() => {})
-                    // //         })
-                    // //     //)
-                    // // }) //{ [userId]: { land: landId } }
-                    // .then(() => {})
+                    //                     } else notIncluded.push(element._id)
+                    //                 }
+
+                    //                 console.log(notIncluded)
+                    //                 console.log(user.veggies)
+
+                    //                 notIncluded.forEach(el => { if(!user.veggies.includes(el)) user.veggies.splice(user.veggies.indexOf(el), 1) })
+
+                    //                 return user.save()
+                    //             })
+                    //             .then(() => {})
+                    //     })
+                    // })
+                    //.then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
+                    .then(() => {})
             }
             else throw new Error('Scheme differs from original')
         })
 }
+
+//, { $addToSet: { veggies: veggies } }

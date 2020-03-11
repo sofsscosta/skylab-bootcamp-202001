@@ -10,9 +10,10 @@ module.exports = new Schema({
     [
         {  
             _id: { type: ObjectId, ref: 'Item' }, 
-            estTime: { type: Date }, 
-            userTime: { type: Number },
-            state: { type: String, enum: ['planted', 'not planted', 'harvested'], default: 'not planted' } 
+            estTime: { type: String }, 
+            userTime: { type: Number }, // average number of days that took user to harvest. Only when state === 'harvested'
+            state: { type: String, enum: ['planted', 'not planted', 'harvested'], default: 'not planted' },
+            planted: { type: Date } 
         }
     ]
 }, //array of objectsIds of all veggies that go into the land
@@ -24,7 +25,7 @@ module.exports = new Schema({
         [false, false, false],
         [false, false, false]
     ]
-    , required: true,
+    , required: true
  },
     created: { type: Date } //array with objects representing a line, made of an array of 0's and ids of items
 })
