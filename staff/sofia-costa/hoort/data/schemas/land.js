@@ -6,7 +6,16 @@ module.exports = new Schema({
     location : { type: String, required: true }, // geolocation
     soiltype: { type: String, required: true }, //best type of soil to plant in
     retrieved: { type: Date },
-    veggies: { type: [ObjectId], ref: 'Item' }, //array of objectsIds of all veggies that go into the land
+    veggies: { type: 
+    [
+        {  
+            _id: { type: ObjectId, ref: 'Item' }, 
+            estTime: { type: Date }, 
+            userTime: { type: Number },
+            state: { type: String, enum: ['planted', 'not planted', 'harvested'], default: 'not planted' } 
+        }
+    ]
+}, //array of objectsIds of all veggies that go into the land
     scheme: { type: Array
         , default: [
         [false, false, false],

@@ -1,5 +1,5 @@
 const { validate } = require('utils')
-const { models: { User, Land, Item } } = require('data')
+const { models: { User, Land, Item, ItemState } } = require('data')
 const { NotAllowedError, ContentError } = require('errors')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
 const bcrypt = require('bcryptjs')
@@ -10,6 +10,7 @@ module.exports = (userId, landId, scheme) => {
     validate.scheme(scheme)
 
     let veggies = []
+    //let item
 
     return Land.findById(landId)
         .then(land => {
@@ -24,20 +25,37 @@ module.exports = (userId, landId, scheme) => {
                 }
 
                 land.scheme = scheme
-                land.veggies = veggies
+
+                //land.veggies = []
+                veggies.forEach(veggie => Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {}))
+                
                 return land.save()
+
+
+                //land.veggies = veggies
+                //return land.save()
                     .then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
-                    .then(() => {
-                        veggies.map(veggie => {
-                            return Item.findById(veggie)
-                                .then(veggie => {
-                                    veggie.state.push({userId, lands: [{ id: landId }]})
-                                    return veggie.save()
-                                })
-                                .then(() => {})
-                        })
-                    }) //{ [userId]: { land: landId } }
-                    .then(() => {})
+                    // // .then(() => {
+                    // //     debugger
+                    // //     //Promise.all(
+
+                    // //         veggies.forEach(veggie => {
+
+                    // //             const itemState = new ItemState({ user: userId, lands: [{ land: landId }] })
+
+                    // //             return Item.findByIdAndUpdate(veggie, { $set: { itemState } })
+                    // //                 // .then(item => {
+                    // //                 //     //item.state.push({ user: userId })
+                    // //                 //     //item.state.push()
+                    // //                 //     //item.state = []
+                                    
+                    // //                 //     return item.save()
+                    // //                 // })
+                    // //                 .then(() => {})
+                    // //         })
+                    // //     //)
+                    // // }) //{ [userId]: { land: landId } }
+                    // .then(() => {})
             }
             else throw new Error('Scheme differs from original')
         })

@@ -1,19 +1,23 @@
-const { deleteFromLand } = require('../logic')
+const { updateItem } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('errors')
 
 module.exports = (req, res) => {
-    const { payload: { sub: id }, body: { land: landId, item: itemId } } = req
+    const { payload: { sub: userId }, body: { land: landId, item: itemId, userTime } } = req
 
     try {
-        deleteFromLand(id, landId, itemId)
-            .then(() => res.status(200).end())
-            .catch(({ message }) =>
+        updateItem(userId, landId, itemId, userTime)
+            .then(() => res.status(201).end() )
+            .catch(error => {
+                let status = 400
+
+                let { message } = error
+
                 res
-                    .status(401)
+                    .status(status)
                     .json({
                         error: message
                     })
-            )
+            })
     } catch (error) {
 
         let status = 400

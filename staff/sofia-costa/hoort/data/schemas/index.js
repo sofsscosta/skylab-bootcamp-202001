@@ -1,5 +1,6 @@
 module.exports = {
     user: require('./user'),
     item: require('./item'),
-    land: require('./land')
+    land: require('./land'),
+    itemState: require('./item-state')
 }
