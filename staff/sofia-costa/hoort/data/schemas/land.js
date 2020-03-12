@@ -1,4 +1,5 @@
 const { Schema, Types: { ObjectId } } = require('mongoose')
+const Plantation = require('./plantation')
 
 module.exports = new Schema({
     name: { type: String, required: true },
@@ -6,17 +7,8 @@ module.exports = new Schema({
     location : { type: String, required: true }, // geolocation
     soiltype: { type: String, required: true }, //best type of soil to plant in
     retrieved: { type: Date },
-    veggies: { type: 
-    [
-        {  
-            _id: { type: ObjectId, ref: 'Item' }, 
-            estTime: { type: String }, 
-            userTime: { type: Number }, // average number of days that took user to harvest. Only when state === 'harvested'
-            state: { type: String, enum: ['planted', 'not planted', 'harvested'], default: 'not planted' },
-            planted: { type: Date } 
-        }
-    ]
-}, //array of objectsIds of all veggies that go into the land
+    plantation: { type: [Plantation] },
+    //array of objectsIds of all veggies that go into the land
     scheme: { type: Array
         , default: [
         [false, false, false],

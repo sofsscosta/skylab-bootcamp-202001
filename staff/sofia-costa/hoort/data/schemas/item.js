@@ -1,5 +1,4 @@
 const { Schema, Types: { ObjectId } } = require('mongoose')
-//const itemState = require('./item-state')
 
 module.exports = new Schema({
     colorId: { type: String, required: true },  //cidentification by color for calendar
