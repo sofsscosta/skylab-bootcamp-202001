@@ -42,12 +42,11 @@ describe('createLand', () => {
         return User.create({ name: nameUser, username, email, password })
             .then(user => userId = user.id)
             .then(() => {})
-
     })
 
     it('should succeed on valid data', () => {
 
-        return createLand(name, userId, location, soiltype, scheme)
+        return createLand(name, userId, location, soiltype)
             .then(() => Land.findOne({ name }) )
             .then(item => {
                 expect(item).to.exist
@@ -56,7 +55,7 @@ describe('createLand', () => {
                 expect(item.userId.toString()).to.equal(userId)
                 expect(item.location).to.equal(location)
                 expect(item.soiltype).to.equal(soiltype)
-                expect(item.scheme).to.eql(scheme)              
+                //expect(item.scheme).to.eql(scheme)              
             })
             .then(() => User.findOne({ lands : id }))
             .then(user => {
@@ -65,25 +64,25 @@ describe('createLand', () => {
             })
     })
 
-    it('should not fail on not defined scheme', () => {
-        return createLand(name, userId, location, soiltype, scheme)
-            .then(() => Land.findOne({ name }) )
-            .then(item => {
-                id = item.id
-                expect(item.scheme).to.eql(scheme)
-            })
-    })
+    // it('should not fail on not defined scheme', () => {
+    //     return createLand(name, userId, location, soiltype, scheme)
+    //         .then(() => Land.findOne({ name }) )
+    //         .then(item => {
+    //             id = item.id
+    //             expect(item.scheme).to.eql(scheme)
+    //         })
+    // })
 
-    it('should fail on not all fields defined except scheme', () => {
-        expect(() => {
-            return createLand(name, userId, location)
-        }).to.throw(TypeError, 'soiltype undefined is not a string' )
-    })
+    // it('should fail on not all fields defined except scheme', () => {
+    //     expect(() => {
+    //         return createLand(name, userId, location)
+    //     }).to.throw(TypeError, 'soiltype undefined is not a string' )
+    // })
 
     it('should fail on repeated name', () => {
 
-        return createLand(name, userId, location, soiltype, scheme)
-        .then(() => createLand(name, userId, location, soiltype, scheme))
+        return createLand(name, userId, location, soiltype)
+        .then(() => createLand(name, userId, location, soiltype))
         .then(() => {throw new Error ('should not reach this point')})
         .catch(error => {
             expect(error).to.exist

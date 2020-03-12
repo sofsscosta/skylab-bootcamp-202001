@@ -44,8 +44,8 @@ describe('deleteLand', () => {
 
         return User.create({ name: nameUser, username, email, password })
             .then(user => userId = user.id)
-            .then(() => createLand(name, userId, location, soiltype, scheme))
-            .then(() => Land.findOne({ name, userId, location, soiltype, scheme }))
+            .then(() => createLand(name, userId, location, soiltype))
+            .then(() => Land.findOne({ name, userId, location, soiltype }))
             .then(land => landId = land.id)
 
     })

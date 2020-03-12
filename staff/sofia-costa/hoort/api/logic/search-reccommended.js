@@ -12,5 +12,7 @@ module.exports = async () => {
 
     let results = await Item.find({ $or: [{ bestPeriodNum: month }] })
 
+    if(!results.length) throw new Error('There are no veggies in season in our database :(')
+
     return results
 }

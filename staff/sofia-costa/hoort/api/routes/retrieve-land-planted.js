@@ -1,15 +1,12 @@
-const { retrieveUserVeggies } = require('../logic')
+const { retrieveLandPlanted } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('errors')
 
 module.exports = (req, res) => {
-    const { payload: { sub: userId } } = req
+    const { payload: { sub: userId }, body: { land: landId } } = req
 
     try {
-        retrieveUserVeggies(userId)
-            .then(results => {
-                debugger
-                res.status(200).json(results)
-            })
+        retrieveLandPlanted(userId, landId)
+            .then(land => res.status(200).json(land))
             .catch(({ message }) =>
                 res
                     .status(401)

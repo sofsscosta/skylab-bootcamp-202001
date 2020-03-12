@@ -19,29 +19,32 @@ module.exports = (userId, landId, scheme) => {
                 for (let element of scheme) {
                     for (let i of element) {
                         if (!veggies.includes(i) && typeof i === 'string') {
-                            veggies.push(i)
+                            veggies.push({veggie: i})
                         }
                     }
                 }
 
                 land.scheme = scheme
+                console.log(veggies)
 
-                let allVeggies = []
+                land.plantation = veggies
 
-                veggies.forEach(veggie => allVeggies.push({_id: veggie}))
+                // let allVeggies = []
+
+                // veggies.forEach(veggie => allVeggies.push({_id: veggie}))
                 
-                console.log(allVeggies)
+                // console.log(allVeggies)
 
-                if (!land.veggies.length) Land.findByIdAndUpdate(landId, { $set: { veggies: allVeggies } }).then(() => {})
+                // if (!land.veggies.length) Land.findByIdAndUpdate(landId, { $set: { veggies: allVeggies } }).then(() => {})
     
-                else land.veggies.forEach(veggie => {
-                    if (!veggies.includes(veggie._id.toString())){
-                        Land.findByIdAndUpdate(landId, { $pull: { veggies: {_id: veggie} } }).then(() => {})
-                    }
-                    else {
-                        Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
-                    }
-                })
+                // else land.veggies.forEach(veggie => {
+                //     if (!veggies.includes(veggie._id.toString())){
+                //         Land.findByIdAndUpdate(landId, { $pull: { veggies: {_id: veggie} } }).then(() => {})
+                //     }
+                //     else {
+                //         Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
+                //     }
+                //})
 
                 // veggies.forEach(veggie => {
                 //     Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
@@ -81,10 +84,11 @@ module.exports = (userId, landId, scheme) => {
                     //     })
                     // })
                     //.then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
-                    .then(() => {})
+                    //.then(() => )
             }
             else throw new Error('Scheme differs from original')
-        })
+
+        }).then(() => {})
 }
 
 //, { $addToSet: { veggies: veggies } }

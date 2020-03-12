@@ -9,11 +9,25 @@ module.exports = async (userId, landId, itemId) => {
     validate.string(landId, 'landId')
     validate.string(itemId, 'itemId')
 
-    let planted, veggie, growthDuration, minDuration, maxDuration, userDuration
+    let plantation, growthDuration, minDuration, maxDuration, userDuration, from, to
 
-    return Item.findById(itemId)
-        .then(item => { 
-            if(!item) throw new ContentError('item does not exist')
+    return Land.findById(landId)//.populate('plantation', 'from')
+        .then(_land => {
+            
+            plantation = _land.plantation.find(plant => plant.veggie.toString() === itemId)
+
+            from = plantation.from
+
+            plantation.from = plantation.from
+
+            plantation.to = new Date()
+
+            to = plantation.to
+
+            return _land.save()
+        })
+        .then(() => Item.findById(itemId))
+        .then(item => {
 
             growthDuration = item.growthDuration
             
@@ -21,43 +35,8 @@ module.exports = async (userId, landId, itemId) => {
             
             minDuration = Number(_growthDuration[0])
             maxDuration = Number(_growthDuration[1])
-        })
-        .then(() => Land.findById(landId))
-        .then(land => {             
 
-            veggie = land.veggies.find(veggie => veggie._id.toString() === itemId)
-
-            if(!veggie) throw new Error('this veggie is not on this land')
-
-            userDuration = land.veggies[land.veggies.indexOf(veggie)].userTime
-
-            let today = new Date()
-            let newdateMin = new Date()
-            let newdateMax = new Date()
-            
-            newdateMin.setDate(today.getDate() + minDuration)
-            newdateMax.setDate(today.getDate() + maxDuration)
-            
-            today = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear()
-            newdateMin = newdateMin.getDate() + "/" + (newdateMin.getMonth() + 1) + "/" + newdateMin.getFullYear()
-            newdateMax = newdateMax.getDate() + "/" + (newdateMax.getMonth() + 1) + "/" + newdateMax.getFullYear()
-                            
-            land.veggies[land.veggies.indexOf(veggie)].estTime = 0
-            land.veggies[land.veggies.indexOf(veggie)].userTime = 0
-            land.veggies[land.veggies.indexOf(veggie)].state = "harvested"
-            planted = land.veggies[land.veggies.indexOf(veggie)].planted
-
-            return land.save()
-
-        })
-        .then(() => Item.findById(itemId))
-        .then(item => {
-            
-            let today = new Date()
-            let differenceInTime = today.getTime() - planted.getTime()
-            let differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
-
-            item.growthDurationUser = differenceInDays
+            userDuration = (from + to)/2
 
             if (item.growthDurationAll)
                 item.growthDurationAll = (item.growthDurationAll + userDuration)/2
@@ -66,5 +45,64 @@ module.exports = async (userId, landId, itemId) => {
 
             item.save()
         })
-        .then(() => {})
+
+
+    // let planted, veggie, growthDuration, minDuration, maxDuration, userDuration
+
+    // return Item.findById(itemId)
+    //     .then(item => { 
+    //         if(!item) throw new ContentError('item does not exist')
+
+    //         growthDuration = item.growthDuration
+            
+    //         let _growthDuration = growthDuration.split('-')
+            
+    //         minDuration = Number(_growthDuration[0])
+    //         maxDuration = Number(_growthDuration[1])
+    //     })
+    //     .then(() => Land.findById(landId))
+    //     .then(land => {             
+
+    //         veggie = land.veggies.find(veggie => veggie._id.toString() === itemId)
+
+    //         if(!veggie) throw new Error('this veggie is not on this land')
+
+    //         userDuration = land.veggies[land.veggies.indexOf(veggie)].userTime
+
+    //         let today = new Date()
+    //         let newdateMin = new Date()
+    //         let newdateMax = new Date()
+            
+    //         newdateMin.setDate(today.getDate() + minDuration)
+    //         newdateMax.setDate(today.getDate() + maxDuration)
+            
+    //         today = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear()
+    //         newdateMin = newdateMin.getDate() + "/" + (newdateMin.getMonth() + 1) + "/" + newdateMin.getFullYear()
+    //         newdateMax = newdateMax.getDate() + "/" + (newdateMax.getMonth() + 1) + "/" + newdateMax.getFullYear()
+                            
+    //         land.veggies[land.veggies.indexOf(veggie)].estTime = 0
+    //         land.veggies[land.veggies.indexOf(veggie)].userTime = 0
+    //         land.veggies[land.veggies.indexOf(veggie)].state = "harvested"
+    //         planted = land.veggies[land.veggies.indexOf(veggie)].planted
+
+    //         return land.save()
+
+    //     })
+    //     .then(() => Item.findById(itemId))
+    //     .then(item => {
+            
+    //         let today = new Date()
+    //         let differenceInTime = today.getTime() - planted.getTime()
+    //         let differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
+
+    //         item.growthDurationUser = differenceInDays
+
+    //         if (item.growthDurationAll)
+    //             item.growthDurationAll = (item.growthDurationAll + userDuration)/2
+
+    //         else item.growthDurationAll = userDuration
+
+    //         item.save()
+    //     })
+    //     .then(() => {})
 }

@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { searchItems, createItem } = require('.')
+const { searchReccommended, createItem } = require('.')
 const chai = require('chai')
 const { mongoose } = require('data')
 const { models: { Item } } = require('data')
@@ -9,7 +9,7 @@ const expect = chai.expect
 const { random } = Math
 const { NotFoundError, NotAllowedError } = require('errors')
 
-describe('searchItems', () => {
+describe('searchReccommended', () => {
 
     before(() => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -43,7 +43,7 @@ describe('searchItems', () => {
 
     it('should succeed on correct data', async () => {
 
-        return searchItems('type')
+        return searchReccommended('type')
             .then(results => {
                 expect(results.length).to.eql(10)
             })
@@ -51,7 +51,7 @@ describe('searchItems', () => {
 
     it('should return no results for no results search', () =>
         //expect(() => {
-            searchItems('lalalalalal')
+            searchReccommended('lalalalalal')
                 .then(item => { 
                     console.log(item)
                     throw new Error('should not reach this point') 
