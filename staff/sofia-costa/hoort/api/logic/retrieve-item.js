@@ -1,35 +1,15 @@
 const { validate } = require('utils')
-const { models: { Item } } = require('data')
+const { models: { Item, Land } } = require('data')
 const { NotFoundError } = require('errors')
 
-module.exports = (userId, itemId) => {
-    if(userId) validate.string(userId, 'id')
+module.exports = async (itemId) => {
+    //if(userId) validate.string(userId, 'id')
     validate.string(itemId, 'itemId')
 
-    return Item.findById(itemId)
-        .then(item => {
-            if (!item) return new NotFoundError(`item with id ${id} does not exist`)
+    let item = await Item.findById(itemId)
 
-            if(userId) { 
+    if (!item) return new NotFoundError(`item with id ${id} does not exist`)
 
-                for (keys in item.userAverageTime) {
-                    if (key === ObjectId(userId))
-                        item.userAverageTime = item.userAverageTime[key]
-                }
-                        
-                for (keys in item.state) {
-                    if (key === ObjectId(userId))
-                        item.state = item.state[key]
-                }
+    return { colorId: item.colorId, name: item.name, type: item.type, subtype: item.subtype, growth: item.growth, growthDuration: item.growthDuration, soil: item.soil, temperature: item.temperature, bestPeriod: item.bestPeriod, lightPreference: item.lightPreference }
 
-                for (keys in item.planted) {
-                    if (key === ObjectId(userId))
-                        item.planted = item.planted[key]
-                }
-
-                return item
-            }
-
-            else return { colorId: item.colorId, name: item.name, type: item.type, subtype: item.subtype, growth: item.growth, growthDuration: item.growthDuration, soil: item.soil, temperature: item.temperature, bestPeriod: item.bestPeriod, lightPreference: item.lightPreference }
-        })
 }

@@ -17,5 +17,6 @@ module.exports = {
     updateItemHarvested: require('./update-item-harvested'),
     updateItemPlanted: require('./update-item-planted'),
     retrieveUserVeggies: require('./retrieve-user-veggies'),
-    retrieveLandPlanted: require('./retrieve-land-planted')
+    retrieveLandPlantations: require('./retrieve-land-plantations'),
+    retrieveItemLands: require('./retrieve-item-lands')
 }

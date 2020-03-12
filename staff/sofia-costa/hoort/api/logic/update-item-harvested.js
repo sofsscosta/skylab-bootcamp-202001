@@ -35,13 +35,23 @@ module.exports = async (userId, landId, itemId) => {
             
             minDuration = Number(_growthDuration[0])
             maxDuration = Number(_growthDuration[1])
+            console.log(from)
+            console.log(to)
 
-            userDuration = (from + to)/2
+            userDuration = (from.getDate() + to.getDate())/2
+
+            console.log(userDuration)
+
+            console.log(item.growthDurationAll)
+
+            item.growthDurationAll = 0
 
             if (item.growthDurationAll)
                 item.growthDurationAll = (item.growthDurationAll + userDuration)/2
 
             else item.growthDurationAll = userDuration
+
+            console.log(item.growthDuration)
 
             item.save()
         })
