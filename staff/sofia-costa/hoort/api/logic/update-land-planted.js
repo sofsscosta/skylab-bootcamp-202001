@@ -9,25 +9,80 @@ module.exports = (userId, landId, scheme) => {
     validate.string(landId, 'landId')
     validate.scheme(scheme)
 
-    let veggies = []
-    //let item
+    // let veggies = []
+    // let newVeggies = []
+    // let otherNewVeggies = []
 
     return Land.findById(landId)
         .then(land => {
             if (scheme.length === land.scheme.length) {
 
-                for (let element of scheme) {
-                    for (let i of element) {
-                        if (!veggies.includes(i) && typeof i === 'string') {
-                            veggies.push({veggie: i})
-                        }
-                    }
-                }
+                // for (let element of scheme) {
+                //     for (let i of element) {
+                //         if (!veggies.includes(i) && typeof i === 'string') {
+                //             veggies.push(i)
+                //         }
+                //     }
+                // }
+
+                // for (let i of veggies) newVeggies.push({veggie: i})
+
+                //console.log(newVeggies)
 
                 land.scheme = scheme
-                console.log(veggies)
 
-                land.plantation = veggies
+                // let plantation = land.plantation.toObject()//.then(plantations => plantations)
+
+                //let veggie = Land.find().
+
+                // debugger
+                // veggies.forEach(veggie => {
+                //     for (let element of plantation) {
+                //         if(veggies.includes(element.veggie.toString())) otherNewVeggies.push(element)
+                //         else if (!otherNewVeggies.includes(veggie)) otherNewVeggies.push(veggie)
+                //     }
+                // })
+
+                // console.log(plantation)
+
+                // veggies.forEach(veggie => {
+
+                //     for(let i = 0; i<plantation.length; i++){
+
+                //         // console.log(plantation[i].veggie.toString())
+                //         // console.log(veggie.veggie)
+                //         // console.log(plantation[i])
+                //         console.log(newVeggies.includes(land.plantation[i]))
+
+                //         if(plantation[i].veggie.toString() === veggie.veggie && !newVeggies.includes(land.plantation[i])) 
+                //             newVeggies.push(land.plantation[i])
+                //         else newVeggies.push(veggie)
+                //     }
+                    
+                //     console.log(newVeggies)
+
+                // })
+
+                //     let isThere = plantation.find(el => {
+                //         console.log(typeof veggie.veggie)
+                //         console.log(typeof el.veggie.toString())
+                //         console.log(el.veggie.toString() == veggie.veggie)
+                //         el.veggie.toString() == veggie.veggie
+                //     })
+                //         console.log(isThere)
+                //     if (isThere) newVeggies.push(land.plantation[land.plantation.indexOf(veggie)])
+                //     else newVeggies.push(veggie)
+                // })
+
+                //console.log(newVeggies)
+
+
+
+
+                // land.plantation = newVeggies
+
+
+
 
                 // let allVeggies = []
 
@@ -86,7 +141,7 @@ module.exports = (userId, landId, scheme) => {
                     //.then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
                     //.then(() => )
             }
-            else throw new Error('Scheme differs from original')
+            else throw new Error('Scheme divisions differ from original')
 
         }).then(() => {})
 }

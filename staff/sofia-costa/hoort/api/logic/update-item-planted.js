@@ -1,27 +1,61 @@
 const { validate } = require('utils')
 const { models: { Land, Item } } = require('data')
 const { NotAllowedError, ContentError } = require('errors')
-const { SchemaTypes: { ObjectId } } = require('mongoose')
-const bcrypt = require('bcryptjs')
 const moment = require('moment')
 
-module.exports = (userId, landId, itemId) => {
+module.exports = async (userId, landId, itemId) => {
     validate.string(userId, 'userId')
     validate.string(landId, 'landId')
     validate.string(itemId, 'itemId')
 
-    return Land.findById(landId)//.populate('plantation', 'from')
-        .then(_land => {
-            debugger
-            plantation = _land.plantation.find(plant => plant.veggie.toString() === itemId)
+    let veggie = await Item.findById(itemId)
 
-            plantation.from = new Date()
+    if (!veggie) throw new ContentError('item does not exist')
 
-            plantation.to = ''
+    let growthDuration = veggie.growthDuration.split('-')
+            
+    minDuration = Number(growthDuration[0])
+    maxDuration = Number(growthDuration[1])
 
-            return _land.save()
-        })
-        .then(() => {})
+    await veggie.save()
+
+    let land = await Land.findById(landId)
+
+    plantation = land.plantation.find(plant => plant.veggie.toString() === itemId)
+
+    plantation.from = new Date()
+
+    plantation.to = ''
+
+    let today = new Date()
+    let newdateMin = new Date()
+    let newdateMax = new Date()
+    
+    newdateMin.setDate(today.getDate() + minDuration)
+    newdateMax.setDate(today.getDate() + maxDuration)
+
+    today = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear()
+    newdateMin = newdateMin.getDate() + "/" + (newdateMin.getMonth() + 1) + "/" + newdateMin.getFullYear()
+    newdateMax = newdateMax.getDate() + "/" + (newdateMax.getMonth() + 1) + "/" + newdateMax.getFullYear()
+                    
+    plantation.estTime = `${newdateMin}-${newdateMax}`
+
+    await land.save()
+
+    return 
+
+    // return Land.findById(landId)//.populate('plantation', 'from')
+    //     .then(land => {
+    //         debugger
+    //         plantation = land.plantation.find(plant => plant.veggie.toString() === itemId)
+
+    //         plantation.from = new Date()
+
+    //         plantation.to = ''
+
+    //         return land.save()
+    //     })
+    //     .then(() => {})
 
 
     // let veggie, growthDuration, minDuration, maxDuration

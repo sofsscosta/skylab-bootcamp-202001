@@ -9,52 +9,82 @@ module.exports = async (userId, landId, itemId) => {
     validate.string(landId, 'landId')
     validate.string(itemId, 'itemId')
 
-    let plantation, growthDuration, minDuration, maxDuration, userDuration, from, to
+    let land = await Land.findById(landId)
 
-    return Land.findById(landId)//.populate('plantation', 'from')
-        .then(_land => {
+    let plantation = land.plantation.find(plant => plant.veggie.toString() === itemId)
+
+    plantation.to = new Date()
+    
+    let to = plantation.to
+    let from = plantation.from
+
+    plantation = plantation.toObject()
+    delete plantation.estTime
+
+    await land.save()
+
+    let item = await Item.findById(itemId)
+
+    let growthDuration = item.growthDuration.split('-')
             
-            plantation = _land.plantation.find(plant => plant.veggie.toString() === itemId)
+    minDuration = Number(growthDuration[0])
+    maxDuration = Number(growthDuration[1])
 
-            from = plantation.from
+    userDuration = (from.getDate() + to.getDate())/2
 
-            plantation.from = plantation.from
+    minDuration = Math.floor((minDuration + userDuration)/2)
+    maxDuration = Math.floor((maxDuration + userDuration)/2)
 
-            plantation.to = new Date()
+    if (item.growthDurationAll)
+        item.growthDurationAll = `${minDuration}-${maxDuration}`
+    
+    else item.growthDurationAll = item.growthDuration
 
-            to = plantation.to
+    console.log(item.growthDurationAll)
 
-            return _land.save()
-        })
-        .then(() => Item.findById(itemId))
-        .then(item => {
+    await item.save()
 
-            growthDuration = item.growthDuration
+    return
+
+    // return Land.findById(landId)//.populate('plantation', 'from')
+    //     .then(_land => {
             
-            let _growthDuration = growthDuration.split('-')
+    //         plantation = _land.plantation.find(plant => plant.veggie.toString() === itemId)
+
+    //         from = plantation.from
+
+    //         plantation.from = plantation.from
+
+    //         plantation.to = new Date()
+
+    //         to = plantation.to
+
+    //         return _land.save()
+    //     })
+    //     .then(() => Item.findById(itemId))
+    //     .then(item => {
+
+    //         growthDuration = item.growthDuration.split('-')
             
-            minDuration = Number(_growthDuration[0])
-            maxDuration = Number(_growthDuration[1])
-            console.log(from)
-            console.log(to)
+    //         minDuration = Number(growthDuration[0])
+    //         maxDuration = Number(growthDuration[1])
 
-            userDuration = (from.getDate() + to.getDate())/2
+    //         userDuration = (from.getDate() + to.getDate())/2
 
-            console.log(userDuration)
+    //         growthDuration = item.growthDuration
 
-            console.log(item.growthDurationAll)
+    //         minDuration = (minDuration + userDuration)/2
+    //         maxDuration = (maxDuration + userDuration)/2
 
-            item.growthDurationAll = 0
+    //         if (item.growthDurationAll)
+    //             item.growthDurationAll = `${minDuration}-${maxDuration}`
+            
+    //         else item.growthDurationAll = growthDuration
 
-            if (item.growthDurationAll)
-                item.growthDurationAll = (item.growthDurationAll + userDuration)/2
+    //         console.log(item.growthDurationAll)
 
-            else item.growthDurationAll = userDuration
-
-            console.log(item.growthDuration)
-
-            item.save()
-        })
+    //         item.save()
+    //     })
 
 
     // let planted, veggie, growthDuration, minDuration, maxDuration, userDuration

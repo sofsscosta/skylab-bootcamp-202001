@@ -18,6 +18,8 @@ module.exports = {
     updateItemPlanted: require('./update-item-planted'),
     retrieveUserVeggies: require('./retrieve-user-veggies'),
     retrieveLandPlantations: require('./retrieve-land-plantations'),
-    retrieveItemLands: require('./retrieve-item-lands')
-
+    retrieveItemLands: require('./retrieve-item-lands'),
+    retrieveUserLands: require('./retrieve-user-lands'),
+    retrieveInterval: require('./retrieve-interval'),
+    deleteVeggieFromLand: require('./delete-veggie-from-land')
 }

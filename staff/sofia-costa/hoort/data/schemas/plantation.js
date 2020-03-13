@@ -3,8 +3,9 @@ const moment = require('moment')
 
 module.exports = new Schema({
     veggie: { type: ObjectId, ref: 'Item' }, 
-    to: { type: Date }, 
-    from: { type: Date } 
+    to: { type: Date, default: null }, 
+    from: { type: Date, default: null },
+    estTime: { type: String } 
     //userTime: { type: Number }, // average number of days that took user to harvest. Only when state === 'harvested'
     //state: { type: String, enum: ['planted', 'not planted', 'harvested'], default: 'not planted' },
 })

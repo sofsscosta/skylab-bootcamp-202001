@@ -4,10 +4,13 @@ const { env: { PORT = 8080, NODE_ENV: env, MONGODB_URL }, argv: [, , port = PORT
 
 const express = require('express')
 const winston = require('winston')
+
 const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem, 
     retrieveItem, searchItems, createLand, retrieveLand, deleteLand, searchReccommended, 
     updateLandDivisions, updateLandPlanted, updateItem, updateItemPlanted, updateItemHarvested, 
-    retrieveUserVeggies, retrieveLandPlantations, retrieveItemLands } = require('./routes')
+    retrieveUserVeggies, retrieveLandPlantations, retrieveItemLands, retrieveUserLands, 
+    deleteVeggieFromLand } = require('./routes')
+
 const { name, version } = require('./package')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -63,6 +66,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.patch('/item/harvested', [jwtVerifierMidWare, jsonBodyParser], updateItemHarvested)
 
+        app.delete('/item/delete', [jwtVerifierMidWare, jsonBodyParser], deleteVeggieFromLand)
+
         app.get('/item', jsonBodyParser, retrieveItem)
 
         app.get('/allitems', jsonBodyParser, searchItems)
@@ -74,6 +79,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
 
         app.get('/land', [jwtVerifierMidWare, jsonBodyParser], retrieveLand)
+
+        app.get('/land/user', [jwtVerifierMidWare, jsonBodyParser], retrieveUserLands)
 
         app.get('/land/planted', [jwtVerifierMidWare, jsonBodyParser], retrieveLandPlantations)
 
