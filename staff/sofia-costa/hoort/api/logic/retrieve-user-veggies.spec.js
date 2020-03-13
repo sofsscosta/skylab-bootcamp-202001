@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { retrieveUserVeggies, createItem, createLand } = require('.')
+const { retrieveUserVeggies, createItem, createLand, updateItemAdd } = require('.')
 const chai = require('chai')
 const { mongoose } = require('data')
 const { models: { Item, User, Land } } = require('data')
@@ -13,8 +13,8 @@ const bcrypt = require('bcryptjs')
 describe('retrieveUserVeggies', () => {
 
     before(() => {
-        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    })
+        return mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+            .then(() => Item.deleteMany({})).then(() => {})    })
 
     let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
     userId, user,name, username, email, password,
@@ -39,10 +39,11 @@ describe('retrieveUserVeggies', () => {
                 bestPeriodNum = [1, 2, 3]
                 lightPreference = `lightPreference-${random()}`
 
-                let veggie = new Item({ colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
+                let veggie = new Item({ colorId, name: nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
                 veggies.push(veggie)
             }
-            
+            await Item.insertMany(veggies)
+
             name = 'name-' + Math.random()
             username = 'username-' + Math.random()
             email = Math.random() + '@mail.com'
@@ -66,10 +67,16 @@ describe('retrieveUserVeggies', () => {
                         for (let i = 0; i<3; i++) {
                             scheme[j].push(veggies[i].id)
                         }
-                    await createLand(nameLand, user._id.toString(), location, soiltype, scheme)
 
-                    land = Land.findOne({ name: nameLand })
+                    await createLand(nameLand, userId, location, soiltype, scheme)
+
+                    land = await Land.findOne({ name: nameLand })
+                    
                     landId = land.id
+
+                    for (let i = 0; i<3; i++) {
+                        await updateItemAdd(userId, landId, veggies[i].id)
+                    }
                 })
     })
 

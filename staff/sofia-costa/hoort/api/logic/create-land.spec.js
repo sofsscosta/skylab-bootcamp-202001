@@ -13,7 +13,7 @@ describe('createLand', () => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     )
 
-    let id, veggiesId, name, userId, location, soiltype, scheme, nameUser, username, email, password
+    let id, veggiesId, name, userId, location, soiltype, scheme, nameUser, username, email, password, user
 
     beforeEach(() => {
         nameUser = `nameUser-${random()}`
@@ -40,7 +40,10 @@ describe('createLand', () => {
         }
 
         return User.create({ name: nameUser, username, email, password })
-            .then(user => userId = user.id)
+            .then(_user => {
+                user = _user
+                userId = _user.id
+            })
             .then(() => {})
     })
 
@@ -88,6 +91,16 @@ describe('createLand', () => {
             expect(error).to.exist
             expect(error.message).to.eql(`You have already created a land with the name ${name}!`)
         })
+    })
+
+    it('should add a new land to user.lands', async () => {
+        await createLand(name, userId, location, soiltype)
+
+        let land = await Land.findOne({name}).lean()
+
+        user = await User.findById(userId)
+
+        expect(user.lands).to.include(land._id.toString())
     })
 
     afterEach(() => {

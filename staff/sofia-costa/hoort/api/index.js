@@ -8,8 +8,8 @@ const winston = require('winston')
 const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem, 
     retrieveItem, searchItems, createLand, retrieveLand, deleteLand, searchReccommended, 
     updateLandDivisions, updateLandPlanted, updateItem, updateItemPlanted, updateItemHarvested, 
-    retrieveUserVeggies, retrieveLandPlantations, retrieveItemLands, retrieveUserLands, 
-    deleteVeggieFromLand } = require('./routes')
+    retrieveUserVeggies, retrieveLandPlantations, retrieveItemForUser, retrieveUserLands, 
+    deleteVeggieFromLand, retrieveInterval, retrieveAllItems, updateItemAdd } = require('./routes')
 
 const { name, version } = require('./package')
 const bodyParser = require('body-parser')
@@ -62,6 +62,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.patch('/item', [jwtVerifierMidWare, jsonBodyParser], updateItem)
 
+        app.patch('/item/add', [jwtVerifierMidWare, jsonBodyParser], updateItemAdd)
+
         app.patch('/item/planted', [jwtVerifierMidWare, jsonBodyParser], updateItemPlanted)
 
         app.patch('/item/harvested', [jwtVerifierMidWare, jsonBodyParser], updateItemHarvested)
@@ -72,9 +74,11 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.get('/allitems', jsonBodyParser, searchItems)
 
+        app.get('/items/all', jsonBodyParser, retrieveAllItems)
+
         app.get('/items', [jwtVerifierMidWare, jsonBodyParser], retrieveUserVeggies)
 
-        app.get('/item/lands', [jwtVerifierMidWare, jsonBodyParser], retrieveItemLands)
+        app.get('/item/user', [jwtVerifierMidWare, jsonBodyParser], retrieveItemForUser)
 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
 
@@ -83,6 +87,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         app.get('/land/user', [jwtVerifierMidWare, jsonBodyParser], retrieveUserLands)
 
         app.get('/land/planted', [jwtVerifierMidWare, jsonBodyParser], retrieveLandPlantations)
+
+        app.get('/calendar', [jwtVerifierMidWare, jsonBodyParser], retrieveInterval)
 
         app.patch('/land/divisions', jsonBodyParser, updateLandDivisions)
         

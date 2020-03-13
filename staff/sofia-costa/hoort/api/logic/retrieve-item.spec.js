@@ -36,7 +36,7 @@ describe('retrieveItem', () => {
     })
 
     it('should succeed on correct data', () =>
-        retrieveItem(undefined, id)
+        retrieveItem(id)
             .then(item => {
                 expect(item.constructor).to.equal(Object)
                 expect(item.colorId).to.equal(colorId)
@@ -45,7 +45,7 @@ describe('retrieveItem', () => {
 
     it('should fail on invalid id', () =>
         expect(() => {
-            retrieveItem(undefined, `${id}--wrong`)
+            retrieveItem(`${id}--wrong`)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
                     expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)

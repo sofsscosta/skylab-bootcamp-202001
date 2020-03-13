@@ -1,12 +1,11 @@
-const { retrieveItemLands } = require('../logic')
+const { retrieveAllItems } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('errors')
 
 module.exports = (req, res) => {
-    const { payload: { sub: userId }, body: { item: itemId } } = req
 
     try {
-        retrieveItemLands(userId, itemId)
-            .then(item => res.status(200).json(item))
+        retrieveAllItems()
+            .then(results => res.status(200).json(results))
             .catch(({ message }) =>
                 res
                     .status(401)

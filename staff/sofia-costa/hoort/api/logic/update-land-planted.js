@@ -9,13 +9,47 @@ module.exports = (userId, landId, scheme) => {
     validate.string(landId, 'landId')
     validate.scheme(scheme)
 
-    // let veggies = []
+    let veggies = []
     // let newVeggies = []
     // let otherNewVeggies = []
 
     return Land.findById(landId)
-        .then(land => {
+        .then(async land => {
             if (scheme.length === land.scheme.length) {
+
+                // for (let element of scheme) {
+                //     for (let i of element) {
+                //         if (!veggies.includes(i) && typeof i === 'string') {
+                //             veggies.push(i)
+                //         }
+                //     }
+                // }
+                // //console.log(veggies)
+
+                // for (let veggie of veggies) {
+
+                //     if (await Land.find({ plantation: { $elemMatch: { veggie }  } }) === null){
+
+                //         await Land.findByIdAndUpdate(landId, { $addToSet: { plantation: { veggie } } }).then(() => {})
+                //     }
+                // }
+
+                land.scheme = scheme
+
+                return land.save()
+                .then(() => {})
+            }
+            else throw new Error('Scheme divisions differ from original')
+
+        }).then(() => {})
+}
+
+//, { $addToSet: { veggies: veggies } }
+
+
+
+
+
 
                 // for (let element of scheme) {
                 //     for (let i of element) {
@@ -29,7 +63,7 @@ module.exports = (userId, landId, scheme) => {
 
                 //console.log(newVeggies)
 
-                land.scheme = scheme
+        // land.scheme = scheme
 
                 // let plantation = land.plantation.toObject()//.then(plantations => plantations)
 
@@ -105,7 +139,7 @@ module.exports = (userId, landId, scheme) => {
                 //     Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
                 // })
                 
-                return land.save()
+        //return land.save()
                     // .then(() => User.findById(userId))
 
                     // .then(user => {
@@ -140,10 +174,3 @@ module.exports = (userId, landId, scheme) => {
                     // })
                     //.then(() => User.findByIdAndUpdate(userId, { $addToSet: { veggies: veggies } }))
                     //.then(() => )
-            }
-            else throw new Error('Scheme divisions differ from original')
-
-        }).then(() => {})
-}
-
-//, { $addToSet: { veggies: veggies } }

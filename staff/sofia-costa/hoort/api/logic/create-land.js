@@ -14,25 +14,26 @@ module.exports = async (name, userId, location, soiltype, scheme) => {
 
     if (land) throw new NotAllowedError(`You have already created a land with the name ${name}!`)
 
-    let veggies = []
+    // let veggies = []
 
-    if(scheme) {
+    // if(scheme) {
 
-        for (let j = 0; j<scheme.length; j++)
-            for (let i = 0; i<scheme[j].length; i++) 
-                if(typeof scheme[j][i] !== 'boolean' && !(veggies.includes(scheme[j][i]))) veggies.push(scheme[j][i])
+    //     for (let j = 0; j<scheme.length; j++)
+    //         for (let i = 0; i<scheme[j].length; i++) 
+    //             if(typeof scheme[j][i] !== 'boolean' && !(veggies.includes(scheme[j][i]))) veggies.push(scheme[j][i])
     
-        veggies = veggies.map(veggie => veggie = {_id: veggie})
+    //     veggies = veggies.map(veggie => veggie = {_id: veggie})
     
-        _land = new Land({ name, userId, location, soiltype, scheme, veggies, created: new Date })
-    }
+    //     _land = new Land({ name, userId, location, soiltype, scheme, created: new Date })
+    // }
 
-    else _land = new Land({ name, userId, location, soiltype, scheme, created: new Date })
+    //else 
+    _land = new Land({ name, userId, location, soiltype, scheme, created: new Date })
 
     let createdLand = await _land.save()
 
     await User.findByIdAndUpdate(userId, { $addToSet: { lands: createdLand.id } })
-
+    
     return
 
     // return Land.findOne({ name })

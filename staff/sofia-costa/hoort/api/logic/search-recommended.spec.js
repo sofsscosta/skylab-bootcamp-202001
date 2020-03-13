@@ -49,19 +49,6 @@ describe('searchReccommended', () => {
             })
     })
 
-    it('should return no results for no results search', () =>
-        //expect(() => {
-            searchReccommended('lalalalalal')
-                .then(item => { 
-                    console.log(item)
-                    throw new Error('should not reach this point') 
-                })
-                .catch((error) => {
-                    expect(error.message).to.eql(`There are no results for your search :(`)
-                })
-        //})
-    )
-
     afterEach(() => {
         Item.deleteOne({ id })
             .then(() => { })
