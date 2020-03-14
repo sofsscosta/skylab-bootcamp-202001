@@ -12,7 +12,11 @@ module.exports = async (userId, landId, itemId) => {
 
     if (!veggie) throw new ContentError('item does not exist')
 
-    await Land.findByIdAndUpdate(landId, { $addToSet: { plantation: { veggie: itemId } } })
+    let land = await Land.findOne({ plantation: { $elemMatch: { veggie: itemId } } })
+
+    if (land) return
+
+    else await Land.findByIdAndUpdate(landId, { $addToSet: { plantation: { veggie: itemId } } })
 
     return 
 }

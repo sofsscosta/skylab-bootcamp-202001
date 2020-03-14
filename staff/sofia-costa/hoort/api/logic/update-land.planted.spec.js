@@ -1,21 +1,18 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { updateItemAdd, createLand, retrieveInterval, updateItemPlanted, updateItemHarvested } = require('.')
+const { updateLandPlanted, createLand } = require('.')
 const chai = require('chai')
-const { mongoose, ISODate } = require('data')
+const { mongoose } = require('data')
 const { models: { Land, Item, User } } = require('data')
 const expect = chai.expect
 const { random } = Math
 const bcrypt = require('bcryptjs')
-const moment = require('moment')
 
-describe('retrieveInterval', () => {
+describe('updateLandPlanted', () => {
 
-    before(async () => {
-        await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-        await User.deleteMany({})
-        await Land.deleteMany({})
+    before(() => {
+        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
     
     let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
@@ -27,7 +24,6 @@ describe('retrieveInterval', () => {
     beforeEach(async () => {
 
         type = 'type'
-
         for (let i = 0; i<10; i++) {
 
             colorId = `colorId-${random()}`
@@ -35,7 +31,7 @@ describe('retrieveInterval', () => {
             type = `type-${random()}`
             subtype = `subtype-${random()}`
             growth = `growth-${random()}@mail.com`
-            growthDuration = `${random()}-${random() + 10}`
+            growthDuration = `growthDuration-${random()}`
             soil = `soil-${random()}`
             temperature = `temperature-${random()}`
             bestPeriod = `bestPeriod-${random()}`
@@ -72,39 +68,32 @@ describe('retrieveInterval', () => {
                     for (let i = 0; i<3; i++) {
                         scheme[j].push(veggies[i].id)
                     }
+
                 await createLand(nameLand, userId, location, soiltype, scheme)
 
                 land = await Land.findOne({ name: nameLand })
                 landId = land.id
 
-
-                for (let i = 0; i<3; i++) {
-                    await updateItemAdd(userId, landId, veggies[i].id)
-                    await updateItemPlanted(userId, landId, veggies[i].id)
-
-                    if(i===3) return
-                }
-
-                return await land.save()
+                await land.save()
             })
     })
 
-    it('should display correctly estimated time for harvesting', async () => {
+    it('should update land scheme', async () => {
 
-        let interval = await retrieveInterval(userId, 3)
+        scheme = [[], [], [], [], []]
 
-        let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[0].id.toString() } } })
-        
-        expect(_land.plantation[0].estTime).to.exist
-        expect(_land.plantation[0].estTime).to.exist
+        for (let j = 0; j<scheme.length; j++)
+            for (let i = 0; i<3; i++) {
+                scheme[j].push(veggies[i].id)
+            }
 
-        var partsMax =interval[0].estMaxDay.split('/')
-        var partsMin =interval[0].estMinDay.split('/')
+        await updateLandPlanted(userId, landId, scheme)
 
-        var max = new Date(partsMax[2], partsMax[1], partsMax[0])
-        var min = new Date(partsMin[2], partsMin[1], partsMin[0])
+        let _land = await Land.findById(landId)
 
-        expect((max.getTime() - min.getTime())/(1000*60*60*24)).to.eql(7)
+        expect(_land.id).to.eql(landId)
+        expect(_land.scheme).to.eql(scheme)
+
     })
 
     afterEach(async () => {

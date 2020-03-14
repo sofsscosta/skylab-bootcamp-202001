@@ -5,7 +5,7 @@ const moment = require('moment')
 
 module.exports = async (userId, month) => {
     validate.string(userId, 'id')
-    validate.string(month, 'month')
+    //validate.string(month, 'month')
 
     let veggiesEstTime = []
 

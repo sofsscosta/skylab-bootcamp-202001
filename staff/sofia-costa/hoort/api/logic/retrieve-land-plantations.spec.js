@@ -83,8 +83,6 @@ describe('retrieveLandPlantations', () => {
     it('should succeed on correct data', () =>
         retrieveLandPlantations(userId, landId)
             .then(plantation => {
-                console.log(plantation)
-                //expect(plantation.constructor).to.equal(Object)
                 expect(plantation[0].veggie.toString()).to.eql(veggies[0].id.toString())
                 expect(plantation[0].to).to.eql(null)
                 expect(plantation[0].from).to.eql(null)

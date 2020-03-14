@@ -91,8 +91,6 @@ describe('updateItemHarvested', () => {
 
         let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[0].id.toString() } } })
         
-        console.log('_land = ' + _land)
-
         expect(_land.plantation[0].from).to.exist
         expect(_land.plantation[0].from).to.be.instanceOf(Date)
         expect(_land.plantation[0].to).to.be.instanceOf(Date)

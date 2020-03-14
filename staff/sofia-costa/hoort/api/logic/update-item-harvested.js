@@ -40,8 +40,6 @@ module.exports = async (userId, landId, itemId) => {
     
     else item.growthDurationAll = item.growthDuration
 
-    console.log(item.growthDurationAll)
-
     await item.save()
 
     return
