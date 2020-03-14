@@ -10,7 +10,7 @@ const { random } = Math
 const { NotFoundError, NotAllowedError } = require('errors')
 const bcrypt = require('bcryptjs')
 
-describe.only('retrieveUserLands', () => {
+describe('retrieveUserLands', () => {
 
     before(() => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })

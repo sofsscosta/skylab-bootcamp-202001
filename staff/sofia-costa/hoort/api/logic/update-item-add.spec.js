@@ -1,28 +1,29 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { retrieveLand, createLand } = require('.')
+const { updateItemAdd, createLand } = require('.')
 const chai = require('chai')
 const { mongoose } = require('data')
 const { models: { Land, Item, User } } = require('data')
 const expect = chai.expect
 const { random } = Math
-const { NotFoundError, NotAllowedError } = require('errors')
 const bcrypt = require('bcryptjs')
 
-describe('retrieveLand', () => {
+describe('updateItemAdd', () => {
 
     before(() => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
-
-    let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
-    userId, user,name, username, email, password,
-    nameLand, location, soiltype, scheme, land, landId
     
+    let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
+    userId, user, name, username, email, password,
+    nameLand, location, soiltype, scheme, land, landId
+
     let veggies = []
 
-    beforeEach(() => {
+    beforeEach(async () => {
+
+        type = 'type'
         for (let i = 0; i<10; i++) {
 
             colorId = `colorId-${random()}`
@@ -37,10 +38,12 @@ describe('retrieveLand', () => {
             bestPeriodNum = [1, 2, 3]
             lightPreference = `lightPreference-${random()}`
 
-            let veggie = new Item({ colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
+            let veggie = new Item({ colorId, name: nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
             veggies.push(veggie)
+
         }
-        
+        await Item.insertMany(veggies)
+
         name = 'name-' + Math.random()
         username = 'username-' + Math.random()
         email = Math.random() + '@mail.com'
@@ -52,9 +55,10 @@ describe('retrieveLand', () => {
             )
             .then(async _user => {
                 userId = _user.id
-                user = await User.findById(userId)
+                user = _user
             })
             .then(async () => {
+                
                 nameLand = `nameLand-${random()}`
                 location = `location-${random()}`
                 soiltype = `soiltype-${random()}`
@@ -64,28 +68,26 @@ describe('retrieveLand', () => {
                     for (let i = 0; i<3; i++) {
                         scheme[j].push(veggies[i].id)
                     }
-                await createLand(nameLand, user._id.toString(), location, soiltype, scheme)
+
+                await createLand(nameLand, userId, location, soiltype, scheme)
+
                 land = await Land.findOne({ name: nameLand })
                 landId = land.id
+
+                await land.save()
             })
     })
 
-    it('should succeed on correct data', () =>
-        retrieveLand(userId, landId)
-            .then(land => {
-                expect(land.name).to.equal(nameLand)
-            })
-    )
+    it('should add veggie to lands\' plantations', async () => {
+        for (let i = 0; i<veggies.length; i++) {
 
-    it('should fail on invalid id', () =>
-        expect(() => {
-            retrieveLand(undefined, `${id}--wrong`)
-                .then(() => { throw new Error('should not reach this point') })
-                .catch((error) => {
-                    expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)
-                })
-        })
-    )
+            await updateItemAdd(userId, landId, veggies[i].id.toString())
+    
+            let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[i].id.toString() } } })
+    
+            expect(_land.id).to.eql(landId)
+        }
+    })
 
     afterEach(async () => {
         await Item.deleteMany({})

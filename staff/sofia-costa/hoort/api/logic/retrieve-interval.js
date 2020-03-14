@@ -5,38 +5,38 @@ const moment = require('moment')
 
 module.exports = async (userId, month) => {
     validate.string(userId, 'id')
-    //validate.string(landId, 'landId')
     validate.string(month, 'month')
 
     let veggiesEstTime = []
 
-    let estAverageDay
-
     let user = await User.findById(userId)
 
-    let lands = user.lands
+    for (let i = 0 ; i<user.lands.length; i++) {
 
-    lands.forEach(async _land => {
+        let land = await Land.findById(user.lands[i])
 
-        let land = await Land.findById(_land)
+        for (let plant of land.plantation) {
 
-        land.plantation.forEach(async plant => {
-            let from = plant.from
+            if (plant.from !== null) {
 
-            let veggie = await Item.findById(plant.veggie.toString())
+                let from = plant.from
+    
+                let veggie = await Item.findById(plant.veggie.toString())
+    
+                let days = veggie.growthDuration.split('-')
+                let averageDay = Math.floor((Number(days[0]) + Number(days[1]))/2)
 
-            let date = veggie.growthDuration.split('-')
-            let averageDay = (Number(date[0]) + Number(date[1]))/2
+                let estAverageDay = from.setDate(from.getDate() + averageDay)
+        
+                let estMinDay = moment(estAverageDay).subtract(3, 'days').format('DD/MM/YYYY')
 
-            estAverageDay = moment(from).add(averageDay).format('MM-DD-YYYY')
-            console.log(estAverageDay)
+                let estMaxDay = moment(estAverageDay).add(4, 'days').format('DD/MM/YYYY')
 
-            let interval = `${moment(estAverageDay).subtract(3).format('DD/MM/YYYY')}-${moment(estAverageDay).add(3).format('DD/MM/YYYY')}`
+                veggiesEstTime.push({ veggie: plant.veggie.toString(), estMinDay, estMaxDay })
 
-            veggiesEstTime.push({ veggie: plant.veggie.toString() , interval })
-            console.log(veggiesEstTime)
-        })
-    })
+            }
+        }
+    }
 
     return veggiesEstTime
 }

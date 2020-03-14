@@ -1,5 +1,5 @@
 const { validate } = require('utils')
-const { models: { User } } = require('data')
+const { models: { User, Land } } = require('data')
 const { NotAllowedError } = require('errors')
 const bcrypt = require('bcryptjs')
 
@@ -7,6 +7,8 @@ module.exports = (id, password) => {
     
     validate.string(id, 'id')
     validate.string(password, 'password')
+
+    let userLands = []
 
     return User.findById(id)
         .then(user => {
@@ -17,9 +19,17 @@ module.exports = (id, password) => {
 
                     if (!validPassword) throw new NotAllowedError(`wrong credentials`)
 
+                    user.lands.forEach(land => userLands.push(land))
+
                     user.authenticated = new Date
 
                     return User.findByIdAndDelete(id)
+                })
+                .then(() => {
+                    userLands.forEach(async _land => {
+
+                        await Land.findByIdAndDelete(_land)
+                    })
                 })
                 .then(() => {})
         })
