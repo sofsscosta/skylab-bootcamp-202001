@@ -2,6 +2,7 @@ const { validate } = require('utils')
 const { models: { Land, Item } } = require('data')
 const { NotAllowedError } = require('errors')
 
+// TODO add userId parameter
 module.exports = (colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference) => {
 
     validate.string(colorId, 'colorId')
@@ -14,6 +15,9 @@ module.exports = (colorId, name, type, subtype, growth, growthDuration, soil, te
     validate.string(temperature, 'temperature')
     validate.string(bestPeriod, 'bestPeriod')
     validate.string(lightPreference, 'lightPreference')
+
+    // TODO find user by id (userId)
+    // TODO check user exists and user role === 'admin', othwerwise throw error
 
     return Item.findOne({ name })
         .then(item => {
