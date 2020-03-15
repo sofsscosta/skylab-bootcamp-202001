@@ -5,10 +5,10 @@ const { env: { PORT = 8080, NODE_ENV: env, MONGODB_URL }, argv: [, , port = PORT
 const express = require('express')
 const winston = require('winston')
 
-const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem, 
-    retrieveItem, searchItems, createLand, retrieveLand, deleteLand, searchReccommended, 
-    updateLandDivisions, updateLandPlanted, updateItem, updateItemPlanted, updateItemHarvested, 
-    retrieveUserVeggies, retrieveLandPlantations, retrieveItemForUser, retrieveUserLands, 
+const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, createItem,
+    retrieveItem, searchItems, createLand, retrieveLand, deleteLand, searchReccommended,
+    updateLandDivisions, updateLandPlanted, updateItem, updateItemPlanted, updateItemHarvested,
+    retrieveUserVeggies, retrieveLandPlantations, retrieveItemForUser, retrieveUserLands,
     deleteVeggieFromLand, retrieveInterval, retrieveAllItems, updateItemAdd } = require('./routes')
 
 const { name, version } = require('./package')
@@ -91,7 +91,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         app.get('/calendar', [jwtVerifierMidWare, jsonBodyParser], retrieveInterval)
 
         app.patch('/land/divisions', jsonBodyParser, updateLandDivisions)
-        
+
         app.patch('/land/planted', [jwtVerifierMidWare, jsonBodyParser], updateLandPlanted)
 
         app.delete('/land', [jwtVerifierMidWare, jsonBodyParser], deleteLand)

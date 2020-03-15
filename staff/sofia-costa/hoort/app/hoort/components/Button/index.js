@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import styles from '../styles/Button'
+import styles from './style'
 
 export default function Button(props) {
 

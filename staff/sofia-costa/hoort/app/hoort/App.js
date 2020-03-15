@@ -6,15 +6,7 @@ import { registerUser } from './logic'
 
 export default function App() {
 
-    // const [state, setState] = useContext()
-
     const [view, setView] = useState('init')
-    const [user, setUser] = useState('Anon')
-    const [token, setToken] = useState()
-    const [events, setEvents] = useState(undefined)
-    const [event, setEvent] = useState(undefined)
-    const [error, setError] = useState(undefined)
-    const [id, setId] = useState(undefined)
 
     function handleStart() {
         setView('start')
@@ -36,16 +28,6 @@ export default function App() {
             console.log(message)
         }
     }
-
-    // <TextInput
-    //     ref={(el) => { this.username = el; }}
-    //     onChangeText={(username) => this.setState({ username })}
-    //     value={this.state.username}
-    // />
-
-    // _handlePress(event) {
-    //     let username = this.state.username;
-    // }
 
     return (
         <>

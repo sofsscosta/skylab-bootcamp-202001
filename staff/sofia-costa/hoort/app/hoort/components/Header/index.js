@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { View, StatusBar, Image } from 'react-native';
-import styles from '../styles/header'
+import styles from './style'
 
 const Header = () => {
 

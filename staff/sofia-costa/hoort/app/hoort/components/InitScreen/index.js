@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { View, Image, Button, TouchableOpacity } from 'react-native';
-import styles from '../styles/init-screen'
+import styles from './style'
 
 const InitScreen = ({ start }) => {
 

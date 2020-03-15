@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { View, Text, StatusBar, Button, Image } from 'react-native';
-import styles from '../styles/landing'
+import styles from './style'
 
 const Landing = () => {
 

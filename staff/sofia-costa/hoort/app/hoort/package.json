@@ -15,7 +15,7 @@
     "node-fetch": "^2.6.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "utils": "file:../../utils"
+    "utils": "file:./hoort-utils-app"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

@@ -10,8 +10,8 @@ module.exports = (req, res) => {
             .catch(error => {
                 let status = 400
 
-                if (error instanceof NotAllowedError)
-                    status = 409 // conflict
+                // if (error instanceof NotAllowedError)
+                //     status = 409 // conflict
 
                 const { message } = error
 
@@ -24,8 +24,8 @@ module.exports = (req, res) => {
     } catch (error) {
         let status = 400
 
-        if (error instanceof TypeError || error instanceof ContentError)
-            status = 406 // not acceptable
+        // if (error instanceof TypeError || error instanceof ContentError)
+        //     status = 406 // not acceptable
 
         message = error.message
 
