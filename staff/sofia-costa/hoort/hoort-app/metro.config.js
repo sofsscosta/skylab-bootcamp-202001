@@ -17,9 +17,9 @@ module.exports = {
     }),
   },
   watchFolders: [
-    path.resolve(__dirname, '../../utils'),
-    path.resolve(__dirname, '../../errors'),
-    path.resolve(__dirname, '../../data'),
+    path.resolve(__dirname, '../hoort-utils'),
+    path.resolve(__dirname, '../hoort-errors'),
+    path.resolve(__dirname, '../hoort-data'),
   ],
   resolver: {
     extraNodeModules: new Proxy(
