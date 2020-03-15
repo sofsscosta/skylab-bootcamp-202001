@@ -4,9 +4,9 @@ module.exports = {
     ['module-resolver',
       {
         alias: {
-          'utils': '../../utils',
-          'errors': '../../errors',
-          'data': '../../data',
+          'utils': '../hoort-utils',
+          'errors': '../hoort-errors',
+          'data': '../hoort-data',
         },
       },
     ],
