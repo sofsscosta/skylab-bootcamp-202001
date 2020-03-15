@@ -1,25 +1,28 @@
 import React, { Fragment } from 'react';
-import { View, Image } from 'react-native';
-import styles from '../styles/landing'
+import { View, Image, Button, TouchableOpacity } from 'react-native';
+import styles from '../styles/init-screen'
 
-const Landing = ({ start }) => {
+const InitScreen = ({ start }) => {
 
     return (
         <Fragment>
-            <View style={styles.container} onclick={start()}>
+            <TouchableOpacity title='start' style={styles.container} onPress={ev => {
+                ev.preventDefault()
+                start()
+            }} >
                 <Image
-                    style={styles.landing}
-                    source={require('../assets/logo.png')}
-                    resizeMode="contain">
-                </Image>
-                <Image
-                    style={styles.landing}
+                    style={styles.icon}
                     source={require('../assets/icon.png')}
                     resizeMode="contain">
                 </Image>
-            </View>
+                <Image
+                    style={styles.logo}
+                    source={require('../assets/logo.png')}
+                    resizeMode="contain">
+                </Image>
+            </ TouchableOpacity>
         </Fragment>
     );
 };
 
-export default Landing
+export default InitScreen

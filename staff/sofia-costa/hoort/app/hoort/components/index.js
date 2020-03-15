@@ -4,7 +4,7 @@ import Register from './Register'
 import Header from './Header'
 import Footer from './Footer'
 import InitScreen from './InitScreen'
-
+import Button from './Button'
 
 
 export {
@@ -13,5 +13,6 @@ export {
     //Login,
     Register,
     Header,
-    Footer
+    Footer,
+    Button
 }

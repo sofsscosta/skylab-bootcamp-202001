@@ -9,14 +9,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(170, 126, 194)'
     },
     icon: {
-        flex: 1,
-        height: 80,
+        bottom: 10,
+        left: 5,
+        height: 70,
         width: 100,
+        overflow: 'visible'
     },
     logo: {
-        flex: 1,
-        height: 80,
-        width: 100,
+        bottom: 20,
+        height: 150,
+        width: 200,
+        overflow: 'visible'
     }
 })
 
