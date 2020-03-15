@@ -1,10 +1,10 @@
 {
-  "name": "utils",
+  "name": "hoort-utils",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "errors": "file:../hoort-errors"
+    "hoort-errors": "file:../hoort-errors"
   },
   "devDependencies": {
     "chai": "^4.2.0",
