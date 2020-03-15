@@ -1,5 +1,5 @@
-const { validate } = require('utils')
-const { models: { Land } } = require('data')
+const { validate } = require('hoort-utils')
+const { models: { Land } } = require('hoort-data')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
 const bcrypt = require('bcryptjs')
 
@@ -36,11 +36,11 @@ module.exports = (userId, landId, scheme) => {
                 land.scheme = scheme
 
                 return land.save()
-                .then(() => {})
+                    .then(() => { })
             }
             else throw new Error('Scheme divisions differ from original')
 
-        }).then(() => {})
+        }).then(() => { })
 }
 
 //, { $addToSet: { veggies: veggies } }
@@ -91,7 +91,7 @@ module.exports = (userId, landId, scheme) => {
                 //             newVeggies.push(land.plantation[i])
                 //         else newVeggies.push(veggie)
                 //     }
-                    
+
                 //     console.log(newVeggies)
 
                 // })
@@ -120,11 +120,11 @@ module.exports = (userId, landId, scheme) => {
                 // let allVeggies = []
 
                 // veggies.forEach(veggie => allVeggies.push({_id: veggie}))
-                
+
                 // console.log(allVeggies)
 
                 // if (!land.veggies.length) Land.findByIdAndUpdate(landId, { $set: { veggies: allVeggies } }).then(() => {})
-    
+
                 // else land.veggies.forEach(veggie => {
                 //     if (!veggies.includes(veggie._id.toString())){
                 //         Land.findByIdAndUpdate(landId, { $pull: { veggies: {_id: veggie} } }).then(() => {})
@@ -137,7 +137,7 @@ module.exports = (userId, landId, scheme) => {
                 // veggies.forEach(veggie => {
                 //     Land.findByIdAndUpdate(landId, { $addToSet: { veggies: {_id: veggie} } }).then(() => {})
                 // })
-                
+
         //return land.save()
                     // .then(() => User.findById(userId))
 

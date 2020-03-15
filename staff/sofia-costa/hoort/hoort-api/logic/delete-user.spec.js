@@ -3,10 +3,10 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { deleteUser } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { User } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { User } } = require('hoort-data')
 const expect = chai.expect
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
 describe('deleteUser', () => {
@@ -30,7 +30,7 @@ describe('deleteUser', () => {
     })
 
     it('should succeed on correct id', () => {
-        
+
         return deleteUser(id, password)
             .then(() => User.findById(id))
             .then(user => {
@@ -41,7 +41,7 @@ describe('deleteUser', () => {
     it('should fail on incorrect password', () => {
         password = `${password}--wrong`
         return deleteUser(id, password)
-            .then(() => { throw new Error('should not reach this point')})
+            .then(() => { throw new Error('should not reach this point') })
             .catch(error => {
                 expect(error.message).to.eql('wrong credentials')
             })

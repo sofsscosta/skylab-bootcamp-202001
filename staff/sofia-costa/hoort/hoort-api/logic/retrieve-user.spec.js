@@ -3,10 +3,10 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { retrieveUser } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { User } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { User } } = require('hoort-data')
 const expect = chai.expect
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 
 describe('retrieveUser', () => {
     let name, username, email, password

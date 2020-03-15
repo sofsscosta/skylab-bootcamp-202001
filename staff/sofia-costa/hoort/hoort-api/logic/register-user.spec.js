@@ -1,12 +1,12 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { models: { User } } = require('data')
+const { models: { User } } = require('hoort-data')
 const { expect } = require('chai')
 const { random } = Math
-const { NotAllowedError } = require('errors')
+const { NotAllowedError } = require('hoort-errors')
 const { registerUser } = require('.')
-const { mongoose } = require('data')
+const { mongoose } = require('hoort-data')
 const bcrypt = require('bcryptjs')
 
 describe('registerUser', () => {
@@ -26,8 +26,8 @@ describe('registerUser', () => {
 
     describe('', () => {
 
-        it('should succeed on new user', () =>{
-            
+        it('should succeed on new user', () => {
+
             return registerUser(name, username, email, password)
                 .then(response => {
                     expect(response).to.be.an('undefined')
@@ -42,13 +42,13 @@ describe('registerUser', () => {
                 })
                 .then(validPassword => expect(validPassword).to.be.true)
         })
-    
+
         it('should fail on already existing user', () => {
-            expect(() => 
+            expect(() =>
                 registerUser(name, username, email, password)
-                .then(error => {
-                    expect(error).to.eql(NotAllowedError, `user with email "${email}" already exists`)
-                })
+                    .then(error => {
+                        expect(error).to.eql(NotAllowedError, `user with email "${email}" already exists`)
+                    })
             )
         })
     })

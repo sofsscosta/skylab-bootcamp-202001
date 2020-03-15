@@ -1,12 +1,12 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { models: { User, Land } } = require('data')
+const { models: { User, Land } } = require('hoort-data')
 //const { SchemaTypes: { ObjectId } } = require('mongoose')
 const { expect } = require('chai')
 const { random } = Math
 const createLand = require('./create-land')
-const { mongoose } = require('data')
+const { mongoose } = require('hoort-data')
 
 describe('createLand', () => {
     before(() =>
@@ -27,15 +27,15 @@ describe('createLand', () => {
 
         veggiesId = []
 
-        for (let i = 0; i<10; i++)
+        for (let i = 0; i < 10; i++)
             veggiesId.push(`veggies-${random()}`)
-        
+
         scheme = [[], [], [], [], []]
 
         for (let arr of scheme) {
-            if  (arr === 0) for (let j = 0; j<3; j++) arr.push(false)
+            if (arr === 0) for (let j = 0; j < 3; j++) arr.push(false)
 
-            else for (let j = 0; j<3; j++)
+            else for (let j = 0; j < 3; j++)
                 arr.push(veggiesId[j])
         }
 
@@ -44,13 +44,13 @@ describe('createLand', () => {
                 user = _user
                 userId = _user.id
             })
-            .then(() => {})
+            .then(() => { })
     })
 
     it('should succeed on valid data', () => {
 
         return createLand(name, userId, location, soiltype)
-            .then(() => Land.findOne({ name }) )
+            .then(() => Land.findOne({ name }))
             .then(item => {
                 expect(item).to.exist
                 id = item.id
@@ -60,7 +60,7 @@ describe('createLand', () => {
                 expect(item.soiltype).to.equal(soiltype)
                 //expect(item.scheme).to.eql(scheme)              
             })
-            .then(() => User.findOne({ lands : id }))
+            .then(() => User.findOne({ lands: id }))
             .then(user => {
                 expect(user).to.exist
                 expect(user.lands).to.include(id)
@@ -85,18 +85,18 @@ describe('createLand', () => {
     it('should fail on repeated name', () => {
 
         return createLand(name, userId, location, soiltype)
-        .then(() => createLand(name, userId, location, soiltype))
-        .then(() => {throw new Error ('should not reach this point')})
-        .catch(error => {
-            expect(error).to.exist
-            expect(error.message).to.eql(`You have already created a land with the name ${name}!`)
-        })
+            .then(() => createLand(name, userId, location, soiltype))
+            .then(() => { throw new Error('should not reach this point') })
+            .catch(error => {
+                expect(error).to.exist
+                expect(error.message).to.eql(`You have already created a land with the name ${name}!`)
+            })
     })
 
     it('should add a new land to user.lands', async () => {
         await createLand(name, userId, location, soiltype)
 
-        let land = await Land.findOne({name}).lean()
+        let land = await Land.findOne({ name }).lean()
 
         user = await User.findById(userId)
 

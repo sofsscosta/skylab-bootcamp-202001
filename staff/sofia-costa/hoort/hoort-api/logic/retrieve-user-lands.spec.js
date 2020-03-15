@@ -3,11 +3,11 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { retrieveUserLands, createLand, updateItemAdd } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { Land, Item, User } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { Land, Item, User } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
 describe('retrieveUserLands', () => {
@@ -16,9 +16,9 @@ describe('retrieveUserLands', () => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
-    let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
-    userId, user, name, username, email, password,
-    nameLand, location, soiltype, scheme, land, landId
+    let colorId, nameVeggie, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
+        userId, user, name, username, email, password,
+        nameLand, location, soiltype, scheme, land, landId
 
     let lands = []
 
@@ -27,7 +27,7 @@ describe('retrieveUserLands', () => {
     beforeEach(async () => {
 
         type = 'type'
-        for (let i = 0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
 
             colorId = `colorId-${random()}`
             nameVeggie = `name-${random()}`
@@ -61,14 +61,14 @@ describe('retrieveUserLands', () => {
                 user = _user
             })
             .then(async () => {
-                for (let i = 0; i<10; i++) {
+                for (let i = 0; i < 10; i++) {
                     nameLand = `nameLand-${random()}`
                     location = `location-${random()}`
                     soiltype = `soiltype-${random()}`
                     scheme = [[], [], [], [], []]
 
-                    for (let j = 0; j<scheme.length; j++)
-                        for (let i = 0; i<3; i++) {
+                    for (let j = 0; j < scheme.length; j++)
+                        for (let i = 0; i < 3; i++) {
                             scheme[j].push(veggies[i].id)
                         }
 
@@ -77,7 +77,7 @@ describe('retrieveUserLands', () => {
                     land = await Land.findOne({ name: nameLand })
                     landId = land.id
 
-                    for (let i = 0; i<3; i++) {
+                    for (let i = 0; i < 3; i++) {
                         await updateItemAdd(userId, landId, veggies[i].id)
                     }
 
@@ -90,7 +90,7 @@ describe('retrieveUserLands', () => {
     it('should succeed on correct data', () =>
         retrieveUserLands(userId)
             .then(_lands => {
-                for (let i = 0; i<lands.length; i++)
+                for (let i = 0; i < lands.length; i++)
                     expect(_lands[i]).to.eql({ name: lands[i].name, location: lands[i].location, soiltype: lands[i].soiltype, scheme: lands[i].scheme })
             })
     )

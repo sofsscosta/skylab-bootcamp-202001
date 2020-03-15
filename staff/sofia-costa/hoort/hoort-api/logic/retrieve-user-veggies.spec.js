@@ -3,81 +3,82 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { retrieveUserVeggies, createItem, createLand, updateItemAdd } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { Item, User, Land } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { Item, User, Land } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
 describe('retrieveUserVeggies', () => {
 
     before(() => {
         return mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-            .then(() => Item.deleteMany({})).then(() => {})    })
+            .then(() => Item.deleteMany({})).then(() => { })
+    })
 
-    let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
-    userId, user,name, username, email, password,
-    nameLand, location, soiltype, scheme, land, landId
+    let colorId, nameVeggie, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
+        userId, user, name, username, email, password,
+        nameLand, location, soiltype, scheme, land, landId
 
     let veggies = []
 
     beforeEach(async () => {
 
-            type = 'type'
-            for (let i = 0; i<10; i++) {
+        type = 'type'
+        for (let i = 0; i < 10; i++) {
 
-                colorId = `colorId-${random()}`
-                nameVeggie = `name-${random()}`
-                type = `type-${random()}`
-                subtype = `subtype-${random()}`
-                growth = `growth-${random()}@mail.com`
-                growthDuration = `growthDuration-${random()}`
-                soil = `soil-${random()}`
-                temperature = `temperature-${random()}`
-                bestPeriod = `bestPeriod-${random()}`
-                bestPeriodNum = [1, 2, 3]
-                lightPreference = `lightPreference-${random()}`
+            colorId = `colorId-${random()}`
+            nameVeggie = `name-${random()}`
+            type = `type-${random()}`
+            subtype = `subtype-${random()}`
+            growth = `growth-${random()}@mail.com`
+            growthDuration = `growthDuration-${random()}`
+            soil = `soil-${random()}`
+            temperature = `temperature-${random()}`
+            bestPeriod = `bestPeriod-${random()}`
+            bestPeriodNum = [1, 2, 3]
+            lightPreference = `lightPreference-${random()}`
 
-                let veggie = new Item({ colorId, name: nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
-                veggies.push(veggie)
-            }
-            await Item.insertMany(veggies)
+            let veggie = new Item({ colorId, name: nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
+            veggies.push(veggie)
+        }
+        await Item.insertMany(veggies)
 
-            name = 'name-' + Math.random()
-            username = 'username-' + Math.random()
-            email = Math.random() + '@mail.com'
-            password = 'password-' + Math.random()
+        name = 'name-' + Math.random()
+        username = 'username-' + Math.random()
+        email = Math.random() + '@mail.com'
+        password = 'password-' + Math.random()
 
-            return bcrypt.hash(password, 10)
-                .then(password =>
-                    User.create({ name, username, email, password })
-                )
-                .then(async _user => {
-                    userId = _user.id
-                    user = await User.findById(userId)
-                })
-                .then(async () => {
-                    nameLand = `nameLand-${random()}`
-                    location = `location-${random()}`
-                    soiltype = `soiltype-${random()}`
-                    scheme = [[], [], [], [], []]
+        return bcrypt.hash(password, 10)
+            .then(password =>
+                User.create({ name, username, email, password })
+            )
+            .then(async _user => {
+                userId = _user.id
+                user = await User.findById(userId)
+            })
+            .then(async () => {
+                nameLand = `nameLand-${random()}`
+                location = `location-${random()}`
+                soiltype = `soiltype-${random()}`
+                scheme = [[], [], [], [], []]
 
-                    for (let j = 0; j<scheme.length; j++)
-                        for (let i = 0; i<3; i++) {
-                            scheme[j].push(veggies[i].id)
-                        }
-
-                    await createLand(nameLand, userId, location, soiltype, scheme)
-
-                    land = await Land.findOne({ name: nameLand })
-                    
-                    landId = land.id
-
-                    for (let i = 0; i<3; i++) {
-                        await updateItemAdd(userId, landId, veggies[i].id)
+                for (let j = 0; j < scheme.length; j++)
+                    for (let i = 0; i < 3; i++) {
+                        scheme[j].push(veggies[i].id)
                     }
-                })
+
+                await createLand(nameLand, userId, location, soiltype, scheme)
+
+                land = await Land.findOne({ name: nameLand })
+
+                landId = land.id
+
+                for (let i = 0; i < 3; i++) {
+                    await updateItemAdd(userId, landId, veggies[i].id)
+                }
+            })
     })
 
 

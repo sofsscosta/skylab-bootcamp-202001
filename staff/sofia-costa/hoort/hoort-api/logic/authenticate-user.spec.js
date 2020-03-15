@@ -1,12 +1,12 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { mongoose } = require('data')
+const { mongoose } = require('hoort-data')
 const { expect } = require('chai')
 const { random } = Math
 const authenticateUser = require('./authenticate-user')
-const { models: { User } } = require('data')
-const { NotAllowedError } = require('errors')
+const { models: { User } } = require('hoort-data')
+const { NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
 describe('authenticateUser', () => {
@@ -60,7 +60,7 @@ describe('authenticateUser', () => {
 
         email = '11111@mail.com'
         //expect(() => {
-            authenticateUser(email, password)
+        authenticateUser(email, password)
             .then(() => { throw new Error('should not reach this point') })
             .catch(error => expect(error).to.eql(Error, `wrong credentials`))
         //}).to.throw(Error, 'wrong credentials')

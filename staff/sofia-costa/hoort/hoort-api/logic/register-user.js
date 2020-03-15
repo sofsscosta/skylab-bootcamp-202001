@@ -1,5 +1,5 @@
-const { validate } = require('utils')
-const { models: { User } } = require('data')
+const { validate } = require('hoort-utils')
+const { models: { User } } = require('hoort-data')
 const { NotAllowedError } = require('../../hoort-errors')
 const bcrypt = require('bcryptjs')
 

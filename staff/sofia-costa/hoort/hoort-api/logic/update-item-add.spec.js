@@ -3,8 +3,8 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { updateItemAdd, createLand } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { Land, Item, User } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { Land, Item, User } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
 const bcrypt = require('bcryptjs')
@@ -14,17 +14,17 @@ describe('updateItemAdd', () => {
     before(() => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
-    
-    let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
-    userId, user, name, username, email, password,
-    nameLand, location, soiltype, scheme, land, landId
+
+    let colorId, nameVeggie, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
+        userId, user, name, username, email, password,
+        nameLand, location, soiltype, scheme, land, landId
 
     let veggies = []
 
     beforeEach(async () => {
 
         type = 'type'
-        for (let i = 0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
 
             colorId = `colorId-${random()}`
             nameVeggie = `name-${random()}`
@@ -58,14 +58,14 @@ describe('updateItemAdd', () => {
                 user = _user
             })
             .then(async () => {
-                
+
                 nameLand = `nameLand-${random()}`
                 location = `location-${random()}`
                 soiltype = `soiltype-${random()}`
                 scheme = [[], [], [], [], []]
 
-                for (let j = 0; j<scheme.length; j++)
-                    for (let i = 0; i<3; i++) {
+                for (let j = 0; j < scheme.length; j++)
+                    for (let i = 0; i < 3; i++) {
                         scheme[j].push(veggies[i].id)
                     }
 
@@ -79,12 +79,12 @@ describe('updateItemAdd', () => {
     })
 
     it('should add veggie to lands\' plantations', async () => {
-        for (let i = 0; i<veggies.length; i++) {
+        for (let i = 0; i < veggies.length; i++) {
 
             await updateItemAdd(userId, landId, veggies[i].id.toString())
-    
+
             let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[i].id.toString() } } })
-    
+
             expect(_land.id).to.eql(landId)
         }
     })

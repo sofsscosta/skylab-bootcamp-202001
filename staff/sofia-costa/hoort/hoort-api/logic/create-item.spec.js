@@ -1,12 +1,12 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { models: { Item } } = require('data')
+const { models: { Item } } = require('hoort-data')
 //const { SchemaTypes: { ObjectId } } = require('mongoose')
 const { expect } = require('chai')
 const { random } = Math
 const createItem = require('./create-item')
-const { mongoose } = require('data')
+const { mongoose } = require('hoort-data')
 
 describe('createItem', () => {
     before(() =>
@@ -32,7 +32,7 @@ describe('createItem', () => {
     it('should succeed on valid data', () => {
 
         return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
-            .then(() => Item.findOne({ name }) )
+            .then(() => Item.findOne({ name }))
             .then(item => {
                 expect(item).to.exist
                 id = item.id
@@ -44,25 +44,25 @@ describe('createItem', () => {
                 expect(item.temperature).to.equal(temperature)
                 expect(item.bestPeriod).to.equal(bestPeriod)
                 expect(item.bestPeriodNum[0]).to.equal(bestPeriodNum)
-                expect(item.lightPreference).to.equal(lightPreference)               
+                expect(item.lightPreference).to.equal(lightPreference)
             })
     })
 
     it('should fail on not all fields defined', () => {
         expect(() => {
-            return createItem(colorId, name, type, subtype, growthDuration, soil, temperature )
-        }).to.throw(TypeError, 'temperature undefined is not a string' )
+            return createItem(colorId, name, type, subtype, growthDuration, soil, temperature)
+        }).to.throw(TypeError, 'temperature undefined is not a string')
     })
 
     it('should fail on repeated name', () => {
 
         return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
-        .then(() => createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference))
-        .then(() => {throw new Error ('should not reach this point')})
-        .catch(error => {
-            expect(error).to.exist
-            expect(error.message).to.eql(`item with name ${name} already exists`)
-        })
+            .then(() => createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference))
+            .then(() => { throw new Error('should not reach this point') })
+            .catch(error => {
+                expect(error).to.exist
+                expect(error.message).to.eql(`item with name ${name} already exists`)
+            })
     })
 
     afterEach(() => {

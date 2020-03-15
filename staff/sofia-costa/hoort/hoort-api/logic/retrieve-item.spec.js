@@ -3,11 +3,11 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { retrieveItem, createItem } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { Item } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { Item } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 
 describe('retrieveItem', () => {
 
@@ -15,7 +15,7 @@ describe('retrieveItem', () => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
-    let id, colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference
+    let id, colorId, name, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference
 
     beforeEach(() => {
         colorId = `colorId-${random()}`
@@ -31,8 +31,8 @@ describe('retrieveItem', () => {
         lightPreference = `lightPreference-${random()}`
 
         return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
-        .then(() => Item.findOne({ name }))
-        .then(item => id = item.id)
+            .then(() => Item.findOne({ name }))
+            .then(item => id = item.id)
     })
 
     it('should succeed on correct data', () =>

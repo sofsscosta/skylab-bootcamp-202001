@@ -1,5 +1,5 @@
 const registerUser = require('./register-user')
-const { mongoose, models: { User } } = require('data')
+const { mongoose, models: { User } } = require('hoort-data')
 const { env: { REACT_APP_TEST_MONGODB_URL: MONGODB_URL } } = require('process')
 const { random } = Math
 const bcrypt = require('bcryptjs')

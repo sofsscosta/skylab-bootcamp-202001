@@ -1,5 +1,5 @@
-const { validate } = require('utils')
-const { models: { Land, Item } } = require('data')
+const { validate } = require('hoort-utils')
+const { models: { Land, Item } } = require('hoort-data')
 const { NotAllowedError, ContentError } = require('../../hoort-errors')
 const moment = require('moment')
 

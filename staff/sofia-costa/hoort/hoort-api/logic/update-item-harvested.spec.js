@@ -3,8 +3,8 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { updateItemAdd, createLand, updateItemHarvested, updateItemPlanted } = require('.')
 const chai = require('chai')
-const { mongoose, ISODate } = require('data')
-const { models: { Land, Item, User } } = require('data')
+const { mongoose, ISODate } = require('hoort-data')
+const { models: { Land, Item, User } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
 const bcrypt = require('bcryptjs')
@@ -15,17 +15,17 @@ describe('updateItemHarvested', () => {
     before(() => {
         mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     })
-    
-    let colorId, nameVeggie, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
-    userId, user, name, username, email, password,
-    nameLand, location, soiltype, scheme, land, landId
+
+    let colorId, nameVeggie, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
+        userId, user, name, username, email, password,
+        nameLand, location, soiltype, scheme, land, landId
 
     let veggies = []
 
     beforeEach(async () => {
 
         type = 'type'
-        for (let i = 0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
 
             colorId = `colorId-${random()}`
             nameVeggie = `name-${random()}`
@@ -59,14 +59,14 @@ describe('updateItemHarvested', () => {
                 user = _user
             })
             .then(async () => {
-                
+
                 nameLand = `nameLand-${random()}`
                 location = `location-${random()}`
                 soiltype = `soiltype-${random()}`
                 scheme = [[], [], [], [], []]
 
-                for (let j = 0; j<scheme.length; j++)
-                    for (let i = 0; i<3; i++) {
+                for (let j = 0; j < scheme.length; j++)
+                    for (let i = 0; i < 3; i++) {
                         scheme[j].push(veggies[i].id)
                     }
 
@@ -75,11 +75,11 @@ describe('updateItemHarvested', () => {
                 land = await Land.findOne({ name: nameLand })
                 landId = land.id
 
-                for (let i = 0; i<3; i++) {
+                for (let i = 0; i < 3; i++) {
                     await updateItemAdd(userId, landId, veggies[i].id)
                     await updateItemPlanted(userId, landId, veggies[i].id)
 
-                    if(i===3) return
+                    if (i === 3) return
                 }
 
                 return await land.save()
@@ -90,7 +90,7 @@ describe('updateItemHarvested', () => {
         await updateItemHarvested(userId, landId, veggies[0].id.toString())
 
         let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[0].id.toString() } } })
-        
+
         expect(_land.plantation[0].from).to.exist
         expect(_land.plantation[0].from).to.be.instanceOf(Date)
         expect(_land.plantation[0].to).to.be.instanceOf(Date)
@@ -125,14 +125,14 @@ describe('updateItemHarvested', () => {
         expect(land.plantation[0].to).to.be.instanceOf(Date)
 
         let growthDuration = item.growthDuration.split('-')
-            
+
         minDuration = Number(growthDuration[0])
         maxDuration = Number(growthDuration[1])
 
-        userDuration = (land.plantation[0].from.getDate() + land.plantation[0].to.getDate())/2
+        userDuration = (land.plantation[0].from.getDate() + land.plantation[0].to.getDate()) / 2
 
-        minDuration = Math.floor((minDuration + userDuration)/2)
-        maxDuration = Math.floor((maxDuration + userDuration)/2)
+        minDuration = Math.floor((minDuration + userDuration) / 2)
+        maxDuration = Math.floor((maxDuration + userDuration) / 2)
 
         expect(item.growthDurationAll).to.eql(`${minDuration}-${maxDuration}`)
 

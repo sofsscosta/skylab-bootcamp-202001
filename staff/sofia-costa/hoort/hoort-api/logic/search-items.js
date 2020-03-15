@@ -1,5 +1,5 @@
-const { validate } = require('utils')
-const { models: { Item } } = require('data')
+const { validate } = require('hoort-utils')
+const { models: { Item } } = require('hoort-data')
 const { NotFoundError } = require('../../hoort-errors')
 
 module.exports = async (query) => {

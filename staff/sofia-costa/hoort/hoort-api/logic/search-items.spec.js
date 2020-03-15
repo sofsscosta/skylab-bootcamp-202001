@@ -3,11 +3,11 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { searchItems, createItem } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { Item } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { Item } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 
 describe('searchItems', () => {
 
@@ -16,13 +16,13 @@ describe('searchItems', () => {
         return Item.deleteMany({})
     })
 
-    let id, colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference, query
+    let id, colorId, name, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference, query
     let results = []
 
     beforeEach(async () => {
 
         type = 'type'
-        for (let i = 0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
 
             colorId = `colorId-${random()}`
             name = `name-${random()}`
@@ -51,14 +51,14 @@ describe('searchItems', () => {
 
     it('should return no results for no results search', () =>
         //expect(() => {
-            searchItems('lalalalalal')
-                .then(item => { 
-                    console.log(item)
-                    throw new Error('should not reach this point') 
-                })
-                .catch((error) => {
-                    expect(error.message).to.eql(`There are no results for your search :(`)
-                })
+        searchItems('lalalalalal')
+            .then(item => {
+                console.log(item)
+                throw new Error('should not reach this point')
+            })
+            .catch((error) => {
+                expect(error.message).to.eql(`There are no results for your search :(`)
+            })
         //})
     )
 

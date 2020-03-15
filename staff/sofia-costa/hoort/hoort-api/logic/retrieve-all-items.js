@@ -1,4 +1,4 @@
-const { models: { Item } } = require('data')
+const { models: { Item } } = require('hoort-data')
 
 module.exports = async () => {
 

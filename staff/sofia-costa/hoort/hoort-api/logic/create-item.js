@@ -1,5 +1,5 @@
-const { validate } = require('utils')
-const { models: { Land, Item } } = require('data')
+const { validate } = require('hoort-utils')
+const { models: { Land, Item } } = require('hoort-data')
 const { NotAllowedError } = require('../../hoort-errors')
 
 // TODO add userId parameter

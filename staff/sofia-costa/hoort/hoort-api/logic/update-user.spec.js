@@ -3,10 +3,10 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { updateUser } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { User } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { User } } = require('hoort-data')
 const expect = chai.expect
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
 describe('updateUser', () => {
@@ -36,7 +36,7 @@ describe('updateUser', () => {
         username1 = 'username-' + Math.random()
         email1 = Math.random() + '@mail.com'
         password1 = 'password-' + Math.random()
-        
+
         return updateUser(id, { name: name1, username: username1, email: email1, password: password1 })
             .then(() => User.findById(id))
             .then(user => {
@@ -56,7 +56,7 @@ describe('updateUser', () => {
 
         username1 = 'username-' + Math.random()
         password1 = 'password-' + Math.random()
-        
+
         return updateUser(id, { username: username1, password: password1 })
             .then(() => User.findById(id))
             .then(user => {
@@ -74,9 +74,9 @@ describe('updateUser', () => {
     it('should fail if invalid fields are passed', () => {
 
         let wrongField = 'wrong-field-' + Math.random()
-        
+
         return updateUser(id, { wrongField })
-            .then(() => { throw new Error ('should not reach this point')})
+            .then(() => { throw new Error('should not reach this point') })
             .catch(error => {
                 expect(error.message).to.eql(`invalid field wrongField`)
             })
@@ -87,9 +87,9 @@ describe('updateUser', () => {
 
         username1 = ''
         password1 = 'password-' + Math.random()
-        
+
         return updateUser(id, { username: username1, password: password1 })
-            .then(() => { throw new Error ('should not reach this point')})
+            .then(() => { throw new Error('should not reach this point') })
             .catch(error => {
                 expect(error.message).to.eql(`field username is empty`)
             })

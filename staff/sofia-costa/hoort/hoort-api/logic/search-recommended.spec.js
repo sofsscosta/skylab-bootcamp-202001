@@ -3,11 +3,11 @@ require('dotenv').config()
 const { env: { TEST_MONGODB_URL } } = process
 const { searchReccommended, createItem } = require('.')
 const chai = require('chai')
-const { mongoose } = require('data')
-const { models: { Item } } = require('data')
+const { mongoose } = require('hoort-data')
+const { models: { Item } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
-const { NotFoundError, NotAllowedError } = require('errors')
+const { NotFoundError, NotAllowedError } = require('hoort-errors')
 
 describe('searchReccommended', () => {
 
@@ -16,13 +16,13 @@ describe('searchReccommended', () => {
         return Item.deleteMany({})
     })
 
-    let id, colorId, name, type , growth, growthDuration, soil, temperature, bestPeriod, lightPreference, query
+    let id, colorId, name, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference, query
     let results = []
 
     beforeEach(async () => {
 
         type = 'type'
-        for (let i = 0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
 
             colorId = `colorId-${random()}`
             name = `name-${random()}`
