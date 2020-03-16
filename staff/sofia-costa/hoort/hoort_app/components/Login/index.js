@@ -1,12 +1,27 @@
 import React, { Fragment, useState } from 'react';
 import { View, Text, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native';
+import { authenticateUser, retrieveUser } from '../../logic'
 import styles from './style'
 import Button from '../Button'
 
-function Login({ login, goToRegister }) {
+function Login({ goToRegister, goToLanding }) {
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+
+    async function login(name, username, email, password) {
+        try {
+            let token = await authenticateUser(name, username, email, password)
+            await retrieveUser(token)
+            goToLanding()
+        }
+        catch (error) {
+            console.log('error message here')
+            const { message } = error
+
+            console.log(message)
+        }
+    }
 
     return (
         <Fragment>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
-//import { View, Text, StatusBar, Image } from 'react-native';
-import { InitScreen, Landing, Login, Register, Header, Footer } from './components'
-import { registerUser } from './logic'
+//import { View, Text, StatusBar, Image } from 'react-native'
+import { InitScreen, Landing, Login, Register, Header, Footer, Menu } from './components'
+import { AsyncStorage } from 'react-native'
+import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
 
 export default function App() {
 
@@ -11,30 +12,42 @@ export default function App() {
     setView('start')
   }
 
-  async function handleLogin(name, username, email, password) {
-    try {
-      await registerUser(name, username, email, password)
-      console.log('yeah baby')
-    }
-    catch (error) {
-      console.log('error message here')
-      const { message } = error
+  // async function handleToken(fun, token) {
+  //   let token
 
-      console.log(message)
+  //   try {
+  //     token ? token = await AsyncStorage[fun](token) : await AsyncStorage[fun]()
+  //   }
+  //   catch (error) {
+  //     console.log(error)
+  //   }
+  //   if (token !== undefined) return token
+  // }
+
+  async function saveToken(token) {
+    try {
+      await AsyncStorage.setItem('token', token)
+      setToken(token)
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
-  async function handleRegister(name, username, email, password) {
+  async function getToken() {
+    let token
     try {
-      await registerUser(name, username, email, password)
-      console.log('yeah baby')
-      handleGoToLogin()
+      token = await AsyncStorage.getItem('token')
+    } catch (error) {
+      console.log(error.message)
     }
-    catch (error) {
-      console.log('error message here')
-      const { message } = error
+    return token
+  }
 
-      console.log(message)
+  async function deleteToken() {
+    try {
+      await AsyncStorage.removeItem('token')
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
@@ -50,13 +63,18 @@ export default function App() {
     setView('start')
   }
 
+  function handleMenu() {
+    setView('menu')
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
-      {view !== 'init' && < Header goToLanding={handleGoToLanding} />}
+      {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
-      {view === 'register' && <Register register={handleRegister} goToLogin={handleGoToLogin} />}
-      {view === 'login' && <Login login={handleLogin} goToRegister={handleGoToRegister} />}
+      {view === 'menu' && <Menu />}
+      {view === 'register' && <Register goToLogin={handleGoToLogin} />}
+      {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view !== 'init' && <Footer />}
     </>
   )

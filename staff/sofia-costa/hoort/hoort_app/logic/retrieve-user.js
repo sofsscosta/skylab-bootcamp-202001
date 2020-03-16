@@ -9,17 +9,14 @@ export default async function (token) {
         headers: { 'Authorization': `Bearer ${token}` }
     })
 
-    const res = await retrieve.text()
-    const user = await res
+    const user = await retrieve.json()
+    console.log(user)
 
     const { error } = user
 
-
     if (error) {
-        JSON.parse(error)
         return new Error(error)
     }
 
-    else return JSON.parse(user)
-
+    else return user
 }

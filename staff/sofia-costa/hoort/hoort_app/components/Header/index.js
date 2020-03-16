@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { View, StatusBar, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
 
-const Header = ({ goToLanding, goToMyLands }) => {
+const Header = ({ goToLanding, goToMyLands, menuClick }) => {
 
     return (
         <Fragment>
@@ -14,7 +14,7 @@ const Header = ({ goToLanding, goToMyLands }) => {
                     resizeMode="stretch"
                 />
                 <View style={styles.header__container}>
-                    <TouchableOpacity style={styles.menu}>
+                    <TouchableOpacity style={styles.menu} onPress={() => { menuClick() }}>
                         <Image
                             style={styles.menu}
                             source={require('../../assets/menu.png')}
