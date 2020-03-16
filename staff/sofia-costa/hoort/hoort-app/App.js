@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, StatusBar, Image } from 'react-native';
-//import styles from './styles/App';
 import { InitScreen, Landing, Register, Header, Footer } from './components'
 import { registerUser } from './logic'
 

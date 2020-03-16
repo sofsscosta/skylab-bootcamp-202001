@@ -9,7 +9,7 @@ const Landing = () => {
             <View style={styles.container}>
                 <Image
                     style={styles.landing}
-                    source={require('../assets/landing.png')}
+                    source={require('../../assets/landing.png')}
                     resizeMode="contain"></Image>
                 <Text style={styles.title}>LET'S PLANT?</Text>
             </View>

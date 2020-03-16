@@ -10,23 +10,23 @@ const Header = () => {
             <View>
                 <Image
                     style={styles.header}
-                    source={require('../assets/header.png')}
+                    source={require('../../assets/header.png')}
                     resizeMode="stretch"
                 />
                 <View style={styles.header__container}>
                     <Image
                         style={styles.menu}
-                        source={require('../assets/menu.png')}
+                        source={require('../../assets/menu.png')}
                         resizeMode="contain"
                     />
                     <Image
                         style={styles.logo}
-                        source={require('../assets/logo.png')}
+                        source={require('../../assets/logo.png')}
                         resizeMode="contain"
                     />
                     <Image
                         style={styles.icon}
-                        source={require('../assets/icon.png')}
+                        source={require('../../assets/icon.png')}
                         resizeMode="contain"
                     />
                 </View>

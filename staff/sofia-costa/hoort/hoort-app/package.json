@@ -11,18 +11,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
     "hoort-errors": "file:../hoort-errors",
+    "hoort-utils": "file:../hoort-utils",
     "node-fetch": "^2.6.0",
     "react": "16.9.0",
-    "react-native": "0.61.5",
-    "hoort-utils": "file:../hoort-utils"
+    "react-native": "0.61.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/runtime": "^7.8.7",
     "@react-native-community/eslint-config": "^0.0.7",
     "babel-jest": "^25.1.0",
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^x2.4.3",
     "hoort-data": "file:../hoort-data",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
