@@ -54,7 +54,7 @@ export default function App() {
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} />}
-      {view === 'start' && <Landing goToRegister={handleOnToRegister} />}
+      {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
       {view === 'register' && <Register register={handleRegister} goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login login={handleLogin} goToRegister={handleGoToRegister} />}
       {view !== 'init' && <Footer />}
