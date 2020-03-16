@@ -6,6 +6,8 @@ import Footer from './Footer'
 import InitScreen from './InitScreen'
 import Button from './Button'
 import Login from './Login'
+import Menu from './Menu'
+
 
 
 export {
@@ -16,5 +18,6 @@ export {
     Header,
     Footer,
     Button,
-    Login
+    Login,
+    Menu
 }

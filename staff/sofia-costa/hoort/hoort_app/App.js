@@ -33,16 +33,6 @@ export default function App() {
     }
   }
 
-  async function getToken() {
-    let token
-    try {
-      token = await AsyncStorage.getItem('token')
-    } catch (error) {
-      console.log(error.message)
-    }
-    return token
-  }
-
   async function deleteToken() {
     try {
       await AsyncStorage.removeItem('token')
@@ -67,12 +57,40 @@ export default function App() {
     setView('menu')
   }
 
+  function handleGoToMyLands() {
+
+  }
+
+  function handleGoToMyVeggies() {
+
+  }
+
+  function handleGoToCalendar() {
+
+  }
+
+  function handleGoToEditProfile() {
+
+  }
+
+  function handleGoToSearch() {
+
+  }
+
+  function handleGoToSuggestions() {
+
+  }
+
+  function handleGoToTutorial() {
+
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
-      {view === 'menu' && <Menu />}
+      {view === 'menu' && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view !== 'init' && <Footer />}
