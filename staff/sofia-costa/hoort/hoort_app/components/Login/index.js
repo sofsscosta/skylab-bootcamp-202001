@@ -3,58 +3,45 @@ import { View, Text, StatusBar, Image, TextInput, TouchableOpacity } from 'react
 import styles from './style'
 import Button from '../Button'
 
-function Register({ register, goToLogin }) {
+function Login({ login, goToRegister }) {
 
-    const [name, setName] = useState()
-    const [username, setUsername] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
     return (
         <Fragment>
             <View style={styles.container}>
-                <Text style={styles.title}>REGISTER</Text>
-                <TextInput
-                    onChangeText={(name) => setName(name)}
-                    style={styles.query}
-                    placeholder='Your name here...'>
-                </TextInput>
-                <TextInput
-                    onChangeText={(username) => setUsername(username)}
-                    style={styles.query}
-                    placeholder='Your unique username!'
-                    title='username'>
-                </TextInput>
+                <Text style={styles.title}>LOGIN</Text>
                 <TextInput
                     onChangeText={(email) => setEmail(email)}
                     style={styles.query}
-                    placeholder='Email'
+                    placeholder='Email here!'
                     title='email'>
                 </TextInput>
                 <TextInput
                     secureTextEntry={true}
                     onChangeText={(password) => setPassword(password)}
                     style={styles.query}
-                    placeholder="Password"
+                    placeholder="Don't put 123"
                     title='password'>
                 </TextInput>
                 <Button
-                    text='Register'
+                    text='Login'
                     type='submit'
                     onPress={function (event) {
 
-                        return register(name, username, email, password)
+                        return login(email, password)
                     }} />
                 <Button
-                    text='Sign in'
+                    text='Sign up!'
                     type='redirect'
                     onPress={function (event) {
 
-                        return goToLogin()
+                        return goToRegister()
                     }} />
             </View>
-        </Fragment>
+        </Fragment >
     );
 };
 
-export default Register
+export default Login

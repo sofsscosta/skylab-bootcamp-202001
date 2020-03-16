@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 //import { View, Text, StatusBar, Image } from 'react-native';
-import { InitScreen, Landing, Register, Header, Footer } from './components'
+import { InitScreen, Landing, Login, Register, Header, Footer } from './components'
 import { registerUser } from './logic'
 
 export default function App() {
@@ -11,11 +11,7 @@ export default function App() {
     setView('start')
   }
 
-  function handleGoToLogin() {
-    setView('login')
-  }
-
-  async function handleRegister(name, username, email, password) {
+  async function handleLogin(name, username, email, password) {
     try {
       await registerUser(name, username, email, password)
       console.log('yeah baby')
@@ -28,8 +24,26 @@ export default function App() {
     }
   }
 
-  function handleOnToRegister() {
+  async function handleRegister(name, username, email, password) {
+    try {
+      await registerUser(name, username, email, password)
+      console.log('yeah baby')
+      handleGoToLogin()
+    }
+    catch (error) {
+      console.log('error message here')
+      const { message } = error
+
+      console.log(message)
+    }
+  }
+
+  function handleGoToRegister() {
     setView('register')
+  }
+
+  function handleGoToLogin() {
+    setView('login')
   }
 
   function handleGoToLanding() {
@@ -42,6 +56,7 @@ export default function App() {
       {view !== 'init' && < Header goToLanding={handleGoToLanding} />}
       {view === 'start' && <Landing goToRegister={handleOnToRegister} />}
       {view === 'register' && <Register register={handleRegister} goToLogin={handleGoToLogin} />}
+      {view === 'login' && <Login login={handleLogin} goToRegister={handleGoToRegister} />}
       {view !== 'init' && <Footer />}
     </>
   )

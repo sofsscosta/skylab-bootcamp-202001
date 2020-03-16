@@ -5,6 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import InitScreen from './InitScreen'
 import Button from './Button'
+import Login from './Login'
 
 
 export {
@@ -14,5 +15,6 @@ export {
     Register,
     Header,
     Footer,
-    Button
+    Button,
+    Login
 }
