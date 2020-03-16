@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     header: {
         width: undefined,
         height: 170,
+        position: 'relative'
     },
     header__container: {
         paddingTop: 70,

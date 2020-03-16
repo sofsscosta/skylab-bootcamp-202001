@@ -7,6 +7,7 @@ import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolic
 export default function App() {
 
   const [view, setView] = useState('init')
+  const [menu, setMenu] = useState(false)
 
   function handleStart() {
     setView('start')
@@ -54,7 +55,7 @@ export default function App() {
   }
 
   function handleMenu() {
-    setView('menu')
+    !menu ? setMenu(true) : setMenu(false)
   }
 
   function handleGoToMyLands() {
@@ -88,9 +89,9 @@ export default function App() {
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
+      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
-      {view === 'menu' && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view !== 'init' && <Footer />}

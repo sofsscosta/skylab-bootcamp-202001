@@ -31,14 +31,16 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 data={data}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    //<TouchableOpacity
-                    // key={item.id}
-                    // title={item.title}
-                    // onPress={item.action()}>
-                    <View>
-                        <Text style={styles.options}>{item.title}</Text>
-                    </View>
-                    //</TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.container}
+
+                        key={item.id}
+                        title={item.title}
+                        onPress={item.action()}>
+                        <View>
+                            <Text style={styles.options}>{item.title}</Text>
+                        </View>
+                    </TouchableOpacity>
                 )}
             />
         </Fragment>

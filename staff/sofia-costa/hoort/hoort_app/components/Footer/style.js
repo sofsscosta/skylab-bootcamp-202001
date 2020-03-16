@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     footer: {
+        // flex: 0.1,
         width: undefined,
         height: 100
     }
