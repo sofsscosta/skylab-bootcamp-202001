@@ -2,6 +2,7 @@ const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { retrieveUser, authenticateUser } = require('.')
 const { mongoose, models: { User } } = require('../hoort-data')
 const fetch = require('node-fetch')
+const bcrypt = require('bcryptjs')
 
 describe('retrieveUser', () => {
 
@@ -23,7 +24,8 @@ describe('retrieveUser', () => {
         let token, user
 
         beforeEach(async () => {
-            user = await User.create({ name, username, email, password })
+            _password = await bcrypt.hash(password, 10)
+            user = await User.create({ name, username, email, password: _password })
             return token = await authenticateUser(email, password)
         })
 
@@ -46,7 +48,7 @@ describe('retrieveUser', () => {
 
             let error = await retrieveUser(`${token}--wrong`)
 
-            expect(error.error).toBe(`jwt malformed`)
+            expect(error.error).toBe("invalid signature")
 
         })
     })

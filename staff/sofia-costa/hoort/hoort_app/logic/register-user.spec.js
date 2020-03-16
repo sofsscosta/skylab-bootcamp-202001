@@ -35,7 +35,7 @@ describe('registerUser', () => {
         expect(user.created).toBeInstanceOf(Date)
 
         const validPassowrd = bcrypt.compare(password, user.password)
-        expect(validPassowrd).toBeTruthy() // TODO encrypt this field!
+        expect(validPassowrd).toBeTruthy()
     })
 
     describe('when user already exists', () => {
