@@ -25,10 +25,6 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         paddingRight: 0
     },
-    results_container: {
-        top: 150,
-        flex: 1
-    },
 })
 
 export default styles

@@ -2,7 +2,7 @@ const { retrieveItem } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('../../hoort-errors')
 
 module.exports = (req, res) => {
-    const { body: { itemId: itemId } } = req
+    const { params: { itemId: itemId } } = req
 
     try {
         retrieveItem(itemId)

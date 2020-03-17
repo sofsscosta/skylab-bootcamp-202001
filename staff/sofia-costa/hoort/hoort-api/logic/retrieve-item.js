@@ -8,8 +8,7 @@ module.exports = async (itemId) => {
 
     let item = await Item.findById(itemId)
 
-    if (!item) return new NotFoundError(`item with id ${id} does not exist`)
+    if (!item) return new NotFoundError(`item with id ${itemId} does not exist`)
 
-    return { colorId: item.colorId, name: item.name, type: item.type, subtype: item.subtype, growth: item.growth, growthDuration: item.growthDuration, soil: item.soil, temperature: item.temperature, bestPeriod: item.bestPeriod, lightPreference: item.lightPreference }
-
+    return { id: item._id.toString(), colorId: item.colorId, name: item.name, type: item.type, subtype: item.subtype, growth: item.growth, growthDuration: item.growthDuration, soil: item.soil, temperature: item.temperature, bestPeriod: item.bestPeriod, lightPreference: item.lightPreference }
 }

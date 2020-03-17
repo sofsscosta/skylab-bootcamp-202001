@@ -2,9 +2,9 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
 import { searchItems } from '../../logic'
-import { Item } from '../'
+import { Results } from '../'
 
-function Search({ isSuggestions }) {
+function Search({ isSuggestions, goToDetail }) {
 
     const [results, setResults] = useState()
     const [query, setQuery] = useState()
@@ -48,16 +48,8 @@ function Search({ isSuggestions }) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <FlatList
-                    style={styles.results_container}
-                    data={results}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                        <Item item={item} />
-                    )}
-                />
+                <Results results={results} goToDetail={goToDetail} />
             </ScrollView>
-
         </Fragment>
     )
 }

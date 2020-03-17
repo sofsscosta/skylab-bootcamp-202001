@@ -16,7 +16,12 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
         { id: 2, title: 'MY VEGGIES', action: () => { goToMyVeggies(); return menu() } },
         { id: 3, title: 'WHAT TO PLANT', action: () => { goToSuggestions(); return menu() } },
         { id: 4, title: 'CALENDAR', action: () => { goToCalendar(); return menu() } },
-        { id: 5, title: 'SEARCH', action: () => { goToSearch(); return menu() } },
+        {
+            id: 5, title: 'SEARCH', action: () => {
+                goToSearch()
+                return menu()
+            }
+        },
         { id: 6, title: 'EDIT PROFILE', action: () => { return goToEditProfile() } },
         {
             id: 7, title: 'LOGOUT', action: async () => {

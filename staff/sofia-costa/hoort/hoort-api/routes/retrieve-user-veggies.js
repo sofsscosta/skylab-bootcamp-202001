@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     try {
         retrieveUserVeggies(userId)
             .then(results => {
-                debugger
+
                 res.status(200).json(results)
             })
             .catch(({ message }) =>

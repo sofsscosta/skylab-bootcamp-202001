@@ -12,11 +12,15 @@ module.exports = async (userId, itemId) => {
 
     if (!item) return new NotFoundError(`item with id ${itemId} does not exist`)
 
-    let growthDuration = item.growthDuration
+    //let growthDuration = item.growthDuration
 
     let growthDurationAll = item.growthDurationAll
 
-    let lands = await Land.find({ plantation: { $elemMatch: { veggie: itemId } } }).lean()
+    let lands = await Land.find({ userId, plantation: { $elemMatch: { veggie: itemId } } }).lean()
+
+    if (!lands) throw new Error('this veggie is not on any land of this user')
+
+    let userLands = []
 
     lands.forEach(land => {
 
@@ -27,7 +31,9 @@ module.exports = async (userId, itemId) => {
         }
 
         if (to && from) growthDurationUser = (to.getDate() + from.getDate()) / 2
+
+        userLands.push(land._id)
     })
 
-    return { lands, growthDuration, growthDurationAll, growthDurationUser }
+    return { lands: userLands, /*growthDuration,*/ growthDurationAll, growthDurationUser }
 }

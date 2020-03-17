@@ -8,6 +8,8 @@ import Login from './Login'
 import Menu from './Menu'
 import Search from './Search'
 import Item from './Item'
+import Detail from './Detail'
+import Results from './Results'
 
 export {
     InitScreen,
@@ -19,5 +21,7 @@ export {
     Login,
     Menu,
     Search,
-    Item
+    Item,
+    Detail,
+    Results
 }

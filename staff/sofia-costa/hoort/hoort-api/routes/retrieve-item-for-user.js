@@ -2,7 +2,7 @@ const { retrieveItemForUser } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('../../hoort-errors')
 
 module.exports = (req, res) => {
-    const { payload: { sub: userId }, body: { item: itemId } } = req
+    const { payload: { sub: userId }, params: { itemId } } = req
 
     try {
         retrieveItemForUser(userId, itemId)

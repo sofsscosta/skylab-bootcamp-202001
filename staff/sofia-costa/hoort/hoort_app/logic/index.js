@@ -4,7 +4,8 @@ import retrieveUser from './retrieve-user'
 import isLoggedIn from './is-logged-in'
 import logout from './logout'
 import searchItems from './search-items'
-
+import retrieveItem from './retrieve-item'
+import retrieveItemForUser from './retrieve-item-for-user'
 
 
 export {
@@ -13,5 +14,7 @@ export {
     retrieveUser,
     isLoggedIn,
     logout,
-    searchItems
+    searchItems,
+    retrieveItem,
+    retrieveItemForUser
 }

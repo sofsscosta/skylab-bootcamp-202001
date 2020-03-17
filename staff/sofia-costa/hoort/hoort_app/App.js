@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-//import { View, Text, StatusBar, Image } from 'react-native'
-import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search } from './components'
-import { AsyncStorage } from 'react-native'
-import { retrieveUser } from './logic'
-// import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
+import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail } from './components'
 
 export default function App() {
 
   const [view, setView] = useState('init')
   const [menu, setMenu] = useState(false)
-  //const [token, setToken] = useState(false)
+  const [veggie, setVeggie] = useState(undefined)
 
   // useEffect(() => {
 
@@ -20,18 +16,6 @@ export default function App() {
   function handleStart() {
     setView('start')
   }
-
-  // async function handleToken(fun, token) {
-  //   let token
-
-  //   try {
-  //     token ? token = await AsyncStorage[fun](token) : await AsyncStorage[fun]()
-  //   }
-  //   catch (error) {
-  //     console.log(error)
-  //   }
-  //   if (token !== undefined) return token
-  // }
 
   function handleGoToRegister() {
     setView('register')
@@ -45,7 +29,7 @@ export default function App() {
     setView('start')
   }
 
-  function handleMenu() {
+  const handleMenu = () => {
     !menu ? setMenu(true) : setMenu(false)
   }
 
@@ -77,6 +61,12 @@ export default function App() {
 
   }
 
+  function handleGoToDetail(veggie) {
+    setVeggie(veggie)
+    console.log(veggie)
+    setView('detail')
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
@@ -85,8 +75,21 @@ export default function App() {
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
-      {view === 'search' && <Search />}
+      {view === 'search' && <Search goToDetail={handleGoToDetail} />}
+      {view === 'detail' && veggie && <Detail item={veggie} />}
       {view !== 'init' && <Footer />}
     </>
   )
 }
+
+  // async function handleToken(fun, token) {
+  //   let token
+
+  //   try {
+  //     token ? token = await AsyncStorage[fun](token) : await AsyncStorage[fun]()
+  //   }
+  //   catch (error) {
+  //     console.log(error)
+  //   }
+  //   if (token !== undefined) return token
+  // }

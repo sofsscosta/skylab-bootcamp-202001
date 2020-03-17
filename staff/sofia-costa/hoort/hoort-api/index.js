@@ -70,7 +70,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.delete('/item/delete', [jwtVerifierMidWare, jsonBodyParser], deleteVeggieFromLand)
 
-        app.get('/item', jsonBodyParser, retrieveItem)
+        app.get('/item/:itemId', jsonBodyParser, retrieveItem)
 
         app.get('/allitems/:query', jsonBodyParser, searchItems)
 
@@ -78,7 +78,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.get('/items', [jwtVerifierMidWare, jsonBodyParser], retrieveUserVeggies)
 
-        app.get('/item/user', [jwtVerifierMidWare, jsonBodyParser], retrieveItemForUser)
+        app.get('/item/user/:itemId', [jwtVerifierMidWare, jsonBodyParser], retrieveItemForUser)
 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
 
