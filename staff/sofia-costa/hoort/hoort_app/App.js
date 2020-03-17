@@ -1,13 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react'
 //import { View, Text, StatusBar, Image } from 'react-native'
-import { InitScreen, Landing, Login, Register, Header, Footer, Menu } from './components'
+import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search } from './components'
 import { AsyncStorage } from 'react-native'
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
+import { retrieveUser } from './logic'
+// import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
 
 export default function App() {
 
   const [view, setView] = useState('init')
   const [menu, setMenu] = useState(false)
+  //const [token, setToken] = useState(false)
+
+  // useEffect(() => {
+
+  //   let user = retrieveUser(token)
+  //   return user ? setToken(user) : ''
+  // })
 
   function handleStart() {
     setView('start')
@@ -24,23 +32,6 @@ export default function App() {
   //   }
   //   if (token !== undefined) return token
   // }
-
-  async function saveToken(token) {
-    try {
-      await AsyncStorage.setItem('token', token)
-      setToken(token)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  async function deleteToken() {
-    try {
-      await AsyncStorage.removeItem('token')
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
 
   function handleGoToRegister() {
     setView('register')
@@ -75,7 +66,7 @@ export default function App() {
   }
 
   function handleGoToSearch() {
-
+    setView('search')
   }
 
   function handleGoToSuggestions() {
@@ -89,11 +80,12 @@ export default function App() {
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
-      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} />}
+      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
+      {view === 'search' && <Search />}
       {view !== 'init' && <Footer />}
     </>
   )

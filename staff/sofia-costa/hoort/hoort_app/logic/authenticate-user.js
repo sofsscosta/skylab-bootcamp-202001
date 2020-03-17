@@ -1,23 +1,28 @@
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
-export default async function (email, password) {
+export default function (email, password) {
     validate.string(email, 'email')
     validate.email(email)
     validate.string(password, 'password')
 
-    const auth = await fetch(`http://192.168.1.146:8085/users/auth`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    })
+    return (async () => {
 
-    const res = await auth.json()
+        const auth = await fetch(`http://192.168.0.30:8085/users/auth`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
 
-    const { error, token } = res
+        const res = await auth.json()
 
-    if (error)
-        throw new Error(error)
+        const { error, token } = res
 
-    else return token
+        if (error)
+            throw new Error(error)
+
+        else {
+            return token
+        }
+    })()
 }

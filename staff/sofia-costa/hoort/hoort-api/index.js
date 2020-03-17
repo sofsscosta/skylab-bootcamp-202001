@@ -72,7 +72,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.get('/item', jsonBodyParser, retrieveItem)
 
-        app.get('/allitems', jsonBodyParser, searchItems)
+        app.get('/allitems/:query', jsonBodyParser, searchItems)
 
         app.get('/items/all', jsonBodyParser, retrieveAllItems)
 

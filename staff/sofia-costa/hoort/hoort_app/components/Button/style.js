@@ -2,13 +2,14 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     submit: {
-        backgroundColor: 'plum',
+        backgroundColor: 'rgb(171, 126, 195)',
         width: 250,
         height: 50,
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 40,
+        color: 'white'
     },
     redirect: {
         backgroundColor: 'lightgrey',
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     planted: {
-        backgroundColor: 'green',
+        backgroundColor: 'rgb(126, 194, 144)',
         width: 250,
         height: 50,
         borderRadius: 50,

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginTop: 30
     },
-    query: {
+    input: {
         borderBottomColor: 'grey',
         borderBottomWidth: 2,
         borderBottomEndRadius: 0,

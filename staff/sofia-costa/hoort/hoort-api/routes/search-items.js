@@ -2,7 +2,7 @@ const { searchItems } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('../../hoort-errors')
 
 module.exports = (req, res) => {
-    const { body: { query } } = req
+    const { params: { query } } = req
 
     try {
         searchItems(query)

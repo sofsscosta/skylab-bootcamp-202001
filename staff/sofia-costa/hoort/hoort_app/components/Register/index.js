@@ -32,25 +32,25 @@ function Register({ goToLogin }) {
                 <Text style={styles.title}>REGISTER</Text>
                 <TextInput
                     onChangeText={(name) => setName(name)}
-                    style={styles.query}
+                    style={styles.input}
                     placeholder='Your name here...'>
                 </TextInput>
                 <TextInput
                     onChangeText={(username) => setUsername(username)}
-                    style={styles.query}
+                    style={styles.input}
                     placeholder='Your unique username!'
                     title='username'>
                 </TextInput>
                 <TextInput
                     onChangeText={(email) => setEmail(email)}
-                    style={styles.query}
+                    style={styles.input}
                     placeholder='Email'
                     title='email'>
                 </TextInput>
                 <TextInput
                     secureTextEntry={true}
                     onChangeText={(password) => setPassword(password)}
-                    style={styles.query}
+                    style={styles.input}
                     placeholder="Password"
                     title='password'>
                 </TextInput>

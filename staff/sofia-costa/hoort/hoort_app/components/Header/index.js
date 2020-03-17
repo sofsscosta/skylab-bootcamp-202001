@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { View, StatusBar, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
+import { logout } from '../../logic';
 
 const Header = ({ goToLanding, goToMyLands, menuClick }) => {
 
@@ -28,7 +29,7 @@ const Header = ({ goToLanding, goToMyLands, menuClick }) => {
                             resizeMode="contain"
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.icon} onPress={() => { goToMyLands() }}>
+                    <TouchableOpacity style={styles.icon} onPress={() => { logout() }}>
                         <Image
                             style={styles.icon}
                             source={require('../../assets/icon.png')}
