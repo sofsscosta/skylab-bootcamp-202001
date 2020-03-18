@@ -15,7 +15,7 @@ module.exports = async (userId) => {
 
     for (let land of user.lands) {
         land = await Land.findById(land._id.toString())
-        results.push({ name: land.name, location: land.location, soiltype: land.soiltype, scheme: land.scheme })
+        results.push({ id: land._id.toString(), name: land.name, location: land.location, soiltype: land.soiltype, scheme: land.scheme })
     }
 
     return results

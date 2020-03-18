@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View } from 'react-native'
 import styles from './style'
-import { isLoggedIn, logout, retrieveUserVeggies, searchSuggested } from '../../logic'
+import { isLoggedIn, logout, retrieveUserVeggies, searchSuggested, retrieveUserLands } from '../../logic'
 
 function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToSearch, goToSuggestions, goToTutorial, menu }) {
 
@@ -39,7 +39,18 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
     ]
 
     loggedMenu = [
-        { id: 1, title: 'MY LANDS', action: () => { goToMyLands(); return menu() } },
+        {
+            id: 1, title: 'MY LANDS', action: async () => {
+                let lands
+                try {
+                    lands = await retrieveUserLands(token)
+                    goToMyLands(lands)
+                    return menu()
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        },
         {
             id: 2, title: 'MY VEGGIES', action: async () => {
 

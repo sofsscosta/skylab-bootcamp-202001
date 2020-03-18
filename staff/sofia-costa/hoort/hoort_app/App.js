@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail, Results, Lands } from './components'
+import React, { useState } from 'react'
+import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail, Results, Lands, CreateLand } from './components'
 
 export default function App() {
 
@@ -8,6 +8,7 @@ export default function App() {
   const [veggie, setVeggie] = useState(undefined)
   const [veggies, setVeggies] = useState(undefined)
   const [resultsType, setResultsType] = useState()
+  const [lands, setLands] = useState()
 
   function handleStart() {
     setView('start')
@@ -29,8 +30,9 @@ export default function App() {
     !menu ? setMenu(true) : setMenu(false)
   }
 
-  function handleGoToMyLands() {
-
+  function handleGoToMyLands(userLands) {
+    setView('myLands')
+    setLands(userLands)
   }
 
   function handleGoToMyVeggies(userVeggies) {
@@ -70,6 +72,10 @@ export default function App() {
 
   }
 
+  function handleGoToCreateLand() {
+    setView('createLand')
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
@@ -79,9 +85,10 @@ export default function App() {
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
-      {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} />}
+      {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
-      {view === 'detail' && veggie && <Detail item={veggie} />}
+      {view === 'createLand' && <CreateLand />}
+      {view === 'detail' /*&& veggie*/ && <Detail item={veggie} />}
       {view !== 'init' && <Footer />}
     </>
   )

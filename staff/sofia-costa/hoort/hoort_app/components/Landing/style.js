@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     landing: {
         width: 150,
-        height: 300
+        height: 300,
     },
     title: {
         color: 'rgb(150, 150, 150)',

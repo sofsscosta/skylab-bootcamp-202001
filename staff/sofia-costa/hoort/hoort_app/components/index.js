@@ -11,6 +11,9 @@ import Item from './Item'
 import Detail from './Detail'
 import Results from './Results'
 import Feedback from './Feedback'
+import Lands from './Lands'
+import LandsIcons from './LandsIcons'
+import CreateLand from './CreateLand'
 
 
 export {
@@ -26,5 +29,8 @@ export {
     Item,
     Detail,
     Results,
-    Feedback
+    Feedback,
+    Lands,
+    LandsIcons,
+    CreateLand
 }
