@@ -1,10 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { createLand } from '../../logic'
+import { isLoggedIn, createLand } from '../../logic'
 
 function CreateLand() {
 
+    const [token, setToken] = useState()
+    const [unit, setUnit] = useState()
     const [scheme, setScheme] = useState([
         [false, false, false],
         [false, false, false],
@@ -13,62 +15,71 @@ function CreateLand() {
         [false, false, false]
     ])
 
+    useEffect(() => {
+        (async () => {
+            try {
+                let _token = await isLoggedIn()
+                if (_token !== null) setToken(_token)
+                console.log(token)
+            } catch (error) {
+                console.log(error)
+            }
+        })()
+    }, [token])
+
+
+    useEffect(() => {
+        setScheme(scheme)
+    }, [unit])
+
+
+    async function handleCreateLand() {
+        try {
+            await createLand(token, 'first', 'home', 'airy', scheme)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <Fragment>
-            <ScrollView style={styles._container}>
+            <ScrollView
+                style={styles.main_container}
+                scrollEnabled={false}>
                 <FlatList
+                    scrollEnabled={false}
                     style={styles.container}
                     data={scheme}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => {
                         return (
                             <FlatList
+                                scrollEnabled={false}
                                 horizontal={true}
                                 data={item}
                                 keyExtractor={unit => unit.id}
-                                renderItem={({ unit }) => {
+                                renderItem={(unit) => {
                                     return (
-                                        <TouchableOpacity>
-                                            <View style={styles.unit} />
-                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                            style={!unit.item ? styles.unit : styles.unit_pressed}
+                                            onPress={() => {
+                                                let num = unit.index
+                                                setUnit(unit)
+
+                                                element = unit.index
+
+                                                scheme[scheme.indexOf(item)][num] = !unit.item ? true : false
+                                                !unit.item ? unit.item = true : unit.item = false
+                                                console.log(scheme)
+                                            }}
+                                        />
                                     )
                                 }}
                             />
                         )
-                        // item.map(unit => {
-                        //     console.log(unit)
-                        //     return (
-                        //         <Text style={styles.unit}>{`${unit}`}</Text>
-                        //         // <View style={styles.unit} position={`${item}`} key={`${item}`} />
-                        //     )
-                        // })
-
-                        // <View
-                        //     style={styles.line}>
-                        //     {item.map((unit, index) => {
-                        //         //console.log(`${scheme.indexOf(item)}${index}`)
-                        //         console.log('arrived')
-                        //         return (
-                        //             <View style={styles.unit} position={`${scheme.indexOf(item)}${index}`} key={`${scheme.indexOf(item)}${index}`} />
-                        //         )
-                        //     })}
-                        // </View>
-
-                        // <FlatList
-                        //     style={styles.line}
-                        //     data={item}
-                        //     keyExtractor={unit => unit.id}
-                        //     renderItem={({ unit }) => {
-                        //         console.log(item)
-                        //         console.log(unit)
-                        //         return (
-                        //             <View style={styles.unit} position={`${item.indexOf(unit)}${index}`} key={`${item.indexOf(unit)}${index}`} />
-                        //         )
-                        //     }}
-                        // />
                     }} />
                 <TouchableOpacity
-                    onPress={() => { return createLand() }}>
+                    onPress={() => handleCreateLand()}>
                     <View style={styles.button_container}>
                         <Text
                             style={styles.button_text}

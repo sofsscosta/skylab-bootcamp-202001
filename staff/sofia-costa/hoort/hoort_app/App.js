@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail, Results, Lands, CreateLand } from './components'
+//import { CreateLand } from './components/CreateLand'
 
 export default function App() {
 

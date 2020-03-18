@@ -12,11 +12,15 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
 
     useEffect(() => {
         (async () => {
-            let _token = await isLoggedIn()
-            if (_token !== null) {
-                setToken(_token)
-                setData(loggedMenu)
-            } else setData(notLoggedMenu)
+            try {
+                let _token = await isLoggedIn()
+                if (_token !== null) {
+                    setToken(_token)
+                    setData(loggedMenu)
+                } else setData(notLoggedMenu)
+            } catch (error) {
+                console.log(error)
+            }
         })()
     }, [token])
 
