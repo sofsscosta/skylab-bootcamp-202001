@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     submit: {
-        backgroundColor: 'rgb(171, 126, 195)',
+        backgroundColor: 'rgb(206, 175, 223)',
         width: 250,
         height: 50,
         borderRadius: 50,
@@ -40,15 +40,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 20,
-        color: 'black',
-        width: 250,
-        textAlign: 'center',
-        paddingRight: 10,
-        paddingLeft: 10,
-    },
-    textWhite: {
-        fontSize: 20,
-        color: 'white',
+        color: 'rgb(90, 90, 90)',
         width: 250,
         textAlign: 'center',
         paddingRight: 10,

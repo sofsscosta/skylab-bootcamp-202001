@@ -6,7 +6,8 @@ import logout from './logout'
 import searchItems from './search-items'
 import retrieveItem from './retrieve-item'
 import retrieveItemForUser from './retrieve-item-for-user'
-
+import retrieveUserVeggies from './retrieve-user-veggies'
+import searchSuggested from './search-suggested'
 
 export {
     registerUser,
@@ -16,5 +17,7 @@ export {
     logout,
     searchItems,
     retrieveItem,
-    retrieveItemForUser
+    retrieveItemForUser,
+    retrieveUserVeggies,
+    searchSuggested
 }

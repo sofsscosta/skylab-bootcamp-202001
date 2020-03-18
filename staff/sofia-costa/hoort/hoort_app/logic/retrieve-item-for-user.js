@@ -14,9 +14,13 @@ export default async function (token, id) {
 
     let item = await retrieve.json()
 
+    console.log('not converted in obj')
+    console.log(item)
+
     item = Object.entries(item)
 
     console.log('3')
+    console.log(item)
 
     const { error } = await item
 

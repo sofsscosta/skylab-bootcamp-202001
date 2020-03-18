@@ -15,20 +15,21 @@ function Item({ item, goToDetail }) {
     }
 
     async function onClick(id) {
-
-        let _item = await retrieveItem(id)
-
-        return goToDetail(_item)
+        try {
+            let _item = await retrieveItem(id)
+            return goToDetail(_item)
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
     return (
         <TouchableOpacity
-            //style={styles.container}
             key={item.id}
             title={item.name}
             onPress={async () => {
-                console.log(item._id)
-                return await onClick(item._id.toString())
+                console.log(item._id ? item._id.toString() : item.id)
+                return await onClick(item._id ? item._id.toString() : item.id)
             }}>
             <Image
                 style={styles.background}

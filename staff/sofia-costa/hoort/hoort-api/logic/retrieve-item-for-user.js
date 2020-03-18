@@ -14,7 +14,7 @@ module.exports = async (userId, itemId) => {
 
     //let growthDuration = item.growthDuration
 
-    let growthDurationAll = item.growthDurationAll
+    let growthDurationAll = item.growthDurationAll ? item.growthDurationAll : item.growthDuration
 
     let lands = await Land.find({ userId, plantation: { $elemMatch: { veggie: itemId } } }).lean()
 
@@ -30,7 +30,7 @@ module.exports = async (userId, itemId) => {
             from = veggie.from
         }
 
-        if (to && from) growthDurationUser = (to.getDate() + from.getDate()) / 2
+        if (to && from) growthDurationUser = Math.floor((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24))
 
         userLands.push(land._id)
     })

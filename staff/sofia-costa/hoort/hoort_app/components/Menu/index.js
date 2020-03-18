@@ -1,20 +1,72 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View } from 'react-native'
 import styles from './style'
-import { isLoggedIn, logout } from '../../logic'
+import { isLoggedIn, logout, retrieveUserVeggies, searchSuggested } from '../../logic'
 
 function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToSearch, goToSuggestions, goToTutorial, menu }) {
 
-    let notLoggedMenu = [
-        { id: 1, title: 'SEARCH', action: () => { return goToSearch() } },
-        { id: 2, title: 'WHAT TO PLANT', action: () => { return goToSuggestions() } },
-        { id: 3, title: 'TUTORIAL', action: () => { return goToTutorial() } }
+    let notLoggedMenu, loggedMenu
+
+    const [data, setData] = useState(notLoggedMenu)
+    const [token, setToken] = useState(undefined)
+
+    useEffect(() => {
+        (async () => {
+            let _token = await isLoggedIn()
+            if (_token !== null) {
+                setToken(_token)
+                setData(loggedMenu)
+            } else setData(notLoggedMenu)
+        })()
+    }, [token])
+
+    notLoggedMenu = [
+        { id: 1, title: 'SEARCH', action: () => { goToSearch(); return menu() } },
+        {
+            id: 2, title: 'WHAT TO PLANT', action: async () => {
+                let suggestedVeggies
+
+                try {
+                    suggestedVeggies = await searchSuggested()
+                    goToSuggestions(suggestedVeggies)
+                    return menu()
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        },
+        { id: 3, title: 'TUTORIAL', action: () => { goToTutorial(); return menu() } }
     ]
 
-    let loggedMenu = [
+    loggedMenu = [
         { id: 1, title: 'MY LANDS', action: () => { goToMyLands(); return menu() } },
-        { id: 2, title: 'MY VEGGIES', action: () => { goToMyVeggies(); return menu() } },
-        { id: 3, title: 'WHAT TO PLANT', action: () => { goToSuggestions(); return menu() } },
+        {
+            id: 2, title: 'MY VEGGIES', action: async () => {
+
+                let userVeggies
+
+                try {
+                    userVeggies = await retrieveUserVeggies(token)
+                    goToMyVeggies(userVeggies)
+                    return menu()
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        },
+        {
+            id: 3, title: 'WHAT TO PLANT', action: async () => {
+
+                let suggestedVeggies
+                try {
+                    suggestedVeggies = await searchSuggested()
+                    goToSuggestions(suggestedVeggies)
+                    return menu()
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        },
         { id: 4, title: 'CALENDAR', action: () => { goToCalendar(); return menu() } },
         {
             id: 5, title: 'SEARCH', action: () => {
@@ -30,15 +82,6 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
             }
         }
     ]
-
-    const [data, setData] = useState(notLoggedMenu)
-
-    useEffect(() => {
-        (async () => {
-            let logged = await isLoggedIn()
-            logged !== null ? setData(loggedMenu) : setData(notLoggedMenu)
-        })()
-    }, [])
 
     return (
         < Fragment >

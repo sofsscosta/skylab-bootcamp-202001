@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail } from './components'
+import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail, Results, Lands } from './components'
 
 export default function App() {
 
   const [view, setView] = useState('init')
   const [menu, setMenu] = useState(false)
   const [veggie, setVeggie] = useState(undefined)
-
-  // useEffect(() => {
-
-  //   let user = retrieveUser(token)
-  //   return user ? setToken(user) : ''
-  // })
+  const [veggies, setVeggies] = useState(undefined)
+  const [resultsType, setResultsType] = useState()
 
   function handleStart() {
     setView('start')
@@ -37,8 +33,10 @@ export default function App() {
 
   }
 
-  function handleGoToMyVeggies() {
-
+  function handleGoToMyVeggies(userVeggies) {
+    setView('userVeggies')
+    setVeggies(userVeggies)
+    setResultsType('myVeggies')
   }
 
   function handleGoToCalendar() {
@@ -53,8 +51,10 @@ export default function App() {
     setView('search')
   }
 
-  function handleGoToSuggestions() {
-
+  function handleGoToSuggestions(suggestedVeggies) {
+    setView('userVeggies')
+    setVeggies(suggestedVeggies)
+    setResultsType('suggested')
   }
 
   function handleGoToTutorial() {
@@ -63,8 +63,11 @@ export default function App() {
 
   function handleGoToDetail(veggie) {
     setVeggie(veggie)
-    console.log(veggie)
     setView('detail')
+  }
+
+  function handleGoToLandDetail() {
+
   }
 
   return (
@@ -76,6 +79,8 @@ export default function App() {
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
+      {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} />}
+      {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
       {view === 'detail' && veggie && <Detail item={veggie} />}
       {view !== 'init' && <Footer />}
     </>

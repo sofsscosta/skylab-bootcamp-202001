@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         height: 300
     },
     title: {
-        color: 'grey',
+        color: 'rgb(150, 150, 150)',
         fontSize: 50
     }
 })

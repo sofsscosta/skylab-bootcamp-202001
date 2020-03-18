@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
         width: 250,
     },
     container_items: {
-        padding: 30,
+        padding: 20,
         paddingLeft: 50,
         flex: 1,
         flexDirection: 'row',
         width: 250,
         height: 10,
-        bottom: 120
+        bottom: 110
     },
     query: {
         zIndex: 10,

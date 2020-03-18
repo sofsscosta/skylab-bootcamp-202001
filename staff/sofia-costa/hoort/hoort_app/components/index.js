@@ -10,6 +10,8 @@ import Search from './Search'
 import Item from './Item'
 import Detail from './Detail'
 import Results from './Results'
+import Feedback from './Feedback'
+
 
 export {
     InitScreen,
@@ -23,5 +25,6 @@ export {
     Search,
     Item,
     Detail,
-    Results
+    Results,
+    Feedback
 }
