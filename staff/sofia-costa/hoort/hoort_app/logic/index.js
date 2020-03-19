@@ -9,6 +9,7 @@ import retrieveItemForUser from './retrieve-item-for-user'
 import retrieveUserVeggies from './retrieve-user-veggies'
 import searchSuggested from './search-suggested'
 import retrieveUserLands from './retrieve-user-lands'
+import retrieveLand from './retrieve-land'
 import createLand from './create-land'
 import changeDivisions from './change-divisions'
 
@@ -24,6 +25,7 @@ export {
     retrieveUserVeggies,
     searchSuggested,
     retrieveUserLands,
+    retrieveLand,
     createLand,
     changeDivisions
 }

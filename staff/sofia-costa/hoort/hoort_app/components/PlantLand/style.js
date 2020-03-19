@@ -1,48 +1,44 @@
 import { StyleSheet } from 'react-native'
 import React, { Fragment, useState, useEffect } from 'react'
 
-let height = 500
-let width = 300
+let height = 460
+let width = 276
 
 const styles = StyleSheet.create({
     main_container: {
-        height: 1000
+        height: 1000,
+        alignSelf: 'center',
+        overflow: 'visible'
     },
     container: {
-        marginTop: 30,
+        marginTop: 20,
         flexDirection: 'row',
-        borderWidth: 1.5,
-        borderRadius: 15,
-        borderColor: 'rgb(150, 150, 150)',
+        alignSelf: 'center',
+        // borderRadius: 15,
+        // right: 40,
+        // justifyContent: 'center',
         width: width,
         height: height,
-        alignSelf: 'center',
-        // justifyContent: 'center',
-        // alignItems: 'center'
+        // borderWidth: 1
     },
     unit_min: {
         flex: 1,
         height: height / 5,
         width: width / 3,
-        borderWidth: 1,
-        borderColor: 'rgb(187, 154, 99)',
-        borderStyle: 'dashed'
     },
     unit_pressed_min: {
         flex: 1,
         height: height / 5,
         width: width / 3,
-        backgroundColor: 'rgb(187, 154, 99)',
-        borderWidth: 0.5,
-        borderColor: 'rgb(90, 90, 90)'
+        backgroundColor: 'rgb(255, 243, 223)',
+        borderWidth: 1,
+        borderColor: 'rgb(187, 154, 99)',
+        borderStyle: 'dashed'
     },
     unit_medium: {
         flex: 1,
         height: height / 10,
         width: width / 6,
-        borderWidth: 1,
-        borderColor: 'rgb(187, 154, 99)',
-        borderStyle: 'dashed'
     },
     unit_pressed_medium: {
         flex: 1,
@@ -57,8 +53,6 @@ const styles = StyleSheet.create({
         height: height / 20,
         width: width / 12,
         borderWidth: 1,
-        borderColor: 'rgb(187, 154, 99)',
-        borderStyle: 'dashed'
     },
     unit_pressed_max: {
         flex: 1,
@@ -68,48 +62,19 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'rgb(90, 90, 90)'
     },
-    button_container: {
-        alignSelf: 'center',
-        position: 'absolute',
-        width: 130,
-        right: 0,
-        bottom: 25,
-        zIndex: 50
+    buttons_container: {
+        flexDirection: 'row'
     },
-    button_text: {
-        color: 'white',
-        fontSize: 40,
-        zIndex: 50
+    button: {
+        width: 250,
+        height: 55,
+        marginTop: 15,
+        marginRight: 15
     },
-
-    divisions_container: {
-        flexDirection: 'row',
-        // flexWrap: 'wrap',
-        width: 300,
-        height: 80,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        //right: 300,
-    },
-    divisions: {
-        flex: 1,
-        marginTop: 20,
-        //alignSelf: 'center',
-        // height: 80,
-        width: 300,
-    },
-    less: {
-        alignSelf: 'center',
-        height: 30,
-        width: 30,
-        left: 45,
-        zIndex: 5,
-    },
-    more: {
-        height: 30,
-        width: 30,
-        right: 45,
+    button_plant: {
+        marginTop: 15,
+        width: 120,
+        height: 120
     }
 })
 

@@ -19,7 +19,7 @@ const path = require('path')
 const { jwtVerifierMidWare } = require('./mid-wares')
 const { mongoose } = require('hoort-data')
 const cors = require('cors')
-
+debugger
 
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -82,8 +82,6 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
 
-        app.get('/land', [jwtVerifierMidWare, jsonBodyParser], retrieveLand)
-
         app.get('/land/user', [jwtVerifierMidWare, jsonBodyParser], retrieveUserLands)
 
         app.get('/land/planted', [jwtVerifierMidWare, jsonBodyParser], retrieveLandPlantations)
@@ -95,6 +93,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         app.patch('/land/planted', [jwtVerifierMidWare, jsonBodyParser], updateLandPlanted)
 
         app.delete('/land', [jwtVerifierMidWare, jsonBodyParser], deleteLand)
+
+        app.get('/land/:land', [jwtVerifierMidWare, jsonBodyParser], retrieveLand)
 
         app.get('/items/reccommended', searchReccommended)
 

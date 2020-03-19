@@ -2,14 +2,20 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
 import { isLoggedIn, createLand, changeDivisions } from '../../logic'
+import plant_now from '../../assets/plant_now.png'
+import change_veggie from '../../assets/change_veggie.png'
+import land_with_text from '../../assets/land-with-text.png'
 
 function PlantLand({ land }) {
 
-    console.log('inside PlantLand = ' + land)
     const [token, setToken] = useState()
     const [divisions, setDivisions] = useState(5)
     const [unit, setUnit] = useState()
     const [scheme, setScheme] = useState(land.scheme)
+
+    function handlePlantMenu() {
+
+    }
 
     // useEffect(() => {
     //     (async () => {
@@ -89,6 +95,28 @@ function PlantLand({ land }) {
                             />
                         )
                     }} />
+                <View style={styles.buttons_container}>
+                    <View>
+                        <Image
+                            style={styles.button}
+                            resizeMode='contain'
+                            source={plant_now}
+                        ></Image>
+                        <Image
+                            style={styles.button}
+                            resizeMode='contain'
+                            source={change_veggie}
+                        ></Image>
+                    </View>
+                    <TouchableOpacity
+                        onPress={() => handlePlantMenu()}>
+                        <Image
+                            style={styles.button_plant}
+                            resizeMode='contain'
+                            source={land_with_text}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
         </Fragment>
     )

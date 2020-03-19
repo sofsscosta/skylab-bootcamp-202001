@@ -1,11 +1,11 @@
-const { retrieveLandPlanted } = require('../logic')
+const { retrieveLandPlantations } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('../../hoort-errors')
 
 module.exports = (req, res) => {
     const { payload: { sub: userId }, body: { land: landId } } = req
 
     try {
-        retrieveLandPlanted(userId, landId)
+        retrieveLandPlantations(userId, landId)
             .then(land => res.status(200).json(land))
             .catch(({ message }) =>
                 res

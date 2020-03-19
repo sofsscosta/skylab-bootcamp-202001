@@ -82,7 +82,7 @@ export default function App() {
   }
 
   function handleGoToPlantLand(land) {
-    console.log(land)
+    console.log('land in App = ' + land)
     setLand(land)
     setView('plantLand')
   }

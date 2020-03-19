@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { isLoggedIn, createLand, changeDivisions, retrieveUserLands } from '../../logic'
+import { isLoggedIn, createLand, changeDivisions, retrieveUserLands, retrieveLand } from '../../logic'
 // import { ChangeDivisions } from '../'
 import divisions_img from '../../assets/divisions_text.png'
 
@@ -40,10 +40,14 @@ function CreateLand({ goToPlantLand }) {
     }, [scheme])
 
     async function handleCreateLand() {
-        let land
+        let name = 'fourth'
+        let allLands, land
         try {
-            await createLand(token, 'first', 'home', 'airy', scheme)
-            land = await retrieveUserLands
+            await createLand(token, name, 'home', 'airy', scheme)
+            allLands = await retrieveUserLands(token)
+            // console.log('allLands = ' + allLands)
+            land = allLands.find(_land => _land.name === name)
+            // console.log('land = ' + land)
             return goToPlantLand(land)
         } catch (error) {
             return console.log(error)
@@ -130,8 +134,7 @@ function CreateLand({ goToPlantLand }) {
             <TouchableOpacity
                 style={styles.button_container}
                 onPress={async () => {
-                    await handleCreateLand()
-                    return goToPlantLand()
+                    return await handleCreateLand()
                 }}>
                 <Text style={styles.button_text}>NEXT</Text>
             </TouchableOpacity>

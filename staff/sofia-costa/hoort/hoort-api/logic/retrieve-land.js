@@ -10,6 +10,6 @@ module.exports = (userId, landId) => {
         .then(land => {
             if (!land) return new NotFoundError(`land with id ${id} does not exist`)
 
-            return { name: land.name, location: land.location, soiltype: land.soiltype, scheme: land.scheme }
+            return { id: landId, name: land.name, location: land.location, soiltype: land.soiltype, scheme: land.scheme }
         })
 }
