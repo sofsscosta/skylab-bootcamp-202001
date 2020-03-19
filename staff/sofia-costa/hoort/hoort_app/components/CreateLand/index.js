@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { isLoggedIn, createLand, changeDivisions } from '../../logic'
+import { isLoggedIn, createLand, changeDivisions, retrieveUserLands } from '../../logic'
 // import { ChangeDivisions } from '../'
 import divisions_img from '../../assets/divisions_text.png'
 
@@ -32,21 +32,21 @@ function CreateLand({ goToPlantLand }) {
 
 
     useEffect(() => {
-        debugger
         setScheme(scheme)
     }, [unit])
 
     useEffect(() => {
-        debugger
         setUnit(unit)
     }, [scheme])
 
     async function handleCreateLand() {
+        let land
         try {
             await createLand(token, 'first', 'home', 'airy', scheme)
-            return goToPlantLand()
+            land = await retrieveUserLands
+            return goToPlantLand(land)
         } catch (error) {
-            console.log(error)
+            return console.log(error)
         }
     }
 
@@ -54,28 +54,35 @@ function CreateLand({ goToPlantLand }) {
         let _scheme
         try {
             _scheme = await changeDivisions(operation, scheme)
+            setDivisions(_scheme.length)
+            return setScheme(_scheme)
         } catch (error) {
             return console.log(error)
         }
-        setDivisions(_scheme.length)
-        return setScheme(_scheme)
     }
 
     function handleStyleUnit(unitValue) {
-        console.log(divisions)
-        debugger
+
         if (divisions === 5) {
-            console.log('unit_min.height = ' + styles.unit_min.height)
             return !unitValue ? styles.unit_min : styles.unit_pressed_min
         }
         else if (divisions === 10) {
-            console.log('unit_medium.height = ' + styles.unit_medium.height)
             return !unitValue ? styles.unit_medium : styles.unit_pressed_medium
         }
         else if (divisions === 20) {
-            console.log('unit_max.height = ' + styles.unit_max.height)
             return !unitValue ? styles.unit_max : styles.unit_pressed_max
         }
+    }
+
+    function handlePressUnit(unit, item) {
+        let num = unit.index
+        setUnit(unit)
+
+        element = unit.index
+
+        scheme[scheme.indexOf(item)][num] = !unit.item ? true : false
+        !unit.item ? unit.item = true : unit.item = false
+        console.log(scheme)
     }
 
     return (
@@ -99,16 +106,7 @@ function CreateLand({ goToPlantLand }) {
                                     return (
                                         <TouchableOpacity
                                             style={handleStyleUnit(unit.item)}
-                                            onPress={() => {
-                                                let num = unit.index
-                                                setUnit(unit)
-
-                                                element = unit.index
-
-                                                scheme[scheme.indexOf(item)][num] = !unit.item ? true : false
-                                                !unit.item ? unit.item = true : unit.item = false
-                                                console.log(scheme)
-                                            }}
+                                            onPress={() => { return handlePressUnit(unit, item) }}
                                         />
                                     )
                                 }}
@@ -118,9 +116,7 @@ function CreateLand({ goToPlantLand }) {
                 <View style={styles.divisions_container}>
                     <TouchableOpacity
                         style={styles.less}
-                        onPress={() => {
-                            return handleChangeDivisions('-')
-                        }} />
+                        onPress={() => handleChangeDivisions('-')} />
                     <Image
                         style={styles.divisions}
                         resizeMode='contain'

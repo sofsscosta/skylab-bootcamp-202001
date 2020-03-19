@@ -15,6 +15,7 @@ import Lands from './Lands'
 import LandsIcons from './LandsIcons'
 import CreateLand from './CreateLand'
 import ChangeDivisions from './ChangeDivisions'
+import PlantLand from './PlantLand'
 
 
 export {
@@ -34,5 +35,6 @@ export {
     Lands,
     LandsIcons,
     CreateLand,
-    ChangeDivisions
+    ChangeDivisions,
+    PlantLand
 }

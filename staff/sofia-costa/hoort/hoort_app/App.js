@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { InitScreen, Landing, Login, Register, Header, Footer, Menu, Search, Detail, Results, Lands, CreateLand } from './components'
+import {
+  InitScreen, Landing, Login, Register, Header, Footer, Menu,
+  Search, Detail, Results, Lands, CreateLand, PlantLand
+} from './components'
 //import { CreateLand } from './components/CreateLand'
 
 export default function App() {
@@ -10,6 +13,7 @@ export default function App() {
   const [veggies, setVeggies] = useState(undefined)
   const [resultsType, setResultsType] = useState()
   const [lands, setLands] = useState()
+  const [land, setLand] = useState()
 
   function handleStart() {
     setView('start')
@@ -77,7 +81,9 @@ export default function App() {
     setView('createLand')
   }
 
-  function handleGoToPlantLand() {
+  function handleGoToPlantLand(land) {
+    console.log(land)
+    setLand(land)
     setView('plantLand')
   }
 
@@ -93,6 +99,7 @@ export default function App() {
       {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} />}
+      {view === 'plantLand' && <PlantLand land={land} />}
       {view === 'detail' /*&& veggie*/ && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

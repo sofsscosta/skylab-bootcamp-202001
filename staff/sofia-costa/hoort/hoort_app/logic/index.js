@@ -8,7 +8,7 @@ import retrieveItem from './retrieve-item'
 import retrieveItemForUser from './retrieve-item-for-user'
 import retrieveUserVeggies from './retrieve-user-veggies'
 import searchSuggested from './search-suggested'
-import retrieveUserLands from './retrieve-user-lands-ids'
+import retrieveUserLands from './retrieve-user-lands'
 import createLand from './create-land'
 import changeDivisions from './change-divisions'
 
