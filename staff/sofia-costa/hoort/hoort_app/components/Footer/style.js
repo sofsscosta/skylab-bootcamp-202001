@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        position: 'absolute'
     },
     footer: {
         // flex: 0.1,

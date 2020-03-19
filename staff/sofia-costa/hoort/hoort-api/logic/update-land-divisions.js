@@ -2,68 +2,131 @@ const { validate } = require('hoort-utils')
 const { models: { Land } } = require('hoort-data')
 const { NotAllowedError, ContentError } = require('../../hoort-errors')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
-const bcrypt = require('bcryptjs')
 
-module.exports = async (landId, operation) => {
-    validate.string(landId, 'landId')
+module.exports = async (operation, landId, scheme) => {
+    // validate.operation(operation, 'operation')
     validate.string(operation, 'operation')
+    if (landId) validate.string(landId, 'landId')
 
-    if (operation === '+')
-        return Land.findById(landId)
-            .then(land => {
+    if (!landId && !scheme) throw new Error('land id or scheme must be introduced')
+    if (operation === '+') {
 
-                if (land.scheme.length <= 19) {
+        if (landId) {
 
-                    let scheme = land.scheme
-                    let newLine = new Array
+            let land = await Land.findById(landId)
+            if (!land) throw new Error(`land with id ${landId} doesn't exist`)
 
-                    for (let i = 0; i < scheme[0].length; i++) newLine.push(false)
+            if (land.scheme.length <= 19) {
 
-                    let count = scheme.length
+                let _scheme = land.scheme
+                let newLine = new Array
 
-                    for (let i = 0; i < count; i++) scheme.push(newLine)
+                for (let i = 0; i < _scheme[0].length; i++) newLine.push(false)
 
-                    count = scheme.length / 2 + 1
+                let count = _scheme.length
 
-                    let count2 = scheme[0].length
+                for (let i = 0; i < count; i++) _scheme.push(newLine)
 
-                    for (let j = 0; j < count; j++) {
-                        for (let k = 0; k < count2; k++)
-                            scheme[j].push(false)
-                    }
+                count = _scheme.length / 2 + 1
 
-                    land.scheme = scheme
+                let count2 = _scheme[0].length
 
-                    return land.save()
+                for (let j = 0; j < count; j++) {
+                    for (let k = 0; k < count2; k++)
+                        _scheme[j].push(false)
                 }
 
-                else throw new NotAllowedError('Max limit of divisions')
-            })
+                land.scheme = _scheme
 
-    else if (operation === '-')
-        return Land.findById(landId)
-            .then(land => {
+                return await land.save()
+            }
 
-                if (land.scheme.length >= 7) {
+            else throw new NotAllowedError('Max limit of divisions')
+        }
 
-                    let scheme = land.scheme
+        if (scheme) {
 
-                    let count = scheme.length / 2
+            if (scheme.length <= 19) {
 
-                    for (let i = 0; i < count; i++) scheme.pop()
+                let _scheme = scheme
+                let newLine = new Array
 
-                    count = scheme[0].length / 2
+                for (let i = 0; i < _scheme[0].length; i++) newLine.push(false)
 
-                    for (let j = 0; j < scheme.length; j++) {
-                        for (let k = 0; k < count; k++)
-                            scheme[j].pop()
-                    }
+                let count = _scheme.length
 
-                    land.scheme = scheme
+                for (let i = 0; i < count; i++) _scheme.push(newLine)
 
-                    return land.save()
+                count = _scheme.length / 2 + 1
+
+                let count2 = _scheme[0].length
+
+                for (let j = 0; j < count; j++) {
+                    for (let k = 0; k < count2; k++)
+                        _scheme[j].push(false)
                 }
 
-                else throw new NotAllowedError('Min limit of divisions')
-            })
+                return _scheme
+            }
+
+            else throw new NotAllowedError('Max limit of divisions')
+        }
+
+        else throw new Error('land id or scheme must be introduced')
+    }
+
+    else if (operation === '-') {
+
+        if (landId) {
+
+            let land = await Land.findById(landId)
+            if (!land) throw new Error(`land with id ${landId} doesn't exist`)
+
+            if (land.scheme.length >= 7) {
+
+                let scheme = land.scheme
+
+                let count = scheme.length / 2
+
+                for (let i = 0; i < count; i++) scheme.pop()
+
+                count = scheme[0].length / 2
+
+                for (let j = 0; j < scheme.length; j++) {
+                    for (let k = 0; k < count; k++)
+                        scheme[j].pop()
+                }
+
+                land.scheme = scheme
+
+                return await land.save()
+            }
+
+            else throw new NotAllowedError('Min limit of divisions')
+        }
+
+        if (scheme) {
+            if (scheme.length >= 7) {
+
+                let _scheme = scheme
+
+                let count = _scheme.length / 2
+
+                for (let i = 0; i < count; i++) _scheme.pop()
+
+                count = _scheme[0].length / 2
+
+                for (let j = 0; j < _scheme.length; j++) {
+                    for (let k = 0; k < count; k++)
+                        _scheme[j].pop()
+                }
+
+                return _scheme
+            }
+
+            else throw new NotAllowedError('Min limit of divisions')
+        }
+    }
+
+    else throw new Error('land id or scheme must be introduced')
 }

@@ -12,7 +12,6 @@ export default async function (token) {
     })
 
     const user = await retrieve.json()
-    console.log(user)
 
     const { error } = user
 

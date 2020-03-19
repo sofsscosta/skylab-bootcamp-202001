@@ -2,10 +2,10 @@ const { updateLandDivisions } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('../../hoort-errors')
 
 module.exports = (req, res) => {
-    const { body: { land: landId, operation } } = req
+    const { body: { operation: operation, land: landId, scheme } } = req
 
     try {
-        updateLandDivisions(landId, operation)
+        updateLandDivisions(operation, landId, scheme)
             .then(land => res.status(201).json(land))
             .catch(error => {
                 let status = 400

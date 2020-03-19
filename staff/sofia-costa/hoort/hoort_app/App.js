@@ -77,6 +77,10 @@ export default function App() {
     setView('createLand')
   }
 
+  function handleGoToPlantLand() {
+    setView('plantLand')
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
@@ -88,7 +92,7 @@ export default function App() {
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
       {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
-      {view === 'createLand' && <CreateLand />}
+      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} />}
       {view === 'detail' /*&& veggie*/ && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

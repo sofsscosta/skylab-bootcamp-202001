@@ -5,8 +5,6 @@ export default async function (token, id) {
     validate.string(token, 'token')
     validate.string(id, 'id')
 
-    console.log('1')
-
     const retrieve = await fetch(`http://192.168.0.30:8085/item/user/${id}`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
@@ -14,13 +12,7 @@ export default async function (token, id) {
 
     let item = await retrieve.json()
 
-    console.log('not converted in obj')
-    console.log(item)
-
     item = Object.entries(item)
-
-    console.log('3')
-    console.log(item)
 
     const { error } = await item
 

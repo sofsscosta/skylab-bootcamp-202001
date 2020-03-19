@@ -6,14 +6,8 @@ export default async function () {
         method: 'GET',
         headers: { 'Content-Type': `application/json` }
     })
-    console.log('1')
-
-    console.log(search)
 
     const results = await search.json()
-    console.log('2')
-
-    console.log(results)
 
     const { error } = results
 

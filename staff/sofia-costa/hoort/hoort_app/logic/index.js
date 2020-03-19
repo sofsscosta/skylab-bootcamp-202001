@@ -10,7 +10,7 @@ import retrieveUserVeggies from './retrieve-user-veggies'
 import searchSuggested from './search-suggested'
 import retrieveUserLands from './retrieve-user-lands-ids'
 import createLand from './create-land'
-import addDivisions from './add-divisions'
+import changeDivisions from './change-divisions'
 
 export {
     registerUser,
@@ -25,5 +25,5 @@ export {
     searchSuggested,
     retrieveUserLands,
     createLand,
-    addDivisions
+    changeDivisions
 }

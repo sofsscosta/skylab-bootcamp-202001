@@ -14,6 +14,7 @@ import Feedback from './Feedback'
 import Lands from './Lands'
 import LandsIcons from './LandsIcons'
 import CreateLand from './CreateLand'
+import ChangeDivisions from './ChangeDivisions'
 
 
 export {
@@ -32,5 +33,6 @@ export {
     Feedback,
     Lands,
     LandsIcons,
-    CreateLand
+    CreateLand,
+    ChangeDivisions
 }

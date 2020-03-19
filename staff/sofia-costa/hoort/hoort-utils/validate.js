@@ -4,10 +4,14 @@ const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
 
 module.exports = {
     string(target, name, empty = true) {
-        //if (typeof target !== 'string') throw new TypeError(`${name} ${target} is not a string`)
+        if (typeof target !== 'string') throw new TypeError(`${name} ${target} is not a string`)
         this.type(target, name, String)
 
         if (empty && !target.trim()) throw new ContentError(`${name} is empty`)
+    },
+
+    operation(target, name) {
+        if (operation != '+' && operation != '-') throw new ContentError(`${name} ${target} is not a valid operation`)
     },
 
     email(target) {
