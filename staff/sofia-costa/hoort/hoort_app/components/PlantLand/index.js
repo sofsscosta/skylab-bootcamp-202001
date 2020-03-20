@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView, PanResponder, PanResponderInstance, Animated } from 'react-native'
+import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { retrieveAll } from '../../logic'
+import { retrieveAll, plantInLand } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
@@ -9,11 +9,14 @@ import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land }) {
 
+    const [currentLand, setCUrrentLand] = useState(land)
     const [divisions, setDivisions] = useState(5)
     const [scheme, setScheme] = useState(land.scheme)
     const [menu, setMenu] = useState(false)
     const [veggies, setVeggies] = useState()
     const [veggie, setVeggie] = useState(undefined)
+    const [pressed, setPressed] = useState(false)
+    const [unitPressed, setUnitPressed] = useState(false)
 
     const images = {
         tomatoes: require('../../assets/tomatoes.png'),
@@ -23,53 +26,40 @@ function PlantLand({ land }) {
         spinach: require('../../assets/spinach.png')
     }
 
-    this._panResponder = PanResponder.create({
-        // Ask to be the responder:
-        onStartShouldSetPanResponder: (evt, gestureState) => true,
-        onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
-        onMoveShouldSetPanResponder: (evt, gestureState) => true,
-        onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+    useEffect(() => {
+        ; (async function retrieveVeggies() {
+            let veggies
+            try {
+                veggies = await retrieveAll()
+                return setVeggies(veggies)
+            } catch (error) {
+                return console.log(error)
+            }
+        })()
+    }, [])
 
-        onPanResponderGrant: (evt, gestureState) => {
-            // The gesture has started. Show visual feedback so the user knows
-            // what is happening!
-            // gestureState.d{x,y} will be set to zero now
-        },
-        onPanResponderMove: (evt, gestureState) => {
-            // The most recent move distance is gestureState.move{X,Y}
-            // The accumulated gesture distance since becoming responder is
-            // gestureState.d{x,y}
-        },
-        onPanResponderTerminationRequest: (evt, gestureState) => true,
-        onPanResponderRelease: (evt, gestureState) => {
-            // The user has released all touches while this view is the
-            // responder. This typically means a gesture has succeeded
-        },
-        onPanResponderTerminate: (evt, gestureState) => {
-            // Another component has become the responder, so this gesture
-            // should be cancelled
-        },
-        onShouldBlockNativeResponder: (evt, gestureState) => {
-            // Returns whether this component should block native components from becoming the JS
-            // responder. Returns true by default. Is currently only supported on android.
-            return true;
-        },
-    });
-
-    ; (async function retrieveVeggies() {
-        let veggies
-        try {
-            veggies = await retrieveAll()
-            setVeggies(veggies)
-        } catch (error) {
-            console.log(error)
-        }
-    })()
+    // useEffect(() => {}, [unitPressed])
 
     async function handlePlantMenu() {
         return !menu ? setMenu(true) : setMenu(false)
     }
 
+    function handlePressed() {
+        return !pressed ? setPressed(true) : setPressed(false)
+    }
+
+    async function handleUnitPressed(itemIndexInScheme, unit) {
+        let _scheme = land.scheme
+        try {
+            console.log('scheme = ' + _scheme)
+            console.log('unit = ' + _scheme[itemIndexInScheme][unit.index])
+            _scheme[itemIndexInScheme][unit] = veggie.item.id
+            await plantInLand(land, _scheme)
+            return setUnitPressed({ itemIndexInScheme, unit })
+        } catch (error) {
+            return console.log(error)
+        }
+    }
 
     function handleStyleUnit(unitValue) {
 
@@ -108,7 +98,23 @@ function PlantLand({ land }) {
                                 keyExtractor={unit => unit.id}
                                 renderItem={(unit) => {
                                     return (
-                                        <View style={handleStyleUnit(unit.item)} />
+                                        <TouchableOpacity style={handleStyleUnit(unit.item)}
+                                            onPress={() => {
+                                                if (unit.item && pressed) {
+                                                    console.log(unit.item)
+                                                    console.log('onPress type = ' + land.scheme[scheme.indexOf(item)][unit] instanceof Boolean)
+                                                    return handleUnitPressed(scheme.indexOf(item), unit)
+                                                }
+                                            }}>
+                                            {pressed
+                                                && unitPressed.item === scheme.indexOf(item)
+                                                && unitPressed.unit === unit.index
+                                                //|| !(land.scheme[scheme.indexOf(item)][unit] instanceof Boolean) && veggie !== undefined
+                                                && <Image
+                                                    source={images[`${veggie.item.name}`]}
+                                                    style={styles.unit_image}
+                                                    resizeMode='contain'></Image>}
+                                        </TouchableOpacity>
                                     )
                                 }}
                             />
@@ -154,19 +160,18 @@ function PlantLand({ land }) {
                             ></FlatList>
                         </View>
                         <TouchableOpacity
+                            style={!pressed ? '' : styles.button_plant_border}
                             onPress={() => {
                                 if (!veggie) {
                                     return handlePlantMenu()
                                 }
-                                else {
-                                    return handlePlantMenu()
-                                }
+                                else return handlePressed()
                             }}>
-                            <Animated.Image
-                                style={styles.button_plant}
+                            <Image
+                                style={!pressed ? styles.button_plant : styles.button_plant_pressed}
                                 resizeMode='contain'
-                                source={!veggie.item.name ? land_with_text : images[`${veggie.item.name}`]}
-                            ></Animated.Image>
+                                source={!veggie ? land_with_text : images[`${veggie.item.name}`]}
+                            ></Image>
                         </TouchableOpacity>
                     </View>
                 </View>

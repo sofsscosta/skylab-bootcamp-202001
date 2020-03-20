@@ -61,6 +61,10 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'rgb(90, 90, 90)'
     },
+    unit_image: {
+        height: height / 5,
+        width: width / 3,
+    },
     buttons_container: {
         flexDirection: 'row'
     },
@@ -68,12 +72,28 @@ const styles = StyleSheet.create({
         width: 250,
         height: 55,
         marginTop: 15,
-        marginRight: 15
     },
     button_plant: {
         marginTop: 15,
         width: 120,
-        height: 120
+        height: 120,
+        marginLeft: 15
+    },
+    button_plant_pressed: {
+        width: 100,
+        height: 100,
+        opacity: 0.5,
+        alignSelf: 'center',
+        top: 5
+    },
+    button_plant_border: {
+        marginTop: 15,
+        width: 120,
+        height: 120,
+        borderWidth: 4,
+        borderRadius: 20,
+        borderColor: 'rgb(126, 194, 144)',
+        marginLeft: 15
     },
     menu: {
         // position: 'absolute',
