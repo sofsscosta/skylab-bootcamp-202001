@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
+import { FlatList, TouchableOpacity, Text, View, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { retrieveAll, plantInLand, isLoggedIn } from '../../logic'
+import { retrieveAll, plantInLand, isLoggedIn, updateLandAddVeggie } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
@@ -58,6 +58,7 @@ function PlantLand({ land }) {
             try {
                 _scheme[unitPressed.item][unitPressed.unit.index] = veggie.item.id
                 updatedLand = await plantInLand(land.id, _scheme, token)
+                await updateLandAddVeggie(land.id, veggie.item.id, token)
                 return setCurrentLand(updatedLand)
             } catch (error) {
                 return console.log('error = ' + error)
@@ -77,8 +78,6 @@ function PlantLand({ land }) {
 
         return setUnitPressed({ item: itemIndexInScheme, unit })
     }
-
-
 
     function handleStyleUnit(unitValue) {
 

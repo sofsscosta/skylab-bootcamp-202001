@@ -14,6 +14,7 @@ import createLand from './create-land'
 import changeDivisions from './change-divisions'
 import retrieveAll from './retrieve-all'
 import plantInLand from './plant-in-land'
+import updateLandAddVeggie from './update-land-add-veggie'
 
 export {
     registerUser,
@@ -31,5 +32,6 @@ export {
     createLand,
     changeDivisions,
     retrieveAll,
-    plantInLand
+    plantInLand,
+    updateLandAddVeggie
 }
