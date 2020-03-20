@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
     try {
         updateLandPlanted(userId, landId, scheme)
-            .then(() => res.status(201).end())
+            .then(land => res.status(201).json(land))
             .catch(error => {
                 let status = 400
 

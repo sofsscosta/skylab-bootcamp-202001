@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { retrieveAll, plantInLand } from '../../logic'
+import { retrieveAll, plantInLand, isLoggedIn } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
@@ -9,14 +9,15 @@ import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land }) {
 
-    const [currentLand, setCUrrentLand] = useState(land)
+    const [token, setToken] = useState(undefined)
+    const [currentLand, setCurrentLand] = useState(land)
     const [divisions, setDivisions] = useState(5)
     const [scheme, setScheme] = useState(land.scheme)
     const [menu, setMenu] = useState(false)
     const [veggies, setVeggies] = useState()
     const [veggie, setVeggie] = useState(undefined)
     const [pressed, setPressed] = useState(false)
-    const [unitPressed, setUnitPressed] = useState(false)
+    const [unitPressed, setUnitPressed] = useState(undefined)
 
     const images = {
         tomatoes: require('../../assets/tomatoes.png'),
@@ -27,18 +28,42 @@ function PlantLand({ land }) {
     }
 
     useEffect(() => {
+        (async () => {
+            try {
+                let _token = await isLoggedIn()
+                if (_token !== null) return setToken(_token)
+            } catch (error) {
+                return console.log(error)
+            }
+        })()
+    }, [token])
+
+    useEffect(() => {
         ; (async function retrieveVeggies() {
             let veggies
             try {
                 veggies = await retrieveAll()
                 return setVeggies(veggies)
             } catch (error) {
-                return console.log(error)
+                return console.log('first error = ' + error)
             }
         })()
     }, [])
 
-    // useEffect(() => {}, [unitPressed])
+    useEffect(() => {
+        ; (async () => {
+            console.log('arrived')
+            let updatedLand
+            let _scheme = currentLand.scheme
+            try {
+                _scheme[unitPressed.item][unitPressed.unit.index] = veggie.item.id
+                updatedLand = await plantInLand(land.id, _scheme, token)
+                return setCurrentLand(updatedLand)
+            } catch (error) {
+                return console.log('error = ' + error)
+            }
+        })()
+    }, [unitPressed])
 
     async function handlePlantMenu() {
         return !menu ? setMenu(true) : setMenu(false)
@@ -49,16 +74,21 @@ function PlantLand({ land }) {
     }
 
     async function handleUnitPressed(itemIndexInScheme, unit) {
-        let _scheme = land.scheme
-        try {
-            console.log('scheme = ' + _scheme)
-            console.log('unit = ' + _scheme[itemIndexInScheme][unit.index])
-            _scheme[itemIndexInScheme][unit] = veggie.item.id
-            await plantInLand(land, _scheme)
-            return setUnitPressed({ itemIndexInScheme, unit })
-        } catch (error) {
-            return console.log(error)
-        }
+        // let _scheme = land.scheme
+        // try {
+        // console.log('scheme = ' + _scheme)
+        // console.log('unit = ' + _scheme[itemIndexInScheme][unit.index])
+        // _scheme[itemIndexInScheme][unit] = veggie.item.id
+        // await plantInLand(land, _scheme)
+        // console.log('expected = ' + { item: itemIndexInScheme, unit })
+
+        setUnitPressed({ item: itemIndexInScheme, unit })
+
+        return
+
+        // } catch (error) {
+        //     return console.log(error)
+        // }
     }
 
     function handleStyleUnit(unitValue) {
@@ -101,15 +131,18 @@ function PlantLand({ land }) {
                                         <TouchableOpacity style={handleStyleUnit(unit.item)}
                                             onPress={() => {
                                                 if (unit.item && pressed) {
-                                                    console.log(unit.item)
-                                                    console.log('onPress type = ' + land.scheme[scheme.indexOf(item)][unit] instanceof Boolean)
+                                                    // console.log(unit.item)
+                                                    // console.log('onPress type = ' + land.scheme[scheme.indexOf(item)][unit] instanceof Boolean)
+                                                    // console.log('callback = ' + currentLand.scheme[scheme.indexOf(item)][unit.index])
                                                     return handleUnitPressed(scheme.indexOf(item), unit)
                                                 }
                                             }}>
                                             {pressed
-                                                && unitPressed.item === scheme.indexOf(item)
-                                                && unitPressed.unit === unit.index
-                                                //|| !(land.scheme[scheme.indexOf(item)][unit] instanceof Boolean) && veggie !== undefined
+                                                // && unitPressed
+                                                // && unitPressed.item === scheme.indexOf(item)
+                                                // && unitPressed.unit === unit.index
+                                                && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
+                                                && veggie !== undefined
                                                 && <Image
                                                     source={images[`${veggie.item.name}`]}
                                                     style={styles.unit_image}

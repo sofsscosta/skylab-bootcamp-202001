@@ -1,20 +1,43 @@
 const { validate } = require('hoort-utils')
 const { models: { Land } } = require('hoort-data')
-const { SchemaTypes: { ObjectId } } = require('mongoose')
-const bcrypt = require('bcryptjs')
 
-module.exports = (userId, landId, scheme) => {
+module.exports = async (userId, landId, scheme) => {
     validate.string(userId, 'userId')
     validate.string(landId, 'landId')
     validate.scheme(scheme)
+    debugger
+    let land = await Land.findById(landId)
 
-    let veggies = []
+    if (!land) throw new Error('This land doesn\'t exist')
+
+    if (scheme.length === land.scheme.length) {
+        land.scheme = scheme
+
+        await land.save()
+
+        land = land.toObject()
+
+        land.id = land._id.toString()
+        delete land._id
+        delete land.__v
+
+        return land
+    }
+
+    else throw new Error('Scheme divisions differ from original')
+
+}
+
+
+    // let veggies = []
     // let newVeggies = []
     // let otherNewVeggies = []
 
-    return Land.findById(landId)
-        .then(async land => {
-            if (scheme.length === land.scheme.length) {
+
+
+    // return Land.findById(landId)
+    //     .then(async land => {
+    //         if (scheme.length === land.scheme.length) {
 
                 // for (let element of scheme) {
                 //     for (let i of element) {
@@ -33,15 +56,14 @@ module.exports = (userId, landId, scheme) => {
                 //     }
                 // }
 
-                land.scheme = scheme
+        //         land.scheme = scheme
 
-                return land.save()
-                    .then(() => { })
-            }
-            else throw new Error('Scheme divisions differ from original')
+        //         return land.save()
+        //             .then(land => land)
+        //     }
+        //     else throw new Error('Scheme divisions differ from original')
 
-        }).then(() => { })
-}
+        // }).then(land => land)
 
 //, { $addToSet: { veggies: veggies } }
 

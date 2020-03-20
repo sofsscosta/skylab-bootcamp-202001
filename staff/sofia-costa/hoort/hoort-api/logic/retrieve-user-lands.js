@@ -2,7 +2,7 @@ const { validate } = require('hoort-utils')
 const { models: { Land, User } } = require('hoort-data')
 const { NotFoundError } = require('../../hoort-errors')
 
-debugger
+
 module.exports = async (userId) => {
     validate.string(userId, 'userId')
 
