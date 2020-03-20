@@ -12,6 +12,7 @@ import retrieveUserLands from './retrieve-user-lands'
 import retrieveLand from './retrieve-land'
 import createLand from './create-land'
 import changeDivisions from './change-divisions'
+import retrieveAll from './retrieve-all'
 
 export {
     registerUser,
@@ -27,5 +28,6 @@ export {
     retrieveUserLands,
     retrieveLand,
     createLand,
-    changeDivisions
+    changeDivisions,
+    retrieveAll
 }

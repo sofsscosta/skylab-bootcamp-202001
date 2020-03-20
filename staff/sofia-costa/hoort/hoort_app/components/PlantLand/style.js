@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import React, { Fragment, useState, useEffect } from 'react'
 
 let height = 460
 let width = 276
@@ -75,6 +74,43 @@ const styles = StyleSheet.create({
         marginTop: 15,
         width: 120,
         height: 120
+    },
+    menu: {
+        // position: 'absolute',
+
+    },
+    menu_icon_container: {
+        flexDirection: 'column',
+    },
+    menu_container: {
+        position: 'absolute',
+        bottom: 100,
+        backgroundColor: 'white',
+        padding: 20,
+        height: 300,
+        width: 250,
+        right: 10,
+        borderWidth: 5,
+        borderRadius: 20,
+        borderColor: 'rgb(171, 126, 195)',
+    },
+    menu_container_hidden: {
+        display: 'none',
+    },
+    menu_veggie: {
+        marginTop: 10,
+        flexDirection: 'row',
+        overflow: 'visible',
+        alignItems: 'center'
+    },
+    menu_image: {
+        height: 50,
+        width: 50,
+        zIndex: 20,
+        marginRight: 20
+    },
+    menu_item_name: {
+        fontSize: 20
     }
 })
 

@@ -1,50 +1,75 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
+import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView, PanResponder, PanResponderInstance, Animated } from 'react-native'
 import styles from './style'
-import { isLoggedIn, createLand, changeDivisions } from '../../logic'
+import { retrieveAll } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
+import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land }) {
 
-    const [token, setToken] = useState()
     const [divisions, setDivisions] = useState(5)
-    const [unit, setUnit] = useState()
     const [scheme, setScheme] = useState(land.scheme)
+    const [menu, setMenu] = useState(false)
+    const [veggies, setVeggies] = useState()
+    const [veggie, setVeggie] = useState(undefined)
 
-    function handlePlantMenu() {
-
+    const images = {
+        tomatoes: require('../../assets/tomatoes.png'),
+        potatoes: require('../../assets/potatoes.png'),
+        carrots: require('../../assets/carrots.png'),
+        strawberries: require('../../assets/strawberries.png'),
+        spinach: require('../../assets/spinach.png')
     }
 
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             let _token = await isLoggedIn()
-    //             if (_token !== null) setToken(_token)
-    //             console.log(token)
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     })()
-    // }, [token])
+    this._panResponder = PanResponder.create({
+        // Ask to be the responder:
+        onStartShouldSetPanResponder: (evt, gestureState) => true,
+        onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+        onMoveShouldSetPanResponder: (evt, gestureState) => true,
+        onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
-    // useEffect(() => {
-    //     setScheme(scheme)
-    // }, [unit])
+        onPanResponderGrant: (evt, gestureState) => {
+            // The gesture has started. Show visual feedback so the user knows
+            // what is happening!
+            // gestureState.d{x,y} will be set to zero now
+        },
+        onPanResponderMove: (evt, gestureState) => {
+            // The most recent move distance is gestureState.move{X,Y}
+            // The accumulated gesture distance since becoming responder is
+            // gestureState.d{x,y}
+        },
+        onPanResponderTerminationRequest: (evt, gestureState) => true,
+        onPanResponderRelease: (evt, gestureState) => {
+            // The user has released all touches while this view is the
+            // responder. This typically means a gesture has succeeded
+        },
+        onPanResponderTerminate: (evt, gestureState) => {
+            // Another component has become the responder, so this gesture
+            // should be cancelled
+        },
+        onShouldBlockNativeResponder: (evt, gestureState) => {
+            // Returns whether this component should block native components from becoming the JS
+            // responder. Returns true by default. Is currently only supported on android.
+            return true;
+        },
+    });
 
-    // useEffect(() => {
-    //     setUnit(unit)
-    // }, [scheme])
+    ; (async function retrieveVeggies() {
+        let veggies
+        try {
+            veggies = await retrieveAll()
+            setVeggies(veggies)
+        } catch (error) {
+            console.log(error)
+        }
+    })()
 
-    // async function handleCreateLand() {
-    //     try {
-    //         await createLand(token, 'first', 'home', 'airy', scheme)
-    //         return goToPlantLand()
-    //     } catch (error) {
-    //         return console.log(error)
-    //     }
-    // }
+    async function handlePlantMenu() {
+        return !menu ? setMenu(true) : setMenu(false)
+    }
+
 
     function handleStyleUnit(unitValue) {
 
@@ -59,16 +84,10 @@ function PlantLand({ land }) {
         }
     }
 
-    // function handlePressUnit(unit, item) {
-    //     let num = unit.index
-    //     setUnit(unit)
-
-    //     element = unit.index
-
-    //     scheme[scheme.indexOf(item)][num] = !unit.item ? true : false
-    //     !unit.item ? unit.item = true : unit.item = false
-    //     console.log(scheme)
-    // }
+    function handleSelectItem(veggie) {
+        handlePlantMenu()
+        return setVeggie(veggie)
+    }
 
     return (
         <Fragment>
@@ -108,17 +127,51 @@ function PlantLand({ land }) {
                             source={change_veggie}
                         ></Image>
                     </View>
-                    <TouchableOpacity
-                        onPress={() => handlePlantMenu()}>
-                        <Image
-                            style={styles.button_plant}
-                            resizeMode='contain'
-                            source={land_with_text}
-                        ></Image>
-                    </TouchableOpacity>
+                    <View style={styles.menu_icon_container}>
+
+                        <View
+                            style={menu ? styles.menu_container : styles.menu_container_hidden}>
+                            <Image
+                                source={styles.land_border}
+                                style={styles.menu_border} />
+                            <FlatList
+                                style={styles.menu}
+                                data={veggies}
+                                keyExtractor={item => item.id}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <TouchableOpacity
+                                            onPress={() => handleSelectItem({ item })}
+                                            style={styles.menu_veggie}>
+                                            <Image
+                                                style={styles.menu_image}
+                                                resizeMode='contain'
+                                                source={images[`${item.name}`]}></Image>
+                                            <Text style={styles.menu_item_name}>{item.name.toUpperCase()}</Text>
+                                        </TouchableOpacity>
+                                    )
+                                }}
+                            ></FlatList>
+                        </View>
+                        <TouchableOpacity
+                            onPress={() => {
+                                if (!veggie) {
+                                    return handlePlantMenu()
+                                }
+                                else {
+                                    return handlePlantMenu()
+                                }
+                            }}>
+                            <Animated.Image
+                                style={styles.button_plant}
+                                resizeMode='contain'
+                                source={!veggie.item.name ? land_with_text : images[`${veggie.item.name}`]}
+                            ></Animated.Image>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ScrollView>
-        </Fragment>
+        </Fragment >
     )
 }
 

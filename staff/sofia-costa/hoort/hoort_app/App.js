@@ -100,7 +100,7 @@ export default function App() {
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} />}
       {view === 'plantLand' && <PlantLand land={land} />}
-      {view === 'detail' /*&& veggie*/ && <Detail item={veggie} />}
+      {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}
     </>

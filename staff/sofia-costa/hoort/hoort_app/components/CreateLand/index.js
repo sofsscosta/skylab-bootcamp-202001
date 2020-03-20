@@ -40,7 +40,7 @@ function CreateLand({ goToPlantLand }) {
     }, [scheme])
 
     async function handleCreateLand() {
-        let name = 'fourth'
+        let name = 'fifth'
         let allLands, land
         try {
             await createLand(token, name, 'home', 'airy', scheme)
