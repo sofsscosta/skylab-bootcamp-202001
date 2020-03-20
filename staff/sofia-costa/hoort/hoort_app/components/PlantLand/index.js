@@ -102,6 +102,9 @@ function PlantLand({ land }) {
 
     function handleSelectItem(veggie) {
         handlePlantMenu()
+
+        //possible problems here
+        // return !veggie ? setVeggie(veggie) : setVeggie(undefined)
         return setVeggie(veggie)
     }
 
@@ -129,15 +132,15 @@ function PlantLand({ land }) {
                                                 if (unit.item && pressed) {
                                                     if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined)
                                                         return handleUnitPressed(scheme.indexOf(item), unit)
-                                                    // else {
-                                                    // return setCurrentLand(newLand)
-                                                    // }
                                                 }
                                             }}>
                                             {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
                                                 && veggie !== undefined
                                                 && <Image
-                                                    source={images[`${veggie.item.name}`]}
+                                                    // source={images[`${veggie.item.name}`]}
+                                                    source={images[
+                                                        `${veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
+                                                    ]}
                                                     style={styles.unit_image}
                                                     resizeMode='contain'></Image>}
                                         </TouchableOpacity>
@@ -148,16 +151,26 @@ function PlantLand({ land }) {
                     }} />
                 <View style={styles.buttons_container}>
                     <View>
-                        <Image
-                            style={styles.button}
-                            resizeMode='contain'
-                            source={plant_now}
-                        ></Image>
-                        <Image
-                            style={styles.button}
-                            resizeMode='contain'
-                            source={change_veggie}
-                        ></Image>
+                        <TouchableOpacity
+                            onPress={() => {
+                                handlePlantMenu()
+
+                                //possible problems
+                                return veggie ? setVeggie(undefined) : ''
+                            }}>
+                            <Image
+                                style={styles.button}
+                                resizeMode='contain'
+                                source={change_veggie}
+                            ></Image>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Image
+                                style={styles.button}
+                                resizeMode='contain'
+                                source={plant_now}
+                            ></Image>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.menu_icon_container}>
 
