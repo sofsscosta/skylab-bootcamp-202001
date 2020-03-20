@@ -65,31 +65,20 @@ function PlantLand({ land }) {
         })()
     }, [unitPressed])
 
-    async function handlePlantMenu() {
-        return !menu ? setMenu(true) : setMenu(false)
+
+    function handleUnitPressed(itemIndexInScheme, unit) {
+        console.log('entered function?')
+        // console.log(unitPressed.item)
+        console.log(itemIndexInScheme)
+        // console.log(unitPressed.unit)
+        console.log(unit)
+
+        // if (unitPressed.item !== itemIndexInScheme && unitPressed.unit !== unit)
+
+        return setUnitPressed({ item: itemIndexInScheme, unit })
     }
 
-    function handlePressed() {
-        return !pressed ? setPressed(true) : setPressed(false)
-    }
 
-    async function handleUnitPressed(itemIndexInScheme, unit) {
-        // let _scheme = land.scheme
-        // try {
-        // console.log('scheme = ' + _scheme)
-        // console.log('unit = ' + _scheme[itemIndexInScheme][unit.index])
-        // _scheme[itemIndexInScheme][unit] = veggie.item.id
-        // await plantInLand(land, _scheme)
-        // console.log('expected = ' + { item: itemIndexInScheme, unit })
-
-        setUnitPressed({ item: itemIndexInScheme, unit })
-
-        return
-
-        // } catch (error) {
-        //     return console.log(error)
-        // }
-    }
 
     function handleStyleUnit(unitValue) {
 
@@ -102,6 +91,14 @@ function PlantLand({ land }) {
         else if (divisions === 20) {
             return !unitValue ? styles.unit_max : styles.unit_pressed_max
         }
+    }
+
+    async function handlePlantMenu() {
+        return !menu ? setMenu(true) : setMenu(false)
+    }
+
+    function handlePressed() {
+        return !pressed ? setPressed(true) : setPressed(false)
     }
 
     function handleSelectItem(veggie) {
@@ -131,17 +128,14 @@ function PlantLand({ land }) {
                                         <TouchableOpacity style={handleStyleUnit(unit.item)}
                                             onPress={() => {
                                                 if (unit.item && pressed) {
-                                                    // console.log(unit.item)
-                                                    // console.log('onPress type = ' + land.scheme[scheme.indexOf(item)][unit] instanceof Boolean)
-                                                    // console.log('callback = ' + currentLand.scheme[scheme.indexOf(item)][unit.index])
-                                                    return handleUnitPressed(scheme.indexOf(item), unit)
+                                                    if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined)
+                                                        return handleUnitPressed(scheme.indexOf(item), unit)
+                                                    // else {
+                                                    // return setCurrentLand(newLand)
+                                                    // }
                                                 }
                                             }}>
-                                            {pressed
-                                                // && unitPressed
-                                                // && unitPressed.item === scheme.indexOf(item)
-                                                // && unitPressed.unit === unit.index
-                                                && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
+                                            {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
                                                 && veggie !== undefined
                                                 && <Image
                                                     source={images[`${veggie.item.name}`]}
