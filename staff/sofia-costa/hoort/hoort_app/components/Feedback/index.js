@@ -2,14 +2,8 @@ import React, { Fragment } from 'react'
 import { Text, View } from 'react-native'
 import styles from './style'
 
-function Feedback(props) {
-    console.log(typeof props.message)
+export default function Feedback(props) {
 
-    return (
-        <View style={styles[props.level]}>
-            <Text style={styles.text}>{props.message}</Text>
-        </View>
-    )
+    return <Text style={styles[props.level]}>{props.message}</Text>
+
 }
-
-export default Feedback

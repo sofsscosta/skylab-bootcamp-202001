@@ -10,7 +10,6 @@ function Detail({ item, goToLandDetails }) {
     const [userInfo, setUserInfo] = useState(undefined)
     const [token, setToken] = useState(undefined)
     const [lands, setLands] = useState()
-    const [currentLand, setCurrentLand] = useState()
 
     useEffect(() => {
         (async () => {
@@ -20,7 +19,7 @@ function Detail({ item, goToLandDetails }) {
                 try {
                     let userItemDetail = await retrieveItemForUser(token, item.id)
                     setUserInfo(userItemDetail)
-                    return console.log('userinfo =  ' + userItemDetail)
+                    return
                 }
                 catch (error) {
                     return console.log(error)
@@ -30,55 +29,25 @@ function Detail({ item, goToLandDetails }) {
     }, [])
 
     useEffect(() => {
-        ; (async () => {
+
+        userInfo && (async () => {
+
             try {
-                let _land = await retrieveLand(token, currentLand)
-                console.log('_land')
-                console.log(_land)
-                return setLand(_land)
-            } catch (error) {
-                return console.log(error)
+                console.log('userInfo', userInfo[0][1])
+                const result = await Promise.all(userInfo[0][1].map(async land => {
+
+                    let retrievedLand = await retrieveLand(token, land)
+                    return retrievedLand
+                }))
+
+                setLands(result)
             }
-        })
-    }, [currentLand])
-
-
-    useEffect(() => {
-        ; (async () => {
-            let retrievedLands
-            let _land
-            // console.log('data')
-            // console.log(data)
-            console.log('userInfo')
-            console.log(userInfo[0][1])
-            userInfo[0][1].forEach(async land => {
-                try {
-                    _land = await retrieveLand(land)
-                    console.log('_land')
-                    console.log(_land)
-                    retrievedLands.push(_land)
-                } catch (error) {
-                    console.log(error)
-                }
-            })
-            return setLands(retrievedLands)
+            catch (error) {
+                console.log(error)
+            }
         })()
-    }, [token])
 
-
-
-    // function handleGetData(data) {
-    //     let retrievedLands
-    //     let _land
-    //     console.log('data')
-    //     console.log(data)
-    //     data.forEach(async land => {
-    //         _land = await retrieveLand(land)
-    //         retrievedLands.push(_land)
-    //     })
-    //     return setLands(retrievedLands)
-    // }
-
+    }, [userInfo])
 
     const images = {
         tomatoes: require('../../assets/tomatoes.png'),
@@ -102,17 +71,6 @@ function Detail({ item, goToLandDetails }) {
     })
 
     bestPeriod = bestPeriod.join(' ')
-
-    // async function handleLand(item) {
-    //     let _land
-    //     try {
-    //         _land = await retrieveLand(token, item)
-    //         return setLand(_land)
-    //     }
-    //     catch (error) {
-    //         return console.log(error)
-    //     }
-    // }
 
     return (
         <Fragment>
@@ -175,15 +133,11 @@ function Detail({ item, goToLandDetails }) {
                                                     data={lands}
                                                     keyExtractor={item => item.id}
                                                     renderItem={({ item }) => {
-                                                        // console.log('data')
-                                                        // console.log(data)
-                                                        console.log('item')
-                                                        console.log(item)
+
                                                         return (
-                                                            < LandsIcons goToLandDetails={goToLandDetails} land={item} />
+                                                            <LandsIcons goToLandDetails={goToLandDetails} land={item} />
                                                         )
-                                                    }}
-                                                >
+                                                    }}>
 
                                                 </FlatList>
                                         }
@@ -198,18 +152,3 @@ function Detail({ item, goToLandDetails }) {
 }
 
 export default Detail
-
-
-// console.log(userInfo)
-// console.log('land = ' + landItem)
-// console.log(landItem)
-// console.log(item)
-// let _land
-
-// console.log('land after processing = ')
-// console.log(land)
-// console.log(_land)
-//handleLand(item)//.then(_land => {setLand(_land)})
-
-
-// setCurrentLand(item)

@@ -11,11 +11,15 @@ const styles = StyleSheet.create({
     },
     error: {
         color: 'rgb(255, 184, 184)',
-        // fontSize: 20
+        fontSize: 20,
+        textAlign: 'center'
     },
-    text: {
-        color: 'black'
-    }
+    warning: {
+        color: 'rgb(126, 194, 144)',
+        fontSize: 20,
+        textAlign: 'center',
+        // top: '700%'
+    },
 })
 
 export default styles

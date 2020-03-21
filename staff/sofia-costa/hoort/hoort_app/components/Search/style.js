@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         paddingRight: 0
     },
+    feedback: {
+        paddingTop: '40%'
+    }
 })
 
 export default styles

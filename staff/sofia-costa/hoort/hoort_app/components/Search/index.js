@@ -3,24 +3,23 @@ import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, Scrol
 import styles from './style'
 import { searchItems } from '../../logic'
 import { Results } from '../'
+import Feedback from '../Feedback'
 
 function Search({ isSuggestions, goToDetail }) {
 
     const [results, setResults] = useState()
     const [query, setQuery] = useState()
+    const [error, setError] = useState(undefined)
 
     async function search(query) {
 
         try {
+            setError(undefined)
             let result = await searchItems(query)
             setResults(result)
-            console.log(result)
-            return result
         }
         catch (error) {
-            console.log('error message here')
-            const { message } = error
-            console.log(message)
+            setError(error.message)
         }
     }
 
@@ -48,7 +47,12 @@ function Search({ isSuggestions, goToDetail }) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <Results results={results} goToDetail={goToDetail} />
+                {error
+                    ? <View style={styles.feedback}>
+                        <Feedback level='warning' message={error} />
+                    </View>
+                    : results &&
+                    <Results results={results} goToDetail={goToDetail} />}
             </ScrollView>
         </Fragment>
     )

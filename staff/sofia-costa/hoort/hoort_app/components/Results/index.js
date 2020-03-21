@@ -9,6 +9,8 @@ function Results({ results, goToDetail, resultsType }) {
     let monthNum = new Date().getMonth()
     let month = months[monthNum]
 
+    console.log(results)
+
     return (
         <Fragment>
             {resultsType === 'myVeggies' && <Text style={styles.title}>My Veggies</Text>}
@@ -18,9 +20,7 @@ function Results({ results, goToDetail, resultsType }) {
                 data={results}
                 keyExtractor={item => item._id ? item._id.toString() : item.id}
                 renderItem={({ item }) => (
-                    !results.length
-                        ? <Text>There are no results to your search!</Text>
-                        : <Item item={item} key={item._id ? item._id.toString() : item.id} goToDetail={goToDetail} />
+                    <Item item={item} key={item._id ? item._id.toString() : item.id} goToDetail={goToDetail} />
                 )} />
         </Fragment>
     )

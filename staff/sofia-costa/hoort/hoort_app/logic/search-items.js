@@ -14,7 +14,7 @@ export default async function (query) {
     const { error } = results
 
     if (error) {
-        return new Error(error)
+        throw new Error(error)
     }
 
     else return results
