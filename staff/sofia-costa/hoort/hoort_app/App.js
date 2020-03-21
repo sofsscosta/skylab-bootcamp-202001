@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
-  Search, Detail, Results, Lands, CreateLand, PlantLand, Modal
+  Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
+  CreateLandModal
 } from './components'
 //import { CreateLand } from './components/CreateLand'
 
@@ -15,6 +16,9 @@ export default function App() {
   const [lands, setLands] = useState()
   const [land, setLand] = useState()
   const [modal, setModal] = useState(false)
+  const [createLandModal, setCreateLandModal] = useState(false)
+  const [modalType, setModalType] = useState()
+  const [newLandProps, setNewLandProps] = useState()
 
   function handleStart() {
     setView('start')
@@ -78,8 +82,13 @@ export default function App() {
 
   }
 
-  function handleGoToCreateLand() {
-    setView('createLand')
+  function handleGoToCreateLand(props) {
+    if (props) {
+      setNewLandProps(props)
+      handleCreateLandModal()
+      setView('createLand')
+    }
+    else setView('createLand')
   }
 
   function handleGoToPlantLand(land) {
@@ -93,19 +102,24 @@ export default function App() {
     !modal ? setModal(true) : setModal(false)
   }
 
+  function handleCreateLandModal() {
+    !createLandModal ? setCreateLandModal(true) : setCreateLandModal(false)
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
-      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} />}
+      {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleCreateLandModal} goToCreateLand={handleGoToCreateLand} />}
+      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
-      {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} />}
+      {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
       {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
-      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} newLandInfo={handleModal} />}
+      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} />}
       {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}

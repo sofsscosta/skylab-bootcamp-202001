@@ -5,7 +5,7 @@ import styles from './style'
 import modal_border from '../../assets/modal_border.png'
 import button from '../../assets/divisions.png'
 
-function Modal({ onBackgroundClick, veggie }) {
+function Modal({ onBackgroundClick, type, veggie }) {
 
     const [currentVeggie, setCurrentVeggie] = useState(veggie)
 

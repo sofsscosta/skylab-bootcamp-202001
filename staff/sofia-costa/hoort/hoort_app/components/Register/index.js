@@ -15,13 +15,10 @@ function Register({ goToLogin }) {
 
         try {
             await registerUser(name, username, email, password)
-            console.log('yeah baby')
             goToLogin()
         }
         catch (error) {
-            console.log('error message here')
             const { message } = error
-
             console.log(message)
         }
     }

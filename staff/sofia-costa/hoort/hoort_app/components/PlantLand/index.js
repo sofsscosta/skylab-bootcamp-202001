@@ -9,6 +9,8 @@ import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land, onClickVeggie }) {
 
+    console.log(land)
+
     const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
     const [divisions, setDivisions] = useState(5)
@@ -73,13 +75,13 @@ function PlantLand({ land, onClickVeggie }) {
 
     function handleStyleUnit(unitValue) {
 
-        if (divisions === 5) {
+        if (land.scheme.length === 5) {
             return !unitValue ? styles.unit_min : styles.unit_pressed_min
         }
-        else if (divisions === 10) {
+        else if (land.scheme.length === 10) {
             return !unitValue ? styles.unit_medium : styles.unit_pressed_medium
         }
-        else if (divisions === 20) {
+        else if (land.scheme.length === 20) {
             return !unitValue ? styles.unit_max : styles.unit_pressed_max
         }
     }

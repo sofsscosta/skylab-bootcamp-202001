@@ -2,10 +2,9 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
 import { isLoggedIn, createLand, changeDivisions, retrieveUserLands, retrieveLand } from '../../logic'
-// import { ChangeDivisions } from '../'
 import divisions_img from '../../assets/divisions_text.png'
 
-function CreateLand({ goToPlantLand }) {
+function CreateLand({ goToPlantLand, initModal, newLandProps }) {
 
     const [token, setToken] = useState()
     const [divisions, setDivisions] = useState(5)
@@ -17,6 +16,10 @@ function CreateLand({ goToPlantLand }) {
         [false, false, false],
         [false, false, false]
     ])
+
+    useState(() => {
+        initModal()
+    }, [])
 
     useEffect(() => {
         (async () => {
@@ -40,14 +43,17 @@ function CreateLand({ goToPlantLand }) {
     }, [scheme])
 
     async function handleCreateLand() {
-        let name = 'fifth'
+
+        console.log(newLandProps)
+        let name = newLandProps.name
+        let location = newLandProps.location
+        let soiltype = newLandProps.soiltype
+
         let allLands, land
         try {
-            await createLand(token, name, 'home', 'airy', scheme)
+            await createLand(token, name, location, soiltype, scheme)
             allLands = await retrieveUserLands(token)
-            // console.log('allLands = ' + allLands)
             land = allLands.find(_land => _land.name === name)
-            // console.log('land = ' + land)
             return goToPlantLand(land)
         } catch (error) {
             return console.log(error)

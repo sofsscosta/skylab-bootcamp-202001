@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         width: 250
     },
     name: {
-        top: 220,
+        bottom: 210,
+        zIndex: 40,
         fontSize: 30,
         color: 'rgb(100, 100, 100)'
     },

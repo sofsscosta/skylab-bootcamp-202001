@@ -1,9 +1,32 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { View, StatusBar, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
-import { logout } from '../../logic';
+import { isLoggedIn } from '../../logic';
 
-const Header = ({ goToLanding, goToMyLands, menuClick }) => {
+const Header = ({ goToLanding, goToMyLands, goToMyVeggies, menuClick }) => {
+
+    const [token, setToken] = useState(undefined)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                let _token = await isLoggedIn()
+                if (_token !== null) setToken(_token)
+            } catch (error) {
+                console.log(error)
+            }
+        })()
+    }, [token])
+
+    async function handleGoToMyVeggies() {
+        try {
+            let userVeggies = await retrieveUserVeggies(token)
+            goToMyVeggies(userVeggies)
+            return menu()
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <Fragment>
@@ -29,7 +52,7 @@ const Header = ({ goToLanding, goToMyLands, menuClick }) => {
                             resizeMode="contain"
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.icon} onPress={() => { logout() }}>
+                    <TouchableOpacity style={styles.icon} onPress={() => token ? handleGoToMyVeggies() : goToLanding()}>
                         <Image
                             style={styles.icon}
                             source={require('../../assets/icon.png')}

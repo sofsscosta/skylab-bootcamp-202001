@@ -43,9 +43,10 @@ const styles = StyleSheet.create({
         flex: 1,
         height: height / 10,
         width: width / 6,
-        backgroundColor: 'rgb(187, 154, 99)',
-        borderWidth: 0.5,
-        borderColor: 'rgb(90, 90, 90)'
+        backgroundColor: 'rgb(255, 243, 223)',
+        borderWidth: 1,
+        borderColor: 'rgb(187, 154, 99)',
+        borderStyle: 'dashed'
     },
     unit_max: {
         flex: 1,
@@ -57,9 +58,10 @@ const styles = StyleSheet.create({
         flex: 1,
         height: height / 20,
         width: width / 12,
-        backgroundColor: 'rgb(187, 154, 99)',
-        borderWidth: 0.5,
-        borderColor: 'rgb(90, 90, 90)'
+        backgroundColor: 'rgb(255, 243, 223)',
+        borderWidth: 1,
+        borderColor: 'rgb(187, 154, 99)',
+        borderStyle: 'dashed'
     },
     unit_image: {
         height: height / 5,

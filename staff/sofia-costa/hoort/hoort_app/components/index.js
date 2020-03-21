@@ -17,6 +17,8 @@ import CreateLand from './CreateLand'
 import ChangeDivisions from './ChangeDivisions'
 import PlantLand from './PlantLand'
 import Modal from './Modal'
+import CreateLandModal from './CreateLandModal'
+
 
 export {
     InitScreen,
@@ -38,4 +40,5 @@ export {
     ChangeDivisions,
     PlantLand,
     Modal,
+    CreateLandModal
 }

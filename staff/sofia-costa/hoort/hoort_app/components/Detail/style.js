@@ -48,6 +48,11 @@ const styles = StyleSheet.create({
         marginTop: 30,
         color: 'rgb(126, 194, 144)',
         fontWeight: "500"
+    },
+    icons: {
+        alignSelf: 'center',
+        // alignItems: 'center',
+        // justifyContent: 'center'
     }
 })
 

@@ -7,7 +7,7 @@ function LandsIcons({ goToLandDetail, land }) {
     debugger
 
     console.log('land inside landsicons')
-    console.log(land)
+    console.log(land.name)
 
     function handleStyleUnit(unit) {
 

@@ -125,23 +125,23 @@ function Detail({ item, goToLandDetails }) {
                             <View style={styles.userVeggie}>
                                 <Text style={styles.subtitles}>{`My ${item.name}  `}</Text>
                                 <View>
-                                    <Text style={styles.userVeggie_description}>
+                                    <Text style={styles.userVeggie_description} />
+                                    <View>
                                         {
                                             userInfo[0][1].length === 0
                                                 ? <Feedback level='warning' message={`You haven\'t planted ${item.name} in your lands yet!`} />
                                                 : <FlatList
                                                     data={lands}
+                                                    style={styles.icons}
                                                     keyExtractor={item => item.id}
                                                     renderItem={({ item }) => {
 
-                                                        return (
-                                                            <LandsIcons goToLandDetails={goToLandDetails} land={item} />
-                                                        )
+                                                        return <LandsIcons goToLandDetails={goToLandDetails} land={item} />
                                                     }}>
 
                                                 </FlatList>
                                         }
-                                    </Text>
+                                    </View>
                                 </View>
                             </View>
                         </Fragment>}
