@@ -13,9 +13,12 @@ module.exports = async (id, landId, itemId) => {
 
     let plantedVeggie = land.plantation.find(plant => plant.veggie.toString() === itemId)
 
-    console.log(plantedVeggie)
+    for (let line of land.scheme) {
 
-    land.plantation.splice(land.plantation.indexOf(plantedVeggie), 1)
+        if (line.includes(plantedVeggie)) return
+
+        else land.plantation.splice(land.plantation.indexOf(plantedVeggie), 1)
+    }
 
     await land.save()
 

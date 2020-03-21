@@ -16,7 +16,7 @@ export default async function (token, landId) {
 
     if (error) throw new Error(error)
 
-    if (!lands) throw new Error('You have no lands yet!')
+    if (!land) throw new Error('You have no lands yet!')
 
     return land
 }

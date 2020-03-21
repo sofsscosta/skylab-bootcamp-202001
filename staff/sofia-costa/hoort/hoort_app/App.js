@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
-  Search, Detail, Results, Lands, CreateLand, PlantLand
+  Search, Detail, Results, Lands, CreateLand, PlantLand, Modal
 } from './components'
 //import { CreateLand } from './components/CreateLand'
 
@@ -14,6 +14,7 @@ export default function App() {
   const [resultsType, setResultsType] = useState()
   const [lands, setLands] = useState()
   const [land, setLand] = useState()
+  const [modal, setModal] = useState(false)
 
   function handleStart() {
     setView('start')
@@ -87,9 +88,15 @@ export default function App() {
     setView('plantLand')
   }
 
+  function handleModal(veg) {
+    setVeggie(veg)
+    !modal ? setModal(true) : setModal(false)
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
+      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
@@ -98,8 +105,8 @@ export default function App() {
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
       {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
-      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} />}
-      {view === 'plantLand' && <PlantLand land={land} />}
+      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} newLandInfo={handleModal} />}
+      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} />}
       {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

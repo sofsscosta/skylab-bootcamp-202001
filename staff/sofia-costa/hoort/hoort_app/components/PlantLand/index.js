@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, TouchableOpacity, Text, View, Image, ScrollView } from 'react-native'
+import { FlatList, TouchableOpacity, Text, View, Image, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import styles from './style'
 import { retrieveAll, plantInLand, isLoggedIn, updateLandAddVeggie } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
@@ -7,7 +7,7 @@ import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
 import land_border from '../../assets/land_border.png'
 
-function PlantLand({ land }) {
+function PlantLand({ land, onClickVeggie }) {
 
     const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
@@ -68,14 +68,6 @@ function PlantLand({ land }) {
 
 
     function handleUnitPressed(itemIndexInScheme, unit) {
-        console.log('entered function?')
-        // console.log(unitPressed.item)
-        console.log(itemIndexInScheme)
-        // console.log(unitPressed.unit)
-        console.log(unit)
-
-        // if (unitPressed.item !== itemIndexInScheme && unitPressed.unit !== unit)
-
         return setUnitPressed({ item: itemIndexInScheme, unit })
     }
 
@@ -102,119 +94,124 @@ function PlantLand({ land }) {
 
     function handleSelectItem(veggie) {
         handlePlantMenu()
-
-        //possible problems here
-        // return !veggie ? setVeggie(veggie) : setVeggie(undefined)
         return setVeggie(veggie)
     }
 
     return (
         <Fragment>
-            <ScrollView
-                style={styles.main_container}
-                scrollEnabled={false}>
-                <FlatList
-                    scrollEnabled={false}
-                    style={styles.container}
-                    data={scheme}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => {
-                        return (
-                            <FlatList
-                                scrollEnabled={false}
-                                horizontal={true}
-                                data={item}
-                                keyExtractor={unit => unit.id}
-                                renderItem={(unit) => {
-                                    return (
-                                        <TouchableOpacity style={handleStyleUnit(unit.item)}
-                                            onPress={() => {
-                                                if (unit.item && pressed) {
-                                                    if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined)
-                                                        return handleUnitPressed(scheme.indexOf(item), unit)
-                                                }
-                                            }}>
-                                            {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
-                                                && veggie !== undefined
-                                                && <Image
-                                                    // source={images[`${veggie.item.name}`]}
-                                                    source={images[
-                                                        `${veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
-                                                    ]}
-                                                    style={styles.unit_image}
-                                                    resizeMode='contain'></Image>}
-                                        </TouchableOpacity>
-                                    )
-                                }}
-                            />
-                        )
-                    }} />
-                <View style={styles.buttons_container}>
-                    <View>
-                        <TouchableOpacity
-                            onPress={() => {
-                                handlePlantMenu()
+            <TouchableWithoutFeedback
+                onPress={() => { return menu ? handlePlantMenu() : '' }}>
+                <ScrollView
+                    style={styles.main_container}
+                    scrollEnabled={false}>
+                    <View
+                        onPress={() => { return menu ? handlePlantMenu() : '' }}>
+                        <FlatList
+                            scrollEnabled={false}
+                            style={styles.container}
+                            data={scheme}
+                            keyExtractor={item => item.id}
+                            renderItem={({ item }) => {
+                                return (
+                                    <FlatList
+                                        scrollEnabled={false}
+                                        horizontal={true}
+                                        data={item}
+                                        keyExtractor={unit => unit.id}
+                                        renderItem={(unit) => {
+                                            return (
+                                                <TouchableOpacity style={handleStyleUnit(unit.item)}
+                                                    onPress={() => {
+                                                        if (unit.item && pressed) {
+                                                            if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined)
+                                                                return handleUnitPressed(scheme.indexOf(item), unit)
+                                                        }
+                                                        else return onClickVeggie(veggie)
+                                                    }}>
+                                                    {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
+                                                        && veggie !== undefined
+                                                        && <Image
+                                                            // source={images[`${veggie.item.name}`]}
+                                                            source={images[
+                                                                `${veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
+                                                            ]}
+                                                            style={styles.unit_image}
+                                                            resizeMode='contain'></Image>}
+                                                </TouchableOpacity>
+                                            )
+                                        }}
+                                    />
+                                )
+                            }} />
+                        <View style={styles.buttons_container}>
+                            <View>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        pressed ? handlePressed() : ''
+                                        return handlePlantMenu()
+                                        //possible problems
+                                        //return veggie ? setVeggie(undefined) : ''
+                                    }}>
+                                    <Image
+                                        style={styles.button}
+                                        resizeMode='contain'
+                                        source={change_veggie}
+                                    ></Image>
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Image
+                                        style={styles.button}
+                                        resizeMode='contain'
+                                        source={plant_now}
+                                    ></Image>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.menu_icon_container}>
+                                <View
+                                    style={menu ? styles.menu_container : styles.menu_container_hidden}>
 
-                                //possible problems
-                                return veggie ? setVeggie(undefined) : ''
-                            }}>
-                            <Image
-                                style={styles.button}
-                                resizeMode='contain'
-                                source={change_veggie}
-                            ></Image>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Image
-                                style={styles.button}
-                                resizeMode='contain'
-                                source={plant_now}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.menu_icon_container}>
+                                    <Image
+                                        source={styles.land_border}
+                                        style={styles.menu_border} />
+                                    <FlatList
+                                        style={styles.menu}
+                                        data={veggies}
+                                        keyExtractor={item => item.id}
+                                        renderItem={({ item }) => {
+                                            return (
+                                                <TouchableOpacity
+                                                    onPress={() => handleSelectItem({ item })}
+                                                    style={styles.menu_veggie}>
+                                                    <Image
+                                                        style={styles.menu_image}
+                                                        resizeMode='contain'
+                                                        source={images[`${item.name}`]}></Image>
+                                                    <Text style={styles.menu_item_name}>{item.name.toUpperCase()}</Text>
+                                                </TouchableOpacity>
+                                            )
+                                        }}
+                                    ></FlatList>
+                                </View>
 
-                        <View
-                            style={menu ? styles.menu_container : styles.menu_container_hidden}>
-                            <Image
-                                source={styles.land_border}
-                                style={styles.menu_border} />
-                            <FlatList
-                                style={styles.menu}
-                                data={veggies}
-                                keyExtractor={item => item.id}
-                                renderItem={({ item }) => {
-                                    return (
-                                        <TouchableOpacity
-                                            onPress={() => handleSelectItem({ item })}
-                                            style={styles.menu_veggie}>
-                                            <Image
-                                                style={styles.menu_image}
-                                                resizeMode='contain'
-                                                source={images[`${item.name}`]}></Image>
-                                            <Text style={styles.menu_item_name}>{item.name.toUpperCase()}</Text>
-                                        </TouchableOpacity>
-                                    )
-                                }}
-                            ></FlatList>
+                                <TouchableOpacity
+                                    style={!pressed ? '' : styles.button_plant_border}
+                                    onPress={() => {
+                                        if (!veggie) {
+                                            return handlePlantMenu()
+                                        }
+                                        else return handlePressed()
+                                    }}>
+                                    <Image
+                                        style={!pressed ? styles.button_plant : styles.button_plant_pressed}
+                                        resizeMode='contain'
+                                        source={!veggie ? land_with_text : images[`${veggie.item.name}`]}
+                                    ></Image>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <TouchableOpacity
-                            style={!pressed ? '' : styles.button_plant_border}
-                            onPress={() => {
-                                if (!veggie) {
-                                    return handlePlantMenu()
-                                }
-                                else return handlePressed()
-                            }}>
-                            <Image
-                                style={!pressed ? styles.button_plant : styles.button_plant_pressed}
-                                resizeMode='contain'
-                                source={!veggie ? land_with_text : images[`${veggie.item.name}`]}
-                            ></Image>
-                        </TouchableOpacity>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </TouchableWithoutFeedback>
         </Fragment >
     )
 }

@@ -16,7 +16,7 @@ import LandsIcons from './LandsIcons'
 import CreateLand from './CreateLand'
 import ChangeDivisions from './ChangeDivisions'
 import PlantLand from './PlantLand'
-
+import Modal from './Modal'
 
 export {
     InitScreen,
@@ -36,5 +36,6 @@ export {
     LandsIcons,
     CreateLand,
     ChangeDivisions,
-    PlantLand
+    PlantLand,
+    Modal,
 }
