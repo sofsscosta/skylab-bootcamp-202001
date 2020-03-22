@@ -32,6 +32,7 @@ function PlantLand({ land, onClickVeggie }) {
     useEffect(() => {
         (async () => {
             try {
+                debugger
                 let _token = await isLoggedIn()
                 if (_token !== null) return setToken(_token)
             } catch (error) {
@@ -42,10 +43,14 @@ function PlantLand({ land, onClickVeggie }) {
 
     useEffect(() => {
         ; (async function retrieveVeggies() {
-            let veggies
             try {
-                veggies = await retrieveAll()
-                return setVeggies(veggies)
+                debugger
+                let veggies = await retrieveAll()
+                setVeggies(veggies)
+
+                let _land = await retrieveLand(token, land.id)
+                return setCurrentLand(_land)
+
             } catch (error) {
                 return console.log('first error = ' + error)
             }
@@ -57,6 +62,7 @@ function PlantLand({ land, onClickVeggie }) {
             let updatedLand
             let _scheme = currentLand.scheme
             try {
+                debugger
                 _scheme[unitPressed.item][unitPressed.unit.index] = veggie.item.id
                 updatedLand = await plantInLand(land.id, _scheme, token)
                 await updateLandAddVeggie(land.id, veggie.item.id, token)
@@ -68,41 +74,73 @@ function PlantLand({ land, onClickVeggie }) {
     }, [unitPressed])
 
     useEffect(() => {
-
         (async () => {
+            let _type
             try {
+                debugger
                 setClickOnSameVeggie(false)
-                let _land = await retrieveLand(token, currentLand.id)
-                setCurrentLand(_land)
-                let plantations = _land.plantation
+
+                // let _land = await retrieveLand(token, currentLand.id)
+                // setCurrentLand(_land)
+
+                let plantations = currentLand.plantation
                 let plantation = plantations.find(plant => plant.veggie.toString() === pressedVeggie)
 
-                if (!plantation.from && !plantation.to) return setPressedVeggieType('notPlanted')
-                else if (plantation.from && !plantation.to) return setPressedVeggieType('planted')
-                else if (plantation.from && plantation.to) return setPressedVeggieType('harvested')
+                if (!plantation.from && !plantation.to) {
+                    _type = 'notPlanted'
+                    await setPressedVeggieType('notPlanted')
+                }
+                else if (plantation.from && !plantation.to) {
+                    _type = 'planted'
+                    await setPressedVeggieType('planted')
+                }
+                else if (plantation.from && plantation.to) {
+                    _type = 'harvested'
+                    await setPressedVeggieType('harvested')
+                }
                 else if (!plantation.from && plantation.to) throw new Error('something went wrong!')
+
+                console.log('pressedVeggie in plantland', pressedVeggie)
+                const veg = await retrieveItem(pressedVeggie)
+                console.log('veg in plantland', veg)
+                console.log('currentLand in plantland', currentLand.plantation)
+                console.log('veggieType in plantland', pressedVeggieType)
+
+                return await onClickVeggie(veg, currentLand, _type, token)
+                // setPressedVeggieType(undefined)
             }
             catch (error) {
                 console.log('pressedveggie error', error)
             }
         })()
 
-    }, [pressedVeggie, clickOnSameVeggie])
+    }, [
+        pressedVeggie
+        , pressedVeggieType
+        , clickOnSameVeggie
+    ])
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const veg = await retrieveItem(pressedVeggie)
-                return await onClickVeggie(veg, pressedVeggieType, token)
-                // setPressedVeggieType(undefined)
-            }
-            catch (error) {
-                return console.log(error)
-            }
-        })()
-    }, [pressedVeggie,
-        pressedVeggieType,
-        clickOnSameVeggie])
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             console.log('pressedVeggie in plantland', pressedVeggie)
+    //             const veg = await retrieveItem(pressedVeggie)
+    //             console.log('veg inplantland', veg)
+    //             console.log('currentLand inplantland', currentLand.plantation)
+    //             console.log('veggieType inplantland', pressedVeggieType)
+
+    //             return await onClickVeggie(veg, currentLand, pressedVeggieType, token)
+    //             // setPressedVeggieType(undefined)
+    //         }
+    //         catch (error) {
+    //             return console.log('last error plantland =>', error)
+    //         }
+    //     })()
+    // }, [
+    //     pressedVeggie,
+    //     pressedVeggieType,
+    //     clickOnSameVeggie
+    // ])
 
 
     function handleUnitPressed(itemIndexInScheme, unit) {

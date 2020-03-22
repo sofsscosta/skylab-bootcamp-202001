@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
@@ -16,11 +16,16 @@ export default function App() {
   const [resultsType, setResultsType] = useState()
   const [lands, setLands] = useState()
   const [land, setLand] = useState()
+  const [landForModal, setLandForModal] = useState()
   const [modal, setModal] = useState(false)
   const [createLandModal, setCreateLandModal] = useState(false)
   const [modalType, setModalType] = useState()
   const [newLandProps, setNewLandProps] = useState()
   const [token, setToken] = useState()
+
+  useEffect(() => {
+    modalType && veggie && landForModal && handleModal(veggie, landForModal, modalType, token)
+  }, [modalType])
 
   function handleStart() {
     setView('start')
@@ -94,13 +99,13 @@ export default function App() {
   }
 
   function handleGoToPlantLand(land) {
-    console.log('land in App = ' + land)
     setLand(land)
     setView('plantLand')
   }
 
-  function handleModal(veg, type, token) {
+  function handleModal(veg, _land, type, token) {
     setVeggie(veg)
+    setLandForModal(_land)
     setModalType(type)
     setToken(token)
     !modal ? setModal(true) : setModal(false)
@@ -114,7 +119,7 @@ export default function App() {
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleCreateLandModal} goToCreateLand={handleGoToCreateLand} />}
-      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={land} token={token} />}
+      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
