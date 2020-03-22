@@ -19,7 +19,7 @@ const path = require('path')
 const { jwtVerifierMidWare } = require('./mid-wares')
 const { mongoose } = require('hoort-data')
 const cors = require('cors')
-debugger
+
 
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -60,13 +60,13 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.post('/items', jsonBodyParser, createItem)
 
-        app.patch('/item', [jwtVerifierMidWare, jsonBodyParser], updateItem)
-
         app.patch('/item/add', [jwtVerifierMidWare, jsonBodyParser], updateItemAdd)
 
         app.patch('/item/planted', [jwtVerifierMidWare, jsonBodyParser], updateItemPlanted)
 
         app.patch('/item/harvested', [jwtVerifierMidWare, jsonBodyParser], updateItemHarvested)
+
+        app.patch('/item', [jwtVerifierMidWare, jsonBodyParser], updateItem)
 
         app.delete('/item/delete', [jwtVerifierMidWare, jsonBodyParser], deleteVeggieFromLand)
 
@@ -84,7 +84,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.get('/land/user', [jwtVerifierMidWare, jsonBodyParser], retrieveUserLands)
 
-        app.get('/land/planted', [jwtVerifierMidWare, jsonBodyParser], retrieveLandPlantations)
+        app.get('/land/planted/:landId', [jwtVerifierMidWare, jsonBodyParser], retrieveLandPlantations)
 
         app.get('/calendar', [jwtVerifierMidWare, jsonBodyParser], retrieveInterval)
 

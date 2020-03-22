@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Image, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import styles from './style'
-import { retrieveAll, plantInLand, isLoggedIn, updateLandAddVeggie } from '../../logic'
+import { retrieveAll, plantInLand, isLoggedIn, updateLandAddVeggie, retrieveItem } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
@@ -20,6 +20,7 @@ function PlantLand({ land, onClickVeggie }) {
     const [veggie, setVeggie] = useState(undefined)
     const [pressed, setPressed] = useState(false)
     const [unitPressed, setUnitPressed] = useState(undefined)
+    const [pressedVeggie, setPressedVeggie] = useState()
 
     const images = {
         tomatoes: require('../../assets/tomatoes.png'),
@@ -99,6 +100,31 @@ function PlantLand({ land, onClickVeggie }) {
         return setVeggie(veggie)
     }
 
+    async function handleOnClickVeggie(_veggie, type) {
+        try {
+            setPressedVeggie(_veggie)
+            let type
+
+            console.log('start')
+            console.log(_veggie)
+            const veg = await retrieveItem(_veggie)
+            console.log('currentLand', currentLand)
+            console.log(veg)
+
+            let plantation = currentLand.plantation.find(plant => plant.veggie.toString() === _veggie)
+            console.log('plantation', plantation)
+
+            if (!plantation.from && !plantation.to) type = 'notPlanted'
+            if (plantation.from && !plantation.from) type = 'planted'
+
+            // const type = veg.
+            return onClickVeggie(veg, type)
+            // console.log('currentVeggie', currentVeggie)
+        } catch (error) {
+            return console.log(error)
+        }
+    }
+
     return (
         <Fragment>
             <TouchableWithoutFeedback
@@ -128,12 +154,13 @@ function PlantLand({ land, onClickVeggie }) {
                                                             if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined)
                                                                 return handleUnitPressed(scheme.indexOf(item), unit)
                                                         }
-                                                        else return onClickVeggie(veggie)
+                                                        else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean')
+                                                            return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index])
+                                                        //return onClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index])
                                                     }}>
                                                     {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
                                                         && veggie !== undefined
                                                         && <Image
-                                                            // source={images[`${veggie.item.name}`]}
                                                             source={images[
                                                                 `${veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
                                                             ]}

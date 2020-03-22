@@ -5,7 +5,7 @@ module.exports = async (userId, landId, scheme) => {
     validate.string(userId, 'userId')
     validate.string(landId, 'landId')
     validate.scheme(scheme)
-    debugger
+
     let land = await Land.findById(landId)
 
     if (!land) throw new Error('This land doesn\'t exist')

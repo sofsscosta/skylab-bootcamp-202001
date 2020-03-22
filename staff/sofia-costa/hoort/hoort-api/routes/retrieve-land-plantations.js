@@ -2,7 +2,7 @@ const { retrieveLandPlantations } = require('../logic')
 const { NotFoundError, NotAllowedError } = require('../../hoort-errors')
 
 module.exports = (req, res) => {
-    const { payload: { sub: userId }, body: { land: landId } } = req
+    const { payload: { sub: userId }, params: { land: landId } } = req
 
     try {
         retrieveLandPlantations(userId, landId)

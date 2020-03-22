@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         maxHeight: '50%',
         width: '80%',
+        borderRadius: 30
     },
     title: {
         textDecorationLine: 'underline',
@@ -23,17 +24,33 @@ const styles = StyleSheet.create({
         fontSize: 30,
         zIndex: 20,
         position: 'absolute',
-        width: 200,
+        width: 230,
         flex: 0.05,
         textAlign: 'center'
     },
-    button: {
-        width: '50%',
+    button_notPlanted: {
+        width: '60%',
+        height: '8%',
+        position: 'absolute',
+        bottom: '55%',
+        zIndex: 20,
+        tintColor: 'rgb(255, 184, 184)',
+    },
+    button_planted: {
+        width: '60%',
         height: '8%',
         position: 'absolute',
         bottom: '55%',
         zIndex: 20,
         tintColor: 'rgb(126, 194, 144)',
+    },
+    button_harvest: {
+        width: '50%',
+        height: '8%',
+        position: 'absolute',
+        bottom: '55%',
+        zIndex: 20,
+        tintColor: 'plum',
     },
     state: {
         color: 'white',

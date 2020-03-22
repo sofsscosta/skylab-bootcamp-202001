@@ -13,14 +13,24 @@ module.exports = async (id, landId, itemId) => {
 
     let plantedVeggie = land.plantation.find(plant => plant.veggie.toString() === itemId)
 
-    for (let line of land.scheme) {
+    let isThere = land.scheme.find(line => line.includes(plantedVeggie))
+    // for (let line of land.scheme) {
 
-        if (line.includes(plantedVeggie)) return
+    //     if (line.includes(plantedVeggie)) return
+    // }
 
-        else land.plantation.splice(land.plantation.indexOf(plantedVeggie), 1)
+    if (isThere) return
+
+    else if (land.plantation.find(plant => plant.veggie.toString() === itemId) !== undefined) {
+
+        console.log(land.plantation)
+        land.plantation.splice(land.plantation.indexOf(plantedVeggie), 1)
+        console.log(land.plantation)
+
+        await land.save()
+
+        return
     }
 
-    await land.save()
-
-    return
+    else throw new Error('this veggie is neither on this land nor on this land\'s plantation')
 }

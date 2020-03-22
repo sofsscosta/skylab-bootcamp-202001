@@ -8,6 +8,8 @@ module.exports = async (userId, landId, itemId) => {
     validate.string(landId, 'landId')
     validate.string(itemId, 'itemId')
 
+    debugger
+
     let veggie = await Item.findById(itemId)
 
     if (!veggie) throw new ContentError('item does not exist')

@@ -15,6 +15,10 @@ import changeDivisions from './change-divisions'
 import retrieveAll from './retrieve-all'
 import plantInLand from './plant-in-land'
 import updateLandAddVeggie from './update-land-add-veggie'
+import updateLandPlantVeggie from './update-land-plant-veggie'
+import updateLandHarvestVeggie from './update-land-harvest-veggie'
+// import retrieveLandPlantation from './retrieve-land-plantation'
+
 
 export {
     registerUser,
@@ -33,5 +37,8 @@ export {
     changeDivisions,
     retrieveAll,
     plantInLand,
-    updateLandAddVeggie
+    updateLandAddVeggie,
+    updateLandPlantVeggie,
+    updateLandHarvestVeggie,
+    // retrieveLandPlantation
 }
