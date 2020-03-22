@@ -13,7 +13,6 @@ function PlantLand({ land, onClickVeggie }) {
 
     const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
-    const [divisions, setDivisions] = useState(5)
     const [scheme, setScheme] = useState(land.scheme)
     const [menu, setMenu] = useState(false)
     const [veggies, setVeggies] = useState()
@@ -21,6 +20,8 @@ function PlantLand({ land, onClickVeggie }) {
     const [pressed, setPressed] = useState(false)
     const [unitPressed, setUnitPressed] = useState(undefined)
     const [pressedVeggie, setPressedVeggie] = useState()
+    const [pressedVeggieType, setPressedVeggieType] = useState()
+    const [clickOnSameVeggie, setClickOnSameVeggie] = useState(false)
 
     const images = {
         tomatoes: require('../../assets/tomatoes.png'),
@@ -69,6 +70,34 @@ function PlantLand({ land, onClickVeggie }) {
         })()
     }, [unitPressed])
 
+    useEffect(() => {
+
+        let _type
+        (async () => {
+            try {
+                setClickOnSameVeggie(false)
+                const veg = await retrieveItem(pressedVeggie)
+
+                let plantation = currentLand.plantation.find(plant => plant.veggie.toString() === pressedVeggie)
+                console.log('plantation', plantation)
+
+                if (!plantation.from && !plantation.to) _type = 'notPlanted'
+                else if (plantation.from && !plantation.to) _type = 'planted'
+                else if (plantation.from && plantation.to) _type = 'harvested'
+                else if (!plantation.from && plantation.to) throw new Error('something went wrong!')
+                setPressedVeggieType(_type)
+
+                console.log('type', _type)
+                console.log('updated plantation', plantation)
+                return await onClickVeggie(veg, _type)
+            }
+            catch (error) {
+                console.log(error)
+            }
+        })()
+
+    }, [pressedVeggie, clickOnSameVeggie])
+
 
     function handleUnitPressed(itemIndexInScheme, unit) {
         return setUnitPressed({ item: itemIndexInScheme, unit })
@@ -100,29 +129,30 @@ function PlantLand({ land, onClickVeggie }) {
         return setVeggie(veggie)
     }
 
-    async function handleOnClickVeggie(_veggie, type) {
-        try {
-            setPressedVeggie(_veggie)
-            let type
+    async function handleOnClickVeggie(_veggie) {
+        setClickOnSameVeggie(true)
+        return setPressedVeggie(_veggie)
+        // try {
+        //     let type
 
-            console.log('start')
-            console.log(_veggie)
-            const veg = await retrieveItem(_veggie)
-            console.log('currentLand', currentLand)
-            console.log(veg)
+        //     console.log('start')
+        //     console.log(_veggie)
+        //     const veg = await retrieveItem(_veggie)
+        //     console.log('currentLand', currentLand)
+        //     console.log(veg)
 
-            let plantation = currentLand.plantation.find(plant => plant.veggie.toString() === _veggie)
-            console.log('plantation', plantation)
+        //     let plantation = currentLand.plantation.find(plant => plant.veggie.toString() === _veggie)
+        //     console.log('plantation', plantation)
 
-            if (!plantation.from && !plantation.to) type = 'notPlanted'
-            if (plantation.from && !plantation.from) type = 'planted'
+        //     if (!plantation.from && !plantation.to) type = 'notPlanted'
+        //     if (plantation.from && !plantation.from) type = 'planted'
 
-            // const type = veg.
-            return onClickVeggie(veg, type)
-            // console.log('currentVeggie', currentVeggie)
-        } catch (error) {
-            return console.log(error)
-        }
+        //     // const type = veg.
+        //     return onClickVeggie(veg, type)
+        //     // console.log('currentVeggie', currentVeggie)
+        // } catch (error) {
+        //     return console.log(error)
+        // }
     }
 
     return (
@@ -151,11 +181,15 @@ function PlantLand({ land, onClickVeggie }) {
                                                 <TouchableOpacity style={handleStyleUnit(unit.item)}
                                                     onPress={() => {
                                                         if (unit.item && pressed) {
-                                                            if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined)
+                                                            if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined) {
+                                                                console.log('entered if')
                                                                 return handleUnitPressed(scheme.indexOf(item), unit)
+                                                            }
                                                         }
-                                                        else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean')
+                                                        else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean') {
+                                                            console.log('entered else')
                                                             return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index])
+                                                        }
                                                         //return onClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index])
                                                     }}>
                                                     {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'

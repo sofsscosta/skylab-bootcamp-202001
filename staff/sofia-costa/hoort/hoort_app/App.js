@@ -5,6 +5,7 @@ import {
   CreateLandModal
 } from './components'
 //import { CreateLand } from './components/CreateLand'
+import { TouchableWithoutFeedback } from 'react-native'
 
 export default function App() {
 

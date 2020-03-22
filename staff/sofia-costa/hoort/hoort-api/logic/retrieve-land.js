@@ -8,7 +8,7 @@ module.exports = (userId, landId) => {
 
     return Land.findById(landId)
         .then(land => {
-            if (!land) return new NotFoundError(`land with id ${id} does not exist`)
+            if (!land) return new NotFoundError(`land with id ${landId} does not exist`)
 
             return { id: landId, name: land.name, location: land.location, soiltype: land.soiltype, scheme: land.scheme, plantation: land.plantation }
         })

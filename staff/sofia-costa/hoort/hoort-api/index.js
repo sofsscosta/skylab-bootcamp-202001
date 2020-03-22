@@ -94,7 +94,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.delete('/land', [jwtVerifierMidWare, jsonBodyParser], deleteLand)
 
-        app.get('/land/:land', [jwtVerifierMidWare, jsonBodyParser], retrieveLand)
+        app.get('/land/:landId', [jwtVerifierMidWare, jsonBodyParser], retrieveLand)
 
         app.get('/items/reccommended', searchReccommended)
 

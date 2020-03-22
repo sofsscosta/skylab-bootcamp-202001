@@ -7,7 +7,7 @@ export default async function (token, landId) {
 
     const retrieve = await fetch(`http://192.168.0.30:8085/land/${landId}`, {
         method: 'GET',
-        headers: { 'Authorization': `Bearer ${token}` }
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
     })
 
     const land = await retrieve.json()

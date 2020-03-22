@@ -7,16 +7,20 @@ module.exports = async (userId) => {
 
     let veggies = []
     let results = []
-
+    // let lands = []
+    debugger
     let user = await User.findById(userId)
 
-    let lands = user.lands.toObject()
+    let userLands = user.lands
+
+    const lands = await Promise.all(userLands.map(async _land => {
+        let land = await Land.findById(_land._id.toString())
+        return land.toObject()
+    }))
 
     for (let _land of lands) {
 
-        let land = await Land.findById(_land.toString())
-
-        land.plantation.map(veggie => { if (!veggies.includes(veggie.veggie)) veggies.push(veggie.veggie) })
+        _land.plantation.forEach(veggie => { if (!veggies.includes(veggie.veggie.toString())) veggies.push(veggie.veggie.toString()) })
     }
 
     for (let veggie of veggies) {
