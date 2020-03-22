@@ -4,8 +4,6 @@ import {
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
   CreateLandModal
 } from './components'
-//import { CreateLand } from './components/CreateLand'
-import { TouchableWithoutFeedback } from 'react-native'
 
 export default function App() {
 
@@ -23,9 +21,6 @@ export default function App() {
   const [newLandProps, setNewLandProps] = useState()
   const [token, setToken] = useState()
 
-  useEffect(() => {
-    modalType && veggie && landForModal && handleModal(veggie, landForModal, modalType, token)
-  }, [modalType])
 
   function handleStart() {
     setView('start')
@@ -129,7 +124,7 @@ export default function App() {
       {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
-      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} />}
+      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} />}
       {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, TouchableOpacity, Text, View } from 'react-native'
+import { FlatList, TouchableOpacity, TouchableWithoutFeedback, Text, View } from 'react-native'
 import styles from './style'
 import { isLoggedIn, logout, retrieveUserVeggies, searchSuggested, retrieveUserLands } from '../../logic'
 
@@ -100,22 +100,24 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
 
     return (
         < Fragment >
-            <FlatList
-                style={styles.container__all}
-                data={data}
-                keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <TouchableOpacity
-                        style={styles.container}
-                        key={item.id}
-                        title={item.title}
-                        onPress={() => item.action()}>
-                        <View>
-                            <Text style={styles.options}>{item.title}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
-            />
+            <TouchableWithoutFeedback onPress={() => menu()}>
+                <FlatList
+                    style={styles.container__all}
+                    data={data}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            style={styles.container}
+                            key={item.id}
+                            title={item.title}
+                            onPress={() => item.action()}>
+                            <View>
+                                <Text style={styles.options}>{item.title}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    )}
+                />
+            </TouchableWithoutFeedback>
         </Fragment >
     )
 }

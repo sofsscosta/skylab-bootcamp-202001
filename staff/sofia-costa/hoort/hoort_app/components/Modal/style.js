@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: '55%',
         zIndex: 20,
-        tintColor: 'rgb(255, 184, 184)',
+        tintColor: 'rgb(360, 170, 170)',
     },
     button_planted: {
         width: '60%',
@@ -61,6 +61,27 @@ const styles = StyleSheet.create({
         width: 200,
         flex: 0.05,
         textAlign: 'center'
+    },
+    update_button_container: {
+        borderRadius: 20,
+        width: 200,
+        height: 30,
+        zIndex: 20,
+        justifyContent: 'center',
+        backgroundColor: 'rgb(126, 194, 144)',
+        bottom: 200,
+    },
+    update_button_not_planted: {
+        fontSize: 15,
+        textAlign: 'center',
+        borderRadius: 20,
+        color: 'white'
+    },
+    update_button_planted: {
+
+    },
+    update_button_harvested: {
+
     }
 })
 
