@@ -17,7 +17,7 @@ module.exports = function (landId, veggieId, token) {
         })
 
         if (response.status === 201) {
-            console.log('successful')
+            // console.log('successful')
             return
         }
 

@@ -20,6 +20,7 @@ export default function App() {
   const [createLandModal, setCreateLandModal] = useState(false)
   const [modalType, setModalType] = useState()
   const [newLandProps, setNewLandProps] = useState()
+  const [token, setToken] = useState()
 
   function handleStart() {
     setView('start')
@@ -98,9 +99,10 @@ export default function App() {
     setView('plantLand')
   }
 
-  function handleModal(veg, type) {
+  function handleModal(veg, type, token) {
     setVeggie(veg)
     setModalType(type)
+    setToken(token)
     !modal ? setModal(true) : setModal(false)
   }
 
@@ -112,7 +114,7 @@ export default function App() {
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleCreateLandModal} goToCreateLand={handleGoToCreateLand} />}
-      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={land} />}
+      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={land} token={token} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
