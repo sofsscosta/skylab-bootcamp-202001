@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
         width: 300,
         marginLeft: 20,
         alignSelf: 'center',
-        color: 'white'
+        color: 'white',
+        fontWeight: '200'
     }
 
 })

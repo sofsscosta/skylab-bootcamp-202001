@@ -160,7 +160,8 @@ const styles = StyleSheet.create({
     submit_text: {
         color: 'white',
         fontSize: 40,
-        zIndex: 50
+        zIndex: 50,
+        fontWeight: '200'
     },
     name: {
         marginTop: '10%',

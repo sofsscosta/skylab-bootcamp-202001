@@ -9,8 +9,6 @@ import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land, onClickVeggie, updatedLand, submit }) {
 
-    // console.log('land plantland', land)
-
     const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
     const [scheme, setScheme] = useState(land.scheme)
@@ -176,10 +174,10 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit }) {
                                                         }
                                                     }}>
                                                     {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
-                                                        && veggie !== undefined
+                                                        // && veggie !== undefined
                                                         && <Image
                                                             source={images[
-                                                                `${veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
+                                                                `${veggies && veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
                                                             ]}
                                                             style={handleStyleUnitImage(unit.item)}
                                                             resizeMode='contain'></Image>}

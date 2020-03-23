@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: 'rgb(147, 147, 147)',
         height: 70,
-        fontSize: 20
+        fontSize: 25,
+        fontWeight: '200'
         //display: 'flex',
         // overflow: 'visible'
     },

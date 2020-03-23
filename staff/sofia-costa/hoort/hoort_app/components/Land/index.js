@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, TouchableOpacity, Text, View, Image, ScrollView, TouchableWithoutFeedback } from 'react-native'
+import { FlatList, TouchableOpacity, Text, View, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { retrieveAll, plantInLand, isLoggedIn, updateLandAddVeggie, retrieveItem, retrieveLand } from '../../logic'
+import { retrieveAll, plantInLand, updateLandAddVeggie, retrieveLand, deleteLand, retrieveUserLands } from '../../logic'
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
@@ -13,10 +13,8 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
 
     const [currentLand, setCurrentLand] = useState(landFromPlantLand ? landFromPlantLand : landFromMyLands)
     const [scheme, setScheme] = useState(currentLand.scheme)
-    const [menu, setMenu] = useState(false)
     const [veggies, setVeggies] = useState()
     const [veggie, setVeggie] = useState(undefined)
-    const [pressed, setPressed] = useState(false)
     const [unitPressed, setUnitPressed] = useState(undefined)
 
     const images = {
@@ -90,7 +88,19 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
     }
 
     async function handleDeleteLand() {
+        await deleteLand(currentLand.id, token)
+        return handleOnSubmit()
+    }
 
+    async function handleOnSubmit() {
+
+        let lands
+        try {
+            lands = await retrieveUserLands(token)
+            return submit(lands, token)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -141,7 +151,7 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
             </ScrollView>
             <TouchableOpacity
                 style={styles.submit}
-                onPress={() => submit()}>
+                onPress={() => handleOnSubmit()}>
                 <Text style={styles.submit_text}>DONE</Text>
             </TouchableOpacity>
         </Fragment >

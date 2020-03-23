@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         fontSize: 50,
         paddingTop: 40,
         alignSelf: 'center',
-        color: 'rgb(147, 147, 147)'
+        color: 'rgb(147, 147, 147)',
+        // fontWeight: '200'
     },
     button: {
         width: 250,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         height: 50,
         top: 13,
         //alignSelf: 'flex-start',
-        color: 'white'
+        color: 'white',
     },
     add: {
         height: 50,
