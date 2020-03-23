@@ -9,7 +9,7 @@ import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land, onClickVeggie, updatedLand }) {
 
-    console.log('land plantland', land)
+    // console.log('land plantland', land)
 
     const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
@@ -47,6 +47,8 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
                 setVeggies(veggies)
 
                 let _land = await retrieveLand(token, land.id)
+                console.log('updatedLand in plantLand', _land)
+
                 return setCurrentLand(_land)
 
             } catch (error) {
@@ -102,7 +104,7 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
         return setVeggie(veggie)
     }
 
-    async function handleOnClickVeggie(_veggie) {
+    async function handleOnClickVeggie(_veggie, item, unit) {
 
         try {
             let _type
@@ -116,7 +118,7 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
             else if (!plantation.from && plantation.to) throw new Error('something went wrong!')
 
             const veg = await retrieveItem(_veggie)
-            await onClickVeggie(veg, currentLand, _type, token)
+            await onClickVeggie(veg, currentLand, _type, { item, unit }, token)
             return
 
         } catch (error) {
@@ -151,11 +153,13 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
                                                     onPress={() => {
                                                         if (unit.item && pressed) {
                                                             if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined) {
+                                                                console.log('entered if')
                                                                 return handleUnitPressed(scheme.indexOf(item), unit)
                                                             }
                                                         }
                                                         else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean') {
-                                                            return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index])
+                                                            console.log('entered else')
+                                                            return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index], scheme.indexOf(item), unit)
                                                         }
                                                     }}>
                                                     {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
@@ -236,6 +240,9 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                        <TouchableOpacity onPress={() => submit()}>
+                            <Text>DONE</Text>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </TouchableWithoutFeedback>

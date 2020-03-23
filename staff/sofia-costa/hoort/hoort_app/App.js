@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
-  CreateLandModal
+  CreateLandModal, Land
 } from './components'
 
 export default function App() {
@@ -19,6 +19,7 @@ export default function App() {
   const [createLandModal, setCreateLandModal] = useState(false)
   const [modalType, setModalType] = useState()
   const [newLandProps, setNewLandProps] = useState()
+  const [coordinates, setCoordinates] = useState()
   const [token, setToken] = useState()
 
 
@@ -98,10 +99,11 @@ export default function App() {
     setView('plantLand')
   }
 
-  function handleModal(veg, _land, type, token) {
+  function handleModal(veg, _land, type, _coordinates, token) {
     setVeggie(veg)
     setLandForModal(_land)
     setModalType(type)
+    setCoordinates(_coordinates)
     setToken(token)
     !modal ? setModal(true) : setModal(false)
   }
@@ -110,11 +112,15 @@ export default function App() {
     !createLandModal ? setCreateLandModal(true) : setCreateLandModal(false)
   }
 
+  function handleGoToRetrievedLand() {
+    setView('retrievedLand')
+  }
+
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleCreateLandModal} goToCreateLand={handleGoToCreateLand} />}
-      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} />}
+      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
@@ -124,7 +130,8 @@ export default function App() {
       {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
-      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} />}
+      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand()} />}
+      {view === 'retrievedLand' && <Land />}
       {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

@@ -18,6 +18,7 @@ import ChangeDivisions from './ChangeDivisions'
 import PlantLand from './PlantLand'
 import Modal from './Modal'
 import CreateLandModal from './CreateLandModal'
+import Land from './Land'
 
 
 export {
@@ -40,5 +41,6 @@ export {
     ChangeDivisions,
     PlantLand,
     Modal,
-    CreateLandModal
+    CreateLandModal,
+    Land
 }

@@ -17,6 +17,7 @@ import plantInLand from './plant-in-land'
 import updateLandAddVeggie from './update-land-add-veggie'
 import updateLandPlantVeggie from './update-land-plant-veggie'
 import updateLandHarvestVeggie from './update-land-harvest-veggie'
+import deleteVeggieFromLand from './delete-veggie-from-land'
 // import retrieveLandPlantation from './retrieve-land-plantation'
 
 
@@ -40,5 +41,6 @@ export {
     updateLandAddVeggie,
     updateLandPlantVeggie,
     updateLandHarvestVeggie,
+    deleteVeggieFromLand
     // retrieveLandPlantation
 }

@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "hoort-errors": "file:../hoort-errors",
     "hoort-utils": "file:../hoort-utils",
+    "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "react": "16.9.0",
     "react-native": "0.61.5",

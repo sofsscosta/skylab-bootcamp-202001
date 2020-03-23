@@ -1,13 +1,18 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { View, Text, StatusBar, Image, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { isLoggedIn, retrieveItem, updateLandPlantVeggie, updateLandHarvestVeggie, retrieveLand } from '../../logic'
+import { updateLandPlantVeggie, updateLandHarvestVeggie, retrieveLand, deleteVeggieFromLand, plantInLand } from '../../logic'
 import styles from './style'
 import modal_border from '../../assets/modal_border.png'
 import button from '../../assets/divisions.png'
+const moment = require('moment')
 
-function Modal({ onBackgroundClick, type, veggie, land, token }) {
+function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
+
+
+    console.log('unitPressed in modal', unitPressed)
 
     const [currentType, setCurrentType] = useState(type)
+    const [days, setDays] = useState()
 
     async function handlePlant() {
         try {
@@ -21,7 +26,6 @@ function Modal({ onBackgroundClick, type, veggie, land, token }) {
 
     async function handleHarvest() {
         try {
-            console.log('entered')
             await updateLandHarvestVeggie(land.id, veggie.id, token)
             return setCurrentType('harvested')
         }
@@ -30,21 +34,44 @@ function Modal({ onBackgroundClick, type, veggie, land, token }) {
         }
     }
 
-    function handleDays() {
+    async function handleDelete() {
+        try {
+            land.scheme[unitPressed.item][unitPressed.unit.index] = true
+            let _land = await plantInLand(land.id, land.scheme, token)
 
-        let today = new Date()
-        let minimun = new Date()
-        let plantation = land.plantation.find(plant => plant.veggie.id.toString() === veggie.id)
+            for (let line of land.scheme) {
+                if (line.includes(veggie.id.toString())) return onBackgroundClick()
+            }
 
-        let minDate = plantation.estTime.slice('-')[0]
-        let sepDays = minDate.slice('/')
-        let newMinDate = sepDays[2] + '-' + sepDays[1] + '-' + sepDays[0]
-        newMinDate = new Date(newMinDate)
-
-        let days = newMinDate.getDate() - today.getDate()
-
-        return days
+            await deleteVeggieFromLand(land.id, veggie.id, token)
+            console.log('land in modal', _land)
+            return onBackgroundClick()
+            //return setCurrentType(undefined)
+        }
+        catch (error) {
+            return console.log(error)
+        }
     }
+
+    if (currentType === 'planted')
+        (async () => {
+
+            let _land = await retrieveLand(token, land.id)
+            let plantation = _land.plantation.find(plant => plant.veggie.toString() === veggie.id)
+
+            let today = new Date()
+            let minDate = plantation.estTime.split('-')[0].split('/')
+
+            minDate[0].length === 1 ? minDate[0] = '0' + minDate[0] : ''
+            minDate[1].length === 1 ? minDate[1] = '0' + minDate[1] : ''
+
+            let newMinDate = minDate[2] + '-' + minDate[1] + '-' + minDate[0]
+            let newMin = new Date(newMinDate)
+
+            let _days = Math.floor((newMin - today) / (1000 * 60 * 60 * 24))
+
+            return setDays(_days + 3) // to get the average day to harvest
+        })()
 
     return (
         <TouchableWithoutFeedback
@@ -70,21 +97,24 @@ function Modal({ onBackgroundClick, type, veggie, land, token }) {
                     currentType === 'harvested' && 'HARVESTED'
                     // || currentType === 'ready' && 'READY'
                 }</Text>
-                <Text>{
-                    currentType === 'planted' && `${() => handleDays()}} TILL HARVEST`
-                }</Text>
+                <Text style={styles.days}>{currentType === 'planted' && days && `${days} DAYS TILL HARVEST`}</Text>
                 <TouchableOpacity
-                    style={styles.update_button_container}
+                    style={currentType === 'notPlanted' && styles.update_button_container}
                     onPress={() => currentType === 'notPlanted' && handlePlant() ||
-                        currentType === 'planted' /*|| currentType === 'ready'*/ && handleHarvest()
+                        currentType === 'planted' && handleHarvest()
                     }>
                     <Text style={
                         currentType === 'notPlanted' && styles.update_button_not_planted ||
                         currentType === 'planted' && styles.update_button_planted
                     }>{
                             currentType === 'notPlanted' && 'CLICK TO PLANT' ||
-                            currentType === 'planted' && 'UPDATE TO HARVESTED'
+                            currentType === 'planted' && 'CLICK TO UPDATE TO HARVESTED'
                         }</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.delete_container}
+                    onPress={() => handleDelete()}>
+                    <Text style={styles.delete_text}>DELETE</Text>
                 </TouchableOpacity>
                 <View>
                 </View>

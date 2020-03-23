@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     title: {
         textDecorationLine: 'underline',
         color: 'rgb(135, 135, 135)',
-        bottom: '67%',
+        bottom: '68%',
         fontSize: 30,
         zIndex: 20,
         position: 'absolute',
@@ -71,6 +71,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(126, 194, 144)',
         bottom: 200,
     },
+    update_button_container_planted: {
+        borderRadius: 20,
+        width: 200,
+        height: 30,
+        zIndex: 20,
+        justifyContent: 'center',
+        backgroundColor: 'grey',
+        bottom: 200,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     update_button_not_planted: {
         fontSize: 15,
         textAlign: 'center',
@@ -78,11 +89,40 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     update_button_planted: {
-
+        fontSize: 15,
+        textAlign: 'center',
+        borderRadius: 20,
+        zIndex: 20,
+        position: 'absolute',
+        bottom: 150,
+        alignSelf: 'center',
+        color: 'rgb(126, 194, 144)',
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
     },
     update_button_harvested: {
 
+    },
+    days: {
+        bottom: 210,
+        fontSize: 20,
+        fontWeight: '200'
+    },
+    delete_container: {
+        borderRadius: 20,
+        width: 100,
+        height: 30,
+        zIndex: 20,
+        justifyContent: 'center',
+        backgroundColor: 'rgb(180, 180, 180)',
+        bottom: 100,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    delete_text: {
+        color: 'white'
     }
+
 })
 
 export default styles
