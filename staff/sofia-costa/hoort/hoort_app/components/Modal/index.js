@@ -33,11 +33,15 @@ function Modal({ onBackgroundClick, type, veggie, land, token }) {
     function handleDays() {
 
         let today = new Date()
+        let minimun = new Date()
         let plantation = land.plantation.find(plant => plant.veggie.id.toString() === veggie.id)
 
         let minDate = plantation.estTime.slice('-')[0]
+        let sepDays = minDate.slice('/')
+        let newMinDate = sepDays[2] + '-' + sepDays[1] + '-' + sepDays[0]
+        newMinDate = new Date(newMinDate)
 
-        22 / 5 / 2020 - 11 / 6 / 2020
+        let days = newMinDate.getDate() - today.getDate()
 
         return days
     }
@@ -67,7 +71,7 @@ function Modal({ onBackgroundClick, type, veggie, land, token }) {
                     // || currentType === 'ready' && 'READY'
                 }</Text>
                 <Text>{
-                    currentType === 'planted' && `${() => handleDays()} TILL HARVEST`
+                    currentType === 'planted' && `${() => handleDays()}} TILL HARVEST`
                 }</Text>
                 <TouchableOpacity
                     style={styles.update_button_container}
