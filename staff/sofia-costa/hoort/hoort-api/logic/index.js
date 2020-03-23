@@ -23,5 +23,6 @@ module.exports = {
     retrieveInterval: require('./retrieve-interval'),
     deleteVeggieFromLand: require('./delete-veggie-from-land'),
     retrieveAllItems: require('./retrieve-all-items'),
-    updateItemAdd: require('./update-item-add')
+    updateItemAdd: require('./update-item-add'),
+    retrieveUserPlantations: require('./retrieve-user-plantations')
 }

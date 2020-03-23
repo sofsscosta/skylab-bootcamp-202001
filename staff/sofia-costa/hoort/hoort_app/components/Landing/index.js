@@ -1,9 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { View, Text, StatusBar, Button, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
-import { retrieveUserLands } from '../../logic'
+import { retrieveUserLands, isLoggedIn } from '../../logic'
 
-const Landing = ({ goToRegister, goToMyLands, token }) => {
+const Landing = ({ goToRegister, goToMyLands }) => {
+
+    const [token, setToken] = useState()
+
+    useEffect(() => {
+        (async () => {
+            try {
+                let _token = await isLoggedIn()
+                console.log('token from useeffect in app', _token)
+                if (_token !== null) return setToken(_token)
+            } catch (error) {
+                return console.log('token error in app = ', error)
+            }
+        })()
+    }, [])
 
     return (
         <Fragment>

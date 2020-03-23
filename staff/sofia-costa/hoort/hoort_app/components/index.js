@@ -19,6 +19,7 @@ import PlantLand from './PlantLand'
 import Modal from './Modal'
 import CreateLandModal from './CreateLandModal'
 import Land from './Land'
+import Calendar from './Calendar'
 
 
 export {
@@ -42,5 +43,6 @@ export {
     PlantLand,
     Modal,
     CreateLandModal,
-    Land
+    Land,
+    Calendar
 }

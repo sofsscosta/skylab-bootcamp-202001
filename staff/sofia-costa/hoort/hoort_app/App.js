@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
-  CreateLandModal, Land
+  CreateLandModal, Land, Calendar
 } from './components'
 import { isLoggedIn } from './logic'
 
@@ -27,6 +27,7 @@ export default function App() {
     (async () => {
       try {
         let _token = await isLoggedIn()
+        console.log('token from useeffect in app', _token)
         if (_token !== null) return setToken(_token)
       } catch (error) {
         return console.log('token error in app = ', error)
@@ -68,8 +69,10 @@ export default function App() {
     setResultsType('myVeggies')
   }
 
-  function handleGoToCalendar() {
-
+  function handleGoToCalendar(_token) {
+    console.log('token in app', _token)
+    setToken(_token)
+    setView('calendar')
   }
 
   function handleGoToEditProfile() {
@@ -145,6 +148,7 @@ export default function App() {
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
       {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
+      {view === 'calendar' && <Calendar token={token} />}
       {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

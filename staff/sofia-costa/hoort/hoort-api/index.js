@@ -9,7 +9,8 @@ const { registerUser, authenticateUser, retrieveUser, updateUser, deleteUser, cr
     retrieveItem, searchItems, createLand, retrieveLand, deleteLand, searchReccommended,
     updateLandDivisions, updateLandPlanted, updateItem, updateItemPlanted, updateItemHarvested,
     retrieveUserVeggies, retrieveLandPlantations, retrieveItemForUser, retrieveUserLands,
-    deleteVeggieFromLand, retrieveInterval, retrieveAllItems, updateItemAdd } = require('./routes')
+    deleteVeggieFromLand, retrieveInterval, retrieveAllItems, updateItemAdd,
+    retrieveUserPlantations } = require('./routes')
 
 const { name, version } = require('./package')
 const bodyParser = require('body-parser')
@@ -83,6 +84,8 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
         app.post('/land', [jwtVerifierMidWare, jsonBodyParser], createLand)
 
         app.get('/land/user', [jwtVerifierMidWare, jsonBodyParser], retrieveUserLands)
+
+        app.get('/land/plantations', [jwtVerifierMidWare, jsonBodyParser], retrieveUserPlantations)
 
         app.get('/land/planted/:landId', [jwtVerifierMidWare, jsonBodyParser], retrieveLandPlantations)
 

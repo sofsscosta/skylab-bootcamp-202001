@@ -82,7 +82,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 }
             }
         },
-        { id: 4, title: 'CALENDAR', action: () => { goToCalendar(); return menu() } },
+        { id: 4, title: 'CALENDAR', action: () => { goToCalendar(token); return menu() } },
         {
             id: 5, title: 'SEARCH', action: () => {
                 goToSearch()

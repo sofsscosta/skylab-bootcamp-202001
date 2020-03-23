@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        //backgroundColor: 'rgb(170, 126, 194)'
     },
     landing: {
         width: 150,
