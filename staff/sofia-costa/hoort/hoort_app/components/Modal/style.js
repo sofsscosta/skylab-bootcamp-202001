@@ -72,14 +72,12 @@ const styles = StyleSheet.create({
         bottom: 200,
     },
     update_button_container_planted: {
-        borderRadius: 20,
-        width: 200,
-        height: 30,
+        // borderRadius: 20,
+        // width: 200,
+        // height: 30,
         zIndex: 20,
         justifyContent: 'center',
-        backgroundColor: 'grey',
-        bottom: 200,
-        justifyContent: 'center',
+        bottom: 160,
         alignItems: 'center'
     },
     update_button_not_planted: {
@@ -94,7 +92,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         zIndex: 20,
         position: 'absolute',
-        bottom: 150,
+        // bottom: 150,
         alignSelf: 'center',
         color: 'rgb(126, 194, 144)',
         fontWeight: 'bold',

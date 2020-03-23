@@ -48,7 +48,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 let lands
                 try {
                     lands = await retrieveUserLands(token)
-                    goToMyLands(lands)
+                    goToMyLands(lands, token)
                     return menu()
                 } catch (error) {
                     console.log(error)

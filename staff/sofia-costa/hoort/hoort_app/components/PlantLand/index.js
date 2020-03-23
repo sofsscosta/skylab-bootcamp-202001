@@ -7,7 +7,7 @@ import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
 import land_border from '../../assets/land_border.png'
 
-function PlantLand({ land, onClickVeggie, updatedLand }) {
+function PlantLand({ land, onClickVeggie, updatedLand, submit }) {
 
     // console.log('land plantland', land)
 
@@ -91,6 +91,19 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
         }
     }
 
+    function handleStyleUnitImage(unitValue) {
+
+        if (currentLand.scheme.length === 5) {
+            return styles.unit_image_min
+        }
+        else if (currentLand.scheme.length === 10) {
+            return styles.unit_image_medium
+        }
+        else if (currentLand.scheme.length === 20) {
+            return styles.unit_image_max
+        }
+    }
+
     async function handlePlantMenu() {
         return !menu ? setMenu(true) : setMenu(false)
     }
@@ -168,7 +181,7 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
                                                             source={images[
                                                                 `${veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
                                                             ]}
-                                                            style={styles.unit_image}
+                                                            style={handleStyleUnitImage(unit.item)}
                                                             resizeMode='contain'></Image>}
                                                 </TouchableOpacity>
                                             )
@@ -240,12 +253,17 @@ function PlantLand({ land, onClickVeggie, updatedLand }) {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <TouchableOpacity onPress={() => submit()}>
-                            <Text>DONE</Text>
-                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </TouchableWithoutFeedback>
+            <TouchableOpacity
+                style={styles.submit}
+                onPress={() => {
+                    console.log(currentLand, 'updatedLand in plantland')
+                    return submit(currentLand, token)
+                }}>
+                <Text style={styles.submit_text}>DONE</Text>
+            </TouchableOpacity>
         </Fragment >
     )
 }

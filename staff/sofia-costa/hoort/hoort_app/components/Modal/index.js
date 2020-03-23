@@ -99,9 +99,15 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
                 }</Text>
                 <Text style={styles.days}>{currentType === 'planted' && days && `${days} DAYS TILL HARVEST`}</Text>
                 <TouchableOpacity
-                    style={currentType === 'notPlanted' && styles.update_button_container}
-                    onPress={() => currentType === 'notPlanted' && handlePlant() ||
-                        currentType === 'planted' && handleHarvest()
+                    style={
+                        currentType === 'notPlanted' && styles.update_button_container ||
+                        currentType === 'planted' && styles.update_button_container_planted
+                    }
+                    onPress={() => {
+                        console.log('onclick', currentType)
+                        return currentType === 'notPlanted' && handlePlant() ||
+                            currentType === 'planted' && handleHarvest()
+                    }
                     }>
                     <Text style={
                         currentType === 'notPlanted' && styles.update_button_not_planted ||

@@ -43,7 +43,9 @@ export default function App() {
     !menu ? setMenu(true) : setMenu(false)
   }
 
-  function handleGoToMyLands(userLands) {
+  function handleGoToMyLands(userLands, token) {
+    console.log('token in app from menu', token)
+    setToken(token)
     setView('myLands')
     setLands(userLands)
   }
@@ -81,10 +83,6 @@ export default function App() {
     setView('detail')
   }
 
-  function handleGoToLandDetail() {
-
-  }
-
   function handleGoToCreateLand(props) {
     if (props) {
       setNewLandProps(props)
@@ -112,8 +110,11 @@ export default function App() {
     !createLandModal ? setCreateLandModal(true) : setCreateLandModal(false)
   }
 
-  function handleGoToRetrievedLand() {
-    setView('retrievedLand')
+  function handleGoToRetrievedLand(land, token) {
+    console.log('land in app', token)
+    setToken(token)
+    setLand(land)
+    setView('land')
   }
 
   return (
@@ -127,11 +128,11 @@ export default function App() {
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
-      {view === 'myLands' && <Lands goToLandDetail={handleGoToLandDetail} goToCreateLand={handleGoToCreateLand} lands={lands} />}
+      {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
-      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand()} />}
-      {view === 'retrievedLand' && <Land />}
+      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
+      {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
       {view === 'detail' && <Detail item={veggie} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}

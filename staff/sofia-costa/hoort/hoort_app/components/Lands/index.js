@@ -1,12 +1,25 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { LandsIcons } from '../'
-import { isLoggedIn, retrieveLands } from '../../logic'
+import { LandsIcons, Feedback } from '../'
+import { isLoggedIn, retrieveLands, retrieveLand } from '../../logic'
 import newLand from '../../assets/my_lands.png'
 import add from '../../assets/add.png'
 
-function Lands({ goToLandDetail, goToCreateLand, lands }) {
+function Lands({ goToLandDetail, goToCreateLand, lands, token }) {
+
+    // console.log('token in lands', token)
+
+    async function handlegoToLandDetail(land) {
+        try {
+            let _land = await retrieveLand(token, land.id)
+            console.log('_land', _land)
+            return goToLandDetail(_land, token)
+        }
+        catch (error) {
+            return console.log(error)
+        }
+    }
 
     return (
         <Fragment>
@@ -38,8 +51,8 @@ function Lands({ goToLandDetail, goToCreateLand, lands }) {
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
                         !lands.length
-                            ? <Text>You have no lands yet!</Text>
-                            : <LandsIcons land={item} key={item.id} goToLandDetail={goToLandDetail} />
+                            ? <Feedback level='warning' message={'you have no lands yet!'} />
+                            : <LandsIcons land={item} key={item.id} goToLandDetail={() => handlegoToLandDetail(item)} />
                     )} />
             </ScrollView>
         </Fragment>

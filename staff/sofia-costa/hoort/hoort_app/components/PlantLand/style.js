@@ -63,9 +63,20 @@ const styles = StyleSheet.create({
         borderColor: 'rgb(187, 154, 99)',
         borderStyle: 'dashed'
     },
-    unit_image: {
+    unit_image_min: {
         height: height / 5,
         width: width / 3,
+        backgroundColor: 'white'
+    },
+    unit_image_medium: {
+        height: height / 10,
+        width: width / 6,
+        backgroundColor: 'white'
+    },
+    unit_image_max: {
+        height: height / 20,
+        width: width / 12,
+        backgroundColor: 'white'
     },
     buttons_container: {
         flexDirection: 'row'
@@ -98,8 +109,6 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     menu: {
-        // position: 'absolute',
-
     },
     menu_icon_container: {
         flexDirection: 'column',
@@ -133,6 +142,19 @@ const styles = StyleSheet.create({
     },
     menu_item_name: {
         fontSize: 20
+    },
+    submit: {
+        alignSelf: 'center',
+        position: 'absolute',
+        width: 130,
+        right: 0,
+        bottom: 25,
+        zIndex: 50
+    },
+    submit_text: {
+        color: 'white',
+        fontSize: 40,
+        zIndex: 50
     }
 })
 
