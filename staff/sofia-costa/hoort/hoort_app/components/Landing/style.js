@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'rgb(150, 150, 150)',
-        fontSize: 50
+        fontSize: 50,
+        fontWeight: '200'
     }
 })
 

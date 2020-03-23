@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         overflow: 'visible'
     },
     container: {
-        marginTop: 20,
+        marginTop: 10,
         flexDirection: 'row',
         alignSelf: 'center',
         width: width,
@@ -181,6 +181,20 @@ const styles = StyleSheet.create({
     edit: {
         alignSelf: 'center',
         color: 'white',
+        paddingTop: '2%'
+    },
+    delete_container: {
+        alignSelf: 'center',
+        top: '5%',
+        width: '80%',
+        height: '5%',
+        textAlign: 'center',
+        borderRadius: 20,
+        backgroundColor: 'rgb(240, 240, 240)',
+    },
+    delete: {
+        alignSelf: 'center',
+        color: 'grey',
         paddingTop: '2%'
     },
 })

@@ -1,14 +1,26 @@
 import React, { Fragment } from 'react';
 import { View, Text, StatusBar, Button, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
+import { retrieveUserLands } from '../../logic'
 
-const Landing = ({ goToRegister }) => {
+const Landing = ({ goToRegister, goToMyLands, token }) => {
 
     return (
         <Fragment>
             <View style={styles.container}>
-                <TouchableOpacity onPress={event => {
-                    return goToRegister()
+                <TouchableOpacity onPress={() => {
+                    return token
+                        && (async () => {
+                            let lands
+                            try {
+                                lands = await retrieveUserLands(token)
+                                goToMyLands(lands, token)
+                                return menu()
+                            } catch (error) {
+                                console.log(error)
+                            }
+                        })()
+                        || goToRegister()
                 }}>
                     <Image
                         style={styles.landing}

@@ -76,7 +76,7 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
         }
     }
 
-    function handleStyleUnitImage(unitValue) {
+    function handleStyleUnitImage() {
 
         if (currentLand.scheme.length === 5) {
             return styles.unit_image_min
@@ -87,6 +87,10 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
         else if (currentLand.scheme.length === 20) {
             return styles.unit_image_max
         }
+    }
+
+    async function handleDeleteLand() {
+
     }
 
     return (
@@ -129,6 +133,9 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
                     <Text style={styles.name}>{currentLand.name.toUpperCase()}</Text>
                     <TouchableOpacity style={styles.edit_container} onPress={() => goToPlantLand(currentLand)}>
                         <Text style={styles.edit}>CLICK HERE TO EDIT</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.delete_container} onPress={() => handleDeleteLand()}>
+                        <Text style={styles.delete}>DELETE LAND</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

@@ -66,17 +66,14 @@ const styles = StyleSheet.create({
     unit_image_min: {
         height: height / 5,
         width: width / 3,
-        backgroundColor: 'white'
     },
     unit_image_medium: {
         height: height / 10,
         width: width / 6,
-        backgroundColor: 'white'
     },
     unit_image_max: {
         height: height / 20,
         width: width / 12,
-        backgroundColor: 'white'
     },
     buttons_container: {
         flexDirection: 'row'
@@ -154,7 +151,8 @@ const styles = StyleSheet.create({
     submit_text: {
         color: 'white',
         fontSize: 40,
-        zIndex: 50
+        zIndex: 50,
+        fontWeight: '200'
     }
 })
 

@@ -4,6 +4,7 @@ import {
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
   CreateLandModal, Land
 } from './components'
+import { isLoggedIn } from './logic'
 
 export default function App() {
 
@@ -21,6 +22,17 @@ export default function App() {
   const [newLandProps, setNewLandProps] = useState()
   const [coordinates, setCoordinates] = useState()
   const [token, setToken] = useState()
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let _token = await isLoggedIn()
+        if (_token !== null) return setToken(_token)
+      } catch (error) {
+        return console.log('token error in app = ', error)
+      }
+    })()
+  }, [])
 
 
   function handleStart() {
@@ -122,9 +134,9 @@ export default function App() {
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleCreateLandModal} goToCreateLand={handleGoToCreateLand} />}
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
-      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} />}
+      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} token={token} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
-      {view === 'start' && <Landing goToRegister={handleGoToRegister} />}
+      {view === 'start' && <Landing goToRegister={handleGoToRegister} token={token} goToMyLands={handleGoToMyLands} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}

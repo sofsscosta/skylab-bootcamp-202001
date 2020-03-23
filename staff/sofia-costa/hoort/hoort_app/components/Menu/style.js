@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
         top: 165,
         width: 250,
         backgroundColor: 'rgb(221, 254, 231)',
-        zIndex: 10
+        zIndex: 10,
+        borderBottomRightRadius: 20
     },
     container: {
         flex: 1,
