@@ -5,9 +5,11 @@ import {
   CreateLandModal, Land, Calendar
 } from './components'
 import { isLoggedIn } from './logic'
+import { TouchableWithoutFeedback } from 'react-native'
 
 export default function App() {
 
+  const [error, setError] = useState()
   const [view, setView] = useState('init')
   const [menu, setMenu] = useState(false)
   const [veggie, setVeggie] = useState(undefined)
@@ -27,28 +29,31 @@ export default function App() {
     (async () => {
       try {
         let _token = await isLoggedIn()
-        console.log('token from useeffect in app', _token)
         if (_token !== null) return setToken(_token)
       } catch (error) {
-        return console.log('token error in app = ', error)
+        return setError(error.message)
       }
     })()
   }, [])
 
 
   function handleStart() {
+    setMenu(false)
     setView('start')
   }
 
   function handleGoToRegister() {
+    setMenu(false)
     setView('register')
   }
 
   function handleGoToLogin() {
+    setMenu(false)
     setView('login')
   }
 
   function handleGoToLanding() {
+    setMenu(false)
     setView('start')
   }
 
@@ -56,21 +61,29 @@ export default function App() {
     !menu ? setMenu(true) : setMenu(false)
   }
 
-  function handleGoToMyLands(userLands, token) {
-    console.log('token in app from menu', token)
+  function handleGoToMyLands(userLands, token, _error) {
+    menu ? setMenu(false) : ''
+    setError(undefined)
+
+    _error && setError(_error)
     setToken(token)
     setLands(userLands)
     setView('myLands')
   }
 
-  function handleGoToMyVeggies(userVeggies) {
+  function handleGoToMyVeggies(userVeggies, _error) {
+    setMenu(false)
+    setError(undefined)
+
+    _error && setError(_error)
     setView('userVeggies')
     setVeggies(userVeggies)
     setResultsType('myVeggies')
   }
 
   function handleGoToCalendar(_token) {
-    console.log('token in app', _token)
+    setMenu(false)
+    setError(undefined)
     setToken(_token)
     setView('calendar')
   }
@@ -83,7 +96,11 @@ export default function App() {
     setView('search')
   }
 
-  function handleGoToSuggestions(suggestedVeggies) {
+  function handleGoToSuggestions(suggestedVeggies, _error) {
+    setMenu(false)
+    setError(undefined)
+    console.log('_error in app', _error)
+    _error && setError(_error)
     setView('userVeggies')
     setVeggies(suggestedVeggies)
     setResultsType('suggested')
@@ -94,11 +111,16 @@ export default function App() {
   }
 
   function handleGoToDetail(veggie) {
+    setMenu(false)
+    setError(undefined)
     setVeggie(veggie)
     setView('detail')
   }
 
-  function handleGoToCreateLand(props) {
+  function handleGoToCreateLand(props, _error) {
+    setMenu(false)
+    setError(undefined)
+    if (_error) return
     if (props) {
       setNewLandProps(props)
       handleCreateLandModal()
@@ -108,11 +130,15 @@ export default function App() {
   }
 
   function handleGoToPlantLand(land) {
+    setMenu(false)
+    setError(undefined)
     setLand(land)
     setView('plantLand')
   }
 
   function handleModal(veg, _land, type, _coordinates, token) {
+    setMenu(false)
+    setError(undefined)
     setVeggie(veg)
     setLandForModal(_land)
     setModalType(type)
@@ -126,6 +152,8 @@ export default function App() {
   }
 
   function handleGoToRetrievedLand(land, token) {
+    setMenu(false)
+    setError(undefined)
     console.log('land in app', land)
     setToken(token)
     setLand(land)
@@ -133,18 +161,19 @@ export default function App() {
   }
 
   return (
+    // <TouchableWithoutFeedback style={{ height: '100%', width: '100%' }} onPress={() => menu ? handleMenu() : ''}>
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleGoToMyLands} goToCreateLand={handleGoToCreateLand} />}
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
-      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} token={token} />}
+      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} token={token} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
       {view === 'start' && <Landing goToRegister={handleGoToRegister} token={token} goToMyLands={handleGoToMyLands} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
-      {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} />}
-      {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} />}
+      {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} _error={error} />}
+      {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} _error={error} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
       {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
@@ -153,6 +182,7 @@ export default function App() {
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}
     </>
+    // </TouchableWithoutFeedback>
   )
 }
 

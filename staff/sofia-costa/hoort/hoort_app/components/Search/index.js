@@ -16,11 +16,14 @@ function Search({ isSuggestions, goToDetail }) {
         try {
             setError(undefined)
             let result = await searchItems(query)
+            if (result.length === 0) {
+                throw new Error('There are no results for your search :(')
+            }
             setResults(result)
-            console.log('wut')
         }
         catch (error) {
-            setError(error.message)
+            console.log(error)
+            return setError(error)
         }
     }
 
@@ -38,7 +41,8 @@ function Search({ isSuggestions, goToDetail }) {
                             title='query'
                             placeholder='search here'
                             onSubmitEditing={async () => { return await search(query) }}
-                            onChangeText={(query) => setQuery(query)} />
+                            onChangeText={(query) => setQuery(query)}
+                        />
                         <TouchableOpacity
                             onPress={async () => { return await search(query) }} >
                             <Image
@@ -48,14 +52,9 @@ function Search({ isSuggestions, goToDetail }) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                {error
-                    ? <View style={styles.feedback}>
-                        <Feedback level='warning' message={error} />
-                    </View>
-                    : results &&
-                    <Results results={results} goToDetail={goToDetail} />}
+                <Results results={results} goToDetail={goToDetail} _error={error ? error : ''} />
             </ScrollView>
-        </Fragment>
+        </Fragment >
     )
 }
 

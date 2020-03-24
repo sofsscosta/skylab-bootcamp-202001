@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         justifyContent: 'center',
-        // alignItems: 'flex-start',
         marginRight: 50,
         marginLeft: 50,
         marginBottom: 50,

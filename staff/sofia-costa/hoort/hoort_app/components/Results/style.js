@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
         color: 'rgb(147, 147, 147)'
     },
     feedback: {
-        margin: 45,
+        height: 300,
+        top: 100,
+        margin: 40,
     }
 })
 

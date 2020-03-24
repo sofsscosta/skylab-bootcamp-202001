@@ -18,10 +18,10 @@ module.exports = function (operation, scheme) {
         })
 
         const newScheme = await response.json()
-        console.log('here!')
-        console.log(newScheme)
 
         const { error } = response
+
+        console.log(error)
 
         if (error) throw new Error(error)
 

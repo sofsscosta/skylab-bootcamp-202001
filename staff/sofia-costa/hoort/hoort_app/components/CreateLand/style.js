@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     button_text: {
         color: 'white',
         fontSize: 40,
-        zIndex: 50
+        zIndex: 50,
+        fontWeight: '200'
     },
 
     divisions_container: {

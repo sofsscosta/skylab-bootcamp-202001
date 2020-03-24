@@ -4,10 +4,10 @@ export default StyleSheet.create({
     message_container: {
         flexDirection: 'row',
         alignSelf: 'center',
-        margin: 20,
+        marginHorizontal: 20,
         flexWrap: 'wrap',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
     },
     message: {
         fontSize: 20,

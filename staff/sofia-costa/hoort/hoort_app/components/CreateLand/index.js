@@ -3,9 +3,12 @@ import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput,
 import styles from './style'
 import { isLoggedIn, createLand, changeDivisions, retrieveUserLands, retrieveLand } from '../../logic'
 import divisions_img from '../../assets/divisions_text.png'
+import { ErrorModal } from '../'
 
 function CreateLand({ goToPlantLand, initModal, newLandProps }) {
 
+    const [error, setError] = useState()
+    const [errorModal, setErrorModal] = useState(false)
     const [token, setToken] = useState()
     const [divisions, setDivisions] = useState(5)
     const [unit, setUnit] = useState()
@@ -20,6 +23,10 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
     useState(() => {
         initModal()
     }, [])
+
+    useState(() => {
+        setErrorModal(true)
+    }, [error])
 
     useEffect(() => {
         (async () => {
@@ -55,8 +62,9 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
             allLands = await retrieveUserLands(token)
             land = allLands.find(_land => _land.name === name)
             return goToPlantLand(land)
-        } catch (error) {
-            return console.log(error)
+        } catch (_error) {
+            setError(_error)
+            return handleToggle()
         }
     }
 
@@ -66,8 +74,9 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
             _scheme = await changeDivisions(operation, scheme)
             setDivisions(_scheme.length)
             return setScheme(_scheme)
-        } catch (error) {
-            return console.log(error)
+        } catch (_error) {
+            setError(_error)
+            return handleToggle()
         }
     }
 
@@ -93,6 +102,14 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
         scheme[scheme.indexOf(item)][num] = !unit.item ? true : false
         !unit.item ? unit.item = true : unit.item = false
         console.log(scheme)
+    }
+
+    function handleToggle() {
+        if (errorModal) {
+            setErrorModal(false)
+            return initModal()
+        }
+        else setErrorModal(true)
     }
 
     return (
@@ -144,6 +161,9 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
                 }}>
                 <Text style={styles.button_text}>NEXT</Text>
             </TouchableOpacity>
+            {errorModal && error &&
+                <ErrorModal level='error' message={error.message} toggle={handleToggle} />
+            }
         </Fragment>
     )
 }

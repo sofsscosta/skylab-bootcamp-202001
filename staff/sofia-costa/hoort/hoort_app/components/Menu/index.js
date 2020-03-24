@@ -3,34 +3,43 @@ import { FlatList, TouchableOpacity, TouchableWithoutFeedback, Text, View } from
 import styles from './style'
 import { isLoggedIn, logout, retrieveUserVeggies, searchSuggested, retrieveUserLands } from '../../logic'
 
-function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToSearch, goToSuggestions, goToTutorial, menu }) {
+function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToSearch, goToSuggestions, goToTutorial, goToLanding, menu }) {
 
     let notLoggedMenu, loggedMenu
 
     const [data, setData] = useState(notLoggedMenu)
     const [token, setToken] = useState(undefined)
+    const [error, setError] = useState(undefined)
 
     useEffect(() => {
         (async () => {
             try {
+                setError(undefined)
                 let _token = await isLoggedIn()
                 if (_token !== null) {
                     setToken(_token)
                     setData(loggedMenu)
                 } else setData(notLoggedMenu)
             } catch (error) {
-                console.log(error)
+                setError(error)
             }
         })()
     }, [token])
 
     notLoggedMenu = [
-        { id: 1, title: 'SEARCH', action: () => { goToSearch(); return menu() } },
+        {
+            id: 1, title: 'SEARCH', action: () => {
+                setError(undefined)
+                goToSearch()
+                return menu()
+            }
+        },
         {
             id: 2, title: 'WHAT TO PLANT', action: async () => {
                 let suggestedVeggies
 
                 try {
+                    setError(undefined)
                     suggestedVeggies = await searchSuggested()
                     goToSuggestions(suggestedVeggies)
                     return menu()
@@ -39,19 +48,26 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 }
             }
         },
-        { id: 3, title: 'TUTORIAL', action: () => { goToTutorial(); return menu() } }
+        { id: 3, title: 'TUTORIAL', action: () => { setError(undefined); goToTutorial(); return menu() } }
     ]
 
     loggedMenu = [
         {
             id: 1, title: 'MY LANDS', action: async () => {
+                let _error
                 let lands
                 try {
+                    setError(undefined)
                     lands = await retrieveUserLands(token)
+                    if (lands.length === 0) {
+                        _error = new Error('You have no lands yet!')
+                        throw new Error('You have no lands yet!')
+                    }
                     goToMyLands(lands, token)
                     return menu()
                 } catch (error) {
-                    console.log(error)
+                    setError(error)
+                    return goToMyLands(lands, token, _error)
                 }
             }
         },
@@ -61,11 +77,16 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 let userVeggies
 
                 try {
+                    setError(undefined)
                     userVeggies = await retrieveUserVeggies(token)
-                    goToMyVeggies(userVeggies)
+                    if (userVeggies.length === 0) {
+                        throw new Error('You have no veggies in your lands yet!')
+                    }
+                    goToMyVeggies(userVeggies, error)
                     return menu()
                 } catch (error) {
-                    console.log(error)
+                    setError(error.message)
+                    return goToMyVeggies(userVeggies, error)
                 }
             }
         },
@@ -74,6 +95,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
 
                 let suggestedVeggies
                 try {
+                    setError(undefined)
                     suggestedVeggies = await searchSuggested()
                     goToSuggestions(suggestedVeggies)
                     return menu()
@@ -82,17 +104,20 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 }
             }
         },
-        { id: 4, title: 'CALENDAR', action: () => { goToCalendar(token); return menu() } },
+        { id: 4, title: 'CALENDAR', action: () => { setError(undefined); goToCalendar(token); return menu() } },
         {
             id: 5, title: 'SEARCH', action: () => {
+                setError(undefined)
                 goToSearch()
                 return menu()
             }
         },
-        { id: 6, title: 'EDIT PROFILE', action: () => { return goToEditProfile() } },
+        { id: 6, title: 'EDIT PROFILE', action: () => { setError(undefined); return goToEditProfile() } },
         {
             id: 7, title: 'LOGOUT', action: async () => {
+                setError(undefined)
                 await logout()
+                goToLanding()
                 return menu()
             }
         }
@@ -100,7 +125,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
 
     return (
         < Fragment >
-            <TouchableWithoutFeedback onPress={() => menu()}>
+            <TouchableWithoutFeedback style={{ height: '100%', width: '100%' }} onPress={() => menu()}>
                 <FlatList
                     style={styles.container__all}
                     data={data}
