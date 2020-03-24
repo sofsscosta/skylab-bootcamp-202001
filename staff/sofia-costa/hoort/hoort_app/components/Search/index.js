@@ -17,6 +17,7 @@ function Search({ isSuggestions, goToDetail }) {
             setError(undefined)
             let result = await searchItems(query)
             setResults(result)
+            console.log('wut')
         }
         catch (error) {
             setError(error.message)

@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
         flex: 1,
         height: height / 20,
         width: width / 12,
-        borderWidth: 1,
     },
     unit_pressed_max: {
         flex: 1,

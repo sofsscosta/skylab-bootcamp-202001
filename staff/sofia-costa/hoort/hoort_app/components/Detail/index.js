@@ -5,7 +5,7 @@ import { isLoggedIn, retrieveItemForUser, retrieveLand } from '../../logic'
 import Feedback from '../Feedback'
 import LandsIcons from '../LandsIcons'
 
-function Detail({ item, goToLandDetails }) {
+function Detail({ item, goToLandDetail }) {
 
     const [userInfo, setUserInfo] = useState(undefined)
     const [token, setToken] = useState(undefined)
@@ -72,6 +72,18 @@ function Detail({ item, goToLandDetails }) {
 
     bestPeriod = bestPeriod.join(' ')
 
+
+    async function goToLandDetails(land) {
+        try {
+            let _land = await retrieveLand(token, land.id)
+            console.log('_land', _land)
+            return goToLandDetail(_land, token)
+        }
+        catch (error) {
+            return console.log(error)
+        }
+    }
+
     return (
         <Fragment>
             <View style={styles.title_container}>
@@ -116,14 +128,14 @@ function Detail({ item, goToLandDetails }) {
                         <Fragment>
                             <View
                                 style={styles.inline}>
-                                <Text style={styles.subtitles}>Growth time from our users  </Text><Text style={styles.description}>{`${userInfo[1][1]} days`}</Text>
+                                <Text style={styles.subtitles_special}>Growth time from our users  </Text><Text style={styles.description}>{`${userInfo[1][1]} days`}</Text>
                             </View>
                             {userInfo[2] && <View
                                 style={styles.inline}>
-                                <Text style={styles.subtitles}>My average growth time  </Text><Text style={styles.description}>{`${userInfo[2][1]} days`}</Text>
+                                <Text style={styles.subtitles_special}>My average growth time  </Text><Text style={styles.description}>{`${userInfo[2][1]} days`}</Text>
                             </View>}
                             <View style={styles.userVeggie}>
-                                <Text style={styles.subtitles}>{`My ${item.name}  `}</Text>
+                                <Text style={styles.subtitles_user_lands}>{`My ${item.name}  `}</Text>
                                 <View>
                                     <Text style={styles.userVeggie_description} />
                                     <View>
@@ -136,7 +148,7 @@ function Detail({ item, goToLandDetails }) {
                                                     keyExtractor={item => item.id}
                                                     renderItem={({ item }) => {
 
-                                                        return <LandsIcons goToLandDetails={goToLandDetails} land={item} />
+                                                        return <LandsIcons goToLandDetails={() => goToLandDetails(item)} land={item} token={token} />
                                                     }}>
 
                                                 </FlatList>

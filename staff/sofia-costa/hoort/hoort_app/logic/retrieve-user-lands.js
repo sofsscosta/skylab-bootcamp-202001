@@ -19,7 +19,7 @@ export default async function (token) {
 
     if (error) throw new Error(error)
 
-    if (!lands.length) throw new Error('You have no lands yet!')
+    // if (!lands.length) throw new Error('You have no lands yet!')
 
     return lands
 }

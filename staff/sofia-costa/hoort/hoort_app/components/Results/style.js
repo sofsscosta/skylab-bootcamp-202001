@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         alignSelf: 'center',
         color: 'rgb(147, 147, 147)'
+    },
+    feedback: {
+        margin: 45,
     }
 })
 

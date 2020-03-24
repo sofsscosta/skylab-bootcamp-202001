@@ -9,9 +9,10 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         justifyContent: 'center',
-        marginRight: 40,
-        marginLeft: 40,
-        marginBottom: 40,
+        // alignItems: 'flex-start',
+        marginRight: 50,
+        marginLeft: 50,
+        marginBottom: 50,
         color: 'transparent'
     },
     userVeggie: {
@@ -22,10 +23,24 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         alignSelf: 'center',
         fontSize: 40,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        fontWeight: '200'
     },
     subtitles: {
         fontSize: 20,
+        marginTop: 20,
+        marginBottom: 5
+    },
+    subtitles_special: {
+        color: 'rgb(124, 65, 156)',
+        fontSize: 20,
+        marginTop: 20
+    },
+    subtitles_user_lands: {
+        marginTop: 40,
+        fontSize: 30,
+        fontWeight: '200',
+        alignSelf: 'center'
     },
     image: {
         height: 250,
@@ -35,14 +50,13 @@ const styles = StyleSheet.create({
         marginBottom: 40
     },
     inline: {
-        display: 'flex',
-        flexDirection: 'row',
+        // display: 'flex',
+        // flexDirection: 'row',
         margin: 10
     },
     description: {
-        alignSelf: 'flex-end',
-        paddingRight: 100,
-        lineHeight: 30
+        lineHeight: 35,
+        fontWeight: '200'
     },
     userVeggie_description: {
         marginTop: 30,

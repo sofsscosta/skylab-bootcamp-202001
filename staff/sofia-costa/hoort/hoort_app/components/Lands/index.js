@@ -8,8 +8,6 @@ import add from '../../assets/add.png'
 
 function Lands({ goToLandDetail, goToCreateLand, lands, token }) {
 
-    // console.log('token in lands', token)
-
     async function handlegoToLandDetail(land) {
         try {
             let _land = await retrieveLand(token, land.id)
@@ -45,15 +43,16 @@ function Lands({ goToLandDetail, goToCreateLand, lands, token }) {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <FlatList
-                    style={styles.myVeggies_container}
-                    data={lands}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                        !lands.length
-                            ? <Feedback level='warning' message={'you have no lands yet!'} />
-                            : <LandsIcons land={item} key={item.id} goToLandDetail={() => handlegoToLandDetail(item)} />
-                    )} />
+                {lands &&
+                    <FlatList
+                        style={styles.myVeggies_container}
+                        data={lands}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => (
+                            <LandsIcons land={item} key={item.id} goToLandDetails={() => handlegoToLandDetail(item)} />
+                        )} />
+                    || <Feedback level='warning' message='You have no lands yet!' />
+                }
             </ScrollView>
         </Fragment>
     )

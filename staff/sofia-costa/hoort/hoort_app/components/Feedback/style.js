@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     warning: {
-        // backgroundColor: 'rgb(126, 194, 144)',
-        // color: 'white',
         height: 40,
         width: 310,
         textAlign: 'center',
@@ -18,7 +16,6 @@ const styles = StyleSheet.create({
         color: 'rgb(126, 194, 144)',
         fontSize: 20,
         textAlign: 'center',
-        // top: '700%'
     },
 })
 

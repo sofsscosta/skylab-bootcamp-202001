@@ -28,7 +28,10 @@ const styles = StyleSheet.create({
         borderStyle: "solid",
         borderColor: 'black',
         marginTop: 20
-
+    },
+    feedback: {
+        position: 'absolute',
+        top: '80%'
     }
 })
 

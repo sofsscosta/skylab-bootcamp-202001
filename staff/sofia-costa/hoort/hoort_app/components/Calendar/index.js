@@ -15,7 +15,7 @@ function GetCalendar(token) {
     const [veggiesNames, setVeggiesNames] = useState()
     const [currentMonth, setCurrentMonth] = useState(allMonths[new Date().getMonth()])
     const [veggiesOnMessage, setVeggiesOnMessage] = useState()
-
+    // const [retrievedVeggies, setRetrievedVeggies] = useState()
 
 
     useEffect(() => {
@@ -38,16 +38,16 @@ function GetCalendar(token) {
                         if (findVeggie) veg.colorId = findVeggie.colorId
 
                         else {
-                            lol(veg)
+                            noRepeatColors(veg)
 
-                            function lol(veg) {
+                            function noRepeatColors(veg) {
                                 color = possibleColors[Math.floor(Math.random() * 5)]
                                 if (!usedColors.includes(color)) {
                                     usedColors.push(color)
 
                                     return veg.colorID = color
                                 }
-                                else return lol(veg)
+                                else return noRepeatColors(veg)
                             }
                         }
 
@@ -85,6 +85,7 @@ function GetCalendar(token) {
         let currentMonth = allMonths[month.month - 1]
         setCurrentMonth(currentMonth)
         let toHarvest = []
+        let _retrievedVeggies = []
 
         try {
             await Promise.all(veggies.map(async veg => {
@@ -95,6 +96,8 @@ function GetCalendar(token) {
                 if (minMonth === month.month - 1 || maxMonth === month - 1) {
                     let veggie = await retrieveItem(veg.veggie)
 
+                    _retrievedVeggies.push(veggie)
+
                     if (!toHarvest.includes(veggie.name)) {
 
                         toHarvest.push(veggie.name)
@@ -103,7 +106,10 @@ function GetCalendar(token) {
                 }
             }))
 
-            setVeggiesOnMessage(toHarvest)
+            if (!toHarvest.length) return setVeggiesOnMessage(undefined)
+
+            return setVeggiesOnMessage(toHarvest)
+
 
             // let string = ''
 
@@ -123,7 +129,17 @@ function GetCalendar(token) {
         }
     }
 
-    function handleGetColor() {
+    function handleGetColor(veg) {
+        console.log(veg)
+        let matchedVeg = veggies.find(async _veg => {
+            let __veg = await retrieveItem(_veg.veggie)
+            console.log('retrieved Veg ', __veg.name, __veg.id)
+            console.log(__veg.name === veg)
+            return __veg.name === veg
+        })
+        console.log('matched veg?', matchedVeg.id)
+
+        return { fontSize: 30, color: matchedVeg.colorID, lineHeight: 60 }
 
     }
 
@@ -175,24 +191,25 @@ function GetCalendar(token) {
                         && `You will harvest ${veggiesNames} in ${currentMonth} !`}</Text>
                 </View> */}
 
-                <View style={styles.message_container}>
-                    <Text styles={styles.message}>{veggiesOnMessage.length !== 0 && `You will harvest `}</Text>
-                    {veggiesOnMessage && veggiesOnMessage.map(veg => {
+                {veggiesOnMessage &&
+                    <View style={styles.message_container}>
+                        <Text styles={{ fontSize: 25 }}>{`You will harvest `}</Text>
+                        {veggiesOnMessage && veggiesOnMessage.map(veg => {
 
-                        if (veg !== veggiesOnMessage[veggiesOnMessage.length - 1]
-                            && veg !== veggiesOnMessage[veggiesOnMessage.length - 2])
-                            return (<Text style={() => handleGetColor()}>{veg}, </Text>)
+                            if (veg !== veggiesOnMessage[veggiesOnMessage.length - 1]
+                                && veg !== veggiesOnMessage[veggiesOnMessage.length - 2])
+                                return (<Text style={handleGetColor(veg)}>{veg}, </Text>)
 
-                        else if (veg === veggiesOnMessage[veggiesOnMessage.length - 2])
-                            return (<><Text style={() => handleGetColor()}>{veg}</Text>
-                                <Text> and </Text></>)
+                            else if (veg === veggiesOnMessage[veggiesOnMessage.length - 2])
+                                return (<><Text style={handleGetColor(veg)}>{veg}</Text>
+                                    <Text styles={styles.message}> and </Text></>)
 
-                        else if (veg === veggiesOnMessage[veggiesOnMessage.length - 1])
-                            return (<Text style={() => handleGetColor()}>{veg}</Text>)
+                            else if (veg === veggiesOnMessage[veggiesOnMessage.length - 1])
+                                return (<Text style={handleGetColor(veg)}>{veg}</Text>)
 
-                    })}
-                    <Text styles={styles.message}>{veggiesOnMessage.length !== 0 && ` in ${currentMonth} !`}</Text>
-                </View>
+                        })}
+                        <Text styles={styles.message}>{` in ${currentMonth} !`}</Text>
+                    </View>}
             </View>
         </ScrollView >
     )

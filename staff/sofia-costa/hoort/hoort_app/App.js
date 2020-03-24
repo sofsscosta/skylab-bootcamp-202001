@@ -59,8 +59,8 @@ export default function App() {
   function handleGoToMyLands(userLands, token) {
     console.log('token in app from menu', token)
     setToken(token)
-    setView('myLands')
     setLands(userLands)
+    setView('myLands')
   }
 
   function handleGoToMyVeggies(userVeggies) {
@@ -126,7 +126,7 @@ export default function App() {
   }
 
   function handleGoToRetrievedLand(land, token) {
-    console.log('land in app', token)
+    console.log('land in app', land)
     setToken(token)
     setLand(land)
     setView('land')
@@ -135,7 +135,7 @@ export default function App() {
   return (
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
-      {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleCreateLandModal} goToCreateLand={handleGoToCreateLand} />}
+      {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleGoToMyLands} goToCreateLand={handleGoToCreateLand} />}
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} menu={handleMenu} token={token} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
@@ -149,7 +149,7 @@ export default function App() {
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
       {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
       {view === 'calendar' && <Calendar token={token} />}
-      {view === 'detail' && <Detail item={veggie} />}
+      {view === 'detail' && <Detail item={veggie} goToLandDetail={handleGoToRetrievedLand} />}
       {view !== 'init' && <Footer view={view} />}
       {/* Footer => review for submitting data on createLand */}
     </>

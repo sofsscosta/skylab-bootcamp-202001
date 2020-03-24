@@ -3,8 +3,7 @@ import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, Scrol
 import styles from './style'
 import landBorder from '../../assets/land_border.png'
 
-function LandsIcons({ goToLandDetail, land }) {
-    debugger
+function LandsIcons({ goToLandDetails, land, token }) {
 
     console.log('land inside landsicons')
     console.log(land.name)
@@ -26,7 +25,7 @@ function LandsIcons({ goToLandDetail, land }) {
         <Fragment>
             <TouchableOpacity
                 style={styles.main_container}
-                onPress={() => goToLandDetail(land.id)}>
+                onPress={() => goToLandDetails(land.id, token)}>
                 <Image
                     source={landBorder}
                     style={styles.land_border}

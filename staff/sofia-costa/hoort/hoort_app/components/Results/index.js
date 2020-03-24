@@ -1,15 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
 import styles from './style'
-import { Item } from '../'
+import { Item, Feedback } from '../'
 
 function Results({ results, goToDetail, resultsType }) {
 
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     let monthNum = new Date().getMonth()
     let month = months[monthNum]
-
-    console.log(results)
 
     return (
         <Fragment>
