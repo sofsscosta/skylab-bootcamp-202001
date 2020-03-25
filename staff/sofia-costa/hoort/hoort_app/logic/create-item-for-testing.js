@@ -16,8 +16,6 @@ module.exports = function (colorId, name, type, subtype, growth, growthDuration,
 
     return (async () => {
 
-        console.log('entered?')
-
         const response = await fetch(`http://localhost:8085/items`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -25,7 +23,6 @@ module.exports = function (colorId, name, type, subtype, growth, growthDuration,
         })
 
         if (response.status === 201) {
-            console.log('entered 2')
 
             return
         }

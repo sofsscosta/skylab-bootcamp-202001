@@ -7,7 +7,7 @@ describe('searchItems', () => {
 
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost:27017/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
-        return await Item.deleteMany()
+        return await Item.deleteMany({})
     })
 
     let id, colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference
@@ -26,7 +26,7 @@ describe('searchItems', () => {
         lightPreference = `lightPreference-${random()}`
     })
 
-    it.only('should succeed on correct data', () => {
+    it('should succeed on correct data', () => {
 
         return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
             .then(() => Item.findOne({ name }))
@@ -46,21 +46,25 @@ describe('searchItems', () => {
             })
     })
 
-    it('should return no results for no results search', () =>
-        //expect(() => {
-        searchItems('lalalalalal')
-            .then(item => {
-                console.log(item)
-                throw new Error('should not reach this point')
+    it('should fail on not all fields defined', () => {
+        expect(() => {
+            return createItem(colorId, name, type, subtype, growthDuration, soil, temperature)
+        }).toThrowError(TypeError, 'temperature undefined is not a string')
+    })
+
+    it('should fail on repeated name', () => {
+
+        return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
+            .then(() => createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference))
+            .then(() => { throw new Error('should not reach this point') })
+            .catch(error => {
+                expect(error).toBeDefined()
+                expect(error.message).toBe(`item with name ${name} already exists`)
             })
-            .catch((error) => {
-                expect(error.message).to.eql(`There are no results for your search :(`)
-            })
-        //})
-    )
+    })
 
     afterAll(async () => {
-        // await Item.deleteMany()
+        await Item.deleteMany({})
         return await mongoose.disconnect()
     })
 })

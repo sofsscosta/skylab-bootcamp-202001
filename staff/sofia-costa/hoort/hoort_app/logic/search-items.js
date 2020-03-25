@@ -11,8 +11,6 @@ export default async function (query) {
 
     const results = await search.json()
 
-    console.log(results)
-
     const { error } = results
 
     if (error) {

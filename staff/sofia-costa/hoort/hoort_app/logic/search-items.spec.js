@@ -20,7 +20,7 @@ describe('searchItems', () => {
 
             colorId = `colorId-${random()}`
             name = `name-${random()}`
-            type = `type-${random()}`
+            type = `type`
             subtype = `subtype-${random()}`
             growth = `growth-${random()}@mail.com`
             growthDuration = `growthDuration-${random()}`
@@ -36,46 +36,66 @@ describe('searchItems', () => {
 
             results.push(result)
         }
-        console.log('results.length ', results.length)
 
         index = Math.floor(Math.random() * 10)
     })
 
-    it.only('should succeed on correct data', async () => {
-        query = results[index].name
+    afterEach(() => {
+        results = []
+    })
 
-        console.log(query)
+    it('should succeed on search by item name and have results length of 1', async () => {
+        query = results[index].name
 
         let _results = await searchItems(query)
 
         expect(_results.length).toBe(1)
         expect(_results[0].name).toBe(results[index].name)
-        // expect(_results.colorId).toBe(results[index].colorId)
-        // expect(_results.type).toBe(results[index].type)
-        // expect(_results.growth).toBe(results[index].growth)
-        // expect(_results.growthDuration).toBe(results[index].growthDuration)
-        // expect(_results.soil).toBe(results[index].soil)
-        // expect(_results.temperature).toBe(results[index].temperature)
-        // expect(_results.bestPeriod).toBe(results[index].bestPeriod)
-        // expect(_results.lightPreference).toBe(results[index].lightPreference)
+        expect(_results[0].colorId).toBe(results[index].colorId)
+        expect(_results[0].type).toBe(results[index].type)
+        expect(_results[0].growth).toBe(results[index].growth)
+        expect(_results[0].growthDuration).toBe(results[index].growthDuration)
+        expect(_results[0].soil).toBe(results[index].soil)
+        expect(_results[0].temperature).toBe(results[index].temperature)
+        expect(_results[0].bestPeriod).toBe(results[index].bestPeriod)
+        expect(_results[0].lightPreference).toBe(results[index].lightPreference)
+
+    })
+
+    describe('should succeed on search that matches many items', async () => {
+
+        query = type
+
+        let _results = await searchItems(query)
+
+        expect(_results.length).toBe(10)
+
+        for (let i = 0; i < 10; i++) {
+            expect(_results[i].name).toBe(results[i].name)
+            expect(_results[i].colorId).toBe(results[i].colorId)
+            expect(_results[i].type).toBe(results[i].type)
+            expect(_results[i].growth).toBe(results[i].growth)
+            expect(_results[i].growthDuration).toBe(results[i].growthDuration)
+            expect(_results[i].soil).toBe(results[i].soil)
+            expect(_results[i].temperature).toBe(results[i].temperature)
+            expect(_results[i].bestPeriod).toBe(results[i].bestPeriod)
+            expect(_results[i].lightPreference).toBe(results[i].lightPreference)
+        }
 
     })
 
     it('should return no results for no results search', () =>
-        //expect(() => {
         searchItems('lalalalalal')
-            .then(item => {
-                console.log(item)
+            .then(() => {
                 throw new Error('should not reach this point')
             })
             .catch((error) => {
-                expect(error.message).to.eql(`There are no results for your search :(`)
+                expect(error.message).toBe(`There are no results for your search :(`)
             })
-        //})
     )
 
     afterAll(async () => {
-        await Promise.resolve(Item.deleteMany())
+        await Promise.resolve(Item.deleteMany({}))
         return await mongoose.disconnect()
     })
 })
