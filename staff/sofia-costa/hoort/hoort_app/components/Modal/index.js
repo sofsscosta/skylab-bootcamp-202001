@@ -4,12 +4,11 @@ import { updateLandPlantVeggie, updateLandHarvestVeggie, retrieveLand, deleteVeg
 import styles from './style'
 import modal_border from '../../assets/modal_border.png'
 import button from '../../assets/divisions.png'
-const moment = require('moment')
+
 
 function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
 
-
-    console.log('unitPressed in modal', unitPressed)
+    console.log('veggie in modal', veggie)
 
     const [currentType, setCurrentType] = useState(type)
     const [days, setDays] = useState()

@@ -152,7 +152,6 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
                         style={styles.more}
                         onPress={() => handleChangeDivisions('+')} />
                 </View>
-                {/* <ChangeDivisions currentScheme={scheme} updateDivisions={handleChangeDivisions} /> */}
             </ScrollView>
             <TouchableOpacity
                 style={styles.button_container}

@@ -22,6 +22,7 @@ import Land from './Land'
 import Calendar from './Calendar'
 import ErrorModal from './ErrorModal'
 import EditProfile from './EditProfile'
+import CalendarModal from './CalendarModal'
 
 export {
     InitScreen,
@@ -47,5 +48,6 @@ export {
     Land,
     Calendar,
     ErrorModal,
-    EditProfile
+    EditProfile,
+    CalendarModal
 }

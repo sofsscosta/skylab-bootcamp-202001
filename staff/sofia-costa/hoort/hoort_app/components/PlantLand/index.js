@@ -9,6 +9,8 @@ import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land, onClickVeggie, updatedLand, submit }) {
 
+    console.log('land inplantland', land)
+
     const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
     const [scheme, setScheme] = useState(land.scheme)

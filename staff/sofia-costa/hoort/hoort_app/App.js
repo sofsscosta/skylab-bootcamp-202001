@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
-  CreateLandModal, Land, Calendar, EditProfile
+  CreateLandModal, Land, Calendar, EditProfile, CalendarModal
 } from './components'
 import { isLoggedIn } from './logic'
 
@@ -19,6 +19,8 @@ export default function App() {
   const [landForModal, setLandForModal] = useState()
   const [modal, setModal] = useState(false)
   const [createLandModal, setCreateLandModal] = useState(false)
+  const [calendarModal, setCalendarModal] = useState(false)
+  const [calendarModalInfo, setCalendarModalInfo] = useState()
   const [modalType, setModalType] = useState()
   const [newLandProps, setNewLandProps] = useState()
   const [coordinates, setCoordinates] = useState()
@@ -83,8 +85,14 @@ export default function App() {
   function handleGoToCalendar(_token) {
     setMenu(false)
     setError(undefined)
+    setCalendarModal(false)
     setToken(_token)
     setView('calendar')
+  }
+
+  function handleGoToCalendarModal(name, month, plantations) {
+    setCalendarModalInfo({ plantations, name, month })
+    !calendarModal ? setCalendarModal(true) : setCalendarModal(false)
   }
 
   function handleGoToEditProfile() {
@@ -163,6 +171,7 @@ export default function App() {
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleGoToMyLands} goToCreateLand={handleGoToCreateLand} />}
+      {view === 'calendar' && calendarModal && <CalendarModal modalInfo={calendarModalInfo} token={token} onBackgroundClick={handleGoToCalendarModal} goToLandDetails={handleGoToRetrievedLand} />}
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} token={token} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
@@ -176,7 +185,7 @@ export default function App() {
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
       {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
-      {view === 'calendar' && <Calendar token={token} />}
+      {view === 'calendar' && <Calendar goToCalendarModal={handleGoToCalendarModal} token={token} />}
       {view === 'detail' && <Detail item={veggie} goToLandDetail={handleGoToRetrievedLand} />}
       {view !== 'init' && <Footer view={view} />}
     </>
