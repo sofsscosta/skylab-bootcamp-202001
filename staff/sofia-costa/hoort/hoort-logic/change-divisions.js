@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_URL
 
-const { validate } = require('../hoort-utils')
+const { validate } = require('hoort-utils')
 const fetch = require('node-fetch')
 
 module.exports = function (operation, scheme) {
@@ -11,7 +11,7 @@ module.exports = function (operation, scheme) {
     return (async () => {
         console.log(scheme)
 
-        const response = await fetch(`http://localhost:8085/land/divisions`, {
+        const response = await fetch(`http://192.168.0.30:8085/land/divisions`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ operation, scheme })

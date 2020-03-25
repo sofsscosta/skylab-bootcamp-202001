@@ -27,7 +27,6 @@ function Register({ goToLogin }) {
     return (
         <Fragment>
             <TouchableWithoutFeedback onPress={() => setError(undefined)}>
-
                 <View style={styles.container}>
                     <Text style={styles.title}>REGISTER</Text>
                     <TextInput

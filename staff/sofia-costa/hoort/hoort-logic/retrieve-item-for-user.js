@@ -1,11 +1,11 @@
-const { validate } = require('../hoort-utils')
+const { validate } = require('hoort-utils')
 const fetch = require('node-fetch')
 
-export default async function (token, id) {
+module.exports = async function (token, id) {
     validate.string(token, 'token')
     validate.string(id, 'id')
 
-    const retrieve = await fetch(`http://localhost:8085/item/user/${id}`, {
+    const retrieve = await fetch(`http://192.168.0.30:8085/item/user/${id}`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
     })

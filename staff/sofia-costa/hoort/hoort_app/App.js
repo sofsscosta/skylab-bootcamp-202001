@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
-  CreateLandModal, Land, Calendar
+  CreateLandModal, Land, Calendar, EditProfile
 } from './components'
 import { isLoggedIn } from './logic'
-import { TouchableWithoutFeedback } from 'react-native'
 
 export default function App() {
 
@@ -89,17 +88,18 @@ export default function App() {
   }
 
   function handleGoToEditProfile() {
-
+    setMenu(false)
+    setView('editProfile')
   }
 
   function handleGoToSearch() {
+    setMenu(false)
     setView('search')
   }
 
   function handleGoToSuggestions(suggestedVeggies, _error) {
     setMenu(false)
     setError(undefined)
-    console.log('_error in app', _error)
     _error && setError(_error)
     setView('userVeggies')
     setVeggies(suggestedVeggies)
@@ -154,14 +154,12 @@ export default function App() {
   function handleGoToRetrievedLand(land, token) {
     setMenu(false)
     setError(undefined)
-    console.log('land in app', land)
     setToken(token)
     setLand(land)
     setView('land')
   }
 
   return (
-    // <TouchableWithoutFeedback style={{ height: '100%', width: '100%' }} onPress={() => menu ? handleMenu() : ''}>
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleGoToMyLands} goToCreateLand={handleGoToCreateLand} />}
@@ -171,6 +169,7 @@ export default function App() {
       {view === 'start' && <Landing goToRegister={handleGoToRegister} token={token} goToMyLands={handleGoToMyLands} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
+      {view === 'editProfile' && <EditProfile token={token} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
       {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} _error={error} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} _error={error} />}
@@ -180,20 +179,6 @@ export default function App() {
       {view === 'calendar' && <Calendar token={token} />}
       {view === 'detail' && <Detail item={veggie} goToLandDetail={handleGoToRetrievedLand} />}
       {view !== 'init' && <Footer view={view} />}
-      {/* Footer => review for submitting data on createLand */}
     </>
-    // </TouchableWithoutFeedback>
   )
 }
-
-  // async function handleToken(fun, token) {
-  //   let token
-
-  //   try {
-  //     token ? token = await AsyncStorage[fun](token) : await AsyncStorage[fun]()
-  //   }
-  //   catch (error) {
-  //     console.log(error)
-  //   }
-  //   if (token !== undefined) return token
-  // }

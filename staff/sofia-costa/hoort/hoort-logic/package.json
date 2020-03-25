@@ -1,0 +1,26 @@
+{
+  "name": "hoort-logic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha .",
+    "test-debug": "npx mocha debug ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "hoort-data": "file:../hoort-data",
+    "hoort-utils": "file:../hoort-utils",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "not-async-storage": "^1.0.1"
+  }
+}

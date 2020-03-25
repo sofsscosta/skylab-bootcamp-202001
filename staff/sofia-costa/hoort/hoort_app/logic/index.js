@@ -20,7 +20,7 @@ import updateLandHarvestVeggie from './update-land-harvest-veggie'
 import deleteVeggieFromLand from './delete-veggie-from-land'
 import deleteLand from './delete-land'
 import retrieveUserPlantations from './retrieve-user-plantations'
-
+import updateUser from './update-user'
 
 export {
     registerUser,
@@ -44,5 +44,6 @@ export {
     updateLandHarvestVeggie,
     deleteVeggieFromLand,
     deleteLand,
-    retrieveUserPlantations
+    retrieveUserPlantations,
+    updateUser
 }

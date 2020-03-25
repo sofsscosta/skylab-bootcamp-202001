@@ -10,11 +10,13 @@ const styles = StyleSheet.create({
     landing: {
         width: 150,
         height: 300,
+        bottom: '10%'
     },
     title: {
         color: 'rgb(150, 150, 150)',
         fontSize: 50,
-        fontWeight: '200'
+        fontWeight: '200',
+        bottom: '5%'
     }
 })
 

@@ -8,12 +8,13 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     title: {
-        fontSize: 40,
-        marginBottom: 20,
-        color: 'rgb(206, 175, 223)'
+        fontSize: 45,
+        marginBottom: 10,
+        color: 'rgb(206, 175, 223)',
+        fontWeight: '200'
     },
     subtitle: {
-        fontSize: 20,
+        fontSize: 45,
         marginTop: 30
     },
     input: {

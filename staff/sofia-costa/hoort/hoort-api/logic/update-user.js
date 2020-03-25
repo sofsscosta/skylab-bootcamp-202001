@@ -7,21 +7,41 @@ const bcrypt = require('bcryptjs')
 module.exports = async (id, updates) => {
     validate.string(id, 'id')
 
-    const VALID_KEYS = ['name', 'username', 'email', 'password']
+    const user = await User.findById(id)
+    const password = user.password
+
+    const VALID_KEYS = ['name', 'username', 'email', 'oldPassword', 'newPassword']
     let approvedUpdates = {}
 
     for (key in updates) {
         if (!(VALID_KEYS.includes(key))) throw new NotAllowedError(`invalid field ${key}`)
-        debugger
-        if (key === 'password')
-            updates[key] = await bcrypt.hash(updates[key], 10)
 
-        if (updates[key] !== '') {
+        if (key === 'oldPassword') {
+
+            if (!updates['newPassword'])
+                throw new ContentError('Please insert your new password')
+
+            let validPassword = await bcrypt.compare(updates[key], password)
+            if (!validPassword) throw new NotAllowedError(`Wrong credentials`)
+        }
+
+        if (key === 'newPassword')
+
+            if (!updates['oldPassword'])
+                throw new ContentError('Please insert your old password')
+
+        approvedUpdates['password'] = await bcrypt.hash(updates[key], 10)
+
+        if (updates[key] !== '' && updates[key] !== 'oldPassword' && updates[key] !== 'newPassword') {
             approvedUpdates[key] = updates[key]
 
         } else {
             throw new ContentError(`field ${key} is empty`)
         }
     }
-    return User.findByIdAndUpdate(id, { $set: approvedUpdates })
+
+    delete approvedUpdates['oldPassword']
+    delete approvedUpdates['newPassword']
+
+    return await User.findByIdAndUpdate(id, { $set: approvedUpdates })
 }
