@@ -9,7 +9,8 @@ const fetch = require('node-fetch')
 describe('registerUser', () => {
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
-        return await User.deleteMany()
+        return await Promise.resolve(User.deleteMany())
+
     })
 
     let name, username, email, password
@@ -22,6 +23,7 @@ describe('registerUser', () => {
     })
 
     it('should succeed on new user', async () => {
+
         const response = await registerUser(name, username, email, password)
 
         expect(response).toBeUndefined()
@@ -39,21 +41,22 @@ describe('registerUser', () => {
     })
 
     describe('when user already exists', () => {
-        beforeEach(async () => {
-            try {
-                return await fetch('http://192.168.1.146:8085/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, username, email, password })
-                })
+        // beforeEach(async () => {
+        //     try {
+        //         return await fetch('http://192.168.1.146:8085/users', {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify({ name, username, email, password })
+        //         })
 
-            } catch (error) {
-                throw new Error(error)
-            }
-        })
+        //     } catch (error) {
+        //         throw new Error(error)
+        //     }
+        // })
 
         it('should fail on already existing user', async () => {
             try {
+                await registerUser(name, username, email, password)
                 await registerUser(name, username, email, password)
 
                 throw new Error('should not reach this point')
@@ -62,12 +65,11 @@ describe('registerUser', () => {
                 expect(error).toBeDefined()
                 expect(error.message).toBe(`user with email ${email} already exists`)
             }
-
         })
     })
 
     afterAll(async () => {
-        await User.deleteMany()
+        await Promise.resolve(User.deleteMany())
         await mongoose.disconnect()
         return
     })

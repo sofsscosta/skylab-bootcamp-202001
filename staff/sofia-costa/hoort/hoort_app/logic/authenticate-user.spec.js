@@ -1,14 +1,13 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { mongoose, models: { User } } = require('../hoort-data')
 const { authenticateUser, retrieveUser } = require('./')
-const fetch = require('node-fetch')
 const bcrypt = require('bcryptjs')
 
-describe('authenticateUser-user', () => {
+describe('authenticateUser', () => {
 
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
-        return await User.deleteMany()
+        return await Promise.resolve(User.deleteMany())
     })
 
     let name, username, email, password, id
@@ -43,6 +42,7 @@ describe('authenticateUser-user', () => {
 
             let _user = await retrieveUser(token)
 
+            console.log(_user)
             expect(_user.email).toBe(user.email)
             expect(_user.name).toBe(user.name)
             expect(_user.username).toBe(user.username)
@@ -84,7 +84,7 @@ describe('authenticateUser-user', () => {
     })
 
     afterAll(async () => {
-        await User.deleteMany()
+        await Promise.resolve(User.deleteMany())
         return await mongoose.disconnect()
     })
 })

@@ -8,6 +8,9 @@ module.exports = async (id, updates) => {
     validate.string(id, 'id')
 
     const user = await User.findById(id)
+
+    if (user.id !== id) throw new NotAllowedError('Wrong user!')
+
     const password = user.password
 
     const VALID_KEYS = ['name', 'username', 'email', 'oldPassword', 'newPassword']
@@ -43,5 +46,7 @@ module.exports = async (id, updates) => {
     delete approvedUpdates['oldPassword']
     delete approvedUpdates['newPassword']
 
-    return await User.findByIdAndUpdate(id, { $set: approvedUpdates })
+    await User.findByIdAndUpdate(id, { $set: approvedUpdates })
+
+    return
 }

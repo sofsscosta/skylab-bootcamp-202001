@@ -1,5 +1,5 @@
 const API_URL = process.env.REACT_APP_API_URL
-
+// const { AsyncStorage } = require('react-native')
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
@@ -24,6 +24,7 @@ export default function (email, password) {
             throw new Error(error)
 
         else {
+            // await AsyncStorage.setItem('token', token)
             return token
         }
     })()

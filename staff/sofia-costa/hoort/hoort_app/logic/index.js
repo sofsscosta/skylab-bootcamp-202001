@@ -21,6 +21,7 @@ import deleteVeggieFromLand from './delete-veggie-from-land'
 import deleteLand from './delete-land'
 import retrieveUserPlantations from './retrieve-user-plantations'
 import updateUser from './update-user'
+import createItem from './create-item-for-testing'
 
 export {
     registerUser,
@@ -45,5 +46,6 @@ export {
     deleteVeggieFromLand,
     deleteLand,
     retrieveUserPlantations,
-    updateUser
+    updateUser,
+    createItem
 }

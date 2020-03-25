@@ -8,7 +8,7 @@ describe('retrieveUser', () => {
 
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
-        return await User.deleteMany()
+        return await Promise.resolve(User.deleteMany())
     })
 
     let name, username, email, password, id
@@ -46,9 +46,11 @@ describe('retrieveUser', () => {
 
         it('should fail on invalid token', async () => {
 
-            let error = await retrieveUser(`${token}--wrong`)
-
-            expect(error.error).toBe("invalid signature")
+            try {
+                await retrieveUser(`${token}--wrong`)
+            } catch (error) {
+                expect(error.message).toBe("invalid signature")
+            }
 
         })
     })
@@ -82,7 +84,7 @@ describe('retrieveUser', () => {
     })
 
     afterAll(async () => {
-        await User.deleteMany()
+        await Promise.resolve(User.deleteMany())
         return await mongoose.disconnect()
     })
 })

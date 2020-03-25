@@ -26,10 +26,9 @@ function EditProfile({ token }) {
 
         try {
             await updateUser(updates, token)
-            return setMessage('successfully changed fields!')
+            return setMessage('Successfully changed fields!')
         }
         catch (error) {
-            console.log(error.message === 'JSON Parse error: Unexpected EOF')
             if (error.message === 'JSON Parse error: Unexpected EOF')
                 setMessage('successfully changed fields!')
 
@@ -92,6 +91,7 @@ function EditProfile({ token }) {
                                 type='submit'
                                 onPress={() => {
                                     setMessage(undefined)
+                                    setError(undefined)
 
                                     return update(name, username, email, oldPassword, newPassword)
                                 }} />

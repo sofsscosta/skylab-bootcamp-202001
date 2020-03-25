@@ -17,18 +17,12 @@ module.exports = function (changes, token) {
             body: JSON.stringify({ updates: changes })
         })
 
+        if (response.status === 201) return
 
-        if (response) {
+        const res = await response.json()
 
-            const res = await response.json()
+        const { error } = res
 
-            const { error } = res
-
-            console.log('error in logic ', res)
-
-            if (error) throw new Error(error)
-        }
-
-        else return
+        if (error) throw new Error(error)
     })()
 }
