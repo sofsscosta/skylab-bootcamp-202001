@@ -9,7 +9,6 @@ module.exports = function (landId, scheme, token) {
     validate.string(landId, 'landId')
     validate.string(token, 'token')
 
-    console.log('scheme = ' + scheme)
     return (async () => {
 
         const response = await fetch(`http://localhost:8085/land/planted`, {

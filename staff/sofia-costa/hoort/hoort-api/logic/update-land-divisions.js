@@ -4,7 +4,6 @@ const { NotAllowedError, ContentError } = require('../../hoort-errors')
 const { SchemaTypes: { ObjectId } } = require('mongoose')
 
 module.exports = async (operation, landId, scheme) => {
-    // validate.operation(operation, 'operation')
     validate.string(operation, 'operation')
     if (landId) validate.string(landId, 'landId')
 

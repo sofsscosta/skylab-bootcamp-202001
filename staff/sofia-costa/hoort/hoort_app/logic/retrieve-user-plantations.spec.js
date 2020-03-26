@@ -1,15 +1,14 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
-const { retrieveUserLands, updateLandAddVeggie, createLand, authenticateUser, registerUser, retrieveUser } = require('.')
+const { retrieveUserPlantations, updateLandAddVeggie, createLand, authenticateUser, registerUser, retrieveUser, updateLandPlantVeggie } = require('.')
 const { random } = Math
 const { mongoose, models: { Item, User, Land } } = require('../hoort-data')
 const bcrypt = require('bcryptjs')
 
-describe('retrieveUserLands', () => {
+describe('retrieveUserPlantations', () => {
 
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
         return await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
-
     })
 
     let userId, user, name, username, email, password, token
@@ -32,11 +31,11 @@ describe('retrieveUserLands', () => {
         let colorId, nameVeggie, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
             nameLand, location, soiltype, scheme, land, landId
 
-        let veggies = [], lands = []
+        let veggies = [], lands = [], plantations = []
 
         beforeEach(async () => {
             type = 'type'
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
 
                 colorId = `colorId-${random()}`
                 nameVeggie = `name-${random()}`
@@ -56,14 +55,14 @@ describe('retrieveUserLands', () => {
 
             await Item.insertMany(veggies)
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 nameLand = `nameLand-${random()}`
                 location = `location-${random()}`
                 soiltype = `soiltype-${random()}`
                 scheme = [[], [], [], [], []]
 
                 for (let j = 0; j < scheme.length; j++)
-                    for (let i = 0; i < 3; i++) {
+                    for (let i = 0; i < veggies.length; i++) {
                         scheme[j].push(veggies[i].id)
                     }
 
@@ -72,11 +71,15 @@ describe('retrieveUserLands', () => {
                 land = await Land.findOne({ name: nameLand })
                 landId = land.id
 
-
-                for (let j = 0; j < veggies.length; j++) {
-
+                for (let j = 0; j < 5; j++) {
                     await updateLandAddVeggie(landId, veggies[j].id, token)
                 }
+                land = await Land.findOne({ name: nameLand })
+
+                for (let k = 0; k < land.plantation.length; k++) {
+                    plantations.push(land.plantation[k])
+                }
+
                 lands.push(land)
             }
         })
@@ -87,18 +90,17 @@ describe('retrieveUserLands', () => {
             return await Land.deleteMany({})
         })
 
-        it('should succeed on correct data', async () => {
-            let userLands = await retrieveUserLands(token)
+        it('should return user\'s plantations on correct data', async () => {
+            let userPlantations = await retrieveUserPlantations(token)
 
-            expect(userLands.length).toBe(10)
+            expect(userPlantations.length).toBe(25)
 
             for (let i = 0; i < lands.length; i++) {
-                expect(Object.keys(userLands[i]).length).toBe(5)
-                expect(userLands[i].id).toBe(lands[i].id)
-                expect(userLands[i].name).toBe(lands[i].name)
-                expect(userLands[i].location).toBe(lands[i].location)
-                expect(userLands[i].soiltype).toBe(lands[i].soiltype)
-                expect(userLands[i].scheme).toStrictEqual(lands[i].toObject().scheme)
+
+                expect(Object.entries(userPlantations[i]).length).toBe(5)
+                expect(plantations[i].to).toBe(userPlantations[i].to)
+                expect(plantations[i].from).toBe(userPlantations[i].from)
+                expect(plantations[i].veggie.toString()).toBe(userPlantations[i].veggie.toString())
             }
         })
     })
@@ -106,7 +108,7 @@ describe('retrieveUserLands', () => {
 
     it('should fail on invalid token', async () => {
         try {
-            await retrieveUserLands(`${token}--wrong`)
+            await retrieveUserPlantations(`${token}--wrong`)
         }
         catch (error) {
             expect(error.message).toBe(`invalid signature`)
@@ -115,10 +117,10 @@ describe('retrieveUserLands', () => {
 
     it('should fail if user doesn\'t have any lands', async () => {
         try {
-            await retrieveUserLands(token)
+            await retrieveUserPlantations(token)
         }
         catch (error) {
-            expect(error.message).toBe(`You don't have any lands yet!`)
+            expect(error.message).toBe(`You have no lands yet!`)
         }
     })
 

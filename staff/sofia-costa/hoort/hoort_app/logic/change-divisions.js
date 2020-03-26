@@ -5,11 +5,11 @@ const fetch = require('node-fetch')
 
 module.exports = function (operation, scheme) {
     validate.string(operation, 'operation')
-    //validate.scheme(scheme)
-    //validate.scheme(scheme, 'scheme')
+
+    if (scheme.length === 20 && operation === '+') throw new Error('Max limit of divisions!')
+    if (scheme.length === 5 && operation === '-') throw new Error('Min limit of divisions!')
 
     return (async () => {
-        console.log(scheme)
 
         const response = await fetch(`http://localhost:8085/land/divisions`, {
             method: 'PATCH',
@@ -20,8 +20,6 @@ module.exports = function (operation, scheme) {
         const newScheme = await response.json()
 
         const { error } = response
-
-        console.log(error)
 
         if (error) throw new Error(error)
 

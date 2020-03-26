@@ -16,7 +16,6 @@ module.exports = function (land, token) {
         })
 
         if (response.status === 200) {
-            console.log('successful delete')
             return
         }
 
