@@ -40,8 +40,9 @@ describe('searchItems', () => {
         index = Math.floor(Math.random() * 10)
     })
 
-    afterEach(() => {
+    afterEach(async () => {
         results = []
+        await Item.deleteMany({})
     })
 
     it('should succeed on search by item name and have results length of 1', async () => {
@@ -62,7 +63,7 @@ describe('searchItems', () => {
 
     })
 
-    describe('should succeed on search that matches many items', async () => {
+    it('should succeed on search that matches many items', async () => {
 
         query = type
 

@@ -1,10 +1,10 @@
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
-const { retrieveItemForUser, updateLandAddVeggie, createLand, authenticateUser, registerUser, retrieveUser, updateLandPlantVeggie } = require('.')
+const { retrieveLand, updateLandAddVeggie, createLand, authenticateUser, registerUser, retrieveUser, updateLandPlantVeggie } = require('.')
 const { random } = Math
 const { mongoose, models: { Item, User, Land } } = require('../hoort-data')
 const bcrypt = require('bcryptjs')
 
-describe('retrieveItemForUser', () => {
+describe('retrieveLand', () => {
 
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -66,44 +66,37 @@ describe('retrieveItemForUser', () => {
             await createLand(token, nameLand, location, soiltype, scheme)
 
             land = await Land.findOne({ name: nameLand })
-            landId = land.id
-
-
-            for (let j = 0; j < veggies.length; j++) {
-
-                await updateLandAddVeggie(landId, veggies[j].id, token)
-                await updateLandPlantVeggie(landId, veggies[j].id, token)
-            }
             lands.push(land)
         }
     })
 
     //describe('when item is neither planted nor harvested', () => {
 
-    it('should succeed on correct data', async () => {
-        for (let i = 0; i < veggies.length; i++) {
-            for (let j = 0; j < lands.length; j++) {
-                let item = await retrieveItemForUser(token, veggies[i].id)
+    it('should succeed on correct token and land id', async () => {
+        for (let i = 0; i < lands.length; i++) {
+            let land = await retrieveLand(token, lands[i].id)
 
-                expect(item).toBeInstanceOf(Object)
-                expect(item[0][1][j]).toBe(lands[j].id)
-                expect(item[1][1]).toBeDefined()
-            }
+            expect(land).toBeDefined()
+            expect(land).toBeInstanceOf(Object)
+            expect(land.name).toBe(lands[i].name)
+            expect(land.location).toBe(lands[i].location)
+            expect(land.soiltype).toBe(lands[i].soiltype)
+            expect(land.scheme).toStrictEqual(lands[i].toObject().scheme)
         }
     })
 
     it('should fail on invalid token', async () => {
         try {
-            await retrieveItemForUser(`${token}--wrong`, veggies[0].id)
+            await retrieveLand(`${token}--wrong`, lands[0].id)
         }
         catch (error) {
-            expect(error.message).toBe(`user with id ${id} does not exist`)
+            expect(error.message).toBe(`invalid signature`)
         }
     })
 
     it('should fail on invalid id', async () => {
         try {
-            await retrieveItemForUser(token, `${veggies[0].id}--wrong`)
+            await retrieveLand(token, `${lands[0].id}--wrong`)
         }
         catch (error) {
             expect(error).toBeDefined()

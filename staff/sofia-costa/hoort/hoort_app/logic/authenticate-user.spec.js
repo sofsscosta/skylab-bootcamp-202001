@@ -36,13 +36,11 @@ describe('authenticateUser', () => {
 
             let token = await authenticateUser(email, password)
 
-            console.log(token)
             expect(typeof token).toBe('string')
             expect(token.length).not.toBe(0)
 
             let _user = await retrieveUser(token)
 
-            console.log(_user)
             expect(_user.email).toBe(user.email)
             expect(_user.name).toBe(user.name)
             expect(_user.username).toBe(user.username)

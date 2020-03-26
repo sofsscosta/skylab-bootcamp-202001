@@ -31,7 +31,6 @@ describe('searchItems', () => {
         return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
             .then(() => Item.findOne({ name }))
             .then(item => {
-                console.log(item)
                 expect(item).toBeDefined()
                 id = item.id
                 expect(item.name).toBe(name)
