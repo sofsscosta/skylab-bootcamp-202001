@@ -48,7 +48,7 @@ describe('retrieveItem', () => {
             retrieveItem(`${id}--wrong`)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
-                    expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)
+                    expect(error).to.eql(NotFoundError, `There\'s no item corresponding to this id!`)
                 })
         })
     )

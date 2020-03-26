@@ -8,7 +8,7 @@ describe('updateUser', () => {
 
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
-        return await Promise.resolve(User.deleteMany())
+        return await Promise.resolve(User.deleteMany({}))
     })
 
     let name, username, email, password, _password, id
@@ -99,7 +99,7 @@ describe('updateUser', () => {
     })
 
     afterAll(async () => {
-        await Promise.resolve(User.deleteMany())
+        await Promise.resolve(User.deleteMany({}))
         return await mongoose.disconnect()
     })
 })

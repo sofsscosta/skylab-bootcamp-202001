@@ -19,7 +19,7 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
             return setCurrentType('planted')
         }
         catch (error) {
-            return console.log(error)
+            return console.log('error in modal handleplant ', error)
         }
     }
 
@@ -29,7 +29,7 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
             return setCurrentType('harvested')
         }
         catch (error) {
-            return console.log(error)
+            return console.log('error in modal handleharvest ', error)
         }
     }
 
@@ -44,11 +44,12 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
 
             await deleteVeggieFromLand(land.id, veggie.id, token)
             console.log('land in modal', _land)
+
+            setCurrentType(undefined)
             return onBackgroundClick()
-            //return setCurrentType(undefined)
         }
         catch (error) {
-            return console.log(error)
+            return console.log('error in modal handledelete ', error)
         }
     }
 

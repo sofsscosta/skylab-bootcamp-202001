@@ -9,7 +9,7 @@ const fetch = require('node-fetch')
 describe('registerUser', () => {
     beforeAll(async () => {
         await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
-        return await Promise.resolve(User.deleteMany())
+        return await Promise.resolve(User.deleteMany({}))
 
     })
 
@@ -69,7 +69,7 @@ describe('registerUser', () => {
     })
 
     afterAll(async () => {
-        await Promise.resolve(User.deleteMany())
+        await Promise.resolve(User.deleteMany({}))
         await mongoose.disconnect()
         return
     })

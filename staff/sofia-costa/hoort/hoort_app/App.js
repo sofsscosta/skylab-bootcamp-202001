@@ -125,16 +125,18 @@ export default function App() {
     setView('detail')
   }
 
-  function handleGoToCreateLand(props, _error) {
+  function handleGoToCreateLand(props) {
+    setCreateLandModal(false)
     setMenu(false)
     setError(undefined)
-    if (_error) return
     if (props) {
       setNewLandProps(props)
       handleCreateLandModal()
       setView('createLand')
     }
-    else setView('createLand')
+    else {
+      setView('createLand')
+    }
   }
 
   function handleGoToPlantLand(land) {
@@ -155,7 +157,8 @@ export default function App() {
     !modal ? setModal(true) : setModal(false)
   }
 
-  function handleCreateLandModal() {
+  function handleCreateLandModal(_error) {
+    _error && setError(_error)
     !createLandModal ? setCreateLandModal(true) : setCreateLandModal(false)
   }
 
@@ -182,7 +185,7 @@ export default function App() {
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
       {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} _error={error} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} _error={error} />}
-      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} />}
+      {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} _error={error} />}
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
       {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
       {view === 'calendar' && <Calendar goToCalendarModal={handleGoToCalendarModal} token={token} />}

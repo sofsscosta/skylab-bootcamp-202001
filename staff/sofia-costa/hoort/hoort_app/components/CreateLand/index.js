@@ -5,7 +5,7 @@ import { isLoggedIn, createLand, changeDivisions, retrieveUserLands, retrieveLan
 import divisions_img from '../../assets/divisions_text.png'
 import { ErrorModal } from '../'
 
-function CreateLand({ goToPlantLand, initModal, newLandProps }) {
+function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
     const [error, setError] = useState()
     const [errorModal, setErrorModal] = useState(false)
@@ -24,10 +24,6 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
         initModal()
     }, [])
 
-    useState(() => {
-        setErrorModal(true)
-    }, [error])
-
     useEffect(() => {
         (async () => {
             try {
@@ -35,7 +31,8 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
                 if (_token !== null) setToken(_token)
                 console.log(token)
             } catch (error) {
-                console.log(error)
+                setError(_error)
+                return handleToggle()
             }
         })()
     }, [token])
@@ -51,6 +48,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
 
     async function handleCreateLand() {
 
+        debugger
         console.log(newLandProps)
         let name = newLandProps.name
         let location = newLandProps.location
@@ -160,7 +158,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps }) {
                 }}>
                 <Text style={styles.button_text}>NEXT</Text>
             </TouchableOpacity>
-            {errorModal && error &&
+            {error && errorModal &&
                 <ErrorModal level='error' message={error.message} toggle={handleToggle} />
             }
         </Fragment>
