@@ -10,24 +10,15 @@ module.exports = async (name, userId, location, soiltype, scheme) => {
     validate.string(soiltype, 'soiltype')
     if (scheme) validate.scheme(scheme)
 
-    let land = await Land.findOne({ name })
+    let user = await User.findById(userId)
 
-    if (land) throw new NotAllowedError(`You have already created a land with the name ${name}!`)
+    let landsNames = await Promise.all(user.lands.map(async _land => {
+        let land = await Land.findById(_land)
+        return land.name
+    }))
 
-    // let veggies = []
+    if (landsNames.includes(name)) throw new NotAllowedError(`You have already created a land with the name ${name}!`)
 
-    // if(scheme) {
-
-    //     for (let j = 0; j<scheme.length; j++)
-    //         for (let i = 0; i<scheme[j].length; i++) 
-    //             if(typeof scheme[j][i] !== 'boolean' && !(veggies.includes(scheme[j][i]))) veggies.push(scheme[j][i])
-
-    //     veggies = veggies.map(veggie => veggie = {_id: veggie})
-
-    //     _land = new Land({ name, userId, location, soiltype, scheme, created: new Date })
-    // }
-
-    //else 
     _land = new Land({ name, userId, location, soiltype, scheme, created: new Date })
 
     let createdLand = await _land.save()
@@ -35,14 +26,4 @@ module.exports = async (name, userId, location, soiltype, scheme) => {
     await User.findByIdAndUpdate(userId, { $addToSet: { lands: createdLand.id } })
 
     return
-
-    // return Land.findOne({ name })
-    //     .then(land => {
-
-
-    //         return land.save()
-    //     })
-    //     .then(() => Land.findOne({ name, userId }))
-    //     .then(landId => User.findByIdAndUpdate(userId, { $addToSet: { lands: landId } }))
-    //     .then(() => {})
 }

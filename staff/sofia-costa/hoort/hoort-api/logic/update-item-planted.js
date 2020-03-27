@@ -25,6 +25,8 @@ module.exports = async (userId, landId, itemId) => {
 
     plantation = land.plantation.find(plant => plant.veggie.toString() === itemId)
 
+    if (!plantation) throw new Error('this item is not added to land')
+
     plantation.from = new Date()
 
     plantation.to = ''
