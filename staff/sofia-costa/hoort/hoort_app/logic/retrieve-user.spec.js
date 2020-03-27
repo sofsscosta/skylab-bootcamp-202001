@@ -1,3 +1,4 @@
+require('dotenv').config()
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { retrieveUser, authenticateUser } = require('.')
 const { mongoose, models: { User } } = require('../hoort-data')
@@ -7,7 +8,7 @@ const bcrypt = require('bcryptjs')
 describe('retrieveUser', () => {
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
+        await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
         return await Promise.resolve(User.deleteMany({}))
     })
 

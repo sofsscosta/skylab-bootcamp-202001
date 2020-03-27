@@ -1,6 +1,7 @@
+require('dotenv').config()
 const registerUser = require('./register-user')
 const { mongoose, models: { User } } = require('../hoort-data')
-const { env: { REACT_APP_TEST_MONGODB_URL: MONGODB_URL } } = require('process')
+const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { random } = Math
 const bcrypt = require('bcryptjs')
 const fetch = require('node-fetch')
@@ -8,7 +9,7 @@ const fetch = require('node-fetch')
 
 describe('registerUser', () => {
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
+        await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
         return await Promise.resolve(User.deleteMany({}))
 
     })

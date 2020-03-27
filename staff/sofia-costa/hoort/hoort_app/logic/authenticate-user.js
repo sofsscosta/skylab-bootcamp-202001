@@ -10,7 +10,7 @@ export default function (email, password) {
 
     return (async () => {
 
-        const auth = await fetch(`http://localhost:8085/users/auth`, {
+        const auth = await fetch(`${API_URL}/users/auth`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

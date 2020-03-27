@@ -1,3 +1,4 @@
+require('dotenv').config()
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { mongoose, models: { Item } } = require('../hoort-data')
 const { searchItems, createItem } = require('.')
@@ -6,7 +7,7 @@ const { random } = Math
 describe('searchItems', () => {
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost:27017/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
+        await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
         return await Item.deleteMany({})
     })
 

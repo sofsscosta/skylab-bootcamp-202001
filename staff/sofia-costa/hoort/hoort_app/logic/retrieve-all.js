@@ -1,8 +1,9 @@
+const API_URL = process.env.REACT_APP_API_URL
 const fetch = require('node-fetch')
 
 export default async function () {
 
-    const retrieve = await fetch(`http://localhost:8085/items/all`, {
+    const retrieve = await fetch(`${API_URL}/items/all`, {
         method: 'GET',
         headers: { 'Content-Type': `application/json` }
     })

@@ -9,7 +9,7 @@ module.exports = function (land, token) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/land`, {
+        const response = await fetch(`${API_URL}/land`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ land })

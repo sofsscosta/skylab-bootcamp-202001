@@ -12,7 +12,7 @@ module.exports = function (name, username, email, password) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/users`, {
+        const response = await fetch(`${API_URL}/users`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, username, email, password })

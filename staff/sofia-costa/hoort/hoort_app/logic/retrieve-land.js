@@ -1,3 +1,4 @@
+const API_URL = process.env.REACT_APP_API_URL
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
@@ -5,7 +6,7 @@ export default async function (token, landId) {
     validate.string(token, 'token')
     validate.string(landId, 'landId')
 
-    const retrieve = await fetch(`http://localhost:8085/land/${landId}`, {
+    const retrieve = await fetch(`${API_URL}/land/${landId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
     })

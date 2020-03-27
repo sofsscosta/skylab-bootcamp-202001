@@ -1,3 +1,4 @@
+require('dotenv').config()
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 const { deleteVeggieFromLand, updateLandAddVeggie, createLand, authenticateUser, registerUser, retrieveUser, updateLandPlantVeggie } = require('.')
 const { random } = Math
@@ -7,7 +8,7 @@ const bcrypt = require('bcryptjs')
 describe('deleteVeggieFromLand', () => {
 
     beforeAll(async () => {
-        await mongoose.connect('mongodb://localhost/test-hoort', { useNewUrlParser: true, useUnifiedTopology: true })
+        await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
         return await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
     })
 

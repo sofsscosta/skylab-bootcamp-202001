@@ -10,7 +10,7 @@ module.exports = function (landId, veggieId, token) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/item/planted`, {
+        const response = await fetch(`${API_URL}/item/planted`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ land: landId, item: veggieId })

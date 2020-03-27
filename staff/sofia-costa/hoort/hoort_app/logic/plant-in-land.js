@@ -11,7 +11,7 @@ module.exports = function (landId, scheme, token) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/land/planted`, {
+        const response = await fetch(`${API_URL}/land/planted`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ land: landId, scheme })

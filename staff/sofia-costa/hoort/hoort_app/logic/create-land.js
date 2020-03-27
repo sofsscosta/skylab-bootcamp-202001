@@ -12,7 +12,7 @@ module.exports = function (token, name, location, soiltype, scheme) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/land`, {
+        const response = await fetch(`${API_URL}/land`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ name, location, soiltype, scheme })

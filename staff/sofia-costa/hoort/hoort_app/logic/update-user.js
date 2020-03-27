@@ -11,7 +11,7 @@ module.exports = function (changes, token) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/users`, {
+        const response = await fetch(`${API_URL}/users`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ updates: changes })

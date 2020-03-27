@@ -1,12 +1,12 @@
 require('dotenv').config()
+
 const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
 
-const { updateLandAddVeggie, createLand, registerUser, authenticateUser, createItem } = require('.')
+const { updateLandHarvestVeggie, updateLandPlantVeggie, updateLandAddVeggie, createLand, registerUser, authenticateUser, createItem } = require('.')
 const { mongoose, models: { Land, Item, User } } = require('../hoort-data')
 const { random } = Math
-const bcrypt = require('bcryptjs')
 
-describe('updateLandAddVeggie', () => {
+describe('updateLandHarvestVeggie', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -41,7 +41,6 @@ describe('updateLandAddVeggie', () => {
         bestPeriodNum = [1, 2, 3]
         lightPreference = `lightPreference-${random()}`
 
-
         await createItem(colorId, nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
 
         veggie = await Item.findOne({ name: nameVeggie })
@@ -63,9 +62,12 @@ describe('updateLandAddVeggie', () => {
         landId = land.id
     })
 
-    it('should add veggies to land\'s plantation if it exists on scheme', async () => {
+    it('should succeed if veggie is added to land\'s plantation and is planted', async () => {
 
         await updateLandAddVeggie(landId, veggieId, token)
+        await updateLandPlantVeggie(landId, veggieId, token)
+
+        await updateLandHarvestVeggie(landId, veggieId, token)
 
         land = await Land.findById(landId)
 
@@ -73,31 +75,42 @@ describe('updateLandAddVeggie', () => {
 
         expect(land.id).toBe(landId)
         expect(plantation).toBeDefined()
-        expect(plantation.to).toBe(null)
-        expect(plantation.from).toBe(null)
+        expect(plantation.to).toBeInstanceOf(Date)
+        expect(plantation.from).toBeInstanceOf(Date)
+        expect(plantation.estTime).toBeDefined()
     })
 
-    it('should not add to plantation if there is already a plantation for this veggie ', async () => {
+    it('should fail if veggie is not yet planted', async () => {
 
-        await updateLandAddVeggie(landId, veggieId, token)
-        await updateLandAddVeggie(landId, veggieId, token)
+        try {
+            await updateLandAddVeggie(landId, veggieId, token)
+            await updateLandHarvestVeggie(landId, veggieId, token)
+        }
+        catch (error) {
+            expect(error.message).toBe('item is not planted yet')
+        }
+    })
 
-        land = await Land.findById(landId)
+    it('should fail if veggie is not on land\'s plantation', async () => {
 
-        let plantation = land.plantation.filter(plant => plant.veggie.toString() === veggieId.toString())
-        expect(plantation.length).toBe(1)
+        try {
+            await updateLandHarvestVeggie(landId, veggieId, token)
+        }
+        catch (error) {
+            expect(error.message).toBe('this item is not added to land')
+        }
     })
 
     it('should fail if incorrect data is passed', async () => {
 
         try {
-            await updateLandAddVeggie(`${landId}--wrong`, veggieId, token)
+            await updateLandHarvestVeggie(`${landId}--wrong`, veggieId, token)
         } catch (error) {
             expect(error).toBeDefined()
         }
 
         try {
-            await updateLandAddVeggie(`${landId}--wrong`, `${veggieId}--wrong`, token)
+            await updateLandHarvestVeggie(`${landId}--wrong`, `${veggieId}--wrong`, token)
         } catch (error) {
             expect(error).toBeDefined()
         }
