@@ -7,7 +7,7 @@ import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
 import land_border from '../../assets/land_border.png'
 
-function PlantLand({ land, onClickVeggie, updatedLand, submit }) {
+function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
 
     console.log('land inplantland', land)
 
@@ -202,7 +202,8 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit }) {
                                         source={change_veggie}
                                     ></Image>
                                 </TouchableOpacity>
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => goToPlantNow(currentLand)}>
                                     <Image
                                         style={styles.button}
                                         resizeMode='contain'

@@ -7,7 +7,7 @@ export default function (token) {
 
     return (async () => {
 
-        const retrieve = await fetch(`${API_URL}/land/plantations`, {
+        const retrieve = await fetch(`http://localhost:8085/land/plantations`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         })

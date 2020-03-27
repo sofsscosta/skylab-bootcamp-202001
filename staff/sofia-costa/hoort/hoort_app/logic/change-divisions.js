@@ -11,7 +11,7 @@ module.exports = function (operation, scheme) {
 
     return (async () => {
 
-        const response = await fetch(`${API_URL}/land/divisions`, {
+        const response = await fetch(`http://localhost:8085/land/divisions`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ operation, scheme })

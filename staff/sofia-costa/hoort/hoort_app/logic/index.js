@@ -1,3 +1,4 @@
+import context from './context'
 import registerUser from './register-user'
 import authenticateUser from './authenticate-user'
 import retrieveUser from './retrieve-user'
@@ -23,7 +24,12 @@ import retrieveUserPlantations from './retrieve-user-plantations'
 import updateUser from './update-user'
 import createItem from './create-item-for-testing'
 
+// function __context__() { return context }
+
+// export default { get __context__() { return context } }
+
 export {
+    // __context__,
     registerUser,
     authenticateUser,
     retrieveUser,

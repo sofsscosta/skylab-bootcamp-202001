@@ -5,6 +5,7 @@ import { ScrollView, TouchableOpacity, View, Text } from 'react-native'
 import { retrieveUserPlantations, retrieveItem } from '../../logic'
 import styles from './style'
 import moment from 'moment'
+console.disableYellowBox = true
 
 function GetCalendar({ token, goToCalendarModal }) {
 
@@ -118,18 +119,31 @@ function GetCalendar({ token, goToCalendarModal }) {
 
     }
 
-    function handleGoToCalendarModal(vegName) {
+    async function handleGoToCalendarModal(vegName) {
 
         let veggie = veggies.find(async element => {
             let retrievedVeg = await retrieveItem(element.id)
             retrievedVeg.name === vegName
         })
 
+        console.log('veggie calendar', veggie)
+
         veggieThisMonthAll.push(veggie)
 
-        console.log(veggie)
+        allUserPlantations = await retrieveUserPlantations(token)
+        let veggiePlantations = await Promise.all(allUserPlantations.map(async veg => {
+            if (veg.estTime) {
+                let retrievedVeg = await retrieveItem(veg.veggie)
+                console.log('retrievedVeg inside filter ', retrievedVeg)
+                console.log('vegName inside filter ', vegName)
+                console.log('veg inside filter ', veg)
+                return retrievedVeg.name === vegName ? veg.land : ''
+            }
+        }))
 
-        return goToCalendarModal(vegName, currentMonth, veggieThisMonthAll)
+        console.log('veggiePlantations ', veggiePlantations)
+
+        return goToCalendarModal(vegName, currentMonth, veggiePlantations)
     }
 
     return (

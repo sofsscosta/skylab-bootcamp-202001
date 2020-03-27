@@ -5,14 +5,15 @@ const fetch = require('node-fetch')
 
 module.exports = function (token, name, location, soiltype, scheme) {
     validate.string(token, 'token')
+    debugger
     validate.string(name, 'name')
     validate.string(location, 'location')
     validate.string(soiltype, 'soiltype')
-    //validate.scheme(scheme, 'scheme')
+    validate.scheme(scheme, 'scheme')
 
     return (async () => {
 
-        const response = await fetch(`${API_URL}/land`, {
+        const response = await fetch(`http://localhost:8085/land`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ name, location, soiltype, scheme })
@@ -26,7 +27,6 @@ module.exports = function (token, name, location, soiltype, scheme) {
                     const { error } = response
 
                     throw new Error(error)
-
                 })
         } else throw new Error(response)
     })()

@@ -14,13 +14,25 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails, token })
     useEffect(() => {
         (async () => {
             try {
-                let _lands = await Promise.all(modalInfo.plantations.map(async plant => {
+                console.log('plantations in modal ', modalInfo.lands)
+                let _lands = await Promise.all(modalInfo.lands.map(async _land => {
+                    console.log('land in map in modal ', _land)
+                    console.log('land.length in map in modal ', _land.length)
+                    console.log('land.length does it enter?? ', _land.length !== 0)
+                    if (_land.length !== 0) {
 
-                    let land = await retrieveLand(token, plant.land)
-                    return land
+                        let land = await retrieveLand(token, _land)
+                        console.log('retrieved land in modal in map', land)
+                        return land
+                    }
                 }))
 
-                setLands(_lands)
+                console.log('does land include an undefined? ', _lands.includes(undefined))
+                let filteredLands = _lands.filter(land => { return land !== undefined })
+
+                console.log('lands after all ', filteredLands)
+
+                setLands(filteredLands)
             }
             catch (error) {
                 console.log(error)
@@ -28,7 +40,7 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails, token })
         })()
     }, [])
 
-    console.log(lands)
+    console.log('lands in modal ', lands)
 
     return (
         <TouchableWithoutFeedback onPress={() => onBackgroundClick()}>
@@ -36,7 +48,7 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails, token })
                 <Text style={styles.title}>{`YOUR ${modalInfo.name.toUpperCase()} IN ${modalInfo.month.toUpperCase()}`}</Text>
                 <Text style={styles.description}>SCROLL OR CLICK ON LAND</Text>
                 <View style={styles.lands_container}>
-                    <ScrollView>
+                    <ScrollView style={{ height: 450, width: 350 }}>
                         <FlatList
                             resizeMode='stretch'
                             data={lands}

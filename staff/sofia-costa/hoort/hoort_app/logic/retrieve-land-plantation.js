@@ -6,7 +6,7 @@ export default async function (id, token) {
     validate.string(id, 'id')
     validate.string(token, 'token')
 
-    const retrieve = await fetch(`${API_URL}/land/planted/${id}`, {
+    const retrieve = await fetch(`http://localhost:8085/land/planted/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': `application/json`, 'Authorization': `Bearer ${token}` }
     })

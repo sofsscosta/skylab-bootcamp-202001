@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {
   InitScreen, Landing, Login, Register, Header, Footer, Menu,
   Search, Detail, Results, Lands, CreateLand, PlantLand, Modal,
-  CreateLandModal, Land, Calendar, EditProfile, CalendarModal
+  CreateLandModal, Land, Calendar, EditProfile, CalendarModal,
+  PlantNowModal
 } from './components'
 import { isLoggedIn } from './logic'
 
@@ -20,6 +21,7 @@ export default function App() {
   const [modal, setModal] = useState(false)
   const [createLandModal, setCreateLandModal] = useState(false)
   const [calendarModal, setCalendarModal] = useState(false)
+  const [plantNowModal, setPlantNowModal] = useState(false)
   const [calendarModalInfo, setCalendarModalInfo] = useState()
   const [modalType, setModalType] = useState()
   const [newLandProps, setNewLandProps] = useState()
@@ -90,8 +92,8 @@ export default function App() {
     setView('calendar')
   }
 
-  function handleGoToCalendarModal(name, month, plantations) {
-    setCalendarModalInfo({ plantations, name, month })
+  function handleGoToCalendarModal(name, month, lands) {
+    setCalendarModalInfo({ lands, name, month })
     !calendarModal ? setCalendarModal(true) : setCalendarModal(false)
   }
 
@@ -142,8 +144,14 @@ export default function App() {
   function handleGoToPlantLand(land) {
     setMenu(false)
     setError(undefined)
+    setPlantNowModal(false)
     setLand(land)
     setView('plantLand')
+  }
+
+  function handleGoToPlantNowModal(_land) {
+    setLandForModal(_land)
+    !plantNowModal ? setPlantNowModal(true) : setPlantNowModal(false)
   }
 
   function handleModal(veg, _land, type, _coordinates, token) {
@@ -175,6 +183,7 @@ export default function App() {
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleGoToMyLands} goToCreateLand={handleGoToCreateLand} />}
       {view === 'calendar' && calendarModal && <CalendarModal modalInfo={calendarModalInfo} token={token} onBackgroundClick={handleGoToCalendarModal} goToLandDetails={handleGoToRetrievedLand} />}
+      {view === 'plantLand' && plantNowModal && <PlantNowModal onBackgroundClick={handleGoToPlantLand} land={landForModal} />}
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} token={token} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
@@ -186,7 +195,7 @@ export default function App() {
       {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} _error={error} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} _error={error} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} _error={error} />}
-      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} />}
+      {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} goToPlantNow={handleGoToPlantNowModal} />}
       {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
       {view === 'calendar' && <Calendar goToCalendarModal={handleGoToCalendarModal} token={token} />}
       {view === 'detail' && <Detail item={veggie} goToLandDetail={handleGoToRetrievedLand} />}

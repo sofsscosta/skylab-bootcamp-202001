@@ -5,7 +5,7 @@ const fetch = require('node-fetch')
 export default async function (token) {
     validate.string(token, 'token')
 
-    const retrieve = await fetch(`${API_URL}/items`, {
+    const retrieve = await fetch(`http://localhost:8085/items`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
     })

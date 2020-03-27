@@ -48,7 +48,6 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
     async function handleCreateLand() {
 
-        debugger
         console.log(newLandProps)
         let name = newLandProps.name
         let location = newLandProps.location

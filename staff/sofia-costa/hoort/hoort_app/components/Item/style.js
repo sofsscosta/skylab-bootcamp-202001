@@ -31,15 +31,16 @@ const styles = StyleSheet.create({
         width: 70
     },
     background: {
-        width: 400,
+        width: '90%',
         height: 100,
+        // flex: 1,
         alignSelf: 'center',
     },
     title: {
         fontSize: 30,
         top: 45,
         height: 50,
-        width: 300,
+        width: '100%',
         marginLeft: 20,
         alignSelf: 'center',
         color: 'white',

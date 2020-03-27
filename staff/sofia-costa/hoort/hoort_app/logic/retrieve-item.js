@@ -5,7 +5,7 @@ const fetch = require('node-fetch')
 export default async function (id) {
     validate.string(id, 'id')
 
-    const retrieve = await fetch(`${API_URL}/item/${id}`, {
+    const retrieve = await fetch(`http://localhost:8085/item/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': `application/json` }
     })

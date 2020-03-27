@@ -17,7 +17,7 @@ module.exports = function (colorId, name, type, subtype, growth, growthDuration,
 
     return (async () => {
 
-        const response = await fetch(`${API_URL}/items`, {
+        const response = await fetch(`http://localhost:8085/items`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })

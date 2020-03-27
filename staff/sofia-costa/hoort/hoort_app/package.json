@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "dotenv": "^8.2.0",
+    "dotenv": "file:env-var",
     "hoort-errors": "file:../hoort-errors",
     "hoort-utils": "file:../hoort-utils",
     "moment": "^2.24.0",

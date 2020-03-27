@@ -6,7 +6,7 @@ export default async function (token, id) {
     validate.string(token, 'token')
     validate.string(id, 'id')
 
-    const retrieve = await fetch(`${API_URL}/item/user/${id}`, {
+    const retrieve = await fetch(`http://localhost:8085/item/user/${id}`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
     })

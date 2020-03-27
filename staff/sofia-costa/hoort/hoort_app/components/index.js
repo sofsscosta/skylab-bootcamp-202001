@@ -23,6 +23,7 @@ import Calendar from './Calendar'
 import ErrorModal from './ErrorModal'
 import EditProfile from './EditProfile'
 import CalendarModal from './CalendarModal'
+import PlantNowModal from './PlantNowModal'
 
 export {
     InitScreen,
@@ -49,5 +50,6 @@ export {
     Calendar,
     ErrorModal,
     EditProfile,
-    CalendarModal
+    CalendarModal,
+    PlantNowModal
 }

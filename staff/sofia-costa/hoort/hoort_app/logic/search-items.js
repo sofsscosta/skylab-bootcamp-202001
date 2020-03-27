@@ -5,7 +5,7 @@ const fetch = require('node-fetch')
 export default async function (query) {
     validate.string(query, 'query')
 
-    const search = await fetch(`${API_URL}/allitems/${query}`, {
+    const search = await fetch(`http://localhost:8085/allitems/${query}`, {
         method: 'GET',
         headers: { 'Content-Type': `application/json` }
     })
