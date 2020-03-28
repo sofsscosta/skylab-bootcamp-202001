@@ -1,13 +1,20 @@
-require('dotenv').config()
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
+const config = require('../config')
 const { mongoose, models: { User } } = require('../hoort-data')
 const { authenticateUser, retrieveUser } = require('./')
 const bcrypt = require('bcryptjs')
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+MONGODB_URL = config.TEST_MONGODB_URL
 
 describe('authenticateUser', () => {
 
     beforeAll(async () => {
-        await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        await mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
         return await Promise.resolve(User.deleteMany({}))
     })
 
@@ -35,18 +42,17 @@ describe('authenticateUser', () => {
 
         it('should succeed on correct credentials', async () => {
 
-            let token = await authenticateUser(email, password)
+            let response = await authenticateUser(email, password)
 
-            expect(typeof token).toBe('string')
-            expect(token.length).not.toBe(0)
+            expect(response).toBeUndefined()
+
+            const token = await logic.__context__.storage.getItem('token')
 
             let _user = await retrieveUser(token)
 
             expect(_user.email).toBe(user.email)
             expect(_user.name).toBe(user.name)
             expect(_user.username).toBe(user.username)
-
-            //expect(id).toBe(_id)
 
         })
 

@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
@@ -11,7 +11,7 @@ module.exports = function (operation, scheme) {
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/land/divisions`, {
+        const response = await fetch(`${this.API_URL}/land/divisions`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ operation, scheme })
@@ -26,4 +26,4 @@ module.exports = function (operation, scheme) {
         else return newScheme
 
     })()
-}
+}.bind(context)

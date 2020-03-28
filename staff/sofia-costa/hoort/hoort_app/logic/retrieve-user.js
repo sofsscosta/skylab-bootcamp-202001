@@ -1,23 +1,26 @@
-const API_URL = process.env.REACT_APP_API_URL
 
-const { validate } = require('../hoort-utils')
+const context = require('./context')
 const fetch = require('node-fetch')
 
-export default async function (token) {
-    validate.string(token, 'token')
+module.exports = function retrieveUser() {
 
-    const retrieve = await fetch(`http://localhost:8085/users`, {
-        method: 'GET',
-        headers: { 'Authorization': `Bearer ${token}` }
-    })
+    return (async () => {
 
-    const user = await retrieve.json()
+        const token = await this.storage.getItem('token')
 
-    const { error } = user
+        const response = await fetch(`${this.API_URL}/users`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
 
-    if (error) {
-        return new Error(error)
-    }
+        const data = await response.json()
+        const { error: _error } = data
 
-    else return user
-}
+        if (_error) throw new Error(_error)
+
+        const { id, name, username, email } = data
+
+        return { id, name, username, email }
+
+    })()
+}.bind(context)

@@ -6,6 +6,11 @@ import {
   PlantNowModal
 } from './components'
 import { isLoggedIn } from './logic'
+import config from './config'
+import { AsyncStorage } from 'react-native'
+
+logic.__context__.storage = AsyncStorage
+logic.__context__.API_URL = config.API_URL
 
 export default function App() {
 

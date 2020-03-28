@@ -1,14 +1,24 @@
-require('dotenv').config()
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
-const { retrieveUser, authenticateUser } = require('.')
-const { mongoose, models: { User } } = require('../hoort-data')
-const fetch = require('node-fetch')
-const bcrypt = require('bcryptjs')
+const config = require('../config')
+const { retrieveUser } = require('.')
+const { mongoose, models: { Item, User, Land } } = require('../hoort-data')
+const { random } = Math
+const jwt = require('jsonwebtoken')
+
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+TEST_MONGODB_URL = config.TEST_MONGODB_URL
+JWT_SECRET = config.TEST_JWT_SECRET
 
 describe('retrieveUser', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        await logic.__context__.storage.clear()
         return await Promise.resolve(User.deleteMany({}))
     })
 
@@ -25,9 +35,10 @@ describe('retrieveUser', () => {
         let token, user
 
         beforeEach(async () => {
-            _password = await bcrypt.hash(password, 10)
-            user = await User.create({ name, username, email, password: _password })
-            return token = await authenticateUser(email, password)
+            user = await User.create({ name, username, email, password })
+            id = user._id.toString()
+            const _token = jwt.sign({ sub: id }, JWT_SECRET)
+            await logic.__context__.storage.setItem('token', _token)
         })
 
         afterEach(async () => {
@@ -36,56 +47,31 @@ describe('retrieveUser', () => {
 
         it('should succeed on correct token', async () => {
 
-            user = await retrieveUser(token)
+            retrievedUser = await retrieveUser()
 
-            expect(user.constructor).toBe(Object)
-            expect(user.name).toBe(name)
-            expect(user.username).toBe(username)
-            expect(user.email).toBe(email)
-            expect(user.password).toBeUndefined()
-        })
+            console.log(retrievedUser)
 
-        it('should fail on invalid token', async () => {
-
-            try {
-                await retrieveUser(`${token}--wrong`)
-            } catch (error) {
-                expect(error.message).toBe("invalid signature")
-            }
-
+            expect(retrievedUser.constructor).toBe(Object)
+            expect(retrievedUser.name).toBe(name)
+            expect(retrievedUser.username).toBe(username)
+            expect(retrievedUser.email).toBe(email)
+            expect(retrievedUser.password).toBeUndefined()
         })
     })
 
-    it('should fail on invalid token format', async () => {
-        let error, token
+    it('should fail when there is no token in storage', async () => {
 
         try {
-            token = 1
-            error = await retrieveUser(token)
+            await retrieveUser()
         } catch (error) {
             expect(error).toBeInstanceOf(TypeError)
-            // expect(error.message).toBe('token is empty')
-        }
-
-        try {
-            token = true
-            error = await retrieveUser(token)
-        } catch (error) {
-            expect(error).toBeInstanceOf(TypeError)
-            // expect(error.message).toBe('token is empty')
-        }
-
-        try {
-            token = undefined
-            error = await retrieveUser(token)
-        } catch (error) {
-            expect(error).toBeInstanceOf(TypeError)
-            // expect(error.message).toBe('token is empty')
+            expect(error.message).toBe('invalid signature')
         }
     })
 
     afterAll(async () => {
         await Promise.resolve(User.deleteMany({}))
+        await logic.__context__.storage.clear()
         return await mongoose.disconnect()
     })
 })

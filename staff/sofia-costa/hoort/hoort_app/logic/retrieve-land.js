@@ -1,12 +1,13 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
-export default async function (token, landId) {
-    validate.string(token, 'token')
+module.exports = async function (landId) {
     validate.string(landId, 'landId')
 
-    const retrieve = await fetch(`http://localhost:8085/land/${landId}`, {
+    const token = await this.storage.getItem('token')
+
+    const retrieve = await fetch(`${this.API_URL}/land/${landId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
     })
@@ -20,4 +21,4 @@ export default async function (token, landId) {
     if (!land) throw new Error('You have no lands yet!')
 
     return land
-}
+}.bind(context)

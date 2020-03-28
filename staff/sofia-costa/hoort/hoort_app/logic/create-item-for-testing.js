@@ -1,10 +1,9 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
 module.exports = function (colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference) {
 
-    validate.string(colorId, 'colorId')
     validate.string(name, 'name')
     validate.string(type, 'type')
     validate.string(subtype, 'subtype')
@@ -17,7 +16,7 @@ module.exports = function (colorId, name, type, subtype, growth, growthDuration,
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/items`, {
+        const response = await fetch(`${this.API_URL}/items`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
@@ -38,4 +37,4 @@ module.exports = function (colorId, name, type, subtype, growth, growthDuration,
                 })
         } else throw new Error(response)
     })()
-}
+}.bind(context)

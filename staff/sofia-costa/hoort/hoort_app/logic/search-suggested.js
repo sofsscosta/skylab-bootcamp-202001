@@ -1,9 +1,9 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 const fetch = require('node-fetch')
 
-export default async function () {
+module.exports = async function () {
 
-    const search = await fetch(`http://localhost:8085/items/reccommended`, {
+    const search = await fetch(`${this.API_URL}/items/reccommended`, {
         method: 'GET',
         headers: { 'Content-Type': `application/json` }
     })
@@ -17,4 +17,4 @@ export default async function () {
     }
 
     else return results
-}
+}.bind(context)

@@ -1,9 +1,6 @@
-// const API_URL = process.env.REACT_APP_API_URL
-// const { API_URL } = require('../env-var/env')
-
-// console.log(API_URL)
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
+const context = require('./context')
 
 module.exports = function (name, username, email, password) {
     validate.email(email, 'email')
@@ -11,14 +8,14 @@ module.exports = function (name, username, email, password) {
     validate.string(name, 'name')
     validate.string(username, 'username')
     validate.string(password, 'password')
+
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/users`, {
+        const response = await fetch(`${this.API_URL}/users`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, username, email, password })
         })
-
 
         if (response.status === 201) return
 
@@ -32,4 +29,4 @@ module.exports = function (name, username, email, password) {
                 })
         } else throw new Error(response)
     })()
-}
+}.bind(context)

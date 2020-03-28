@@ -1,15 +1,16 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
 module.exports = function (land, token) {
     validate.string(land, 'land')
-    validate.string(token, 'token')
 
     return (async () => {
 
-        const response = await fetch(`http://localhost:8085/land`, {
+        const token = await this.storage.getItem('token')
+
+        const response = await fetch(`${this.API_URL}/land`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ land })
@@ -29,4 +30,4 @@ module.exports = function (land, token) {
 
         } else throw new Error(response)
     })()
-}
+}.bind(context)

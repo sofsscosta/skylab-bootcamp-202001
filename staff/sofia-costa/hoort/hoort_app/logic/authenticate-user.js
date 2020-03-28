@@ -1,16 +1,15 @@
-const API_URL = process.env.REACT_APP_API_URL
-// const { AsyncStorage } = require('react-native')
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
+const context = require('./context')
 
-export default function (email, password) {
+module.exports = function (email, password) {
     validate.string(email, 'email')
     validate.email(email)
     validate.string(password, 'password')
 
     return (async () => {
 
-        const auth = await fetch(`http://localhost:8085/users/auth`, {
+        const auth = await fetch(`${this.API_URL}/users/auth`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -24,8 +23,8 @@ export default function (email, password) {
             throw new Error(error)
 
         else {
-            // await AsyncStorage.setItem('token', token)
-            return token
+            await this.storage.setItem('token', token)
+            return
         }
     })()
-}
+}.bind(context)

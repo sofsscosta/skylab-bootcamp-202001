@@ -1,10 +1,18 @@
-require('dotenv').config()
-
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
-const { updateUser, authenticateUser } = require('.')
+const config = require('../config')
+const { updateUser } = require('.')
 const { mongoose, models: { User } } = require('../hoort-data')
-const fetch = require('node-fetch')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+TEST_MONGODB_URL = config.TEST_MONGODB_URL
+JWT_SECRET = config.TEST_JWT_SECRET
 
 describe('updateUser', () => {
 
@@ -31,7 +39,8 @@ describe('updateUser', () => {
             _password = await bcrypt.hash(password, 10)
             user = await User.create({ name, username, email, password: _password })
             id = user.id
-            token = await authenticateUser(email, password)
+            token = jwt.sign({ sub: id }, JWT_SECRET)
+            await logic.__context__.storage.setItem('token', token)
 
 
             newName = 'newName-' + Math.random()
@@ -64,7 +73,7 @@ describe('updateUser', () => {
         it('should succeed on correct token and some fields filled', async () => {
             updates = { email: newEmail, oldPassword: password, newPassword }
 
-            let response = await updateUser(updates, token)
+            let response = await updateUser(updates)
 
             expect(response).toBeUndefined()
 
@@ -93,12 +102,39 @@ describe('updateUser', () => {
             updates = { email: newEmail, wrongField: name, oldPassword: password, newPassword }
 
             try {
-                await updateUser(updates, token)
+                await updateUser(updates)
             } catch (error) {
                 expect(error.message).toBe("invalid field wrongField")
             }
         })
     })
+
+    describe('when user does not exist', () => {
+
+        let token, user, newName, newUsername, newEmail, newPassword, updates
+
+        beforeEach(async () => {
+
+            newName = 'newName-' + Math.random()
+            newUsername = 'newUsername-' + Math.random()
+            newEmail = 'newMail-' + Math.random() + '@mail.com'
+            newPassword = 'newPassword-' + Math.random()
+        })
+
+        afterEach(async () => {
+            return await User.findByIdAndRemove(id)
+        })
+
+        it('should fail when there is no token in storage', async () => {
+            updates = { email: newEmail, wrongField: name, oldPassword: password, newPassword }
+            try {
+                await updateUser(updates)
+            } catch (error) {
+                expect(error).toBeDefined()
+            }
+        })
+    })
+
 
     afterAll(async () => {
         await Promise.resolve(User.deleteMany({}))

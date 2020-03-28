@@ -1,8 +1,16 @@
-require('dotenv').config()
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
+const config = require('../config')
+const { createItem } = require('.')
 const { mongoose, models: { Item } } = require('../hoort-data')
-const { searchItems, createItem } = require('.')
 const { random } = Math
+
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+TEST_MONGODB_URL = config.TEST_MONGODB_URL
 
 describe('createItem', () => {
 

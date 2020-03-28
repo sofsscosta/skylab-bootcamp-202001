@@ -53,7 +53,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
         app.post('/users/auth', jsonBodyParser, authenticateUser)
 
-        app.get('/users', jwtVerifierMidWare, retrieveUser)
+        app.get('/users', [jwtVerifierMidWare, jsonBodyParser], retrieveUser)
 
         app.patch('/users', [jwtVerifierMidWare, jsonBodyParser], updateUser)
 

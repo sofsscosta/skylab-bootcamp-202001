@@ -1,17 +1,17 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
 
-module.exports = function (landId, scheme, token) {
+module.exports = function (landId, scheme) {
 
     validate.string(landId, 'landId')
-    validate.string(token, 'token')
 
     return (async () => {
+        const token = await this.storage.getItem('token')
 
-        const response = await fetch(`http://localhost:8085/land/planted`, {
+        const response = await fetch(`${this.API_URL}/land/planted`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ land: landId, scheme })
@@ -25,4 +25,4 @@ module.exports = function (landId, scheme, token) {
 
         else return land
     })()
-}
+}.bind(context)

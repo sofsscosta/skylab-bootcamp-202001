@@ -1,12 +1,13 @@
-const API_URL = process.env.REACT_APP_API_URL
+const context = require('./context')
 const { validate } = require('../hoort-utils')
 const fetch = require('node-fetch')
 
-export default async function (id, token) {
+module.exports = async function (id) {
     validate.string(id, 'id')
-    validate.string(token, 'token')
 
-    const retrieve = await fetch(`http://localhost:8085/land/planted/${id}`, {
+    const token = await this.storage.getItem('token')
+
+    const retrieve = await fetch(`${this.API_URL}/land/planted/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': `application/json`, 'Authorization': `Bearer ${token}` }
     })
@@ -20,4 +21,4 @@ export default async function (id, token) {
     if (!item) throw new Error('There\'s no item corresponding to this id!')
 
     return item
-}
+}.bind(context)
