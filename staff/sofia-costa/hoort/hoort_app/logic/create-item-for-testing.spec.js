@@ -4,7 +4,7 @@ const { mongoose, models: { Item } } = require('../hoort-data')
 const { searchItems, createItem } = require('.')
 const { random } = Math
 
-describe('searchItems', () => {
+describe('createItem', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -23,7 +23,7 @@ describe('searchItems', () => {
         soil = `soil-${random()}`
         temperature = `temperature-${random()}`
         bestPeriod = `bestPeriod-${random()}`
-        bestPeriodNum = `bestPeriodNum-${random()}`
+        bestPeriodNum = [0, 2, 3, 4]
         lightPreference = `lightPreference-${random()}`
     })
 
@@ -41,7 +41,7 @@ describe('searchItems', () => {
                 expect(item.soil).toBe(soil)
                 expect(item.temperature).toBe(temperature)
                 expect(item.bestPeriod).toBe(bestPeriod)
-                expect(item.bestPeriodNum[0]).toBe(bestPeriodNum)
+                expect(item.toObject().bestPeriodNum).toStrictEqual(bestPeriodNum)
                 expect(item.lightPreference).toBe(lightPreference)
             })
     })
@@ -49,7 +49,7 @@ describe('searchItems', () => {
     it('should fail on not all fields defined', () => {
         expect(() => {
             return createItem(colorId, name, type, subtype, growthDuration, soil, temperature)
-        }).toThrowError(TypeError, 'temperature undefined is not a string')
+        }).toThrowError(TypeError, 'temperature is empty')
     })
 
     it('should fail on repeated name', () => {

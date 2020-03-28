@@ -28,7 +28,7 @@ describe('searchSuggested', () => {
             soil = `soil-${random()}`
             temperature = `temperature-${random()}`
             bestPeriod = `bestPeriod-${random()}`
-            bestPeriodNum = (new Date()).getMonth()
+            bestPeriodNum = [0, 2, 3, 4]
             lightPreference = `lightPreference-${random()}`
 
             await createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)
@@ -60,6 +60,7 @@ describe('searchSuggested', () => {
             expect(_results[i].soil).toBe(items[i].soil)
             expect(_results[i].temperature).toBe(items[i].temperature)
             expect(_results[i].bestPeriod).toBe(items[i].bestPeriod)
+            expect(_results[i].bestPeriodNum).toStrictEqual(items[i].toObject().bestPeriodNum)
             expect(_results[i].lightPreference).toBe(items[i].lightPreference)
         }
     })

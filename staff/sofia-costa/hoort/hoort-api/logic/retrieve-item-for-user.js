@@ -10,7 +10,7 @@ module.exports = async (userId, itemId) => {
 
     let item = await Item.findById(itemId)
 
-    if (!item) return new NotFoundError(`item with id ${itemId} does not exist`)
+    // if (!item) return new NotFoundError(`item with id ${itemId} does not exist`)
 
     //let growthDuration = item.growthDuration
 

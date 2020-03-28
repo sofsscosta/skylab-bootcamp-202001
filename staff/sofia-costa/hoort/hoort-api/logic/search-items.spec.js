@@ -53,7 +53,6 @@ describe('searchItems', () => {
         //expect(() => {
         searchItems('lalalalalal')
             .then(item => {
-                console.log(item)
                 throw new Error('should not reach this point')
             })
             .catch((error) => {

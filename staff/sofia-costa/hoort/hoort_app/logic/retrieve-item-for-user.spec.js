@@ -51,7 +51,7 @@ describe('retrieveItemForUser', () => {
 
         token = await authenticateUser(email, password)
 
-        let user = retrieveUser(token)
+        let user = await retrieveUser(token)
 
         for (let i = 0; i < 10; i++) {
             nameLand = `nameLand-${random()}`
@@ -102,14 +102,14 @@ describe('retrieveItemForUser', () => {
         }
     })
 
-    it('should fail on invalid id', async () => {
-        try {
-            await retrieveItemForUser(token, `${veggies[0].id}--wrong`)
-        }
-        catch (error) {
-            expect(error).toBeDefined()
-        }
-    })
+    // it('should fail on invalid id', async () => {
+    //     try {
+    //         await retrieveItemForUser(token, `${veggies[0].id}--wrong`)
+    //     }
+    //     catch (error) {
+    //         expect(error).toBeDefined()
+    //     }
+    // })
 
     afterEach(async () => {
         await User.deleteMany({})

@@ -25,7 +25,7 @@ describe('retrieveUserVeggies', () => {
 
         token = await authenticateUser(email, password)
 
-        let user = retrieveUser(token)
+        let user = await retrieveUser(token)
     })
 
     describe('when user has lands', () => {

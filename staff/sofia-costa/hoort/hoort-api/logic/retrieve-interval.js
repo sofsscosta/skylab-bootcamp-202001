@@ -33,7 +33,6 @@ module.exports = async (userId, month) => {
                 let estMaxDay = moment(estAverageDay).add(4, 'days').format('DD/MM/YYYY')
 
                 veggiesEstTime.push({ veggie: plant.veggie.toString(), estMinDay, estMaxDay })
-
             }
         }
     }

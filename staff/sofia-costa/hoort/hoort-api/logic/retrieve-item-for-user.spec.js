@@ -85,7 +85,7 @@ describe('retrieveItemForUser', () => {
 
     it('should succeed on correct data', async () => {
         for (let i = 0; i < veggies.length; i++) {
-            retrieveItemForUser(userId, veggies[i].id)
+            return retrieveItemForUser(userId, veggies[i].id)
                 .then(item => {
                     expect(item.constructor).to.equal(Object)
                     expect(item.lands[0]._id.toString()).to.eql(landId)
@@ -99,12 +99,22 @@ describe('retrieveItemForUser', () => {
     // })
 
 
-    it('should fail on invalid id', () =>
+    it('should fail on invalid user id', () =>
         expect(() => {
             retrieveItemForUser(`${userId}--wrong`, veggies[0].id)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
                     expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)
+                })
+        })
+    )
+
+    it('should fail on invalid veggie id', () =>
+        expect(() => {
+            retrieveItemForUser(userId, `${veggies[0].id}--wrong`)
+                .then(() => { throw new Error('should not reach this point') })
+                .catch((error) => {
+                    expect(error).to.eql(NotFoundError, `item with id ${veggies[0].id} does not exist`)
                 })
         })
     )

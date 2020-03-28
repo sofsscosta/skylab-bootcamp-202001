@@ -16,8 +16,6 @@ module.exports = function (landId, veggieId, token) {
             body: JSON.stringify({ land: landId, item: veggieId })
         })
 
-        console.log(response)
-
         if (response.status === 201) {
             return
         }

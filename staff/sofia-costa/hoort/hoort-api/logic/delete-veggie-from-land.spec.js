@@ -78,13 +78,52 @@ describe('deleteVeggieFromLand', () => {
                 for (let i = 0; i < 3; i++) {
                     land.plantation.push({ veggie: veggies[i].id })
                 }
+
                 await land.save
             })
     })
 
-    it('should delete veggie from provided land id', async () => {
+    it('should delete veggie from provided land id when veggies is on plantation', async () => {
+        await updateItemAdd(userId, landId, veggies[0].id.toString())
         await deleteVeggieFromLand(userId, landId, veggies[0].id.toString())
         expect(await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[0].id.toString() } } })).to.eql(null)
+    })
+
+    it('should fail if veggie is not on land', async () => {
+
+        try {
+            await deleteVeggieFromLand(userId, landId, veggies[0].id.toString())
+        } catch (error) {
+            expect(error.message).to.eql('this veggie is neither on this land nor on this land\'s plantation')
+        }
+    })
+
+    it('should fail on invalid land id', async () => {
+        try {
+            await deleteVeggieFromLand(userId, `${landId}--wrong`, veggies[0].id.toString())
+        }
+        catch (error) {
+            expect(error).to.exist
+        }
+    })
+
+    it('should fail on invalid veggie id', async () => {
+        try {
+            await deleteVeggieFromLand(userId, landId, `${veggies[0].id.toString()}--wrong`)
+        }
+        catch (error) {
+            expect(error).to.exist
+            expect(error.message).to.eql('this veggie is neither on this land nor on this land\'s plantation')
+        }
+    })
+
+    it('should fail on invalid user id', async () => {
+        try {
+            await deleteVeggieFromLand(`${userId}--wrong}`, landId, veggies[0].id.toString())
+        }
+        catch (error) {
+            expect(error).to.exist
+        }
     })
 
     afterEach(async () => {

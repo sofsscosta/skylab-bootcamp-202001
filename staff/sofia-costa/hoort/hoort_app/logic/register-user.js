@@ -11,7 +11,6 @@ module.exports = function (name, username, email, password) {
     validate.string(name, 'name')
     validate.string(username, 'username')
     validate.string(password, 'password')
-    console.log('entered')
     return (async () => {
 
         const response = await fetch(`http://localhost:8085/users`, {
@@ -20,7 +19,6 @@ module.exports = function (name, username, email, password) {
             body: JSON.stringify({ name, username, email, password })
         })
 
-        console.log(response)
 
         if (response.status === 201) return
 

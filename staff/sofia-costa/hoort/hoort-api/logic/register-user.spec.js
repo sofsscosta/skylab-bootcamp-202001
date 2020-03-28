@@ -24,33 +24,58 @@ describe('registerUser', () => {
         password = 'password-' + random()
     })
 
-    describe('', () => {
 
-        it('should succeed on new user', () => {
+    it('should succeed on new user', () => {
 
-            return registerUser(name, username, email, password)
-                .then(response => {
-                    expect(response).to.be.an('undefined')
+        return registerUser(name, username, email, password)
+            .then(response => {
+                expect(response).to.be.an('undefined')
+            })
+            .then(() => User.findOne({ email }))
+            .then((user) => {
+                expect(user.name).to.equal(name)
+                expect(user.username).to.equal(username)
+                expect(user.email).to.equal(email)
+
+                return bcrypt.compare(password, user.password)
+            })
+            .then(validPassword => expect(validPassword).to.be.true)
+    })
+
+    it('should fail on already existing user', () => {
+        expect(() =>
+            registerUser(name, username, email, password)
+                .then(error => {
+                    expect(error).to.eql(NotAllowedError, `user with email "${email}" already exists`)
                 })
-                .then(() => User.findOne({ email }))
-                .then((user) => {
-                    expect(user.name).to.equal(name)
-                    expect(user.username).to.equal(username)
-                    expect(user.email).to.equal(email)
+        )
+    })
 
-                    return bcrypt.compare(password, user.password)
+    it('should fail on invalid parameters', () => {
+        expect(() =>
+            registerUser(true, username, email, password)
+                .then(error => {
+                    expect(error).to.exist
                 })
-                .then(validPassword => expect(validPassword).to.be.true)
-        })
-
-        it('should fail on already existing user', () => {
-            expect(() =>
-                registerUser(name, username, email, password)
-                    .then(error => {
-                        expect(error).to.eql(NotAllowedError, `user with email "${email}" already exists`)
-                    })
-            )
-        })
+        )
+        expect(() =>
+            registerUser(name, true, email, password)
+                .then(error => {
+                    expect(error).to.exist
+                })
+        )
+        expect(() =>
+            registerUser(name, username, true, password)
+                .then(error => {
+                    expect(error).to.exist
+                })
+        )
+        expect(() =>
+            registerUser(name, username, email, true)
+                .then(error => {
+                    expect(error).to.exist
+                })
+        )
     })
 
 

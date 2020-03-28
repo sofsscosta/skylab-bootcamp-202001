@@ -104,7 +104,7 @@ describe('retrieveInterval', () => {
         var max = new Date(partsMax[2], partsMax[1], partsMax[0])
         var min = new Date(partsMin[2], partsMin[1], partsMin[0])
 
-        expect((max.getTime() - min.getTime()) / (1000 * 60 * 60 * 24)).to.eql(7)
+        expect((max.getTime() - min.getTime()) / (1000 * 60 * 60 * 24) + 1).to.eql(7)
     })
 
     afterEach(async () => {
