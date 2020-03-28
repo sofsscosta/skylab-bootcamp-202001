@@ -101,9 +101,9 @@ describe('authenticateUser', () => {
         ).to.throw(TypeError, `password ${password} is not a string`)
     })
 
-    after(() => {
+    after(() =>
         mongoose.disconnect()
-    })
+    )
 })
 
 

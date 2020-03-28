@@ -14,6 +14,7 @@ module.exports = (colorId, name, type, subtype, growth, growthDuration, soil, te
     validate.string(soil, 'soil')
     validate.string(temperature, 'temperature')
     validate.string(bestPeriod, 'bestPeriod')
+    validate.array(bestPeriodNum, 'bestPeriod')
     validate.string(lightPreference, 'lightPreference')
 
     // TODO find user by id (userId)
@@ -25,7 +26,6 @@ module.exports = (colorId, name, type, subtype, growth, growthDuration, soil, te
 
             else {
                 item = new Item({ colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
-
                 return item.save()
             }
         })

@@ -6,26 +6,36 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        height: '80%',
-        width: '80%',
+        height: '100%',
+        width: '100%',
         backgroundColor: 'rgba(300, 300, 300, 0.5)'
     },
+    inside_container: {
+        alignSelf: 'center',
+        // top: '10%',
+        // bottom: '10%',
+        height: '59%',
+        width: '85%',
+        backgroundColor: 'white'
+    },
     container_border: {
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         position: 'absolute',
         maxHeight: '35%',
-        width: '80%',
+        width: '100%',
         alignSelf: 'center',
-        bottom: -170,
+        // bottom: -170,
     },
     title: {
         color: 'rgb(135, 135, 135)',
         bottom: '75%',
+        paddingLeft: '5%',
         fontSize: 30,
         // zIndex: 20,
         position: 'absolute',
         width: '95%',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: '200'
     },
     button: {
         width: '100%',
@@ -35,30 +45,26 @@ const styles = StyleSheet.create({
     },
     button_container: {
         top: '74%',
-        // position: 'absolute',
-        // zIndex: 20,
         height: '8%',
         width: '50%',
         alignSelf: 'center',
         alignItems: 'center'
     },
     state: {
-        // color: 'white',
         bottom: '57%',
         fontSize: 30,
         zIndex: 20,
-        // position: 'absolute',
         width: 200,
         flex: 0.05,
         textAlign: 'center'
     },
     create: {
-        // bottom: '140%',
         fontSize: 30,
-        // color: 'white'
     },
     results_container: {
-        // top: 150,
+        top: 150,
+        paddingHorizontal: '5%',
+        marginBottom: '45%'
     }
 })
 

@@ -27,7 +27,7 @@ describe('retrieveItem', () => {
         soil = `soil-${random()}`
         temperature = `temperature-${random()}`
         bestPeriod = `bestPeriod-${random()}`
-        bestPeriodNum = `bestPeriodNum-${random()}`
+        bestPeriodNum = [0, 9, 8]
         lightPreference = `lightPreference-${random()}`
 
         return createItem(colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference)

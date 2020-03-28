@@ -69,8 +69,8 @@ export default function App() {
     setError(undefined)
 
     _error && setError(_error)
-    setToken(token)
-    setLands(userLands)
+    token && setToken(token)
+    userLands && setLands(userLands)
     setView('myLands')
   }
 

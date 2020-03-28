@@ -43,7 +43,10 @@ function Item({ item, goToDetail }) {
                     source={images[`${item.name}`]}
                     resizeMode='contain'
                 />
-                <Text style={styles.title}>{item.name.toUpperCase()}</Text>
+                <Text
+                    numberOfLines={1}
+                    adjustsFontSizeToFit
+                    style={styles.title}>{item.name.toUpperCase()}</Text>
             </View>
         </TouchableOpacity >
     )

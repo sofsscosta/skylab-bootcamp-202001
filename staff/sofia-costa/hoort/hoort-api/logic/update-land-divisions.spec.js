@@ -54,7 +54,7 @@ describe('updateLandDivisions', () => {
 
     it('should double the number of rows and columns on add', async () => {
 
-        await updateLandDivisions(landId, '+')
+        await updateLandDivisions('+', landId)
 
         land = await Land.findById(landId)
 
@@ -67,9 +67,9 @@ describe('updateLandDivisions', () => {
 
     it('should cut in half the number of rows and columns on subtract', async () => {
 
-        await updateLandDivisions(landId, '+')
+        await updateLandDivisions('+', landId)
 
-        await updateLandDivisions(landId, '-')
+        await updateLandDivisions('-', landId)
 
         land = await Land.findById(landId)
 
@@ -82,12 +82,11 @@ describe('updateLandDivisions', () => {
 
     it('should fail on max divisions', async () => {
         try {
-            await updateLandDivisions(landId, '+')
-            await updateLandDivisions(landId, '+')
-            await updateLandDivisions(landId, '+')
+            await updateLandDivisions('+', landId)
+            await updateLandDivisions('+', landId)
+            await updateLandDivisions('+', landId)
 
         } catch (error) {
-            expect(error).to.be.instanceOf(NotAllowedError)
             expect(error.message).to.eql('Max limit of divisions')
         }
     })
@@ -95,10 +94,9 @@ describe('updateLandDivisions', () => {
     it('should fail on min divisions', async () => {
 
         try {
-            await updateLandDivisions(landId, '-')
+            await updateLandDivisions('-', landId)
 
         } catch (error) {
-            expect(error).to.be.instanceOf(NotAllowedError)
             expect(error.message).to.eql('Min limit of divisions')
         }
     })

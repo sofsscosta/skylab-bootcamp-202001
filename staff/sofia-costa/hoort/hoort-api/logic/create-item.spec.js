@@ -9,9 +9,7 @@ const createItem = require('./create-item')
 const { mongoose } = require('hoort-data')
 
 describe('createItem', () => {
-    before(() =>
-        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    )
+    before(() => mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }))
 
     let id, colorId, name, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference
 
@@ -25,7 +23,7 @@ describe('createItem', () => {
         soil = `soil-${random()}`
         temperature = `temperature-${random()}`
         bestPeriod = `bestPeriod-${random()}`
-        bestPeriodNum = `bestPeriodNum-${random()}`
+        bestPeriodNum = [0, 2, 6]
         lightPreference = `lightPreference-${random()}`
     })
 
@@ -43,7 +41,7 @@ describe('createItem', () => {
                 expect(item.soil).to.equal(soil)
                 expect(item.temperature).to.equal(temperature)
                 expect(item.bestPeriod).to.equal(bestPeriod)
-                expect(item.bestPeriodNum[0]).to.equal(bestPeriodNum)
+                expect(item.bestPeriodNum).to.deep.equal(bestPeriodNum)
                 expect(item.lightPreference).to.equal(lightPreference)
             })
     })

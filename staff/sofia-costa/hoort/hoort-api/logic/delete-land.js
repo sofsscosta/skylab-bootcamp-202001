@@ -10,7 +10,7 @@ module.exports = (id, landId) => {
 
     return Land.findById(landId)
         .then(land => {
-            if (!land) throw new NotAllowedError(`This land doesn't exist!`)
+            // if (land instanceof Error) throw new NotAllowedError(`This land doesn't exist!`)
 
             if (land.userId.toString() !== id) throw new NotAllowedError(`This land doesn't belong to this user`)
 

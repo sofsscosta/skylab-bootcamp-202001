@@ -5,7 +5,6 @@ const fetch = require('node-fetch')
 
 module.exports = function (token, name, location, soiltype, scheme) {
     validate.string(token, 'token')
-    debugger
     validate.string(name, 'name')
     validate.string(location, 'location')
     validate.string(soiltype, 'soiltype')

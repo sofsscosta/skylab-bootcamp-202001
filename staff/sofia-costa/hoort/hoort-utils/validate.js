@@ -26,6 +26,10 @@ module.exports = {
         } else if (!(target instanceof type)) throw new TypeError(`${name} ${target} is not a ${type.name}`)
     },
 
+    array(target, name) {
+        if (!(target instanceof Array)) throw new TypeError(`${name} ${target} is not an array`)
+    },
+
     scheme(target) {
 
         if (!(target instanceof Array)) throw new TypeError('scheme is not an array')

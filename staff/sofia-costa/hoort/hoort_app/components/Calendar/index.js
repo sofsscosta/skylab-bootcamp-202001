@@ -24,7 +24,7 @@ function GetCalendar({ token, goToCalendarModal }) {
         { name: 'tomatoes', color: "rgb(255, 190, 213)" },
         { name: 'carrots', color: "rgb(255, 193, 193)" },
         { name: 'strawberries', color: "rgb(255, 216, 179)" },
-        { name: 'potatoes', color: "rgb(255, 239, 200)" },
+        { name: 'potatoes', color: "rgb(258, 235, 190)" },
     ]
 
     useEffect(() => {
@@ -115,7 +115,7 @@ function GetCalendar({ token, goToCalendarModal }) {
 
         let _veg = veggieColor.find(element => element.name === veg)
 
-        return { fontSize: 30, color: _veg.color, lineHeight: 60 }
+        return { fontSize: 30, color: _veg.color }
 
     }
 
@@ -126,17 +126,13 @@ function GetCalendar({ token, goToCalendarModal }) {
             retrievedVeg.name === vegName
         })
 
-        console.log('veggie calendar', veggie)
-
         veggieThisMonthAll.push(veggie)
 
         allUserPlantations = await retrieveUserPlantations(token)
         let veggiePlantations = await Promise.all(allUserPlantations.map(async veg => {
+
             if (veg.estTime) {
                 let retrievedVeg = await retrieveItem(veg.veggie)
-                console.log('retrievedVeg inside filter ', retrievedVeg)
-                console.log('vegName inside filter ', vegName)
-                console.log('veg inside filter ', veg)
                 return retrievedVeg.name === vegName ? veg.land : ''
             }
         }))
@@ -190,14 +186,14 @@ function GetCalendar({ token, goToCalendarModal }) {
 
                 {veggiesOnMessage &&
                     <View style={styles.message_container}>
-                        <Text styles={{ fontSize: 25 }}>{`You will harvest `}</Text>
+                        <Text style={styles.message}>{`You will harvest `}</Text>
                         {veggiesOnMessage && veggiesOnMessage.map(veg => {
 
                             if (veg !== veggiesOnMessage[veggiesOnMessage.length - 1]
                                 && veg !== veggiesOnMessage[veggiesOnMessage.length - 2])
                                 return (
                                     <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
-                                        <Text style={handleGetColor(veg)}>{veg}, </Text>
+                                        <Text style={handleGetColor(veg)}>{veg.toUpperCase()}, </Text>
                                     </TouchableOpacity>
                                 )
 
@@ -205,22 +201,25 @@ function GetCalendar({ token, goToCalendarModal }) {
                                 return (
                                     <>
                                         <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
-                                            <Text style={handleGetColor(veg)}>{veg}</Text>
+                                            <Text style={handleGetColor(veg)}>{veg.toUpperCase()}</Text>
                                         </TouchableOpacity>
-                                        <Text styles={styles.message}> and </Text>
+                                        <Text style={styles.message}> and </Text>
                                     </>
                                 )
 
                             else if (veg === veggiesOnMessage[veggiesOnMessage.length - 1])
                                 return (
                                     <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
-                                        <Text style={handleGetColor(veg)}>{veg}</Text>
+                                        <Text style={handleGetColor(veg)}>{veg.toUpperCase()}</Text>
                                     </TouchableOpacity>
                                 )
 
+
                         })}
-                        <Text styles={styles.message}>{` in ${currentMonth} !`}</Text>
-                    </View>}
+                        < Text style={styles.message} > {` in ${currentMonth} !`}</Text>
+                        < Text style={styles.description}>{`Click on veggie\'s name!`}</Text>
+                    </View>
+                }
             </View>
         </ScrollView >
     )

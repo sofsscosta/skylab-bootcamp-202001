@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
@@ -8,13 +8,16 @@ const styles = StyleSheet.create({
         width: 250,
     },
     container_items: {
-        padding: 20,
-        paddingLeft: 50,
+        padding: '3%',
+        paddingLeft: '12%',
         flex: 1,
         flexDirection: 'row',
         width: 250,
         height: 10,
-        bottom: 110
+        bottom: 110,
+        // alignItems: 'center',
+        alignContent: 'center',
+        // justifyContent: 'center'
     },
     query: {
         zIndex: 10,
@@ -28,7 +31,8 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 70,
-        width: 70
+        width: 70,
+        marginTop: '7%'
     },
     background: {
         width: '90%',
@@ -38,10 +42,10 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        top: 45,
-        height: 50,
+        top: '23%',
+        height: '250%',
         width: '100%',
-        marginLeft: 20,
+        marginLeft: '10%',
         alignSelf: 'center',
         color: 'white',
         fontWeight: '200'

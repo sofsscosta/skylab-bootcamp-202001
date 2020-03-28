@@ -57,14 +57,20 @@ describe('deleteLand', () => {
             .then(land => expect(land).to.be.null)
     })
 
-    it('should fail on land created by another user', () => {
-        return User.create({ name: nameUser, username, email, password })
-            .then(user => otherUserId = user.id)
-            .then(() => deleteLand(otherUserId, landId))
-            .then(() => { throw new Error('should not reach this point') })
-            .catch(error => {
-                expect(error.message).to.eql('wrong credentials')
-            })
+    it('should delete land from user\'s lands', () => {
+        return deleteLand(userId, landId)
+            .then(() => User.findById(userId))
+            .then(user => expect(user.lands).not.to.include(landId))
+    })
+
+    it('should fail on invalid user id format', () => {
+        expect(() => deleteLand(true, landId)
+        ).to.throw(TypeError, 'true is not a string')
+    })
+
+    it('should fail on invalid land id format', () => {
+        expect(() => deleteLand(userId, { landId })
+        ).to.throw(TypeError, 'landId [object Object] is not a string')
     })
 
     afterEach(() => {

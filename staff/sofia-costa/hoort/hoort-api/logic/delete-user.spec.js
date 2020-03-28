@@ -47,6 +47,13 @@ describe('deleteUser', () => {
             })
     })
 
+    it('should fail on incorrect id format', () => {
+        id = undefined
+        expect(() => {
+            return deleteUser(id, password)
+        }).to.throw(TypeError, 'id undefined is not a string')
+    })
+
     afterEach(() => {
         User.findByIdAndRemove(id)
     })

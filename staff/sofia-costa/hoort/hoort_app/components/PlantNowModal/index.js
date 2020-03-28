@@ -6,7 +6,7 @@ import styles from './style'
 import modal_border from '../../assets/modal_border.png'
 import button from '../../assets/divisions.png'
 
-function PlantNowModal({ onBackgroundClick, land }) {
+function PlantNowModal({ onBackgroundClick, land, selectItem }) {
 
     const [error, setError] = useState()
     const [suggested, setSuggested] = useState()
@@ -32,28 +32,33 @@ function PlantNowModal({ onBackgroundClick, land }) {
     return (
         <TouchableWithoutFeedback onPress={() => onBackgroundClick(land)}>
             <View style={styles.container} >
-                <Text style={styles.title}>{`WHAT TO PLANT IN ${month.toUpperCase()}`}</Text>
-                <View>
-                    <Image
-                        source={modal_border}
-                        resizeMode='stretch'
-                        style={styles.container_border} />
+                <View style={styles.inside_container}>
+                    <Text style={styles.title}>{`WHAT TO PLANT IN ${month.toUpperCase()}`}</Text>
+                    <View>
+                        <Image
+                            source={modal_border}
+                            resizeMode='stretch'
+                            style={styles.container_border} />
+                    </View>
+                    {error &&
+                        <ScrollView>
+                            <View style={styles.feedback}>
+                                <Feedback level='warning' message={error.message} />
+                            </View>
+                        </ScrollView>
+                        || suggested &&
+                        < FlatList
+                            style={styles.results_container}
+                            data={suggested}
+                            keyExtractor={item => item._id ? item._id.toString() : item.id}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity
+                                    onPress={() => selectItem({ item })}>
+                                    <Item item={item} key={item._id ? item._id.toString() : item.id} />
+                                </TouchableOpacity>
+                            )} />
+                    }
                 </View>
-                {error &&
-                    <ScrollView>
-                        <View style={styles.feedback}>
-                            <Feedback level='warning' message={error.message} />
-                        </View>
-                    </ScrollView>
-                    || suggested &&
-                    < FlatList
-                        style={styles.results_container}
-                        data={suggested}
-                        keyExtractor={item => item._id ? item._id.toString() : item.id}
-                        renderItem={({ item }) => (
-                            <Item resizeMode='contain' item={item} key={item._id ? item._id.toString() : item.id} />
-                        )} />
-                }
             </View>
         </TouchableWithoutFeedback>
     );

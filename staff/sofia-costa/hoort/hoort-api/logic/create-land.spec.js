@@ -9,9 +9,7 @@ const createLand = require('./create-land')
 const { mongoose } = require('hoort-data')
 
 describe('createLand', () => {
-    before(() =>
-        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    )
+    before(() => mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }))
 
     let id, veggiesId, name, userId, location, soiltype, scheme, nameUser, username, email, password, user
 
@@ -67,19 +65,38 @@ describe('createLand', () => {
             })
     })
 
-    // it('should not fail on not defined scheme', () => {
-    //     return createLand(name, userId, location, soiltype, scheme)
-    //         .then(() => Land.findOne({ name }) )
-    //         .then(item => {
-    //             id = item.id
-    //             expect(item.scheme).to.eql(scheme)
+    it('should not fail on not defined scheme', () => {
+        return createLand(name, userId, location, soiltype, scheme)
+            .then(() => Land.findOne({ name }))
+            .then(item => {
+                id = item.id
+                expect(item.scheme).to.eql(scheme)
+            })
+    })
+
+    // it('should fail if scheme is not of a valid format', () => {
+    //     return createLand(name, userId, location, soiltype)
+    //         .then(() => { throw new Error('should not reach this point') })
+    //         .catch(error => {
+    //             expect(error).to.exist
+    //             expect(error.message).to.eql('scheme is not an array')
     //         })
+
+    // expect(() => {
+    //     return createLand(name, userId, location, soiltype, [{ line: false, line: false, line: false, line: false, line: false }])
+    // }).to.throw(TypeError, 'scheme is not an array')
     // })
 
     // it('should fail on not all fields defined except scheme', () => {
-    //     expect(() => {
-    //         return createLand(name, userId, location)
-    //     }).to.throw(TypeError, 'soiltype undefined is not a string' )
+    //     return createLand(name, userId, location, soiltype)
+    //         .then(() => { throw new Error('should not reach this point') })
+    //         .catch(error => {
+    //             expect(error).to.exist
+    //             expect(error.message).to.eql('soiltype undefined is not a string')
+    //         })
+
+    //     // expect(() => createLand(name, userId, location)
+    //     // ).to.throw(TypeError, 'soiltype undefined is not a string')
     // })
 
     it('should fail on repeated name', () => {

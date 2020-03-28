@@ -11,5 +11,16 @@ export default StyleSheet.create({
     },
     message: {
         fontSize: 20,
+        // color: 'grey'
+        fontWeight: '200'
+
+    },
+    description: {
+        paddingTop: '10%',
+        fontSize: 15,
+        textAlign: 'center',
+        color: 'grey',
+        marginHorizontal: '5%',
+        fontWeight: '200'
     }
 })

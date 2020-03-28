@@ -5,7 +5,6 @@ import { retrieveAll, plantInLand, isLoggedIn, updateLandAddVeggie, retrieveItem
 import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
-import land_border from '../../assets/land_border.png'
 
 function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
 
@@ -139,6 +138,19 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
         }
     }
 
+    function handleOnPressOptions(unit, item) {
+        if (unit.item && pressed) {
+            if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined) {
+                console.log('entered if')
+                return handleUnitPressed(scheme.indexOf(item), unit)
+            }
+        }
+        else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean') {
+            console.log('entered else')
+            return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index], scheme.indexOf(item), unit)
+        }
+    }
+
     return (
         <Fragment>
             <TouchableWithoutFeedback
@@ -163,18 +175,7 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
                                         renderItem={(unit) => {
                                             return (
                                                 <TouchableOpacity style={handleStyleUnit(unit.item)}
-                                                    onPress={() => {
-                                                        if (unit.item && pressed) {
-                                                            if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined) {
-                                                                console.log('entered if')
-                                                                return handleUnitPressed(scheme.indexOf(item), unit)
-                                                            }
-                                                        }
-                                                        else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean') {
-                                                            console.log('entered else')
-                                                            return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index], scheme.indexOf(item), unit)
-                                                        }
-                                                    }}>
+                                                    onPress={() => handleOnPressOptions(unit, item)}>
                                                     {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
                                                         // && veggie !== undefined
                                                         && <Image
