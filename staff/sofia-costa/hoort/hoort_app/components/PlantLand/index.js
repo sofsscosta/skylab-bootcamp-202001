@@ -10,7 +10,6 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
 
     console.log('land inplantland', land)
 
-    const [token, setToken] = useState(undefined)
     const [currentLand, setCurrentLand] = useState(land)
     const [scheme, setScheme] = useState(land.scheme)
     const [menu, setMenu] = useState(false)
@@ -31,10 +30,11 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
         (async () => {
             try {
                 debugger
-                let _token = await isLoggedIn()
-                if (_token !== null) return setToken(_token)
+                let isLogged = await isLoggedIn()
+                if (!isLogged) return setError('Your session expired! Please login again.')
             } catch (error) {
-                return console.log('token error in plantland = ', error)
+                console.log('error in plantland = ', error)
+                return setError(error.message)
             }
         })()
     }, [])
@@ -45,7 +45,7 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
                 let veggies = await retrieveAll()
                 setVeggies(veggies)
 
-                let _land = await retrieveLand(token, land.id)
+                let _land = await retrieveLand(land.id)
                 console.log('updatedLand in plantLand', _land)
 
                 return setCurrentLand(_land)
@@ -64,8 +64,8 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
 
             try {
                 _scheme[unitPressed.item][unitPressed.unit.index] = veggie.item.id
-                updatedLand = await plantInLand(land.id, _scheme, token)
-                await updateLandAddVeggie(land.id, veggie.item.id, token)
+                updatedLand = await plantInLand(land.id, _scheme)
+                await updateLandAddVeggie(land.id, veggie.item.id)
                 return setCurrentLand(updatedLand)
             } catch (error) {
                 return console.log('error = ' + error)
@@ -130,7 +130,7 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
             else if (!plantation.from && plantation.to) throw new Error('something went wrong!')
 
             const veg = await retrieveItem(_veggie)
-            await onClickVeggie(veg, currentLand, _type, { item, unit }, token)
+            await onClickVeggie(veg, currentLand, _type, { item, unit })
             return
 
         } catch (error) {
@@ -262,7 +262,7 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
                 style={styles.submit}
                 onPress={() => {
                     console.log(currentLand, 'updatedLand in plantland')
-                    return submit(currentLand, token)
+                    return submit(currentLand)
                 }}>
                 <Text style={styles.submit_text}>DONE</Text>
             </TouchableOpacity>

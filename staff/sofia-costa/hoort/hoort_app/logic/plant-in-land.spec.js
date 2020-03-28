@@ -1,14 +1,24 @@
-require('dotenv').config()
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
+const config = require('../config')
 const { plantInLand, createLand, registerUser, authenticateUser } = require('.')
-const { mongoose, models: { Land, Item, User } } = require('../hoort-data')
+const { mongoose, models: { Item, User, Land } } = require('../hoort-data')
 const { random } = Math
-const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+TEST_MONGODB_URL = config.TEST_MONGODB_URL
+JWT_SECRET = config.TEST_JWT_SECRET
 
 describe('plantInLand', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        await logic.__context__.storage.clear()
         return await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
     })
 
@@ -24,9 +34,10 @@ describe('plantInLand', () => {
         email = Math.random() + '@mail.com'
         password = 'password-' + Math.random()
 
-        await registerUser(name, username, email, password)
-
-        token = await authenticateUser(email, password)
+        user = await User.create({ name, username, email, password })
+        id = user._id.toString()
+        const token = jwt.sign({ sub: id }, JWT_SECRET)
+        await logic.__context__.storage.setItem('token', token)
 
         for (let i = 0; i < 10; i++) {
 
@@ -56,7 +67,7 @@ describe('plantInLand', () => {
                 scheme[j].push(veggies[i].id)
             }
 
-        await createLand(token, nameLand, location, soiltype, scheme)
+        await createLand(nameLand, location, soiltype, scheme)
 
         land = await Land.findOne({ name: nameLand })
         landId = land.id
@@ -74,7 +85,7 @@ describe('plantInLand', () => {
                 scheme[j].push(veggies[i].id)
             }
 
-        let _land = await plantInLand(landId, scheme, token)
+        let _land = await plantInLand(landId, scheme)
 
         expect(_land.id).toBe(landId)
         expect(_land.scheme).toStrictEqual(scheme)
@@ -83,7 +94,7 @@ describe('plantInLand', () => {
     it('should fail on invalid land id', async () => {
 
         try {
-            await plantInLand(`${landId}--wrong`, scheme, token)
+            await plantInLand(`${landId}--wrong`, scheme)
         } catch (error) {
             expect(error).toBeDefined()
         }
@@ -97,6 +108,7 @@ describe('plantInLand', () => {
 
     afterAll(async () => {
         await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
+        await logic.__context__.storage.clear()
         return await mongoose.disconnect()
     })
 })

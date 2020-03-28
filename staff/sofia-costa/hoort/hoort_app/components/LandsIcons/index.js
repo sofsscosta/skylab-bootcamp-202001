@@ -1,12 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
+import { FlatList, TouchableOpacity, Text, View, Image } from 'react-native'
 import styles from './style'
 import landBorder from '../../assets/land_border.png'
 
-function LandsIcons({ goToLandDetails, land, token }) {
+function LandsIcons({ goToLandDetails, land }) {
 
-    console.log('land inside landsicons')
-    console.log(land.name)
+    console.log('land inside landsicons', land.name)
 
     function handleStyleUnit(unit) {
 
@@ -25,7 +24,7 @@ function LandsIcons({ goToLandDetails, land, token }) {
         <Fragment>
             <TouchableOpacity
                 style={styles.main_container}
-                onPress={() => goToLandDetails(land.id, token)}>
+                onPress={() => goToLandDetails(land.id)}>
                 <Image
                     source={landBorder}
                     style={styles.land_border}

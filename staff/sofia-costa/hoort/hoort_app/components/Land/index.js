@@ -7,7 +7,7 @@ import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
 import land_border from '../../assets/land_border.png'
 
-function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token }) {
+function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit }) {
 
     console.log('land in retrieved land', landFromPlantLand)
 
@@ -33,7 +33,7 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
                 let veggies = await retrieveAll()
                 setVeggies(veggies)
 
-                let _land = await retrieveLand(token, currentLand.id)
+                let _land = await retrieveLand(currentLand.id)
                 console.log('updatedLand in plantLand', _land)
 
                 return setCurrentLand(_land)
@@ -51,8 +51,8 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
 
             try {
                 _scheme[unitPressed.item][unitPressed.unit.index] = veggie.item.id
-                updatedLand = await plantInLand(currentLand.id, _scheme, token)
-                await updateLandAddVeggie(currentLand.id, veggie.item.id, token)
+                updatedLand = await plantInLand(currentLand.id, _scheme)
+                await updateLandAddVeggie(currentLand.id, veggie.item.id)
                 return setCurrentLand(updatedLand)
             } catch (error) {
                 return console.log('error = ' + error)
@@ -88,7 +88,7 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
     }
 
     async function handleDeleteLand() {
-        await deleteLand(currentLand.id, token)
+        await deleteLand(currentLand.id)
         return handleOnSubmit()
     }
 
@@ -96,10 +96,10 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit, token
 
         let lands
         try {
-            lands = await retrieveUserLands(token)
-            return submit(lands, token)
+            lands = await retrieveUserLands()
+            return submit(lands)
         } catch (error) {
-            console.log(error)
+            return console.log(error)
         }
     }
 

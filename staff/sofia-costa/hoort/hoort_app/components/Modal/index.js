@@ -6,7 +6,7 @@ import modal_border from '../../assets/modal_border.png'
 import button from '../../assets/divisions.png'
 
 
-function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
+function Modal({ onBackgroundClick, type, veggie, land, unitPressed }) {
 
     console.log('veggie in modal', veggie)
 
@@ -15,7 +15,7 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
 
     async function handlePlant() {
         try {
-            await updateLandPlantVeggie(land.id, veggie.id, token)
+            await updateLandPlantVeggie(land.id, veggie.id)
             return setCurrentType('planted')
         }
         catch (error) {
@@ -25,7 +25,7 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
 
     async function handleHarvest() {
         try {
-            await updateLandHarvestVeggie(land.id, veggie.id, token)
+            await updateLandHarvestVeggie(land.id, veggie.id)
             return setCurrentType('harvested')
         }
         catch (error) {
@@ -36,13 +36,13 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
     async function handleDelete() {
         try {
             land.scheme[unitPressed.item][unitPressed.unit.index] = true
-            let _land = await plantInLand(land.id, land.scheme, token)
+            let _land = await plantInLand(land.id, land.scheme)
 
             for (let line of land.scheme) {
                 if (line.includes(veggie.id.toString())) return onBackgroundClick()
             }
 
-            await deleteVeggieFromLand(land.id, veggie.id, token)
+            await deleteVeggieFromLand(land.id, veggie.id)
             console.log('land in modal', _land)
 
             setCurrentType(undefined)
@@ -56,7 +56,7 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed, token }) {
     if (currentType === 'planted')
         (async () => {
 
-            let _land = await retrieveLand(token, land.id)
+            let _land = await retrieveLand(land.id)
             let plantation = _land.plantation.find(plant => plant.veggie.toString() === veggie.id)
 
             let today = new Date()

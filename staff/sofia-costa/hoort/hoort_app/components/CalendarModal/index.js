@@ -4,7 +4,7 @@ import { retrieveLand } from '../../logic'
 import styles from './style'
 import LandsIcons from '../LandsIcons'
 
-function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails, token }) {
+function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails }) {
 
     const [error, setError] = useState()
     const [lands, setLands] = useState()
@@ -16,12 +16,12 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails, token })
             try {
                 console.log('plantations in modal ', modalInfo.lands)
                 let _lands = await Promise.all(modalInfo.lands.map(async _land => {
-                    console.log('land in map in modal ', _land)
-                    console.log('land.length in map in modal ', _land.length)
-                    console.log('land.length does it enter?? ', _land.length !== 0)
-                    if (_land.length !== 0) {
+                    // console.log('land in map in modal ', _land)
+                    // console.log('land.length in map in modal ', _land.length)
+                    // console.log('land.length does it enter?? ', _land.length !== 0)
+                    if (_land !== undefined && _land.length !== 0) {
 
-                        let land = await retrieveLand(token, _land)
+                        let land = await retrieveLand(_land)
                         console.log('retrieved land in modal in map', land)
                         return land
                     }
@@ -56,7 +56,7 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails, token })
                             keyExtractor={item => item.id}
                             renderItem={({ item }) => {
 
-                                return <LandsIcons goToLandDetails={() => goToLandDetails(item, token)} land={item} token={token} />
+                                return <LandsIcons goToLandDetails={() => goToLandDetails(item)} land={item} />
                             }}>
 
                         </FlatList>

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { FlatList, SectionList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView } from 'react-native'
+import { FlatList, TouchableOpacity, Text, View, Image, ScrollView } from 'react-native'
 import styles from './style'
 import { isLoggedIn, createLand, changeDivisions, retrieveUserLands, retrieveLand } from '../../logic'
 import divisions_img from '../../assets/divisions_text.png'
@@ -9,7 +9,6 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
     const [error, setError] = useState()
     const [errorModal, setErrorModal] = useState(false)
-    const [token, setToken] = useState()
     const [divisions, setDivisions] = useState(5)
     const [unit, setUnit] = useState()
     const [scheme, setScheme] = useState([
@@ -20,23 +19,18 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
         [false, false, false]
     ])
 
-    useState(() => {
-        initModal()
-    }, [])
-
     useEffect(() => {
         (async () => {
             try {
-                let _token = await isLoggedIn()
-                if (_token !== null) setToken(_token)
-                console.log(token)
+                let isLogged = await isLoggedIn()
+                if (!isLogged) setError('Your session has expired! Please login again.')
+                else initModal()
             } catch (error) {
                 setError(_error)
                 return handleToggle()
             }
         })()
-    }, [token])
-
+    }, [])
 
     useEffect(() => {
         setScheme(scheme)
@@ -55,8 +49,8 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
         let allLands, land
         try {
-            await createLand(token, name, location, soiltype, scheme)
-            allLands = await retrieveUserLands(token)
+            await createLand(name, location, soiltype, scheme)
+            allLands = await retrieveUserLands()
             land = allLands.find(_land => _land.name === name)
             return goToPlantLand(land)
         } catch (_error) {

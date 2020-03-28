@@ -2,20 +2,34 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import styles from './style'
 import { LandsIcons, Feedback } from '../'
-import { isLoggedIn, retrieveLands, retrieveLand } from '../../logic'
+import { isLoggedIn, retrieveLands, retrieveLand, retrieveUserLands } from '../../logic'
 import newLand from '../../assets/my_lands.png'
 import add from '../../assets/add.png'
 
-function Lands({ goToLandDetail, goToCreateLand, lands, _error, token }) {
+function Lands({ goToLandDetail, goToCreateLand, lands, _error }) {
 
     console.log(_error, '_error in lands')
 
     const [error, setError] = useState(_error ? _error.message : '')
 
+    useEffect(() => {
+        (async () => {
+            try {
+                lands = await retrieveUserLands()
+                if (lands.length === 0) {
+                    _error = new Error('You have no lands yet!')
+                    throw new Error('You have no lands yet!')
+                }
+            } catch (_error) {
+                setError(_error.message)
+            }
+        })()
+    }, [])
+
     async function handlegoToLandDetail(land) {
         try {
-            let _land = await retrieveLand(token, land.id)
-            return goToLandDetail(_land, token)
+            let _land = await retrieveLand(land.id)
+            return goToLandDetail(_land)
         }
         catch (error) {
             console.log(error)

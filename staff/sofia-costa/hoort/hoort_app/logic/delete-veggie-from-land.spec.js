@@ -19,6 +19,7 @@ describe('deleteVeggieFromLand', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        await logic.__context__.storage.clear()
         return await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
     })
 
@@ -136,6 +137,7 @@ describe('deleteVeggieFromLand', () => {
 
     afterAll(async () => {
         await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
+        await logic.__context__.storage.clear()
         return await mongoose.disconnect()
     })
 })

@@ -5,37 +5,38 @@ import { retrieveUserLands, isLoggedIn } from '../../logic'
 
 const Landing = ({ goToRegister, goToMyLands }) => {
 
-    const [token, setToken] = useState()
+    const [isLogged, setIsLogged] = useState()
 
     useEffect(() => {
         (async () => {
             try {
+                setIsLogged(false)
                 let _token = await isLoggedIn()
-                console.log('token from useeffect in app', _token)
-                if (_token !== null) return setToken(_token)
+                if (_token) return setIsLogged(true)
             } catch (error) {
-                return console.log('token error in app = ', error)
+                return console.log(error)
             }
         })()
     }, [])
 
+    async function handlePressLand() {
+        if (isLogged) {
+            let lands
+            try {
+                lands = await retrieveUserLands()
+                goToMyLands(lands)
+                return menu()
+            } catch (error) {
+                return console.log(error)
+            }
+        }
+        else return goToRegister()
+    }
+
     return (
         <Fragment>
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => {
-                    return token
-                        && (async () => {
-                            let lands
-                            try {
-                                lands = await retrieveUserLands(token)
-                                goToMyLands(lands, token)
-                                return menu()
-                            } catch (error) {
-                                console.log(error)
-                            }
-                        })()
-                        || goToRegister()
-                }}>
+                <TouchableOpacity onPress={() => handlePressLand()}>
                     <Image
                         style={styles.landing}
                         source={require('../../assets/landing.png')}

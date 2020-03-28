@@ -8,16 +8,14 @@ import LandsIcons from '../LandsIcons'
 function Detail({ item, goToLandDetail }) {
 
     const [userInfo, setUserInfo] = useState(undefined)
-    const [token, setToken] = useState(undefined)
     const [lands, setLands] = useState()
 
     useEffect(() => {
         (async () => {
-            let token = await isLoggedIn()
-            setToken(token)
-            if (token !== null) {
+            let isLogged = await isLoggedIn()
+            if (isLogged) {
                 try {
-                    let userItemDetail = await retrieveItemForUser(token, item.id)
+                    let userItemDetail = await retrieveItemForUser(item.id)
                     setUserInfo(userItemDetail)
                     return
                 }
@@ -36,7 +34,7 @@ function Detail({ item, goToLandDetail }) {
                 console.log('userInfo', userInfo[0][1])
                 const result = await Promise.all(userInfo[0][1].map(async land => {
 
-                    let retrievedLand = await retrieveLand(token, land)
+                    let retrievedLand = await retrieveLand(land)
                     return retrievedLand
                 }))
 
@@ -75,9 +73,9 @@ function Detail({ item, goToLandDetail }) {
 
     async function goToLandDetails(land) {
         try {
-            let _land = await retrieveLand(token, land.id)
+            let _land = await retrieveLand(land.id)
             console.log('_land', _land)
-            return goToLandDetail(_land, token)
+            return goToLandDetail(_land)
         }
         catch (error) {
             return console.log(error)
@@ -148,7 +146,7 @@ function Detail({ item, goToLandDetail }) {
                                                     keyExtractor={item => item.id}
                                                     renderItem={({ item }) => {
 
-                                                        return <LandsIcons goToLandDetails={() => goToLandDetails(item)} land={item} token={token} />
+                                                        return <LandsIcons goToLandDetails={() => goToLandDetails(item)} land={item} />
                                                     }}>
 
                                                 </FlatList>

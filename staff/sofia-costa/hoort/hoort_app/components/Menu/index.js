@@ -8,7 +8,6 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
     let notLoggedMenu, loggedMenu
 
     const [data, setData] = useState(notLoggedMenu)
-    const [token, setToken] = useState(undefined)
     const [error, setError] = useState(undefined)
 
     useEffect(() => {
@@ -16,15 +15,14 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
             try {
                 setError(undefined)
                 let _token = await isLoggedIn()
-                if (_token !== null) {
-                    setToken(_token)
+                if (_token) {
                     setData(loggedMenu)
                 } else setData(notLoggedMenu)
             } catch (error) {
                 setError(error)
             }
         })()
-    }, [token])
+    }, [])
 
     notLoggedMenu = [
         {
@@ -58,16 +56,11 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 let lands
                 try {
                     setError(undefined)
-                    lands = await retrieveUserLands(token)
-                    if (lands.length === 0) {
-                        _error = new Error('You have no lands yet!')
-                        throw new Error('You have no lands yet!')
-                    }
-                    goToMyLands(lands, token)
+                    goToMyLands(lands)
                     return menu()
                 } catch (error) {
                     setError(error)
-                    return goToMyLands(lands, token, _error)
+                    return goToMyLands(lands, _error)
                 }
             }
         },
@@ -78,7 +71,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
 
                 try {
                     setError(undefined)
-                    userVeggies = await retrieveUserVeggies(token)
+                    userVeggies = await retrieveUserVeggies()
                     if (userVeggies.length === 0) {
                         throw new Error('You have no veggies in your lands yet!')
                     }
@@ -104,7 +97,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                 }
             }
         },
-        { id: 4, title: 'CALENDAR', action: () => { setError(undefined); goToCalendar(token); return menu() } },
+        { id: 4, title: 'CALENDAR', action: () => { setError(undefined); goToCalendar(); return menu() } },
         {
             id: 5, title: 'SEARCH', action: () => {
                 setError(undefined)

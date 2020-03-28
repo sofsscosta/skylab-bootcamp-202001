@@ -1,15 +1,25 @@
-require('dotenv').config()
-
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
-
+const config = require('../config')
 const { updateLandHarvestVeggie, updateLandPlantVeggie, updateLandAddVeggie, createLand, registerUser, authenticateUser, createItem } = require('.')
-const { mongoose, models: { Land, Item, User } } = require('../hoort-data')
+const { mongoose, models: { Item, User, Land } } = require('../hoort-data')
 const { random } = Math
+const jwt = require('jsonwebtoken')
+
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+TEST_MONGODB_URL = config.TEST_MONGODB_URL
+JWT_SECRET = config.TEST_JWT_SECRET
+
 
 describe('updateLandHarvestVeggie', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        await logic.__context__.storage.clear()
         await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
         return
     })
@@ -26,9 +36,10 @@ describe('updateLandHarvestVeggie', () => {
         email = Math.random() + '@mail.com'
         password = 'password-' + Math.random()
 
-        await registerUser(name, username, email, password)
-
-        token = await authenticateUser(email, password)
+        user = await User.create({ name, username, email, password })
+        id = user._id.toString()
+        const token = jwt.sign({ sub: id }, JWT_SECRET)
+        await logic.__context__.storage.setItem('token', token)
 
         colorId = `colorId-${random()}`
         nameVeggie = `name-${random()}`
@@ -57,7 +68,7 @@ describe('updateLandHarvestVeggie', () => {
                 scheme[j].push(false)
             }
 
-        await createLand(token, nameLand, location, soiltype, scheme)
+        await createLand(nameLand, location, soiltype, scheme)
 
         land = await Land.findOne({ name: nameLand })
         landId = land.id
@@ -65,10 +76,10 @@ describe('updateLandHarvestVeggie', () => {
 
     it('should succeed if veggie is added to land\'s plantation and is planted', async () => {
 
-        await updateLandAddVeggie(landId, veggieId, token)
-        await updateLandPlantVeggie(landId, veggieId, token)
+        await updateLandAddVeggie(landId, veggieId)
+        await updateLandPlantVeggie(landId, veggieId)
 
-        await updateLandHarvestVeggie(landId, veggieId, token)
+        await updateLandHarvestVeggie(landId, veggieId)
 
         land = await Land.findById(landId)
 
@@ -84,8 +95,8 @@ describe('updateLandHarvestVeggie', () => {
     it('should fail if veggie is not yet planted', async () => {
 
         try {
-            await updateLandAddVeggie(landId, veggieId, token)
-            await updateLandHarvestVeggie(landId, veggieId, token)
+            await updateLandAddVeggie(landId, veggieId)
+            await updateLandHarvestVeggie(landId, veggieId)
         }
         catch (error) {
             expect(error.message).toBe('item is not planted yet')
@@ -95,7 +106,7 @@ describe('updateLandHarvestVeggie', () => {
     it('should fail if veggie is not on land\'s plantation', async () => {
 
         try {
-            await updateLandHarvestVeggie(landId, veggieId, token)
+            await updateLandHarvestVeggie(landId, veggieId)
         }
         catch (error) {
             expect(error.message).toBe('this item is not added to land')
@@ -105,13 +116,13 @@ describe('updateLandHarvestVeggie', () => {
     it('should fail if incorrect data is passed', async () => {
 
         try {
-            await updateLandHarvestVeggie(`${landId}--wrong`, veggieId, token)
+            await updateLandHarvestVeggie(`${landId}--wrong`, veggieId)
         } catch (error) {
             expect(error).toBeDefined()
         }
 
         try {
-            await updateLandHarvestVeggie(`${landId}--wrong`, `${veggieId}--wrong`, token)
+            await updateLandHarvestVeggie(`${landId}--wrong`, `${veggieId}--wrong`)
         } catch (error) {
             expect(error).toBeDefined()
         }
@@ -125,6 +136,7 @@ describe('updateLandHarvestVeggie', () => {
 
     afterAll(async () => {
         await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
+        await logic.__context__.storage.clear()
         return await mongoose.disconnect()
     })
 })

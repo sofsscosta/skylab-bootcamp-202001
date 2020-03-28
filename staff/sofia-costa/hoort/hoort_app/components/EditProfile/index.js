@@ -4,7 +4,7 @@ import { updateUser } from '../../logic'
 import styles from './style'
 import { Button, Feedback } from '../'
 
-function EditProfile({ token }) {
+function EditProfile() {
 
     const [error, setError] = useState()
     const [message, setMessage] = useState()
@@ -25,7 +25,7 @@ function EditProfile({ token }) {
         if (newPassword) updates.newPassword = newPassword
 
         try {
-            await updateUser(updates, token)
+            await updateUser(updates)
             return setMessage('Successfully changed fields!')
         }
         catch (error) {

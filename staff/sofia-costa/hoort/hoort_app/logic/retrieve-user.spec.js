@@ -37,15 +37,15 @@ describe('retrieveUser', () => {
         beforeEach(async () => {
             user = await User.create({ name, username, email, password })
             id = user._id.toString()
-            const _token = jwt.sign({ sub: id }, JWT_SECRET)
-            await logic.__context__.storage.setItem('token', _token)
+            const token = jwt.sign({ sub: id }, JWT_SECRET)
+            await logic.__context__.storage.setItem('token', token)
         })
 
         afterEach(async () => {
             return await User.findByIdAndRemove(id)
         })
 
-        it('should succeed on correct token', async () => {
+        it('should succeed on logged in user', async () => {
 
             retrievedUser = await retrieveUser()
 

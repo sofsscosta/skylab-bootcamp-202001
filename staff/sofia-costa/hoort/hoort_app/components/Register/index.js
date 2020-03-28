@@ -14,7 +14,6 @@ function Register({ goToLogin }) {
 
     async function register(name, username, email, password) {
 
-
         try {
             await registerUser(name, username, email, password)
             goToLogin()
@@ -56,7 +55,7 @@ function Register({ goToLogin }) {
                     <Button
                         text='Register'
                         type='submit'
-                        onPress={function (event) {
+                        onPress={() => {
                             setError(undefined)
 
                             return register(name, username, email, password)
@@ -64,7 +63,7 @@ function Register({ goToLogin }) {
                     <Button
                         text='Sign in'
                         type='redirect'
-                        onPress={function (event) {
+                        onPress={() => {
                             setError(undefined)
 
                             return goToLogin()

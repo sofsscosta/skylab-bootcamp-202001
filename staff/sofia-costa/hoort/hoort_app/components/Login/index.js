@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { View, Text, StatusBar, Image, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { authenticateUser, retrieveUser } from '../../logic'
+import { authenticateUser } from '../../logic'
 import { AsyncStorage } from 'react-native'
 import styles from './style'
 import { Feedback, Button } from '../'
@@ -14,12 +14,7 @@ function Login({ goToRegister, goToLanding }) {
     async function login(name, username, email, password) {
 
         try {
-            let token = await authenticateUser(name, username, email, password)
-
-            await AsyncStorage.setItem('token', token)
-
-            let _token = await AsyncStorage.getItem('token')
-
+            await authenticateUser(name, username, email, password)
             return goToLanding()
         }
         catch (error) {
@@ -49,14 +44,14 @@ function Login({ goToRegister, goToLanding }) {
                     <Button
                         text='Login'
                         type='submit'
-                        onPress={function (event) {
+                        onPress={() => {
 
                             return login(email, password)
                         }} />
                     <Button
                         text='Sign up!'
                         type='redirect'
-                        onPress={function (event) {
+                        onPress={() => {
 
                             return goToRegister()
                         }} />

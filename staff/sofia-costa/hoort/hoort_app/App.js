@@ -5,7 +5,8 @@ import {
   CreateLandModal, Land, Calendar, EditProfile, CalendarModal,
   PlantNowModal
 } from './components'
-import { isLoggedIn } from './logic'
+import logic from './logic'
+import { isLoggedIn, retrieveUser } from './logic'
 import config from './config'
 import { AsyncStorage } from 'react-native'
 
@@ -31,13 +32,17 @@ export default function App() {
   const [modalType, setModalType] = useState()
   const [newLandProps, setNewLandProps] = useState()
   const [coordinates, setCoordinates] = useState()
-  const [token, setToken] = useState()
+  const [user, setUser] = useState()
 
   useEffect(() => {
     (async () => {
       try {
-        let _token = await isLoggedIn()
-        if (_token !== null) return setToken(_token)
+        let token = await isLoggedIn()
+        if (token !== null) {
+
+          let _user = await retrieveUser()
+          setUser(_user)
+        }
       } catch (error) {
         return setError(error.message)
       }
@@ -69,12 +74,12 @@ export default function App() {
     !menu ? setMenu(true) : setMenu(false)
   }
 
-  function handleGoToMyLands(userLands, token, _error) {
+  function handleGoToMyLands(userLands, _error) {
     menu ? setMenu(false) : ''
     setError(undefined)
 
     _error && setError(_error)
-    token && setToken(token)
+
     userLands && setLands(userLands)
     setView('myLands')
   }
@@ -89,11 +94,10 @@ export default function App() {
     setResultsType('myVeggies')
   }
 
-  function handleGoToCalendar(_token) {
+  function handleGoToCalendar() {
     setMenu(false)
     setError(undefined)
     setCalendarModal(false)
-    setToken(_token)
     setView('calendar')
   }
 
@@ -159,14 +163,13 @@ export default function App() {
     !plantNowModal ? setPlantNowModal(true) : setPlantNowModal(false)
   }
 
-  function handleModal(veg, _land, type, _coordinates, token) {
+  function handleModal(veg, _land, type, _coordinates, ) {
     setMenu(false)
     setError(undefined)
     setVeggie(veg)
     setLandForModal(_land)
     setModalType(type)
     setCoordinates(_coordinates)
-    setToken(token)
     !modal ? setModal(true) : setModal(false)
   }
 
@@ -175,10 +178,9 @@ export default function App() {
     !createLandModal ? setCreateLandModal(true) : setCreateLandModal(false)
   }
 
-  function handleGoToRetrievedLand(land, token) {
+  function handleGoToRetrievedLand(land, ) {
     setMenu(false)
     setError(undefined)
-    setToken(token)
     setLand(land)
     setView('land')
   }
@@ -187,22 +189,22 @@ export default function App() {
     <>
       {view === 'init' && <InitScreen start={handleStart} />}
       {view === 'createLand' && createLandModal && <CreateLandModal onBackgroundClick={handleGoToMyLands} goToCreateLand={handleGoToCreateLand} />}
-      {view === 'calendar' && calendarModal && <CalendarModal modalInfo={calendarModalInfo} token={token} onBackgroundClick={handleGoToCalendarModal} goToLandDetails={handleGoToRetrievedLand} />}
+      {view === 'calendar' && calendarModal && <CalendarModal modalInfo={calendarModalInfo} onBackgroundClick={handleGoToCalendarModal} goToLandDetails={handleGoToRetrievedLand} />}
       {view === 'plantLand' && plantNowModal && <PlantNowModal onBackgroundClick={handleGoToPlantLand} land={landForModal} />}
-      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} token={token} unitPressed={coordinates} />}
-      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} token={token} />}
+      {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} unitPressed={coordinates} />}
+      {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
-      {view === 'start' && <Landing goToRegister={handleGoToRegister} token={token} goToMyLands={handleGoToMyLands} />}
+      {view === 'start' && <Landing goToRegister={handleGoToRegister} goToMyLands={handleGoToMyLands} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
-      {view === 'editProfile' && <EditProfile token={token} />}
+      {view === 'editProfile' && <EditProfile />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
-      {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} token={token} _error={error} />}
+      {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} _error={error} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} _error={error} />}
       {view === 'createLand' && <CreateLand goToPlantLand={handleGoToPlantLand} initModal={handleCreateLandModal} newLandProps={newLandProps} _error={error} />}
       {view === 'plantLand' && <PlantLand land={land} onClickVeggie={handleModal} updatedLand={landForModal} submit={handleGoToRetrievedLand} goToPlantNow={handleGoToPlantNowModal} />}
-      {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} token={token} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
-      {view === 'calendar' && <Calendar goToCalendarModal={handleGoToCalendarModal} token={token} />}
+      {view === 'land' && <Land landFromMyLands={land} landFromPlantLand={landForModal} submit={handleGoToMyLands} goToPlantLand={handleGoToPlantLand} />}
+      {view === 'calendar' && <Calendar goToCalendarModal={handleGoToCalendarModal} />}
       {view === 'detail' && <Detail item={veggie} goToLandDetail={handleGoToRetrievedLand} />}
       {view !== 'init' && <Footer view={view} />}
     </>

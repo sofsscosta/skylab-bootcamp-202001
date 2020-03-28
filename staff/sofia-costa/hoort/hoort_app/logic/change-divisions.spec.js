@@ -49,7 +49,7 @@ describe('changeDivisions', () => {
                 scheme[j].push(false)
             }
 
-        await createLand(token, nameLand, location, soiltype, scheme)
+        await createLand(nameLand, location, soiltype, scheme)
 
         land = await Land.findOne({ name: nameLand })
         landId = land.id

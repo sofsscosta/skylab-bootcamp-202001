@@ -8,19 +8,23 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'center',
+        height: 100
+
     },
     message: {
         fontSize: 20,
         // color: 'grey'
-        fontWeight: '200'
+        fontWeight: '200',
+        alignSelf: 'center'
 
     },
     description: {
-        paddingTop: '10%',
         fontSize: 15,
         textAlign: 'center',
         color: 'grey',
+        paddingTop: '5%',
         marginHorizontal: '5%',
-        fontWeight: '200'
+        fontWeight: '200',
+        alignSelf: 'center'
     }
 })

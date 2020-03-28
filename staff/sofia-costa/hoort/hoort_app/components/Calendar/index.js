@@ -7,7 +7,7 @@ import styles from './style'
 import moment from 'moment'
 console.disableYellowBox = true
 
-function GetCalendar({ token, goToCalendarModal }) {
+function GetCalendar({ goToCalendarModal }) {
 
     const allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -35,7 +35,7 @@ function GetCalendar({ token, goToCalendarModal }) {
             let markedDatesHere = {}
 
             try {
-                allUserVeggies = await retrieveUserPlantations(token)
+                allUserVeggies = await retrieveUserPlantations()
                 await Promise.all(allUserVeggies.map(async veg => {
 
                     if (veg.estTime) {
@@ -128,7 +128,7 @@ function GetCalendar({ token, goToCalendarModal }) {
 
         veggieThisMonthAll.push(veggie)
 
-        allUserPlantations = await retrieveUserPlantations(token)
+        allUserPlantations = await retrieveUserPlantations()
         let veggiePlantations = await Promise.all(allUserPlantations.map(async veg => {
 
             if (veg.estTime) {
@@ -185,40 +185,42 @@ function GetCalendar({ token, goToCalendarModal }) {
                     markingType={'period'} />
 
                 {veggiesOnMessage &&
-                    <View style={styles.message_container}>
-                        <Text style={styles.message}>{`You will harvest `}</Text>
-                        {veggiesOnMessage && veggiesOnMessage.map(veg => {
+                    <>
+                        <View style={styles.message_container}>
+                            <Text style={styles.message}>{`You will harvest `}</Text>
+                            {veggiesOnMessage && veggiesOnMessage.map(veg => {
 
-                            if (veg !== veggiesOnMessage[veggiesOnMessage.length - 1]
-                                && veg !== veggiesOnMessage[veggiesOnMessage.length - 2])
-                                return (
-                                    <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
-                                        <Text style={handleGetColor(veg)}>{veg.toUpperCase()}, </Text>
-                                    </TouchableOpacity>
-                                )
+                                if (veg !== veggiesOnMessage[veggiesOnMessage.length - 1]
+                                    && veg !== veggiesOnMessage[veggiesOnMessage.length - 2])
+                                    return (
+                                        <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
+                                            <Text style={handleGetColor(veg)}>{veg.toUpperCase()}, </Text>
+                                        </TouchableOpacity>
+                                    )
 
-                            else if (veg === veggiesOnMessage[veggiesOnMessage.length - 2])
-                                return (
-                                    <>
+                                else if (veg === veggiesOnMessage[veggiesOnMessage.length - 2])
+                                    return (
+                                        <>
+                                            <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
+                                                <Text style={handleGetColor(veg)}>{veg.toUpperCase()}</Text>
+                                            </TouchableOpacity>
+                                            <Text style={styles.message}> and </Text>
+                                        </>
+                                    )
+
+                                else if (veg === veggiesOnMessage[veggiesOnMessage.length - 1])
+                                    return (
                                         <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
                                             <Text style={handleGetColor(veg)}>{veg.toUpperCase()}</Text>
                                         </TouchableOpacity>
-                                        <Text style={styles.message}> and </Text>
-                                    </>
-                                )
-
-                            else if (veg === veggiesOnMessage[veggiesOnMessage.length - 1])
-                                return (
-                                    <TouchableOpacity onPress={() => handleGoToCalendarModal(veg)}>
-                                        <Text style={handleGetColor(veg)}>{veg.toUpperCase()}</Text>
-                                    </TouchableOpacity>
-                                )
+                                    )
 
 
-                        })}
-                        < Text style={styles.message} > {` in ${currentMonth} !`}</Text>
+                            })}
+                            < Text style={styles.message} > {` in ${currentMonth} !`}</Text>
+                        </View>
                         < Text style={styles.description}>{`Click on veggie\'s name!`}</Text>
-                    </View>
+                    </>
                 }
             </View>
         </ScrollView >

@@ -1,14 +1,23 @@
-require('dotenv').config()
-const TEST_MONGODB_URL = process.env.REACT_APP_TEST_MONGODB_URL
+const config = require('../config')
 const { retrieveItemForUser, updateLandAddVeggie, createLand, authenticateUser, registerUser, retrieveUser, updateLandPlantVeggie } = require('.')
-const { random } = Math
 const { mongoose, models: { Item, User, Land } } = require('../hoort-data')
-const bcrypt = require('bcryptjs')
+const { random } = Math
+const jwt = require('jsonwebtoken')
 
+const logic = require('.')
+const AsyncStorage = require('not-async-storage')
+
+logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
+logic.__context__.API_URL = config.API_URL
+logic.__context__.storage = AsyncStorage
+
+TEST_MONGODB_URL = config.TEST_MONGODB_URL
+JWT_SECRET = config.TEST_JWT_SECRET
 describe('retrieveItemForUser', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        await logic.__context__.storage.clear()
         return await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
 
     })
@@ -41,61 +50,68 @@ describe('retrieveItemForUser', () => {
         }
 
         await Item.insertMany(veggies)
+    })
 
-        name = 'name-' + Math.random()
-        username = 'username-' + Math.random()
-        email = Math.random() + '@mail.com'
-        password = 'password-' + Math.random()
+    describe('when user is defined', () => {
 
-        await registerUser(name, username, email, password)
+        beforeEach(async () => {
 
-        token = await authenticateUser(email, password)
+            name = 'name-' + Math.random()
+            username = 'username-' + Math.random()
+            email = Math.random() + '@mail.com'
+            password = 'password-' + Math.random()
 
-        let user = await retrieveUser(token)
+            user = await User.create({ name, username, email, password })
+            id = user._id.toString()
+            const token = jwt.sign({ sub: id }, JWT_SECRET)
+            await logic.__context__.storage.setItem('token', token)
 
-        for (let i = 0; i < 10; i++) {
-            nameLand = `nameLand-${random()}`
-            location = `location-${random()}`
-            soiltype = `soiltype-${random()}`
-            scheme = [[], [], [], [], []]
+            for (let i = 0; i < 10; i++) {
+                nameLand = `nameLand-${random()}`
+                location = `location-${random()}`
+                soiltype = `soiltype-${random()}`
+                scheme = [[], [], [], [], []]
 
-            for (let j = 0; j < scheme.length; j++)
-                for (let i = 0; i < 3; i++) {
-                    scheme[j].push(veggies[i].id)
+                for (let j = 0; j < scheme.length; j++)
+                    for (let i = 0; i < 3; i++) {
+                        scheme[j].push(veggies[i].id)
+                    }
+
+                await createLand(nameLand, location, soiltype, scheme)
+
+                land = await Land.findOne({ name: nameLand })
+                landId = land.id
+
+
+                for (let j = 0; j < veggies.length; j++) {
+
+                    await updateLandAddVeggie(landId, veggies[j].id)
+                    await updateLandPlantVeggie(landId, veggies[j].id)
                 }
-
-            await createLand(token, nameLand, location, soiltype, scheme)
-
-            land = await Land.findOne({ name: nameLand })
-            landId = land.id
-
-
-            for (let j = 0; j < veggies.length; j++) {
-
-                await updateLandAddVeggie(landId, veggies[j].id, token)
-                await updateLandPlantVeggie(landId, veggies[j].id, token)
+                lands.push(land)
             }
-            lands.push(land)
-        }
+        })
+
+        //describe('when item is neither planted nor harvested', () => {
+
+        it('should succeed on correct data', async () => {
+            for (let i = 0; i < veggies.length; i++) {
+                for (let j = 0; j < lands.length; j++) {
+                    let item = await retrieveItemForUser(veggies[i].id)
+
+                    expect(item).toBeInstanceOf(Object)
+                    expect(item[0][1][j]).toBe(lands[j].id)
+                    expect(item[1][1]).toBeDefined()
+                }
+            }
+        })
     })
 
-    //describe('when item is neither planted nor harvested', () => {
 
-    it('should succeed on correct data', async () => {
-        for (let i = 0; i < veggies.length; i++) {
-            for (let j = 0; j < lands.length; j++) {
-                let item = await retrieveItemForUser(token, veggies[i].id)
+    it('should fail on no user session', async () => {
 
-                expect(item).toBeInstanceOf(Object)
-                expect(item[0][1][j]).toBe(lands[j].id)
-                expect(item[1][1]).toBeDefined()
-            }
-        }
-    })
-
-    it('should fail on invalid token', async () => {
         try {
-            await retrieveItemForUser(`${token}--wrong`, veggies[0].id)
+            await retrieveItemForUser(veggies[0].id)
         }
         catch (error) {
             expect(error.message).toBe(`user with id ${id} does not exist`)
@@ -119,6 +135,7 @@ describe('retrieveItemForUser', () => {
 
     afterAll(async () => {
         await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
+        await logic.__context__.storage.clear()
         return await mongoose.disconnect()
     })
 })

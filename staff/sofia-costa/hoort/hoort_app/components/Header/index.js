@@ -3,20 +3,20 @@ import { View, StatusBar, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
 import { isLoggedIn } from '../../logic';
 
-const Header = ({ goToLanding, goToMyLands, goToMyVeggies, menuClick }) => {
+const Header = ({ goToLanding, goToMyVeggies, menuClick }) => {
 
-    const [token, setToken] = useState(undefined)
+    const [isLogged, setIsLogged] = useState(undefined)
 
     useEffect(() => {
         (async () => {
             try {
                 let _token = await isLoggedIn()
-                if (_token !== null) setToken(_token)
+                if (_token) return setIsLogged(true)
             } catch (error) {
-                console.log(error)
+                return console.log(error)
             }
         })()
-    }, [token])
+    }, [])
 
     async function handleGoToMyVeggies() {
         try {
@@ -38,21 +38,21 @@ const Header = ({ goToLanding, goToMyLands, goToMyVeggies, menuClick }) => {
                     resizeMode="stretch"
                 />
                 <View style={styles.header__container}>
-                    <TouchableOpacity style={styles.menu} onPress={() => { menuClick() }}>
+                    <TouchableOpacity style={styles.menu} onPress={() => menuClick()}>
                         <Image
                             style={styles.menu}
                             source={require('../../assets/menu.png')}
                             resizeMode="contain"
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.logo} onPress={() => { goToLanding() }}>
+                    <TouchableOpacity style={styles.logo} onPress={() => goToLanding()}>
                         <Image
                             style={styles.logo}
                             source={require('../../assets/logo.png')}
                             resizeMode="contain"
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.icon} onPress={() => token ? handleGoToMyVeggies() : goToLanding()}>
+                    <TouchableOpacity style={styles.icon} onPress={() => isLogged ? handleGoToMyVeggies() : goToLanding()}>
                         <Image
                             style={styles.icon}
                             source={require('../../assets/icon.png')}
