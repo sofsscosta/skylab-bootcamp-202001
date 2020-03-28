@@ -50,7 +50,7 @@ describe('deleteVeggieFromLand', () => {
 
         token = await authenticateUser(email, password)
 
-        let user = retrieveUser(token)
+        let user = await retrieveUser(token)
 
         for (let i = 0; i < 10; i++) {
             nameLand = `nameLand-${random()}`

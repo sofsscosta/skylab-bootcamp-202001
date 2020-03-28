@@ -44,6 +44,7 @@ describe('searchItems', () => {
     afterEach(async () => {
         results = []
         await Item.deleteMany({})
+        return
     })
 
     it('should succeed on search by item name and have results length of 1', async () => {

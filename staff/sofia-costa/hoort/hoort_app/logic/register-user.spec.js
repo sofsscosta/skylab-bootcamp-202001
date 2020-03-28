@@ -37,7 +37,7 @@ describe('registerUser', () => {
         expect(user.email).toBe(email)
         expect(user.created).toBeInstanceOf(Date)
 
-        const validPassowrd = bcrypt.compare(password, user.password)
+        const validPassowrd = await bcrypt.compare(password, user.password)
         expect(validPassowrd).toBeTruthy()
     })
 

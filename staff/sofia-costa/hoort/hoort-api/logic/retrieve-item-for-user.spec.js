@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { retrieveItemForUser, createItem, createLand, updateItemAdd } = require('.')
+const { retrieveItemForUser, createItem, createLand, updateItemAdd, updateItemPlanted, updateItemHarvested } = require('.')
 const chai = require('chai')
 const { mongoose } = require('hoort-data')
 const { models: { Item, User, Land } } = require('hoort-data')
@@ -81,27 +81,36 @@ describe('retrieveItemForUser', () => {
             })
     })
 
-    //describe('when item is neither planted nor harvested', () => {
-
     it('should succeed on correct data', async () => {
         for (let i = 0; i < veggies.length; i++) {
             return retrieveItemForUser(userId, veggies[i].id)
                 .then(item => {
                     expect(item.constructor).to.equal(Object)
                     expect(item.lands[0]._id.toString()).to.eql(landId)
+                    expect(item.growthDurationAll).to.exist
                 })
         }
     })
-    // })
 
-    // describe('when item is planted', () => {
+    it('should display the average growth duration for the user if item has been harvested', async () => {
+        await updateItemPlanted(userId, landId, veggies[0].id)
+        await updateItemHarvested(userId, landId, veggies[0].id)
 
-    // })
+        let veg = await retrieveItemForUser(userId, veggies[0].id)
+
+        let land = await Land.findById(landId)
+
+        let plantation = land.plantation.find(plant => plant.veggie.toString() === veggies[0].id.toString())
+
+        expect(veg.growthDurationUser).to.exist
+        expect(veg.growthDurationUser).to.eql(Math.floor((plantation.to.getTime() - plantation.from.getTime()) / (1000 * 60 * 60 * 24)))
+    })
+
 
 
     it('should fail on invalid user id', () =>
         expect(() => {
-            retrieveItemForUser(`${userId}--wrong`, veggies[0].id)
+            return retrieveItemForUser(`${userId}--wrong`, veggies[0].id)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
                     expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)
@@ -111,12 +120,29 @@ describe('retrieveItemForUser', () => {
 
     it('should fail on invalid veggie id', () =>
         expect(() => {
-            retrieveItemForUser(userId, `${veggies[0].id}--wrong`)
+            return retrieveItemForUser(userId, `${veggies[0].id}--wrong`)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
                     expect(error).to.eql(NotFoundError, `item with id ${veggies[0].id} does not exist`)
                 })
         })
+    )
+
+    it('should fail if veggie is not on any land from user', () => {
+
+        nameVeggie = `${nameVeggie}--other`
+
+        veggie = new Item({ colorId, name: nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
+
+        expect(() => {
+            return retrieveItemForUser(userId, veggie)
+                .then(() => { throw new Error('should not reach this point') })
+                .catch((error) => {
+                    expect(error).to.eql(Error, 'this veggie is not on any land of this user')
+                })
+        })
+    }
+
     )
 
     afterEach(async () => {

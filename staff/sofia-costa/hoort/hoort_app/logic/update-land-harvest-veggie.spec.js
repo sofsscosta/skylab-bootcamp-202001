@@ -10,7 +10,8 @@ describe('updateLandHarvestVeggie', () => {
 
     beforeAll(async () => {
         await mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-        return await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
+        await Promise.resolve[Item.deleteMany({}), User.deleteMany({}), Item.deleteMany({})]
+        return
     })
 
     let name, username, email, password, token,
