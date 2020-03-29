@@ -11,14 +11,26 @@ module.exports = async (userId, landId, itemId) => {
 
     if (!veggie) throw new ContentError('item does not exist')
 
-    let land = await Land.findById(landId)
+    let land = await Land.findById(landId).lean()
 
     if (!land) throw new ContentError('land does not exist')
 
     if (
         land.plantation.find(item =>
             item.veggie.toString() === itemId
-        ) !== undefined) return land
+        ) !== undefined) {
+
+        // land.id = land._id.toString()
+        // delete land._id
+        // delete land.__v
+
+        // land.plantation.forEach(plant => {
+        //     plant.id = plant._id.toString()
+        //     delete plant._id
+        // })
+
+        return //land
+    }
 
     else {
         await Land.findByIdAndUpdate(landId, { $addToSet: { plantation: { veggie: itemId } } })

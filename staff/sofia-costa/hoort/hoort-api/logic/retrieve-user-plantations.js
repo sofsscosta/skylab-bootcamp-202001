@@ -9,12 +9,13 @@ module.exports = async (userId) => {
     let results = []
     let user = await User.findById(userId)
 
-    let lands = user.lands
+    if (!user) throw new NotFoundError('User does not exist')
 
-    if (!lands) return new NotFoundError(`user doesn't have any lands`)
+    // if (!lands) return new NotFoundError(`user doesn't have any lands`)
 
     for (let land of user.lands) {
         land = await Land.findById(land._id.toString())
+
         land.plantation.forEach(plant => {
 
             plant = plant.toObject()
@@ -25,5 +26,8 @@ module.exports = async (userId) => {
             return results.push(plant)
         })
     }
+
+    // if (!results.length) throw new NotFoundError(`You haven't planted anything yet!`)
+
     return results
 }

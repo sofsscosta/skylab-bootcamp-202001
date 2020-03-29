@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { View, Text, StatusBar, Button, Image, TouchableOpacity } from 'react-native';
 import styles from './style'
-import { retrieveUserLands, isLoggedIn } from '../../logic'
+import { retrieveUserLands, isLoggedIn, retrieveUser } from '../../logic'
 
 const Landing = ({ goToRegister, goToMyLands }) => {
 
@@ -12,16 +12,20 @@ const Landing = ({ goToRegister, goToMyLands }) => {
             try {
                 setIsLogged(false)
                 let _token = await isLoggedIn()
-                if (_token) return setIsLogged(true)
+                if (_token) {
+                    let user = await retrieveUser()
+                    console.log(user.email)
+                    return setIsLogged(true)
+                }
                 else return setIsLogged(false)
             } catch (error) {
+                console.log(error)
                 return setIsLogged(false)
             }
         })()
     }, [])
 
     async function handlePressLand() {
-        console.log(isLogged)
         if (isLogged) {
             let lands
             try {

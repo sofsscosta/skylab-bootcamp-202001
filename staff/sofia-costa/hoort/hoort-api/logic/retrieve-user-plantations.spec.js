@@ -1,19 +1,20 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { retrieveLandPlantations, createLand, updateItemAdd } = require('.')
+const { retrieveUserVeggies, createItem, createLand, updateItemAdd } = require('.')
 const chai = require('chai')
 const { mongoose } = require('hoort-data')
-const { models: { Land, Item, User } } = require('hoort-data')
+const { models: { Item, User, Land } } = require('hoort-data')
 const expect = chai.expect
 const { random } = Math
 const { NotFoundError, NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
-describe('retrieveLandPlantations', () => {
+describe('retrieveUserVeggies', () => {
 
     before(() => {
-        mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+        return mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+            .then(() => Item.deleteMany({})).then(() => { })
     })
 
     let colorId, nameVeggie, type, growth, growthDuration, soil, temperature, bestPeriod, lightPreference,
@@ -41,7 +42,6 @@ describe('retrieveLandPlantations', () => {
 
             let veggie = new Item({ colorId, name: nameVeggie, type, subtype, growth, growthDuration, soil, temperature, bestPeriod, bestPeriodNum, lightPreference })
             veggies.push(veggie)
-
         }
         await Item.insertMany(veggies)
 
@@ -56,7 +56,7 @@ describe('retrieveLandPlantations', () => {
             )
             .then(async _user => {
                 userId = _user.id
-                user = _user
+                user = await User.findById(userId)
             })
             .then(async () => {
                 nameLand = `nameLand-${random()}`
@@ -72,6 +72,7 @@ describe('retrieveLandPlantations', () => {
                 await createLand(nameLand, userId, location, soiltype, scheme)
 
                 land = await Land.findOne({ name: nameLand })
+
                 landId = land.id
 
                 for (let i = 0; i < 3; i++) {
@@ -80,18 +81,17 @@ describe('retrieveLandPlantations', () => {
             })
     })
 
+
     it('should succeed on correct data', () =>
-        retrieveLandPlantations(userId, landId)
-            .then(plantation => {
-                expect(plantation[0].veggie).to.eql(veggies[0].id)
-                expect(plantation[0].to).to.eql(null)
-                expect(plantation[0].from).to.eql(null)
+        retrieveUserVeggies(userId)
+            .then(results => {
+                expect(results.length).to.equal(3)
             })
     )
 
-    it('should fail on invalid data', () =>
+    it('should fail on invalid id', () =>
         expect(() => {
-            retrieveLandPlantations(`${userId}--wrong`, landId)
+            retrieveUserVeggies(undefined, `${id}--wrong`)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
                     expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)
@@ -100,9 +100,9 @@ describe('retrieveLandPlantations', () => {
     )
 
     afterEach(async () => {
-        await Item.deleteMany({})
         await User.deleteMany({})
-        await Land.deleteMany({})
+        await Item.deleteMany({})
+        return await Land.deleteMany({})
     })
 
     after(() => mongoose.disconnect())

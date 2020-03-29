@@ -134,7 +134,7 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow, sel
             let plantations = currentLand.plantation
             let plantation = plantations.find(plant => plant.veggie.toString() === _veggie)
 
-            if (!plantation.from && !plantation.to) _type = 'notPlanted'
+            if (!plantation || !plantation.from && !plantation.to) _type = 'notPlanted'
             else if (plantation.from && !plantation.to) _type = 'planted'
             else if (plantation.from && plantation.to) _type = 'harvested'
             else if (!plantation.from && plantation.to) throw new Error('something went wrong!')

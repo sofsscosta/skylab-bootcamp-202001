@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --runInBand",
+    "test:coverage": "react-scripts test --runInBand --coverage --no-cache",
     "lint": "eslint ."
   },
   "dependencies": {

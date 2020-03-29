@@ -6,7 +6,7 @@ import styles from './style'
 import modal_border from '../../assets/modal_border.png'
 import button from '../../assets/divisions.png'
 
-function PlantNowModal({ onBackgroundClick, land, selectItem }) {
+function PlantNowModal({ onBackgroundClick, land }) {
 
     const [error, setError] = useState()
     const [suggested, setSuggested] = useState()
@@ -57,7 +57,7 @@ function PlantNowModal({ onBackgroundClick, land, selectItem }) {
                                 //         console.log('item in modal for plant now ', item);
                                 //         return selectItem({ item })
                                 //     }}>
-                                <Item item={item} key={item._id ? item._id.toString() : item.id} forPlantNow={() => selectItem({ item })} />
+                                <Item item={item} key={item._id ? item._id.toString() : item.id} />
                                 // </TouchableOpacity>
                             )} />
                     }

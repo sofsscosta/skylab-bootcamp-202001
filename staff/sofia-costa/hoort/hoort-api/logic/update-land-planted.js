@@ -2,29 +2,34 @@ const { validate } = require('hoort-utils')
 const { models: { Land } } = require('hoort-data')
 
 module.exports = async (userId, landId, scheme) => {
-    validate.string(userId, 'userId')
-    validate.string(landId, 'landId')
-    validate.scheme(scheme)
+        validate.string(userId, 'userId')
+        validate.string(landId, 'landId')
+        validate.scheme(scheme)
 
-    let land = await Land.findById(landId)
+        let land = await Land.findById(landId)
 
-    if (!land) throw new Error('This land doesn\'t exist')
+        if (!land) throw new Error('This land doesn\'t exist')
 
-    if (scheme.length === land.scheme.length) {
-        land.scheme = scheme
+        if (scheme.length === land.scheme.length) {
+                land.scheme = scheme
 
-        await land.save()
+                await land.save()
 
-        land = land.toObject()
+                land = land.toObject()
 
-        land.id = land._id.toString()
-        delete land._id
-        delete land.__v
+                land.plantation.forEach(plant => {
+                        plant.id = plant._id.toString()
+                        delete plant._id
+                })
 
-        return land
-    }
+                land.id = land._id.toString()
+                delete land._id
+                delete land.__v
 
-    else throw new Error('Scheme divisions differ from original')
+                return land
+        }
+
+        else throw new Error('Scheme divisions differ from original')
 
 }
 

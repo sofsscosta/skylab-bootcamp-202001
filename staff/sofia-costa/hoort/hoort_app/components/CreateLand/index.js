@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Image, ScrollView } from 'react-native'
 import styles from './style'
+import { validate } from '../../hoort-utils'
 import { isLoggedIn, createLand, changeDivisions, retrieveUserLands, retrieveLand } from '../../logic'
 import divisions_img from '../../assets/divisions_text.png'
 import { ErrorModal } from '../'
@@ -27,7 +28,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
                 else initModal()
             } catch (error) {
                 setError(_error)
-                return handleToggle()
+                return handleToggle(false)
             }
         })()
     }, [])
@@ -48,6 +49,14 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
         let soiltype = newLandProps.soiltype
 
         let allLands, land
+
+        try {
+            validate.scheme(scheme, true)
+        } catch (_error) {
+            setError(_error)
+            return handleToggle(false)
+        }
+
         try {
             await createLand(name, location, soiltype, scheme)
             allLands = await retrieveUserLands()
@@ -67,7 +76,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
             return setScheme(_scheme)
         } catch (_error) {
             setError(_error)
-            return handleToggle()
+            return handleToggle(false)
         }
     }
 
@@ -92,11 +101,11 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
         scheme[scheme.indexOf(item)][num] = !unit.item ? true : false
         !unit.item ? unit.item = true : unit.item = false
-        console.log(scheme)
     }
 
     function handleToggle(showOtherModal) {
         if (errorModal) {
+            console.log(showOtherModal)
             if (showOtherModal) {
                 setErrorModal(false)
                 return initModal()
@@ -104,6 +113,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
             else return setErrorModal(false)
         }
         else {
+            console.log(showOtherModal)
             if (showOtherModal) {
                 setErrorModal(true)
                 return initModal()

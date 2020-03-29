@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
         top: 150,
     },
     myVeggies_container: {
-        top: 50
+        top: 50,
+        height: 500
     },
     title: {
         fontSize: 50,
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
         color: 'rgb(147, 147, 147)'
     },
     feedback: {
-        height: 300,
+        height: '50%',
         top: 100,
         margin: 40,
     }
