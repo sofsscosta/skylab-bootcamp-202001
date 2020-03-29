@@ -45,11 +45,11 @@ function Search({ isSuggestions, goToDetail }) {
                         />
                         <TouchableOpacity
                             onPress={async () => { return await search(query) }} >
-                            <Image
-                                source={require('../../assets/query_line.png')}
-                                style={styles.query_line}
-                                resizeMode="contain" />
                         </TouchableOpacity>
+                        <Image
+                            source={require('../../assets/query_line.png')}
+                            style={styles.query_line}
+                            resizeMode="contain" />
                     </View>
                 </View>
                 <Results results={results} goToDetail={goToDetail} _error={error ? error : ''} />

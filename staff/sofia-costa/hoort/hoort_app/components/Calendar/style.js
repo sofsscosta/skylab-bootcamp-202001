@@ -22,7 +22,7 @@ export default StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         color: 'grey',
-        paddingTop: '5%',
+        paddingTop: '8%',
         marginHorizontal: '5%',
         fontWeight: '200',
         alignSelf: 'center'

@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
-        zIndex: 10,
+        zIndex: 30,
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: 'rgba(300, 300, 300, 0.5)'
+        backgroundColor: 'rgba(300, 300, 300, 0.5)',
     },
     inside_container: {
         alignSelf: 'center',
@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
         // bottom: '10%',
         height: '59%',
         width: '85%',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        borderRadius: 20
     },
     container_border: {
         // backgroundColor: 'white',

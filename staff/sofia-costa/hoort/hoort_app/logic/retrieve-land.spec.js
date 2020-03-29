@@ -31,7 +31,7 @@ describe('retrieveLand', () => {
     let veggies = [], lands = []
 
 
-    describe('whe user is logged in', () => {
+    describe.only('whe user is logged in', () => {
 
         beforeEach(async () => {
 

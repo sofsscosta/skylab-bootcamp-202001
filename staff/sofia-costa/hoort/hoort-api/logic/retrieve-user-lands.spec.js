@@ -90,8 +90,13 @@ describe('retrieveUserLands', () => {
     it('should succeed on correct data', () =>
         retrieveUserLands(userId)
             .then(_lands => {
-                for (let i = 0; i < lands.length; i++)
-                    expect(_lands[i]).to.eql({ name: lands[i].name, location: lands[i].location, soiltype: lands[i].soiltype, scheme: lands[i].scheme })
+                for (let i = 0; i < lands.length; i++) {
+                    expect(_lands[i].name).to.eql(lands[i].name)
+                    expect(_lands[i].location).to.eql(lands[i].location)
+                    expect(_lands[i].soiltype).to.eql(lands[i].soiltype)
+                    expect(_lands[i].scheme).to.eql(lands[i].scheme)
+                    expect(_lands[i].id).not.to.be.instanceof(Object)
+                }
             })
     )
 

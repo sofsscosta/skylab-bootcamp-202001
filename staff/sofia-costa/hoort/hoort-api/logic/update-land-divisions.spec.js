@@ -16,7 +16,7 @@ describe('updateLandDivisions', () => {
     })
 
     let id, veggiesId, name, userId, location, soiltype, scheme, nameUser, username, email, password,
-        user, land, landId
+        user, land, landId, landId2
 
     beforeEach(() => {
         nameUser = `nameUser-${random()}`
@@ -36,10 +36,10 @@ describe('updateLandDivisions', () => {
         scheme = [[], [], [], [], []]
 
         for (let arr of scheme) {
-            if (arr === 0) for (let j = 0; j < 3; j++) arr.push(false)
+            /*if (arr === 0) */for (let j = 0; j < 3; j++) arr.push(false)
 
-            else for (let j = 0; j < 3; j++)
-                arr.push(veggiesId[j])
+            // else for (let j = 0; j < 3; j++)
+            //     arr.push(veggiesId[j])
         }
 
         return User.create({ name: nameUser, username, email, password })
@@ -50,6 +50,9 @@ describe('updateLandDivisions', () => {
             .then(() => createLand(name, userId, location, soiltype, scheme))
             .then(() => Land.findOne({ name }))
             .then(land => landId = land.id)
+            .then(() => createLand(`${name}--2`, userId, location, soiltype, scheme))
+            .then(() => Land.findOne({ name: `${name}--2` }))
+            .then(land => landId2 = land.id)
     })
 
     it('should double the number of rows and columns on add', async () => {
@@ -63,9 +66,40 @@ describe('updateLandDivisions', () => {
         for (let line of land.scheme) {
             expect(line).to.have.length(6)
         }
+
+
+        await updateLandDivisions('+', landId)
+
+        land = await Land.findById(landId)
+
+        expect(land.scheme).to.have.length(20)
+
+        for (let line of land.scheme) {
+            expect(line).to.have.length(12)
+        }
+
+
+
+        let newScheme = await updateLandDivisions('+', undefined, scheme)
+
+        expect(newScheme).to.have.length(10)
+
+        for (let line of newScheme) {
+            expect(line).to.have.length(6)
+        }
+
+        newScheme = await updateLandDivisions('+', undefined, scheme)
+
+        expect(newScheme).to.have.length(20)
+
+        // for (let line of newScheme) {
+        //     expect(line).to.have.length(12)
+        // }
     })
 
     it('should cut in half the number of rows and columns on subtract', async () => {
+
+        console.log(scheme)
 
         await updateLandDivisions('+', landId)
 
@@ -78,6 +112,18 @@ describe('updateLandDivisions', () => {
         for (let line of land.scheme) {
             expect(line).to.have.length(3)
         }
+
+
+        await updateLandDivisions('+', undefined, scheme)
+
+        let smallScheme = await updateLandDivisions('-', undefined, scheme)
+
+        expect(smallScheme).to.have.length(5)
+
+        for (let line of smallScheme) {
+            expect(line).to.have.length(3)
+        }
+
     })
 
     it('should fail on max divisions', async () => {
@@ -98,6 +144,16 @@ describe('updateLandDivisions', () => {
 
         } catch (error) {
             expect(error.message).to.eql('Min limit of divisions')
+        }
+    })
+
+    it('should fail on no scheme passed', async () => {
+
+        try {
+            await updateLandDivisions('-', undefined)
+
+        } catch (error) {
+            expect(error.message).to.eql('land id or scheme must be introduced')
         }
     })
 

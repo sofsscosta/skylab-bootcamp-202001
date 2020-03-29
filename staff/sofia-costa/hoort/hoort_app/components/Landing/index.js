@@ -3,7 +3,7 @@ import { View, Text, StatusBar, Button, Image, TouchableOpacity } from 'react-na
 import styles from './style'
 import { retrieveUserLands, isLoggedIn, retrieveUser } from '../../logic'
 
-const Landing = ({ goToRegister, goToMyLands }) => {
+const Landing = ({ goToRegister, goToMyLands, fromMenu }) => {
 
     const [isLogged, setIsLogged] = useState()
 
@@ -13,6 +13,7 @@ const Landing = ({ goToRegister, goToMyLands }) => {
                 setIsLogged(false)
                 let _token = await isLoggedIn()
                 if (_token) {
+                    console.log(_token)
                     let user = await retrieveUser()
                     console.log(user.email)
                     return setIsLogged(true)
@@ -23,7 +24,7 @@ const Landing = ({ goToRegister, goToMyLands }) => {
                 return setIsLogged(false)
             }
         })()
-    }, [])
+    }, [, fromMenu])
 
     async function handlePressLand() {
         if (isLogged) {

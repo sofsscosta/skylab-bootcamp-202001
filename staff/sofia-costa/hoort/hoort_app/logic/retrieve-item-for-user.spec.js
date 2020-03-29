@@ -31,7 +31,7 @@ describe('retrieveItemForUser', () => {
     beforeEach(async () => {
 
         type = 'type'
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
 
             colorId = `colorId-${random()}`
             nameVeggie = `name-${random()}`
@@ -66,7 +66,7 @@ describe('retrieveItemForUser', () => {
             const token = jwt.sign({ sub: id }, JWT_SECRET)
             await logic.__context__.storage.setItem('token', token)
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 nameLand = `nameLand-${random()}`
                 location = `location-${random()}`
                 soiltype = `soiltype-${random()}`

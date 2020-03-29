@@ -199,7 +199,7 @@ export default function App() {
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} unitPressed={coordinates} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
-      {view === 'start' && <Landing goToRegister={handleGoToRegister} goToMyLands={handleGoToMyLands} />}
+      {view === 'start' && <Landing goToRegister={handleGoToRegister} goToMyLands={handleGoToMyLands} fromMenu={menu} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
       {view === 'editProfile' && <EditProfile />}

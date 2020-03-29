@@ -20,16 +20,16 @@ module.exports = async (userId, landId, itemId) => {
             item.veggie.toString() === itemId
         ) !== undefined) {
 
-        // land.id = land._id.toString()
-        // delete land._id
-        // delete land.__v
+        land.id = land._id.toString()
+        delete land._id
+        delete land.__v
 
-        // land.plantation.forEach(plant => {
-        //     plant.id = plant._id.toString()
-        //     delete plant._id
-        // })
+        land.plantation.forEach(plant => {
+            plant.id = plant._id.toString()
+            delete plant._id
+        })
 
-        return //land
+        return
     }
 
     else {

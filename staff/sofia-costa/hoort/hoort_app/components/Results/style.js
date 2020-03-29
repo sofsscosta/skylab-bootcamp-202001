@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: 'rgb(147, 147, 147)'
     },
+    feedback_veggies: {
+        height: '50%',
+        margin: 40,
+    },
     feedback: {
         height: '50%',
         top: 100,

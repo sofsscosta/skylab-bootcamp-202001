@@ -21,6 +21,10 @@ describe('updateItemAdd', () => {
 
     let veggies = []
 
+    beforeEach(() => {
+
+    })
+
     beforeEach(async () => {
 
         type = 'type'
@@ -85,9 +89,55 @@ describe('updateItemAdd', () => {
 
             let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[i].id.toString() } } })
 
+            let plantation = _land.plantation.find(plant => plant.veggie.toString() === veggies[i].id.toString())
+
             expect(_land.id).to.eql(landId)
+            expect(plantation).to.exist
+            expect(plantation.to).to.eql(null)
+            expect(plantation.from).to.eql(null)
         }
     })
+
+    it('should not add veggie to land\'s plantation if item is already planted', async () => {
+        for (let i = 0; i < veggies.length; i++) {
+
+            await updateItemAdd(userId, landId, veggies[i].id.toString())
+            await updateItemAdd(userId, landId, veggies[i].id.toString())
+
+            let _land = await Land.findOne({ plantation: { $elemMatch: { veggie: veggies[i].id.toString() } } })
+
+            let plantation = _land.plantation.filter(plant => plant.veggie.toString() === veggies[i].id.toString())
+
+            expect(_land.id).to.eql(landId)
+            expect(plantation).to.have.length(1)
+            expect(plantation[0].to).to.eql(null)
+            expect(plantation[0].from).to.eql(null)
+        }
+    })
+
+
+    it('should fail on not defined veggie', async () => {
+        for (let i = 0; i < veggies.length; i++) {
+
+            expect(async () => {
+                await updateItemAdd(userId, landId, `${veggies[i].id.toString()}--wrong`)
+            }).to.throw
+        }
+    })
+
+
+    it('should fail on not defined land', async () => {
+        for (let i = 0; i < veggies.length; i++) {
+
+            expect(async () => {
+                await updateItemAdd(userId, `${landId}--wrong`, veggies[i].id.toString())
+            }).to.throw
+        }
+    })
+
+    // land.plantation.find(item =>
+    //     item.veggie.toString() === itemId
+    // ) !== undefined)
 
     afterEach(async () => {
         await Item.deleteMany({})

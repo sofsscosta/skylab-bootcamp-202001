@@ -21,7 +21,7 @@ function Results({ results, goToDetail, resultsType, _error }) {
             {resultsType === 'suggested' && <Text style={styles.month_title}>{`What to plant in ${month}`}</Text>}
 
             {error &&
-                <View style={styles.feedback}>
+                <View style={resultsType === 'myVeggies' ? styles.feedback_veggies : styles.feedback}>
                     <Feedback level='warning' message={_error ? _error.message : ''} />
                 </View>
                 || results &&

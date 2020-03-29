@@ -46,7 +46,7 @@ describe('registerUser', () => {
         expect(() =>
             registerUser(name, username, email, password)
                 .then(error => {
-                    expect(error).to.eql(NotAllowedError, `user with email "${email}" already exists`)
+                    expect(error.message).to.eq(`user with email "${email}" already exists`)
                 })
         )
     })

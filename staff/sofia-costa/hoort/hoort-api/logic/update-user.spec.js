@@ -37,7 +37,7 @@ describe('updateUser', () => {
         email1 = Math.random() + '@mail.com'
         password1 = 'password-' + Math.random()
 
-        return updateUser(id, { name: name1, username: username1, email: email1, password: password1 })
+        return updateUser(id, { name: name1, username: username1, email: email1, oldPassword: password, newPassword: password1 })
             .then(() => User.findById(id))
             .then(user => {
                 expect(user.name).to.eql(name1)
@@ -57,7 +57,7 @@ describe('updateUser', () => {
         username1 = 'username-' + Math.random()
         password1 = 'password-' + Math.random()
 
-        return updateUser(id, { username: username1, password: password1 })
+        return updateUser(id, { username: username1, oldPassword: password, newPassword: password1 })
             .then(() => User.findById(id))
             .then(user => {
                 expect(user.name).to.eql(name)
@@ -81,6 +81,34 @@ describe('updateUser', () => {
                 expect(error.message).to.eql(`invalid field wrongField`)
             })
     })
+
+    describe('on password change', () => {
+
+        let username1, password1
+
+        username1 = 'username-' + Math.random()
+        password1 = 'password-' + Math.random()
+
+        it('should fail if user doesn\'t introduce old password', () => {
+            return updateUser(id, { username: username1, newPassword: password1 })
+                .then(() => User.findById(id))
+                .catch(error => {
+                    expect(error).to.exist
+                    expect(error.message).to.eql('Please insert your old password')
+                })
+        })
+
+        it('should fail if user doesn\'t introduce new password', () => {
+            return updateUser(id, { username: username1, oldPassword: password1 })
+                .then(() => User.findById(id))
+                .catch(error => {
+                    expect(error).to.exist
+                    expect(error.message).to.eql('Please insert your new password')
+                })
+        })
+    })
+
+
 
     it('should fail if a field is empty', () => {
         let username1, password1

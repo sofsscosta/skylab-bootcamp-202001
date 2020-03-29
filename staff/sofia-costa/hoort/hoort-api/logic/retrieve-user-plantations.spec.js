@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { env: { TEST_MONGODB_URL } } = process
-const { retrieveUserVeggies, createItem, createLand, updateItemAdd } = require('.')
+const { retrieveUserPlantations, createItem, createLand, updateItemAdd, updateItemPlanted, updateItemHarvested } = require('.')
 const chai = require('chai')
 const { mongoose } = require('hoort-data')
 const { models: { Item, User, Land } } = require('hoort-data')
@@ -10,7 +10,7 @@ const { random } = Math
 const { NotFoundError, NotAllowedError } = require('hoort-errors')
 const bcrypt = require('bcryptjs')
 
-describe('retrieveUserVeggies', () => {
+describe('retrieveUserPlantations', () => {
 
     before(() => {
         return mongoose.connect(TEST_MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -78,20 +78,37 @@ describe('retrieveUserVeggies', () => {
                 for (let i = 0; i < 3; i++) {
                     await updateItemAdd(userId, landId, veggies[i].id)
                 }
+
+                for (let i = 0; i < 2; i++) {
+                    await updateItemPlanted(userId, landId, veggies[i].id)
+                }
+
+                for (let i = 0; i < 1; i++) {
+                    await updateItemHarvested(userId, landId, veggies[i].id)
+                }
             })
     })
 
 
     it('should succeed on correct data', () =>
-        retrieveUserVeggies(userId)
+        retrieveUserPlantations(userId)
             .then(results => {
                 expect(results.length).to.equal(3)
+                expect(results[0].to).to.be.instanceof(Date)
+                expect(results[0].from).to.be.instanceof(Date)
+                expect(results[0].estTime).to.exist
+
+                expect(results[1].to).to.be.null
+                expect(results[1].from).to.be.instanceof(Date)
+
+                expect(results[2].to).to.be.null
+                expect(results[2].from).to.be.null
             })
     )
 
     it('should fail on invalid id', () =>
         expect(() => {
-            retrieveUserVeggies(undefined, `${id}--wrong`)
+            retrieveUserPlantations(undefined, `${id}--wrong`)
                 .then(() => { throw new Error('should not reach this point') })
                 .catch((error) => {
                     expect(error).to.eql(NotFoundError, `user with id ${id} does not exist`)

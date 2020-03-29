@@ -89,7 +89,7 @@ function GetCalendar({ goToCalendarModal }) {
                 let minMonth = veg.estTime.split('-')[0].split('/')[1] - 1
                 let maxMonth = veg.estTime.split('-')[1].split('/')[1] - 1
 
-                if (minMonth === month.month - 1 || maxMonth === month - 1) {
+                if (minMonth === month.month - 1 || maxMonth === month.month - 1) {
                     let veggie = await retrieveItem(veg.veggie)
 
                     _retrievedVeggies.push(veggie)
@@ -101,6 +101,10 @@ function GetCalendar({ goToCalendarModal }) {
                     return
                 }
             }))
+
+            console.log(toHarvest)
+            console.log(_retrievedVeggies)
+
 
             if (!toHarvest.length) return setVeggiesOnMessage(undefined)
 

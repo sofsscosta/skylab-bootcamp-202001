@@ -32,8 +32,6 @@ module.exports = {
 
         target.forEach(item => { if (item.length < 3 || item.length > 12) throw new ContentError('invalid number of columns') })
 
-        if (initialValidation && !target.find(item => item.includes(true))) throw new ContentError('scheme is empty')
+        if (initialValidation && !target.find(item => item.includes(true) || item.find(unit => unit instanceof String))) throw new ContentError('scheme is empty')
     }
-
-    // target.forEach(item => item.forEach(element => { if (typeof element !== "boolean" || typeof element !== "string") throw new TypeError(`${element} is neither a string nor a boolean`) }))
 }
