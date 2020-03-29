@@ -55,7 +55,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
             return goToPlantLand(land)
         } catch (_error) {
             setError(_error)
-            return handleToggle()
+            return handleToggle(true)
         }
     }
 
@@ -95,12 +95,21 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
         console.log(scheme)
     }
 
-    function handleToggle() {
+    function handleToggle(showOtherModal) {
         if (errorModal) {
-            setErrorModal(false)
-            return initModal()
+            if (showOtherModal) {
+                setErrorModal(false)
+                return initModal()
+            }
+            else return setErrorModal(false)
         }
-        else setErrorModal(true)
+        else {
+            if (showOtherModal) {
+                setErrorModal(true)
+                return initModal()
+            }
+            else return setErrorModal(true)
+        }
     }
 
     return (

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 import { FlatList, TouchableOpacity, Text, View, Button, TextInput, Image, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import styles from './style'
 import { LandsIcons, Feedback } from '../'
-import { isLoggedIn, retrieveLands, retrieveLand, retrieveUserLands } from '../../logic'
+import { retrieveLand, retrieveUserLands } from '../../logic'
 import newLand from '../../assets/my_lands.png'
 import add from '../../assets/add.png'
 

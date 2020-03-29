@@ -52,10 +52,13 @@ function PlantNowModal({ onBackgroundClick, land, selectItem }) {
                             data={suggested}
                             keyExtractor={item => item._id ? item._id.toString() : item.id}
                             renderItem={({ item }) => (
-                                <TouchableOpacity
-                                    onPress={() => selectItem({ item })}>
-                                    <Item item={item} key={item._id ? item._id.toString() : item.id} />
-                                </TouchableOpacity>
+                                // <TouchableOpacity
+                                //     onPress={() => {
+                                //         console.log('item in modal for plant now ', item);
+                                //         return selectItem({ item })
+                                //     }}>
+                                <Item item={item} key={item._id ? item._id.toString() : item.id} forPlantNow={() => selectItem({ item })} />
+                                // </TouchableOpacity>
                             )} />
                     }
                 </View>

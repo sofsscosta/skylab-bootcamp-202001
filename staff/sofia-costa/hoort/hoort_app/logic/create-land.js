@@ -7,7 +7,7 @@ module.exports = function (name, location, soiltype, scheme) {
     validate.string(name, 'name')
     validate.string(location, 'location')
     validate.string(soiltype, 'soiltype')
-    validate.scheme(scheme, 'scheme')
+    if (scheme) validate.scheme(scheme, true)
 
     return (async () => {
 

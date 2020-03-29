@@ -118,7 +118,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
 
     return (
         < Fragment >
-            <TouchableWithoutFeedback style={{ height: '100%', width: '100%' }} onPress={() => menu()}>
+            <TouchableOpacity style={{ height: '100%', width: '100%', position: 'absolute', zIndex: 20, backgroundColor: 'rgba(100, 100, 100, 0.2)' }} onPress={() => menu()}>
                 <FlatList
                     style={styles.container__all}
                     data={data}
@@ -135,7 +135,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                         </TouchableOpacity>
                     )}
                 />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
         </Fragment >
     )
 }

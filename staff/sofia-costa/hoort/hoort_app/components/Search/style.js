@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     main_container: {
-        height: 500,
+        height: 120,
     },
     query_container: {
         padding: 40,

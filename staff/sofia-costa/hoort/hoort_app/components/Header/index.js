@@ -31,7 +31,7 @@ const Header = ({ goToLanding, goToMyVeggies, menuClick }) => {
     return (
         <Fragment>
             <StatusBar barStyle="light-content" />
-            <View>
+            <View style={styles.container}>
                 <Image
                     style={styles.header}
                     source={require('../../assets/header.png')}

@@ -13,13 +13,15 @@ const Landing = ({ goToRegister, goToMyLands }) => {
                 setIsLogged(false)
                 let _token = await isLoggedIn()
                 if (_token) return setIsLogged(true)
+                else return setIsLogged(false)
             } catch (error) {
-                return console.log(error)
+                return setIsLogged(false)
             }
         })()
     }, [])
 
     async function handlePressLand() {
+        console.log(isLogged)
         if (isLogged) {
             let lands
             try {

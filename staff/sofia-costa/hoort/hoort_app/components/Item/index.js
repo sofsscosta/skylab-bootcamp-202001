@@ -4,7 +4,7 @@ import styles from './style'
 import results_background from '../../assets/result_item.png'
 import { retrieveItem } from '../../logic'
 
-function Item({ item, goToDetail }) {
+function Item({ item, goToDetail, forPlantNow }) {
 
     const images = {
         tomatoes: require('../../assets/tomatoes.png'),
@@ -16,6 +16,7 @@ function Item({ item, goToDetail }) {
 
     async function onClick(id) {
         try {
+            if (forPlantNow !== undefined) return forPlantNow()
             let _item = await retrieveItem(id)
             return goToDetail(_item)
         } catch (error) {

@@ -6,15 +6,16 @@ import plant_now from '../../assets/plant_now.png'
 import change_veggie from '../../assets/change_veggie.png'
 import land_with_text from '../../assets/land-with-text.png'
 
-function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
+function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow, selectedVeg }) {
 
     console.log('land inplantland', land)
+    console.log('selectedveg ', selectedVeg)
 
     const [currentLand, setCurrentLand] = useState(land)
     const [scheme, setScheme] = useState(land.scheme)
     const [menu, setMenu] = useState(false)
     const [veggies, setVeggies] = useState()
-    const [veggie, setVeggie] = useState(undefined)
+    const [veggie, setVeggie] = useState()
     const [pressed, setPressed] = useState(false)
     const [unitPressed, setUnitPressed] = useState(undefined)
 
@@ -29,7 +30,6 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
     useEffect(() => {
         (async () => {
             try {
-                debugger
                 let isLogged = await isLoggedIn()
                 if (!isLogged) return setError('Your session expired! Please login again.')
             } catch (error) {
@@ -40,13 +40,16 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
     }, [])
 
     useEffect(() => {
+        setVeggie(selectedVeg)
+    }, [selectedVeg])
+
+    useEffect(() => {
         (async function retrieveVeggies() {
             try {
                 let veggies = await retrieveAll()
                 setVeggies(veggies)
 
                 let _land = await retrieveLand(land.id)
-                console.log('updatedLand in plantLand', _land)
 
                 return setCurrentLand(_land)
 
@@ -73,9 +76,11 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
         })()
     }, [unitPressed])
 
+
     function handleUnitPressed(itemIndexInScheme, unit) {
         return setUnitPressed({ item: itemIndexInScheme, unit })
     }
+
 
     function handleStyleUnit(unitValue) {
 
@@ -90,6 +95,7 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
         }
     }
 
+
     function handleStyleUnitImage(unitValue) {
 
         if (currentLand.scheme.length === 5) {
@@ -103,18 +109,22 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow }) {
         }
     }
 
+
     async function handlePlantMenu() {
         return !menu ? setMenu(true) : setMenu(false)
     }
+
 
     function handlePressed() {
         return !pressed ? setPressed(true) : setPressed(false)
     }
 
+
     function handleSelectItem(veggie) {
         handlePlantMenu()
         return setVeggie(veggie)
     }
+
 
     async function handleOnClickVeggie(_veggie, item, unit) {
 

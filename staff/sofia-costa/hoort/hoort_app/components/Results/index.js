@@ -21,11 +21,9 @@ function Results({ results, goToDetail, resultsType, _error }) {
             {resultsType === 'suggested' && <Text style={styles.month_title}>{`What to plant in ${month}`}</Text>}
 
             {error &&
-                <ScrollView>
-                    <View style={styles.feedback}>
-                        <Feedback level='warning' message={_error ? _error.message : ''} />
-                    </View>
-                </ScrollView>
+                <View style={styles.feedback}>
+                    <Feedback level='warning' message={_error ? _error.message : ''} />
+                </View>
                 || results &&
                 < FlatList
                     style={resultsType && styles.myVeggies_container || styles.results_container}
