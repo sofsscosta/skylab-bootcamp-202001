@@ -4,7 +4,7 @@
 
 HOORT exists to help you manage your crops. Allows you to draw your land and to decide where to plant what veggie or fruit. You get access to a calendar with a prediction of when you'll harvest what you have sown.
 
-![gif](https://media.giphy.com/media/l3vRiyQT1lPzaNsQ0/giphy.gif)
+<!-- ![gif](https://media.giphy.com/media/l3vRiyQT1lPzaNsQ0/giphy.gif) -->
 
 <!-- ![gif](https://media.giphy.com/media/WPtzVOKMymmZrJv8fO/giphy.gif) -->
 
