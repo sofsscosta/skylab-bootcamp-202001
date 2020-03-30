@@ -1,4 +1,4 @@
-![Hoort Logo](./images/hoort-logo.png)
+<img src='./images/hoort-logo.png' width=300>
 
 # HOORT 🌱
 
