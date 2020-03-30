@@ -86,10 +86,24 @@ function GetCalendar({ goToCalendarModal }) {
         try {
             await Promise.all(veggies.map(async veg => {
 
-                let minMonth = veg.estTime.split('-')[0].split('/')[1] - 1
-                let maxMonth = veg.estTime.split('-')[1].split('/')[1] - 1
+                let minDate = veg.estTime.split('-')[0].split('/')
+
+                minDate[0].length === 1 ? minDate[0] = '0' + minDate[0] : ''
+                minDate[1].length === 1 ? minDate[1] = '0' + minDate[1] : ''
+
+                let newMinDate = minDate[2] + '-' + minDate[1] + '-' + minDate[0]
+
+                let maxDate = moment(newMinDate, "YYYY-MM-DD").add(6, 'days').format("YYYY-MM-DD")
+
+                let minMonth = minDate[1] - 1
+                let maxMonth = maxDate.split('-')[1] - 1
+
+                console.log(minMonth, maxMonth)
 
                 if (minMonth === month.month - 1 || maxMonth === month.month - 1) {
+                    console.log(minMonth)
+                    console.log(maxMonth)
+                    console.log(veg.estTime)
                     let veggie = await retrieveItem(veg.veggie)
 
                     _retrievedVeggies.push(veggie)
