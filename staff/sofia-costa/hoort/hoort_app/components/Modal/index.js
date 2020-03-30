@@ -8,8 +8,6 @@ import button from '../../assets/divisions.png'
 
 function Modal({ onBackgroundClick, type, veggie, land, unitPressed }) {
 
-    console.log('veggie in modal', veggie)
-
     const [currentType, setCurrentType] = useState(type)
     const [days, setDays] = useState()
 
@@ -43,7 +41,6 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed }) {
             }
 
             await deleteVeggieFromLand(land.id, veggie.id)
-            console.log('land in modal', _land)
 
             setCurrentType(undefined)
             return onBackgroundClick()
@@ -95,7 +92,6 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed }) {
                     currentType === 'notPlanted' && 'NOT PLANTED' ||
                     currentType === 'planted' && 'PLANTED' ||
                     currentType === 'harvested' && 'HARVESTED'
-                    // || currentType === 'ready' && 'READY'
                 }</Text>
                 <Text style={styles.days}>{currentType === 'planted' && days && `${days} DAYS TILL HARVEST`}</Text>
                 <TouchableOpacity
@@ -104,7 +100,6 @@ function Modal({ onBackgroundClick, type, veggie, land, unitPressed }) {
                         currentType === 'planted' && styles.update_button_container_planted
                     }
                     onPress={() => {
-                        console.log('onclick', currentType)
                         return currentType === 'notPlanted' && handlePlant() ||
                             currentType === 'planted' && handleHarvest()
                     }

@@ -25,7 +25,5 @@ module.exports = async (userId, landId) => {
         plantation.from = moment(plantation.from).format('YYYY-MM-DD')
     })
 
-    console.log(land.plantation)
-
     return land.plantation
 }

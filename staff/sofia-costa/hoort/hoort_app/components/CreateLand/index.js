@@ -43,7 +43,6 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
     async function handleCreateLand() {
 
-        console.log(newLandProps)
         let name = newLandProps.name
         let location = newLandProps.location
         let soiltype = newLandProps.soiltype
@@ -105,7 +104,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
 
     function handleToggle(showOtherModal) {
         if (errorModal) {
-            console.log(showOtherModal)
+
             if (showOtherModal) {
                 setErrorModal(false)
                 return initModal()
@@ -113,7 +112,7 @@ function CreateLand({ goToPlantLand, initModal, newLandProps, _error }) {
             else return setErrorModal(false)
         }
         else {
-            console.log(showOtherModal)
+
             if (showOtherModal) {
                 setErrorModal(true)
                 return initModal()

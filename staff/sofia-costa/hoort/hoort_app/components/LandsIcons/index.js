@@ -5,7 +5,6 @@ import landBorder from '../../assets/land_border.png'
 
 function LandsIcons({ goToLandDetails, land }) {
 
-    console.log('land inside landsicons', land.name)
 
     function handleStyleUnit(unit) {
 

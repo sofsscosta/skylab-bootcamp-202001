@@ -85,8 +85,6 @@ describe('retrieveLand', () => {
             landId = lands[0].id
         })
 
-        //describe('when item is neither planted nor harvested', () => {
-
         it('should succeed on logeed in user and land id', async () => {
             for (let i = 0; i < lands.length; i++) {
                 let land = await retrieveLand(lands[i].id)

@@ -10,8 +10,6 @@ logic.__context__.MONGODB_URL = config.TEST_MONGODB_URL
 logic.__context__.API_URL = config.API_URL
 MONGODB_URL = config.TEST_MONGODB_URL
 
-console.log(MONGODB_URL)
-
 describe('registerUser', () => {
     beforeAll(async () => {
         await mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -46,18 +44,6 @@ describe('registerUser', () => {
     })
 
     describe('when user already exists', () => {
-        // beforeEach(async () => {
-        //     try {
-        //         return await fetch('http://192.168.1.146:8085/users', {
-        //             method: 'POST',
-        //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify({ name, username, email, password })
-        //         })
-
-        //     } catch (error) {
-        //         throw new Error(error)
-        //     }
-        // })
 
         it('should fail on already existing user', async () => {
             try {

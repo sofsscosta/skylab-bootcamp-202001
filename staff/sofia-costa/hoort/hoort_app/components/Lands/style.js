@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         alignSelf: 'center',
         color: 'rgb(147, 147, 147)',
-        // fontWeight: '200'
     },
     button: {
         width: 250,
@@ -31,13 +30,11 @@ const styles = StyleSheet.create({
         width: 150,
         height: 50,
         top: 13,
-        //alignSelf: 'flex-start',
         color: 'white',
     },
     add: {
         height: 50,
         width: 50,
-        //tintColor: 'black',
     }
 })
 

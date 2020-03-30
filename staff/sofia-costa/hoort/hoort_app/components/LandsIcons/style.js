@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 450,
-        // margin:
     },
     title: {
         fontSize: 50,
@@ -29,7 +28,6 @@ const styles = StyleSheet.create({
         color: 'rgb(100, 100, 100)'
     },
     container: {
-        // marginTop: 30,
         bottom: 295,
         flexDirection: 'row',
         borderRadius: 10,
@@ -37,7 +35,6 @@ const styles = StyleSheet.create({
         height: height,
         borderWidth: 5,
         borderColor: 'rgb(180, 180, 180)',
-        // borderStyle: 'dashed',
         alignSelf: 'center',
         flexWrap: 'wrap',
         overflow: 'hidden',
@@ -46,7 +43,6 @@ const styles = StyleSheet.create({
         flex: 1,
         height: height / 5,
         width: width / 3,
-        // borderWidth: 1,
     },
     unit_pressed_min: {
         flex: 1,

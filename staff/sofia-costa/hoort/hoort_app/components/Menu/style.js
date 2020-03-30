@@ -17,8 +17,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         position: 'relative',
-        //height: 100,
-        //top: 10
     },
     header: {
         flex: 1.5,
@@ -26,14 +24,11 @@ const styles = StyleSheet.create({
     },
     options: {
         flex: 1,
-        //flexWrap: 'wrap',
         alignSelf: 'center',
         color: 'rgb(147, 147, 147)',
         height: 70,
         fontSize: 25,
         fontWeight: '200'
-        //display: 'flex',
-        // overflow: 'visible'
     },
     optionsLight: {
         backgroundColor: 'rgb(239, 255, 244)',

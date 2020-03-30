@@ -29,7 +29,6 @@ function Item({ item, goToDetail, forPlantNow }) {
             key={item.id}
             title={item.name}
             onPress={async () => {
-                console.log(item._id ? item._id.toString() : item.id)
                 return await onClick(item._id ? item._id.toString() : item.id)
             }}>
             <Image

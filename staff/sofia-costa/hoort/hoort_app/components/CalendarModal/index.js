@@ -9,28 +9,19 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails }) {
     const [error, setError] = useState()
     const [lands, setLands] = useState()
 
-    console.log(modalInfo.plantations)
-
     useEffect(() => {
         (async () => {
             try {
-                console.log('plantations in modal ', modalInfo.lands)
                 let _lands = await Promise.all(modalInfo.lands.map(async _land => {
-                    // console.log('land in map in modal ', _land)
-                    // console.log('land.length in map in modal ', _land.length)
-                    // console.log('land.length does it enter?? ', _land.length !== 0)
                     if (_land !== undefined && _land.length !== 0) {
 
                         let land = await retrieveLand(_land)
-                        console.log('retrieved land in modal in map', land)
+
                         return land
                     }
                 }))
 
-                console.log('does land include an undefined? ', _lands.includes(undefined))
                 let filteredLands = _lands.filter(land => { return land !== undefined })
-
-                console.log('lands after all ', filteredLands)
 
                 setLands(filteredLands)
             }
@@ -39,8 +30,6 @@ function CalendarModal({ onBackgroundClick, modalInfo, goToLandDetails }) {
             }
         })()
     }, [])
-
-    console.log('lands in modal ', lands)
 
     return (
         <TouchableWithoutFeedback onPress={() => onBackgroundClick()}>

@@ -19,7 +19,7 @@ function Register({ goToLogin }) {
             goToLogin()
         }
         catch (error) {
-            setError(error.message)
+            return setError(error.message)
         }
     }
 

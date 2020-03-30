@@ -99,8 +99,6 @@ describe('updateLandDivisions', () => {
 
     it('should cut in half the number of rows and columns on subtract', async () => {
 
-        console.log(scheme)
-
         await updateLandDivisions('+', landId)
 
         await updateLandDivisions('-', landId)

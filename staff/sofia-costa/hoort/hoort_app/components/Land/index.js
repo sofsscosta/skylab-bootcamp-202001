@@ -9,7 +9,6 @@ import land_border from '../../assets/land_border.png'
 
 function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit }) {
 
-    console.log('land in retrieved land', landFromPlantLand)
 
     const [currentLand, setCurrentLand] = useState(landFromPlantLand ? landFromPlantLand : landFromMyLands)
     const [scheme, setScheme] = useState(currentLand.scheme)
@@ -29,12 +28,10 @@ function Land({ landFromMyLands, landFromPlantLand, goToPlantLand, submit }) {
         (async () => {
             try {
 
-                console.log('veggies', veggies)
                 let veggies = await retrieveAll()
                 setVeggies(veggies)
 
                 let _land = await retrieveLand(currentLand.id)
-                console.log('updatedLand in plantLand', _land)
 
                 return setCurrentLand(_land)
 

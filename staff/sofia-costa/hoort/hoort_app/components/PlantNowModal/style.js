@@ -12,27 +12,22 @@ const styles = StyleSheet.create({
     },
     inside_container: {
         alignSelf: 'center',
-        // top: '10%',
-        // bottom: '10%',
         height: '59%',
         width: '85%',
         backgroundColor: 'white',
         borderRadius: 20
     },
     container_border: {
-        // backgroundColor: 'white',
         position: 'absolute',
         maxHeight: '35%',
         width: '100%',
         alignSelf: 'center',
-        // bottom: -170,
     },
     title: {
         color: 'rgb(135, 135, 135)',
         bottom: '75%',
         paddingLeft: '5%',
         fontSize: 30,
-        // zIndex: 20,
         position: 'absolute',
         width: '95%',
         textAlign: 'center',

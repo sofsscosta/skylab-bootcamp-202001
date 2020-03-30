@@ -19,7 +19,7 @@ function Login({ goToRegister, goToLanding }) {
         }
         catch (error) {
             const { message } = error
-            setError(message)
+            return setError(message)
         }
     }
 

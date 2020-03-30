@@ -49,8 +49,6 @@ describe('retrieveUser', () => {
 
             retrievedUser = await retrieveUser()
 
-            console.log(retrievedUser)
-
             expect(retrievedUser.constructor).toBe(Object)
             expect(retrievedUser.name).toBe(name)
             expect(retrievedUser.username).toBe(username)

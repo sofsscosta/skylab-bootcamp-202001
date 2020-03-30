@@ -78,7 +78,6 @@ describe.only('retrieveLandPlantations', () => {
                     await updateItemAdd(userId, landId, veggies[i].id)
                 }
                 land = await Land.findById(landId)
-                console.log(land)
                 return land
             })
     })

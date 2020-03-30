@@ -7,8 +7,6 @@ module.exports = async (userId) => {
 
     let veggies = []
     let results = []
-    // let lands = []
-    debugger
     let user = await User.findById(userId)
 
     let userLands = user.lands

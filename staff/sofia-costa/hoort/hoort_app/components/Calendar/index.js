@@ -69,7 +69,6 @@ function GetCalendar({ goToCalendarModal }) {
                         return
                     }
                 }))
-                console.log('plantedVeggies ', plantedVeggies)
                 return setVeggies(plantedVeggies)
             } catch (error) {
                 return console.log(error)
@@ -98,12 +97,8 @@ function GetCalendar({ goToCalendarModal }) {
                 let minMonth = minDate[1] - 1
                 let maxMonth = maxDate.split('-')[1] - 1
 
-                console.log(minMonth, maxMonth)
-
                 if (minMonth === month.month - 1 || maxMonth === month.month - 1) {
-                    console.log(minMonth)
-                    console.log(maxMonth)
-                    console.log(veg.estTime)
+
                     let veggie = await retrieveItem(veg.veggie)
 
                     _retrievedVeggies.push(veggie)
@@ -116,8 +111,8 @@ function GetCalendar({ goToCalendarModal }) {
                 }
             }))
 
-            console.log(toHarvest)
-            console.log(_retrievedVeggies)
+
+
 
 
             if (!toHarvest.length) return setVeggiesOnMessage(undefined)
@@ -126,6 +121,7 @@ function GetCalendar({ goToCalendarModal }) {
 
         }
         catch (error) {
+            return console.log(error)
         }
     }
 
@@ -155,7 +151,6 @@ function GetCalendar({ goToCalendarModal }) {
             }
         }))
 
-        console.log('veggiePlantations ', veggiePlantations)
 
         return goToCalendarModal(vegName, currentMonth, veggiePlantations)
     }

@@ -12,8 +12,6 @@ module.exports = async function (id) {
 
     const item = await retrieve.json()
 
-    // if (!item) throw new Error('There\'s no item corresponding to this id!')
-
     const { error } = await item
 
     if (error) throw new Error('There\'s no item corresponding to this id!')

@@ -26,9 +26,6 @@ const styles = StyleSheet.create({
         height: height / 5,
         width: width / 3,
         backgroundColor: 'rgb(255, 243, 223)',
-        // borderWidth: 1,
-        // borderColor: 'rgb(187, 154, 99)',
-        // borderStyle: 'dashed'
     },
     unit_medium: {
         flex: 1,
@@ -40,9 +37,6 @@ const styles = StyleSheet.create({
         height: height / 10,
         width: width / 6,
         backgroundColor: 'rgb(255, 243, 223)',
-        // borderWidth: 1,
-        // borderColor: 'rgb(187, 154, 99)',
-        // borderStyle: 'dashed'
     },
     unit_max: {
         flex: 1,
@@ -54,9 +48,6 @@ const styles = StyleSheet.create({
         height: height / 20,
         width: width / 12,
         backgroundColor: 'rgb(255, 243, 223)',
-        // borderWidth: 1,
-        // borderColor: 'rgb(187, 154, 99)',
-        // borderStyle: 'dashed'
     },
     unit_image: {
         height: height / 5,
@@ -66,17 +57,14 @@ const styles = StyleSheet.create({
     unit_image_min: {
         height: height / 5,
         width: width / 3,
-        // backgroundColor: 'white'
     },
     unit_image_medium: {
         height: height / 10,
         width: width / 6,
-        // backgroundColor: 'white'
     },
     unit_image_max: {
         height: height / 20,
         width: width / 12,
-        // backgroundColor: 'white'
     },
     unit_empty: {
         flex: 1,

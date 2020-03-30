@@ -102,15 +102,6 @@ describe('deleteVeggieFromLand', () => {
         expect(testLand.plantation.find(plant => plant.veggie === veggies[0].id)).toBeUndefined()
     })
 
-    // it('should delete veggie from plantation if there are no more equal veggies on land scheme' async () => {
-    //     try {
-    //         await deleteVeggieFromLand(lands[0].id, `${token}--wrong`)
-    //     }
-    //     catch (error) {
-    //         expect(error.message).toBe(`invalid signature`)
-    //     }
-    // })
-
     it('should fail on invalid land id', async () => {
         try {
             await deleteVeggieFromLand(`${lands[0].id}--wrong`, veggies[0].id)

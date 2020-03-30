@@ -31,7 +31,6 @@ function Detail({ item, goToLandDetail }) {
         userInfo && (async () => {
 
             try {
-                console.log('userInfo', userInfo[0][1])
                 const result = await Promise.all(userInfo[0][1].map(async land => {
 
                     let retrievedLand = await retrieveLand(land)
@@ -74,7 +73,6 @@ function Detail({ item, goToLandDetail }) {
     async function goToLandDetails(land) {
         try {
             let _land = await retrieveLand(land.id)
-            console.log('_land', _land)
             return goToLandDetail(_land)
         }
         catch (error) {

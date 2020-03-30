@@ -42,7 +42,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                     goToSuggestions(suggestedVeggies)
                     return menu()
                 } catch (error) {
-                    console.log(error)
+                    return console.log(error)
                 }
             }
         },
@@ -93,7 +93,7 @@ function Menu({ goToMyLands, goToMyVeggies, goToCalendar, goToEditProfile, goToS
                     goToSuggestions(suggestedVeggies)
                     return menu()
                 } catch (error) {
-                    console.log(error)
+                    return console.log(error)
                 }
             }
         },

@@ -13,7 +13,6 @@ export default StyleSheet.create({
     },
     message: {
         fontSize: 20,
-        // color: 'grey'
         fontWeight: '200',
         alignSelf: 'center'
 

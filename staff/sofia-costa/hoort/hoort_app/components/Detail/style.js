@@ -49,8 +49,6 @@ const styles = StyleSheet.create({
         marginBottom: 40
     },
     inline: {
-        // display: 'flex',
-        // flexDirection: 'row',
         margin: 10
     },
     description: {
@@ -64,8 +62,6 @@ const styles = StyleSheet.create({
     },
     icons: {
         alignSelf: 'center',
-        // alignItems: 'center',
-        // justifyContent: 'center'
     }
 })
 

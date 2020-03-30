@@ -17,8 +17,6 @@ const styles = StyleSheet.create({
         width: width,
         height: height,
         alignSelf: 'center',
-        // justifyContent: 'center',
-        // alignItems: 'center'
     },
     unit_min: {
         flex: 1,
@@ -85,19 +83,15 @@ const styles = StyleSheet.create({
 
     divisions_container: {
         flexDirection: 'row',
-        // flexWrap: 'wrap',
         width: 300,
         height: 80,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        //right: 300,
     },
     divisions: {
         flex: 1,
         marginTop: 20,
-        //alignSelf: 'center',
-        // height: 80,
         width: 300,
     },
     less: {

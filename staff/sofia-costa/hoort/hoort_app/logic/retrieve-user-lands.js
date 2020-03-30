@@ -13,15 +13,9 @@ module.exports = async function () {
 
     const lands = await retrieve.json()
 
-    // let landsIds = []
-
-    // lands.forEach(land => landsIds.push(land.id))
-
     const { error } = await lands
 
     if (error) throw new Error(error)
-
-    // if (!lands.length) throw new Error('You have no lands yet!')
 
     return lands
 }.bind(context)

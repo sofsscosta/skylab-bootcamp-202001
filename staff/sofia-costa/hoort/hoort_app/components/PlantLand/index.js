@@ -8,9 +8,6 @@ import land_with_text from '../../assets/land-with-text.png'
 
 function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow, selectedVeg }) {
 
-    console.log('land inplantland', land)
-    console.log('selectedveg ', selectedVeg)
-
     const [currentLand, setCurrentLand] = useState(land)
     const [scheme, setScheme] = useState(land.scheme)
     const [menu, setMenu] = useState(false)
@@ -151,12 +148,10 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow, sel
     function handleOnPressOptions(unit, item) {
         if (unit.item && pressed) {
             if (typeof currentLand.scheme[scheme.indexOf(item)][unit.index] === 'boolean' && veggie !== undefined) {
-                console.log('entered if')
                 return handleUnitPressed(scheme.indexOf(item), unit)
             }
         }
         else if (unit.item && typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean') {
-            console.log('entered else')
             return handleOnClickVeggie(currentLand.scheme[scheme.indexOf(item)][unit.index], scheme.indexOf(item), unit)
         }
     }
@@ -187,7 +182,6 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow, sel
                                                 <TouchableOpacity style={handleStyleUnit(unit.item)}
                                                     onPress={() => handleOnPressOptions(unit, item)}>
                                                     {typeof currentLand.scheme[scheme.indexOf(item)][unit.index] !== 'boolean'
-                                                        // && veggie !== undefined
                                                         && <Image
                                                             source={images[
                                                                 `${veggies && veggies.find(_veggie => _veggie.id === currentLand.scheme[scheme.indexOf(item)][unit.index]).name}`
@@ -271,7 +265,6 @@ function PlantLand({ land, onClickVeggie, updatedLand, submit, goToPlantNow, sel
             <TouchableOpacity
                 style={styles.submit}
                 onPress={() => {
-                    console.log(currentLand, 'updatedLand in plantland')
                     return submit(currentLand)
                 }}>
                 <Text style={styles.submit_text}>DONE</Text>

@@ -92,8 +92,6 @@ describe('retrieveItemForUser', () => {
             }
         })
 
-        //describe('when item is neither planted nor harvested', () => {
-
         it('should succeed on correct data', async () => {
             for (let i = 0; i < veggies.length; i++) {
                 for (let j = 0; j < lands.length; j++) {
@@ -117,15 +115,6 @@ describe('retrieveItemForUser', () => {
             expect(error.message).toBe(`user with id ${id} does not exist`)
         }
     })
-
-    // it('should fail on invalid id', async () => {
-    //     try {
-    //         await retrieveItemForUser(token, `${veggies[0].id}--wrong`)
-    //     }
-    //     catch (error) {
-    //         expect(error).toBeDefined()
-    //     }
-    // })
 
     afterEach(async () => {
         await User.deleteMany({})

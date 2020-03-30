@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
     footer: {
-        // flex: 0.1,
         width: undefined,
         height: 100
     }

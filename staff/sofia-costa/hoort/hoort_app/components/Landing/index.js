@@ -13,9 +13,7 @@ const Landing = ({ goToRegister, goToMyLands, fromMenu }) => {
                 setIsLogged(false)
                 let _token = await isLoggedIn()
                 if (_token) {
-                    console.log(_token)
                     let user = await retrieveUser()
-                    console.log(user.email)
                     return setIsLogged(true)
                 }
                 else return setIsLogged(false)

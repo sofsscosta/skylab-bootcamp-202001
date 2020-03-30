@@ -8,7 +8,6 @@ import add from '../../assets/add.png'
 
 function Lands({ goToLandDetail, goToCreateLand, lands, _error }) {
 
-    console.log(_error, '_error in lands')
 
     const [error, setError] = useState(_error ? _error.message : '')
 

@@ -4,7 +4,6 @@ import { searchSuggested } from '../../logic'
 import { Feedback, Item } from '../'
 import styles from './style'
 import modal_border from '../../assets/modal_border.png'
-import button from '../../assets/divisions.png'
 
 function PlantNowModal({ onBackgroundClick, land }) {
 
@@ -21,7 +20,6 @@ function PlantNowModal({ onBackgroundClick, land }) {
             try {
                 setError(undefined)
                 suggestedVeggies = await searchSuggested()
-                console.log(suggestedVeggies)
                 return setSuggested(suggestedVeggies)
             } catch (error) {
                 return setError(error)
@@ -52,13 +50,7 @@ function PlantNowModal({ onBackgroundClick, land }) {
                             data={suggested}
                             keyExtractor={item => item._id ? item._id.toString() : item.id}
                             renderItem={({ item }) => (
-                                // <TouchableOpacity
-                                //     onPress={() => {
-                                //         console.log('item in modal for plant now ', item);
-                                //         return selectItem({ item })
-                                //     }}>
                                 <Item item={item} key={item._id ? item._id.toString() : item.id} />
-                                // </TouchableOpacity>
                             )} />
                     }
                 </View>

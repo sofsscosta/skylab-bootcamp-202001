@@ -15,9 +15,7 @@ const styles = StyleSheet.create({
         width: 250,
         height: 10,
         bottom: 110,
-        // alignItems: 'center',
         alignContent: 'center',
-        // justifyContent: 'center'
     },
     query: {
         zIndex: 10,
@@ -37,7 +35,6 @@ const styles = StyleSheet.create({
     background: {
         width: '90%',
         height: 100,
-        // flex: 1,
         alignSelf: 'center',
     },
     title: {

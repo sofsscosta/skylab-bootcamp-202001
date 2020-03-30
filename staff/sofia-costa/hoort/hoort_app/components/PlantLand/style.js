@@ -13,12 +13,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: 'row',
         alignSelf: 'center',
-        // borderRadius: 15,
-        // right: 40,
-        // justifyContent: 'center',
         width: width,
         height: height,
-        // borderWidth: 1
     },
     unit_min: {
         flex: 1,
