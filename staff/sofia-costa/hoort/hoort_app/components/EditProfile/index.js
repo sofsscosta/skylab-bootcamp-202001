@@ -29,10 +29,11 @@ function EditProfile() {
             return setMessage('Successfully changed fields!')
         }
         catch (error) {
-            if (error.message === 'JSON Parse error: Unexpected EOF')
-                setMessage('successfully changed fields!')
+            // if (error.message === 'JSON Parse error: Unexpected EOF')
+            //     setMessage('successfully changed fields!')
 
-            else setError(error.message)
+            // else 
+            setError(error.message)
         }
     }
 
