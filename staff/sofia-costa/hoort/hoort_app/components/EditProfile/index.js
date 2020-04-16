@@ -4,7 +4,7 @@ import { updateUser } from '../../logic'
 import styles from './style'
 import { Button, Feedback } from '../'
 
-function EditProfile() {
+function EditProfile({ user }) {
 
     const [error, setError] = useState()
     const [message, setMessage] = useState()
@@ -29,10 +29,6 @@ function EditProfile() {
             return setMessage('Successfully changed fields!')
         }
         catch (error) {
-            // if (error.message === 'JSON Parse error: Unexpected EOF')
-            //     setMessage('successfully changed fields!')
-
-            // else 
             setError(error.message)
         }
     }
@@ -50,7 +46,7 @@ function EditProfile() {
                         <TextInput
                             onChangeText={(name) => setName(name)}
                             style={styles.input}
-                            placeholder='New name'>
+                            placeholder={`${user.name}`}>
                         </TextInput>
                         <View style={styles.subtitle_container}>
                             <Text style={styles.subtitle}>CHANGE USERNAME</Text>
@@ -58,7 +54,7 @@ function EditProfile() {
                         <TextInput
                             onChangeText={(username) => setUsername(username)}
                             style={styles.input}
-                            placeholder='New username'
+                            placeholder={`${user.username}`}
                             title='username'>
                         </TextInput>
                         <View style={styles.subtitle_container}>
@@ -67,7 +63,7 @@ function EditProfile() {
                         <TextInput
                             onChangeText={(email) => setEmail(email)}
                             style={styles.input}
-                            placeholder='New email'
+                            placeholder={`${user.email}`}
                             title='email'>
                         </TextInput>
                         <View style={styles.subtitle_container}>

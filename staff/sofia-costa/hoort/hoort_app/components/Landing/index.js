@@ -3,7 +3,7 @@ import { View, Text, StatusBar, Button, Image, TouchableOpacity } from 'react-na
 import styles from './style'
 import { retrieveUserLands, isLoggedIn, retrieveUser } from '../../logic'
 
-const Landing = ({ goToRegister, goToMyLands, fromMenu }) => {
+const Landing = ({ goToRegister, goToMyLands, fromMenu, user }) => {
 
     const [isLogged, setIsLogged] = useState()
 
@@ -41,6 +41,7 @@ const Landing = ({ goToRegister, goToMyLands, fromMenu }) => {
     return (
         <Fragment>
             <View style={styles.container}>
+                {user && <Text style={styles.salute}>{`WELCOME BACK ${user.name.toUpperCase()}!`}</Text>}
                 <TouchableOpacity onPress={() => handlePressLand()}>
                     <Image
                         style={styles.landing}

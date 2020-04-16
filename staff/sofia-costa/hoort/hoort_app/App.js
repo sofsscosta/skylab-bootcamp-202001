@@ -39,16 +39,19 @@ export default function App() {
     (async () => {
       try {
         let token = await isLoggedIn()
-        if (token !== null) {
-
+        console.log(token)
+        if (token && token !== null) {
+          console.log(user)
           let _user = await retrieveUser()
+          console.log(_user)
           setUser(_user)
         }
+        else setUser(undefined)
       } catch (error) {
         return setError(error.message)
       }
     })()
-  }, [])
+  }, [view, menu])
 
 
   function handleStart() {
@@ -199,10 +202,10 @@ export default function App() {
       {view !== 'init' && view !== 'landing' && modal && <Modal onBackgroundClick={handleModal} veggie={veggie} type={modalType} land={landForModal} unitPressed={coordinates} />}
       {menu && <Menu goToMyLands={handleGoToMyLands} goToMyVeggies={handleGoToMyVeggies} goToCalendar={handleGoToCalendar} goToEditProfile={handleGoToEditProfile} goToSearch={handleGoToSearch} goToSuggestions={handleGoToSuggestions} goToTutorial={handleGoToTutorial} goToLanding={handleGoToLanding} menu={handleMenu} />}
       {view !== 'init' && < Header goToLanding={handleGoToLanding} menuClick={handleMenu} goToMyVeggies={handleGoToMyVeggies} />}
-      {view === 'start' && <Landing goToRegister={handleGoToRegister} goToMyLands={handleGoToMyLands} fromMenu={menu} />}
+      {view === 'start' && <Landing goToRegister={handleGoToRegister} goToMyLands={handleGoToMyLands} fromMenu={menu} user={user} />}
       {view === 'register' && <Register goToLogin={handleGoToLogin} />}
       {view === 'login' && <Login goToRegister={handleGoToRegister} goToLanding={handleGoToLanding} />}
-      {view === 'editProfile' && <EditProfile />}
+      {view === 'editProfile' && <EditProfile user={user} />}
       {view === 'search' && <Search goToDetail={handleGoToDetail} />}
       {view === 'myLands' && <Lands goToLandDetail={handleGoToRetrievedLand} goToCreateLand={handleGoToCreateLand} lands={lands} _error={error} />}
       {view === 'userVeggies' && <Results goToDetail={handleGoToDetail} results={veggies} resultsType={resultsType} _error={error} />}

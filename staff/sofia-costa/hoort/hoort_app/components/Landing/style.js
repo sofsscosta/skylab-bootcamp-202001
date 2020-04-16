@@ -16,7 +16,13 @@ const styles = StyleSheet.create({
         color: 'rgb(150, 150, 150)',
         fontSize: 50,
         fontWeight: '200',
-        bottom: '5%'
+        bottom: '3%'
+    },
+    salute: {
+        color: 'rgb(150, 150, 150)',
+        fontSize: 30,
+        fontWeight: '200',
+        bottom: '8%'
     }
 })
 

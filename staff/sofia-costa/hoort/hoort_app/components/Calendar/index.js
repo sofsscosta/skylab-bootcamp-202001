@@ -111,10 +111,6 @@ function GetCalendar({ goToCalendarModal }) {
                 }
             }))
 
-
-
-
-
             if (!toHarvest.length) return setVeggiesOnMessage(undefined)
 
             return setVeggiesOnMessage(toHarvest)
